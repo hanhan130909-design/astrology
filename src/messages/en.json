@@ -1,0 +1,86 @@
+{
+  "common": {
+    "siteName": "Star Wisdom",
+    "tagline": "Read the Stars, Find Your Path",
+    "language": "Language"
+  },
+  "nav": {
+    "home": "Home",
+    "zodiac": "Zodiac",
+    "horoscope": "Horoscope",
+    "chart": "Birth Chart",
+    "community": "Community"
+  },
+  "home": {
+    "hero": {
+      "title": "Discover Your Mysteries in the Stars",
+      "subtitle": "Accurate zodiac analysis, daily horoscopes, and star lover community",
+      "cta": "Get Started"
+    },
+    "features": {
+      "daily": {
+        "title": "Daily Horoscope",
+        "desc": "Daily readings for each zodiac sign"
+      },
+      "birth": {
+        "title": "Birth Chart",
+        "desc": "Personal birth chart analysis"
+      },
+      "community": {
+        "title": "Community",
+        "desc": "Discuss with other star enthusiasts"
+      }
+    },
+    "zodiacGrid": {
+      "title": "12 Zodiac Signs"
+    }
+  },
+  "zodiac": {
+    "title": "Zodiac",
+    "subtitle": "Understand your personality based on stars",
+    "element": {
+      "fire": "Fire",
+      "earth": "Earth",
+      "air": "Air",
+      "water": "Water"
+    },
+    "traits": {
+      "strengths": "Strengths",
+      "weaknesses": "Weaknesses",
+      "love": "Love",
+      "career": "Career"
+    }
+  },
+  "horoscope": {
+    "title": "Horoscope",
+    "daily": "Daily",
+    "weekly": "Weekly",
+    "monthly": "Monthly",
+    "compatibility": "Compatibility"
+  },
+  "chart": {
+    "title": "Birth Chart",
+    "subtitle": "Analyze stars at your birth time",
+    "form": {
+      "name": "Name",
+      "birthdate": "Birth Date",
+      "birthtime": "Birth Time (Optional)",
+      "gender": "Gender",
+      "male": "Male",
+      "female": "Female",
+      "calculate": "Calculate Chart"
+    }
+  },
+  "community": {
+    "title": "Community",
+    "subtitle": "Discuss with star enthusiasts",
+    "createPost": "Create Post",
+    "search": "Search discussions..."
+  },
+  "footer": {
+    "about": "About Us",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact Us"
+  }
+}

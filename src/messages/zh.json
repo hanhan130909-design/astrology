@@ -1,0 +1,86 @@
+{
+  "common": {
+    "siteName": "星星学院",
+    "tagline": "读懂星盘，找到你的路",
+    "language": "语言"
+  },
+  "nav": {
+    "home": "首页",
+    "zodiac": "星座",
+    "horoscope": "运势",
+    "chart": "星盘",
+    "community": "社区"
+  },
+  "home": {
+    "hero": {
+      "title": "探索星座的奥秘",
+      "subtitle": "精准星座分析、每日运势、社区互动",
+      "cta": "开始探索"
+    },
+    "features": {
+      "daily": {
+        "title": "每日运势",
+        "desc": "每天更新的星座运势"
+      },
+      "birth": {
+        "title": "出生星盘",
+        "desc": "个人出生星盘分析"
+      },
+      "community": {
+        "title": "社区",
+        "desc": "与星座爱好者交流"
+      }
+    },
+    "zodiacGrid": {
+      "title": "十二星座"
+    }
+  },
+  "zodiac": {
+    "title": "星座",
+    "subtitle": "了解你的星座性格",
+    "element": {
+      "fire": "火象",
+      "earth": "土象",
+      "air": "风象",
+      "water": "水象"
+    },
+    "traits": {
+      "strengths": "优点",
+      "weaknesses": "缺点",
+      "love": "爱情",
+      "career": "事业"
+    }
+  },
+  "horoscope": {
+    "title": "运势",
+    "daily": "今日",
+    "weekly": "本周",
+    "monthly": "本月",
+    "compatibility": "配对"
+  },
+  "chart": {
+    "title": "星盘",
+    "subtitle": "出生时刻的星体位置分析",
+    "form": {
+      "name": "姓名",
+      "birthdate": "出生日期",
+      "birthtime": "出生时间（选填）",
+      "gender": "性别",
+      "male": "男",
+      "female": "女",
+      "calculate": "计算星盘"
+    }
+  },
+  "community": {
+    "title": "社区",
+    "subtitle": "与星座爱好者交流",
+    "createPost": "发布帖子",
+    "search": "搜索话题..."
+  },
+  "footer": {
+    "about": "关于我们",
+    "privacy": "隐私政策",
+    "terms": "服务条款",
+    "contact": "联系我们"
+  }
+}

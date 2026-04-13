@@ -1,0 +1,86 @@
+{
+  "common": {
+    "siteName": "Bintang Jodoh",
+    "tagline": "Baca Bintang, Temukan Jalanmu",
+    "language": "Bahasa"
+  },
+  "nav": {
+    "home": "Beranda",
+    "zodiac": "Zodiak",
+    "horoscope": "Horoskop",
+    "chart": "Bagan Lahir",
+    "community": "Komunitas"
+  },
+  "home": {
+    "hero": {
+      "title": "Temukan Misteri Dirimu dalam Bintang",
+      "subtitle": "Analisis zodiak akurat, bacaan harian, dan komunitas pecinta bintang",
+      "cta": "Mulai Sekarang"
+    },
+    "features": {
+      "daily": {
+        "title": "Horoskop Harian",
+        "desc": "Bacaan harian untuk setiap zodiak"
+      },
+      "birth": {
+        "title": "Bagan Lahir",
+        "desc": "Analisis bintang lahir personal"
+      },
+      "community": {
+        "title": "Komunitas",
+        "desc": "Diskusi dengan pecinta bintang lainnya"
+      }
+    },
+    "zodiacGrid": {
+      "title": "12 Zodiak"
+    }
+  },
+  "zodiac": {
+    "title": "Zodiak",
+    "subtitle": "Kenali karaktermu berdasarkan bintang",
+    "element": {
+      "fire": "Api",
+      "earth": "Tanah",
+      "air": "Udara",
+      "water": "Air"
+    },
+    "traits": {
+      "strengths": "Kelebihan",
+      "weaknesses": "Kelemahan",
+      "love": "Cinta",
+      "career": "Karier"
+    }
+  },
+  "horoscope": {
+    "title": "Horoskop",
+    "daily": "Harian",
+    "weekly": "Mingguan", 
+    "monthly": "Bulanan",
+    "compatibility": "Kompatibilitas"
+  },
+  "chart": {
+    "title": "Bagan Lahir",
+    "subtitle": "Analisis bintang saat kamu lahir",
+    "form": {
+      "name": "Nama",
+      "birthdate": "Tanggal Lahir",
+      "birthtime": "Waktu Lahir (Opsional)",
+      "gender": "Jenis Kelamin",
+      "male": "Laki-laki",
+      "female": "Perempuan",
+      "calculate": "Hitung Bagan"
+    }
+  },
+  "community": {
+    "title": "Komunitas",
+    "subtitle": "Diskusi dengan pecinta bintang",
+    "createPost": "Buat Postingan",
+    "search": "Cari diskusi..."
+  },
+  "footer": {
+    "about": "Tentang Kami",
+    "privacy": "Kebijakan Privasi",
+    "terms": "Syarat Layanan",
+    "contact": "Hubungi Kami"
+  }
+}
