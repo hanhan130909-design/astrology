@@ -277,9 +277,9 @@ export default function BlogPage() {
                       
                       {/* Tags */}
                       <div className="flex flex-wrap gap-2 mb-4">
-                        {post.tags.slice(0, 3).map((tag) => (
+                        {(Array.isArray(post.tags) ? post.tags : []).slice(0, 3).map((tag: string, index: number) => (
                           <span
-                            key={tag}
+                            key={index}
                             className="px-2 py-1 bg-white/5 rounded text-xs text-gray-500"
                           >
                             {tag}
