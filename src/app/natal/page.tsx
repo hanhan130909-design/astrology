@@ -1,4 +1,4 @@
-﻿"use client";
+﻿﻿"use client";
 
 import { useState, useEffect, useRef, useMemo } from 'react';
 import Link from 'next/link';
@@ -667,114 +667,184 @@ function LocationSearch({ onSelect, lang, label }: {
 }
 
 // Natal Chart SVG with Aspect Lines
-function NatalChartSVG({ planets, houses, aspects, size = 420 }: { planets: any, houses: any[], aspects: any[], size?: number }) {
-  const cx = size / 2, cy = size / 2, r = size * 0.46;
-  const degToRad = (deg: number) => ((deg - 90) * Math.PI) / 180;
-  
-  const getPoint = (deg: number, radius: number) => ({
-    x: cx + radius * Math.cos(degToRad(deg)),
-    y: cy + radius * Math.sin(degToRad(deg)),
+function NatalChartSVG({ planets, houses, aspects, ascendant, midheaven, size = 420 }: { planets: any, houses: any[], aspects: any[], ascendant?: number, midheaven?: number, size?: number }) {
+  const cx = size / 2, cy = size / 2;
+  // Ring radii
+  const rOut = cx - 4;
+  const rSignOut = cx - 4;
+  const rSignIn = cx - 36;
+  const rHouseOut = cx - 38;
+  const rHouseIn = cx - 74;
+  const rPlanet = cx - 100;
+  const rCenter = 36;
+
+  const ascLon = ascendant || (houses?.[0]?.longitude) || 0;
+  const mcLon = midheaven || 0;
+
+  // Convert ecliptic longitude to SVG angle (0°=ASC on LEFT, counter-clockwise)
+  // In SVG: x-right, y-down. cos(0)=right, sin(0)=down.
+  // To put ASC on LEFT, rotate by +180°. Negate Y for counter-clockwise.
+  const lonToAngle = (lon: number) => {
+    const rel = ((lon - ascLon + 180) % 360 + 360) % 360;
+    return (rel * Math.PI) / 180;
+  };
+  const lonToXY = (lon: number, radius: number) => ({
+    x: cx + radius * Math.cos(lonToAngle(lon)),
+    y: cy - radius * Math.sin(lonToAngle(lon)),
   });
 
-  // Get planet positions for aspect lines
+  const signCol = ['#FF6B6B','#4ECDC4','#FFE66D','#95E1D3','#F38181','#AA96DA','#FCBAD3','#8E44AD','#E74C3C','#3498DB','#1ABC9C','#9B59B6'];
+  const plCol: Record<string, string> = { Sun:'#FFD700', Moon:'#C0C0C0', Mercury:'#87CEEB', Venus:'#FFB6C1', Mars:'#FF6347', Jupiter:'#FFA500', Saturn:'#87CEFA', Uranus:'#40E0D0', Neptune:'#6495ED', Pluto:'#CD5C5C', North_Node:'#9370DB', South_Node:'#708090' };
+
+  // Planet positions for aspect lines
   const planetPositions: Record<string, { x: number; y: number }> = {};
-  Object.entries(planets).forEach(([key, p]: [string, any]) => {
+  PLANET_KEYS.forEach(key => {
+    const p = planets?.[key];
     if (!p?.error && p?.longitude != null) {
-      planetPositions[key] = getPoint(p.longitude, r * 0.62);
+      planetPositions[key] = lonToXY(p.longitude, rPlanet);
     }
+  });
+
+  // Sort planets by longitude for overlap detection
+  const sortedPlanets = PLANET_KEYS
+    .filter(k => planets?.[k] && !planets[k].error && planets[k].longitude != null)
+    .map(k => ({ key: k, ...planets[k] }))
+    .sort((a: any, b: any) => a.longitude - b.longitude);
+
+  // Compute offsets for clustered planets to avoid label overlap
+  const planetOffsets: Record<string, number> = {};
+  sortedPlanets.forEach((p: any, i: number) => {
+    let offset = 0;
+    if (i < sortedPlanets.length - 1) {
+      const next = sortedPlanets[i + 1];
+      const diff = ((next.longitude - p.longitude + 360) % 360 + 360) % 360;
+      if (diff < 10) offset = -9;
+    }
+    if (i > 0) {
+      const prev = sortedPlanets[i - 1];
+      const diff = ((p.longitude - prev.longitude + 360) % 360 + 360) % 360;
+      if (diff < 10 && offset === 0) offset = 9;
+      if (diff < 10 && offset !== 0) offset = 0;
+    }
+    planetOffsets[p.key] = offset;
   });
 
   return (
     <svg viewBox={`0 0 ${size} ${size}`} className="w-full max-w-lg mx-auto">
       <defs>
-        <linearGradient id="chartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#7c3aed" />
-          <stop offset="50%" stopColor="#db2777" />
-          <stop offset="100%" stopColor="#f59e0b" />
-        </linearGradient>
-        <filter id="glow"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-        <filter id="softGlow"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <radialGradient id="bgG" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#1a1a2e"/><stop offset="100%" stopColor="#0a0a15"/>
+        </radialGradient>
+        <filter id="gl"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
       </defs>
-      
-      {/* Background glow */}
-      <circle cx={cx} cy={cy} r={r * 1.1} fill="url(#chartGrad)" opacity="0.05" filter="url(#softGlow)" />
-      
-      {/* Outer ring with gradient */}
-      <circle cx={cx} cy={cy} r={r} fill="none" stroke="url(#chartGrad)" strokeWidth="2" opacity="0.4" />
-      <circle cx={cx} cy={cy} r={r * 0.95} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="0.5" />
-      <circle cx={cx} cy={cy} r={r * 0.85} fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="0.5" strokeDasharray="4 4" />
-      <circle cx={cx} cy={cy} r={r * 0.65} fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="0.5" />
-      
-      {/* Aspect Lines - drawn first so they're behind planets */}
-      {(aspects || []).slice(0, 15).map((asp: any, i: number) => {
-        const p1Pos = planetPositions[asp.planet1];
-        const p2Pos = planetPositions[asp.planet2];
-        if (!p1Pos || !p2Pos) return null;
-        const color = ASPECT_COLORS[asp.aspect || asp.type] || '#888';
-        const isMajor = ['Conjunction', 'Square', 'Trine', 'Opposition'].includes(asp.aspect || asp.type);
-        return (
-          <line key={i} x1={p1Pos.x} y1={p1Pos.y} x2={p2Pos.x} y2={p2Pos.y}
-            stroke={color} strokeWidth={isMajor ? 1.5 : 1} opacity={isMajor ? 0.7 : 0.4} />
-        );
-      })}
-      
-      {/* Zodiac signs - outer ring */}
+
+      {/* Background */}
+      <circle cx={cx} cy={cy} r={rOut} fill="url(#bgG)" stroke="#374151" strokeWidth="1"/>
+
+      {/* Zodiac sign segments (outer ring with element colors) */}
       {SIGN_SYMBOLS.map((sym, i) => {
-        const angle = i * 30;
-        const outerP = getPoint(angle, r * 0.97);
-        const signColor = ['fire', 'earth', 'air', 'water'][Math.floor(i / 3) % 4];
-        const colors: Record<string, string> = { fire: '#FF6B6B', earth: '#8B7355', air: '#74B9FF', water: '#0984E3' };
+        const sa = lonToAngle(i * 30), ea = lonToAngle((i + 1) * 30);
+        const x1 = cx + rSignOut * Math.cos(sa), y1 = cy - rSignOut * Math.sin(sa);
+        const x2 = cx + rSignOut * Math.cos(ea), y2 = cy - rSignOut * Math.sin(ea);
+        const x3 = cx + rSignIn * Math.cos(ea), y3 = cy - rSignIn * Math.sin(ea);
+        const x4 = cx + rSignIn * Math.cos(sa), y4 = cy - rSignIn * Math.sin(sa);
+        const largeArc = (ea - sa + 2 * Math.PI) > Math.PI ? 1 : 0;
         return (
-          <g key={i}>
-            <circle cx={outerP.x} cy={outerP.y} r="14" fill={`${colors[signColor]}20`} />
-            <text x={outerP.x} y={outerP.y + 5} textAnchor="middle" fontSize="14" fill={colors[signColor]}>
-              {sym}
-            </text>
-          </g>
+          <path key={i} d={`M ${x1} ${y1} A ${rSignOut} ${rSignOut} 0 ${largeArc} 0 ${x2} ${y2} L ${x3} ${y3} A ${rSignIn} ${rSignIn} 0 ${largeArc} 1 ${x4} ${y4} Z`} fill={signCol[i]} opacity={0.12}/>
         );
       })}
-      
-      {/* House lines and labels */}
+
+      {/* Ring borders */}
+      <circle cx={cx} cy={cy} r={rSignOut} fill="none" stroke="#4B5563" strokeWidth="1"/>
+      <circle cx={cx} cy={cy} r={rSignIn} fill="none" stroke="#374151" strokeWidth="0.8"/>
+      <circle cx={cx} cy={cy} r={rHouseOut} fill="none" stroke="#4B5563" strokeWidth="0.8"/>
+      <circle cx={cx} cy={cy} r={rHouseIn} fill="none" stroke="#374151" strokeWidth="0.8"/>
+
+      {/* Sign boundary lines */}
+      {SIGN_SYMBOLS.map((_, i) => {
+        const p1 = lonToXY(i * 30, rSignIn), p2 = lonToXY(i * 30, rSignOut);
+        return <line key={i} x1={p1.x} y1={p1.y} x2={p2.x} y2={p2.y} stroke="#4B5563" strokeWidth="0.6"/>;
+      })}
+
+      {/* Zodiac symbols in outer ring */}
+      {SIGN_SYMBOLS.map((sym, i) => {
+        const pos = lonToXY(i * 30 + 15, (rSignOut + rSignIn) / 2);
+        return <text key={i} x={pos.x} y={pos.y + 5} textAnchor="middle" fontSize="13" fontWeight="bold" fill={signCol[i]}>{sym}</text>;
+      })}
+
+      {/* House cusp lines (from center to house outer ring) */}
       {(houses || []).map((h: any, idx: number) => {
-        const p1 = getPoint(h.longitude, r * 0.25);
-        const p2 = getPoint(h.longitude, r * 0.85);
-        const midP = getPoint(h.longitude, r * 0.55);
+        const p1 = lonToXY(h.longitude, rCenter + 2);
+        const p2 = lonToXY(h.longitude, rHouseOut);
+        const isAngular = [1, 4, 7, 10].includes(h.house);
+        return (
+          <line key={idx} x1={p1.x} y1={p1.y} x2={p2.x} y2={p2.y}
+            stroke={isAngular ? '#818CF8' : '#374151'} strokeWidth={isAngular ? 2 : 0.8}
+            strokeDasharray={isAngular ? 'none' : '3 3'}/>
+        );
+      })}
+
+      {/* House number labels (centered in each house) */}
+      {(houses || []).map((h: any, idx: number) => {
+        const next = houses[(idx + 1) % (houses?.length || 12)];
+        if (!next) return null;
+        let midLon: number;
+        if (h.longitude < next.longitude) {
+          midLon = h.longitude + (next.longitude - h.longitude) / 2;
+        } else {
+          midLon = h.longitude + (next.longitude + 360 - h.longitude) / 2;
+        }
+        const numPos = lonToXY(midLon % 360, (rHouseOut + rHouseIn) / 2);
+        const degPos = lonToXY(h.longitude, rHouseIn - 12);
+        const degVal = h.degree != null ? h.degree : (h.longitude % 30);
         const isAngular = [1, 4, 7, 10].includes(h.house);
         return (
           <g key={idx}>
-            <line x1={p1.x} y1={p1.y} x2={p2.x} y2={p2.y}
-              stroke={isAngular ? '#a855f7' : 'rgba(255,255,255,0.15)'} strokeWidth={isAngular ? 1 : 0.5} />
-            <circle cx={midP.x} cy={midP.y} r={isAngular ? 10 : 7} fill="#0f0a1e" stroke={isAngular ? '#a855f7' : 'rgba(255,255,255,0.2)'} strokeWidth="1" />
-            <text x={midP.x} y={midP.y + 4} textAnchor="middle" fontSize={isAngular ? '10' : '8'} fill={isAngular ? '#a855f7' : 'rgba(255,255,255,0.6)'}>
-              {h.house}
-            </text>
+            <text x={numPos.x} y={numPos.y + 4} textAnchor="middle" fontSize={isAngular ? '11' : '9'} fontWeight="bold" fill={isAngular ? '#A78BFA' : '#6B7280'}>{h.house}</text>
+            {isAngular && <text x={degPos.x} y={degPos.y + 3} textAnchor="middle" fontSize="7" fill="#9CA3AF">{Math.floor(degVal)}°</text>}
           </g>
         );
       })}
-      
-      {/* Center info */}
-      <circle cx={cx} cy={cy} r={r * 0.22} fill="#0f0a1e" stroke="rgba(124,58,237,0.5)" strokeWidth="1" />
-      <text x={cx} y={cy - 6} textAnchor="middle" fontSize="20" fill="#f59e0b">☉</text>
-      <text x={cx} y={cy + 10} textAnchor="middle" fontSize="8" fill="#94a3b8">星缘</text>
-      
-      {/* Planets */}
-      {PLANET_KEYS.map(key => {
-        const p = planets?.[key];
-        if (!p || p.error || p.longitude == null) return null;
-        const pos = getPoint(p.longitude, r * 0.62);
+
+      {/* Aspect lines (behind planets) */}
+      {(aspects || []).slice(0, 20).map((asp: any, i: number) => {
+        const p1Pos = planetPositions[asp.planet1];
+        const p2Pos = planetPositions[asp.planet2];
+        if (!p1Pos || !p2Pos) return null;
+        const color = ASPECT_COLORS[asp.aspect || asp.type] || '#555';
+        const isMajor = ['Conjunction', 'Square', 'Trine', 'Opposition'].includes(asp.aspect || asp.type);
         return (
-          <g key={key} className="cursor-pointer" filter="url(#glow)">
-            <circle cx={pos.x} cy={pos.y} r="12" fill="#0f0a1e" stroke="#fbbf24" strokeWidth="1.5" />
-            <text x={pos.x} y={pos.y + 5} textAnchor="middle" fontSize="11" fill="#fbbf24" fontWeight="bold">
-              {PLANET_SYMBOLS[key]}
-            </text>
-            {/* Retrograde indicator */}
-            {p.retrograde && (
-              <text x={pos.x + 8} y={pos.y - 6} fontSize="7" fill="#f43f5e">℞</text>
-            )}
+          <line key={i} x1={p1Pos.x} y1={p1Pos.y} x2={p2Pos.x} y2={p2Pos.y}
+            stroke={color} strokeWidth={isMajor ? 1.2 : 0.7} strokeOpacity={isMajor ? 0.6 : 0.35} strokeDasharray={isMajor ? 'none' : '4 3'}/>
+        );
+      })}
+
+      {/* ASC / MC labels */}
+      {(() => { const p = lonToXY(ascLon, rHouseOut + 16); return <text x={p.x} y={p.y + 4} textAnchor="middle" fontSize="11" fontWeight="bold" fill="#FBBF24">ASC</text>; })()}
+      {mcLon > 0 && (() => { const p = lonToXY(mcLon, rHouseOut + 16); return <text x={p.x} y={p.y + 4} textAnchor="middle" fontSize="11" fontWeight="bold" fill="#A78BFA">MC</text>; })()}
+
+      {/* Planets with glow */}
+      {sortedPlanets.map((p: any) => {
+        const offset = planetOffsets[p.key] || 0;
+        const angle = lonToAngle(p.longitude);
+        const pos = {
+          x: cx + (rPlanet + offset) * Math.cos(angle),
+          y: cy - (rPlanet + offset) * Math.sin(angle),
+        };
+        const color = plCol[p.key] || '#fbbf24';
+        return (
+          <g key={p.key} filter="url(#gl)">
+            <circle cx={pos.x} cy={pos.y} r="11" fill={`${color}18`} stroke={color} strokeWidth="1.5"/>
+            <text x={pos.x} y={pos.y + 4} textAnchor="middle" fontSize="11" fontWeight="bold" fill={color}>{PLANET_SYMBOLS[p.key]}</text>
+            {p.retrograde && <text x={pos.x + 9} y={pos.y - 8} fontSize="7" fontWeight="bold" fill="#F87171">R</text>}
           </g>
         );
       })}
+
+      {/* Center circle */}
+      <circle cx={cx} cy={cy} r={rCenter} fill="#0f0a1e" stroke="rgba(124,58,237,0.4)" strokeWidth="1"/>
+      <text x={cx} y={cy - 5} textAnchor="middle" fontSize="18" fill="#FBBF24">✦</text>
+      <text x={cx} y={cy + 10} textAnchor="middle" fontSize="7" fill="#94A3B8">星缘</text>
     </svg>
   );
 }
@@ -1137,7 +1207,7 @@ export default function NatalPage() {
             {/* Chart Tab */}
             {tab === 'chart' && (
               <div className="p-6 rounded-2xl bg-white/5 border border-white/10 text-center">
-                <NatalChartSVG planets={chart.planets || {}} houses={chart.houses || []} aspects={chart.aspects || []} size={450} />
+                <NatalChartSVG planets={chart.planets || {}} houses={chart.houses || []} aspects={chart.aspects || []} ascendant={chart.ascendant?.longitude} midheaven={chart.midheaven?.longitude} size={450} />
                 <button onClick={handleSave}
                   className="mt-4 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-xl text-sm flex items-center gap-2 mx-auto transition-colors">
                   <Save size={16} />{saveMsg || tx('saveChart', lang)}
