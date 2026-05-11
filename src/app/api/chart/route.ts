@@ -230,34 +230,82 @@ function calcMC(LSTdeg: number): number {
 // 宫位计算 - 根据分宫制
 // ════════════════════════════════════════════════════════════════════════════
 
-function calcHouses(time: Astronomy.AstroTime, lat: number, lng: number, system: string = 'E') {
+function calcHouses(time: Astronomy.AstroTime, lat: number, lng: number, system: string = 'P') {
   const LST = calcLST(time, lng);
   const ascLon = calcAscendant(lat, LST);
   const mcLon = calcMC(LST);
   
   const houses = [];
   
-  for (let i = 0; i < 12; i++) {
-    let cuspLon: number;
+  if (system === 'P') {
+    // Porphyry House System:
+    // Divide each of the 4 quadrants (defined by ASC/DESC and MC/IC) into 3 equal parts.
+    // Quadrant 1: ASC → IC  (houses 1,2,3; H4 cusp = IC)
+    // Quadrant 2: IC  → DSC (houses 4,5,6; H7 cusp = DSC)
+    // Quadrant 3: DSC → MC   (houses 7,8,9; H10 cusp = MC)
+    // Quadrant 4: MC  → ASC  (houses 10,11,12; H1 cusp = ASC)
     
-    switch (system) {
-      case 'W': // 整宫制：上升点所在星座为第1宫
-        const ascSign = Math.floor(ascLon / 30);
-        cuspLon = ((ascSign + i) % 12) * 30;
-        break;
-      case 'E': // 等宫制：每宫30度，从上升点开始
-      default:
-        cuspLon = normalize(ascLon + i * 30);
+    const desc = normalize(ascLon + 180);
+    const ic   = normalize(mcLon + 180);
+    
+    // CCW distance from a to b: normalize(b - a)
+    const q1Size = normalize(ic - ascLon);   // ASC → IC
+    const q2Size = normalize(desc - ic);       // IC → DSC
+    const q3Size = normalize(mcLon - desc);     // DSC → MC
+    const q4Size = normalize(ascLon - mcLon);   // MC → ASC
+    
+    const cusps = [
+      // H1, H2, H3, H4(=IC)
+      ascLon,
+      normalize(ascLon + q1Size / 3),
+      normalize(ascLon + 2 * q1Size / 3),
+      ic,
+      // H5, H6, H7(=DSC)
+      normalize(ic + q2Size / 3),
+      normalize(ic + 2 * q2Size / 3),
+      desc,
+      // H8, H9, H10(=MC)
+      normalize(desc + q3Size / 3),
+      normalize(desc + 2 * q3Size / 3),
+      mcLon,
+      // H11, H12, (H1=ASC, wraps around)
+      normalize(mcLon + q4Size / 3),
+      normalize(mcLon + 2 * q4Size / 3),
+    ];
+    
+    for (let i = 0; i < 12; i++) {
+      const cuspLon = cusps[i];
+      const sd = signData(cuspLon);
+      houses.push({
+        house: i + 1,
+        house_cn: `${i + 1}宫`,
+        longitude: Math.round(cuspLon * 10000) / 10000,
+        ...sd,
+      });
     }
-    
-    const sd = signData(cuspLon);
-    
-    houses.push({
-      house: i + 1,
-      house_cn: `${i + 1}宫`,
-      longitude: Math.round(cuspLon * 10000) / 10000,
-      ...sd,
-    });
+  } else {
+    for (let i = 0; i < 12; i++) {
+      let cuspLon: number;
+      
+      switch (system) {
+        case 'W': // Whole Sign: 1st house = sign of ASC
+          const ascSign = Math.floor(ascLon / 30);
+          cuspLon = ((ascSign + i) % 12) * 30;
+          break;
+        case 'E': // Equal House
+        default:
+          cuspLon = normalize(ascLon + i * 30);
+      }
+      
+      const sd = signData(cuspLon);
+      
+      houses.push({
+        house: i + 1,
+        house_cn: `${i + 1}宫`,
+        longitude: Math.round(cuspLon * 10000) / 10000,
+        ...sd,
+      });
+    }
   }
   
   return {
@@ -302,6 +350,7 @@ function calcAspects(planets: Record<string, any>) {
           aspects.push({
             planet1: keys[i],
             planet2: keys[j],
+            type: asp.name,
             aspect: asp.name,
             angle: asp.angle,
             orb: Math.round((diff - asp.angle) * 100) / 100,
@@ -329,7 +378,7 @@ export async function POST(request: NextRequest) {
     const day = parseInt(body.day);
     const hour = parseFloat(body.hour) || 12;
     const minute = parseInt(body.minute) || 0;
-    const system = body.houseSystem || 'E';
+    const system = body.houseSystem || 'P';
     const cityKey = (body.city || '').toLowerCase().replace(/\s+/g, '');
     
     // 解析坐标
@@ -398,6 +447,7 @@ export async function GET() {
       tz: data.tz,
     })),
     houseSystems: [
+      { code: 'P', name: '波菲里宫制', name_en: 'Porphyry' },
       { code: 'E', name: '等宫制', name_en: 'Equal House' },
       { code: 'W', name: '整宫制', name_en: 'Whole Sign' },
     ],
