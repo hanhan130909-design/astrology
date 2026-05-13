@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect, useRef, useMemo } from 'react';
 import Link from 'next/link';
@@ -83,7 +83,7 @@ const T = {
     savedCharts: 'Bagan Tersimpan', noSaved: 'Belum ada bagan',
     enterAll: 'Silakan masukkan informasi lahir lengkap',
     ascendant: 'Ascenden', midheaven: 'Medium Coeli',
-    conjunction: 'Konjungsi', sextile: 'Sextile', square: 'Kotak', trine: 'Trine', opposition: 'Oposisi',
+    conjunction: 'Konjungsi', sextile: 'Sextil', square: 'Kotak', trine: 'Trine', opposition: 'Oposisi',
     error: 'Kesalahan Kalkulasi', retry: 'Coba lagi',
     aiReading: 'Pembacaan AI', simpleReading: 'Ringkasan', deepReading: 'Mendalam',
     freeReading: 'Gratis', unlockDeep: 'Buka Pembacaan Mendalam',
@@ -102,10 +102,10 @@ const PLANETS_CN: Record<string, string> = {
 };
 const PLANET_KEYS = ['Sun', 'Moon', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto', 'North_Node', 'South_Node'];
 const PLANET_SYMBOLS: Record<string, string> = {
-  Sun: '☉', Moon: '☽', Mercury: '☿', Venus: '♀', Mars: '♂', Jupiter: '♃', Saturn: '♄',
-  Uranus: '♅', Neptune: '♆', Pluto: '♇', North_Node: '☊', South_Node: '☋',
+  Sun: '\u2609', Moon: '\u263D', Mercury: '\u263F', Venus: '\u2640', Mars: '\u2642', Jupiter: '\u2643', Saturn: '\u2644',
+  Uranus: '\u2645', Neptune: '\u2646', Pluto: '\u2647', North_Node: '\u260A', South_Node: '\u260B',
 };
-const SIGN_SYMBOLS = ['♈', '♉', '♊', '♋', '♌', '♍', '♎', '♏', '♐', '♑', '♒', '♓'];
+const SIGN_SYMBOLS = ['\u2648', '\u2649', '\u264A', '\u264B', '\u264C', '\u264D', '\u264E', '\u264F', '\u2650', '\u2651', '\u2652', '\u2653'];
 const SIGN_CN: Record<string, string> = {
   Aries: '白羊', Taurus: '金牛', Gemini: '双子', Cancer: '巨蟹', Leo: '狮子', Virgo: '处女',
   Libra: '天秤', Scorpio: '天蝎', Sagittarius: '射手', Capricorn: '摩羯', Aquarius: '水瓶', Pisces: '双鱼',
@@ -115,29 +115,45 @@ const SIGN_EN: Record<string, string> = {
   Libra: 'Libra', Scorpio: 'Scorpio', Sagittarius: 'Sagittarius', Capricorn: 'Capricorn', Aquarius: 'Aquarius', Pisces: 'Pisces',
 };
 
-// 全球城市数据库 - 包含精确的经纬度和时区数据
 const HOUSE_SYSTEMS = [
   { id: 'E', name: { zh: '等宫制', en: 'Equal House', id: 'Equal House' }, abbr: 'E' },
   { id: 'W', name: { zh: '整宫制', en: 'Whole Sign', id: 'Whole Sign' }, abbr: 'W' },
-  { id: 'P', name: { zh: 'Placidus', en: 'Placidus', id: 'Placidus' }, abbr: 'Pl' },
+  { id: 'P', name: { zh: 'Porphyry', en: 'Porphyry', id: 'Porphyry' }, abbr: 'P' },
   { id: 'K', name: { zh: 'Koch (阿卡比特)', en: 'Koch', id: 'Koch' }, abbr: 'K' },
   { id: 'R', name: { zh: 'Regiomontanus', en: 'Regiomontanus', id: 'Regiomontanus' }, abbr: 'R' },
   { id: 'C', name: { zh: 'Campanus', en: 'Campanus', id: 'Campanus' }, abbr: 'C' },
 ];
 
-const ASPECT_COLORS: Record<string, string> = {
-  Conjunction: '#FFD700', Sextile: '#4CAF50', Square: '#F44336', Trine: '#2196F3', Opposition: '#9C27B0',
+// Enhanced aspect styling config
+const ASPECT_STYLES: Record<string, { color: string; width: number; dash?: string; opacity: number; label: string }> = {
+  Conjunction:   { color: '#FFD700', width: 1.8, opacity: 0.7, label: '\u260C' },
+  Sextile:       { color: '#22C55E', width: 1.0, dash: '6 3', opacity: 0.55, label: '\u26B9' },
+  Square:        { color: '#EF4444', width: 1.4, dash: '4 2', opacity: 0.6, label: '\u25A1' },
+  Trine:         { color: '#3B82F6', width: 1.4, opacity: 0.65, label: '\u25B3' },
+  Opposition:    { color: '#A855F7', width: 1.8, opacity: 0.7, label: '\u260D' },
 };
 
 const ASPECT_NAMES: Record<string, { zh: string, en: string, id: string }> = {
   Conjunction: { zh: '合', en: 'Conj', id: 'Konj' },
   Sextile: { zh: '六', en: 'Sext', id: 'Sext' },
   Square: { zh: '四', en: 'Sq', id: 'Kotak' },
-  Trine: { zh: '三', en: 'Trine', id: 'Trine' },
+  Trine: { zh: '三', en: 'Tri', id: 'Trine' },
   Opposition: { zh: '冲', en: 'Opp', id: 'Oposisi' },
 };
 
-// AI Reading Data (三语言)
+// Planet colors with enhanced vibrancy
+const PLANET_COLORS: Record<string, string> = {
+  Sun: '#FFD700', Moon: '#E8E8E8', Mercury: '#87CEEB', Venus: '#FFB6C1', Mars: '#FF4500',
+  Jupiter: '#FFA500', Saturn: '#B0C4DE', Uranus: '#40E0D0', Neptune: '#4169E1', Pluto: '#CD5C5C',
+  North_Node: '#9370DB', South_Node: '#708090',
+};
+
+// Sign colors - element-based
+const SIGN_COLORS = [
+  '#FF6B6B', '#4ECDC4', '#FFE66D', '#95E1D3', '#F38181', '#AA96DA',
+  '#FCBAD3', '#8E44AD', '#E74C3C', '#3498DB', '#1ABC9C', '#9B59B6',
+];
+
 const AI_READINGS = {
   Sun: {
     zh: {
@@ -233,7 +249,6 @@ function tx(key: string, lang: 'zh' | 'en' | 'id'): string {
   return (T[lang] as Record<string, string>)?.[key] || (T.zh as Record<string, string>)?.[key] || key;
 }
 
-// Custom Select Component
 function CustomSelect({ value, onChange, options, label }: {
   value: string; onChange: (v: string) => void; options: { id: string; name: string }[]; label?: string;
 }) {
@@ -253,22 +268,16 @@ function CustomSelect({ value, onChange, options, label }: {
   return (
     <div className="relative" ref={ref}>
       {label && <label className="block text-xs text-slate-400 mb-1">{label}</label>}
-      <button
-        type="button"
-        onClick={() => setOpen(!open)}
-        className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-left flex items-center justify-between hover:bg-slate-800 transition-colors"
-      >
+      <button type="button" onClick={() => setOpen(!open)}
+        className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-left flex items-center justify-between hover:bg-slate-800 transition-colors">
         <span className="text-white text-sm">{selected?.name || 'Select...'}</span>
         <ChevronDown size={16} className={`text-slate-400 transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
       {open && (
         <div className="absolute top-full left-0 right-0 mt-1 py-1 rounded-xl bg-slate-800 border border-slate-700 z-50 max-h-60 overflow-y-auto">
           {options.map(opt => (
-            <button
-              key={opt.id}
-              onClick={() => { onChange(opt.id); setOpen(false); }}
-              className={`w-full px-3 py-2 text-left text-sm hover:bg-slate-700 ${value === opt.id ? 'text-purple-400' : 'text-slate-300'}`}
-            >
+            <button key={opt.id} onClick={() => { onChange(opt.id); setOpen(false); }}
+              className={`w-full px-3 py-2 text-left text-sm hover:bg-slate-700 ${value === opt.id ? 'text-purple-400' : 'text-slate-300'}`}>
               {opt.name}
             </button>
           ))}
@@ -278,26 +287,25 @@ function CustomSelect({ value, onChange, options, label }: {
   );
 }
 
-// 增强版城市选择器 - 支持搜索和分组
-
-// Nominatim 地图搜索组件（OpenStreetMap，免费无需 API Key）
-function NatalChartSVG({ planets, houses, aspects, ascendant, midheaven, size = 420 }: { planets: any, houses: any[], aspects: any[], ascendant?: number, midheaven?: number, size?: number }) {
+// ==================== OPTIMIZED NATAL CHART SVG ====================
+function NatalChartSVG({ planets, houses, aspects, ascendant, midheaven, size = 420 }: {
+  planets: any; houses: any[]; aspects: any[]; ascendant?: number; midheaven?: number; size?: number;
+}) {
   const cx = size / 2, cy = size / 2;
-  // Ring radii
+
+  // Ring proportions optimized for readability
   const rOut = cx - 4;
-  const rSignOut = cx - 4;
-  const rSignIn = cx - 36;
-  const rHouseOut = cx - 38;
-  const rHouseIn = cx - 74;
-  const rPlanet = cx - 100;
-  const rCenter = 36;
+  const rSignOut = rOut;
+  const rSignIn = rOut - 32;
+  const rHouseOut = rSignIn - 4;
+  const rHouseIn = rHouseOut - 36;
+  const rPlanet = rHouseIn - 6;
+  const rCenter = cy - rPlanet - 10;
 
   const ascLon = ascendant || (houses?.[0]?.longitude) || 0;
   const mcLon = midheaven || 0;
 
-  // Convert ecliptic longitude to SVG angle (0°=ASC on LEFT, counter-clockwise)
-  // In SVG: x-right, y-down. cos(0)=right, sin(0)=down.
-  // To put ASC on LEFT, rotate by +180°. Negate Y for counter-clockwise.
+  // Convert ecliptic longitude to SVG angle (ASC on LEFT, counter-clockwise)
   const lonToAngle = (lon: number) => {
     const rel = ((lon - ascLon + 180) % 360 + 360) % 360;
     return (rel * Math.PI) / 180;
@@ -307,55 +315,78 @@ function NatalChartSVG({ planets, houses, aspects, ascendant, midheaven, size = 
     y: cy - radius * Math.sin(lonToAngle(lon)),
   });
 
-  const signCol = ['#FF6B6B','#4ECDC4','#FFE66D','#95E1D3','#F38181','#AA96DA','#FCBAD3','#8E44AD','#E74C3C','#3498DB','#1ABC9C','#9B59B6'];
-  const plCol: Record<string, string> = { Sun:'#FFD700', Moon:'#C0C0C0', Mercury:'#87CEEB', Venus:'#FFB6C1', Mars:'#FF6347', Jupiter:'#FFA500', Saturn:'#87CEFA', Uranus:'#40E0D0', Neptune:'#6495ED', Pluto:'#CD5C5C', North_Node:'#9370DB', South_Node:'#708090' };
+  // Multi-level planet overlap prevention
+  const sortedPlanets = PLANET_KEYS
+    .filter(k => planets?.[k] && !planets[k].error && planets[k].longitude != null)
+    .map(k => ({ key: k, ...planets[k] }))
+    .sort((a: any, b: any) => a.longitude - b.longitude);
+
+  const CLUSTER_THRESHOLD = 8;
+  const OFFSET_STEP = 11;
+  const planetOffsets: Record<string, number> = {};
+
+  // Identify clusters
+  const clusters: number[][] = [];
+  let currentCluster: number[] = [];
+  for (let i = 0; i < sortedPlanets.length; i++) {
+    if (currentCluster.length === 0) { currentCluster.push(i); }
+    else {
+      const prev = sortedPlanets[currentCluster[currentCluster.length - 1]];
+      const curr = sortedPlanets[i];
+      const diff = ((curr.longitude - prev.longitude + 360) % 360 + 360) % 360;
+      if (diff < CLUSTER_THRESHOLD) { currentCluster.push(i); }
+      else { clusters.push(currentCluster); currentCluster = [i]; }
+    }
+  }
+  if (currentCluster.length > 0) clusters.push(currentCluster);
+
+  // Assign offsets within clusters
+  clusters.forEach(cluster => {
+    if (cluster.length <= 1) { planetOffsets[sortedPlanets[cluster[0]].key] = 0; return; }
+    const midIdx = Math.floor(cluster.length / 2);
+    cluster.forEach((idx, rank) => {
+      const offsetLevel = Math.abs(rank - midIdx);
+      const direction = rank < midIdx ? -1 : 1;
+      planetOffsets[sortedPlanets[idx].key] = direction * offsetLevel * OFFSET_STEP;
+    });
+  });
 
   // Planet positions for aspect lines
   const planetPositions: Record<string, { x: number; y: number }> = {};
   PLANET_KEYS.forEach(key => {
     const p = planets?.[key];
     if (!p?.error && p?.longitude != null) {
-      planetPositions[key] = lonToXY(p.longitude, rPlanet);
+      const off = planetOffsets[key] || 0;
+      const angle = lonToAngle(p.longitude);
+      planetPositions[key] = { x: cx + (rPlanet + off) * Math.cos(angle), y: cy - (rPlanet + off) * Math.sin(angle) };
     }
-  });
-
-  // Sort planets by longitude for overlap detection
-  const sortedPlanets = PLANET_KEYS
-    .filter(k => planets?.[k] && !planets[k].error && planets[k].longitude != null)
-    .map(k => ({ key: k, ...planets[k] }))
-    .sort((a: any, b: any) => a.longitude - b.longitude);
-
-  // Compute offsets for clustered planets to avoid label overlap
-  const planetOffsets: Record<string, number> = {};
-  sortedPlanets.forEach((p: any, i: number) => {
-    let offset = 0;
-    if (i < sortedPlanets.length - 1) {
-      const next = sortedPlanets[i + 1];
-      const diff = ((next.longitude - p.longitude + 360) % 360 + 360) % 360;
-      if (diff < 10) offset = -9;
-    }
-    if (i > 0) {
-      const prev = sortedPlanets[i - 1];
-      const diff = ((p.longitude - prev.longitude + 360) % 360 + 360) % 360;
-      if (diff < 10 && offset === 0) offset = 9;
-      if (diff < 10 && offset !== 0) offset = 0;
-    }
-    planetOffsets[p.key] = offset;
   });
 
   return (
-    <svg viewBox={`0 0 ${size} ${size}`} className="w-full max-w-lg mx-auto">
+    <svg viewBox={`0 0 ${size} ${size}`} className="w-full max-w-lg mx-auto drop-shadow-2xl">
       <defs>
-        <radialGradient id="bgG" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#1a1a2e"/><stop offset="100%" stopColor="#0a0a15"/>
+        <radialGradient id="bgG" cx="50%" cy="50%" r="55%">
+          <stop offset="0%" stopColor="#12102a"/><stop offset="60%" stopColor="#0a0818"/><stop offset="100%" stopColor="#050410"/>
         </radialGradient>
-        <filter id="gl"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="gl" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="glStrong" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="innerShadow">
+          <feOffset dx="0" dy="1"/><feGaussianBlur stdDeviation="1" result="ob"/>
+          <feComposite operator="out" in="SourceGraphic" in2="ob" result="inv"/>
+          <feFlood floodColor="black" floodOpacity="0.35" result="col"/>
+          <feComposite operator="in" in="col" in2="inv" result="sh"/>
+          <feComposite operator="over" in="sh" in2="SourceGraphic"/>
+        </filter>
       </defs>
 
       {/* Background */}
-      <circle cx={cx} cy={cy} r={rOut} fill="url(#bgG)" stroke="#374151" strokeWidth="1"/>
+      <circle cx={cx} cy={cy} r={rOut} fill="url(#bgG)" stroke="#2d2a4d" strokeWidth="1.2"/>
 
-      {/* Zodiac sign segments (outer ring with element colors) */}
+      {/* Zodiac ring segments */}
       {SIGN_SYMBOLS.map((sym, i) => {
         const sa = lonToAngle(i * 30), ea = lonToAngle((i + 1) * 30);
         const x1 = cx + rSignOut * Math.cos(sa), y1 = cy - rSignOut * Math.sin(sa);
@@ -363,102 +394,102 @@ function NatalChartSVG({ planets, houses, aspects, ascendant, midheaven, size = 
         const x3 = cx + rSignIn * Math.cos(ea), y3 = cy - rSignIn * Math.sin(ea);
         const x4 = cx + rSignIn * Math.cos(sa), y4 = cy - rSignIn * Math.sin(sa);
         const largeArc = (ea - sa + 2 * Math.PI) > Math.PI ? 1 : 0;
-        return (
-          <path key={i} d={`M ${x1} ${y1} A ${rSignOut} ${rSignOut} 0 ${largeArc} 0 ${x2} ${y2} L ${x3} ${y3} A ${rSignIn} ${rSignIn} 0 ${largeArc} 1 ${x4} ${y4} Z`} fill={signCol[i]} opacity={0.12}/>
-        );
+        return (<path key={i} d={`M ${x1} ${y1} A ${rSignOut} ${rSignOut} 0 ${largeArc} 0 ${x2} ${y2} L ${x3} ${y3} A ${rSignIn} ${rSignIn} 0 ${largeArc} 1 ${x4} ${y4} Z`} fill={SIGN_COLORS[i]} opacity={0.10}/>);
       })}
 
       {/* Ring borders */}
-      <circle cx={cx} cy={cy} r={rSignOut} fill="none" stroke="#4B5563" strokeWidth="1"/>
-      <circle cx={cx} cy={cy} r={rSignIn} fill="none" stroke="#374151" strokeWidth="0.8"/>
-      <circle cx={cx} cy={cy} r={rHouseOut} fill="none" stroke="#4B5563" strokeWidth="0.8"/>
-      <circle cx={cx} cy={cy} r={rHouseIn} fill="none" stroke="#374151" strokeWidth="0.8"/>
+      <circle cx={cx} cy={cy} r={rSignOut} fill="none" stroke="#4a4778" strokeWidth="1.2"/>
+      <circle cx={cx} cy={cy} r={rSignIn} fill="none" stroke="#2d2a4d" strokeWidth="0.8"/>
 
-      {/* Sign boundary lines */}
+      {/* Sign boundary tick marks */}
       {SIGN_SYMBOLS.map((_, i) => {
         const p1 = lonToXY(i * 30, rSignIn), p2 = lonToXY(i * 30, rSignOut);
-        return <line key={i} x1={p1.x} y1={p1.y} x2={p2.x} y2={p2.y} stroke="#4B5563" strokeWidth="0.6"/>;
+        return <line key={i} x1={p1.x} y1={p1.y} x2={p2.x} y2={p2.y} stroke="#4a4778" strokeWidth="0.7"/>;
       })}
 
-      {/* Zodiac symbols in outer ring */}
+      {/* Zodiac symbols with subtle glow */}
       {SIGN_SYMBOLS.map((sym, i) => {
         const pos = lonToXY(i * 30 + 15, (rSignOut + rSignIn) / 2);
-        return <text key={i} x={pos.x} y={pos.y + 5} textAnchor="middle" fontSize="13" fontWeight="bold" fill={signCol[i]}>{sym}</text>;
+        return (<text key={i} x={pos.x} y={pos.y + 5} textAnchor="middle" fontSize="13" fontWeight="bold" fill={SIGN_COLORS[i]} style={{ filter: `drop-shadow(0 0 3px ${SIGN_COLORS[i]}40)` }}>{sym}</text>);
       })}
 
-      {/* House cusp lines (from center to house outer ring) */}
+      {/* House ring borders */}
+      <circle cx={cx} cy={cy} r={rHouseOut} fill="none" stroke="#4a4778" strokeWidth="0.8"/>
+      <circle cx={cx} cy={cy} r={rHouseIn} fill="none" stroke="#2d2a4d" strokeWidth="0.8"/>
+
+      {/* House cusp lines */}
       {(houses || []).map((h: any, idx: number) => {
         const p1 = lonToXY(h.longitude, rCenter + 2);
         const p2 = lonToXY(h.longitude, rHouseOut);
         const isAngular = [1, 4, 7, 10].includes(h.house);
-        return (
-          <line key={idx} x1={p1.x} y1={p1.y} x2={p2.x} y2={p2.y}
-            stroke={isAngular ? '#818CF8' : '#374151'} strokeWidth={isAngular ? 2 : 0.8}
-            strokeDasharray={isAngular ? 'none' : '3 3'}/>
-        );
+        return (<line key={idx} x1={p1.x} y1={p1.y} x2={p2.x} y2={p2.y} stroke={isAngular ? '#818CF8' : '#3d3a5c'} strokeWidth={isAngular ? 1.8 : 0.7} strokeDasharray={isAngular ? 'none' : '3 3'}/>);
       })}
 
-      {/* House number labels (centered in each house) */}
+      {/* House numbers */}
       {(houses || []).map((h: any, idx: number) => {
         const next = houses[(idx + 1) % (houses?.length || 12)];
         if (!next) return null;
         let midLon: number;
-        if (h.longitude < next.longitude) {
-          midLon = h.longitude + (next.longitude - h.longitude) / 2;
-        } else {
-          midLon = h.longitude + (next.longitude + 360 - h.longitude) / 2;
-        }
+        if (h.longitude < next.longitude) { midLon = h.longitude + (next.longitude - h.longitude) / 2; }
+        else { midLon = h.longitude + (next.longitude + 360 - h.longitude) / 2; }
         const numPos = lonToXY(midLon % 360, (rHouseOut + rHouseIn) / 2);
-        const degPos = lonToXY(h.longitude, rHouseIn - 12);
-        const degVal = h.degree != null ? h.degree : (h.longitude % 30);
         const isAngular = [1, 4, 7, 10].includes(h.house);
-        return (
-          <g key={idx}>
-            <text x={numPos.x} y={numPos.y + 4} textAnchor="middle" fontSize={isAngular ? '11' : '9'} fontWeight="bold" fill={isAngular ? '#A78BFA' : '#6B7280'}>{h.house}</text>
-            {isAngular && <text x={degPos.x} y={degPos.y + 3} textAnchor="middle" fontSize="7" fill="#9CA3AF">{Math.floor(degVal)}°</text>}
-          </g>
-        );
+        return (<text key={idx} x={numPos.x} y={numPos.y + 4} textAnchor="middle" fontSize={isAngular ? '12' : '9'} fontWeight={isAngular ? 'bold' : 'normal'} fill={isAngular ? '#A78BFA' : '#5a5678'}>{h.house}</text>);
       })}
 
-      {/* Aspect lines (behind planets) */}
-      {(aspects || []).slice(0, 20).map((asp: any, i: number) => {
+      {/* ALL house cusp degrees (not just angular) */}
+      {(houses || []).map((h: any, idx: number) => {
+        const degVal = h.degree != null ? h.degree : (h.longitude % 30);
+        const degPos = lonToXY(h.longitude, rHouseIn - 10);
+        const isAngular = [1, 4, 7, 10].includes(h.house);
+        return (<text key={'deg'+idx} x={degPos.x} y={degPos.y + 3} textAnchor="middle" fontSize={isAngular ? '8' : '6'} fill={isAngular ? '#9CA3AF' : '#4a4670'}>{Math.floor(degVal)}\u00B0</text>);
+      })}
+
+      {/* Aspect lines styled by type */}
+      {(aspects || []).slice(0, 25).map((asp: any, i: number) => {
         const p1Pos = planetPositions[asp.planet1];
         const p2Pos = planetPositions[asp.planet2];
         if (!p1Pos || !p2Pos) return null;
-        const color = ASPECT_COLORS[asp.aspect || asp.type] || '#555';
-        const isMajor = ['Conjunction', 'Square', 'Trine', 'Opposition'].includes(asp.aspect || asp.type);
-        return (
-          <line key={i} x1={p1Pos.x} y1={p1Pos.y} x2={p2Pos.x} y2={p2Pos.y}
-            stroke={color} strokeWidth={isMajor ? 1.2 : 0.7} strokeOpacity={isMajor ? 0.6 : 0.35} strokeDasharray={isMajor ? 'none' : '4 3'}/>
-        );
+        const aspType = asp.aspect || asp.type;
+        const style = ASPECT_STYLES[aspType];
+        if (!style) return null;
+        return (<line key={i} x1={p1Pos.x} y1={p1Pos.y} x2={p2Pos.x} y2={p2Pos.y} stroke={style.color} strokeWidth={style.width} strokeOpacity={style.opacity} strokeDasharray={style.dash || 'none'}/>);
       })}
 
-      {/* ASC / MC labels */}
-      {(() => { const p = lonToXY(ascLon, rHouseOut + 16); return <text x={p.x} y={p.y + 4} textAnchor="middle" fontSize="11" fontWeight="bold" fill="#FBBF24">ASC</text>; })()}
-      {mcLon > 0 && (() => { const p = lonToXY(mcLon, rHouseOut + 16); return <text x={p.x} y={p.y + 4} textAnchor="middle" fontSize="11" fontWeight="bold" fill="#A78BFA">MC</text>; })()}
+      {/* ASC marker with triangle indicator */}
+      {(() => {
+        const p = lonToXY(ascLon, rHouseOut + 18);
+        return (<g filter="url(#glStrong)">
+          <polygon points={`${p.x},${p.y - 10} ${p.x - 6},${p.y + 4} ${p.x + 6},${p.y + 4}`} fill="#FBBF24" opacity={0.9}/>
+          <text x={p.x} y={p.y + 17} textAnchor="middle" fontSize="11" fontWeight="bold" fill="#FBBF24">ASC</text>
+        </g>);
+      })()}
+      {/* MC marker */}
+      {mcLon > 0 && (() => {
+        const p = lonToXY(mcLon, rHouseOut + 18);
+        return (<g filter="url(#glStrong)">
+          <polygon points={`${p.x},${p.y - 8} ${p.x - 5},${p.y + 3} ${p.x + 5},${p.y + 3}`} fill="#A78BFA" opacity={0.85}/>
+          <text x={p.x} y={p.y + 15} textAnchor="middle" fontSize="10" fontWeight="bold" fill="#A78BFA">MC</text>
+        </g>);
+      })()}
 
-      {/* Planets with glow */}
+      {/* Planets with glow and overlap offsets */}
       {sortedPlanets.map((p: any) => {
         const offset = planetOffsets[p.key] || 0;
         const angle = lonToAngle(p.longitude);
-        const pos = {
-          x: cx + (rPlanet + offset) * Math.cos(angle),
-          y: cy - (rPlanet + offset) * Math.sin(angle),
-        };
-        const color = plCol[p.key] || '#fbbf24';
-        return (
-          <g key={p.key} filter="url(#gl)">
-            <circle cx={pos.x} cy={pos.y} r="11" fill={`${color}18`} stroke={color} strokeWidth="1.5"/>
-            <text x={pos.x} y={pos.y + 4} textAnchor="middle" fontSize="11" fontWeight="bold" fill={color}>{PLANET_SYMBOLS[p.key]}</text>
-            {p.retrograde && <text x={pos.x + 9} y={pos.y - 8} fontSize="7" fontWeight="bold" fill="#F87171">R</text>}
-          </g>
-        );
+        const pos = { x: cx + (rPlanet + offset) * Math.cos(angle), y: cy - (rPlanet + offset) * Math.sin(angle) };
+        const color = PLANET_COLORS[p.key] || '#fbbf24';
+        return (<g key={p.key} filter="url(#gl)">
+          <circle cx={pos.x} cy={pos.y} r="12" fill={`${color}18`} stroke={color} strokeWidth="1.3"/>
+          <text x={pos.x} y={pos.y + 4} textAnchor="middle" fontSize="11" fontWeight="bold" fill={color}>{PLANET_SYMBOLS[p.key]}</text>
+          {p.retrograde && <text x={pos.x + 10} y={pos.y - 8} fontSize="7" fontWeight="bold" fill="#F87171">R</text>}
+        </g>);
       })}
 
       {/* Center circle */}
-      <circle cx={cx} cy={cy} r={rCenter} fill="#0f0a1e" stroke="rgba(124,58,237,0.4)" strokeWidth="1"/>
-      <text x={cx} y={cy - 5} textAnchor="middle" fontSize="18" fill="#FBBF24">✦</text>
-      <text x={cx} y={cy + 10} textAnchor="middle" fontSize="7" fill="#94A3B8">星缘</text>
+      <circle cx={cx} cy={cy} r={rCenter} fill="#08061a" stroke="rgba(124,58,237,0.35)" strokeWidth="1.2" filter="url(#innerShadow)"/>
+      <text x={cx} y={cy - 4} textAnchor="middle" fontSize="20" fill="#FBBF24" filter="url(#gl)">&#10022;</text>
+      <text x={cx} y={cy + 11} textAnchor="middle" fontSize="7" fill="#6366A8" letterSpacing="2">\u661F\u7F18</text>
     </svg>
   );
 }
@@ -466,141 +497,60 @@ function NatalChartSVG({ planets, houses, aspects, ascendant, midheaven, size = 
 export default function NatalPage() {
   const [lang, setLang] = useState<'zh' | 'en' | 'id'>('zh');
   const [chartType, setChartType] = useState('natal');
-  const [form, setForm] = useState({
-    name: '', year: 1990, month: 6, day: 15, hour: 12, minute: 0,
-    houseSystem: 'K',
-  });
-  const [secForm, setSecForm] = useState({
-    year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate(),
-  });
-  const [p2Form, setP2Form] = useState({
-    year: 1992, month: 3, day: 20, hour: 10, minute: 0, cityId: 'beijing',
-  });
+  const [form, setForm] = useState({ name: '', year: 1990, month: 6, day: 15, hour: 12, minute: 0, houseSystem: 'K' });
+  const [secForm, setSecForm] = useState({ year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() });
+  const [p2Form, setP2Form] = useState({ year: 1992, month: 3, day: 20, hour: 10, minute: 0 });
   const [chart, setChart] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [tab, setTab] = useState('chart');
   const [saved, setSaved] = useState<any[]>([]);
   const [saveMsg, setSaveMsg] = useState<string | null>(null);
-
-  // AI Reading unlock state
   const [shareCount, setShareCount] = useState(0);
   const [isUnlocked, setIsUnlocked] = useState(false);
 
-  // Load unlock state from localStorage
   useEffect(() => {
-    try {
-      const savedState = localStorage.getItem('natal_ai_unlock');
-      if (savedState) {
-        const s = JSON.parse(savedState);
-        if (s.shareCount) setShareCount(s.shareCount);
-        if (s.isUnlocked) setIsUnlocked(true);
-      }
-    } catch {}
+    try { const s = localStorage.getItem('natal_ai_unlock'); if (s) { const j = JSON.parse(s); if (j.shareCount) setShareCount(j.shareCount); if (j.isUnlocked) setIsUnlocked(true); } } catch {}
   }, []);
 
-  const saveUnlockState = (updates: any) => {
-    try {
-      const current = JSON.parse(localStorage.getItem('natal_ai_unlock') || '{}');
-      localStorage.setItem('natal_ai_unlock', JSON.stringify({ ...current, ...updates }));
-    } catch {}
-  };
+  const saveUnlockState = (updates: any) => { try { localStorage.setItem('natal_ai_unlock', JSON.stringify({ ...JSON.parse(localStorage.getItem('natal_ai_unlock') || '{}'), ...updates })); } catch {} };
 
-  // WhatsApp share handler
   const handleShare = () => {
-    const shareText = lang === 'zh' 
-      ? `我刚刚用星缘生成了我的本命盘，快来试试！https://astrology-clean.vercel.app/natal`
-      : lang === 'id' 
-      ? `Saya baru saja membuat bagan lahir saya di Xingyuan, coba juga! https://astrology-clean.vercel.app/natal`
-      : `I just generated my natal chart on Starry Fate, come try it! https://astrology-clean.vercel.app/natal`;
-    const waUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
-    window.open(waUrl, '_blank');
-
-    const newCount = Math.min(shareCount + 1, 3);
-    setShareCount(newCount);
-    saveUnlockState({ shareCount: newCount });
-
-    if (newCount >= 3) {
-      setTimeout(() => {
-        setIsUnlocked(true);
-        saveUnlockState({ isUnlocked: true });
-      }, 1500);
-    }
+    const txt = lang === 'zh' ? '\u6211\u521A\u521A\u7528\u661F\u7F18\u751F\u6210\u4E86\u6211\u7684\u672C\u547D\u76D8\uFF0C\u5FEB\u6765\u8BD5\u8BD5\uFF01https://astrology-clean.vercel.app/natal' : lang === 'id' ? `Saya baru saja membuat bagan lahir saya di Xingyuan, coba juga! https://astrology-clean.vercel.app/natal` : `I just generated my natal chart on Starry Fate, come try it! https://astrology-clean.vercel.app/natal`;
+    window.open(`https://wa.me/?text=${encodeURIComponent(txt)}`, '_blank');
+    const n = Math.min(shareCount + 1, 3); setShareCount(n); saveUnlockState({ shareCount: n });
+    if (n >= 3) { setTimeout(() => { setIsUnlocked(true); saveUnlockState({ isUnlocked: true }); }, 1500); }
   };
 
-  // 使用默认坐标（北京）
-  const activeLat = 39.9042;
-  const activeLng = 116.4074;
-  const activeTz = 8;
+  const activeLat = 39.9042, activeLng = 116.4074, activeTz = 8;
 
-  useEffect(() => {
-    try {
-      const s = localStorage.getItem('natal_charts');
-      if (s) setSaved(JSON.parse(s));
-    } catch {}
-  }, []);
+  useEffect(() => { try { const s = localStorage.getItem('natal_charts'); if (s) setSaved(JSON.parse(s)); } catch {} }, []);
 
   const calculate = async () => {
-    setLoading(true);
-    setError(null);
+    setLoading(true); setError(null);
     try {
-      let body: any = {
-        year: form.year, month: form.month, day: form.day,
-        hour: form.hour, minute: form.minute,
-        latitude: activeLat, longitude: activeLng, timezone: activeTz,
-        houseSystem: form.houseSystem,
-      };
-
+      let body: any = { year: form.year, month: form.month, day: form.day, hour: form.hour, minute: form.minute, latitude: activeLat, longitude: activeLng, timezone: activeTz, houseSystem: form.houseSystem };
       if (['transit', 'solar', 'lunar', 'progression', 'composite'].includes(chartType)) {
-        body = {
-          type: chartType === 'solar' ? 'solar_return' : chartType === 'lunar' ? 'lunar_return' : chartType,
-          birthData: { year: form.year, month: form.month, day: form.day, hour: form.hour, minute: form.minute, lat: activeLat, lng: activeLng, tz: activeTz },
-          houseSystem: form.houseSystem,
-        };
-        if (['transit', 'solar', 'lunar'].includes(chartType)) {
-          body.transitDate = { year: secForm.year, month: secForm.month, day: secForm.day, hour: 12, minute: 0 };
-        }
-        if (chartType === 'progression') {
-          body.transitDate = { year: secForm.year };
-        }
-        if (chartType === 'composite') {
-          body.birthData2 = { year: p2Form.year, month: p2Form.month, day: p2Form.day, hour: p2Form.hour, minute: p2Form.minute, lat: 39.9042, lng: 116.4074, tz: 8 };
-        }
+        body = { type: chartType === 'solar' ? 'solar_return' : chartType === 'lunar' ? 'lunar_return' : chartType, birthData: { year: form.year, month: form.month, day: form.day, hour: form.hour, minute: form.minute, lat: activeLat, lng: activeLng, tz: activeTz }, houseSystem: form.houseSystem };
+        if (['transit', 'solar', 'lunar'].includes(chartType)) body.transitDate = { year: secForm.year, month: secForm.month, day: secForm.day, hour: 12, minute: 0 };
+        if (chartType === 'progression') body.transitDate = { year: secForm.year };
+        if (chartType === 'composite') body.birthData2 = { year: p2Form.year, month: p2Form.month, day: p2Form.day, hour: p2Form.hour, minute: p2Form.minute, lat: 39.9042, lng: 116.4074, tz: 8 };
       }
-
-      const endpoint = ['transit', 'solar', 'lunar', 'progression', 'composite'].includes(chartType) ? '/api/chart/transit' : '/api/chart';
-      
-      const res = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-      });
-      
+      const ep = ['transit', 'solar', 'lunar', 'progression', 'composite'].includes(chartType) ? '/api/chart/transit' : '/api/chart';
+      const res = await fetch(ep, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
       const data = await res.json();
       if (data.error) throw new Error(data.error);
-      
-      const chartData = data.data || data;
-      setChart(chartData);
-    } catch (e: any) {
-      setError(e.message);
-    } finally {
-      setLoading(false);
-    }
+      setChart(data.data || data);
+    } catch (e: any) { setError(e.message); } finally { setLoading(false); }
   };
 
   const handleSave = () => {
     if (!chart) return;
-    const newSaved = [{ name: form.name || `${form.year}-${form.month}-${form.day}`, birthData: form, chartData: chart, ts: Date.now() }, ...saved.slice(0, 9)];
-    setSaved(newSaved);
-    localStorage.setItem('natal_charts', JSON.stringify(newSaved));
-    setSaveMsg(tx('chartSaved', lang));
-    setTimeout(() => setSaveMsg(null), 2000);
+    const ns = [{ name: form.name || `${form.year}-${form.month}-${form.day}`, birthData: form, chartData: chart, ts: Date.now() }, ...saved.slice(0, 9)];
+    setSaved(ns); localStorage.setItem('natal_charts', JSON.stringify(ns)); setSaveMsg(tx('chartSaved', lang)); setTimeout(() => setSaveMsg(null), 2000);
   };
 
-  const loadChart = (c: any) => {
-    setForm({ ...form, name: c.name, year: c.birthData.year, month: c.birthData.month, day: c.birthData.day, hour: c.birthData.hour, minute: c.birthData.minute });
-    if (c.chartData) setChart(c.chartData);
-  };
+  const loadChart = (c: any) => { setForm({ ...form, name: c.name, year: c.birthData.year, month: c.birthData.month, day: c.birthData.day, hour: c.birthData.hour, minute: c.birthData.minute }); if (c.chartData) setChart(c.chartData); };
 
   const years = Array.from({ length: 100 }, (_, i) => 2025 - i);
   const months = Array.from({ length: 12 }, (_, i) => i + 1);
@@ -617,421 +567,61 @@ export default function NatalPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#030014] via-[#0f0f23] to-[#030014] text-white">
-      {/* Nav */}
       <nav className="sticky top-0 z-50 backdrop-blur-xl bg-[#030014]/90 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/chart" className="flex items-center gap-2 text-purple-300 hover:text-white">
-            <ArrowLeft size={20} /><span className="text-sm">{tx('back', lang)}</span>
-          </Link>
-          <h1 className="text-lg font-bold text-white">星缘</h1>
+          <Link href="/chart" className="flex items-center gap-2 text-purple-300 hover:text-white"><ArrowLeft size={20} /><span className="text-sm">{tx('back', lang)}</span></Link>
+          <h1 className="text-lg font-bold text-white">\u661F\u7F18</h1>
           <div className="flex gap-1 bg-white/5 rounded-xl p-1">
-            {(['zh', 'en', 'id'] as const).map(l => (
-              <button key={l} onClick={() => setLang(l)}
-                className={`px-3 py-1 rounded-lg text-xs font-medium ${lang === l ? 'bg-purple-600 text-white' : 'text-slate-400 hover:text-white'}`}>
-                {l === 'zh' ? '中文' : l === 'en' ? 'EN' : 'ID'}
-              </button>
-            ))}
+            {(['zh', 'en', 'id'] as const).map(l => (<button key={l} onClick={() => setLang(l)} className={`px-3 py-1 rounded-lg text-xs font-medium ${lang === l ? 'bg-purple-600 text-white' : 'text-slate-400 hover:text-white'}`}>{l === 'zh' ? '\u4E2D\u6587' : l === 'en' ? 'EN' : 'ID'}</button>))}
           </div>
         </div>
       </nav>
 
       <main className="max-w-7xl mx-auto px-6 py-8">
-        {/* Chart Type Selector */}
         <div className="grid grid-cols-3 md:grid-cols-6 gap-2 mb-6">
-          {[
-            { id: 'natal', icon: Star, label: 'natal' },
-            { id: 'transit', icon: TrendingUp, label: 'transit' },
-            { id: 'solar', icon: Sun, label: 'solar' },
-            { id: 'lunar', icon: Moon, label: 'lunar' },
-            { id: 'progression', icon: Calendar, label: 'progression' },
-            { id: 'composite', icon: Heart, label: 'composite' },
-          ].map(t => {
-            const Icon = t.icon;
-            return (
-              <button key={t.id} onClick={() => { setChartType(t.id); setChart(null); }}
-                className={`p-3 rounded-xl border transition-all ${chartType === t.id ? 'bg-purple-600/20 border-purple-500 text-purple-300' : 'bg-white/5 border-white/10 text-slate-400 hover:text-white'}`}>
-                <Icon size={18} className="mx-auto mb-1" />
-                <div className="text-xs">{tx(t.label, lang)}</div>
-              </button>
-            );
-          })}
+          {[{ id: 'natal', icon: Star, label: 'natal' }, { id: 'transit', icon: TrendingUp, label: 'transit' }, { id: 'solar', icon: Sun, label: 'solar' }, { id: 'lunar', icon: Moon, label: 'lunar' }, { id: 'progression', icon: Calendar, label: 'progression' }, { id: 'composite', icon: Heart, label: 'composite' }].map(t => { const Ic = t.icon; return (<button key={t.id} onClick={() => { setChartType(t.id); setChart(null); }} className={`p-3 rounded-xl border transition-all ${chartType === t.id ? 'bg-purple-600/20 border-purple-500 text-purple-300' : 'bg-white/5 border-white/10 text-slate-400 hover:text-white'}`}><Ic size={18} className="mx-auto mb-1" /><div className="text-xs">{tx(t.label, lang)}</div></button>); })}
         </div>
 
-        {/* Saved Charts */}
-        {saved.length > 0 && (
-          <div className="mb-6 p-4 rounded-xl bg-white/5 border border-white/10">
-            <h3 className="text-sm text-slate-400 mb-2">{tx('savedCharts', lang)}</h3>
-            <div className="flex gap-2 overflow-x-auto pb-2">
-              {saved.map((c, i) => (
-                <button key={i} onClick={() => loadChart(c)}
-                  className="flex-shrink-0 px-3 py-2 rounded-lg bg-white/5 text-sm text-slate-300 hover:bg-white/10">
-                  {c.name}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
+        {saved.length > 0 && (<div className="mb-6 p-4 rounded-xl bg-white/5 border border-white/10"><h3 className="text-sm text-slate-400 mb-2">{tx('savedCharts', lang)}</h3><div className="flex gap-2 overflow-x-auto pb-2">{saved.map((c, i) => (<button key={i} onClick={() => loadChart(c)} className="flex-shrink-0 px-3 py-2 rounded-lg bg-white/5 text-sm text-slate-300 hover:bg-white/10">{c.name}</button>))}</div></div>)}
 
         <div className="grid lg:grid-cols-2 gap-6">
-          {/* Main Form */}
           <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
-            <h3 className="font-bold mb-4 flex items-center gap-2">
-              <Star size={18} className="text-purple-400" />{tx('birthInfo', lang)}
-            </h3>
-            
+            <h3 className="font-bold mb-4 flex items-center gap-2"><Star size={18} className="text-purple-400" />{tx('birthInfo', lang)}</h3>
             <div className="space-y-4">
-              <input type="text" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })}
-                placeholder={tx('chartName', lang)}
-                className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm placeholder-slate-500" />
-              
-              {/* 使用默认坐标（北京）*/}
-              <div className="p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-sm text-slate-400">
-                {lang === 'zh' ? '使用默认坐标（北京）' : lang === 'id' ? 'Gunakan koordinat default (Beijing)' : 'Using default coordinates (Beijing)'}
-              </div>
-              
-              <div className="grid grid-cols-3 gap-2">
-                <CustomSelect value={String(form.year)} onChange={v => setForm({ ...form, year: Number(v) })} options={yearOptions} label={tx('year', lang)} />
-                <CustomSelect value={String(form.month)} onChange={v => setForm({ ...form, month: Number(v) })} options={monthOptions} label={tx('month', lang)} />
-                <CustomSelect value={String(form.day)} onChange={v => setForm({ ...form, day: Number(v) })} options={dayOptions} label={tx('day', lang)} />
-              </div>
-              
-              <div className="grid grid-cols-2 gap-2">
-                <CustomSelect value={String(form.hour)} onChange={v => setForm({ ...form, hour: Number(v) })} options={hourOptions} label={tx('hour', lang)} />
-                <CustomSelect value={String(form.minute)} onChange={v => setForm({ ...form, minute: Number(v) })} options={minOptions} label={tx('minute', lang)} />
-              </div>
-              
+              <input type="text" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder={tx('chartName', lang)} className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm placeholder-slate-500" />
+              <div className="p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-sm text-slate-400">{lang === 'zh' ? '\u4F7F\u7528\u9ED8\u8BA4\u5750\u6807\uFF08\u5317\u4EAC\uFF09' : lang === 'id' ? 'Gunakan koordinat default (Beijing)' : 'Using default coordinates (Beijing)'}</div>
+              <div className="grid grid-cols-3 gap-2"><CustomSelect value={String(form.year)} onChange={v => setForm({ ...form, year: Number(v) })} options={yearOptions} label={tx('year', lang)} /><CustomSelect value={String(form.month)} onChange={v => setForm({ ...form, month: Number(v) })} options={monthOptions} label={tx('month', lang)} /><CustomSelect value={String(form.day)} onChange={v => setForm({ ...form, day: Number(v) })} options={dayOptions} label={tx('day', lang)} /></div>
+              <div className="grid grid-cols-2 gap-2"><CustomSelect value={String(form.hour)} onChange={v => setForm({ ...form, hour: Number(v) })} options={hourOptions} label={tx('hour', lang)} /><CustomSelect value={String(form.minute)} onChange={v => setForm({ ...form, minute: Number(v) })} options={minOptions} label={tx('minute', lang)} /></div>
               <CustomSelect value={form.houseSystem} onChange={v => setForm({ ...form, houseSystem: v })} options={houseOptions} label={tx('houseSystem', lang)} />
             </div>
           </div>
 
-          {/* Secondary Form */}
           <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
-            {['transit', 'solar', 'lunar'].includes(chartType) && (
-              <>
-                <h3 className="font-bold mb-4 flex items-center gap-2"><Calendar size={18} className="text-cyan-400" />{tx('transitDate', lang)}</h3>
-                <div className="grid grid-cols-3 gap-2 mb-4">
-                  <CustomSelect value={String(secForm.year)} onChange={v => setSecForm({ ...secForm, year: Number(v) })} options={yearOptions} />
-                  {chartType !== 'progression' && (
-                    <>
-                      <CustomSelect value={String(secForm.month)} onChange={v => setSecForm({ ...secForm, month: Number(v) })} options={monthOptions} />
-                      <CustomSelect value={String(secForm.day)} onChange={v => setSecForm({ ...secForm, day: Number(v) })} options={dayOptions} />
-                    </>
-                  )}
-                </div>
-              </>
-            )}
-            
-            {chartType === 'progression' && (
-              <>
-                <h3 className="font-bold mb-4 flex items-center gap-2"><Calendar size={18} className="text-emerald-400" />{tx('targetYear', lang)}</h3>
-                <CustomSelect value={String(secForm.year)} onChange={v => setSecForm({ ...secForm, year: Number(v) })} options={yearOptions} />
-                <p className="text-xs text-slate-500 mt-2">{tx('dayAfterBirth', lang).replace('{0}', String(secForm.year - form.year))}</p>
-              </>
-            )}
-            
-            {chartType === 'composite' && (
-              <>
-                <h3 className="font-bold mb-4 flex items-center gap-2"><Heart size={18} className="text-pink-400" />{tx('person2', lang)}</h3>
-                <div className="space-y-3">
-                  <div className="grid grid-cols-3 gap-2">
-                    <CustomSelect value={String(p2Form.year)} onChange={v => setP2Form({ ...p2Form, year: Number(v) })} options={yearOptions} />
-                    <CustomSelect value={String(p2Form.month)} onChange={v => setP2Form({ ...p2Form, month: Number(v) })} options={monthOptions} />
-                    <CustomSelect value={String(p2Form.day)} onChange={v => setP2Form({ ...p2Form, day: Number(v) })} options={dayOptions} />
-                  </div>
-                  <div className="grid grid-cols-2 gap-2">
-                    <CustomSelect value={String(p2Form.hour)} onChange={v => setP2Form({ ...p2Form, hour: Number(v) })} options={hourOptions} />
-                    <CustomSelect value={String(p2Form.minute)} onChange={v => setP2Form({ ...p2Form, minute: Number(v) })} options={minOptions} />
-                  </div>
-                </div>
-              </>
-            )}
-            
-            <button onClick={calculate} disabled={loading}
-              className="w-full mt-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 disabled:opacity-50 rounded-xl font-bold text-white transition-all flex items-center justify-center gap-2">
-              {loading ? <><Loader2 size={18} className="animate-spin" />{tx('calculating', lang)}</> : <><Star size={18} />{tx('calculate', lang)}</>}
-            </button>
-            
-            {error && (
-              <div className="mt-3 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm flex items-center gap-2">
-                <X size={16} />{error}
-                <button onClick={calculate} className="ml-auto text-red-300 hover:text-red-200">{tx('retry', lang)}</button>
-              </div>
-            )}
+            {['transit', 'solar', 'lunar'].includes(chartType) && (<><h3 className="font-bold mb-4 flex items-center gap-2"><Calendar size={18} className="text-cyan-400" />{tx('transitDate', lang)}</h3><div className="grid grid-cols-3 gap-2 mb-4"><CustomSelect value={String(secForm.year)} onChange={v => setSecForm({ ...secForm, year: Number(v) })} options={yearOptions} />{chartType !== 'progression' && (<><CustomSelect value={String(secForm.month)} onChange={v => setSecForm({ ...secForm, month: Number(v) })} options={monthOptions} /><CustomSelect value={String(secForm.day)} onChange={v => setSecForm({ ...secForm, day: Number(v) })} options={dayOptions} /></>)}</div></>)}
+            {chartType === 'progression' && (<><h3 className="font-bold mb-4 flex items-center gap-2"><Calendar size={18} className="text-emerald-400" />{tx('targetYear', lang)}</h3><CustomSelect value={String(secForm.year)} onChange={v => setSecForm({ ...secForm, year: Number(v) })} options={yearOptions} /><p className="text-xs text-slate-500 mt-2">{tx('dayAfterBirth', lang).replace('{0}', String(secForm.year - form.year))}</p></>)}
+            {chartType === 'composite' && (<><h3 className="font-bold mb-4 flex items-center gap-2"><Heart size={18} className="text-pink-400" />{tx('person2', lang)}</h3><div className="space-y-3"><div className="grid grid-cols-3 gap-2"><CustomSelect value={String(p2Form.year)} onChange={v => setP2Form({ ...p2Form, year: Number(v) })} options={yearOptions} /><CustomSelect value={String(p2Form.month)} onChange={v => setP2Form({ ...p2Form, month: Number(v) })} options={monthOptions} /><CustomSelect value={String(p2Form.day)} onChange={v => setP2Form({ ...p2Form, day: Number(v) })} options={dayOptions} /></div><div className="grid grid-cols-2 gap-2"><CustomSelect value={String(p2Form.hour)} onChange={v => setP2Form({ ...p2Form, hour: Number(v) })} options={hourOptions} /><CustomSelect value={String(p2Form.minute)} onChange={v => setP2Form({ ...p2Form, minute: Number(v) })} options={minOptions} /></div></div></>)}
+            <button onClick={calculate} disabled={loading} className="w-full mt-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 disabled:opacity-50 rounded-xl font-bold text-white transition-all flex items-center justify-center gap-2">{loading ? <><Loader2 size={18} className="animate-spin" />{tx('calculating', lang)}</> : <><Star size={18} />{tx('calculate', lang)}</>}</button>
+            {error && (<div className="mt-3 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm flex items-center gap-2"><X size={16} />{error}<button onClick={calculate} className="ml-auto text-red-300 hover:text-red-200">{tx('retry', lang)}</button></div>)}
           </div>
         </div>
 
-        {/* Results */}
-        {chart && (
-          <div className="mt-8 space-y-6">
-            {/* Tabs */}
-            <div className="flex gap-2 p-1 rounded-xl bg-white/5 max-w-lg mx-auto flex-wrap">
-              {['chart', 'planets', 'houses', 'aspects', 'ai'].map(t => (
-                <button key={t} onClick={() => setTab(t)}
-                  className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors min-w-[60px] ${tab === t ? 'bg-purple-600 text-white' : 'text-slate-400 hover:text-white'}`}>
-                  {t === 'ai' ? 'AI' : tx(t, lang)}
-                </button>
-              ))}
-            </div>
+        {chart && (<div className="mt-8 space-y-6">
+          <div className="flex gap-2 p-1 rounded-xl bg-white/5 max-w-lg mx-auto flex-wrap">{['chart', 'planets', 'houses', 'aspects', 'ai'].map(t => (<button key={t} onClick={() => setTab(t)} className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors min-w-[60px] ${tab === t ? 'bg-purple-600 text-white' : 'text-slate-400 hover:text-white'}`}>{t === 'ai' ? 'AI' : tx(t, lang)}</button>))}</div>
 
-            {/* Chart Tab */}
-            {tab === 'chart' && (
-              <div className="p-6 rounded-2xl bg-white/5 border border-white/10 text-center">
-                <NatalChartSVG planets={chart.planets || {}} houses={chart.houses || []} aspects={chart.aspects || []} ascendant={chart.ascendant?.longitude} midheaven={chart.midheaven?.longitude} size={450} />
-                <button onClick={handleSave}
-                  className="mt-4 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-xl text-sm flex items-center gap-2 mx-auto transition-colors">
-                  <Save size={16} />{saveMsg || tx('saveChart', lang)}
-                </button>
-              </div>
-            )}
+          {tab === 'chart' && (<div className="p-6 rounded-2xl bg-white/5 border border-white/10 text-center"><NatalChartSVG planets={chart.planets || {}} houses={chart.houses || []} aspects={chart.aspects || []} ascendant={chart.ascendant?.longitude} midheaven={chart.midheaven?.longitude} size={450} /><button onClick={handleSave} className="mt-4 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-xl text-sm flex items-center gap-2 mx-auto transition-colors"><Save size={16} />{saveMsg || tx('saveChart', lang)}</button></div>)}
 
-            {/* Planets Tab */}
-            {tab === 'planets' && (
-              <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
-                <h3 className="font-bold mb-4">{tx('planetPositions', lang)}</h3>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm">
-                    <thead>
-                      <tr className="border-b border-white/10">
-                        <th className="text-left py-2 text-slate-400">{tx('planet', lang)}</th>
-                        <th className="text-left py-2 text-slate-400">{tx('sign', lang)}</th>
-                        <th className="text-left py-2 text-slate-400">{tx('degree', lang)}</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {PLANET_KEYS.map(key => {
-                        const p = chart.planets?.[key];
-                        if (!p || p.error) return null;
-                        return (
-                          <tr key={key} className="border-b border-white/5">
-                            <td className="py-2 flex items-center gap-2">
-                              <span>{PLANET_SYMBOLS[key]}</span>
-                              <span className="text-amber-400">{PLANETS_CN[key] || key}</span>
-                            </td>
-                            <td className="py-2">
-                              <span className="mr-1">{SIGN_SYMBOLS[['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'].indexOf(p.sign)]}</span>
-                              {p.sign_cn || p.sign}
-                            </td>
-                            <td className="py-2">{Math.floor(p.degree)}&deg; {Math.floor((p.degree % 1) * 60)}&apos;</td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            )}
+          {tab === 'planets' && (<div className="p-6 rounded-2xl bg-white/5 border border-white/10"><h3 className="font-bold mb-4">{tx('planetPositions', lang)}</h3><div className="overflow-x-auto"><table className="w-full text-sm"><thead><tr className="border-b border-white/10"><th className="text-left py-2 text-slate-400">{tx('planet', lang)}</th><th className="text-left py-2 text-slate-400">{tx('sign', lang)}</th><th className="text-left py-2 text-slate-400">{tx('degree', lang)}</th></tr></thead><tbody>{PLANET_KEYS.map(key => { const p = chart.planets?.[key]; if (!p || p.error) return null; return (<tr key={key} className="border-b border-white/5"><td className="py-2 flex items-center gap-2"><span>{PLANET_SYMBOLS[key]}</span><span className="text-amber-400">{PLANETS_CN[key] || key}</span></td><td className="py-2"><span className="mr-1">{SIGN_SYMBOLS[['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'].indexOf(p.sign)]}</span>{p.sign_cn || p.sign}</td><td className="py-2">{Math.floor(p.degree)}&deg; {Math.floor((p.degree % 1) * 60)}&apos;</td></tr>); })}</tbody></table></div></div>)}
 
-            {/* Houses Tab */}
-            {tab === 'houses' && (
-              <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
-                <h3 className="font-bold mb-4">{tx('houseInfo', lang)}</h3>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                  {(chart.houses || []).map((h: any) => {
-                    const isAngular = [1, 4, 7, 10].includes(h.house);
-                    const isSuccedent = [2, 5, 8, 11].includes(h.house);
-                    return (
-                      <div key={h.house} className={`p-3 rounded-xl ${isAngular ? 'bg-amber-500/10 border border-amber-500/30' : isSuccedent ? 'bg-cyan-500/10 border border-cyan-500/30' : 'bg-white/5'}`}>
-                        <div className="font-bold text-white">{h.house}{lang === 'zh' ? '宫' : ' House'}</div>
-                        <div className="text-sm text-slate-400">{SIGN_SYMBOLS[['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'].indexOf(h.sign)]} {h.sign_cn || h.sign}</div>
-                        <div className="text-xs text-slate-500">{Math.floor(h.degree)}° {Math.floor((h.degree % 1) * 60)}&apos;</div>
-                      </div>
-                    );
-                  })}
-                </div>
-                {chart.ascendant && (
-                  <div className="mt-4 p-3 rounded-xl bg-purple-500/10 border border-purple-500/30">
-                    <span className="text-purple-400">{tx('ascendant', lang)}:</span> {SIGN_SYMBOLS[['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'].indexOf(chart.ascendant.sign)]} {chart.ascendant.sign_cn || chart.ascendant.sign} {Math.floor(chart.ascendant.degree)}&deg;
-                    <span className="mx-3 text-slate-500">|</span>
-                    <span className="text-cyan-400">{tx('midheaven', lang)}:</span> {SIGN_SYMBOLS[['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'].indexOf(chart.midheaven?.sign)]} {chart.midheaven?.sign_cn || chart.midheaven?.sign} {Math.floor(chart.midheaven?.degree || 0)}&deg;
-                  </div>
-                )}
-              </div>
-            )}
+          {tab === 'houses' && (<div className="p-6 rounded-2xl bg-white/5 border border-white/10"><h3 className="font-bold mb-4">{tx('houseInfo', lang)}</h3><div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">{(chart.houses || []).map((h: any) => { const isAng = [1, 4, 7, 10].includes(h.house); const isSuc = [2, 5, 8, 11].includes(h.house); return (<div key={h.house} className={`p-3 rounded-xl ${isAng ? 'bg-amber-500/10 border border-amber-500/30' : isSuc ? 'bg-cyan-500/10 border border-cyan-500/30' : 'bg-white/5'}`}><div className="font-bold text-white">{h.house}{lang === 'zh' ? '\u5BAB' : ' House'}</div><div className="text-sm text-slate-400">{SIGN_SYMBOLS[['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'].indexOf(h.sign)]} {h.sign_cn || h.sign}</div><div className="text-xs text-slate-500">{Math.floor(h.degree)}&deg; {Math.floor((h.degree % 1) * 60)}&apos;</div></div>); })}</div>{chart.ascendant && (<div className="mt-4 p-3 rounded-xl bg-purple-500/10 border border-purple-500/30"><span className="text-purple-400">{tx('ascendant', lang)}:</span> {SIGN_SYMBOLS[['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'].indexOf(chart.ascendant.sign)]} {chart.ascendant.sign_cn || chart.ascendant.sign} {Math.floor(chart.ascendant.degree)}&deg;<span className="mx-3 text-slate-500">|</span><span className="text-cyan-400">{tx('midheaven', lang)}:</span> {SIGN_SYMBOLS[['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'].indexOf(chart.midheaven?.sign)]} {chart.midheaven?.sign_cn || chart.midheaven?.sign} {Math.floor(chart.midheaven?.degree || 0)}&deg;</div>)}</div>)}
 
-            {/* Aspects Tab */}
-            {tab === 'aspects' && (
-              <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
-                <h3 className="font-bold mb-4">{tx('majorAspects', lang)}</h3>
-                <div className="grid md:grid-cols-2 gap-3">
-                  {(chart.aspects || [])
-                    .filter((a: any) => ['Conjunction', 'Sextile', 'Square', 'Trine', 'Opposition'].includes(a.aspect || a.type))
-                    .slice(0, 20)
-                    .map((a: any, i: number) => {
-                      const type = a.aspect || a.type;
-                      const aspName = ASPECT_NAMES[type] || { zh: type, en: type, id: type };
-                      return (
-                        <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-white/5">
-                          <div className="flex items-center gap-2">
-                            <span className="text-amber-400">{PLANET_SYMBOLS[a.planet1] || a.planet1}</span>
-                            <span className="text-slate-500">-</span>
-                            <span style={{ color: ASPECT_COLORS[type] }}>{aspName[lang as keyof typeof aspName] || type}</span>
-                            <span className="text-slate-500">-</span>
-                            <span className="text-amber-400">{PLANET_SYMBOLS[a.planet2] || a.planet2}</span>
-                          </div>
-                          <span className="text-slate-400 text-xs">{Math.abs(a.orb || a.orb).toFixed(1)}°</span>
-                        </div>
-                      );
-                    })}
-                </div>
-                {(chart.aspects || []).length === 0 && (
-                  <p className="text-center text-slate-500 py-8">{lang === 'zh' ? '暂无相位数据' : lang === 'id' ? 'Tidak ada data aspek' : 'No aspect data'}</p>
-                )}
-              </div>
-            )}
+          {tab === 'aspects' && (<div className="p-6 rounded-2xl bg-white/5 border border-white/10"><h3 className="font-bold mb-4">{tx('majorAspects', lang)}</h3><div className="grid md:grid-cols-2 gap-3">{(chart.aspects || []).filter((a: any) => ['Conjunction', 'Sextile', 'Square', 'Trine', 'Opposition'].includes(a.aspect || a.type)).slice(0, 20).map((a: any, i: number) => { const typ = a.aspect || a.type; const an = ASPECT_NAMES[typ] || { zh: typ, en: typ, id: typ }; const st = ASPECT_STYLES[typ]; return (<div key={i} className="flex items-center justify-between p-3 rounded-lg bg-white/5"><div className="flex items-center gap-2"><span className="text-amber-400">{PLANET_SYMBOLS[a.planet1] || a.planet1}</span><span className="text-slate-500">-</span><span style={{ color: st?.color || '#888' }}>{st?.label || ''} {an[lang as keyof typeof an] || typ}</span><span className="text-slate-500">-</span><span className="text-amber-400">{PLANET_SYMBOLS[a.planet2] || a.planet2}</span></div><span className="text-slate-400 text-xs">{Math.abs(a.orb || a.orb).toFixed(1)}&deg;</span></div>); })}</div>{(chart.aspects || []).length === 0 && (<p className="text-center text-slate-500 py-8">{lang === 'zh' ? '\u6682\u65E0\u76F8\u4F4D\u6570\u636E' : lang === 'id' ? 'Tidak ada data aspek' : 'No aspect data'}</p>)}</div>)}
 
-            {/* AI Reading Tab */}
-            {tab === 'ai' && (
-              <div className="space-y-6">
-                {/* Free Simple Reading */}
-                <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
-                  <h3 className="font-bold mb-4 flex items-center gap-2">
-                    <Sparkles size={18} className="text-amber-400" />
-                    {tx('simpleReading', lang)}
-                    <span className="ml-2 px-2 py-0.5 rounded-full bg-green-500/20 text-green-400 text-xs">{tx('freeReading', lang)}</span>
-                  </h3>
-                  <div className="space-y-4">
-                    {/* Sun Reading */}
-                    {chart.planets?.Sun?.sign && (AI_READINGS.Sun as any)?.[lang]?.[chart.planets.Sun.sign] && (
-                      <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20">
-                        <h4 className="font-bold mb-2 flex items-center gap-2 text-amber-400">
-                          <span>☉</span>{tx('corePersonality', lang)} — {chart.planets.Sun.sign_cn || chart.planets.Sun.sign}
-                        </h4>
-                        <p className="text-slate-300 text-sm mb-2">{(AI_READINGS.Sun as any)[lang][chart.planets.Sun.sign].summary}</p>
-                        <div className="flex flex-wrap gap-2 mb-2">
-                          {(AI_READINGS.Sun as any)[lang][chart.planets.Sun.sign].traits.map((t: string, i: number) => (
-                            <span key={i} className="px-2 py-1 rounded-full text-xs bg-amber-500/20 text-amber-300">{t}</span>
-                          ))}
-                        </div>
-                        <p className="text-xs text-slate-400 italic">💡 {(AI_READINGS.Sun as any)[lang][chart.planets.Sun.sign].advice}</p>
-                      </div>
-                    )}
-                    {/* Moon Reading */}
-                    {chart.planets?.Moon?.sign && (AI_READINGS.Moon as any)?.[lang]?.[chart.planets.Moon.sign] && (
-                      <div className="p-4 rounded-xl bg-slate-500/10 border border-slate-500/20">
-                        <h4 className="font-bold mb-2 flex items-center gap-2 text-slate-400">
-                          <span>☽</span>{tx('emotionalWorld', lang)} — {chart.planets.Moon.sign_cn || chart.planets.Moon.sign}
-                        </h4>
-                        <p className="text-slate-300 text-sm mb-2">{(AI_READINGS.Moon as any)[lang][chart.planets.Moon.sign].summary}</p>
-                        <div className="flex flex-wrap gap-2 mb-2">
-                          {(AI_READINGS.Moon as any)[lang][chart.planets.Moon.sign].traits.map((t: string, i: number) => (
-                            <span key={i} className="px-2 py-1 rounded-full text-xs bg-slate-500/20 text-slate-300">{t}</span>
-                          ))}
-                        </div>
-                        <p className="text-xs text-slate-400 italic">💡 {(AI_READINGS.Moon as any)[lang][chart.planets.Moon.sign].advice}</p>
-                      </div>
-                    )}
-                  </div>
-                </div>
+          {tab === 'ai' && (<div className="space-y-6">
+            <div className="p-6 rounded-2xl bg-white/5 border border-white/10"><h3 className="font-bold mb-4 flex items-center gap-2"><Sparkles size={18} className="text-amber-400" />{tx('simpleReading', lang)}<span className="ml-2 px-2 py-0.5 rounded-full bg-green-500/20 text-green-400 text-xs">{tx('freeReading', lang)}</span></h3><div className="space-y-4">{chart.planets?.Sun?.sign && (AI_READINGS.Sun as any)?.[lang]?.[chart.planets.Sun.sign] && (<div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20"><h4 className="font-bold mb-2 flex items-center gap-2 text-amber-400"><span>\u2609</span>{tx('corePersonality', lang)} \u2014 {chart.planets.Sun.sign_cn || chart.planets.Sun.sign}</h4><p className="text-slate-300 text-sm mb-2">{(AI_READINGS.Sun as any)[lang][chart.planets.Sun.sign].summary}</p><div className="flex flex-wrap gap-2 mb-2">{(AI_READINGS.Sun as any)[lang][chart.planets.Sun.sign].traits.map((t: string, i: number) => (<span key={i} className="px-2 py-1 rounded-full text-xs bg-amber-500/20 text-amber-300">{t}</span>))}</div><p className="text-xs text-slate-400 italic">\uD83D\uDCA1 {(AI_READINGS.Sun as any)[lang][chart.planets.Sun.sign].advice}</p></div>)}{chart.planets?.Moon?.sign && (AI_READINGS.Moon as any)?.[lang]?.[chart.planets.Moon.sign] && (<div className="p-4 rounded-xl bg-slate-500/10 border border-slate-500/20"><h4 className="font-bold mb-2 flex items-center gap-2 text-slate-400"><span>\u263D</span>{tx('emotionalWorld', lang)} \u2014 {chart.planets.Moon.sign_cn || chart.planets.Moon.sign}</h4><p className="text-slate-300 text-sm mb-2">{(AI_READINGS.Moon as any)[lang][chart.planets.Moon.sign].summary}</p><div className="flex flex-wrap gap-2 mb-2">{(AI_READINGS.Moon as any)[lang][chart.planets.Moon.sign].traits.map((t: string, i: number) => (<span key={i} className="px-2 py-1 rounded-full text-xs bg-slate-500/20 text-slate-300">{t}</span>))}</div><p className="text-xs text-slate-400 italic">\uD83D\uDCA1 {(AI_READINGS.Moon as any)[lang][chart.planets.Moon.sign].advice}</p></div>)}</div></div>
 
-                {/* Deep Reading with Unlock */}
-                <div className="rounded-2xl overflow-hidden border border-white/10">
-                  {/* Header */}
-                  <div className="p-5 bg-gradient-to-r from-purple-900/40 to-indigo-900/40 flex items-center justify-between">
-                    <h3 className="font-bold flex items-center gap-2">
-                      {isUnlocked ? <Sparkles size={18} className="text-purple-400" /> : <Lock size={18} className="text-slate-400" />}
-                      {tx('deepReading', lang)}
-                    </h3>
-                    {isUnlocked && <span className="text-xs text-green-400 flex items-center gap-1"><CheckCircle size={14} />{tx('shareComplete', lang)}</span>}
-                  </div>
-
-                  {/* Unlocked Content */}
-                  {isUnlocked ? (
-                    <div className="p-5 space-y-4">
-                      {/* Venus */}
-                      {chart.planets?.Venus?.sign && (
-                        <div className="p-4 rounded-xl bg-pink-500/10 border border-pink-500/20">
-                          <h4 className="font-bold mb-2 flex items-center gap-2 text-pink-400">
-                            <span>♀</span>{tx('loveDestiny', lang)} — {chart.planets.Venus.sign_cn || chart.planets.Venus.sign}
-                          </h4>
-                          <p className="text-slate-300 text-sm">{lang === 'zh' ? `金星在${chart.planets.Venus.sign_cn}，你的爱情风格独特而迷人。` : lang === 'id' ? `Venus di ${chart.planets.Venus.sign}, gaya cinta Anda unik.` : `Venus in ${chart.planets.Venus.sign}, your love style is unique.`}</p>
-                        </div>
-                      )}
-                      {/* Mars */}
-                      {chart.planets?.Mars?.sign && (
-                        <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20">
-                          <h4 className="font-bold mb-2 flex items-center gap-2 text-red-400">
-                            <span>♂</span>{tx('actionEnergy', lang)} — {chart.planets.Mars.sign_cn || chart.planets.Mars.sign}
-                          </h4>
-                          <p className="text-slate-300 text-sm">{lang === 'zh' ? `火星在${chart.planets.Mars.sign_cn}，你的行动力和驱动力特征鲜明。` : lang === 'id' ? `Mars di ${chart.planets.Mars.sign}, energi aksi Anda sangat khas.` : `Mars in ${chart.planets.Mars.sign}, your action energy is distinctive.`}</p>
-                        </div>
-                      )}
-                      {/* Ascendant */}
-                      {chart.ascendant?.sign && (
-                        <div className="p-4 rounded-xl bg-purple-500/10 border border-purple-500/20">
-                          <h4 className="font-bold mb-2 flex items-center gap-2 text-purple-400">
-                            <span>↑</span>{tx('ascendant', lang)} — {chart.ascendant.sign_cn || chart.ascendant.sign} {Math.floor(chart.ascendant.degree)}°
-                          </h4>
-                          <p className="text-slate-300 text-sm">{lang === 'zh' ? `上升${chart.ascendant.sign_cn}是你给人的第一印象。` : lang === 'id' ? `Ascenden ${chart.ascendant.sign} adalah kesan pertama Anda.` : `Ascendant ${chart.ascendant.sign} is your first impression.`}</p>
-                        </div>
-                      )}
-                      {/* Planet List */}
-                      <div className="p-4 rounded-xl bg-cyan-500/10 border border-cyan-500/20">
-                        <h4 className="font-bold mb-2 text-cyan-400">{tx('planetPositions', lang)}</h4>
-                        <div className="flex flex-wrap gap-2">
-                          {PLANET_KEYS.filter(k => chart.planets?.[k]?.sign).map(k => (
-                            <span key={k} className="px-2 py-1 rounded-lg text-xs bg-white/5 text-slate-400">
-                              {PLANET_SYMBOLS[k]} {chart.planets[k].sign_cn || chart.planets[k].sign}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  ) : (
-                    /* Locked - Share to Unlock */
-                    <div className="p-6 space-y-5">
-                      {/* Blurred Preview */}
-                      <div className="relative">
-                        <div className="space-y-3 blur-sm pointer-events-none select-none opacity-60">
-                          <div className="p-4 rounded-xl bg-white/5"><div className="h-4 bg-white/10 rounded w-3/4 mb-2" /><div className="h-3 bg-white/5 rounded w-full" /></div>
-                          <div className="p-4 rounded-xl bg-white/5"><div className="h-4 bg-white/10 rounded w-2/3 mb-2" /><div className="h-3 bg-white/5 rounded w-full" /></div>
-                        </div>
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="text-center">
-                            <Lock size={32} className="text-slate-400 mx-auto mb-2" />
-                            <p className="text-slate-300 font-medium">{tx('unlockDeep', lang)}</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* WhatsApp Share */}
-                      <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20">
-                        <div className="flex items-center gap-3 mb-3">
-                          <MessageCircle size={20} className="text-green-400" />
-                          <div>
-                            <div className="font-medium text-white text-sm">{tx('shareToUnlock', lang)}</div>
-                          </div>
-                        </div>
-                        {/* Progress */}
-                        <div className="flex gap-2 mb-3">
-                          {[1, 2, 3].map(n => (
-                            <div key={n} className={`flex-1 h-2 rounded-full transition-all ${shareCount >= n ? "bg-green-500" : "bg-white/10"}`} />
-                          ))}
-                        </div>
-                        <div className="text-xs text-slate-400 mb-3">{tx('shareProgress', lang)}: {shareCount}/3</div>
-
-                        {shareCount < 3 ? (
-                          <div className="grid grid-cols-3 gap-2">
-                            {[1, 2, 3].map(n => (
-                              <button key={n} onClick={handleShare} disabled={shareCount >= n}
-                                className={`py-2 rounded-lg text-xs font-medium flex items-center justify-center gap-1 transition-all ${shareCount >= n ? "bg-green-500/20 text-green-400 border border-green-500/30" : "bg-white/5 hover:bg-green-500/20 text-slate-300 hover:text-green-300 border border-white/10"}`}>
-                                {shareCount >= n ? <CheckCircle size={12} /> : <Share2 size={12} />}
-                                {tx('friend', lang)} {n}
-                              </button>
-                            ))}
-                          </div>
-                        ) : (
-                          <div className="text-center text-green-400 font-medium text-sm flex items-center justify-center gap-2">
-                            <CheckCircle size={16} />{tx('shareComplete', lang)}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
-        )}
+            <div className="rounded-2xl overflow-hidden border border-white/10"><div className="p-5 bg-gradient-to-r from-purple-900/40 to-indigo-900/40 flex items-center justify-between"><h3 className="font-bold flex items-center gap-2">{isUnlocked ? <Sparkles size={18} className="text-purple-400" /> : <Lock size={18} className="text-slate-400" />}{tx('deepReading', lang)}</h3>{isUnlocked && <span className="text-xs text-green-400 flex items-center gap-1"><CheckCircle size={14} />{tx('shareComplete', lang)}</span>}</div>
+            {isUnlocked ? (<div className="p-5 space-y-4">{chart.planets?.Venus?.sign && (<div className="p-4 rounded-xl bg-pink-500/10 border border-pink-500/20"><h4 className="font-bold mb-2 flex items-center gap-2 text-pink-400"><span>\u2640</span>{tx('loveDestiny', lang)} \u2014 {chart.planets.Venus.sign_cn || chart.planets.Venus.sign}</h4><p className="text-slate-300 text-sm">{lang === 'zh' ? `\u91D1\u661F\u5728${chart.planets.Venus.sign_cn}\uFF0C\u4F60\u7684\u7231\u60C5\u98CE\u683C\u72EC\u7279\u800C\u8FF7\u4EBA\u3002` : lang === 'id' ? `Venus di ${chart.planets.Venus.sign}, gaya cinta Anda unik.` : `Venus in ${chart.planets.Venus.sign}, your love style is unique.`}</p></div>)}{chart.planets?.Mars?.sign && (<div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20"><h4 className="font-bold mb-2 flex items-center gap-2 text-red-400"><span>\u2642</span>{tx('actionEnergy', lang)} \u2014 {chart.planets.Mars.sign_cn || chart.planets.Mars.sign}</h4><p className="text-slate-300 text-sm">{lang === 'zh' ? `\u706B\u661F\u5728${chart.planets.Mars.sign_cn}\uFF0C\u4F60\u7684\u884C\u52A8\u529B\u548C\u9A71\u52A8\u529B\u7279\u5F81\u9C9C\u660E\u3002` : lang === 'id' ? `Mars di ${chart.planets.Mars.sign}, energi aksi Anda sangat khas.` : `Mars in ${chart.planets.Mars.sign}, your action energy is distinctive.`}</p></div>)}{chart.ascendant?.sign && (<div className="p-4 rounded-xl bg-purple-500/10 border border-purple-500/20"><h4 className="font-bold mb-2 flex items-center gap-2 text-purple-400"><span>\u2191</span>{tx('ascendant', lang)} \u2014 {chart.ascendant.sign_cn || chart.ascendant.sign} {Math.floor(chart.ascendant.degree)}&deg;</h4><p className="text-slate-300 text-sm">{lang === 'zh' ? `\u4E0A\u5347${chart.ascendant.sign_cn}\u662F\u4F60\u7ED9\u4EBA\u7684\u7B2C\u4E00\u5370\u8C61\u3002` : lang === 'id' ? `Ascenden ${chart.ascendant.sign} adalah kesan pertama Anda.` : `Ascendant ${chart.ascendant.sign} is your first impression.`}</p></div>)}<div className="p-4 rounded-xl bg-cyan-500/10 border border-cyan-500/20"><h4 className="font-bold mb-2 text-cyan-400">{tx('planetPositions', lang)}</h4><div className="flex flex-wrap gap-2">{PLANET_KEYS.filter(k => chart.planets?.[k]?.sign).map(k => (<span key={k} className="px-2 py-1 rounded-lg text-xs bg-white/5 text-slate-400">{PLANET_SYMBOLS[k]} {chart.planets[k].sign_cn || chart.planets[k].sign}</span>))}</div></div></div>) : (<div className="p-6 space-y-5"><div className="relative"><div className="space-y-3 blur-sm pointer-events-none select-none opacity-60"><div className="p-4 rounded-xl bg-white/5"><div className="h-4 bg-white/10 rounded w-3/4 mb-2" /><div className="h-3 bg-white/5 rounded w-full" /></div><div className="p-4 rounded-xl bg-white/5"><div className="h-4 bg-white/10 rounded w-2/3 mb-2" /><div className="h-3 bg-white/5 rounded w-full" /></div></div><div className="absolute inset-0 flex items-center justify-center"><div className="text-center"><Lock size={32} className="text-slate-400 mx-auto mb-2" /><p className="text-slate-300 font-medium">{tx('unlockDeep', lang)}</p></div></div></div><div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20"><div className="flex items-center gap-3 mb-3"><MessageCircle size={20} className="text-green-400" /><div><div className="font-medium text-white text-sm">{tx('shareToUnlock', lang)}</div></div></div><div className="flex gap-2 mb-3">{[1, 2, 3].map(n => (<div key={n} className={`flex-1 h-2 rounded-full transition-all ${shareCount >= n ? "bg-green-500" : "bg-white/10"}`} />))}</div><div className="text-xs text-slate-400 mb-3">{tx('shareProgress', lang)}: {shareCount}/3</div>{shareCount < 3 ? (<div className="grid grid-cols-3 gap-2">{[1, 2, 3].map(n => (<button key={n} onClick={handleShare} disabled={shareCount >= n} className={`py-2 rounded-lg text-xs font-medium flex items-center justify-center gap-1 transition-all ${shareCount >= n ? "bg-green-500/20 text-green-400 border border-green-500/30" : "bg-white/5 hover:bg-green-500/20 text-slate-300 hover:text-green-300 border border-white/10"}`}>{shareCount >= n ? <CheckCircle size={12} /> : <Share2 size={12} />}{tx('friend', lang)} {n}</button>))}</div>) : (<div className="text-center text-green-400 font-medium text-sm flex items-center justify-center gap-2"><CheckCircle size={16} />{tx('shareComplete', lang)}</div>)}</div></div>)}</div></div>)}
+        </div>)}
       </main>
     </div>
   );
