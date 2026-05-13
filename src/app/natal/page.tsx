@@ -854,12 +854,7 @@ export default function NatalPage() {
   const [chartType, setChartType] = useState('natal');
   const [form, setForm] = useState({
     name: '', year: 1990, month: 6, day: 15, hour: 12, minute: 0,
-    cityId: 'jakarta', houseSystem: 'K',
-    // 自定义坐标（地图选点）
-    customLat: null as number | null,
-    customLng: null as number | null,
-    customTz: null as number | null,
-    customCityName: '' as string,
+    houseSystem: 'K',
   });
   const [secForm, setSecForm] = useState({
     year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate(),
@@ -919,14 +914,10 @@ export default function NatalPage() {
     }
   };
 
-  const city = CITIES.find(c => c.id === form.cityId) || CITIES[0];
-  const city2 = CITIES.find(c => c.id === p2Form.cityId) || CITIES[1];
-
-  // 获取实际使用的坐标（优先使用自定义坐标）
-  const activeLat = form.customLat ?? city.lat;
-  const activeLng = form.customLng ?? city.lng;
-  const activeTz = form.customTz ?? city.tz;
-  const activeCityName = form.customCityName || city.name[lang] || city.name.zh;
+  // 使用默认坐标（北京）
+  const activeLat = 39.9042;
+  const activeLng = 116.4074;
+  const activeTz = 8;
 
   useEffect(() => {
     try {
@@ -959,7 +950,7 @@ export default function NatalPage() {
           body.transitDate = { year: secForm.year };
         }
         if (chartType === 'composite') {
-          body.birthData2 = { year: p2Form.year, month: p2Form.month, day: p2Form.day, hour: p2Form.hour, minute: p2Form.minute, lat: city2.lat, lng: city2.lng, tz: city2.tz };
+          body.birthData2 = { year: p2Form.year, month: p2Form.month, day: p2Form.day, hour: p2Form.hour, minute: p2Form.minute, lat: 39.9042, lng: 116.4074, tz: 8 };
         }
       }
 
@@ -993,7 +984,7 @@ export default function NatalPage() {
   };
 
   const loadChart = (c: any) => {
-    setForm({ ...form, name: c.name, year: c.birthData.year, month: c.birthData.month, day: c.birthData.day, hour: c.birthData.hour, minute: c.birthData.minute, cityId: c.birthData.cityId || form.cityId });
+    setForm({ ...form, name: c.name, year: c.birthData.year, month: c.birthData.month, day: c.birthData.day, hour: c.birthData.hour, minute: c.birthData.minute });
     if (c.chartData) setChart(c.chartData);
   };
 
@@ -1080,43 +1071,9 @@ export default function NatalPage() {
                 placeholder={tx('chartName', lang)}
                 className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm placeholder-slate-500" />
               
-              <CitySelect value={form.cityId} onChange={v => setForm({ ...form, cityId: v, customLat: null, customLng: null, customTz: null, customCityName: '' })} cities={CITIES} lang={lang} label={tx('city', lang)} />
-              
-              {/* 地图搜索 - 精确定位 */}
-              <div className="space-y-1">
-                <div className="flex items-center gap-2 text-xs text-slate-400">
-                  <svg className="w-3.5 h-3.5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
-                  </svg>
-                  <span>{lang === 'zh' ? '或精确搜索地点（更准确）' : lang === 'id' ? 'Atau cari lokasi tepat (lebih akurat)' : 'Or search exact location (more accurate)'}</span>
-                </div>
-                <LocationSearch
-                  lang={lang}
-                  onSelect={(result) => {
-                    setForm(prev => ({
-                      ...prev,
-                      customLat: result.lat,
-                      customLng: result.lng,
-                      customTz: result.tz,
-                      customCityName: result.name,
-                    }));
-                  }}
-                />
-                {form.customLat !== null && (
-                  <div className="flex items-center justify-between p-2 rounded-lg bg-purple-500/10 border border-purple-500/20">
-                    <div className="text-xs text-purple-300">
-                      <span className="font-medium">{form.customCityName}</span>
-                      <span className="text-slate-400 ml-2">{form.customLat?.toFixed(4)}°, {form.customLng?.toFixed(4)}°</span>
-                      <span className="text-slate-400 ml-2">UTC{form.customTz !== null && form.customTz >= 0 ? '+' : ''}{form.customTz}</span>
-                    </div>
-                    <button
-                      onClick={() => setForm(prev => ({ ...prev, customLat: null, customLng: null, customTz: null, customCityName: '' }))}
-                      className="text-slate-500 hover:text-white ml-2"
-                    >
-                      <X size={12} />
-                    </button>
-                  </div>
-                )}
+              {/* 使用默认坐标（北京）*/}
+              <div className="p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-sm text-slate-400">
+                {lang === 'zh' ? '使用默认坐标（北京）' : lang === 'id' ? 'Gunakan koordinat default (Beijing)' : 'Using default coordinates (Beijing)'}
               </div>
               
               <div className="grid grid-cols-3 gap-2">

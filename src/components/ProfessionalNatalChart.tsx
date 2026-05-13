@@ -168,7 +168,7 @@ function ChartSVG({ chart, size = 500, lang }: { chart: any; size?: number; lang
   const cx = size / 2;
   const ascLon = chart.ascendant || 0;
   const toAng = (lon: number) => { const n = ((lon - ascLon + 180) % 360 + 360) % 360; return (n * Math.PI) / 180; };
-  const toXY = (a: number, r: number) => ({ x: cx + r * Math.cos(a), y: cx + r * Math.sin(a) });
+  const toXY = (a: number, r: number) => ({ x: cx + r * Math.cos(a), y: cx - r * Math.sin(a) });
   const rOut = cx - 8, rSO = cx - 8, rSI = cx - 52, rHO = cx - 52, rHI = cx - 92, rPL = cx - 118, rCN = 38;
 
   const sLines = SC.map((s: any, i: number) => { const a = toAng(i * 30); return { a, p1: toXY(a, rSI), p2: toXY(a, rSO) }; });
@@ -212,11 +212,11 @@ function ChartSVG({ chart, size = 500, lang }: { chart: any; size?: number; lang
       <circle cx={cx} cy={cx} r={rOut} fill="url(#bgGrad)" stroke="#374151" strokeWidth="1.5"/>
       {SC.map((s: any, i: number) => {
         const sa = toAng(i * 30), ea = toAng((i + 1) * 30);
-        const x1 = cx + rSO * Math.cos(sa), y1 = cx + rSO * Math.sin(sa);
-        const x2 = cx + rSI * Math.cos(sa), y2 = cx + rSI * Math.sin(sa);
-        const x3 = cx + rSI * Math.cos(ea), y3 = cx + rSI * Math.sin(ea);
-        const x4 = cx + rSO * Math.cos(ea), y4 = cx + rSO * Math.sin(ea);
-        return <path key={i} d={"M " + x1 + " " + y1 + " A " + rSO + " " + rSO + " 0 0 1 " + x4 + " " + y4 + " L " + x3 + " " + y3 + " A " + rSI + " " + rSI + " 0 0 0 " + x2 + " " + y2 + " Z"} fill={elCol[s.el]} opacity={0.08}/>;
+        const x1 = cx + rSO * Math.cos(sa), y1 = cx - rSO * Math.sin(sa);
+        const x2 = cx + rSI * Math.cos(sa), y2 = cx - rSI * Math.sin(sa);
+        const x3 = cx + rSI * Math.cos(ea), y3 = cx - rSI * Math.sin(ea);
+        const x4 = cx + rSO * Math.cos(ea), y4 = cx - rSO * Math.sin(ea);
+        return <path key={i} d={"M " + x1 + " " + y1 + " A " + rSO + " " + rSO + " 0 0 0 " + x4 + " " + y4 + " L " + x3 + " " + y3 + " A " + rSI + " " + rSI + " 0 0 1 " + x2 + " " + y2 + " Z"} fill={elCol[s.el]} opacity={0.08}/>;
       })}
       <circle cx={cx} cy={cx} r={rSO} fill="none" stroke="#4B5563" strokeWidth="1"/>
       <circle cx={cx} cy={cx} r={rSI} fill="none" stroke="#374151" strokeWidth="1"/>
