@@ -126,11 +126,11 @@ const HOUSE_SYSTEMS = [
 
 // Enhanced aspect styling config
 const ASPECT_STYLES: Record<string, { color: string; width: number; dash?: string; opacity: number; label: string }> = {
-  Conjunction:   { color: '#FFD700', width: 1.8, opacity: 0.7, label: '\u260C' },
-  Sextile:       { color: '#22C55E', width: 1.0, dash: '6 3', opacity: 0.55, label: '\u26B9' },
-  Square:        { color: '#EF4444', width: 1.4, dash: '4 2', opacity: 0.6, label: '\u25A1' },
-  Trine:         { color: '#3B82F6', width: 1.4, opacity: 0.65, label: '\u25B3' },
-  Opposition:    { color: '#A855F7', width: 1.8, opacity: 0.7, label: '\u260D' },
+  Conjunction:   { color: '#FFD700', width: 1.0, opacity: 0.55, label: '\u260C' },
+  Sextile:       { color: '#22C55E', width: 0.5, dash: '4 2', opacity: 0.4, label: '\u26B9' },
+  Square:        { color: '#EF4444', width: 0.7, dash: '3 1', opacity: 0.5, label: '\u25A1' },
+  Trine:         { color: '#3B82F6', width: 0.5, opacity: 0.45, label: '\u25B3' },
+  Opposition:    { color: '#A855F7', width: 1.0, opacity: 0.55, label: '\u260D' },
 };
 
 const ASPECT_NAMES: Record<string, { zh: string, en: string, id: string }> = {
@@ -381,6 +381,10 @@ function NatalChartSVG({ planets, houses, aspects, ascendant, midheaven, size = 
           <feComposite operator="in" in="col" in2="inv" result="sh"/>
           <feComposite operator="over" in="sh" in2="SourceGraphic"/>
         </filter>
+        <mask id="aspectMask">
+          <rect width="100%" height="100%" fill="white"/>
+          <circle cx={cx} cy={cy} r={rCenter * 0.35} fill="black"/>
+        </mask>
       </defs>
 
       {/* Background */}
@@ -422,7 +426,9 @@ function NatalChartSVG({ planets, houses, aspects, ascendant, midheaven, size = 
         const p1 = lonToXY(h.longitude, rCenter + 2);
         const p2 = lonToXY(h.longitude, rHouseOut);
         const isAngular = [1, 4, 7, 10].includes(h.house);
-        return (<line key={idx} x1={p1.x} y1={p1.y} x2={p2.x} y2={p2.y} stroke={isAngular ? '#818CF8' : '#3d3a5c'} strokeWidth={isAngular ? 1.8 : 0.7} strokeDasharray={isAngular ? 'none' : '3 3'}/>);
+        const houseLineEnd = isAngular ? rSignOut : rHouseOut;
+        const p2Ext = lonToXY(h.longitude, houseLineEnd);
+        return (<line key={idx} x1={p1.x} y1={p1.y} x2={p2Ext.x} y2={p2Ext.y} stroke={isAngular ? '#818CF8' : '#3d3a5c'} strokeWidth={isAngular ? 1.8 : 0.7} strokeDasharray={isAngular ? 'none' : '3 3'}/>);
       })}
 
       {/* House numbers */}
@@ -445,7 +451,9 @@ function NatalChartSVG({ planets, houses, aspects, ascendant, midheaven, size = 
         return (<text key={'deg'+idx} x={degPos.x} y={degPos.y + 3} textAnchor="middle" fontSize={isAngular ? '8' : '6'} fill={isAngular ? '#9CA3AF' : '#4a4670'}>{Math.floor(degVal)}\u00B0</text>);
       })}
 
-      {/* Aspect lines styled by type */}
+            {/* Aspect lines styled by type (center-empty mask) */}
+      <g mask="url(#aspectMask)">
+
       {(aspects || []).slice(0, 25).map((asp: any, i: number) => {
         const p1Pos = planetPositions[asp.planet1];
         const p2Pos = planetPositions[asp.planet2];
@@ -456,6 +464,8 @@ function NatalChartSVG({ planets, houses, aspects, ascendant, midheaven, size = 
         return (<line key={i} x1={p1Pos.x} y1={p1Pos.y} x2={p2Pos.x} y2={p2Pos.y} stroke={style.color} strokeWidth={style.width} strokeOpacity={style.opacity} strokeDasharray={style.dash || 'none'}/>);
       })}
 
+            </g>
+      {/* END aspect lines */}
       {/* ASC marker with triangle indicator */}
       {(() => {
         const p = lonToXY(ascLon, rHouseOut + 18);
