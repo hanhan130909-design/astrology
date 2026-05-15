@@ -515,6 +515,41 @@ export default function NatalPage() {
   const [error, setError] = useState<string | null>(null);
   const [tab, setTab] = useState('chart');
   const [saved, setSaved] = useState<any[]>([]);
+  // 地理编码状态
+  const [geoLoading, setGeoLoading] = useState(false);
+  const [geoError, setGeoError] = useState<string | null>(null);
+  
+  // 地理编码函数 - 使用 Nominatim (OpenStreetMap) 免费 API
+  const geocodeAddress = async (address: string) => {
+    if (!address.trim()) {
+      setGeoError(lang === 'zh' ? '请输入地址' : lang === 'id' ? 'Masukkan alamat' : 'Please enter an address');
+      return;
+    }
+    
+    setGeoLoading(true);
+    setGeoError(null);
+    
+    try {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}&limit=1`
+      );
+      const data = await response.json();
+      
+      if (data && data.length > 0) {
+        const lat = parseFloat(data[0].lat);
+        const lng = parseFloat(data[0].lon);
+        setForm(prev => ({ ...prev, lat, lng }));
+        setGeoError(null);
+      } else {
+        setGeoError(lang === 'zh' ? '未找到该地址，请尝试其他关键词' : lang === 'id' ? 'Alamat tidak ditemukan' : 'Address not found');
+      }
+    } catch (err) {
+      setGeoError(lang === 'zh' ? '地理编码失败，请手动输入经纬度' : lang === 'id' ? 'Gagal mendapatkan koordinat' : 'Geocoding failed');
+    } finally {
+      setGeoLoading(false);
+    }
+  };
+
   const [saveMsg, setSaveMsg] = useState<string | null>(null);
   const [shareCount, setShareCount] = useState(0);
   const [isUnlocked, setIsUnlocked] = useState(false);
