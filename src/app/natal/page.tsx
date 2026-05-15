@@ -507,7 +507,7 @@ function NatalChartSVG({ planets, houses, aspects, ascendant, midheaven, size = 
 export default function NatalPage() {
   const [lang, setLang] = useState<'zh' | 'en' | 'id'>('zh');
   const [chartType, setChartType] = useState('natal');
-  const [form, setForm] = useState({ name: '', year: 1990, month: 6, day: 15, hour: 12, minute: 0, houseSystem: 'K' });
+  const [form, setForm] = useState({ name: '', year: 1990, month: 6, day: 15, hour: 12, minute: 0, houseSystem: 'P', lat: 39.9042, lng: 116.4074 });
   const [secForm, setSecForm] = useState({ year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() });
   const [p2Form, setP2Form] = useState({ year: 1992, month: 3, day: 20, hour: 10, minute: 0 });
   const [chart, setChart] = useState<any>(null);
@@ -532,7 +532,7 @@ export default function NatalPage() {
     if (n >= 3) { setTimeout(() => { setIsUnlocked(true); saveUnlockState({ isUnlocked: true }); }, 1500); }
   };
 
-  const activeLat = 39.9042, activeLng = 116.4074, activeTz = 8;
+  const activeLat = form.lat, activeLng = form.lng, activeTz = 8;
 
   useEffect(() => { try { const s = localStorage.getItem('natal_charts'); if (s) setSaved(JSON.parse(s)); } catch {} }, []);
 
@@ -599,7 +599,7 @@ export default function NatalPage() {
             <h3 className="font-bold mb-4 flex items-center gap-2"><Star size={18} className="text-purple-400" />{tx('birthInfo', lang)}</h3>
             <div className="space-y-4">
               <input type="text" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder={tx('chartName', lang)} className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm placeholder-slate-500" />
-              <div className="p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-sm text-slate-400">{lang === 'zh' ? '\u4F7F\u7528\u9ED8\u8BA4\u5750\u6807\uFF08\u5317\u4EAC\uFF09' : lang === 'id' ? 'Gunakan koordinat default (Beijing)' : 'Using default coordinates (Beijing)'}</div>
+              <div className="grid grid-cols-2 gap-2"><div><label className="text-xs text-slate-400 mb-1 block">{lang === 'zh' ? '\u7EAC\u5EA6' : lang === 'id' ? 'Lintang' : 'Latitude'}</label><input type="number" value={form.lat} onChange={e => setForm({ ...form, lat: parseFloat(e.target.value) || 0 })} step="any" placeholder="39.9042" className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm" /></div><div><label className="text-xs text-slate-400 mb-1 block">{lang === 'zh' ? '\u7ECF\u5EA6' : lang === 'id' ? 'Bujur' : 'Longitude'}</label><input type="number" value={form.lng} onChange={e => setForm({ ...form, lng: parseFloat(e.target.value) || 0 })} step="any" placeholder="116.4074" className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm" /></div></div>
               <div className="grid grid-cols-3 gap-2"><CustomSelect value={String(form.year)} onChange={v => setForm({ ...form, year: Number(v) })} options={yearOptions} label={tx('year', lang)} /><CustomSelect value={String(form.month)} onChange={v => setForm({ ...form, month: Number(v) })} options={monthOptions} label={tx('month', lang)} /><CustomSelect value={String(form.day)} onChange={v => setForm({ ...form, day: Number(v) })} options={dayOptions} label={tx('day', lang)} /></div>
               <div className="grid grid-cols-2 gap-2"><CustomSelect value={String(form.hour)} onChange={v => setForm({ ...form, hour: Number(v) })} options={hourOptions} label={tx('hour', lang)} /><CustomSelect value={String(form.minute)} onChange={v => setForm({ ...form, minute: Number(v) })} options={minOptions} label={tx('minute', lang)} /></div>
               <CustomSelect value={form.houseSystem} onChange={v => setForm({ ...form, houseSystem: v })} options={houseOptions} label={tx('houseSystem', lang)} />

@@ -170,55 +170,37 @@ function calcAllPlanets(time: Astronomy.AstroTime) {
 // ════════════════════════════════════════════════════════════════════════════
 
 function calcLST(time: Astronomy.AstroTime, lng: number): number {
-  // 本地恒星时（Local Sidereal Time）计算
-  const jd = time.ut + 2451545.0;
-  const T = (jd - 2451545.0) / 36525.0;
-  
-  // Greenwich恒星时（度）
-  let GST = 280.46061837 + 360.98564736629 * (jd - 2451545.0) + 0.000387933 * T * T;
-  GST = normalize(GST);
-  
-  // 本地恒星时
+  // astronomy-engine 的 SiderealTime 返回格林威治恒星时（小时）
+  const gstHours = Astronomy.SiderealTime(time);
+  // 转为度数（1小时 = 15度）
+  const GST = normalize(gstHours * 15);
+  // 本地恒星时 = GST + 经度
   return normalize(GST + lng);
 }
 
 function calcAscendant(lat: number, LSTdeg: number): number {
-  // 上升点计算（使用精确公式）
-  const obliquity = 23.4393; // 黄赤交角（度）
-  
+  const obliquity = 23.4393;
   const latRad = lat * Math.PI / 180;
   const lstRad = LSTdeg * Math.PI / 180;
   const oblRad = obliquity * Math.PI / 180;
   
-  // 计算上升点
-  const tanAsc = Math.cos(lstRad) / (Math.cos(oblRad) * Math.sin(lstRad) - Math.sin(oblRad) * Math.tan(latRad));
-  let ascRad = Math.atan(tanAsc);
+  // 正确公式：tan(ASC) = cos(LST) / (cos(obl)*sin(LST) - sin(obl)*tan(lat))
+  const num = Math.cos(lstRad);
+  const den = Math.cos(oblRad) * Math.sin(lstRad) - Math.sin(oblRad) * Math.tan(latRad);
+  let ascRad = Math.atan2(num, den);
   
-  // 调整象限
-  const sinLST = Math.sin(lstRad);
-  if (sinLST < 0) {
-    ascRad += Math.PI;
-  } else if (Math.cos(lstRad) < 0) {
-    ascRad += Math.PI;
-  }
-  
-  // 将赤经转换到黄道经度
-  // 使用更精确的公式
-  const asc = normalize(ascRad * 180 / Math.PI);
-  
-  return asc;
+  return normalize(ascRad * 180 / Math.PI);
 }
 
 function calcMC(LSTdeg: number): number {
-  // 中天计算
   const obliquity = 23.4393;
   const lstRad = LSTdeg * Math.PI / 180;
   const oblRad = obliquity * Math.PI / 180;
   
-  const tanMC = Math.tan(lstRad) / Math.cos(oblRad);
-  let mcRad = Math.atan(tanMC);
+  const num = Math.tan(lstRad);
+  const den = Math.cos(oblRad);
+  let mcRad = Math.atan2(num, den);
   
-  // 调整象限
   if (Math.cos(lstRad) < 0) {
     mcRad += Math.PI;
   }
