@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Force rebuild - 2026-05-16
   // Image optimization
   images: {
     formats: ["image/webp", "image/avif"],
