@@ -638,6 +638,28 @@ export default function NatalPage() {
             <h3 className="font-bold mb-4 flex items-center gap-2"><Star size={18} className="text-purple-400" />{tx('birthInfo', lang)}</h3>
             <div className="space-y-4">
               <input type="text" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder={tx('chartName', lang)} className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm placeholder-slate-500" />
+              <div className="mb-4">
+                <label className="text-xs text-slate-400 mb-1 block">
+                  {lang === 'zh' ? '出生地点' : lang === 'id' ? 'Tempat Lahir' : 'Birth Place'}
+                </label>
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    id="birthPlace"
+                    placeholder={lang === 'zh' ? '输入城市名称' : lang === 'id' ? 'Masukkan nama kota' : 'Enter city name'}
+                    className="flex-1 p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => geocodeAddress((document.getElementById('birthPlace') as HTMLInputElement)?.value || '')}
+                    disabled={geoLoading}
+                    className="px-4 py-2 rounded-xl bg-indigo-600 text-white text-sm"
+                  >
+                    {geoLoading ? '...' : lang === 'zh' ? '搜索' : lang === 'id' ? 'Cari' : 'Search'}
+                  </button>
+                </div>
+                {geoError && <p className="text-xs text-red-400 mt-1">{geoError}</p>}
+              </div>
               <div className="grid grid-cols-2 gap-2"><div><label className="text-xs text-slate-400 mb-1 block">{lang === 'zh' ? '\u7EAC\u5EA6' : lang === 'id' ? 'Lintang' : 'Latitude'}</label><input type="number" value={form.lat} onChange={e => setForm({ ...form, lat: parseFloat(e.target.value) || 0 })} step="any" placeholder="0" className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm" /></div><div><label className="text-xs text-slate-400 mb-1 block">{lang === 'zh' ? '\u7ECF\u5EA6' : lang === 'id' ? 'Bujur' : 'Longitude'}</label><input type="number" value={form.lng} onChange={e => setForm({ ...form, lng: parseFloat(e.target.value) || 0 })} step="any" placeholder="0" className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm" /></div></div>
               <div className="grid grid-cols-3 gap-2"><CustomSelect value={String(form.year)} onChange={v => setForm({ ...form, year: Number(v) })} options={yearOptions} label={tx('year', lang)} /><CustomSelect value={String(form.month)} onChange={v => setForm({ ...form, month: Number(v) })} options={monthOptions} label={tx('month', lang)} /><CustomSelect value={String(form.day)} onChange={v => setForm({ ...form, day: Number(v) })} options={dayOptions} label={tx('day', lang)} /></div>
               <div className="grid grid-cols-2 gap-2"><CustomSelect value={String(form.hour)} onChange={v => setForm({ ...form, hour: Number(v) })} options={hourOptions} label={tx('hour', lang)} /><CustomSelect value={String(form.minute)} onChange={v => setForm({ ...form, minute: Number(v) })} options={minOptions} label={tx('minute', lang)} /></div>
