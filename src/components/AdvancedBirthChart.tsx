@@ -48,7 +48,7 @@ const SIGNS = [
 
 // 宫位系统
 const HOUSE_SYSTEMS = [
-  { id: "placidus", name: "Placidus" },
+  { id: "porphyry", name: "Porphyry" },
   { id: "koch", name: "Koch" },
   { id: "whole", name: "Whole Sign" },
   { id: "equal", name: "Equal House" },
@@ -90,7 +90,7 @@ export default function AdvancedBirthChart({ language = "id" }: AdvancedBirthCha
     latitude: -6.2,
     longitude: 106.8,
     timezone: 7,
-    houseSystem: "placidus",
+    houseSystem: "porphyry",
   });
 
   const [showAsteroids, setShowAsteroids] = useState(false);

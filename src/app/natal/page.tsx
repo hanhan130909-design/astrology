@@ -104,6 +104,13 @@ const PLANET_KEYS = ['Sun', 'Moon', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Satu
 const PLANET_SYMBOLS: Record<string, string> = {
   Sun: '\u2609', Moon: '\u263D', Mercury: '\u263F', Venus: '\u2640', Mars: '\u2642', Jupiter: '\u2643', Saturn: '\u2644',
   Uranus: '\u2645', Neptune: '\u2646', Pluto: '\u2647', North_Node: '\u260A', South_Node: '\u260B',
+  Chiron: '\u2A51', Lilith: '\u2601', PartOfFortune: '\u2295', Vertex: 'Vx',
+};
+// Fallback text for browsers that don't render Unicode astro symbols
+const PLANET_TEXT: Record<string, string> = {
+  Sun: 'Su', Moon: 'Mo', Mercury: 'Me', Venus: 'Ve', Mars: 'Ma', Jupiter: 'Ju', Saturn: 'Sa',
+  Uranus: 'Ur', Neptune: 'Ne', Pluto: 'Pl', North_Node: 'NN', South_Node: 'SN',
+  Chiron: 'Ch', Lilith: 'Li', PartOfFortune: 'PF', Vertex: 'Vx',
 };
 const SIGN_SYMBOLS = ['\u2648', '\u2649', '\u264A', '\u264B', '\u264C', '\u264D', '\u264E', '\u264F', '\u2650', '\u2651', '\u2652', '\u2653'];
 const SIGN_CN: Record<string, string> = {
@@ -491,7 +498,7 @@ function NatalChartSVG({ planets, houses, aspects, ascendant, midheaven, size = 
         const color = PLANET_COLORS[p.key] || '#fbbf24';
         return (<g key={p.key} filter="url(#gl)">
           <circle cx={pos.x} cy={pos.y} r="12" fill={`${color}18`} stroke={color} strokeWidth="1.3"/>
-          <text x={pos.x} y={pos.y + 4} textAnchor="middle" fontSize="11" fontWeight="bold" fill={color}>{PLANET_SYMBOLS[p.key]}</text>
+          <text x={pos.x} y={pos.y + 4} textAnchor="middle" fontSize="12" fontWeight="bold" fill={color} fontFamily="Segoe UI Symbol, Apple Symbols, Noto Sans Symbols 2, serif">{PLANET_SYMBOLS[p.key] || PLANET_TEXT[p.key] || p.key[0]}</text>
           {p.retrograde && <text x={pos.x + 10} y={pos.y - 8} fontSize="7" fontWeight="bold" fill="#F87171">R</text>}
         </g>);
       })}
@@ -567,7 +574,9 @@ export default function NatalPage() {
     if (n >= 3) { setTimeout(() => { setIsUnlocked(true); saveUnlockState({ isUnlocked: true }); }, 1500); }
   };
 
-  const activeLat = form.lat, activeLng = form.lng, activeTz = 8;
+  // Auto-detect timezone from browser (fix: was hardcoded to UTC+8)
+  const activeTz = typeof window !== 'undefined' ? -(new Date().getTimezoneOffset() / 60) : 8;
+  const activeLat = form.lat, activeLng = form.lng;
 
   useEffect(() => { try { const s = localStorage.getItem('natal_charts'); if (s) setSaved(JSON.parse(s)); } catch {} }, []);
 
@@ -583,7 +592,7 @@ export default function NatalPage() {
         body = { type: chartType === 'solar' ? 'solar_return' : chartType === 'lunar' ? 'lunar_return' : chartType, birthData: { year: form.year, month: form.month, day: form.day, hour: form.hour, minute: form.minute, lat: activeLat, lng: activeLng, tz: activeTz }, houseSystem: form.houseSystem };
         if (['transit', 'solar', 'lunar'].includes(chartType)) body.transitDate = { year: secForm.year, month: secForm.month, day: secForm.day, hour: 12, minute: 0 };
         if (chartType === 'progression') body.transitDate = { year: secForm.year };
-        if (chartType === 'composite') body.birthData2 = { year: p2Form.year, month: p2Form.month, day: p2Form.day, hour: p2Form.hour, minute: p2Form.minute, lat: 39.9042, lng: 116.4074, tz: 8 };
+        if (chartType === 'composite') body.birthData2 = { year: p2Form.year, month: p2Form.month, day: p2Form.day, hour: p2Form.hour, minute: p2Form.minute, lat: 39.9042, lng: 116.4074, tz: activeTz };
       }
       const ep = ['transit', 'solar', 'lunar', 'progression', 'composite'].includes(chartType) ? '/api/chart/transit' : '/api/chart';
       const res = await fetch(ep, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
@@ -628,15 +637,15 @@ export default function NatalPage() {
         </div>
       </nav>
 
-      <main className="max-w-7xl mx-auto px-6 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-8 overflow-x-hidden">
         <div className="grid grid-cols-3 md:grid-cols-6 gap-2 mb-6">
           {[{ id: 'natal', icon: Star, label: 'natal' }, { id: 'transit', icon: TrendingUp, label: 'transit' }, { id: 'solar', icon: Sun, label: 'solar' }, { id: 'lunar', icon: Moon, label: 'lunar' }, { id: 'progression', icon: Calendar, label: 'progression' }, { id: 'composite', icon: Heart, label: 'composite' }].map(t => { const Ic = t.icon; return (<button key={t.id} onClick={() => { setChartType(t.id); setChart(null); }} className={`p-3 rounded-xl border transition-all ${chartType === t.id ? 'bg-purple-600/20 border-purple-500 text-purple-300' : 'bg-white/5 border-white/10 text-slate-400 hover:text-white'}`}><Ic size={18} className="mx-auto mb-1" /><div className="text-xs">{tx(t.label, lang)}</div></button>); })}
         </div>
 
         {saved.length > 0 && (<div className="mb-6 p-4 rounded-xl bg-white/5 border border-white/10"><h3 className="text-sm text-slate-400 mb-2">{tx('savedCharts', lang)}</h3><div className="flex gap-2 overflow-x-auto pb-2">{saved.map((c, i) => (<button key={i} onClick={() => loadChart(c)} className="flex-shrink-0 px-3 py-2 rounded-lg bg-white/5 text-sm text-slate-300 hover:bg-white/10">{c.name}</button>))}</div></div>)}
 
-        <div className="grid lg:grid-cols-2 gap-6">
-          <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+        <div className="grid lg:grid-cols-2 gap-6" style={{ minHeight: "fit-content" }}>
+          <div className="p-4 sm:p-6 rounded-2xl bg-white/5 border border-white/10 overflow-visible">
             <h3 className="font-bold mb-4 flex items-center gap-2"><Star size={18} className="text-purple-400" />{tx('birthInfo', lang)}</h3>
             <div className="space-y-4">
               <input type="text" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder={tx('chartName', lang)} className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm placeholder-slate-500" />
@@ -683,7 +692,7 @@ export default function NatalPage() {
 
           {tab === 'chart' && (<div className="p-6 rounded-2xl bg-white/5 border border-white/10 text-center"><NatalChartSVG planets={chart.planets || {}} houses={chart.houses || []} aspects={chart.aspects || []} ascendant={chart.ascendant?.longitude} midheaven={chart.midheaven?.longitude} size={450} /><button onClick={handleSave} className="mt-4 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-xl text-sm flex items-center gap-2 mx-auto transition-colors"><Save size={16} />{saveMsg || tx('saveChart', lang)}</button></div>)}
 
-          {tab === 'planets' && (<div className="p-6 rounded-2xl bg-white/5 border border-white/10"><h3 className="font-bold mb-4">{tx('planetPositions', lang)}</h3><div className="overflow-x-auto"><table className="w-full text-sm"><thead><tr className="border-b border-white/10"><th className="text-left py-2 text-slate-400">{tx('planet', lang)}</th><th className="text-left py-2 text-slate-400">{tx('sign', lang)}</th><th className="text-left py-2 text-slate-400">{tx('degree', lang)}</th></tr></thead><tbody>{PLANET_KEYS.map(key => { const p = chart.planets?.[key]; if (!p || p.error) return null; return (<tr key={key} className="border-b border-white/5"><td className="py-2 flex items-center gap-2"><span>{PLANET_SYMBOLS[key]}</span><span className="text-amber-400">{PLANETS_CN[key] || key}</span></td><td className="py-2"><span className="mr-1">{SIGN_SYMBOLS[['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'].indexOf(p.sign)]}</span>{p.sign_cn || p.sign}</td><td className="py-2">{Math.floor(p.degree)}&deg; {Math.floor((p.degree % 1) * 60)}&apos;</td></tr>); })}</tbody></table></div></div>)}
+          {tab === 'planets' && (<div className="p-6 rounded-2xl bg-white/5 border border-white/10"><h3 className="font-bold mb-4">{tx('planetPositions', lang)}</h3><div className="overflow-x-auto"><table className="w-full text-sm"><thead><tr className="border-b border-white/10"><th className="text-left py-2 text-slate-400">{tx('planet', lang)}</th><th className="text-left py-2 text-slate-400">{tx('sign', lang)}</th><th className="text-left py-2 text-slate-400">{tx('degree', lang)}</th></tr></thead><tbody>{PLANET_KEYS.map(key => { const p = chart.planets?.[key]; if (!p || p.error) return null; return (<tr key={key} className="border-b border-white/5"><td className="py-2 flex items-center gap-2"><span style={{ fontFamily: "Segoe UI Symbol, Apple Symbols, Noto Sans Symbols 2, serif" }}>{PLANET_SYMBOLS[key] || PLANET_TEXT[key] || key[0]}</span><span className="text-amber-400">{PLANETS_CN[key] || key}</span></td><td className="py-2"><span className="mr-1">{SIGN_SYMBOLS[['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'].indexOf(p.sign)]}</span>{p.sign_cn || p.sign}</td><td className="py-2">{Math.floor(p.degree)}&deg; {Math.floor((p.degree % 1) * 60)}&apos;</td></tr>); })}</tbody></table></div></div>)}
 
           {tab === 'houses' && (<div className="p-6 rounded-2xl bg-white/5 border border-white/10"><h3 className="font-bold mb-4">{tx('houseInfo', lang)}</h3><div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">{(chart.houses || []).map((h: any) => { const isAng = [1, 4, 7, 10].includes(h.house); const isSuc = [2, 5, 8, 11].includes(h.house); return (<div key={h.house} className={`p-3 rounded-xl ${isAng ? 'bg-amber-500/10 border border-amber-500/30' : isSuc ? 'bg-cyan-500/10 border border-cyan-500/30' : 'bg-white/5'}`}><div className="font-bold text-white">{h.house}{lang === 'zh' ? '\u5BAB' : ' House'}</div><div className="text-sm text-slate-400">{SIGN_SYMBOLS[['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'].indexOf(h.sign)]} {h.sign_cn || h.sign}</div><div className="text-xs text-slate-500">{Math.floor(h.degree)}&deg; {Math.floor((h.degree % 1) * 60)}&apos;</div></div>); })}</div>{chart.ascendant && (<div className="mt-4 p-3 rounded-xl bg-purple-500/10 border border-purple-500/30"><span className="text-purple-400">{tx('ascendant', lang)}:</span> {SIGN_SYMBOLS[['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'].indexOf(chart.ascendant.sign)]} {chart.ascendant.sign_cn || chart.ascendant.sign} {Math.floor(chart.ascendant.degree)}&deg;<span className="mx-3 text-slate-500">|</span><span className="text-cyan-400">{tx('midheaven', lang)}:</span> {SIGN_SYMBOLS[['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'].indexOf(chart.midheaven?.sign)]} {chart.midheaven?.sign_cn || chart.midheaven?.sign} {Math.floor(chart.midheaven?.degree || 0)}&deg;</div>)}</div>)}
 

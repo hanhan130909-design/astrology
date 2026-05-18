@@ -65,8 +65,8 @@ const CHART_TYPES: { value: ChartType; icon: string; label: Record<string, strin
 const HOUSE_SYSTEMS: { value: HouseSystem; label: Record<string, string>; desc: Record<string, string> }[] = [
   {
     value: "placidus",
-    label: { zh: "分宫制", id: "Placidus", en: "Placidus" },
-    desc: { zh: "经典分宫制，宫位大小不一", id: "Classic house system", en: "Classic house system" },
+    label: { zh: "Porphyry分宫", id: "Porphyry", en: "Porphyry" },
+    desc: { zh: "Porphyry分宫制，基于四轴划分", id: "Porphyry house system", en: "Porphyry house system" },
   },
   {
     value: "whole_sign",

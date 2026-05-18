@@ -121,7 +121,7 @@ const HN: any = {
 };
 
 const HS: any[] = [
-  {id:"P",n:{zh:"Placidus分宫",en:"Placidus",id:"Placidus"}},
+  {id:"P",n:{zh:"Porphyry分宫",en:"Porphyry",id:"Porphyry"}},
   {id:"E",n:{zh:"等宫制",en:"Equal House",id:"Rumah Sama"}},
   {id:"W",n:{zh:"整宫制",en:"Whole Sign",id:"Whole Sign"}},
 ];

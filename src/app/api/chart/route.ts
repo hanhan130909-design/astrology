@@ -185,8 +185,7 @@ function calcLST(time: Astronomy.AstroTime, lng: number): number {
   return normalize(GST + lng);
 }
 
-function calcAscendant(lat: number, LSTdeg: number): number {
-  const obliquity = 23.4393;
+function calcAscendant(lat: number, LSTdeg: number, obliquity: number = 23.4393): number {
   const latRad = lat * Math.PI / 180;
   const lstRad = LSTdeg * Math.PI / 180;
   const oblRad = obliquity * Math.PI / 180;
@@ -199,8 +198,7 @@ function calcAscendant(lat: number, LSTdeg: number): number {
   return normalize(ascRad * 180 / Math.PI + 180);
 }
 
-function calcMC(LSTdeg: number): number {
-  const obliquity = 23.4393;
+function calcMC(LSTdeg: number, obliquity: number = 23.4393): number {
   const lstRad = LSTdeg * Math.PI / 180;
   const oblRad = obliquity * Math.PI / 180;
   
@@ -225,8 +223,8 @@ function calcMC(LSTdeg: number): number {
  * 
  * 算法：将ASC到MC的时间三等分得到H12、H11
  */
-function calcKochHouses(ascLon: number, mcLon: number, lat: number, lst: number): number[] {
-  const obl = 23.4393 * Math.PI / 180;
+function calcKochHouses(ascLon: number, mcLon: number, lat: number, lst: number, obliquity: number = 23.4393): number[] {
+  const obl = obliquity * Math.PI / 180;
   const latRad = lat * Math.PI / 180;
   
   // 计算ASC和MC的赤经(RA)
@@ -314,8 +312,8 @@ function calcKochHouses(ascLon: number, mcLon: number, lat: number, lst: number)
  * Regiomontanus House System
  * 基于天球赤道等分
  */
-function calcRegiomontanusHouses(ascLon: number, mcLon: number, lat: number, lst: number): number[] {
-  const obl = 23.4393 * Math.PI / 180;
+function calcRegiomontanusHouses(ascLon: number, mcLon: number, lat: number, lst: number, obliquity: number = 23.4393): number[] {
+  const obl = obliquity * Math.PI / 180;
   const latRad = lat * Math.PI / 180;
   
   const cusps: number[] = new Array(12);
@@ -434,8 +432,11 @@ function calcCampanusHouses(ascLon: number, mcLon: number, lat: number, lst: num
 
 function calcHouses(time: Astronomy.AstroTime, lat: number, lng: number, system: string = 'P') {
   const LST = calcLST(time, lng);
-  const ascLon = calcAscendant(lat, LST);
-  const mcLon = calcMC(LST);
+  // Dynamic obliquity for accuracy (IAU2006 precession, vs hardcoded 23.4393)
+  const T = (time.tt + 2451545.0 - 2451545.0) / 36525.0;
+  const obliquity = 23.4392911 - 0.0130042 * T - 1.64e-7 * T * T + 5.04e-7 * T * T * T;
+  const ascLon = calcAscendant(lat, LST, obliquity);
+  const mcLon = calcMC(LST, obliquity);
   
   const houses = [];
   let cusps: number[];
