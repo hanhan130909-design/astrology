@@ -1,7 +1,7 @@
 {
-  "name": "爱占星 - Love Astrology",
-  "short_name": "爱占星",
-  "description": "专业星座分析平台 - 本命盘、推运盘、塔罗占卜、每日运势",
+  "name": "星缘 - Love Astrology",
+  "short_name": "星缘",
+  "description": "专业星座分析平台 - 本命盘、推运盘、合盘、塔罗、每日运势",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#030014",
@@ -12,100 +12,9 @@
   "categories": ["lifestyle", "entertainment", "utilities"],
   "icons": [
     {
-      "src": "/icon-72.png",
-      "sizes": "72x72",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "/icon-96.png",
-      "sizes": "96x96",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "/icon-128.png",
-      "sizes": "128x128",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "/icon-144.png",
-      "sizes": "144x144",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "/icon-152.png",
-      "sizes": "152x152",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "/icon-384.png",
-      "sizes": "384x384",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable any"
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     }
-  ],
-  "screenshots": [
-    {
-      "src": "/screenshot-1.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "爱占星首页"
-    },
-    {
-      "src": "/screenshot-2.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "本命盘分析"
-    },
-    {
-      "src": "/screenshot-mobile.png",
-      "sizes": "750x1334",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "移动端界面"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "本命盘",
-      "short_name": "本命盘",
-      "description": "查看你的本命盘",
-      "url": "/natal",
-      "icons": [{ "src": "/icon-natal.png", "sizes": "96x96" }]
-    },
-    {
-      "name": "每日运势",
-      "short_name": "运势",
-      "description": "查看今日运势",
-      "url": "/horoscope",
-      "icons": [{ "src": "/icon-horoscope.png", "sizes": "96x96" }]
-    },
-    {
-      "name": "塔罗占卜",
-      "short_name": "塔罗",
-      "description": "进行塔罗占卜",
-      "url": "/tarot",
-      "icons": [{ "src": "/icon-tarot.png", "sizes": "96x96" }]
-    }
-  ],
-  "related_applications": [],
-  "prefer_related_applications": false
+  ]
 }
