@@ -375,7 +375,48 @@ export async function POST(request: NextRequest) {
       };
     }
     
-    return NextResponse.json(result);
+    // Return in same format as /api/chart for frontend compatibility
+    const chartData = result.transit ? {
+      planets: result.transit.planets,
+      houses: result.natal.houses,
+      ascendant: result.natal.ascendant,
+      midheaven: result.natal.midheaven,
+      aspects: [...(result.natal.aspects || []), ...(result.transit.aspects || [])],
+      _transitAspects: result.transit.aspects,
+      _natalPlanets: result.natal.planets,
+    } : result.solarReturn ? {
+      planets: result.solarReturn.planets,
+      houses: result.solarReturn.houses,
+      ascendant: result.solarReturn.ascendant,
+      midheaven: result.solarReturn.midheaven,
+      aspects: result.solarReturn.aspects,
+    } : result.lunarReturn ? {
+      planets: result.lunarReturn.planets,
+      houses: result.lunarReturn.houses,
+      ascendant: result.lunarReturn.ascendant,
+      midheaven: result.lunarReturn.midheaven,
+      aspects: result.lunarReturn.aspects,
+    } : result.progression ? {
+      planets: result.progression.planets,
+      houses: result.progression.houses,
+      ascendant: result.progression.ascendant,
+      midheaven: result.progression.midheaven,
+      aspects: result.progression.aspects,
+    } : result.composite ? {
+      planets: result.composite.planets,
+      houses: result.composite.houses,
+      ascendant: result.composite.ascendant,
+      midheaven: result.composite.midheaven,
+      aspects: result.composite.aspects,
+    } : {
+      planets: result.natal.planets,
+      houses: result.natal.houses,
+      ascendant: result.natal.ascendant,
+      midheaven: result.natal.midheaven,
+      aspects: result.natal.aspects,
+    };
+
+    return NextResponse.json({ success: true, data: chartData });
   } catch (error) {
     console.error('Chart calculation error:', error);
     return NextResponse.json({ error: error instanceof Error ? error.message : 'Calculation error' }, { status: 500 });
