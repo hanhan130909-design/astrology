@@ -116,21 +116,21 @@ const SIGN_EN: Record<string, string> = {
 };
 
 const HOUSE_SYSTEMS = [
+  { id: 'P', name: { zh: 'Porphyry (推荐)', en: 'Porphyry (Recommended)', id: 'Porphyry' }, abbr: 'P' },
   { id: 'E', name: { zh: '等宫制', en: 'Equal House', id: 'Equal House' }, abbr: 'E' },
   { id: 'W', name: { zh: '整宫制', en: 'Whole Sign', id: 'Whole Sign' }, abbr: 'W' },
-  { id: 'P', name: { zh: 'Porphyry', en: 'Porphyry', id: 'Porphyry' }, abbr: 'P' },
-  { id: 'K', name: { zh: 'Koch (阿卡比特)', en: 'Koch', id: 'Koch' }, abbr: 'K' },
-  { id: 'R', name: { zh: 'Regiomontanus', en: 'Regiomontanus', id: 'Regiomontanus' }, abbr: 'R' },
-  { id: 'C', name: { zh: 'Campanus', en: 'Campanus', id: 'Campanus' }, abbr: 'C' },
+  { id: 'K', name: { zh: 'Koch (开发中)', en: 'Koch (In Dev)', id: 'Koch' }, abbr: 'K' },
+  { id: 'R', name: { zh: 'Regiomontanus (开发中)', en: 'Regiomontanus (In Dev)', id: 'Regiomontanus' }, abbr: 'R' },
+  { id: 'C', name: { zh: 'Campanus (开发中)', en: 'Campanus (In Dev)', id: 'Campanus' }, abbr: 'C' },
 ];
 
 // Enhanced aspect styling config
 const ASPECT_STYLES: Record<string, { color: string; width: number; dash?: string; opacity: number; label: string }> = {
-  Conjunction:   { color: '#FFD700', width: 1.0, opacity: 0.55, label: '\u260C' },
-  Sextile:       { color: '#22C55E', width: 0.5, dash: '4 2', opacity: 0.4, label: '\u26B9' },
-  Square:        { color: '#EF4444', width: 0.7, dash: '3 1', opacity: 0.5, label: '\u25A1' },
-  Trine:         { color: '#3B82F6', width: 0.5, opacity: 0.45, label: '\u25B3' },
-  Opposition:    { color: '#A855F7', width: 1.0, opacity: 0.55, label: '\u260D' },
+  Conjunction:   { color: '#FFD700', width: 0.8, opacity: 0.5, label: '\u260C' },
+  Sextile:       { color: '#22C55E', width: 0.5, dash: '4 2', opacity: 0.35, label: '\u26B9' },
+  Square:        { color: '#EF4444', width: 0.6, dash: '3 1', opacity: 0.4, label: '\u25A1' },
+  Trine:         { color: '#3B82F6', width: 0.5, opacity: 0.4, label: '\u25B3' },
+  Opposition:    { color: '#A855F7', width: 0.7, opacity: 0.45, label: '\u260D' },
 };
 
 const ASPECT_NAMES: Record<string, { zh: string, en: string, id: string }> = {
@@ -383,7 +383,7 @@ function NatalChartSVG({ planets, houses, aspects, ascendant, midheaven, size = 
         </filter>
         <mask id="aspectMask">
           <rect width="100%" height="100%" fill="white"/>
-          <circle cx={cx} cy={cy} r={rCenter * 0.35} fill="black"/>
+          <circle cx={cx} cy={cy} r={rCenter * 0.42} fill="black"/>
         </mask>
       </defs>
 
