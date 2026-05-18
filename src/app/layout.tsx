@@ -1,4 +1,4 @@
-﻿import type { Metadata, Viewport } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { AuthProvider } from "@/contexts/AuthContext";
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "星缘 - 专业星座分析平台",
-  description: "探索星座的命运奥秘，星缘提供基于真实天文计算与先进AI技术的免费在线占星服务。全面支持本命盘、推运盘、合盘比对、AI智能解读、塔罗占卜、每日/每月/每年运势解读。输入出生信息，即刻生成专业星盘报告，精准排盘，专业分析，助你读懂星盘密码，掌握命运轨迹，开启专属占星之旅。免费体验，无需注册，让星辰指引你的人生方向。",
+    description: "探索星座的命运奥秘，星缘提供基于真实天文计算与先进AI技术的免费在线占星服务。全面支持本命盘、推运盘、合盘比对、AI智能解读、塔罗占卜、每日/每月/每年运势解读。输入出生信息，即刻生成专业星盘报告，精准排盘，专业分析，助你读懂星盘密码，掌握命运轨迹，开启专属占星之旅。免费体验，无需注册，让星辰指引你的人生方向。",
     type: "website",
     url: "https://astrology-clean.vercel.app",
     locale: "zh_CN",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "星缘 - 专业星座分析平台",
-  description: "探索星座的命运奥秘，星缘提供基于真实天文计算与先进AI技术的免费在线占星服务。全面支持本命盘、推运盘、合盘比对、AI智能解读、塔罗占卜、每日/每月/每年运势解读。输入出生信息，即刻生成专业星盘报告，精准排盘，专业分析，助你读懂星盘密码，掌握命运轨迹，开启专属占星之旅。免费体验，无需注册，让星辰指引你的人生方向。",
+    description: "探索星座的命运奥秘，星缘提供基于真实天文计算与先进AI技术的免费在线占星服务。全面支持本命盘、推运盘、合盘比对、AI智能解读、塔罗占卜、每日/每月/每年运势解读。输入出生信息，即刻生成专业星盘报告，精准排盘，专业分析，助你读懂星盘密码，掌握命运轨迹，开启专属占星之旅。免费体验，无需注册，让星辰指引你的人生方向。",
     images: ["/og-image.png"],
   },
   robots: {
@@ -85,11 +85,32 @@ export default function RootLayout({
 }: {
   children: React.ReactNode,
 }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "星缘",
+    "alternateName": ["Starry Fate", "Love Astrology", "Cinta Bintang"],
+    "url": "https://astrology-clean.vercel.app",
+    "description": "探索星座的命运奥秘，星缘提供基于真实天文计算与先进AI技术的免费在线占星服务。全面支持本命盘、推运盘、合盘比对、AI智能解读、塔罗占卜、运势解读。",
+    "keywords": "星座,占星,本命盘,推运盘,合盘,塔罗,运势,星盘,在线排盘,AI占星",
+    "author": { "@type": "Organization", "name": "星缘团队" },
+    "publisher": { "@type": "Organization", "name": "星缘", "url": "https://astrology-clean.vercel.app" },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://astrology-clean.vercel.app/natal?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
+
   return (
     <html lang="zh" className="dark" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className="bg-[#030014] text-white antialiased min-h-screen dark">
         <ServiceWorkerRegister />
@@ -105,4 +126,4 @@ export default function RootLayout({
   );
 }
 
-// SEO 优化部署 - 05/18/2026 12:52:10
+// SEO 优化部署 - 05/18/2026 14:10 - 添加 JSON-LD Structured Data
