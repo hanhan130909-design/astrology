@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
@@ -594,7 +594,8 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-amber-500/20 rounded-full blur-3xl" />
                 
                 {/* Main wheel SVG */}
-                <svg viewBox="0 0 400 400" className="w-full h-full animate-[spin_60s_linear_infinite]">
+                {/* Performance: SVG with GPU-accelerated transform only */}
+                <svg viewBox="0 0 400 400" className="w-full h-full" style={{ animation: "spin_60s_linear_infinite", transformOrigin: "center center", willChange: "transform" }}>
                   <defs>
                     <linearGradient id="wheelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                       <stop offset="0%" stopColor="#7c3aed" />
@@ -888,3 +889,4 @@ export default function HomePage() {
     </div>
   );
 }
+

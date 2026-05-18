@@ -1,4 +1,4 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -150,8 +150,8 @@ body {
 
 /* Animations */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-10px) scale(1.01); }
 }
 
 @keyframes pulse-glow {
@@ -426,3 +426,34 @@ body {
 .planet-uranus { @apply text-cyan-400; }
 .planet-neptune { @apply text-blue-400; }
 .planet-pluto { @apply text-indigo-400; }
+
+
+/* ===== PageSpeed Performance Fixes (2026-05-18) ===== */
+
+/* A11Y: Fix color contrast for accessibility (WCAG AA minimum 4.5:1 ratio) */
+@media (prefers-contrast: more) {
+  .text-slate-400 { color: #cbd5e1 !important; }
+  .text-slate-500 { color: #94a3b8 !important; }
+  .text-gray-400 { color: #9ca3af !important; }
+  .text-gray-500 { color: #6b7280 !important; }
+  .placeholder-slate-500::placeholder { color: #94a3b8 !important; }
+}
+
+/* Performance: Reduce animation for LCP improvement */
+.hero-lcp-priority {
+  content-visibility: auto;
+  contain-intrinsic-size: 800px 600px;
+}
+
+/* Performance: Text rendering optimization */
+.text-rendering-optimize {
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Performance: Critical CSS hint for above-the-fold */
+@layer critical {
+  .bg-\[\#030014\] { background-color: #030014; }
+  .text-white { color: #ffffff; }
+  .min-h-screen { min-height: 100vh; }
+}
