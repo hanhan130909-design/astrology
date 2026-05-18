@@ -7,11 +7,10 @@ import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 
 export const metadata: Metadata = {
   title: {
-    default: "星缘 - 免费AI占星解读 | 本命盘·推运盘·合盘·塔罗·运势 | Starry Fate",
+    default: "星缘 - 免费AI占星解读 | 专业在线排盘·本命盘·推运盘·合盘·塔罗·运势 | Starry Fate",
     template: "%s | 星缘",
   },
-  description: "探索星座的命运奥秘，星缘提供基于真实天文计算与先进AI技术的免费在线占星服务。支持本命盘、推运盘、合盘比对、AI智能解读、塔罗占卜、每日/每月运势。精准排盘，专业分析，助你读懂星盘密码，掌握命运轨迹。",
-  keywords: ["astrology", "星座", "horoscope", "占星", "zodiak", "AI占星", "natal chart", "本命盘", "tarot", "塔罗", "运势", "星盘"],
+  description: "探索星座的命运奥秘，星缘提供基于真实天文计算与先进AI技术的免费在线占星服务。全面支持本命盘、推运盘、合盘比对、AI智能解读、塔罗占卜、每日/每月/每年运势解读。输入出生信息，即刻生成专业星盘报告，精准排盘，专业分析，助你读懂星盘密码，掌握命运轨迹，开启专属占星之旅。" "星座", "horoscope", "占星", "zodiak", "AI占星", "natal chart", "本命盘", "tarot", "塔罗", "运势", "星盘"],
   authors: [{ name: "星缘" }],
   creator: "星缘团队",
   publisher: "星缘",
@@ -26,7 +25,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "星缘 - 专业星座分析平台",
-    description: "探索星座的命运奥秘，星缘提供基于真实天文计算与先进AI技术的免费在线占星服务。支持本命盘、推运盘、合盘比对、AI智能解读、塔罗占卜、每日/每月运势解读。",
+  description: "探索星座的命运奥秘，星缘提供基于真实天文计算与先进AI技术的免费在线占星服务。全面支持本命盘、推运盘、合盘比对、AI智能解读、塔罗占卜、每日/每月/每年运势解读。输入出生信息，即刻生成专业星盘报告。",
     type: "website",
     locale: "zh_CN",
     siteName: "星缘",
@@ -40,7 +39,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "星缘 - 专业星座分析平台",
-    description: "探索星座的命运奥秘，星缘提供基于真实天文计算与先进AI技术的免费在线占星服务。支持本命盘、推运盘、合盘比对、AI智能解读、塔罗占卜、每日/每月运势解读。",
+  description: "探索星座的命运奥秘，星缘提供基于真实天文计算与先进AI技术的免费在线占星服务。全面支持本命盘、推运盘、合盘比对、AI智能解读、塔罗占卜、每日/每月/每年运势解读。输入出生信息，即刻生成专业星盘报告。",
     images: ["/og-image.png"],
   },
   robots: {
