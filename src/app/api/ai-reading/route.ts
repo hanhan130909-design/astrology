@@ -3,7 +3,8 @@
  * POST /api/ai-reading
  * 
  * Features:
- * - GPT-4o-mini (best cost/quality ratio)
+ * - Groq (FREE, ultra-fast LLaMA 3.1 70B)
+ * - Fallback: OpenAI GPT-4o-mini
  * - 8-language support
  * - Professional astrologer prompts
  * - Rich Markdown output
@@ -286,24 +287,34 @@ export async function POST(request: NextRequest) {
     // Fallback Mode (No API Key)
     // ═════════════════════════════════════════════════════════════════════════
     
-    if (!process.env.OPENAI_API_KEY) {
+    // Check for Groq or OpenAI API key
+    const hasGroqKey = !!process.env.GROQ_API_KEY;
+    const hasOpenAIKey = !!process.env.OPENAI_API_KEY;
+    
+    if (!hasGroqKey && !hasOpenAIKey) {
       const fallbackReading = generateFallbackReading(type, lang, planetPositions, birthData, config);
       return NextResponse.json({
         success: true,
         reading: fallbackReading,
         content: fallbackReading,
         fallback: true,
-        message: 'AI解读需要配置OpenAI API密钥以获得完整体验'
+        message: 'AI解读需要配置 GROQ_API_KEY 或 OPENAI_API_KEY 以获得完整体验'
       }, { status: 200 });
     }
 
     // ═════════════════════════════════════════════════════════════════════════
-    // GPT Mode
+    // AI Mode (Groq preferred, OpenAI fallback)
     // ═════════════════════════════════════════════════════════════════════════
 
+    // Prefer Groq (free, fast), fallback to OpenAI
+    const useGroq = hasGroqKey;
+    const apiKey = useGroq ? process.env.GROQ_API_KEY : process.env.OPENAI_API_KEY;
+    const baseURL = useGroq ? 'https://api.groq.com/openai/v1' : (process.env.OPENAI_API_BASE_URL || 'https://api.openai.com/v1');
+    const model = useGroq ? 'llama-3.3-70b-versatile' : 'gpt-4o-mini';
+
     const openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY,
-      baseURL: process.env.OPENAI_API_BASE_URL,
+      apiKey,
+      baseURL,
     });
 
     const systemPrompt = getSystemPrompt(lang);
@@ -322,7 +333,7 @@ export async function POST(request: NextRequest) {
     }
 
     const completion = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
+      model,
       messages: [
         { role: 'system', content: systemPrompt },
         { role: 'user', content: userPrompt }
@@ -338,7 +349,8 @@ export async function POST(request: NextRequest) {
       reading: content,
       content,
       usage: completion.usage,
-      model: 'gpt-4o-mini'
+      model,
+      provider: useGroq ? 'groq' : 'openai'
     });
 
   } catch (error: any) {
