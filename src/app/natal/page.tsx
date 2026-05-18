@@ -499,7 +499,7 @@ function NatalChartSVG({ planets, houses, aspects, ascendant, midheaven, size = 
       {/* Center circle */}
       <circle cx={cx} cy={cy} r={rCenter} fill="#08061a" stroke="rgba(124,58,237,0.35)" strokeWidth="1.2" filter="url(#innerShadow)"/>
       <text x={cx} y={cy - 4} textAnchor="middle" fontSize="20" fill="#FBBF24" filter="url(#gl)">&#10022;</text>
-      <text x={cx} y={cy + 11} textAnchor="middle" fontSize="7" fill="#6366A8" letterSpacing="2">\u661F\u7F18</text>
+      <text x={cx} y={cy + 11} textAnchor="middle" fontSize="7" fill="#6366A8" letterSpacing="2">星缘</text>
     </svg>
   );
 }
@@ -619,7 +619,7 @@ export default function NatalPage() {
       <nav className="sticky top-0 z-50 backdrop-blur-xl bg-[#030014]/90 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/chart" className="flex items-center gap-2 text-purple-300 hover:text-white"><ArrowLeft size={20} /><span className="text-sm">{tx('back', lang)}</span></Link>
-          <h1 className="text-lg font-bold text-white">\u661F\u7F18</h1>
+          <h1 className="text-lg font-bold text-white">星缘</h1>
           <div className="flex gap-1 bg-white/5 rounded-xl p-1">
             {(['zh', 'en', 'id'] as const).map(l => (<button key={l} onClick={() => setLang(l)} className={`px-3 py-1 rounded-lg text-xs font-medium ${lang === l ? 'bg-purple-600 text-white' : 'text-slate-400 hover:text-white'}`}>{l === 'zh' ? '\u4E2D\u6587' : l === 'en' ? 'EN' : 'ID'}</button>))}
           </div>

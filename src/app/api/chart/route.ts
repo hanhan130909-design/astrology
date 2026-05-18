@@ -170,9 +170,8 @@ function calcAllPlanets(time: Astronomy.AstroTime) {
 // ════════════════════════════════════════════════════════════════════════════
 
 function calcLST(time: Astronomy.AstroTime, lng: number): number {
-  // astronomy-engine 的 SiderealTime 返回格林威治恒星时（小时）
+  // astronomy-engine 的 SiderealTime 返回格林威治恒星时（小时），需乘15转度数
   const gstHours = Astronomy.SiderealTime(time);
-  // 转为度数（1小时 = 15度）
   const GST = normalize(gstHours * 15);
   // 本地恒星时 = GST + 经度
   return normalize(GST + lng);
@@ -184,12 +183,12 @@ function calcAscendant(lat: number, LSTdeg: number): number {
   const lstRad = LSTdeg * Math.PI / 180;
   const oblRad = obliquity * Math.PI / 180;
   
-  // 正确公式：tan(ASC) = cos(LST) / (cos(obl)*sin(LST) - sin(obl)*tan(lat))
-  const num = Math.cos(lstRad);
-  const den = Math.cos(oblRad) * Math.sin(lstRad) - Math.sin(oblRad) * Math.tan(latRad);
+  // 正确公式 (Meeus 12.4): tan(ASC) = -cos(LST) / (sin(ε)*tan(φ) + cos(ε)*sin(LST))
+  const num = -Math.cos(lstRad);
+  const den = Math.sin(oblRad) * Math.tan(latRad) + Math.cos(oblRad) * Math.sin(lstRad);
   let ascRad = Math.atan2(num, den);
   
-  return normalize(ascRad * 180 / Math.PI);
+  return normalize(ascRad * 180 / Math.PI + 180);
 }
 
 function calcMC(LSTdeg: number): number {
