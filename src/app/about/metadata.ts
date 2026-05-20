@@ -2,21 +2,21 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: "关于星缘 - 星缘 | 免费AI占星 | About",
-    template: "%s | 关于星缘",
+    default: "About Starry Fate - Starry Fate | Free AI Astrology",
+    template: "%s | Starry Fate",
   },
-  description: "星缘是一款基于真实天文计算与先进AI技术的专业占星平台。我们致力于为用户提供精准、深入的占星解读，帮助每个人更好地了解自己、规划人生。核心功能包括本命盘分析、AI智能解读、星座配对等。",
-  keywords: [关于星缘, 星缘占星, AI占星, 占星平台, 关于我们],
+  description: "Starry Fate is a professional astrology platform powered by real astronomical calculations and advanced AI technology. We are dedicated to providing users with precise, in-depth astrological insights to help everyone better understand themselves and plan their lives.",
+  keywords: ["about Starry Fate", "Starry Fate astrology", "AI astrology", "astrology platform", "about us"],
   openGraph: {
-    title: "关于星缘 - 星缘 | 免费AI占星",
-    description: "星缘是一款基于真实天文计算与先进AI技术的专业占星平台。我们致力于为用户提供精准、深入的占星解读，帮助每个人更好地了解自己、规划人生。核心功能包括本命盘分析、AI智能解读、星座配对等。",
+    title: "About Starry Fate - Starry Fate | Free AI Astrology",
+    description: "Starry Fate is a professional astrology platform powered by real astronomical calculations and advanced AI technology. We are dedicated to providing users with precise, in-depth astrological insights to help everyone better understand themselves and plan their lives.",
     type: "website",
-    locale: "zh_CN",
-    siteName: "星缘关于星缘",
+    locale: "en_US",
+    siteName: "Starry Fate",
   },
   twitter: {
     card: "summary_large_image",
-    title: "关于星缘 - 星缘 | 免费AI占星",
-    description: "星缘是一款基于真实天文计算与先进AI技术的专业占星平台。我们致力于为用户提供精准、深入的占星解读，帮助每个人更好地了解自己、规划人生。核心功能包括本命盘分析、AI智能解读、星座配对等。",
+    title: "About Starry Fate - Starry Fate | Free AI Astrology",
+    description: "Starry Fate is a professional astrology platform powered by real astronomical calculations and advanced AI technology. We are dedicated to providing users with precise, in-depth astrological insights to help everyone better understand themselves and plan their lives.",
   },
 };

@@ -2,21 +2,21 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: "星盘查询 - 星缘 | 免费AI占星 | Chart",
-    template: "%s | 星缘星盘",
+    default: "Free Astrology Chart Calculator - Starry Fate | Free AI Astrology",
+    template: "%s | Starry Fate Chart",
   },
-  description: "免费在线星盘查询，支持本命盘、推运盘、合盘、日返盘等多种盘类型。基于真实天文计算，精准显示行星落位、星座分布与宫位信息，AI智能解读，助你读懂自己的星盘密码。",
-  keywords: [星盘查询, 在线排盘, 本命盘, 推运盘, 免费排盘, AI星盘],
+  description: "Free online astrology chart calculator supporting natal chart, transit chart, composite chart, solar return and more. Based on real astronomical calculations, accurately showing planetary positions, zodiac sign distribution and house placements.",
+  keywords: ["astrology chart", "chart calculator", "natal chart", "transit chart", "free chart", "AI chart"],
   openGraph: {
-    title: "星盘查询 - 星缘 | 免费AI占星",
-    description: "免费在线星盘查询，支持本命盘、推运盘、合盘、日返盘等多种盘类型。基于真实天文计算，精准显示行星落位、星座分布与宫位信息，AI智能解读，助你读懂自己的星盘密码。",
+    title: "Free Astrology Chart Calculator - Starry Fate | Free AI Astrology",
+    description: "Free online astrology chart calculator supporting natal chart, transit chart, composite chart, solar return and more. Based on real astronomical calculations, accurately showing planetary positions, zodiac sign distribution and house placements.",
     type: "website",
-    locale: "zh_CN",
-    siteName: "星缘星缘星盘",
+    locale: "en_US",
+    siteName: "Starry Fate Chart",
   },
   twitter: {
     card: "summary_large_image",
-    title: "星盘查询 - 星缘 | 免费AI占星",
-    description: "免费在线星盘查询，支持本命盘、推运盘、合盘、日返盘等多种盘类型。基于真实天文计算，精准显示行星落位、星座分布与宫位信息，AI智能解读，助你读懂自己的星盘密码。",
+    title: "Free Astrology Chart Calculator - Starry Fate | Free AI Astrology",
+    description: "Free online astrology chart calculator supporting natal chart, transit chart, composite chart, solar return and more. Based on real astronomical calculations, accurately showing planetary positions, zodiac sign distribution and house placements.",
   },
 };

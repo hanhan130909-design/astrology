@@ -2,21 +2,21 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: "推运盘分析 - 星缘 | 免费占星推运 | Transit Chart",
-    template: "%s | 星缘推运盘",
+    default: "Free Transit Chart Analysis - Starry Fate | Free AI Astrology",
+    template: "%s | Starry Fate Transit",
   },
-  description: "免费生成专业推运盘分析，解读当前行星运行对你本命盘的影响。支持选择未来任意日期，查看行运相位、运势走向。AI智能解读，助你把握时机，顺势而为，规划美好未来。",
-  keywords: ["推运盘", "transit chart", "行运分析", "占星推运", "行星运行", "运势预测", "免费推运", "AI占星解读"],
+  description: "Generate a free professional transit chart tracking planetary transits affecting your natal chart. Enter a transit date to get planetary positions and aspects to your birth chart. AI-powered analysis reveals fortune turning points and development opportunities.",
+  keywords: ["transit chart", "planetary transit", "transit analysis", "fortune turning point", "free astrology", "AI transit", "horoscope transit"],
   openGraph: {
-    title: "推运盘分析 - 星缘 | 免费占星推运",
-    description: "免费生成专业推运盘分析，解读当前行星运行对你本命盘的影响。支持选择未来任意日期，查看行运相位、运势走向。",
+    title: "Free Transit Chart Analysis - Starry Fate | Free AI Astrology",
+    description: "Generate a free professional transit chart tracking planetary transits affecting your natal chart. Enter a transit date to get planetary positions and aspects to your birth chart. AI-powered analysis reveals fortune turning points and development opportunities.",
     type: "website",
-    locale: "zh_CN",
-    siteName: "星缘推运盘",
+    locale: "en_US",
+    siteName: "Starry Fate Transit",
   },
   twitter: {
     card: "summary_large_image",
-    title: "推运盘分析 - 星缘 | 免费占星推运",
-    description: "免费生成专业推运盘分析，解读当前行星运行对你本命盘的影响。",
+    title: "Free Transit Chart Analysis - Starry Fate | Free AI Astrology",
+    description: "Generate a free professional transit chart tracking planetary transits affecting your natal chart. Enter a transit date to get planetary positions and aspects to your birth chart. AI-powered analysis reveals fortune turning points and development opportunities.",
   },
 };

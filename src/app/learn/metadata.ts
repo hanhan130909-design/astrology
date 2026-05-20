@@ -2,21 +2,21 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: "占星学习 - 星缘 | 免费AI占星 | Learn",
-    template: "%s | 星缘占星学习",
+    default: "Learn Astrology - Starry Fate - Starry Fate | Free AI Astrology",
+    template: "%s | Starry Fate Astrology",
   },
-  description: "免费学习占星知识，从入门到进阶。星缘提供系统的占星教程，涵盖星座基础知识、行星含义、宫位解读、相位分析等，帮助你从零开始成为占星达人。",
-  keywords: [占星学习, 占星教程, 星座知识, 入门占星, 免费学习, 占星课程],
+  description: "Learn astrology for free from beginner to advanced. Starry Fate provides systematic astrology tutorials covering zodiac basics, planetary meanings, house interpretation, aspect analysis and more.",
+  keywords: ["learn astrology", "astrology tutorial", "zodiac knowledge", "beginner astrology", "free learning", "astrology course"],
   openGraph: {
-    title: "占星学习 - 星缘 | 免费AI占星",
-    description: "免费学习占星知识，从入门到进阶。星缘提供系统的占星教程，涵盖星座基础知识、行星含义、宫位解读、相位分析等，帮助你从零开始成为占星达人。",
+    title: "Learn Astrology - Starry Fate - Starry Fate | Free AI Astrology",
+    description: "Learn astrology for free from beginner to advanced. Starry Fate provides systematic astrology tutorials covering zodiac basics, planetary meanings, house interpretation, aspect analysis and more.",
     type: "website",
-    locale: "zh_CN",
-    siteName: "星缘星缘占星学习",
+    locale: "en_US",
+    siteName: "Starry Fate Astrology",
   },
   twitter: {
     card: "summary_large_image",
-    title: "占星学习 - 星缘 | 免费AI占星",
-    description: "免费学习占星知识，从入门到进阶。星缘提供系统的占星教程，涵盖星座基础知识、行星含义、宫位解读、相位分析等，帮助你从零开始成为占星达人。",
+    title: "Learn Astrology - Starry Fate - Starry Fate | Free AI Astrology",
+    description: "Learn astrology for free from beginner to advanced. Starry Fate provides systematic astrology tutorials covering zodiac basics, planetary meanings, house interpretation, aspect analysis and more.",
   },
 };

@@ -2,21 +2,21 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: "每日/每月运势 - 星缘 | 免费星座运势解读 | Horoscope",
-    template: "%s | 星缘运势",
+    default: "Daily/Monthly Horoscope 2026 - Starry Fate | Free AI Astrology",
+    template: "%s | Starry Fate Horoscope",
   },
-  description: "免费查看每日、每月、每年星座运势。涵盖爱情、事业、财运、健康全方位解读。AI智能分析，基于真实天文计算，助你把握运势走向，做出更好决策。支持12星座，中英文双语。",
-  keywords: ["星座运势", "horoscope", "每日运势", "每月运势", "每年运势", "星座预测", "免费运势", "AI运势解读"],
+  description: "View your free daily, monthly, and yearly horoscope for all 12 zodiac signs. Covers love, career, finance, health and more. AI-powered analysis based on real astronomical calculations, helping you grasp fortune trends and make better decisions.",
+  keywords: ["horoscope", "daily horoscope", "monthly horoscope", "yearly horoscope", "zodiac forecast", "free horoscope", "AI horoscope", "2026 horoscope"],
   openGraph: {
-    title: "每日/每月运势 - 星缘 | 免费星座运势",
-    description: "免费查看每日、每月、每年星座运势。涵盖爱情、事业、财运、健康全方位解读。AI智能分析，基于真实天文计算，助你把握运势走向，做出更好决策。支持12星座，中英文双语。",
+    title: "Daily/Monthly Horoscope 2026 - Starry Fate | Free AI Astrology",
+    description: "View your free daily, monthly, and yearly horoscope for all 12 zodiac signs. Covers love, career, finance, health and more. AI-powered analysis based on real astronomical calculations, helping you grasp fortune trends and make better decisions.",
     type: "website",
-    locale: "zh_CN",
-    siteName: "星缘运势",
+    locale: "en_US",
+    siteName: "Starry Fate Horoscope",
   },
   twitter: {
     card: "summary_large_image",
-    title: "每日/每月运势 - 星缘 | 免费星座运势",
-    description: "免费查看每日、每月、每年星座运势。涵盖爱情、事业、财运、健康全方位解读。AI智能分析，基于真实天文计算，助你把握运势走向。",
+    title: "Daily/Monthly Horoscope 2026 - Starry Fate | Free AI Astrology",
+    description: "View your free daily, monthly, and yearly horoscope for all 12 zodiac signs. Covers love, career, finance, health and more. AI-powered analysis based on real astronomical calculations, helping you grasp fortune trends and make better decisions.",
   },
 };

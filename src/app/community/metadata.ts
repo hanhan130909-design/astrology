@@ -2,21 +2,21 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: "星座社区 - 星缘 | 免费AI占星 | Community",
-    template: "%s | 星缘星座社区",
+    default: "Zodiac Community - Starry Fate - Starry Fate | Free AI Astrology",
+    template: "%s | Starry Fate Community",
   },
-  description: "免费加入星缘星座社区，与占星爱好者交流分享。讨论每日运势、星座配对、占星技巧，分享你的占星体验，探索星座的奥秘与乐趣。",
-  keywords: [星座社区, 占星社区, 星座论坛, 占星交流, 免费社区],
+  description: "Join the free Starry Fate Zodiac Community and connect with astrology enthusiasts worldwide. Discuss daily horoscopes, zodiac compatibility and astrology techniques, share your astrological experiences, and explore the mysteries and fun of the zodiac.",
+  keywords: ["zodiac community", "astrology forum", "astrology discussion", "astrology exchange", "free community", "astrology enthusiasts"],
   openGraph: {
-    title: "星座社区 - 星缘 | 免费AI占星",
-    description: "免费加入星缘星座社区，与占星爱好者交流分享。讨论每日运势、星座配对、占星技巧，分享你的占星体验，探索星座的奥秘与乐趣。",
+    title: "Zodiac Community - Starry Fate - Starry Fate | Free AI Astrology",
+    description: "Join the free Starry Fate Zodiac Community and connect with astrology enthusiasts worldwide. Discuss daily horoscopes, zodiac compatibility and astrology techniques, share your astrological experiences, and explore the mysteries and fun of the zodiac.",
     type: "website",
-    locale: "zh_CN",
-    siteName: "星缘星缘星座社区",
+    locale: "en_US",
+    siteName: "Starry Fate Community",
   },
   twitter: {
     card: "summary_large_image",
-    title: "星座社区 - 星缘 | 免费AI占星",
-    description: "免费加入星缘星座社区，与占星爱好者交流分享。讨论每日运势、星座配对、占星技巧，分享你的占星体验，探索星座的奥秘与乐趣。",
+    title: "Zodiac Community - Starry Fate - Starry Fate | Free AI Astrology",
+    description: "Join the free Starry Fate Zodiac Community and connect with astrology enthusiasts worldwide. Discuss daily horoscopes, zodiac compatibility and astrology techniques, share your astrological experiences, and explore the mysteries and fun of the zodiac.",
   },
 };
