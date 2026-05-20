@@ -727,7 +727,7 @@ export default function NatalPage() {
 
   // 推运日期年份：从当前年到未来50年（支持长期推运）
   const currentYear = new Date().getFullYear();
-  const years = Array.from({ length: 80 }, (_, i) => currentYear + i);
+  const years = Array.from({ length: currentYear - 1920 + 1 }, (_, i) => 1920 + i);  // 1920 to current year
   const months = Array.from({ length: 12 }, (_, i) => i + 1);
   const days = Array.from({ length: 31 }, (_, i) => i + 1);
   const hours = Array.from({ length: 24 }, (_, i) => i);
@@ -738,7 +738,7 @@ export default function NatalPage() {
   const monthOptions = months.map(m => ({ id: String(m), name: String(m) }));
   const dayOptions = days.map(d => ({ id: String(d), name: String(d) }));
   const hourOptions = hours.map(h => ({ id: String(h), name: String(h).padStart(2, '0') }));
-  const minOptions = minutes.filter(m => m % 5 === 0).map(m => ({ id: String(m), name: String(m).padStart(2, '0') }));
+  const minOptions = minutes.map(m => ({ id: String(m), name: String(m).padStart(2, '0') }));  // All 0-59
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#030014] via-[#0f0f23] to-[#030014] text-white">
