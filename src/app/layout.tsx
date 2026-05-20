@@ -15,10 +15,6 @@ export const metadata: Metadata = {
   authors: [{ name: "星缘" }],
   creator: "星缘团队",
   publisher: "星缘",
-  icons: {
-    icon: "/icon-192.png",
-    apple: "/apple-touch-icon.png",
-  },
   metadataBase: new URL("https://lunaxstar.com"),
   alternates: {
     canonical: "/",

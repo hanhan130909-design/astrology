@@ -34,6 +34,17 @@ const T = {
     shareComplete: '分享完成！已解锁', friend: '好友',
     corePersonality: '核心性格', emotionalWorld: '情感世界',
     loveDestiny: '爱情缘分', actionEnergy: '行动能量',
+    descP1: '本命盘（出生星盘）是根据你出生时的精确时间、地点绘制的天文星图。它记录了太阳、月亮及各行星在黄道十二宫中的位置，是你独一无二的宇宙身份证。',
+    descP2: '通过本命盘分析，你可以深入了解自己的核心性格、情感模式、人际关系和人生使命。每一颗行星的位置和相位都揭示着你生命中的不同面向。',
+    descP3: '无论你是占星初学者还是资深爱好者，本命盘都是探索自我最基础也最重要的工具。立即生成你的免费本命盘，开启宇宙之旅。',
+    faq1Q: '什么是本命盘？', faq1A: '本命盘是根据你出生的精确时间、日期和地点绘制的天文星图，展示了那一刻天空中所有行星和宫位的位置。它就像你生命的宇宙地图，揭示你的性格特质和人生方向。',
+    faq2Q: '本命盘准确吗？', faq2A: '本命盘基于真实天文数据计算，使用瑞士星历表等专业数据源。出生时间越精确，分析结果越准确，尤其是上升点和宫位划分对时间非常敏感。',
+    faq3Q: '上升星座和太阳星座有什么区别？', faq3A: '太阳星座是你出生时太阳所在的星座，代表核心自我；上升星座是出生时东方地平线升起的星座，代表你给外界的第一印象和外在表现方式。两者共同塑造你的完整人格。',
+    faq4Q: '如何看本命盘中的相位？', faq4A: '相位是行星之间的角度关系，主要包括合相、六分、四分、三分和对分。和谐相位（三分、六分）带来天赋和顺畅能量，紧张相位（四分、对分）带来挑战和成长动力。',
+    faq5Q: '宫位在本命盘中代表什么？', faq5A: '本命盘的十二宫位代表生活的不同领域：第一宫代表自我形象，第七宫代表伴侣关系，第十宫代表事业。行星落入不同宫位，会影响该领域的生活体验。',
+    faq6Q: '出生时间不准确怎么办？', faq6A: '如果不确定出生时间，可以使用中午12点作为默认时间。但上升点和宫位可能不准确，建议尽量获取准确的出生时间以获得更完整的分析。',
+    faq7Q: '本命盘可以预测未来吗？', faq7A: '本命盘本身不直接预测未来，它揭示你的天赋、挑战和生命模式。结合推运盘（行运行星与本命盘的互动），可以了解当前的能量趋势和潜在机遇。',
+    faqTitle: '常见问题',
   },
   en: {
     back: 'Back to Home', title: 'Natal Chart',
@@ -63,6 +74,17 @@ const T = {
     shareComplete: 'Sharing complete! Unlocked', friend: 'Friend',
     corePersonality: 'Core Personality', emotionalWorld: 'Emotional World',
     loveDestiny: 'Love Destiny', actionEnergy: 'Action Energy',
+    descP1: 'A natal chart (birth chart) is an astronomical map created from the exact time and place of your birth. It records the positions of the Sun, Moon, and all planets across the zodiac — your unique cosmic fingerprint.',
+    descP2: 'Through natal chart analysis, you can gain deep insights into your core personality, emotional patterns, relationships, and life purpose. Each planet\'s position and aspect reveals a different dimension of your life.',
+    descP3: 'Whether you\'re a beginner or experienced astrology enthusiast, the natal chart is the most fundamental and important tool for self-discovery. Generate your free natal chart now and begin your cosmic journey.',
+    faq1Q: 'What is a natal chart?', faq1A: 'A natal chart is an astronomical map calculated from your exact birth time, date, and location, showing the positions of all planets and houses at that moment. It serves as your cosmic blueprint, revealing personality traits and life directions.',
+    faq2Q: 'How accurate is a natal chart?', faq2A: 'Natal charts are calculated using real astronomical data, including the Swiss Ephemeris. The more precise your birth time, the more accurate the analysis — especially for the Ascendant and house divisions which are very time-sensitive.',
+    faq3Q: 'What is the difference between Rising sign and Sun sign?', faq3A: 'Your Sun sign is where the Sun was at birth, representing your core self. Your Rising sign (Ascendant) is the zodiac sign rising on the eastern horizon at birth, representing your outward persona and first impressions. Both shape your complete personality.',
+    faq4Q: 'How do I read aspects in a natal chart?', faq4A: 'Aspects are angular relationships between planets, mainly including conjunction, sextile, square, trine, and opposition. Harmonious aspects (trine, sextile) bring talents and flowing energy, while challenging aspects (square, opposition) bring growth through tension.',
+    faq5Q: 'What do houses represent in a natal chart?', faq5A: 'The twelve houses represent different life areas: the 1st house is self-image, the 7th is partnerships, the 10th is career. Planets in different houses influence how you experience those life domains.',
+    faq6Q: 'What if I don\'t know my exact birth time?', faq6A: 'If unsure, use noon as default. However, the Ascendant and house placements may be inaccurate. For the most complete analysis, try to obtain your accurate birth time from birth records.',
+    faq7Q: 'Can a natal chart predict the future?', faq7A: 'A natal chart itself doesn\'t predict the future directly — it reveals your innate gifts, challenges, and life patterns. Combined with transit charts (current planetary positions interacting with your natal chart), you can understand current energy trends and potential opportunities.',
+    faqTitle: 'Frequently Asked Questions',
   },
   id: {
     back: 'Kembali', title: 'Bagan Lahir',
@@ -92,6 +114,17 @@ const T = {
     shareComplete: 'Berbagi selesai! Terbuka', friend: 'Teman',
     corePersonality: 'Kepribadian Inti', emotionalWorld: 'Dunia Emosi',
     loveDestiny: 'Takdir Cinta', actionEnergy: 'Energi Aksi',
+    descP1: 'Bagan lahir (natal chart) adalah peta astronomi yang dibuat dari waktu dan tempat kelahiran Anda yang tepat. Ini mencatat posisi Matahari, Bulan, dan semua planet di zodiak — sidik jari kosmik unik Anda.',
+    descP2: 'Melalui analisis bagan lahir, Anda dapat memperoleh wawasan mendalam tentang kepribadian inti, pola emosional, hubungan, dan tujuan hidup. Setiap posisi dan aspek planet mengungkap dimensi kehidupan Anda.',
+    descP3: 'Baik Anda pemula atau penggemar astrologi berpengalaman, bagan lahir adalah alat paling fundamental untuk penemuan diri. Buat bagan lahir gratis Anda sekarang dan mulai perjalanan kosmik Anda.',
+    faq1Q: 'Apa itu bagan lahir?', faq1A: 'Bagan lahir adalah peta astronomi yang dihitung dari waktu, tanggal, dan tempat kelahiran Anda yang tepat, menunjukkan posisi semua planet dan rumah pada saat itu. Ini menjadi cetak biru kosmik Anda, mengungkap sifat kepribadian dan arah hidup.',
+    faq2Q: 'Seberapa akurat bagan lahir?', faq2A: 'Bagan lahir dihitung menggunakan data astronomi nyata, termasuk Swiss Ephemeris. Semakin tepat waktu kelahiran Anda, semakin akurat analisisnya — terutama untuk Ascenden dan pembagian rumah yang sangat sensitif terhadap waktu.',
+    faq3Q: 'Apa perbedaan tanda naik dan tanda matahari?', faq3A: 'Tanda matahari adalah posisi Matahari saat lahir, mewakili diri inti Anda. Tanda naik (Ascenden) adalah zodiak yang terbit di cakrawala timur saat lahir, mewakili penampilan luar dan kesan pertama. Keduanya membentuk kepribadian lengkap Anda.',
+    faq4Q: 'Bagaimana cara membaca aspek dalam bagan lahir?', faq4A: 'Aspek adalah hubungan sudut antar planet, terutama konjungsi, sextil, kotak, trine, dan oposisi. Aspek harmonis (trine, sextil) membawa bakat dan energi mengalir, sedangkan aspek menantang (kotak, oposisi) membawa pertumbuhan melalui ketegangan.',
+    faq5Q: 'Apa yang diwakili rumah dalam bagan lahir?', faq5A: 'Dua belas rumah mewakili area kehidupan berbeda: rumah 1 adalah citra diri, rumah 7 adalah kemitraan, rumah 10 adalah karir. Planet di rumah berbeda mempengaruhi bagaimana Anda mengalami domain kehidupan tersebut.',
+    faq6Q: 'Bagaimana jika saya tidak tahu waktu kelahiran yang tepat?', faq6A: 'Jika tidak yakin, gunakan siang hari sebagai default. Namun, Ascenden dan penempatan rumah mungkin tidak akurat. Untuk analisis terlengkap, cobalah mendapatkan waktu kelahiran akurat dari catatan kelahiran.',
+    faq7Q: 'Apakah bagan lahir bisa memprediksi masa depan?', faq7A: 'Bagan lahir sendiri tidak memprediksi masa depan secara langsung — ini mengungkap bakat bawaan, tantangan, dan pola hidup Anda. Dikombinasikan dengan bagan transit, Anda dapat memahami tren energi saat ini dan peluang potensial.',
+    faqTitle: 'Pertanyaan yang Sering Diajukan',
   },
 };
 
@@ -106,7 +139,7 @@ const PLANET_SYMBOLS: Record<string, string> = {
   Uranus: '\u2645', Neptune: '\u2646', Pluto: '\u2647', North_Node: '\u260A', South_Node: '\u260B',
   Chiron: '\u2A51', Lilith: '\u2601', PartOfFortune: '\u2295', Vertex: 'Vx',
 };
-// Fallback text for browsers that don't render Unicode astro symbols
+// Fallback text for browsers that don\'t render Unicode astro symbols
 const PLANET_TEXT: Record<string, string> = {
   Sun: 'Su', Moon: 'Mo', Mercury: 'Me', Venus: 'Ve', Mars: 'Ma', Jupiter: 'Ju', Saturn: 'Sa',
   Uranus: 'Ur', Neptune: 'Ne', Pluto: 'Pl', North_Node: 'NN', South_Node: 'SN',
@@ -188,7 +221,7 @@ const AI_READINGS = {
       Scorpio: { summary: "Deep emotions and powerful willpower.", traits: ["Strong-willed", "Perceptive", "Mysterious charm"], advice: "Learn to trust, let go of control." },
       Sagittarius: { summary: "Loves freedom and exploration, optimistic.", traits: ["Optimistic", "Curious", "Generous"], advice: "Cultivate patience, keep commitments." },
       Capricorn: { summary: "Ambitious with a strong sense of responsibility.", traits: ["Ambitious", "Responsible", "Self-disciplined"], advice: "Learn to relax, enjoy the present." },
-      Aquarius: { summary: "Independent and innovative, cares about humanity.", traits: ["Independent", "Humanitarian", "Forward-thinking"], advice: "Maintain emotional connections, don't over-rationalize." },
+      Aquarius: { summary: "Independent and innovative, cares about humanity.", traits: ["Independent", "Humanitarian", "Forward-thinking"], advice: "Maintain emotional connections, don\'t over-rationalize." },
       Pisces: { summary: "Sensitive and compassionate, artistically gifted.", traits: ["Sensitive", "Artistic talent", "Empathetic"], advice: "Set healthy boundaries, express creativity." },
     },
     id: {
@@ -642,7 +675,15 @@ export default function NatalPage() {
           {[{ id: 'natal', icon: Star, label: 'natal' }, { id: 'transit', icon: TrendingUp, label: 'transit' }, { id: 'solar', icon: Sun, label: 'solar' }, { id: 'lunar', icon: Moon, label: 'lunar' }, { id: 'progression', icon: Calendar, label: 'progression' }, { id: 'composite', icon: Heart, label: 'composite' }].map(t => { const Ic = t.icon; return (<button key={t.id} onClick={() => { setChartType(t.id); setChart(null); }} className={`p-3 rounded-xl border transition-all ${chartType === t.id ? 'bg-purple-600/20 border-purple-500 text-purple-300' : 'bg-white/5 border-white/10 text-slate-400 hover:text-white'}`}><Ic size={18} className="mx-auto mb-1" /><div className="text-xs">{tx(t.label, lang)}</div></button>); })}
         </div>
 
-        {saved.length > 0 && (<div className="mb-6 p-4 rounded-xl bg-white/5 border border-white/10"><h3 className="text-sm text-slate-400 mb-2">{tx('savedCharts', lang)}</h3><div className="flex gap-2 overflow-x-auto pb-2">{saved.map((c, i) => (<button key={i} onClick={() => loadChart(c)} className="flex-shrink-0 px-3 py-2 rounded-lg bg-white/5 text-sm text-slate-300 hover:bg-white/10">{c.name}</button>))}</div></div>)}
+{!chart && (
+          <div className="mb-6 p-5 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+            <p className="text-slate-300 text-sm leading-relaxed">{tx('descP1', lang)}</p>
+            <p className="text-slate-300 text-sm leading-relaxed">{tx('descP2', lang)}</p>
+            <p className="text-slate-400 text-sm leading-relaxed">{tx('descP3', lang)}</p>
+          </div>
+        )}
+
+                {saved.length > 0 && (<div className="mb-6 p-4 rounded-xl bg-white/5 border border-white/10"><h3 className="text-sm text-slate-400 mb-2">{tx('savedCharts', lang)}</h3><div className="flex gap-2 overflow-x-auto pb-2">{saved.map((c, i) => (<button key={i} onClick={() => loadChart(c)} className="flex-shrink-0 px-3 py-2 rounded-lg bg-white/5 text-sm text-slate-300 hover:bg-white/10">{c.name}</button>))}</div></div>)}
 
         <div className="grid lg:grid-cols-2 gap-6" style={{ minHeight: "fit-content" }}>
           <div className="p-4 sm:p-6 rounded-2xl bg-white/5 border border-white/10 overflow-visible">
@@ -704,6 +745,22 @@ export default function NatalPage() {
             <div className="rounded-2xl overflow-hidden border border-white/10"><div className="p-5 bg-gradient-to-r from-purple-900/40 to-indigo-900/40 flex items-center justify-between"><h3 className="font-bold flex items-center gap-2">{isUnlocked ? <Sparkles size={18} className="text-purple-400" /> : <Lock size={18} className="text-slate-400" />}{tx('deepReading', lang)}</h3>{isUnlocked && <span className="text-xs text-green-400 flex items-center gap-1"><CheckCircle size={14} />{tx('shareComplete', lang)}</span>}</div>
             {isUnlocked ? (<div className="p-5 space-y-4">{chart.planets?.Venus?.sign && (<div className="p-4 rounded-xl bg-pink-500/10 border border-pink-500/20"><h4 className="font-bold mb-2 flex items-center gap-2 text-pink-400"><span>\u2640</span>{tx('loveDestiny', lang)} \u2014 {chart.planets.Venus.sign_cn || chart.planets.Venus.sign}</h4><p className="text-slate-300 text-sm">{lang === 'zh' ? `\u91D1\u661F\u5728${chart.planets.Venus.sign_cn}\uFF0C\u4F60\u7684\u7231\u60C5\u98CE\u683C\u72EC\u7279\u800C\u8FF7\u4EBA\u3002` : lang === 'id' ? `Venus di ${chart.planets.Venus.sign}, gaya cinta Anda unik.` : `Venus in ${chart.planets.Venus.sign}, your love style is unique.`}</p></div>)}{chart.planets?.Mars?.sign && (<div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20"><h4 className="font-bold mb-2 flex items-center gap-2 text-red-400"><span>\u2642</span>{tx('actionEnergy', lang)} \u2014 {chart.planets.Mars.sign_cn || chart.planets.Mars.sign}</h4><p className="text-slate-300 text-sm">{lang === 'zh' ? `\u706B\u661F\u5728${chart.planets.Mars.sign_cn}\uFF0C\u4F60\u7684\u884C\u52A8\u529B\u548C\u9A71\u52A8\u529B\u7279\u5F81\u9C9C\u660E\u3002` : lang === 'id' ? `Mars di ${chart.planets.Mars.sign}, energi aksi Anda sangat khas.` : `Mars in ${chart.planets.Mars.sign}, your action energy is distinctive.`}</p></div>)}{chart.ascendant?.sign && (<div className="p-4 rounded-xl bg-purple-500/10 border border-purple-500/20"><h4 className="font-bold mb-2 flex items-center gap-2 text-purple-400"><span>\u2191</span>{tx('ascendant', lang)} \u2014 {chart.ascendant.sign_cn || chart.ascendant.sign} {Math.floor(chart.ascendant.degree)}&deg;</h4><p className="text-slate-300 text-sm">{lang === 'zh' ? `\u4E0A\u5347${chart.ascendant.sign_cn}\u662F\u4F60\u7ED9\u4EBA\u7684\u7B2C\u4E00\u5370\u8C61\u3002` : lang === 'id' ? `Ascenden ${chart.ascendant.sign} adalah kesan pertama Anda.` : `Ascendant ${chart.ascendant.sign} is your first impression.`}</p></div>)}<div className="p-4 rounded-xl bg-cyan-500/10 border border-cyan-500/20"><h4 className="font-bold mb-2 text-cyan-400">{tx('planetPositions', lang)}</h4><div className="flex flex-wrap gap-2">{PLANET_KEYS.filter(k => chart.planets?.[k]?.sign).map(k => (<span key={k} className="px-2 py-1 rounded-lg text-xs bg-white/5 text-slate-400">{PLANET_SYMBOLS[k]} {chart.planets[k].sign_cn || chart.planets[k].sign}</span>))}</div></div></div>) : (<div className="p-6 space-y-5"><div className="relative"><div className="space-y-3 blur-sm pointer-events-none select-none opacity-60"><div className="p-4 rounded-xl bg-white/5"><div className="h-4 bg-white/10 rounded w-3/4 mb-2" /><div className="h-3 bg-white/5 rounded w-full" /></div><div className="p-4 rounded-xl bg-white/5"><div className="h-4 bg-white/10 rounded w-2/3 mb-2" /><div className="h-3 bg-white/5 rounded w-full" /></div></div><div className="absolute inset-0 flex items-center justify-center"><div className="text-center"><Lock size={32} className="text-slate-400 mx-auto mb-2" /><p className="text-slate-300 font-medium">{tx('unlockDeep', lang)}</p></div></div></div><div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20"><div className="flex items-center gap-3 mb-3"><MessageCircle size={20} className="text-green-400" /><div><div className="font-medium text-white text-sm">{tx('shareToUnlock', lang)}</div></div></div><div className="flex gap-2 mb-3">{[1, 2, 3].map(n => (<div key={n} className={`flex-1 h-2 rounded-full transition-all ${shareCount >= n ? "bg-green-500" : "bg-white/10"}`} />))}</div><div className="text-xs text-slate-400 mb-3">{tx('shareProgress', lang)}: {shareCount}/3</div>{shareCount < 3 ? (<div className="grid grid-cols-3 gap-2">{[1, 2, 3].map(n => (<button key={n} onClick={handleShare} disabled={shareCount >= n} className={`py-2 rounded-lg text-xs font-medium flex items-center justify-center gap-1 transition-all ${shareCount >= n ? "bg-green-500/20 text-green-400 border border-green-500/30" : "bg-white/5 hover:bg-green-500/20 text-slate-300 hover:text-green-300 border border-white/10"}`}>{shareCount >= n ? <CheckCircle size={12} /> : <Share2 size={12} />}{tx('friend', lang)} {n}</button>))}</div>) : (<div className="text-center text-green-400 font-medium text-sm flex items-center justify-center gap-2"><CheckCircle size={16} />{tx('shareComplete', lang)}</div>)}</div></div>)}</div></div>)}
         </div>)}
+{!chart && (
+        <div className="mt-8 mb-12 p-6 rounded-2xl bg-white/5 border border-white/10">
+          <h2 className="text-xl font-bold mb-6 text-purple-300">{tx('faqTitle', lang)}</h2>
+          <div className="space-y-4">
+            {[1,2,3,4,5,6,7].map(n => (
+              <details key={n} className="group p-4 rounded-xl bg-white/5 border border-white/10">
+                <summary className="cursor-pointer font-medium text-white list-none flex items-center justify-between">
+                  <span>{tx(`faq${n}Q` as any, lang)}</span>
+                  <ChevronDown size={16} className="text-slate-400 group-open:rotate-180 transition-transform" />
+                </summary>
+                <p className="mt-3 text-slate-300 text-sm leading-relaxed">{tx(`faq${n}A` as any, lang)}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      )}
       </main>
     </div>
   );
