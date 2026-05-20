@@ -89,7 +89,7 @@ const T = {
     faqTitle: 'Frequently Asked Questions',
   },
   id: {
-    back: 'Kembali', title: 'Bagan Lahir', myCharts: 'Saya', myCharts: 'Saya',
+    back: 'Kembali', title: 'Bagan Lahir', myCharts: 'Saya',
     birthInfo: 'Data Lahir', person1: 'Orang 1', person2: 'Orang 2',
     year: 'Tahun', month: 'Bulan', day: 'Hari', hour: 'Jam', minute: 'Menit',
     city: 'Kota', houseSystem: 'Sistem Rumah',
