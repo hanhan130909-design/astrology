@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Save, Star, Sun, Moon, Calendar, TrendingUp, Heart, Loader2, ChevronDown, Check, X, Sparkles, Lock, Share2, CheckCircle, MessageCircle } from 'lucide-react';
+import { useAuth } from '@/contexts/AuthContext';
+import { saveChartToCloud, loadChartsFromCloud, deleteChartFromCloud, syncLocalChartsToCloud } from '@/lib/chartSync';
 
 // Complete translations
 const T = {
@@ -593,6 +595,7 @@ export default function NatalPage() {
   const [saveMsg, setSaveMsg] = useState<string | null>(null);
   const [shareCount, setShareCount] = useState(0);
   const [isUnlocked, setIsUnlocked] = useState(false);
+  const { user, isFirebaseReady } = useAuth();
 
   useEffect(() => {
     try { const s = localStorage.getItem('natal_ai_unlock'); if (s) { const j = JSON.parse(s); if (j.shareCount) setShareCount(j.shareCount); if (j.isUnlocked) setIsUnlocked(true); } } catch {}
@@ -611,7 +614,33 @@ export default function NatalPage() {
   const activeTz = typeof window !== 'undefined' ? -(new Date().getTimezoneOffset() / 60) : 8;
   const activeLat = form.lat, activeLng = form.lng;
 
-  useEffect(() => { try { const s = localStorage.getItem('natal_charts'); if (s) setSaved(JSON.parse(s)); } catch {} }, []);
+  // Load charts from Firestore if logged in, otherwise from localStorage
+  useEffect(() => {
+    if (user && isFirebaseReady) {
+      // Logged in: load from Firestore
+      loadChartsFromCloud(user.uid).then(cloudCharts => {
+        setSaved(cloudCharts);
+      }).catch(err => console.error('Failed to load from cloud:', err));
+    } else {
+      // Not logged in: load from localStorage
+      try {
+        const s = localStorage.getItem('natal_charts');
+        if (s) setSaved(JSON.parse(s));
+      } catch (e) {}
+    }
+  }, [user, isFirebaseReady]);
+
+  // Sync localStorage to cloud on login
+  useEffect(() => {
+    if (user && isFirebaseReady) {
+      syncLocalChartsToCloud(user.uid).then(() => {
+        // Reload from cloud after sync
+        return loadChartsFromCloud(user.uid);
+      }).then(cloudCharts => {
+        setSaved(cloudCharts);
+      }).catch(err => console.error('Sync failed:', err));
+    }
+  }, [user, isFirebaseReady]);
 
   const calculate = async () => {
     if (form.lat === 0 || form.lng === 0) {
@@ -635,10 +664,37 @@ export default function NatalPage() {
     } catch (e: any) { setError(e.message); } finally { setLoading(false); }
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!chart) return;
-    const ns = [{ name: form.name || `${form.year}-${form.month}-${form.day}`, birthData: form, chartData: chart, ts: Date.now() }, ...saved.slice(0, 9)];
-    setSaved(ns); localStorage.setItem('natal_charts', JSON.stringify(ns)); setSaveMsg(tx('chartSaved', lang)); setTimeout(() => setSaveMsg(null), 2000);
+    const newChart = { 
+      name: form.name || `${form.year}-${form.month}-${form.day}`, 
+      birthData: form, 
+      chartData: chart, 
+      ts: Date.now() 
+    };
+    
+    if (user && isFirebaseReady) {
+      // Logged in: save to Firestore
+      try {
+        await saveChartToCloud(newChart, user.uid);
+        const cloudCharts = await loadChartsFromCloud(user.uid);
+        setSaved(cloudCharts);
+      } catch (err) {
+        console.error('Failed to save to cloud:', err);
+        // Fallback to localStorage
+        const ns = [newChart, ...saved.slice(0, 9)];
+        setSaved(ns);
+        localStorage.setItem('natal_charts', JSON.stringify(ns));
+      }
+    } else {
+      // Not logged in: save to localStorage
+      const ns = [newChart, ...saved.slice(0, 9)];
+      setSaved(ns);
+      localStorage.setItem('natal_charts', JSON.stringify(ns));
+    }
+    
+    setSaveMsg(tx('chartSaved', lang));
+    setTimeout(() => setSaveMsg(null), 2000);
   };
 
   const loadChart = (c: any) => { setForm({ ...form, name: c.name, year: c.birthData.year, month: c.birthData.month, day: c.birthData.day, hour: c.birthData.hour, minute: c.birthData.minute }); if (c.chartData) setChart(c.chartData); };
