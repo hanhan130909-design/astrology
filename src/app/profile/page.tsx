@@ -1,295 +1,444 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
-import { 
-  ArrowLeft, User, Settings, Heart, History, FileText, 
-  Bell, Shield, ChevronRight, LogOut, Edit3, Camera,
-  Star, Calendar, Sparkles
+import {
+  ArrowLeft, LogOut, Trash2, Upload, Calendar, MapPin,
+  Loader2, User, Star, AlertCircle, ExternalLink
 } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { loadChartsFromCloud, deleteChartFromCloud, SavedChart } from "@/lib/chartSync";
 
-interface UserProfile {
-  name: string;
-  email: string;
-  avatar: string;
-  zodiac: string;
-  birthDate: string;
-  birthTime: string;
-  birthLocation: string;
-  memberSince: string;
-  readingsCount: number;
-  savedCharts: number;
-  subscription: "free" | "premium";
-}
-
-const TRANSLATIONS: Record<string, Record<string, string>> = {
+// Translations for all 8 languages
+const T: Record<string, Record<string, string>> = {
   zh: {
-    title: "个人中心",
-    editProfile: "编辑资料",
-    settings: "设置",
-    myCharts: "我的星盘",
-    savedReadings: "保存的解读",
-    favorites: "收藏",
-    notifications: "通知",
-    privacy: "隐私安全",
-    logout: "退出登录",
-    memberSince: "加入时间",
-    readings: "次解读",
-    charts: "个星盘",
-    freePlan: "免费版",
-    premiumPlan: "高级版",
-    upgrade: "升级",
-    account: "账户",
-    preferences: "偏好设置",
-    language: "语言",
-    theme: "主题",
-    data: "数据管理",
-    export: "导出数据",
-    delete: "删除账户",
+    back: "返回首页", title: "个人中心",
+    welcome: "欢迎", myCharts: "我的星盘",
+    loadChart: "加载星盘", deleteChart: "删除星盘",
+    noCharts: "暂无保存的星盘",
+    signOut: "退出登录",
+    loginPrompt: "登录后查看和管理你的星盘",
+    goLogin: "前往登录",
+    loading: "加载中...",
+    confirmDelete: "确定要删除这个星盘吗？",
+    cancel: "取消", deleted: "已删除",
+    saved: "保存于", chartName: "星盘名称",
+    birthData: "出生信息", city: "城市",
+    error: "加载失败", retry: "重试",
   },
   en: {
-    title: "Profile",
-    editProfile: "Edit Profile",
-    settings: "Settings",
-    myCharts: "My Charts",
-    savedReadings: "Saved Readings",
-    favorites: "Favorites",
-    notifications: "Notifications",
-    privacy: "Privacy & Security",
-    logout: "Logout",
-    memberSince: "Member since",
-    readings: "readings",
-    charts: "charts",
-    freePlan: "Free Plan",
-    premiumPlan: "Premium",
-    upgrade: "Upgrade",
-    account: "Account",
-    preferences: "Preferences",
-    language: "Language",
-    theme: "Theme",
-    data: "Data Management",
-    export: "Export Data",
-    delete: "Delete Account",
+    back: "Back to Home", title: "Profile",
+    welcome: "Welcome", myCharts: "My Charts",
+    loadChart: "Load Chart", deleteChart: "Delete Chart",
+    noCharts: "No saved charts yet",
+    signOut: "Sign Out",
+    loginPrompt: "Sign in to view and manage your charts",
+    goLogin: "Go to Login",
+    loading: "Loading...",
+    confirmDelete: "Are you sure you want to delete this chart?",
+    cancel: "Cancel", deleted: "Deleted",
+    saved: "Saved", chartName: "Chart Name",
+    birthData: "Birth Info", city: "City",
+    error: "Failed to load", retry: "Retry",
   },
   id: {
-    title: "Profil",
-    editProfile: "Edit Profil",
-    settings: "Pengaturan",
-    myCharts: "Chart Saya",
-    savedReadings: "Bacaan Tersimpan",
-    favorites: "Favorit",
-    notifications: "Notifikasi",
-    privacy: "Privasi & Keamanan",
-    logout: "Keluar",
-    memberSince: "Anggota sejak",
-    readings: "bacaan",
-    charts: "chart",
-    freePlan: "Gratis",
-    premiumPlan: "Premium",
-    upgrade: "Upgrade",
-    account: "Akun",
-    preferences: "Preferensi",
-    language: "Bahasa",
-    theme: "Tema",
-    data: "Manajemen Data",
-    export: "Ekspor Data",
-    delete: "Hapus Akun",
+    back: "Kembali", title: "Profil",
+    welcome: "Selamat datang", myCharts: "Bagan Saya",
+    loadChart: "Muat Bagan", deleteChart: "Hapus Bagan",
+    noCharts: "Belum ada bagan tersimpan",
+    signOut: "Keluar",
+    loginPrompt: "Masuk untuk melihat dan mengelola bagan Anda",
+    goLogin: "Ke Login",
+    loading: "Memuat...",
+    confirmDelete: "Apakah Anda yakin ingin menghapus bagan ini?",
+    cancel: "Batal", deleted: "Dihapus",
+    saved: "Disimpan", chartName: "Nama Bagan",
+    birthData: "Info Lahir", city: "Kota",
+    error: "Gagal memuat", retry: "Coba Lagi",
+  },
+  th: {
+    back: "กลับหน้าแรก", title: "โปรไฟล์",
+    welcome: "ยินดีต้อนรับ", myCharts: "แผนภูมิของฉัน",
+    loadChart: "โหลดแผนภูมิ", deleteChart: "ลบแผนภูมิ",
+    noCharts: "ยังไม่มีแผนภูมิที่บันทึก",
+    signOut: "ออกจากระบบ",
+    loginPrompt: "เข้าสู่ระบบเพื่อดูและจัดการแผนภูมิของคุณ",
+    goLogin: "ไปหน้าเข้าสู่ระบบ",
+    loading: "กำลังโหลด...",
+    confirmDelete: "คุณแน่ใจหรือไม่ที่จะลบแผนภูมินี้?",
+    cancel: "ยกเลิก", deleted: "ลบแล้ว",
+    saved: "บันทึก", chartName: "ชื่อแผนภูมิ",
+    birthData: "ข้อมูลเกิด", city: "เมือง",
+    error: "โหลดไม่สำเร็จ", retry: "ลองอีกครั้ง",
+  },
+  vi: {
+    back: "Về Trang Chủ", title: "Hồ Sơ",
+    welcome: "Chào mừng", myCharts: "Biểu Đồ Của Tôi",
+    loadChart: "Tải Biểu Đồ", deleteChart: "Xóa Biểu Đồ",
+    noCharts: "Chưa có biểu đồ nào được lưu",
+    signOut: "Đăng Xuất",
+    loginPrompt: "Đăng nhập để xem và quản lý biểu đồ của bạn",
+    goLogin: "Đến Đăng Nhập",
+    loading: "Đang tải...",
+    confirmDelete: "Bạn có chắc muốn xóa biểu đồ này?",
+    cancel: "Hủy", deleted: "Đã xóa",
+    saved: "Đã lưu", chartName: "Tên Biểu Đồ",
+    birthData: "Thông tin sinh", city: "Thành phố",
+    error: "Tải thất bại", retry: "Thử lại",
+  },
+  ms: {
+    back: "Kembali", title: "Profil",
+    welcome: "Selamat datang", myCharts: "Bagan Saya",
+    loadChart: "Muat Bagan", deleteChart: "Padam Bagan",
+    noCharts: "Belum ada bagan disimpan",
+    signOut: "Log Keluar",
+    loginPrompt: "Log masuk untuk melihat dan menguruskan bagan anda",
+    goLogin: "Ke Log Masuk",
+    loading: "Memuatkan...",
+    confirmDelete: "Adakah anda pasti mahu memadamkan bagan ini?",
+    cancel: "Batal", deleted: "Dipadam",
+    saved: "Disimpan", chartName: "Nama Bagan",
+    birthData: "Maklumat Lahir", city: "Bandar",
+    error: "Gagal memuat", retry: "Cuba lagi",
+  },
+  ja: {
+    back: "ホームに戻る", title: "プロフィール",
+    welcome: "ようこそ", myCharts: "マイチャート",
+    loadChart: "チャートを読み込む", deleteChart: "チャートを削除",
+    noCharts: "保存されたチャートはありません",
+    signOut: "ログアウト",
+    loginPrompt: "ログインしてチャートを表示・管理",
+    goLogin: "ログインへ",
+    loading: "読み込み中...",
+    confirmDelete: "このチャートを削除してもよろしいですか？",
+    cancel: "キャンセル", deleted: "削除しました",
+    saved: "保存日", chartName: "チャート名",
+    birthData: "出生情報", city: "都市",
+    error: "読み込み失敗", retry: "再試行",
+  },
+  ko: {
+    back: "홈으로", title: "프로필",
+    welcome: "환영합니다", myCharts: "내 차트",
+    loadChart: "차트 불러오기", deleteChart: "차트 삭제",
+    noCharts: "저장된 차트가 없습니다",
+    signOut: "로그아웃",
+    loginPrompt: "로그인하여 차트 확인 및 관리",
+    goLogin: "로그인하기",
+    loading: "로딩 중...",
+    confirmDelete: "이 차트를 삭제하시겠습니까?",
+    cancel: "취소", deleted: "삭제됨",
+    saved: "저장일", chartName: "차트 이름",
+    birthData: "출생 정보", city: "도시",
+    error: "로딩 실패", retry: "다시 시도",
   },
 };
 
-const ZODIAC_SIGNS: { id: string; symbol: string; name: Record<string, string> }[] = [
-  { id: "aries", symbol: "♈", name: { zh: "白羊座", en: "Aries", id: "Aries", th: "แกะ", vi: "Bạch Dương", ms: "Aries", ja: "牡羊座", ko: "양자리" } },
-  { id: "taurus", symbol: "♉", name: { zh: "金牛座", en: "Taurus", id: "Taurus", th: "พฤกษกร", vi: "Kim Ngưu", ms: "Taurus", ja: "牡牛座", ko: "황소자리" } },
-  { id: "gemini", symbol: "♊", name: { zh: "双子座", en: "Gemini", id: "Gemini", th: "มิถุน", vi: "Song Tử", ms: "Gemini", ja: "双子座", ko: "쌍둥이자리" } },
-  { id: "cancer", symbol: "♋", name: { zh: "巨蟹座", en: "Cancer", id: "Cancer", th: "กรกฎ", vi: "Cự Giải", ms: "Cancer", ja: "蟹座", ko: "게자리" } },
-  { id: "leo", symbol: "♌", name: { zh: "狮子座", en: "Leo", id: "Leo", th: "สิงห์", vi: "Sư Tử", ms: "Leo", ja: "獅子座", ko: "사자자리" } },
-  { id: "virgo", symbol: "♍", name: { zh: "处女座", en: "Virgo", id: "Virgo", th: "กันย์", vi: "Xử Nữ", ms: "Virgo", ja: "乙女座", ko: "처녀자리" } },
-  { id: "libra", symbol: "♎", name: { zh: "天秤座", en: "Libra", id: "Libra", th: "ตุลย์", vi: "Thiên Bình", ms: "Libra", ja: "天秤座", ko: "천칭자리" } },
-  { id: "scorpio", symbol: "♏", name: { zh: "天蝎座", en: "Scorpio", id: "Scorpio", th: "พิจิก", vi: "Bọ Cạp", ms: "Scorpio", ja: "蠍座", ko: "전갈자리" } },
-  { id: "sagittarius", symbol: "♐", name: { zh: "射手座", en: "Sagittarius", id: "Sagittarius", th: "ธนู", vi: "Nhân Mã", ms: "Sagittarius", ja: "射手座", ko: "人马자리" } },
-  { id: "capricorn", symbol: "♑", name: { zh: "摩羯座", en: "Capricorn", id: "Capricorn", th: "มังกร", vi: "Ma Kết", ms: "Capricorn", ja: "山羊座", ko: "염소자리" } },
-  { id: "aquarius", symbol: "♒", name: { zh: "水瓶座", en: "Aquarius", id: "Aquarius", th: "กุมภ์", vi: "Bảo Bình", ms: "Aquarius", ja: "水瓶座", ko: "물병자리" } },
-  { id: "pisces", symbol: "♓", name: { zh: "双鱼座", en: "Pisces", id: "Pisces", th: "มีน", vi: "Song Ngư", ms: "Pisces", ja: "魚座", ko: "물고기자리" } },
-];
+function tx(key: string, lang: string): string {
+  return (T[lang]?.[key]) || (T.zh?.[key]) || key;
+}
+
+function formatDate(ts: number, lang: string): string {
+  const d = new Date(ts);
+  const opts: Intl.DateTimeFormatOptions = { year: "numeric", month: "short", day: "numeric" };
+  const locale = lang === "zh" ? "zh-CN" : lang === "id" ? "id-ID" : lang === "th" ? "th-TH" : lang === "vi" ? "vi-VN" : lang === "ms" ? "ms-MY" : lang === "ja" ? "ja-JP" : lang === "ko" ? "ko-KR" : "en-US";
+  return d.toLocaleDateString(locale, opts);
+}
+
+function formatBirthDate(chart: SavedChart, lang: string): string {
+  const { year, month, day, hour = 12, minute = 0 } = chart.birthData;
+  const timeStr = `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
+  return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")} ${timeStr}`;
+}
 
 export default function ProfilePage() {
-  const { language } = useLanguage();
-  const t = TRANSLATIONS[language];
-  
-  const [profile, setProfile] = useState<UserProfile>({
-    name: "占星爱好者",
-    email: "user@example.com",
-    avatar: "",
-    zodiac: "leo",
-    birthDate: "1995-08-15",
-    birthTime: "14:30",
-    birthLocation: "北京",
-    memberSince: "2026-01-15",
-    readingsCount: 23,
-    savedCharts: 5,
-    subscription: "free",
-  });
-  
-  const [activeTab, setActiveTab] = useState<"overview" | "settings">("overview");
+  const { user, isLoading: authLoading, isFirebaseReady, logout } = useAuth();
+  const router = useRouter();
+  const [lang, setLang] = useState<string>("zh");
+  const [charts, setCharts] = useState<SavedChart[]>([]);
+  const [loadingCharts, setLoadingCharts] = useState(false);
+  const [chartsError, setChartsError] = useState<string | null>(null);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [deleteMsg, setDeleteMsg] = useState<string | null>(null);
+  const [showConfirm, setShowConfirm] = useState<string | null>(null);
 
-  const menuItems = [
-    { id: "charts", icon: Star, label: t.myCharts, href: "/natal", count: profile.savedCharts },
-    { id: "readings", icon: FileText, label: t.savedReadings, href: "/ai-reading", count: 12 },
-    { id: "favorites", icon: Heart, label: t.favorites, href: "#", count: 8 },
-    { id: "notifications", icon: Bell, label: t.notifications, href: "#" },
-    { id: "privacy", icon: Shield, label: t.privacy, href: "#" },
-  ];
+  // Sync language from LanguageContext
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("language");
+      if (saved && T[saved]) setLang(saved);
+    }
+  }, []);
 
-  const getZodiacInfo = (zodiacId: string) => {
-    return ZODIAC_SIGNS.find((z) => z.id === zodiacId) || ZODIAC_SIGNS[0];
+  // Load charts when user is available
+  useEffect(() => {
+    if (!user || !isFirebaseReady) {
+      setCharts([]);
+      return;
+    }
+    setLoadingCharts(true);
+    setChartsError(null);
+    loadChartsFromCloud(user.uid)
+      .then((data) => {
+        setCharts(data);
+        setLoadingCharts(false);
+      })
+      .catch((err) => {
+        console.error("Failed to load charts:", err);
+        setChartsError((T[lang]?.error) || "Failed to load");
+        setLoadingCharts(false);
+      });
+  }, [user, isFirebaseReady, lang]);
+
+  const handleLoadChart = (chart: SavedChart) => {
+    // Use sessionStorage to pass chart data to natal page
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("pending_chart", JSON.stringify(chart));
+      router.push("/natal");
+    }
   };
 
-  const zodiacInfo = getZodiacInfo(profile.zodiac);
+  const handleDeleteChart = async (chartId: string) => {
+    if (!user) return;
+    setDeletingId(chartId);
+    setShowConfirm(null);
+    try {
+      await deleteChartFromCloud(chartId, user.uid);
+      setCharts((prev) => prev.filter((c) => c.id !== chartId));
+      setDeleteMsg(tx("deleted", lang));
+      setTimeout(() => setDeleteMsg(null), 2000);
+    } catch (err) {
+      console.error("Failed to delete chart:", err);
+      setChartsError(tx("error", lang));
+    } finally {
+      setDeletingId(null);
+    }
+  };
+
+  const handleLogout = () => {
+    logout();
+    router.push("/");
+  };
+
+  if (authLoading || !isFirebaseReady) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-[#030014] via-[#0f0f23] to-[#030014] flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 size={40} className="animate-spin text-purple-400 mx-auto mb-3" />
+          <p className="text-slate-400 text-sm">{tx("loading", lang)}</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-[#030014] via-[#0f0f23] to-[#030014] flex items-center justify-center">
+        <div className="text-center max-w-sm mx-auto px-6">
+          <div className="w-20 h-20 rounded-full bg-purple-600/20 border border-purple-500/30 flex items-center justify-center mx-auto mb-6">
+            <User size={36} className="text-purple-400" />
+          </div>
+          <h2 className="text-xl font-bold text-white mb-2">{tx("title", lang)}</h2>
+          <p className="text-slate-400 text-sm mb-6">{tx("loginPrompt", lang)}</p>
+          <Link
+            href="/login"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-xl text-white font-medium text-sm transition-all"
+          >
+            <ExternalLink size={16} />
+            {tx("goLogin", lang)}
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="min-h-screen bg-[#030014]">
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-[#030014]/80 backdrop-blur-xl border-b border-white/5">
-        <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Link
-              href="/"
-              className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
-            >
-              <ArrowLeft className="w-5 h-5" />
-            </Link>
-            <h1 className="text-xl font-bold gradient-text">{t.title}</h1>
-          </div>
-          <LanguageSwitcher />
-        </div>
-      </header>
-
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        {/* Profile Card */}
-        <div className="bg-gradient-to-br from-purple-900/20 to-pink-900/20 rounded-2xl p-6 md:p-8 border border-purple-500/20 mb-6">
-          <div className="flex flex-col md:flex-row items-center gap-6">
-            {/* Avatar */}
-            <div className="relative">
-              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-4xl md:text-5xl">
-                {profile.avatar || "✨"}
-              </div>
-              <button className="absolute bottom-0 right-0 w-8 h-8 bg-white/10 rounded-full flex items-center justify-center border border-white/20 hover:bg-white/20 transition-colors">
-                <Camera className="w-4 h-4 text-white" />
+    <div className="min-h-screen bg-gradient-to-b from-[#030014] via-[#0f0f23] to-[#030014] text-white">
+      {/* Navigation Bar */}
+      <nav className="sticky top-0 z-50 backdrop-blur-xl bg-[#030014]/90 border-b border-white/5">
+        <div className="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
+          <Link href="/chart" className="flex items-center gap-2 text-purple-300 hover:text-white transition-colors">
+            <ArrowLeft size={20} />
+            <span className="text-sm">{tx("back", lang)}</span>
+          </Link>
+          <h1 className="text-lg font-bold text-white">{tx("title", lang)}</h1>
+          <div className="flex gap-1 bg-white/5 rounded-xl p-1">
+            {(["zh", "en", "id", "th", "vi", "ms", "ja", "ko"] as const).map((l) => (
+              <button
+                key={l}
+                onClick={() => setLang(l)}
+                className={`px-2 py-1 rounded-lg text-xs font-medium transition-colors ${
+                  lang === l ? "bg-purple-600 text-white" : "text-slate-400 hover:text-white"
+                }`}
+              >
+                {l === "zh" ? "中" : l === "en" ? "EN" : l === "id" ? "ID" : l === "th" ? "TH" : l === "vi" ? "VI" : l === "ms" ? "MY" : l === "ja" ? "JP" : "KR"}
               </button>
-            </div>
-            
-            {/* Info */}
-            <div className="flex-1 text-center md:text-left">
-              <h2 className="text-2xl font-bold text-white mb-1">{profile.name}</h2>
-              <p className="text-gray-400 mb-3">{profile.email}</p>
-              
-              <div className="flex flex-wrap items-center justify-center md:justify-start gap-3">
-                <span className="px-3 py-1 bg-purple-500/20 rounded-full text-purple-300 text-sm">
-                  {zodiacInfo.symbol} {zodiacInfo.name[language]}
-                </span>
-                <span className={`px-3 py-1 rounded-full text-sm ${
-                  profile.subscription === "premium" 
-                    ? "bg-amber-500/20 text-amber-300" 
-                    : "bg-gray-500/20 text-gray-300"
-                }`}>
-                  {profile.subscription === "premium" ? t.premiumPlan : t.freePlan}
-                </span>
-                {profile.subscription === "free" && (
-                  <button className="px-3 py-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full text-white text-sm font-medium hover:from-amber-400 hover:to-orange-400 transition-colors">
-                    {t.upgrade}
-                  </button>
-                )}
+            ))}
+          </div>
+        </div>
+      </nav>
+
+      <main className="max-w-3xl mx-auto px-4 sm:px-6 py-6 space-y-6">
+        {/* User Info Card */}
+        <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+          <div className="flex items-center gap-4">
+            {user.photoURL ? (
+              <img
+                src={user.photoURL}
+                alt={user.displayName}
+                className="w-16 h-16 rounded-full border-2 border-purple-500/50"
+              />
+            ) : (
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center text-2xl font-bold text-white">
+                {user.displayName?.[0]?.toUpperCase() || "U"}
               </div>
+            )}
+            <div className="flex-1 min-w-0">
+              <p className="text-xs text-purple-400 mb-0.5">{tx("welcome", lang)}</p>
+              <h2 className="text-lg font-bold text-white truncate">{user.displayName || user.email}</h2>
+              <p className="text-sm text-slate-400 truncate">{user.email}</p>
             </div>
-            
-            {/* Edit Button */}
-            <button className="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-white hover:bg-white/10 transition-colors">
-              <Edit3 className="w-4 h-4" />
-              <span className="hidden sm:inline">{t.editProfile}</span>
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-red-500/10 border border-white/10 hover:border-red-500/30 text-slate-300 hover:text-red-400 text-sm transition-all flex-shrink-0"
+            >
+              <LogOut size={16} />
+              {tx("signOut", lang)}
             </button>
           </div>
-          
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-4 mt-6 pt-6 border-t border-white/10">
-            <div className="text-center">
-              <div className="text-2xl font-bold text-white">{profile.readingsCount}</div>
-              <div className="text-sm text-gray-400">{t.readings}</div>
-            </div>
-            <div className="text-center border-x border-white/10">
-              <div className="text-2xl font-bold text-white">{profile.savedCharts}</div>
-              <div className="text-sm text-gray-400">{t.charts}</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-white">
-                {new Date(profile.memberSince).getFullYear()}
-              </div>
-              <div className="text-sm text-gray-400">{t.memberSince}</div>
-            </div>
-          </div>
         </div>
 
-        {/* Birth Info */}
-        <div className="bg-white/5 rounded-2xl p-6 border border-white/5 mb-6">
-          <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-            <Calendar className="w-5 h-5 text-purple-400" />
-            {language === "zh" ? "出生信息" : language === "id" ? "Info Kelahiran" : "Birth Info"}
-          </h3>
-          <div className="grid md:grid-cols-3 gap-4">
-            <div>
-              <div className="text-sm text-gray-500 mb-1">
-                {language === "zh" ? "出生日期" : language === "id" ? "Tanggal Lahir" : "Birth Date"}
-              </div>
-              <div className="text-white">{profile.birthDate}</div>
-            </div>
-            <div>
-              <div className="text-sm text-gray-500 mb-1">
-                {language === "zh" ? "出生时间" : language === "id" ? "Waktu Lahir" : "Birth Time"}
-              </div>
-              <div className="text-white">{profile.birthTime}</div>
-            </div>
-            <div>
-              <div className="text-sm text-gray-500 mb-1">
-                {language === "zh" ? "出生地点" : language === "id" ? "Lokasi Lahir" : "Birth Location"}
-              </div>
-              <div className="text-white">{profile.birthLocation}</div>
-            </div>
+        {/* Charts Section */}
+        <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+          <div className="flex items-center gap-2 mb-5">
+            <Star size={18} className="text-purple-400" />
+            <h3 className="font-bold text-white">{tx("myCharts", lang)}</h3>
+            {charts.length > 0 && (
+              <span className="ml-auto px-2 py-0.5 rounded-full bg-purple-600/20 text-purple-400 text-xs font-medium">
+                {charts.length}
+              </span>
+            )}
           </div>
-        </div>
 
-        {/* Menu */}
-        <div className="space-y-2">
-          {menuItems.map((item) => (
-            <Link
-              key={item.id}
-              href={item.href}
-              className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/5 hover:bg-white/10 hover:border-purple-500/30 transition-all group"
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center group-hover:bg-purple-500/30 transition-colors">
-                  <item.icon className="w-5 h-5 text-purple-400" />
+          {deleteMsg && (
+            <div className="mb-4 px-4 py-2 rounded-xl bg-green-500/10 border border-green-500/30 text-green-400 text-sm text-center">
+              {deleteMsg}
+            </div>
+          )}
+
+          {loadingCharts && (
+            <div className="flex items-center justify-center py-12">
+              <Loader2 size={28} className="animate-spin text-purple-400" />
+            </div>
+          )}
+
+          {chartsError && !loadingCharts && (
+            <div className="flex items-center justify-center py-8 gap-3">
+              <AlertCircle size={18} className="text-red-400" />
+              <p className="text-red-400 text-sm">{chartsError}</p>
+              <button
+                onClick={() => user && loadChartsFromCloud(user.uid).then(setCharts).catch(() => setChartsError(tx("error", lang)))}
+                className="px-3 py-1 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-xs hover:bg-red-500/20 transition-colors"
+              >
+                {tx("retry", lang)}
+              </button>
+            </div>
+          )}
+
+          {!loadingCharts && !chartsError && charts.length === 0 && (
+            <div className="text-center py-10">
+              <Star size={40} className="text-slate-600 mx-auto mb-3" />
+              <p className="text-slate-400 text-sm">{tx("noCharts", lang)}</p>
+              <Link
+                href="/natal"
+                className="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-xl text-white text-sm font-medium transition-all"
+              >
+                <Star size={14} />
+                {tx("loadChart", lang)}
+              </Link>
+            </div>
+          )}
+
+          {!loadingCharts && !chartsError && charts.length > 0 && (
+            <div className="space-y-3">
+              {charts.map((chart) => (
+                <div
+                  key={chart.id}
+                  className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-purple-500/30 transition-all group"
+                >
+                  <div className="flex items-start gap-3">
+                    {/* Chart icon */}
+                    <div className="w-10 h-10 rounded-lg bg-purple-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Star size={18} className="text-purple-400" />
+                    </div>
+
+                    {/* Chart info */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h4 className="font-semibold text-white truncate">{chart.name || chart.birthData?.name || tx("chartName", lang)}</h4>
+                      </div>
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-400">
+                        <span className="flex items-center gap-1">
+                          <Calendar size={12} />
+                          {formatBirthDate(chart, lang)}
+                        </span>
+                        {chart.birthData?.houseSystem && (
+                          <span className="px-1.5 py-0.5 rounded bg-slate-700/50 text-slate-400 text-[10px]">
+                            {chart.birthData.houseSystem === "P" ? "Porphyry" : chart.birthData.houseSystem === "E" ? "Equal" : chart.birthData.houseSystem}
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs text-slate-500 mt-1">
+                        {tx("saved", lang)}: {formatDate(chart.ts, lang)}
+                      </p>
+                    </div>
+
+                    {/* Action buttons */}
+                    <div className="flex items-center gap-2 flex-shrink-0">
+                      <button
+                        onClick={() => handleLoadChart(chart)}
+                        className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-xs font-medium transition-all flex items-center gap-1"
+                        title={tx("loadChart", lang)}
+                      >
+                        <Upload size={12} />
+                        {tx("loadChart", lang)}
+                      </button>
+                      {showConfirm === chart.id ? (
+                        <div className="flex items-center gap-1">
+                          <button
+                            onClick={() => handleDeleteChart(chart.id!)}
+                            disabled={deletingId === chart.id}
+                            className="px-2 py-1.5 rounded-lg bg-red-500 hover:bg-red-600 text-white text-xs font-medium transition-all"
+                          >
+                            {deletingId === chart.id ? <Loader2 size={10} className="animate-spin" /> : tx("deleteChart", lang)}
+                          </button>
+                          <button
+                            onClick={() => setShowConfirm(null)}
+                            className="px-2 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 text-xs hover:text-white transition-all"
+                          >
+                            {tx("cancel", lang)}
+                          </button>
+                        </div>
+                      ) : (
+                        <button
+                          onClick={() => setShowConfirm(chart.id!)}
+                          className="p-1.5 rounded-lg bg-white/5 hover:bg-red-500/10 border border-white/10 hover:border-red-500/30 text-slate-400 hover:text-red-400 transition-all"
+                          title={tx("deleteChart", lang)}
+                        >
+                          <Trash2 size={14} />
+                        </button>
+                      )}
+                    </div>
+                  </div>
                 </div>
-                <span className="text-white font-medium">{item.label}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                {item.count !== undefined && (
-                  <span className="px-2 py-1 bg-white/10 rounded-full text-sm text-gray-400">
-                    {item.count}
-                  </span>
-                )}
-                <ChevronRight className="w-5 h-5 text-gray-500" />
-              </div>
-            </Link>
-          ))}
+              ))}
+            </div>
+          )}
         </div>
 
-        {/* Logout */}
-        <button className="w-full mt-6 flex items-center justify-center gap-2 p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400 hover:bg-red-500/20 transition-colors">
-          <LogOut className="w-5 h-5" />
-          <span>{t.logout}</span>
-        </button>
-      </div>
+        {/* Bottom spacer */}
+        <div className="h-4" />
+      </main>
     </div>
   );
 }

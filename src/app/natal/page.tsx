@@ -697,6 +697,32 @@ export default function NatalPage() {
     setTimeout(() => setSaveMsg(null), 2000);
   };
 
+  // Load pending chart from profile page (sessionStorage)
+  useEffect(() => {
+    const pendingRaw = sessionStorage.getItem('pending_chart');
+    if (pendingRaw) {
+      sessionStorage.removeItem('pending_chart');
+      try {
+        const chart = JSON.parse(pendingRaw);
+        setForm((prev: any) => ({
+          ...prev,
+          name: chart.name || prev.name,
+          year: chart.birthData?.year || prev.year,
+          month: chart.birthData?.month || prev.month,
+          day: chart.birthData?.day || prev.day,
+          hour: chart.birthData?.hour ?? prev.hour,
+          minute: chart.birthData?.minute ?? prev.minute,
+          lat: chart.birthData?.lat || prev.lat,
+          lng: chart.birthData?.lng || prev.lng,
+          houseSystem: chart.birthData?.houseSystem || prev.houseSystem,
+        }));
+        if (chart.chartData) setChart(chart.chartData);
+      } catch (e) {
+        console.error('Failed to load pending chart:', e);
+      }
+    }
+  }, []);
+
   const loadChart = (c: any) => { setForm({ ...form, name: c.name, year: c.birthData.year, month: c.birthData.month, day: c.birthData.day, hour: c.birthData.hour, minute: c.birthData.minute }); if (c.chartData) setChart(c.chartData); };
 
   // 推运日期年份：从当前年到未来50年（支持长期推运）
