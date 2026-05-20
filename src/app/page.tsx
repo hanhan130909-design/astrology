@@ -207,7 +207,7 @@ const PREMIUM_FEATURES = [
   { 
     id: 'ai', 
     title: { zh: 'AI智能解读', en: 'AI-Powered Insights', id: 'Wawasan AI' },
-    desc: { zh: '基于GPT-4的个性化深度分析', en: 'Personalized analysis powered by GPT-4', id: 'Analisis personal dengan GPT-4' },
+    desc: { zh: 'Free AI-Powered Deep Analysis by LLaMA 3.3', en: 'Free AI-Powered Deep Analysis by LLaMA 3.3', id: 'Analisis AI mendalam oleh LLaMA 3.3' },
     icon: BrainCircuit, 
     color: 'cyan',
     href: '/ai-reading',
@@ -243,7 +243,7 @@ const PREMIUM_FEATURES = [
   { 
     id: 'yearly', 
     title: { zh: '年度运势报告', en: 'Yearly Forecast', id: 'Ramalan Tahunan' },
-    desc: { zh: '预知2026全年运势走向', en: 'Discover your 2026 journey', id: 'Temukan perjalanan 2026 Anda' },
+    desc: { zh: `预知${new Date().getFullYear()}全年运势走向`, en: `Discover your ${new Date().getFullYear()} journey`, id: `Temukan perjalanan ${new Date().getFullYear()} Anda` },
     icon: Calendar, 
     color: 'emerald',
     href: '/yearly-horoscope',
@@ -348,9 +348,9 @@ const TESTIMONIALS = [
 ];
 
 const STATS = [
-  { value: '1M+', label: { zh: '用户信赖', en: 'Users Trust', id: 'Pengguna Percaya', th: 'ผู้ใช้ไว้วางใจ', vi: 'Người Dùng Tin Tưởng', ms: 'Pengguna Percaya', ja: 'ユーザーが信頼', ko: '사용자 신뢰' } },
-  { value: '99%', label: { zh: '解读准确率', en: 'Accuracy Rate', id: 'Tingkat Akurasi', th: 'อัตราความแม่นยำ', vi: 'Tỷ Lệ Chính Xác', ms: 'Kadar Ketepatan', ja: '正確率', ko: '정확도' } },
-  { value: '24/7', label: { zh: '全天候服务', en: 'Always Available', id: 'Selalu Tersedia', th: 'บริการตลอด 24/7', vi: 'Dịch Vụ 24/7', ms: 'Perkhidmatan 24/7', ja: '24時間対応', ko: '24/7 서비스' } },
+  { value: '100% Free', label: { zh: '永远免费', en: '100% Free', id: 'Pengguna Percaya', th: 'ผู้ใช้ไว้วางใจ', vi: 'Người Dùng Tin Tưởng', ms: 'Pengguna Percaya', ja: 'ユーザーが信頼', ko: '사용자 신뢰' } },
+  { value: 'Real', label: { zh: '真实天文计算', en: 'Real Astronomy', id: 'Tingkat Akurasi', th: 'อัตราความแม่นยำ', vi: 'Tỷ Lệ Chính Xác', ms: 'Kadar Ketepatan', ja: '正確率', ko: '정확도' } },
+  { value: '8', label: { zh: '支持8种语言', en: '8 Languages', id: 'Selalu Tersedia', th: 'บริการตลอด 24/7', vi: 'Dịch Vụ 24/7', ms: 'Perkhidmatan 24/7', ja: '24時間対応', ko: '24/7 서비스' } },
 ];
 
 // Translations helper - Full 8 language support

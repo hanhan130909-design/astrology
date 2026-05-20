@@ -1,26 +1,26 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "免费星座合盘比对 | 双人关系分析 | 星缘占星",
-  description: "免费星座合盘在线比对，分析两人星盘互动关系。爱情配对、友情兼容性、合作关系全方位解读，帮你了解彼此星座匹配度。",
-  keywords: ["合盘", "synastry", "星座配对", "双人星盘", "关系分析", "爱情匹配", "星座合盘", "免费合盘"],
+  title: "Zodiac Compatibility Analysis - Free Relationship Astrology",
+  description: "Free online zodiac compatibility analysis. Compare two birth charts, analyze relationship dynamics, love compatibility, friendship and partnership insights based on astrological synastry.",
+  keywords: ["compatibility", "synastry", "zodiac compatibility", "relationship astrology", "couple chart", "love match", "astrology compatibility", "free compatibility"],
   openGraph: {
-    title: "免费星座合盘比对 | 双人关系分析",
-    description: "免费星座合盘在线比对，分析两人星盘互动关系。爱情配对、友情兼容性、合作关系全方位解读。",
+    title: "Zodiac Compatibility Analysis - Free Relationship Astrology",
+    description: "Free online zodiac compatibility analysis. Compare two birth charts and analyze relationship dynamics, love compatibility, and friendship insights.",
     type: "website",
-    url: "https://astrology-clean.vercel.app/compatibility",
-    siteName: "星缘",
+    url: "https://lunaxstar.com/compatibility",
+    siteName: "LunaXStar",
     images: [{
       url: "/og-image.png",
       width: 1200,
       height: 630,
-      alt: "星座合盘比对 - 星缘",
+      alt: "Zodiac Compatibility Analysis - LunaXStar",
     }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "免费星座合盘比对 | 双人关系分析",
-    description: "免费星座合盘在线比对，分析两人星盘互动关系。爱情配对、友情兼容性全方位解读。",
+    title: "Zodiac Compatibility Analysis - Free Relationship Astrology",
+    description: "Free online zodiac compatibility analysis. Compare two birth charts and analyze relationship dynamics.",
     images: ["/og-image.png"],
   },
 };
@@ -30,5 +30,38 @@ export default function CompatibilityLayout({
 }: {
   children: React.ReactNode,
 }) {
-  return children;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Zodiac Compatibility Analysis",
+    "description": "Free online zodiac compatibility analysis tool. Compare two birth charts and analyze relationship dynamics based on astrological synastry.",
+    "url": "https://lunaxstar.com/compatibility",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "LunaXStar",
+      "url": "https://lunaxstar.com"
+    },
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "Zodiac Compatibility Analyzer",
+      "description": "Free online tool for zodiac compatibility analysis and relationship astrology",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {children}
+    </>
+  );
 }
