@@ -360,6 +360,24 @@ export default function CompositePage() {
           </div>
         </section>
 
+        {/* SEO Description Section */}
+        <section className="max-w-4xl mx-auto mt-12 mb-8 px-4">
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-white/5 rounded-xl p-5">
+              <h3 className="text-lg font-semibold text-purple-300 mb-2">中文</h3>
+              <p className="text-purple-200/80 text-sm leading-relaxed">合盘（Composite Chart）揭示两人关系的灵魂蓝图。计算两人星盘中点，生成代表「关系本身」的星盘。了解深层动力、潜在挑战，AI 提供实用建议。</p>
+            </div>
+            <div className="bg-white/5 rounded-xl p-5">
+              <h3 className="text-lg font-semibold text-purple-300 mb-2">English</h3>
+              <p className="text-purple-200/80 text-sm leading-relaxed">The Composite Chart reveals the soul blueprint of a relationship. By calculating midpoints between two natal charts, it generates a chart representing the relationship itself. Understand deep dynamics, potential challenges, and get AI-powered practical advice.</p>
+            </div>
+            <div className="bg-white/5 rounded-xl p-5">
+              <h3 className="text-lg font-semibold text-purple-300 mb-2">Bahasa Indonesia</h3>
+              <p className="text-purple-200/80 text-sm leading-relaxed">Composite Chart mengungkap cetak biru jiwa sebuah hubungan. Dengan menghitung titik tengah antara dua chart natal, menghasilkan chart yang mewakili hubungan itu sendiri. Pahami dinamika mendalam, tantangan potensial, dan dapatkan saran praktis berbasis AI.</p>
+            </div>
+          </div>
+        </section>
+
         {/* FAQ Section */}
         <section className="max-w-4xl mx-auto mb-12 px-4">
           <h2 className="text-2xl font-bold text-white mb-6 text-center">

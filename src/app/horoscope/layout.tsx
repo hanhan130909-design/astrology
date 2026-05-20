@@ -30,22 +30,9 @@ export default function HoroscopeLayout({
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebPage",
-            "name": "Daily, Monthly & Yearly Horoscope",
-            "description": "Free daily, monthly and yearly horoscope forecasts for all 12 zodiac signs. Accurate astrology predictions covering love, career, health and finance.",
-            "url": "https://starryfate.app/horoscope",
-            "mainEntity": {
-              "@type": "Article",
-              "headline": "Daily Horoscope - Zodiac Fortune Forecast",
-              "description": "Comprehensive daily horoscope analysis for all 12 zodiac signs",
-              "author": {
-                "@type": "Organization",
-                "name": "Starry Fate"
-              }
-            },
-            "speakable": {
-              "@type": "SpeakableSpecification",
-              "cssSelector": ["h1", "h2", ".horoscope-content"]
-            }
+            name: "Daily, Monthly & Yearly Horoscope",
+            description: "Astrological horoscopes provide personalized guidance based on real astronomical calculations. Using complete birth information combined with current planetary movements, delivers energy trends truly yours. Supports daily, monthly, and yearly forecasts (Solar Return).",
+            provider: { "@type": "Organization", name: "星缘", url: "https://lunaxstar.com" }
           })
         }}
       />

@@ -1027,6 +1027,24 @@ export default function HoroscopePage() {
           </div>
         </section>
 
+        {/* SEO Description Section */}
+        <section className="max-w-4xl mx-auto mt-12 mb-8 px-4">
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-white/5 rounded-xl p-5">
+              <h3 className="text-lg font-semibold text-purple-300 mb-2">中文</h3>
+              <p className="text-purple-200/80 text-sm leading-relaxed">占星运势提供基于真实天文计算的个性化指引。根据完整出生信息（日期、时间、地点）结合当前行星运行，给出真正属于你的能量趋势。支持日运、月运和年度运势（Solar Return）。</p>
+            </div>
+            <div className="bg-white/5 rounded-xl p-5">
+              <h3 className="text-lg font-semibold text-purple-300 mb-2">English</h3>
+              <p className="text-purple-200/80 text-sm leading-relaxed">Astrological horoscopes provide personalized guidance based on real astronomical calculations. Using complete birth information (date, time, location) combined with current planetary movements, it delivers energy trends truly yours. Supports daily, monthly, and yearly forecasts (Solar Return).</p>
+            </div>
+            <div className="bg-white/5 rounded-xl p-5">
+              <h3 className="text-lg font-semibold text-purple-300 mb-2">Bahasa Indonesia</h3>
+              <p className="text-purple-200/80 text-sm leading-relaxed">Horoskop astrologi memberikan panduan personal berdasarkan perhitungan astronomi nyata. Menggunakan informasi kelahiran lengkap (tanggal, waktu, lokasi) dikombinasikan dengan pergerakan planet saat ini, memberikan tren energi yang benar-benar milik Anda. Mendukung ramalan harian, bulanan, dan tahunan (Solar Return).</p>
+            </div>
+          </div>
+        </section>
+
         {/* FAQ Section */}
         <section className="max-w-4xl mx-auto mb-12 px-4">
           <h2 className="text-xl font-bold text-white text-center mb-6">

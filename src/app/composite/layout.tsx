@@ -18,25 +18,24 @@ export const metadata: Metadata = {
 };
 
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Composite Chart Analysis",
-  "description": "Free professional Composite Chart and Synastry analysis for relationship astrology interpretation.",
-  "applicationCategory": "EntertainmentApplication",
-  "operatingSystem": "Web Browser",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  }
-};
+
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: "Composite Chart Analysis",
+            description: "The Composite Chart reveals the soul blueprint of a relationship. By calculating midpoints between two natal charts, understand deep dynamics and potential challenges with AI-powered advice.",
+            provider: { "@type": "Organization", name: "星缘", url: "https://lunaxstar.com" }
+          })
+        }}
+      />
       {children}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     </>
   );
 }

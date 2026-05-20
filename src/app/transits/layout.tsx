@@ -22,5 +22,21 @@ export default function TransitsLayout({
 }: {
   children: React.ReactNode,
 }) {
-  return children;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: "Transit Chart Analysis",
+            description: "The Transit Chart is a core tool for astrological forecasting. By overlaying current planetary positions onto your natal chart, understand present energy influences and future turning points.",
+            provider: { "@type": "Organization", name: "星缘", url: "https://lunaxstar.com" }
+          })
+        }}
+      />
+      {children}
+    </>
+  );
 }

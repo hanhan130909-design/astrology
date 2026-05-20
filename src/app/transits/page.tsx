@@ -693,16 +693,16 @@ export default function TransitPage() {
         <section className="max-w-4xl mx-auto mt-12 mb-8 px-4">
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-purple-300 font-bold mb-2">行星推运分析</h3>
-              <p className="text-slate-300 text-sm leading-relaxed">行星推运是占星学中预测运势的重要方法。通过分析天空中运行行星与你本命盘的相位关系，揭示人生不同阶段的机遇与挑战，帮助你把握时机、趋吉避凶。</p>
+              <h3 className="text-lg font-semibold text-purple-300 mb-2">中文</h3>
+              <p className="text-purple-200/80 text-sm leading-relaxed">推运盘（Transit Chart）是占星预测的核心工具。通过将当前行星位置覆盖在本命盘上，了解当下能量影响和未来转折点。AI 结合本命盘解读重要推运时间和影响领域。</p>
             </div>
             <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-cyan-300 font-bold mb-2">Planetary Transit Analysis</h3>
-              <p className="text-slate-300 text-sm leading-relaxed">Planetary transit is a key astrological method for fortune prediction. By analyzing aspects between moving planets and your natal chart, it reveals opportunities and challenges at different life stages, helping you seize opportunities and navigate wisely.</p>
+              <h3 className="text-lg font-semibold text-purple-300 mb-2">English</h3>
+              <p className="text-purple-200/80 text-sm leading-relaxed">The Transit Chart is a core tool for astrological forecasting. By overlaying current planetary positions onto your natal chart, you can understand present energy influences and future turning points. AI combines natal chart analysis to interpret key transit timings and affected life areas.</p>
             </div>
             <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-amber-300 font-bold mb-2">Analisis Transit Planet</h3>
-              <p className="text-slate-300 text-sm leading-relaxed">Transit planet adalah metode astrologi penting untuk prediksi keberuntungan. Dengan menganalisis aspek antara planet yang bergerak dan grafik natal Anda, ini mengungkap peluang dan tantangan di berbagai tahap kehidupan.</p>
+              <h3 className="text-lg font-semibold text-purple-300 mb-2">Bahasa Indonesia</h3>
+              <p className="text-purple-200/80 text-sm leading-relaxed">Transit Chart adalah alat inti untuk peramalan astrologi. Dengan menumpangkan posisi planet saat ini ke chart natal Anda, Anda dapat memahami pengaruh energi saat ini dan titik balik di masa depan. AI menggabungkan analisis chart natal untuk menafsirkan waktu transit penting dan area kehidupan yang terpengaruh.</p>
             </div>
           </div>
         </section>
