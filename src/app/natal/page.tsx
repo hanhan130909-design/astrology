@@ -2,14 +2,14 @@
 
 import { useState, useEffect, useRef, useMemo } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Save, Star, Sun, Moon, Calendar, TrendingUp, Heart, Loader2, ChevronDown, Check, X, Sparkles, Lock, Share2, CheckCircle, MessageCircle } from 'lucide-react';
+import { ArrowLeft, Save, Star, Sun, Moon, Calendar, TrendingUp, Heart, Loader2, ChevronDown, Check, X, Sparkles, Lock, Share2, CheckCircle, MessageCircle, User } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { saveChartToCloud, loadChartsFromCloud, deleteChartFromCloud, syncLocalChartsToCloud } from '@/lib/chartSync';
 
 // Complete translations
 const T = {
   zh: {
-    back: '返回首页', title: '本命盘分析',
+    back: '返回首页', title: '本命盘分析', myCharts: '我的',
     birthInfo: '出生信息', person1: '第一人', person2: '第二人',
     year: '年', month: '月', day: '日', hour: '时', minute: '分',
     city: '城市', houseSystem: '分宫制',
@@ -49,7 +49,7 @@ const T = {
     faqTitle: '常见问题',
   },
   en: {
-    back: 'Back to Home', title: 'Natal Chart',
+    back: 'Back to Home', title: 'Natal Chart', myCharts: 'My',
     birthInfo: 'Birth Info', person1: 'Person 1', person2: 'Person 2',
     year: 'Year', month: 'Month', day: 'Day', hour: 'Hour', minute: 'Min',
     city: 'City', houseSystem: 'House System',
@@ -89,7 +89,7 @@ const T = {
     faqTitle: 'Frequently Asked Questions',
   },
   id: {
-    back: 'Kembali', title: 'Bagan Lahir',
+    back: 'Kembali', title: 'Bagan Lahir', myCharts: 'Saya', myCharts: 'Saya',
     birthInfo: 'Data Lahir', person1: 'Orang 1', person2: 'Orang 2',
     year: 'Tahun', month: 'Bulan', day: 'Hari', hour: 'Jam', minute: 'Menit',
     city: 'Kota', houseSystem: 'Sistem Rumah',
@@ -746,8 +746,11 @@ export default function NatalPage() {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/chart" className="flex items-center gap-2 text-purple-300 hover:text-white"><ArrowLeft size={20} /><span className="text-sm">{tx('back', lang)}</span></Link>
           <h1 className="text-lg font-bold text-white">星缘</h1>
-          <div className="flex gap-1 bg-white/5 rounded-xl p-1">
-            {(['zh', 'en', 'id'] as const).map(l => (<button key={l} onClick={() => setLang(l)} className={`px-3 py-1 rounded-lg text-xs font-medium ${lang === l ? 'bg-purple-600 text-white' : 'text-slate-400 hover:text-white'}`}>{l === 'zh' ? '\u4E2D\u6587' : l === 'en' ? 'EN' : 'ID'}</button>))}
+          <div className="flex items-center gap-3">
+            {user && <Link href="/profile" className="flex items-center gap-1 px-3 py-1 rounded-xl bg-white/10 hover:bg-white/20 text-xs text-purple-300 transition-colors"><User size={16} />{tx('myCharts', lang) || '我的'}</Link>}
+            <div className="flex gap-1 bg-white/5 rounded-xl p-1">
+              {(['zh', 'en', 'id'] as const).map(l => (<button key={l} onClick={() => setLang(l)} className={`px-3 py-1 rounded-lg text-xs font-medium ${lang === l ? 'bg-purple-600 text-white' : 'text-slate-400 hover:text-white'}`}>{l === 'zh' ? '\u4E2D\u6587' : l === 'en' ? 'EN' : 'ID'}</button>))}
+            </div>
           </div>
         </div>
       </nav>

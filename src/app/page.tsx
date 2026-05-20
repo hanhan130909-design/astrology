@@ -532,7 +532,7 @@ export default function HomePage() {
             
             {user ? (
               <div className="flex items-center gap-2">
-                <Link href="/user" className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-purple-500/20">
+                <Link href="/profile" className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-purple-500/20">
                   {user.displayName?.[0] || user.email?.[0] || 'U'}
                 </Link>
                 <button onClick={logout} className="p-2 text-slate-400 hover:text-white transition-colors"><LogOut size={16} /></button>
