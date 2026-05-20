@@ -74,7 +74,7 @@ export interface UserProfile {
   email: string;
   displayName: string;
   photoURL?: string;
-  language: 'id' | 'en' | 'zh';
+  language: 'id' | 'en' | 'zh' | 'th' | 'vi' | 'ms' | 'ja' | 'ko';
   createdAt: Timestamp;
   updatedAt: Timestamp;
   birthChart?: {
@@ -117,7 +117,7 @@ export async function registerWithEmail(
   email: string, 
   password: string, 
   displayName: string,
-  language: 'id' | 'en' | 'zh' = 'id'
+  language: 'id' | 'en' | 'zh' | 'th' | 'vi' | 'ms' | 'ja' | 'ko' = 'id'
 ): Promise<UserProfile> {
   if (!auth || !db) throw new Error("Firebase not configured");
   const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -143,7 +143,7 @@ export async function loginWithEmail(email: string, password: string): Promise<F
   return userCredential.user;
 }
 
-export async function loginWithGoogle(language: 'id' | 'en' | 'zh' = 'id'): Promise<UserProfile> {
+export async function loginWithGoogle(language: 'id' | 'en' | 'zh' | 'th' | 'vi' | 'ms' | 'ja' | 'ko' = 'id'): Promise<UserProfile> {
   if (!auth || !db) throw new Error("Firebase not configured");
   const userCredential = await signInWithPopup(auth, googleProvider);
   const user = userCredential.user;
