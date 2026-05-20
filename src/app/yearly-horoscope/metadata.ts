@@ -1,22 +1,18 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: {
-    default: "Yearly Horoscope 2026 - Starry Fate | Free Annual Zodiac Forecast | Yearly Horoscope",
-    template: "%s | Starry Fate Yearly Horoscope",
-  },
-  description: "View your free 2026 yearly horoscope for all 12 zodiac signs. AI-powered analysis of annual astro trends, predicting development opportunities and challenges across all life areas. Help you plan your year and make better decisions.",
-  keywords: ["yearly horoscope", "2026 horoscope", "annual forecast", "zodiac yearly", "free horoscope", "AI yearly prediction"],
+  title: "2025 Yearly Horoscope - 12 Zodiac Signs Annual Forecast",
+  description: "Free 2025 yearly horoscope for all 12 zodiac signs. Comprehensive annual forecast covering love, career, finance and health. Powered by real astronomical calculations and AI analysis, providing reliable yearly guidance for planning your year ahead.",
+  keywords: ["yearly horoscope", "2025 horoscope", "annual forecast", "yearly zodiac", "free horoscope", "AI yearly forecast"],
   openGraph: {
-    title: "Yearly Horoscope 2026 - Starry Fate | Free Annual Zodiac Forecast",
-    description: "View your free 2026 yearly horoscope for all 12 zodiac signs. AI-powered analysis of annual astro trends, predicting development opportunities and challenges across all life areas.",
+    title: "2025 Yearly Horoscope - 12 Zodiac Signs Annual Forecast",
+    description: "Free 2025 yearly horoscope for all 12 zodiac signs. Comprehensive annual forecast covering love, career, finance and health. Powered by real astronomical calculations and AI analysis, providing reliable yearly guidance for planning your year ahead.",
     type: "website",
-    locale: "en_US",
-    siteName: "Starry Fate Yearly Horoscope",
+    siteName: "Starry Fate",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yearly Horoscope 2026 - Starry Fate | Free Annual Zodiac Forecast",
-    description: "View your free 2026 yearly horoscope for all 12 zodiac signs.",
+    title: "2025 Yearly Horoscope - 12 Zodiac Signs Annual Forecast",
+    description: "Free 2025 yearly horoscope for all 12 zodiac signs. Comprehensive annual forecast covering love, career, finance and health. Powered by real astronomical calculations and AI analysis, providing reliable yearly guidance for planning your year ahead.",
   },
 };

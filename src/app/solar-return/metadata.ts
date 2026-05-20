@@ -1,22 +1,18 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: {
-    default: "Solar Return Chart - Starry Fate | Free Solar Return Analysis | Solar Return",
-    template: "%s | Starry Fate Solar Return",
-  },
-  description: "Generate a free Solar Return chart to analyze your yearly fortune after your birthday. Enter your birth date, calculate the Solar Return position, AI-powered insights into overall luck, career, love, and financial trends.",
-  keywords: ["Solar Return", "sun return", "solar return chart", "birthday forecast", "yearly astrology", "free astrology"],
+  title: "Free Solar Return Chart Analysis - Birthday Astrology",
+  description: "Generate a free professional Solar Return chart to analyze the astrological themes and influences for your personal new year. Enter your birth information and current location to calculate Solar Return planetary positions and house placements. AI interprets fortune themes for the year ahead.",
+  keywords: ["solar return", "birthday astrology", "yearly chart", "return chart", "free astrology", "AI solar return", "yearly forecast"],
   openGraph: {
-    title: "Solar Return Chart - Starry Fate | Free Solar Return",
-    description: "Generate a free Solar Return chart to analyze your yearly fortune after your birthday. Enter your birth date, calculate the Solar Return position, AI-powered insights into overall luck, career, love, and financial trends.",
+    title: "Free Solar Return Chart Analysis - Birthday Astrology",
+    description: "Generate a free professional Solar Return chart to analyze the astrological themes and influences for your personal new year. Enter your birth information and current location to calculate Solar Return planetary positions and house placements. AI interprets fortune themes for the year ahead.",
     type: "website",
-    locale: "en_US",
-    siteName: "Starry Fate Solar Return",
+    siteName: "Starry Fate",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Solar Return Chart - Starry Fate | Free Solar Return",
-    description: "Generate a free Solar Return chart to analyze your yearly fortune after your birthday.",
+    title: "Free Solar Return Chart Analysis - Birthday Astrology",
+    description: "Generate a free professional Solar Return chart to analyze the astrological themes and influences for your personal new year. Enter your birth information and current location to calculate Solar Return planetary positions and house placements. AI interprets fortune themes for the year ahead.",
   },
 };

@@ -1,22 +1,18 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: {
-    default: "Daily/Monthly Horoscope 2026 - Starry Fate | Free AI Astrology",
-    template: "%s | Starry Fate Horoscope",
-  },
-  description: "View your free daily, monthly, and yearly horoscope for all 12 zodiac signs. Covers love, career, finance, health and more. AI-powered analysis based on real astronomical calculations, helping you grasp fortune trends and make better decisions.",
-  keywords: ["horoscope", "daily horoscope", "monthly horoscope", "yearly horoscope", "zodiac forecast", "free horoscope", "AI horoscope", "2026 horoscope"],
+  title: "Daily, Monthly & Yearly Horoscope - Free Zodiac Forecast",
+  description: "Free daily, monthly and yearly horoscope forecasts for all 12 zodiac signs. Accurate astrology predictions covering love, career, health and finance. Powered by real astronomical calculations and AI analysis for reliable guidance.",
+  keywords: ["horoscope", "daily horoscope", "monthly horoscope", "yearly horoscope", "zodiac forecast", "free horoscope", "astrology prediction"],
   openGraph: {
-    title: "Daily/Monthly Horoscope 2026 - Starry Fate | Free AI Astrology",
-    description: "View your free daily, monthly, and yearly horoscope for all 12 zodiac signs. Covers love, career, finance, health and more. AI-powered analysis based on real astronomical calculations, helping you grasp fortune trends and make better decisions.",
+    title: "Daily, Monthly & Yearly Horoscope - Free Zodiac Forecast",
+    description: "Free daily, monthly and yearly horoscope forecasts for all 12 zodiac signs. Accurate astrology predictions covering love, career, health and finance. Powered by real astronomical calculations and AI analysis for reliable guidance.",
     type: "website",
-    locale: "en_US",
-    siteName: "Starry Fate Horoscope",
+    siteName: "Starry Fate",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Daily/Monthly Horoscope 2026 - Starry Fate | Free AI Astrology",
-    description: "View your free daily, monthly, and yearly horoscope for all 12 zodiac signs. Covers love, career, finance, health and more. AI-powered analysis based on real astronomical calculations, helping you grasp fortune trends and make better decisions.",
+    title: "Daily, Monthly & Yearly Horoscope - Free Zodiac Forecast",
+    description: "Free daily, monthly and yearly horoscope forecasts for all 12 zodiac signs. Accurate astrology predictions covering love, career, health and finance. Powered by real astronomical calculations and AI analysis for reliable guidance.",
   },
 };
