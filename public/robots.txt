@@ -1,11 +1,10 @@
-# robots.txt for 爱占星
-# https://astrology-clean.vercel.app
+﻿# robots.txt for 星缘# https://lunaxstar.com
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://astrology-clean.vercel.app/sitemap.xml
+Sitemap: https://lunaxstar.com/sitemap.xml
 
 # Crawl-delay
 Crawl-delay: 1
@@ -27,3 +26,4 @@ Crawl-delay: 1
 User-agent: Baiduspider
 Allow: /
 Crawl-delay: 1
+
