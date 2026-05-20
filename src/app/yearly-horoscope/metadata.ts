@@ -2,21 +2,21 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: "年度运势预测 - 星缘 | 免费AI占星 | Yearly-Horoscope",
-    template: "%s | 星缘年度运势",
+    default: "Yearly Horoscope 2026 - Starry Fate | Free Annual Zodiac Forecast | Yearly Horoscope",
+    template: "%s | Starry Fate Yearly Horoscope",
   },
-  description: "免费查看12星座年度运势预测。AI智能分析全年星象运势，预测各领域发展趋势与机遇挑战，助你制定年度计划，做出更好决策。支持多语言。",
-  keywords: [年度运势, 年运势预测, 星座年运, 2026运势, 免费年运, AI年度预测],
+  description: "View your free 2026 yearly horoscope for all 12 zodiac signs. AI-powered analysis of annual astro trends, predicting development opportunities and challenges across all life areas. Help you plan your year and make better decisions.",
+  keywords: ["yearly horoscope", "2026 horoscope", "annual forecast", "zodiac yearly", "free horoscope", "AI yearly prediction"],
   openGraph: {
-    title: "年度运势预测 - 星缘 | 免费AI占星",
-    description: "免费查看12星座年度运势预测。AI智能分析全年星象运势，预测各领域发展趋势与机遇挑战，助你制定年度计划，做出更好决策。支持多语言。",
+    title: "Yearly Horoscope 2026 - Starry Fate | Free Annual Zodiac Forecast",
+    description: "View your free 2026 yearly horoscope for all 12 zodiac signs. AI-powered analysis of annual astro trends, predicting development opportunities and challenges across all life areas.",
     type: "website",
-    locale: "zh_CN",
-    siteName: "星缘星缘年度运势",
+    locale: "en_US",
+    siteName: "Starry Fate Yearly Horoscope",
   },
   twitter: {
     card: "summary_large_image",
-    title: "年度运势预测 - 星缘 | 免费AI占星",
-    description: "免费查看12星座年度运势预测。AI智能分析全年星象运势，预测各领域发展趋势与机遇挑战，助你制定年度计划，做出更好决策。支持多语言。",
+    title: "Yearly Horoscope 2026 - Starry Fate | Free Annual Zodiac Forecast",
+    description: "View your free 2026 yearly horoscope for all 12 zodiac signs.",
   },
 };

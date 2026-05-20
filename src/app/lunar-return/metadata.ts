@@ -2,21 +2,21 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: "月亮返照盘 - 星缘 | 免费AI占星 | Lunar-Return",
-    template: "%s | 星缘月亮返照盘",
+    default: "Moon Return Chart - Starry Fate | Free Lunar Return Analysis | Lunar Return",
+    template: "%s | Starry Fate Lunar Return",
   },
-  description: "免费生成月亮返照盘（Lunar Return），分析该月情绪与内在需求。输入出生信息，精准计算月亮返照盘位置，AI解读该月情绪、感情与生活各方面指引。",
-  keywords: [月亮返照盘, Lunar Return, 月返盘, 情绪运势, 月运势, AI占星],
+  description: "Generate a free Lunar Return chart to analyze your monthly emotions and inner needs. Enter your birth info, calculate the precise Lunar Return position, AI-powered insights into emotions, relationships, and life guidance.",
+  keywords: ["Lunar Return", "Moon Return", "lunar return chart", "monthly emotions", "moon astrology", "free astrology"],
   openGraph: {
-    title: "月亮返照盘 - 星缘 | 免费AI占星",
-    description: "免费生成月亮返照盘（Lunar Return），分析该月情绪与内在需求。输入出生信息，精准计算月亮返照盘位置，AI解读该月情绪、感情与生活各方面指引。",
+    title: "Moon Return Chart - Starry Fate | Free Lunar Return",
+    description: "Generate a free Lunar Return chart to analyze your monthly emotions and inner needs. Enter your birth info, calculate the precise Lunar Return position, AI-powered insights into emotions, relationships, and life guidance.",
     type: "website",
-    locale: "zh_CN",
-    siteName: "星缘星缘月亮返照盘",
+    locale: "en_US",
+    siteName: "Starry Fate Lunar Return",
   },
   twitter: {
     card: "summary_large_image",
-    title: "月亮返照盘 - 星缘 | 免费AI占星",
-    description: "免费生成月亮返照盘（Lunar Return），分析该月情绪与内在需求。输入出生信息，精准计算月亮返照盘位置，AI解读该月情绪、感情与生活各方面指引。",
+    title: "Moon Return Chart - Starry Fate | Free Lunar Return",
+    description: "Generate a free Lunar Return chart to analyze your monthly emotions and inner needs.",
   },
 };
