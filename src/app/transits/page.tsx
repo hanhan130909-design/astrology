@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
-import { ArrowLeft, Star, Search, MapPin, X, Sparkles, Lock, Share2, CheckCircle, MessageCircle } from 'lucide-react';
+import { ArrowLeft, Star, Search, MapPin, X, Sparkles, Lock, Share2, CheckCircle, MessageCircle, ChevronDown } from 'lucide-react';
 import NatalChart from '@/components/NatalChart';
 import TransitOverlay from '@/components/TransitOverlay';
 import { useChartStorage } from '../natal/useChartStorage';
@@ -151,6 +151,8 @@ export default function TransitPage() {
   const [aspectFilter, setAspectFilter] = useState<string>('all');
   const [viewMode, setViewMode] = useState<'overlay' | 'separate'>('overlay');
   const [activeTab, setActiveTab] = useState<'chart' | 'ai'>('chart');
+  const [openFaq, setOpenFaq] = useState<number>(-1);
+  const [faq, setFaq] = useState(0);
   
   // AI Reading unlock state
   const [shareCount, setShareCount] = useState(0);
@@ -288,6 +290,49 @@ export default function TransitPage() {
     return language === 'zh' ? signsCN[idx] : ['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'][idx];
   };
 
+  // FAQ Data
+  const faqs = [
+    {
+      q: { zh: "什么是行星推运？", en: "What is planetary transit?", id: "Apa itu transit planet?" },
+      a: {
+        zh: "行星推运是指天空中运行的行星与你出生时本命盘中的行星或轴点形成的相位关系。通过分析这些相位，可以预测不同时期运势的变化和重要转折点。",
+        en: "Planetary transit refers to the aspects formed between the moving planets in the sky and the planets or points in your natal chart. By analyzing these aspects, you can predict changes in fortune and important turning points during different periods.",
+        id: "Transit planet mengacu pada aspek yang terbentuk antara planet yang bergerak di langit dan planet atau titik dalam grafik natal Anda. Dengan menganalisis aspek ini, Anda dapat memprediksi perubahan keberuntungan dan titik balik penting selama periode berbeda."
+      }
+    },
+    {
+      q: { zh: "推运分析能告诉我什么？", en: "What can transit analysis tell me?", id: "Apa yang bisa diberitahu oleh analisis transit?" },
+      a: {
+        zh: "推运分析可以揭示当前和未来一段时间内，哪些领域会受到影响、机遇和挑战何时出现、如何把握好运时机、以及需要注意哪些问题。它帮助你更好地规划人生重大决策。",
+        en: "Transit analysis can reveal which areas will be affected in the current and future periods, when opportunities and challenges will appear, how to seize lucky moments, and what issues to watch for. It helps you better plan major life decisions.",
+        id: "Analisis transit dapat mengungkap area mana yang akan terpengaruh dalam periode saat ini dan masa depan, kapan peluang dan tantangan akan muncul, bagaimana memanfaatkan momen beruntung, dan masalah apa yang harus diwaspadai."
+      }
+    },
+    {
+      q: { zh: "哪些推运相位最重要？", en: "Which transit aspects are most important?", id: "Aspek transit mana yang paling penting?" },
+      a: {
+        zh: "最重要的推运相位包括：外行星（木星、土星、天王星、海王星、冥王星）与本命太阳、月亮、上升点的相位；精确度高的相位（容许度小于3度）；以及形成主要相位类型（合相、四分相、三分相、对分相）的相位。",
+        en: "The most important transit aspects include: outer planets (Jupiter, Saturn, Uranus, Neptune, Pluto) aspecting natal Sun, Moon, or Ascendant; tight aspects (orb less than 3 degrees); and aspects forming major aspect types (conjunction, square, trine, opposition).",
+        id: "Aspek transit terpenting termasuk: planet luar (Jupiter, Saturnus, Uranus, Neptunus, Pluto) membentuk aspek dengan Matahari, Bulan, atau Ascendant natal; aspek ketat (orb kurang dari 3 derajat); dan aspek yang membentuk jenis aspek utama."
+      }
+    },
+    {
+      q: { zh: "推运的影响持续多久？", en: "How long do transit effects last?", id: "Berapa lama efek transit berlangsung?" },
+      a: {
+        zh: "不同行星的推运影响时长不同：月亮推运仅持续数小时，水星金星约数天，火星约数周，木星约一年，土星约两年半，而天王星、海王星、冥王星的影响可持续数年甚至十几年。",
+        en: "Different planets have different transit durations: Moon transits last only hours, Mercury and Venus about days, Mars about weeks, Jupiter about a year, Saturn about two and a half years, while Uranus, Neptune, and Pluto can affect for years or even decades.",
+        id: "Planet berbeda memiliki durasi transit berbeda: transit Bulan hanya berlangsung beberapa jam, Merkurius dan Venus sekitar hari, Mars sekitar minggu, Jupiter sekitar setahun, Saturnus sekitar dua setengah tahun."
+      }
+    },
+    {
+      q: { zh: "如何利用推运信息改善生活？", en: "How to use transit information to improve life?", id: "Bagaimana menggunakan informasi transit untuk meningkatkan kehidupan?" },
+      a: {
+        zh: "建议在木星有利推运时开展新项目、扩展事业；在土星推运期间踏实工作、巩固成果；在火星推运时积极行动但避免冲动；在水星逆行推运时谨慎签约和沟通。顺势而为，事半功倍。",
+        en: "It's recommended to start new projects and expand career during favorable Jupiter transits; work steadily and consolidate gains during Saturn transits; act actively but avoid impulsiveness during Mars transits; be cautious with contracts and communication during Mercury retrograde transits.",
+        id: "Disarankan untuk memulai proyek baru dan memperluas karir selama transit Jupiter yang menguntungkan; bekerja dengan mantap dan konsolidasikan hasil selama transit Saturnus; bertindak aktif tapi hindari impulsif selama transit Mars."
+      }
+    }
+  ];
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#020617] via-[#0f0f23] to-[#020617] text-white">
       <nav className="sticky top-0 z-50 backdrop-blur-md bg-[#020617]/90 border-b border-white/5">
@@ -643,6 +688,96 @@ export default function TransitPage() {
             )}
           </div>
         )}
+
+        {/* SEO Description Section */}
+        <section className="max-w-4xl mx-auto mt-12 mb-8 px-4">
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-white/5 rounded-xl p-5">
+              <h3 className="text-purple-300 font-bold mb-2">行星推运分析</h3>
+              <p className="text-slate-300 text-sm leading-relaxed">行星推运是占星学中预测运势的重要方法。通过分析天空中运行行星与你本命盘的相位关系，揭示人生不同阶段的机遇与挑战，帮助你把握时机、趋吉避凶。</p>
+            </div>
+            <div className="bg-white/5 rounded-xl p-5">
+              <h3 className="text-cyan-300 font-bold mb-2">Planetary Transit Analysis</h3>
+              <p className="text-slate-300 text-sm leading-relaxed">Planetary transit is a key astrological method for fortune prediction. By analyzing aspects between moving planets and your natal chart, it reveals opportunities and challenges at different life stages, helping you seize opportunities and navigate wisely.</p>
+            </div>
+            <div className="bg-white/5 rounded-xl p-5">
+              <h3 className="text-amber-300 font-bold mb-2">Analisis Transit Planet</h3>
+              <p className="text-slate-300 text-sm leading-relaxed">Transit planet adalah metode astrologi penting untuk prediksi keberuntungan. Dengan menganalisis aspek antara planet yang bergerak dan grafik natal Anda, ini mengungkap peluang dan tantangan di berbagai tahap kehidupan.</p>
+            </div>
+          </div>
+        </section>
+
+                    {/* FAQ */}
+            <section className="max-w-4xl mx-auto mt-16 mb-8">
+              <h2 className="text-2xl font-bold text-white mb-6 text-center">常见问题</h2>
+              <div className="space-y-3">
+                <div className="border border-purple-500/20 rounded-lg overflow-hidden">
+                  <button onClick={() => setFaq(1)} className="w-full flex items-center justify-between p-4 text-left hover:bg-purple-500/5 transition-colors">
+                    <span className="text-white font-medium">什么是推运盘？</span>
+                    <ChevronDown className={`w-5 h-5 text-purple-400 transition-transform ${faq===1?'rotate-180':''}`} />
+                  </button>
+                  {faq===1 && (
+                    <div className="px-4 pb-4">
+                      <p className="text-purple-200 text-sm mb-2">推运盘将当前行星位置覆盖在本命盘上，分析当下及未来的运势变化。</p>
+                      <p className="text-purple-300/70 text-xs mb-1">EN: A transit chart overlays current planetary positions onto your natal chart.</p>
+                      <p className="text-purple-300/70 text-xs">ID: Transit chart menimpakan posisi planet saat ini ke chart natal Anda.</p>
+                    </div>
+                  )}
+                </div>
+                <div className="border border-purple-500/20 rounded-lg overflow-hidden">
+                  <button onClick={() => setFaq(2)} className="w-full flex items-center justify-between p-4 text-left hover:bg-purple-500/5 transition-colors">
+                    <span className="text-white font-medium">推运盘准确吗？</span>
+                    <ChevronDown className={`w-5 h-5 text-purple-400 transition-transform ${faq===2?'rotate-180':''}`} />
+                  </button>
+                  {faq===2 && (
+                    <div className="px-4 pb-4">
+                      <p className="text-purple-200 text-sm mb-2">准确度取决于出生时间精确度，15分钟内误差依然高度可靠。</p>
+                      <p className="text-purple-300/70 text-xs mb-1">EN: Accuracy depends on birth time precision. Within 15 min it remains highly reliable.</p>
+                      <p className="text-purple-300/70 text-xs">ID: Akurasi tergantung ketepatan waktu kelahiran. Dalam 15 menit masih sangat andal.</p>
+                    </div>
+                  )}
+                </div>
+                <div className="border border-purple-500/20 rounded-lg overflow-hidden">
+                  <button onClick={() => setFaq(3)} className="w-full flex items-center justify-between p-4 text-left hover:bg-purple-500/5 transition-colors">
+                    <span className="text-white font-medium">如何解读推运盘？</span>
+                    <ChevronDown className={`w-5 h-5 text-purple-400 transition-transform ${faq===3?'rotate-180':''}`} />
+                  </button>
+                  {faq===3 && (
+                    <div className="px-4 pb-4">
+                      <p className="text-purple-200 text-sm mb-2">重点关注与个人行星形成合相、对分相、四分相的过境行星。</p>
+                      <p className="text-purple-300/70 text-xs mb-1">EN: Focus on transiting planets forming hard aspects to your personal planets.</p>
+                      <p className="text-purple-300/70 text-xs">ID: Fokus pada planet transiting yang membentuk aspek keras ke planet pribadi Anda.</p>
+                    </div>
+                  )}
+                </div>
+                <div className="border border-purple-500/20 rounded-lg overflow-hidden">
+                  <button onClick={() => setFaq(4)} className="w-full flex items-center justify-between p-4 text-left hover:bg-purple-500/5 transition-colors">
+                    <span className="text-white font-medium">推运盘和本命盘有什么区别？</span>
+                    <ChevronDown className={`w-5 h-5 text-purple-400 transition-transform ${faq===4?'rotate-180':''}`} />
+                  </button>
+                  {faq===4 && (
+                    <div className="px-4 pb-4">
+                      <p className="text-purple-200 text-sm mb-2">本命盘固定不变，推运盘持续变化，用来预测运势。</p>
+                      <p className="text-purple-300/70 text-xs mb-1">EN: Natal chart never changes. Transit chart changes constantly for prediction.</p>
+                      <p className="text-purple-300/70 text-xs">ID: Chart natal tidak berubah. Transit chart terus berubah untuk prediksi.</p>
+                    </div>
+                  )}
+                </div>
+                <div className="border border-purple-500/20 rounded-lg overflow-hidden">
+                  <button onClick={() => setFaq(5)} className="w-full flex items-center justify-between p-4 text-left hover:bg-purple-500/5 transition-colors">
+                    <span className="text-white font-medium">为什么要看推运盘？</span>
+                    <ChevronDown className={`w-5 h-5 text-purple-400 transition-transform ${faq===5?'rotate-180':''}`} />
+                  </button>
+                  {faq===5 && (
+                    <div className="px-4 pb-4">
+                      <p className="text-purple-200 text-sm mb-2">帮你把握重要时机，如换工作、搬家、恋爱等关键节点。</p>
+                      <p className="text-purple-300/70 text-xs mb-1">EN: Helps you seize key timing for career changes, moving, relationships.</p>
+                      <p className="text-purple-300/70 text-xs">ID: Membantu Anda memanfaatkan waktu penting untuk karier, pindah, hubungan.</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </section>
       </main>
     </div>
   );

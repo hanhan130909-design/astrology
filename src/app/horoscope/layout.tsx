@@ -22,5 +22,34 @@ export default function HoroscopeLayout({
 }: {
   children: React.ReactNode,
 }) {
-  return children;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Daily, Monthly & Yearly Horoscope",
+            "description": "Free daily, monthly and yearly horoscope forecasts for all 12 zodiac signs. Accurate astrology predictions covering love, career, health and finance.",
+            "url": "https://starryfate.app/horoscope",
+            "mainEntity": {
+              "@type": "Article",
+              "headline": "Daily Horoscope - Zodiac Fortune Forecast",
+              "description": "Comprehensive daily horoscope analysis for all 12 zodiac signs",
+              "author": {
+                "@type": "Organization",
+                "name": "Starry Fate"
+              }
+            },
+            "speakable": {
+              "@type": "SpeakableSpecification",
+              "cssSelector": ["h1", "h2", ".horoscope-content"]
+            }
+          })
+        }}
+      />
+      {children}
+    </>
+  );
 }
