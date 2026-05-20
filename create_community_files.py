@@ -1,4 +1,20 @@
-'use client';
+import os
+
+# Create the layout.tsx file
+layout_content = '''import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Astrology Community - Free Chart Sharing | 星缘',
+  description: 'Join our astrology community to share charts, discuss horoscopes, and learn astrology with others.',
+};
+
+export default function CommunityLayout({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
+}
+'''
+
+# Create the page.tsx file
+page_content = ''''use client';
 
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
@@ -620,3 +636,24 @@ export default function CommunityPage() {
     </div>
   );
 }
+'''
+
+# Write files
+base_path = r'C:\Users\user\.qclaw\astrology-clean\src\app\community'
+
+# Ensure directory exists
+os.makedirs(base_path, exist_ok=True)
+
+# Write layout.tsx
+layout_path = os.path.join(base_path, 'layout.tsx')
+with open(layout_path, 'w', encoding='utf-8') as f:
+    f.write(layout_content)
+print(f'Created: {layout_path}')
+
+# Write page.tsx
+page_path = os.path.join(base_path, 'page.tsx')
+with open(page_path, 'w', encoding='utf-8') as f:
+    f.write(page_content)
+print(f'Created: {page_path}')
+
+print('\nDone! Files created successfully.')
