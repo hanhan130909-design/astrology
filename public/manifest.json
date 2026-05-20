@@ -1,20 +1,32 @@
 {
-  "name": "星缘 - Love Astrology",
+  "name": "星缘 - 免费AI占星解读",
   "short_name": "星缘",
-  "description": "专业星座分析平台 - 本命盘、推运盘、合盘、塔罗、每日运势",
+  "description": "专业星座分析平台 - 本命盘、推运盘、合盘、塔罗、AI解读",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#030014",
-  "theme_color": "#030014",
+  "theme_color": "#7c3aed",
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "zh-CN",
-  "categories": ["lifestyle", "entertainment", "utilities"],
+  "categories": ["lifestyle", "entertainment"],
   "icons": [
     {
-      "src": "/icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
     }
   ]
 }

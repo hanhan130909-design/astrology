@@ -1,12 +1,15 @@
 /**
- * Service Worker for 爱占星
+ * Service Worker for 星缘 (lunaxstar.com)
  * Provides offline support and caching
  */
 
-const CACHE_NAME = 'love-astrology-v1';
+const CACHE_NAME = 'lunaxstar-v1';
 const STATIC_ASSETS = [
   '/',
   '/natal',
+  '/transits',
+  '/composite',
+  '/compatibility',
   '/horoscope',
   '/tarot',
   '/manifest.json',
@@ -66,32 +69,5 @@ self.addEventListener('fetch', (event) => {
 
       return cached || fetchPromise;
     })
-  );
-});
-
-// Background sync for offline form submissions
-self.addEventListener('sync', (event) => {
-  if (event.tag === 'background-sync') {
-    event.waitUntil(doBackgroundSync());
-  }
-});
-
-async function doBackgroundSync() {
-  // Handle background sync logic here
-  console.log('Background sync executed');
-}
-
-// Push notifications (optional)
-self.addEventListener('push', (event) => {
-  const options = {
-    body: event.data?.text() || '您有一条新消息',
-    icon: '/icon-192.png',
-    badge: '/icon-72.png',
-    tag: 'notification',
-    requireInteraction: true,
-  };
-
-  event.waitUntil(
-    self.registration.showNotification('爱占星', options)
   );
 });
