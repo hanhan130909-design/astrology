@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useAuth } from '@/contexts/AuthContext';
@@ -109,6 +109,37 @@ export default function CompositePage() {
   const [linkCopied, setLinkCopied] = useState(false);
 
   const chartRef = useRef<HTMLDivElement>(null);
+
+  // Load pending composite chart from profile page
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const pending = sessionStorage.getItem('pending_composite');
+      if (pending) {
+        try {
+          const data = JSON.parse(pending);
+          setP1Name(data.person1Name || '');
+          setP1Year(data.person1Data?.year || 1990);
+          setP1Month(data.person1Data?.month || 6);
+          setP1Day(data.person1Data?.day || 15);
+          setP1Hour(data.person1Data?.hour || 12);
+          setP1Minute(data.person1Data?.minute || 0);
+          setP2Name(data.person2Name || '');
+          setP2Year(data.person2Data?.year || 1992);
+          setP2Month(data.person2Data?.month || 3);
+          setP2Day(data.person2Data?.day || 20);
+          setP2Hour(data.person2Data?.hour || 10);
+          setP2Minute(data.person2Data?.minute || 0);
+          if (data.houseSystem) setHouseSystem(data.houseSystem);
+          if (data.chartData) {
+            setChart(data.chartData);
+          }
+          sessionStorage.removeItem('pending_composite');
+        } catch (e) {
+          console.error('Failed to load composite chart:', e);
+        }
+      }
+    }
+  }, []);
 
   const p1City = ALL_CITIES.find((c: any) => c.id === p1CityId) || ALL_CITIES[0];
   const p2City = ALL_CITIES.find((c: any) => c.id === p2CityId) || ALL_CITIES[0];
