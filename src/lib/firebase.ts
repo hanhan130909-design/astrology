@@ -375,3 +375,12 @@ export async function getSavedCompositeCharts(maxCount: number = 20): Promise<Co
   const snapshot = await getDocs(q);
   return snapshot.docs.map(d => ({ id: d.id, ...d.data() } as CompositeChart));
 }
+
+export async function deleteCompositeChartFromCloud(chartId: string, userId: string): Promise<void> {
+  if (!db || !auth) throw new Error("Firebase not configured");
+  const docRef = doc(db, 'composite_charts', chartId);
+  const docSnap = await getDoc(docRef);
+  if (!docSnap.exists()) throw new Error("Chart not found");
+  if (docSnap.data().userId !== userId) throw new Error("Unauthorized");
+  await deleteDoc(docRef);
+}
