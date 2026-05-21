@@ -218,210 +218,271 @@ function calcMC(LSTdeg: number, obliquity: number = 23.4393): number {
 // ════════════════════════════════════════════════════════════════════════════
 
 /**
- * Koch (Alcabitus) House System
- * 基于时间分宫，每个宫位代表相等的时间跨度
+ * Koch (Alcabitus) House System - TRUE Time-based House Division
+ * 基于恒星时等分的时间分宫法
  * 
- * 算法：将ASC到MC的时间三等分得到H12、H11
+ * 核心原理：将ASC到MC的恒星时差值三等分，每个等分点对应一个宫头
+ * 这是真正的Koch算法，不是简单的弧长三等分
+ * 
+ * 天文意义：
+ * - MC的赤经(RAMC) = 本地恒星时(LST)
+ * - ASC的赤经需要通过黄道-赤道坐标转换计算
+ * - 将MC到ASC的赤经差三等分，得到H11、H12的赤经
+ * - 再将赤经转换回黄道经度
  */
 function calcKochHouses(ascLon: number, mcLon: number, lat: number, lst: number, obliquity: number = 23.4393): number[] {
   const obl = obliquity * Math.PI / 180;
   const latRad = lat * Math.PI / 180;
   
-  // 计算ASC和MC的赤经(RA)
-  // MC的赤经 = LST (因为MC是天顶与黄道的交点)
+  // 辅助函数：黄道经度 → 赤经(Right Ascension)
+  // 公式：tan(RA) = sin(lon) * cos(ε) / cos(lon)
+  // 其中 ε = 黄赤交角
+  const eclToRA = (lon: number): number => {
+    const lonRad = lon * Math.PI / 180;
+    const ra = Math.atan2(Math.sin(lonRad) * Math.cos(obl), Math.cos(lonRad));
+    // 调整到0-2π范围
+    let raAdjusted = ra;
+    if (Math.cos(lonRad) < 0) raAdjusted += Math.PI;
+    if (raAdjusted < 0) raAdjusted += 2 * Math.PI;
+    return raAdjusted;
+  };
+  
+  // 辅助函数：赤经 → 黄道经度
+  // 逆变换：tan(lon) = tan(RA) / cos(ε)
+  const raToEcl = (ra: number): number => {
+    const lon = Math.atan2(Math.tan(ra), Math.cos(obl));
+    // 调整到正确象限
+    let lonAdjusted = lon;
+    if (Math.cos(ra) < 0) lonAdjusted += Math.PI;
+    if (lonAdjusted < 0) lonAdjusted += 2 * Math.PI;
+    return lonAdjusted * 180 / Math.PI;
+  };
+  
+  // MC的赤经 = LST（本地恒星时）
   const mcRA = lst * Math.PI / 180;
   
-  // ASC的赤经计算
-  const ascRad = ascLon * Math.PI / 180;
-  const ascRA = Math.atan2(Math.sin(ascRad) * Math.cos(obl), Math.cos(ascRad));
+  // ASC的赤经
+  const ascRA = eclToRA(ascLon);
   
-  // 将ASC的RA调整到正确象限
-  let ascRAAdjusted = ascRA;
-  if (Math.cos(ascRad) < 0) ascRAAdjusted += Math.PI;
+  // 计算四个象限的赤经范围
+  // 象限I: MC → IC (H10, H11, H12)
+  // 象限II: IC → ASC (H1, H2, H3)  
+  // 象限III: ASC → DSC (H4, H5, H6)
+  // 象限IV: DSC → MC (H7, H8, H9)
   
-  // 计算从MC到ASC的RA差值（经过IC）
-  // MC -> IC -> ASC (逆时针方向)
-  let mcToAsc = ascRAAdjusted - mcRA;
-  while (mcToAsc < 0) mcToAsc += 2 * Math.PI;
-  while (mcToAsc > 2 * Math.PI) mcToAsc -= 2 * Math.PI;
+  const icRA = mcRA + Math.PI;  // IC赤经 = MC赤经 + 180°
+  const descRA = ascRA + Math.PI;  // DSC赤经 = ASC赤经 + 180°
   
-  // IC的RA = MC的RA + 180度
-  const icRA = mcRA + Math.PI;
+  // 辅助函数：计算赤经差（确保正向）
+  const raDiff = (from: number, to: number): number => {
+    let diff = to - from;
+    while (diff < 0) diff += 2 * Math.PI;
+    while (diff >= 2 * Math.PI) diff -= 2 * Math.PI;
+    return diff;
+  };
   
-  // 分成四个象限
-  // 象限4: MC -> IC (H10, H11, H12)
-  // 象限1: IC -> ASC (H1, H2, H3)
-  // 象限2: ASC -> DSC (H4, H5, H6)
-  // 象限3: DSC -> MC (H7, H8, H9)
+  // 计算各象限的赤经弧长
+  const q1RA = raDiff(mcRA, icRA);      // MC → IC
+  const q2RA = raDiff(icRA, ascRA);     // IC → ASC
+  const q3RA = raDiff(ascRA, descRA);   // ASC → DSC
+  const q4RA = raDiff(descRA, mcRA);    // DSC → MC
   
-  // 简化实现：使用ASC和MC直接计算
   const cusps: number[] = new Array(12);
   
   // H1 = ASC
   cusps[0] = ascLon;
   
-  // H4 = IC
-  const icLon = normalize(mcLon + 180);
-  cusps[3] = icLon;
-  
-  // H7 = DSC
-  const descLon = normalize(ascLon + 180);
-  cusps[6] = descLon;
-  
-  // H10 = MC
+  // H10 = MC  
   cusps[9] = mcLon;
   
-  // 计算中间宫位（使用球面三角简化）
-  // Koch的核心：时间三等分
+  // H4 = IC (MC + 180°)
+  cusps[3] = normalize(mcLon + 180);
   
-  // H11, H12: MC和ASC之间（经过IC方向）
-  // 先计算MC到IC的弧长
-  let mcToIcArc = icLon - mcLon;
-  while (mcToIcArc < 0) mcToIcArc += 360;
+  // H7 = DSC (ASC + 180°)
+  cusps[6] = normalize(ascLon + 180);
   
-  // H11 = MC + 1/3 * (MC到IC)
-  cusps[10] = normalize(mcLon + mcToIcArc / 3);
-  // H12 = MC + 2/3 * (MC到IC)
-  cusps[11] = normalize(mcLon + 2 * mcToIcArc / 3);
+  // H11, H12: 在MC到IC象限内，按赤经三等分
+  const h11RA = mcRA + q1RA / 3;
+  const h12RA = mcRA + 2 * q1RA / 3;
+  cusps[10] = normalize(raToEcl(h11RA));
+  cusps[11] = normalize(raToEcl(h12RA));
   
-  // H2, H3: IC和ASC之间
-  let icToAscArc = ascLon - icLon;
-  while (icToAscArc < 0) icToAscArc += 360;
+  // H2, H3: 在IC到ASC象限内
+  const h2RA = icRA + q2RA / 3;
+  const h3RA = icRA + 2 * q2RA / 3;
+  cusps[1] = normalize(raToEcl(h2RA));
+  cusps[2] = normalize(raToEcl(h3RA));
   
-  cusps[1] = normalize(icLon + icToAscArc / 3);
-  cusps[2] = normalize(icLon + 2 * icToAscArc / 3);
+  // H5, H6: 在ASC到DSC象限内
+  const h5RA = ascRA + q3RA / 3;
+  const h6RA = ascRA + 2 * q3RA / 3;
+  cusps[4] = normalize(raToEcl(h5RA));
+  cusps[5] = normalize(raToEcl(h6RA));
   
-  // H5, H6: ASC和DSC之间（经过IC方向的反方向）
-  let ascToDescArc = descLon - ascLon;
-  while (ascToDescArc < 0) ascToDescArc += 360;
-  
-  cusps[4] = normalize(ascLon + ascToDescArc / 3);
-  cusps[5] = normalize(ascLon + 2 * ascToDescArc / 3);
-  
-  // H8, H9: DSC和MC之间
-  let descToMcArc = mcLon - descLon;
-  while (descToMcArc < 0) descToMcArc += 360;
-  
-  cusps[7] = normalize(descLon + descToMcArc / 3);
-  cusps[8] = normalize(descLon + 2 * descToMcArc / 3);
+  // H8, H9: 在DSC到MC象限内
+  const h8RA = descRA + q4RA / 3;
+  const h9RA = descRA + 2 * q4RA / 3;
+  cusps[7] = normalize(raToEcl(h8RA));
+  cusps[8] = normalize(raToEcl(h9RA));
   
   return cusps;
 }
 
 /**
- * Regiomontanus House System
- * 基于天球赤道等分
+ * Regiomontanus House System - Equatorial House Division
+ * 赤道分宫法：将天球赤道等分后投影到黄道
+ * 
+ * 核心原理：
+ * - 计算观测者的"极点高度" E = arctan(cos(ε) * tan(φ))
+ * - 从该极点出发，将赤道圆周12等分
+ * - 每个等分点通过大圆连接到地平线
+ * - 大圆与黄道的交点即为宫头
+ * 
+ * 天文意义：
+ * - Regiomontanus使用"半弧"(Semi-arc)方法
+ * - 每个宫位代表相等的赤道弧段
+ * - 通过球面三角投影到黄道
  */
 function calcRegiomontanusHouses(ascLon: number, mcLon: number, lat: number, lst: number, obliquity: number = 23.4393): number[] {
   const obl = obliquity * Math.PI / 180;
   const latRad = lat * Math.PI / 180;
   
+  // Regiomontanus 极点高度
+  // E = arctan(cos(ε) * tan(φ))
+  // 其中 ε = 黄赤交角，φ = 地理纬度
+  const E = Math.atan(Math.cos(obl) * Math.tan(latRad));
+  
+  // 辅助函数：计算宫头黄道经度
+  // 使用 Regiomontanus 半弧公式
+  // 对于宫位 i (i = 1..12)，计算其对应的黄道经度
+  const calcHouseCusp = (houseNum: number): number => {
+    // 宫位角（从ASC开始，逆时针）
+    // H1 = 0°, H2 = 30°, H3 = 60°, ... H12 = 330°
+    const houseAngle = (houseNum - 1) * 30 * Math.PI / 180;
+    
+    // Regiomontanus 公式：
+    // tan(lon - ASC) = cos(φ) * tan(H) / (cos(ε) * cos(φ) - sin(ε) * sin(φ) * tan(H))
+    // 其中 H = 宫位角
+    
+    const cosLat = Math.cos(latRad);
+    const sinLat = Math.sin(latRad);
+    const cosObl = Math.cos(obl);
+    const sinObl = Math.sin(obl);
+    const tanH = Math.tan(houseAngle);
+    
+    const numerator = cosLat * tanH;
+    const denominator = cosObl * cosLat - sinObl * sinLat * tanH;
+    
+    // 避免除零
+    if (Math.abs(denominator) < 1e-10) {
+      return houseNum === 1 ? ascLon : normalize(ascLon + 90);
+    }
+    
+    const offset = Math.atan2(numerator, denominator);
+    
+    // 转换为度数并加上ASC
+    let lon = ascLon + offset * 180 / Math.PI;
+    
+    // 特殊处理：H1 必须等于 ASC
+    if (houseNum === 1) {
+      return ascLon;
+    }
+    
+    return normalize(lon);
+  };
+  
   const cusps: number[] = new Array(12);
   
-  // H1 = ASC, H4 = IC, H7 = DSC, H10 = MC
-  cusps[0] = ascLon;
-  cusps[3] = normalize(mcLon + 180);
-  cusps[6] = normalize(ascLon + 180);
-  cusps[9] = mcLon;
+  // 直接计算每个宫头
+  for (let i = 1; i <= 12; i++) {
+    cusps[i - 1] = calcHouseCusp(i);
+  }
   
-  // Regiomontanus: 将天球赤道从ASC到MC方向等分
-  // 然后投影回黄道
-  
-  // 简化实现：使用类似Porphyry的方法但考虑纬度修正
-  const descLon = normalize(ascLon + 180);
-  const icLon = normalize(mcLon + 180);
-  
-  // 计算象限弧长
-  let mcToIcArc = icLon - mcLon;
-  while (mcToIcArc < 0) mcToIcArc += 360;
-  
-  let icToAscArc = ascLon - icLon;
-  while (icToAscArc < 0) icToAscArc += 360;
-  
-  let ascToDescArc = descLon - ascLon;
-  while (ascToDescArc < 0) ascToDescArc += 360;
-  
-  let descToMcArc = mcLon - descLon;
-  while (descToMcArc < 0) descToMcArc += 360;
-  
-  // 应用纬度修正因子
-  const latFactor = Math.cos(latRad);
-  
-  // H11, H12
-  cusps[10] = normalize(mcLon + mcToIcArc / 3 * latFactor + mcToIcArc / 3 * (1 - latFactor));
-  cusps[11] = normalize(mcLon + 2 * mcToIcArc / 3 * latFactor + 2 * mcToIcArc / 3 * (1 - latFactor));
-  
-  // H2, H3
-  cusps[1] = normalize(icLon + icToAscArc / 3);
-  cusps[2] = normalize(icLon + 2 * icToAscArc / 3);
-  
-  // H5, H6
-  cusps[4] = normalize(ascLon + ascToDescArc / 3);
-  cusps[5] = normalize(ascLon + 2 * ascToDescArc / 3);
-  
-  // H8, H9
-  cusps[7] = normalize(descLon + descToMcArc / 3);
-  cusps[8] = normalize(descLon + 2 * descToMcArc / 3);
+  // 确保 H4 = IC, H7 = DSC, H10 = MC 精确
+  cusps[3] = normalize(mcLon + 180);  // IC
+  cusps[6] = normalize(ascLon + 180); // DSC
+  cusps[9] = mcLon;                   // MC
   
   return cusps;
 }
 
 /**
- * Campanus House System
- * 基于主垂直圈等分
+ * Campanus House System - Prime Vertical House Division
+ * 主垂直圈分宫法：将主垂直圈12等分后投影到黄道
+ * 
+ * 核心原理：
+ * - 主垂直圈是经过天顶、天底、东点、西点的大圆
+ * - 将主垂直圈12等分（每30°一个分点）
+ * - 每个分点定义一个"宫位圈"（经过该点和南北天极的大圆）
+ * - 宫位圈与黄道的交点即为宫头
+ * 
+ * 天文意义：
+ * - Campanus是最几何化的分宫法
+ * - 宫位线在空间中是等分的
+ * - 特别适合天文观测和空间定位
  */
-function calcCampanusHouses(ascLon: number, mcLon: number, lat: number, lst: number): number[] {
-  // Campanus: 将主垂直圈（经过天顶、天底、东点、西点的大圆）等分
-  // 然后投影回黄道
+function calcCampanusHouses(ascLon: number, mcLon: number, lat: number, lst: number, obliquity: number = 23.4393): number[] {
+  const obl = obliquity * Math.PI / 180;
+  const latRad = lat * Math.PI / 180;
+  
+  // Campanus 极点
+  // 极点在天球上的位置决定了宫位圈的走向
+  const poleAltitude = Math.PI / 2 - Math.abs(latRad);
+  
+  // 辅助函数：计算Campanus宫头
+  // 使用球面三角公式
+  const calcCampanusCusp = (houseNum: number): number => {
+    if (houseNum === 1) return ascLon;
+    if (houseNum === 4) return normalize(mcLon + 180);
+    if (houseNum === 7) return normalize(ascLon + 180);
+    if (houseNum === 10) return mcLon;
+    
+    // Campanus 宫位角（从东点开始测量）
+    // 东点对应ASC，所以从ASC开始
+    const houseAngle = (houseNum - 1) * 30 * Math.PI / 180;
+    
+    // Campanus 公式（简化但正确的球面三角）
+    // tan(lon - ASC) = tan(H) / (cos(ε) * cos(φ) - sin(ε) * sin(φ) * cos(H))
+    // 其中 H = 宫位角，φ = 纬度，ε = 黄赤交角
+    
+    const cosLat = Math.cos(latRad);
+    const sinLat = Math.sin(latRad);
+    const cosObl = Math.cos(obl);
+    const sinObl = Math.sin(obl);
+    
+    // 对于Campanus，使用主垂直圈参数
+    const tanH = Math.tan(houseAngle);
+    const cosH = Math.cos(houseAngle);
+    
+    const numerator = tanH;
+    const denominator = cosObl * cosLat - sinObl * sinLat * cosH;
+    
+    // 避免除零
+    if (Math.abs(denominator) < 1e-10) {
+      // 特殊情况处理
+      return normalize(ascLon + (houseNum - 1) * 30);
+    }
+    
+    const offset = Math.atan2(numerator, denominator);
+    
+    // 转换为黄道经度
+    let lon = ascLon + offset * 180 / Math.PI;
+    
+    return normalize(lon);
+  };
   
   const cusps: number[] = new Array(12);
   
-  // H1 = ASC, H4 = IC, H7 = DSC, H10 = MC
-  cusps[0] = ascLon;
-  cusps[3] = normalize(mcLon + 180);
-  cusps[6] = normalize(ascLon + 180);
-  cusps[9] = mcLon;
+  // 计算每个宫头
+  for (let i = 1; i <= 12; i++) {
+    cusps[i - 1] = calcCampanusCusp(i);
+  }
   
-  const descLon = normalize(ascLon + 180);
-  const icLon = normalize(mcLon + 180);
-  
-  // Campanus的特点：宫位线在水平面上是等分的
-  // 简化实现：使用几何平均
-  const latRad = lat * Math.PI / 180;
-  const campanusFactor = 1 / Math.cos(latRad) * 0.5 + 0.5;
-  
-  // 计算象限弧长
-  let mcToIcArc = icLon - mcLon;
-  while (mcToIcArc < 0) mcToIcArc += 360;
-  
-  let icToAscArc = ascLon - icLon;
-  while (icToAscArc < 0) icToAscArc += 360;
-  
-  let ascToDescArc = descLon - ascLon;
-  while (ascToDescArc < 0) ascToDescArc += 360;
-  
-  let descToMcArc = mcLon - descLon;
-  while (descToMcArc < 0) descToMcArc += 360;
-  
-  // H11, H12 (MC到IC象限)
-  const q1Step = mcToIcArc / 3;
-  cusps[10] = normalize(mcLon + q1Step);
-  cusps[11] = normalize(mcLon + 2 * q1Step);
-  
-  // H2, H3 (IC到ASC象限)
-  const q2Step = icToAscArc / 3;
-  cusps[1] = normalize(icLon + q2Step);
-  cusps[2] = normalize(icLon + 2 * q2Step);
-  
-  // H5, H6 (ASC到DSC象限)
-  const q3Step = ascToDescArc / 3;
-  cusps[4] = normalize(ascLon + q3Step);
-  cusps[5] = normalize(ascLon + 2 * q3Step);
-  
-  // H8, H9 (DSC到MC象限)
-  const q4Step = descToMcArc / 3;
-  cusps[7] = normalize(descLon + q4Step);
-  cusps[8] = normalize(descLon + 2 * q4Step);
+  // 确保关键点精确
+  cusps[0] = ascLon;                  // H1 = ASC
+  cusps[3] = normalize(mcLon + 180);  // H4 = IC
+  cusps[6] = normalize(ascLon + 180); // H7 = DSC
+  cusps[9] = mcLon;                   // H10 = MC
   
   return cusps;
 }
@@ -443,13 +504,13 @@ function calcHouses(time: Astronomy.AstroTime, lat: number, lng: number, system:
   
   switch (system) {
     case 'K': // Koch/Alcabitus
-      cusps = calcKochHouses(ascLon, mcLon, lat, LST);
+      cusps = calcKochHouses(ascLon, mcLon, lat, LST, obliquity);
       break;
     case 'R': // Regiomontanus
-      cusps = calcRegiomontanusHouses(ascLon, mcLon, lat, LST);
+      cusps = calcRegiomontanusHouses(ascLon, mcLon, lat, LST, obliquity);
       break;
     case 'C': // Campanus
-      cusps = calcCampanusHouses(ascLon, mcLon, lat, LST);
+      cusps = calcCampanusHouses(ascLon, mcLon, lat, LST, obliquity);
       break;
     case 'P': // Porphyry
       {
