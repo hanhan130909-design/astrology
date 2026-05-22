@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { ArrowLeft, Star, Search, MapPin, X, Sparkles, Lock, Share2, CheckCircle, MessageCircle, ChevronDown } from 'lucide-react';
-import NatalChart from '@/components/NatalChart';
+import ProfessionalNatalChart from '@/components/ProfessionalNatalChart';
 import TransitOverlay from '@/components/TransitOverlay';
 import { useChartStorage } from '../natal/useChartStorage';
 
@@ -516,12 +516,12 @@ export default function TransitPage() {
                       <div className="grid md:grid-cols-2 gap-8">
                         <div>
                           <h4 className="text-center text-sm text-slate-400 mb-4">{language === 'zh' ? '本命盘' : 'Natal Chart'}</h4>
-                          <NatalChart planets={chart.natal.planets} houses={chart.natal.houses} aspects={chart.natal.aspects} size={350}/>
+                          <ProfessionalNatalChart planets={chart.natal.planets} houses={chart.natal.houses} aspects={chart.natal.aspects} size={350}/>
                         </div>
                         {chart.transit && (
                           <div>
                             <h4 className="text-center text-sm text-slate-400 mb-4">{language === 'zh' ? '推运盘' : 'Transit'} ({tYear}-{tMonth}-{tDay})</h4>
-                            <NatalChart planets={chart.transit.planets} houses={chart.natal.houses} aspects={[]} size={350}/>
+                            <ProfessionalNatalChart planets={chart.transit.planets} houses={chart.natal.houses} aspects={[]} size={350}/>
                           </div>
                         )}
                       </div>

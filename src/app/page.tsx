@@ -197,8 +197,8 @@ const ELEMENT_COLORS = {
 const PREMIUM_FEATURES = [
   { 
     id: 'natal', 
-    title: { zh: '本命星盘分析', en: 'Natal Chart Analysis', id: 'Analisis Bagan Lahir' },
-    desc: { zh: '完整行星落位、宫位、相位深度解读', en: 'Complete planetary positions, houses & aspects', id: 'Posisi planet, rumah & aspek lengkap' },
+    title: { zh: '本命星盘分析', en: 'Natal Chart Analysis', id: 'Analisis Bagan Lahir', th: 'วิเคราะห์ดวงชะตา', vi: 'Phân tích Biểu đồ Sinh', ms: 'Analisis Carta Lahir', ja: 'ネイタルチャート分析', ko: '태어난 차트 분석' },
+    desc: { zh: '完整行星落位、宫位、相位深度解读', en: 'Complete planetary positions, houses & aspects', id: 'Posisi planet, rumah & aspek lengkap', th: 'วิเคราะห์ตำแหน่งดาวเคราะห์ ราศี และด้านอย่างลึกซึ้ง', vi: 'Phân tích toàn diện vị trí hành tinh, cung & góc độ', ms: 'Analisis mendalam kedudukan planet, rumah & aspek', ja: '惑星の配置・ハウス・アスペクトを深く解読', ko: '행성 위치, 하우스 및 측면 심층 분석' },
     icon: Orbit, 
     color: 'purple',
     href: '/natal',
@@ -206,8 +206,8 @@ const PREMIUM_FEATURES = [
   },
   { 
     id: 'ai', 
-    title: { zh: 'AI智能解读', en: 'AI-Powered Insights', id: 'Wawasan AI' },
-    desc: { zh: 'Free AI-Powered Deep Analysis by LLaMA 3.3', en: 'Free AI-Powered Deep Analysis by LLaMA 3.3', id: 'Analisis AI mendalam oleh LLaMA 3.3' },
+    title: { zh: 'AI智能解读', en: 'AI-Powered Insights', id: 'Wawasan AI', th: 'อ่านผล AI', vi: 'Đọc AI', ms: 'Bacaan AI', ja: 'AI解読', ko: 'AI 해석' },
+    desc: { zh: 'Free AI-Powered Deep Analysis by LLaMA 3.3', en: 'Free AI-Powered Deep Analysis by LLaMA 3.3', id: 'Analisis AI mendalam oleh LLaMA 3.3', th: 'การวิเคราะห์เชิงลึกด้วย AI ฟรีโดย LLaMA 3.3', vi: 'Phân tích chuyên sâu bằng AI miễn phí từ LLaMA 3.3', ms: 'Analisis mendalam AI percuma oleh LLaMA 3.3', ja: 'LLaMA 3.3による無料AI詳細分析', ko: 'LLaMA 3.3 기반 무료 AI 심층 분석' },
     icon: BrainCircuit, 
     color: 'cyan',
     href: '/ai-reading',
@@ -215,8 +215,8 @@ const PREMIUM_FEATURES = [
   },
   { 
     id: 'compat', 
-    title: { zh: '星座配对', en: 'Compatibility Match', id: 'Kecocokan Zodiak' },
-    desc: { zh: '深入分析两人关系的契合度', en: 'Deep analysis of relationship compatibility', id: 'Analisis mendalam kecocokan hubungan' },
+    title: { zh: '星座配对', en: 'Compatibility Match', id: 'Kecocokan Zodiak', th: 'วิเคราะห์คู่รัก', vi: 'Song hợp', ms: 'Padanan Zodiak', ja: '相性診断', ko: '궁합 매치' },
+    desc: { zh: '深入分析两人关系的契合度', en: 'Deep analysis of relationship compatibility', id: 'Analisis mendalam kecocokan hubungan', th: 'วิเคราะห์ความเข้ากันได้ของความสัมพันธ์อย่างลึกซึ้ง', vi: 'Phân tích sâu mức độ phù hợp trong mối quan hệ', ms: 'Analisis mendalam keserasian hubungan', ja: '二人の関係性の相性を深く分析', ko: '관계 궁합 심층 분석' },
     icon: HeartHandshake, 
     color: 'rose',
     href: '/compatibility',
@@ -224,8 +224,8 @@ const PREMIUM_FEATURES = [
   },
   { 
     id: 'horoscope', 
-    title: { zh: '每日运势', en: 'Daily Horoscope', id: 'Horoskop Harian' },
-    desc: { zh: '包含爱情、事业、财运多维度指引', en: 'Love, career & finance guidance', id: 'Panduan cinta, karir & keuangan' },
+    title: { zh: '每日运势', en: 'Daily Horoscope', id: 'Horoskop Harian', th: 'ดวงชะตารายวัน', vi: 'Tử vi hàng ngày', ms: 'Horoskop Harian', ja: '毎日の運勢', ko: '일일 운세' },
+    desc: { zh: '包含爱情、事业、财运多维度指引', en: 'Love, career & finance guidance', id: 'Panduan cinta, karir & keuangan', th: 'คำแนะนำด้านความรัก อาชีพ และการเงิน', vi: 'Hướng dẫn về tình yêu, sự nghiệp & tài chính', ms: 'Panduan cinta, kerjaya & kewangan', ja: '恋愛・仕事・財運の多角的ガイド', ko: '사랑, 커리어, 재물운 가이드' },
     icon: Sun, 
     color: 'amber',
     href: '/horoscope',
@@ -233,8 +233,8 @@ const PREMIUM_FEATURES = [
   },
   { 
     id: 'transits', 
-    title: { zh: '行运追踪', en: 'Transit Tracker', id: 'Pelacak Transit' },
-    desc: { zh: '实时追踪行星换座与重要相位', en: 'Track planetary transits & key aspects', id: 'Lacak transit planet & aspek penting' },
+    title: { zh: '行运追踪', en: 'Transit Tracker', id: 'Pelacak Transit', th: 'ติดตามทรานซิต', vi: 'Theo dõi Transit', ms: 'Penjejakan Transit', ja: 'トランジット追跡', ko: '트랜짓 추적' },
+    desc: { zh: '实时追踪行星换座与重要相位', en: 'Track planetary transits & key aspects', id: 'Lacak transit planet & aspek penting', th: 'ติดตามการเปลี่ยนราศีของดาวเคราะห์และด้านสำคัญ', vi: 'Theo dõi chuyển cung hành tinh & góc độ chính', ms: 'Jejak transit planet & aspek penting', ja: '惑星の星座移動と重要アスペクトをリアルタイム追跡', ko: '행성 이동 및 주요 측면 실시간 추적' },
     icon: Telescope, 
     color: 'indigo',
     href: '/transits',
@@ -242,8 +242,8 @@ const PREMIUM_FEATURES = [
   },
   { 
     id: 'yearly', 
-    title: { zh: '年度运势报告', en: 'Yearly Forecast', id: 'Ramalan Tahunan' },
-    desc: { zh: `预知${new Date().getFullYear()}全年运势走向`, en: `Discover your ${new Date().getFullYear()} journey`, id: `Temukan perjalanan ${new Date().getFullYear()} Anda` },
+    title: { zh: '年度运势报告', en: 'Yearly Forecast', id: 'Ramalan Tahunan', th: 'รายงานดวงชะตาประจำปี', vi: 'Báo cáo tử vi hàng năm', ms: 'Ramalan Tahunan', ja: '年間運勢レポート', ko: '연간 운세 보고서' },
+    desc: { zh: `预知${new Date().getFullYear()}全年运势走向`, en: `Discover your ${new Date().getFullYear()} journey`, id: `Temukan perjalanan ${new Date().getFullYear()} Anda`, th: `ค้นพบเส้นทางชะตาชีวิตปี ${new Date().getFullYear()}`, vi: `Khám phá hành trình ${new Date().getFullYear()} của bạn`, ms: `Temui perjalanan ${new Date().getFullYear()} anda`, ja: `${new Date().getFullYear()}年の運勢の流れを予知`, ko: `${new Date().getFullYear()}년 운세 흐름을 알아보세요` },
     icon: Calendar, 
     color: 'emerald',
     href: '/yearly-horoscope',
@@ -251,8 +251,8 @@ const PREMIUM_FEATURES = [
   },
   { 
     id: 'tarot', 
-    title: { zh: '塔罗占卜', en: 'Tarot Reading', id: 'Bacaan Tarot' },
-    desc: { zh: '神秘塔罗牌指引人生方向', en: 'Mystical tarot guidance', id: 'Panduan tarot mistis' },
+    title: { zh: '塔罗占卜', en: 'Tarot Reading', id: 'Bacaan Tarot', th: 'การดูไพ่ทาโรต์', vi: 'Xem bài Tarot', ms: 'Pembacaan Tarot', ja: 'タロット占い', ko: '타로 리딩' },
+    desc: { zh: '神秘塔罗牌指引人生方向', en: 'Mystical tarot guidance', id: 'Panduan tarot mistis', th: 'คำแนะนำทางชีวิตจากไพ่ทาโรต์ลึกลับ', vi: 'Hướng dẫn định hướng cuộc sống từ bài Tarot bí ẩn', ms: 'Panduan hidup mistik dari kad Tarot', ja: '神秘のタロットカードが人生の方向性を導く', ko: '신비로운 타로 카드가 인생의 방향을 안내' },
     icon: Sparkles, 
     color: 'violet',
     href: '/tarot',
@@ -260,8 +260,8 @@ const PREMIUM_FEATURES = [
   },
   { 
     id: 'compare', 
-    title: { zh: '星盘对比', en: 'Chart Compare', id: 'Bandingkan Chart' },
-    desc: { zh: '对比两个星盘，探索关系动态', en: 'Compare two charts, explore relationship dynamics', id: 'Bandingkan dua chart, jelajahi dinamika hubungan' },
+    title: { zh: '星盘对比', en: 'Chart Compare', id: 'Bandingkan Chart', th: 'เปรียบเทียบแผนภูมิ', vi: 'So sánh Biểu đồ', ms: 'Banding Carta', ja: 'チャート比較', ko: '차트 비교' },
+    desc: { zh: '对比两个星盘，探索关系动态', en: 'Compare two charts, explore relationship dynamics', id: 'Bandingkan dua chart, jelajahi dinamika hubungan', th: 'เปรียบเทียบสองแผนภูมิ สำรวจพลวัตความสัมพันธ์', vi: 'So sánh hai biểu đồ, khám phá động thái quan hệ', ms: 'Bandingkan dua carta, terokai dinamik hubungan', ja: '2つのチャートを比較し、関係のダイナミクスを探る', ko: '두 차트를 비교하고 관계의 역학을 탐구' },
     icon: Users, 
     color: 'pink',
     href: '/compare',
@@ -269,8 +269,8 @@ const PREMIUM_FEATURES = [
   },
   { 
     id: 'community', 
-    title: { zh: '占星社区', en: 'Community', id: 'Komunitas' },
-    desc: { zh: '与占星爱好者交流讨论', en: 'Connect with astrology enthusiasts', id: 'Terhubung dengan penggemar astrologi' },
+    title: { zh: '占星社区', en: 'Community', id: 'Komunitas', th: 'ชุมชนโหราศาสตร์', vi: 'Cộng đồng Chiêm tinh', ms: 'Komuniti Astrologi', ja: '占星コミュニティ', ko: '점성술 커뮤니티' },
+    desc: { zh: '与占星爱好者交流讨论', en: 'Connect with astrology enthusiasts', id: 'Terhubung dengan penggemar astrologi', th: 'แลกเปลี่ยนและอภิปรายกับผู้ที่รักโหราศาสตร์', vi: 'Trao đổi và thảo luận với những người yêu chiêm tinh', ms: 'Berinteraksi dan berbincang dengan peminat astrologi', ja: '占星愛好家と交流・議論', ko: '점성술 애호가들과 소통하고 토론' },
     icon: MessageSquare, 
     color: 'teal',
     href: '/community',
@@ -278,8 +278,8 @@ const PREMIUM_FEATURES = [
   },
   { 
     id: 'academy', 
-    title: { zh: '占星学院', en: 'Academy', id: 'Akademi' },
-    desc: { zh: '系统学习占星学课程', en: 'Learn astrology systematically', id: 'Pelajari astrologi secara sistematis' },
+    title: { zh: '占星学院', en: 'Academy', id: 'Akademi', th: 'สถาบันโหราศาสตร์', vi: 'Học viện Chiêm tinh', ms: 'Akademi Astrologi', ja: '占星アカデミー', ko: '점성술 아카데미' },
+    desc: { zh: '系统学习占星学课程', en: 'Learn astrology systematically', id: 'Pelajari astrologi secara sistematis', th: 'เรียนรู้หลักสูตรโหราศาสตร์อย่างเป็นระบบ', vi: 'Học hệ thống các khóa học chiêm tinh', ms: 'Belajar astrologi secara sistematik', ja: '体系的に占星学を学ぶコース', ko: '점성술을 체계적으로 학습' },
     icon: BookOpen, 
     color: 'orange',
     href: '/academy',
@@ -287,8 +287,8 @@ const PREMIUM_FEATURES = [
   },
   { 
     id: 'consultation', 
-    title: { zh: '大师咨询', en: 'Consultation', id: 'Konsultasi' },
-    desc: { zh: '预约专业占星师一对一咨询', en: 'Book professional astrologer sessions', id: 'Pesan sesi dengan astrolog profesional' },
+    title: { zh: '大师咨询', en: 'Consultation', id: 'Konsultasi', th: 'ปรึกษาโหร', vi: 'Tư vấn Chuyên gia', ms: 'Perundingan', ja: '専門家相談', ko: '전문가 상담' },
+    desc: { zh: '预约专业占星师一对一咨询', en: 'Book professional astrologer sessions', id: 'Pesan sesi dengan astrolog profesional', th: 'นัดหมายปรึกษาโหราศาสตร์แบบตัวต่อตัว', vi: 'Đặt lịch tư vấn chiêm tinh 1-1 với chuyên gia', ms: 'Tempah sesi perundingan astrologi profesional', ja: 'プロ占星師による1対1相談を予約', ko: '전문 점성술사 1:1 상담 예약' },
     icon: Star, 
     color: 'gold',
     href: '/consultation',
@@ -517,15 +517,24 @@ export default function HomePage() {
 
           <div className="flex items-center gap-3">
             <div className="flex gap-1 bg-white/5 rounded-xl p-1 border border-white/5">
-              {(['zh', 'en', 'id'] as const).map((l) => (
+              {([
+                { code: 'zh', label: '中文' },
+                { code: 'en', label: 'EN' },
+                { code: 'id', label: 'ID' },
+                { code: 'th', label: 'ไทย' },
+                { code: 'vi', label: 'VN' },
+                { code: 'ms', label: 'MS' },
+                { code: 'ja', label: '日本語' },
+                { code: 'ko', label: '한국' },
+              ] as const).map((l) => (
                 <button
-                  key={l}
-                  onClick={() => setLanguage(l)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
-                    language === l ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'
+                  key={l.code}
+                  onClick={() => setLanguage(l.code as any)}
+                  className={`px-2 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                    language === l.code ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'
                   }`}
                 >
-                  {l === 'zh' ? '中文' : l === 'en' ? 'EN' : 'ID'}
+                  {l.label}
                 </button>
               ))}
             </div>
@@ -667,7 +676,7 @@ export default function HomePage() {
             <div className="text-center mb-16">
               <span className="text-purple-400 text-sm font-medium tracking-wider uppercase">{t_features.subtitle}</span>
               <h2 className="text-4xl lg:text-5xl font-black text-white mt-3 mb-4">{t_features.title}</h2>
-              <p className="text-slate-400 max-w-2xl mx-auto">Discover professional astrology tools designed for both beginners and experts</p>
+              <p className="text-slate-400 max-w-2xl mx-auto">{lang === 'zh' ? '专为初学者和专家设计的专业占星工具' : lang === 'en' ? 'Discover professional astrology tools designed for both beginners and experts' : lang === 'id' ? 'Temukan alat astrologi profesional untuk pemula dan ahli' : lang === 'th' ? 'ค้นพบเครื่องมือโหราศาสตร์มืออาชีพสำหรับทั้งผู้เริ่มต้นและผู้เชี่ยวชาญ' : lang === 'vi' ? 'Khám phá các công cụ chiêm tinh chuyên nghiệp dành cho cả người mới và chuyên gia' : lang === 'ms' ? 'Temui alat astrologi profesional untuk pemula dan pakar' : lang === 'ja' ? '初心者から専門家まで、プロフェッショナルな占星ツール' : lang === 'ko' ? '초보자와 전문가 모두를 위한 전문 점성술 도구' : 'Discover professional astrology tools designed for both beginners and experts'}</p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -712,7 +721,7 @@ export default function HomePage() {
                       feature.color === 'indigo' ? 'text-indigo-400' :
                       'text-emerald-400'
                     } group-hover:gap-2 transition-all`}>
-                      {lang === 'zh' ? '立即使用' : lang === 'id' ? 'Gunakan' : 'Use now'}
+                      {lang === 'zh' ? '立即使用' : lang === 'en' ? 'Use now' : lang === 'id' ? 'Gunakan' : lang === 'th' ? 'ใช้เลย' : lang === 'vi' ? 'Sử dụng ngay' : lang === 'ms' ? 'Guna sekarang' : lang === 'ja' ? '今すぐ使う' : '지금 사용'}
                       <ArrowRight size={14} />
                     </div>
                   </Link>
@@ -772,7 +781,7 @@ export default function HomePage() {
                     </div>
                   </div>
                   <Link href={`/horoscope?sign=${selectedZodiac}`} className="px-6 py-3 bg-white/10 hover:bg-white/20 rounded-xl text-sm font-medium text-white transition-all">
-                    {lang === 'zh' ? '查看运势' : lang === 'id' ? 'Lihat Horoskop' : 'View Horoscope'}
+                    {lang === 'zh' ? '查看运势' : lang === 'en' ? 'View Horoscope' : lang === 'id' ? 'Lihat Horoskop' : lang === 'th' ? 'ดูดวงชะตา' : lang === 'vi' ? 'Xem Tử vi' : lang === 'ms' ? 'Lihat Horoskop' : lang === 'ja' ? '運勢を見る' : '운세 보기'}
                   </Link>
                 </div>
               </div>
@@ -844,11 +853,11 @@ export default function HomePage() {
                 <span className="font-bold text-white">{t('siteName')}</span>
               </div>
               <div className="flex gap-6 text-sm text-slate-400">
-                <a href="#" className="hover:text-white transition-colors">{lang === 'zh' ? '隐私政策' : lang === 'id' ? 'Kebijakan Privasi' : 'Privacy'}</a>
-                <a href="#" className="hover:text-white transition-colors">{lang === 'zh' ? '服务条款' : lang === 'id' ? 'Syarat Layanan' : 'Terms'}</a>
-                <a href="#" className="hover:text-white transition-colors">{lang === 'zh' ? '联系我们' : lang === 'id' ? 'Hubungi Kami' : 'Contact'}</a>
+                <a href="#" className="hover:text-white transition-colors">{lang === 'zh' ? '隐私政策' : lang === 'en' ? 'Privacy' : lang === 'id' ? 'Kebijakan Privasi' : lang === 'th' ? 'นโยบายความเป็นส่วนตัว' : lang === 'vi' ? 'Chính sách bảo mật' : lang === 'ms' ? 'Dasar Privasi' : lang === 'ja' ? 'プライバシーポリシー' : '개인정보 처리방침'}</a>
+                <a href="#" className="hover:text-white transition-colors">{lang === 'zh' ? '服务条款' : lang === 'en' ? 'Terms' : lang === 'id' ? 'Syarat Layanan' : lang === 'th' ? 'ข้อกำหนดการใช้งาน' : lang === 'vi' ? 'Điều khoản dịch vụ' : lang === 'ms' ? 'Terma Perkhidmatan' : lang === 'ja' ? '利用規約' : '서비스 약관'}</a>
+                <a href="#" className="hover:text-white transition-colors">{lang === 'zh' ? '联系我们' : lang === 'en' ? 'Contact' : lang === 'id' ? 'Hubungi Kami' : lang === 'th' ? 'ติดต่อเรา' : lang === 'vi' ? 'Liên hệ' : lang === 'ms' ? 'Hubungi Kami' : lang === 'ja' ? 'お問い合わせ' : '문의하기'}</a>
               </div>
-              <div className="text-sm text-slate-500">© 2024 {t('siteName')}. {lang === 'zh' ? '版权所有' : lang === 'id' ? 'Hak cipta' : 'All rights reserved'}.</div>
+              <div className="text-sm text-slate-500">© 2024 {t('siteName')}. {lang === 'zh' ? '版权所有' : lang === 'en' ? 'All rights reserved' : lang === 'id' ? 'Hak cipta' : lang === 'th' ? 'สงวนลิขสิทธิ์' : lang === 'vi' ? 'Bảo lưu mọi quyền' : lang === 'ms' ? 'Hak cipta terpelihara' : lang === 'ja' ? '全著作権所有' : '모든 권리 보유'}.</div>
             </div>
           </div>
         </footer>
@@ -863,11 +872,11 @@ export default function HomePage() {
           </Link>
           <Link href="/natal" className="flex flex-col items-center gap-1 text-slate-400">
             <Orbit size={20} />
-            <span className="text-[10px]">{lang === 'zh' ? '星盘' : lang === 'id' ? 'Bagan' : 'Chart'}</span>
+            <span className="text-[10px]">{lang === 'zh' ? '星盘' : lang === 'en' ? 'Chart' : lang === 'id' ? 'Bagan' : lang === 'th' ? 'แผนภูมิ' : lang === 'vi' ? 'Biểu đồ' : lang === 'ms' ? 'Carta' : lang === 'ja' ? 'チャート' : '차트'}</span>
           </Link>
           <Link href="/horoscope" className="flex flex-col items-center gap-1 text-slate-400">
             <Sun size={20} />
-            <span className="text-[10px]">{lang === 'zh' ? '运势' : lang === 'id' ? 'Horoskop' : 'Horoscope'}</span>
+            <span className="text-[10px]">{lang === 'zh' ? '运势' : lang === 'en' ? 'Horoscope' : lang === 'id' ? 'Horoskop' : lang === 'th' ? 'ดวงชะตา' : lang === 'vi' ? 'Tử vi' : lang === 'ms' ? 'Horoskop' : lang === 'ja' ? '運勢' : '운세'}</span>
           </Link>
           <Link href="/ai-reading" className="flex flex-col items-center gap-1 text-slate-400">
             <BrainCircuit size={20} />
@@ -876,7 +885,7 @@ export default function HomePage() {
           {user ? (
             <Link href="/user" className="flex flex-col items-center gap-1 text-slate-400">
               <User size={20} />
-              <span className="text-[10px]">{lang === 'zh' ? '我的' : lang === 'id' ? 'Saya' : 'Me'}</span>
+              <span className="text-[10px]">{lang === 'zh' ? '我的' : lang === 'en' ? 'Me' : lang === 'id' ? 'Saya' : lang === 'th' ? 'ของฉัน' : lang === 'vi' ? 'Tôi' : lang === 'ms' ? 'Saya' : lang === 'ja' ? 'マイ' : '나'}</span>
             </Link>
           ) : (
             <Link href="/login" className="flex flex-col items-center gap-1 text-slate-400">

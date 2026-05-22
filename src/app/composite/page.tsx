@@ -7,7 +7,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { ArrowLeft, Users, Heart, Star, ChevronDown, Save, Share2, Download, Sparkles, Loader2 } from 'lucide-react';
 import { saveCompositeChart } from '@/lib/firebase';
 import html2canvas from 'html2canvas';
-import NatalChart from '@/components/NatalChart';
+import ProfessionalNatalChart from '@/components/ProfessionalNatalChart';
 import DualChart from '@/components/DualChart';
 
 const ALL_CITIES = [
@@ -404,7 +404,7 @@ export default function CompositePage() {
                 </div>
 
                 <div ref={chartRef} className="flex justify-center max-w-4xl mx-auto">
-                  <NatalChart
+                  <ProfessionalNatalChart
                     planets={chart.composite.planets}
                     houses={chart.composite.houses}
                     aspects={chart.composite.aspects}

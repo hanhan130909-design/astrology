@@ -632,7 +632,7 @@ export async function POST(request: NextRequest) {
     const year = parseInt(body.year);
     const month = parseInt(body.month);
     const day = parseInt(body.day);
-    const hour = parseFloat(body.hour) || 12;
+    const hour = body.hour != null ? parseFloat(body.hour) : 12;
     const minute = parseInt(body.minute) || 0;
     const system = body.houseSystem || 'P';
     const cityKey = (body.city || '').toLowerCase().replace(/\s+/g, '');
@@ -661,7 +661,11 @@ export async function POST(request: NextRequest) {
     // 转换UTC
     const localHour = hour + minute / 60;
     const utcHour = ((localHour - tz) % 24 + 24) % 24;
-    const utcDate = new Date(Date.UTC(year, month - 1, day, Math.floor(utcHour), Math.round((utcHour % 1) * 60)));
+    // 处理跨日：如果 UTC 小时导致日期偏移
+    let utcDay = day;
+    if (utcHour > localHour && tz > 0) utcDay = day - 1; // 向西跨日
+    if (utcHour < localHour && tz < 0) utcDay = day - 1; // 向东跨日
+    const utcDate = new Date(Date.UTC(year, month - 1, utcDay, Math.floor(utcHour), Math.round((utcHour % 1) * 60)));
     const astroTime = Astronomy.MakeTime(utcDate);
     
     // 计算

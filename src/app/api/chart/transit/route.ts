@@ -254,7 +254,7 @@ export async function POST(request: NextRequest) {
     
     // Transit calculation
     if (type === 'transit' && transitDate) {
-      const transitTime = Astronomy.MakeTime(new Date(transitDate.year, transitDate.month - 1, transitDate.day, transitDate.hour || 12, transitDate.minute || 0));
+      const transitTime = Astronomy.MakeTime(new Date(transitDate.year, transitDate.month - 1, transitDate.day, transitDate.hour != null ? transitDate.hour : 12, transitDate.minute || 0));
       const transitPlanets = calcAllPlanets(transitTime, birthData.lat, birthData.lng);
       
       // Calculate transit aspects to natal

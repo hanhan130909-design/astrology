@@ -66,9 +66,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (isFirebaseConfigured && auth) {
       const unsubscribe = onAuthChange(async (firebaseUser) => {
+        console.log('[AuthContext] onAuthChange fired, firebaseUser:', firebaseUser ? firebaseUser.uid : null);
         if (firebaseUser) {
           try {
             const fp = await getUserProfile(firebaseUser.uid);
+            console.log('[AuthContext] getUserProfile result:', fp ? 'found' : 'null');
             if (fp) {
               const local = toLocalProfile(fp as FirebaseUserProfile);
               setUser(local);
@@ -88,6 +90,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             console.error("Get profile error:", err);
           }
         } else {
+          console.log('[AuthContext] firebaseUser is null, clearing user');
           setUser(null);
           setProfile(null);
         }
@@ -172,14 +175,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const signUp = async (email: string, password: string, name: string) => register(email, password, name);
 
   const loginWithGoogleFn = async (language: string = "zh") => {
+    console.log('[AuthContext] loginWithGoogleFn called, isFirebaseConfigured:', isFirebaseConfigured);
     if (isFirebaseConfigured) {
       try {
+        console.log('[AuthContext] Calling firebase.loginWithGoogle with language:', language);
         const fp = await loginWithGoogle(language as "id" | "en" | "zh");
+        console.log('[AuthContext] firebase.loginWithGoogle returned:', fp ? 'UserProfile' : 'null');
         const local = toLocalProfile(fp as FirebaseUserProfile);
+        console.log('[AuthContext] Setting user:', local.email);
         setUser(local);
         setProfile(local);
         return { success: true };
       } catch (err: any) {
+        console.error('[AuthContext] loginWithGoogleFn error:', err);
         return { success: false, error: err.message || "Google login failed" };
       }
     }

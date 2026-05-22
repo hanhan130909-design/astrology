@@ -29,15 +29,21 @@ import {
   increment
 } from 'firebase/firestore';
 
-// Firebase 配置（从环境变量读取）
+// Clean env vars that may contain BOM characters (from Vercel dashboard input)
+function cleanEnv(val: string | undefined): string {
+  if (!val) return "";
+  return val.replace(/^﻿/, "").replace(/^�/, "").trim();
+}
+
+// Firebase config (from env vars)
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "",
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || "",
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "",
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || "",
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID || "",
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || "",
-  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+  apiKey: cleanEnv(process.env.NEXT_PUBLIC_FIREBASE_API_KEY),
+  authDomain: cleanEnv(process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN),
+  projectId: cleanEnv(process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID),
+  storageBucket: cleanEnv(process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET),
+  messagingSenderId: cleanEnv(process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID),
+  appId: cleanEnv(process.env.NEXT_PUBLIC_FIREBASE_APP_ID),
+  measurementId: cleanEnv(process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID)
 };
 
 // 检查配置是否完整
@@ -143,7 +149,7 @@ export async function loginWithEmail(email: string, password: string): Promise<F
   return userCredential.user;
 }
 
-export async function loginWithGoogle(language: 'id' | 'en' | 'zh' | 'th' | 'vi' | 'ms' | 'ja' | 'ko' = 'id'): Promise<UserProfile> {
+export async function loginWithGoogle(language: 'zh' | 'en' | 'id' | 'th' | 'vi' | 'ms' | 'ja' | 'ko' = 'zh'): Promise<UserProfile> {
   if (!auth || !db) throw new Error("Firebase not configured");
   const userCredential = await signInWithPopup(auth, googleProvider);
   const user = userCredential.user;

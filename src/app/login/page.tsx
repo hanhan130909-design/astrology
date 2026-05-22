@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
@@ -9,7 +9,7 @@ import { Star, Mail, Lock, Eye, EyeOff, ArrowLeft } from 'lucide-react';
 
 export default function LoginPage() {
   const router = useRouter();
-  const { login } = useAuth();
+  const { user, login, loginWithGoogle } = useAuth();
   const { language, setLanguage, t } = useLanguage();
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
@@ -20,6 +20,14 @@ export default function LoginPage() {
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
+
+  // Redirect to home if already logged in
+  useEffect(() => {
+    if (user) {
+      router.push('/');
+    }
+  }, [user, router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,7 +60,8 @@ export default function LoginPage() {
       noAccount: '还没有账号？',
       hasAccount: '已有账号？',
       welcome: '欢迎来到星缘',
-      subtitle: '探索你的星座命运'
+      subtitle: '探索你的星座命运',
+      googleLogin: '使用Google登录'
     },
     en: {
       login: 'Login',
@@ -64,7 +73,8 @@ export default function LoginPage() {
       noAccount: 'No account?',
       hasAccount: 'Have account?',
       welcome: 'Welcome to Starry Fate',
-      subtitle: 'Explore your zodiac destiny'
+      subtitle: 'Explore your zodiac destiny',
+      googleLogin: 'Sign in with Google'
     },
     id: {
       login: 'Masuk',
@@ -76,7 +86,8 @@ export default function LoginPage() {
       noAccount: 'Belum punya akun?',
       hasAccount: 'Sudah punya akun?',
       welcome: 'Selamat datang di Xingyuan',
-      subtitle: 'Jelajahi takdir zodiakmu'
+      subtitle: 'Jelajahi takdir zodiakmu',
+      googleLogin: 'Masuk dengan Google'
     },
     th: {
       login: 'เข้าสู่ระบบ',
@@ -88,7 +99,8 @@ export default function LoginPage() {
       noAccount: 'ยังไม่มีบัญชี?',
       hasAccount: 'มีบัญชีอยู่แล้ว?',
       welcome: 'ยินดีต้อนรับสู่ดูดวง',
-      subtitle: 'สำรวจโชคชะตาของคุณ'
+      subtitle: 'สำรวจโชคชะตาของคุณ',
+      googleLogin: 'เข้าสู่ระบบด้วย Google'
     },
     vi: {
       login: 'Đăng nhập',
@@ -100,7 +112,8 @@ export default function LoginPage() {
       noAccount: 'Chưa có tài khoản?',
       hasAccount: 'Đã có tài khoản?',
       welcome: 'Chào mừng đến với Xem Tử Vi',
-      subtitle: 'Khám phá vận mệnh của bạn'
+      subtitle: 'Khám phá vận mệnh của bạn',
+      googleLogin: 'Đăng nhập bằng Google'
     },
     ms: {
       login: 'Log Masuk',
@@ -112,7 +125,8 @@ export default function LoginPage() {
       noAccount: ' belum ada akaun?',
       hasAccount: 'Sudah ada akaun?',
       welcome: 'Selamat datang di Xingyuan',
-      subtitle: 'Terokai takdir zodiak anda'
+      subtitle: 'Terokai takdir zodiak anda',
+      googleLogin: 'Log Masuk dengan Google'
     },
     ja: {
       login: 'ログイン',
@@ -124,7 +138,8 @@ export default function LoginPage() {
       noAccount: 'アカウントをお持ちでない方?',
       hasAccount: 'すでにアカウントはお持ちですか?',
       welcome: '星読みへようこそ',
-      subtitle: 'あなたの運命を探る'
+      subtitle: 'あなたの運命を探る',
+      googleLogin: 'Googleでログイン'
     },
     ko: {
       login: '로그인',
@@ -136,11 +151,35 @@ export default function LoginPage() {
       noAccount: '계정이 없으신가요?',
       hasAccount: '이미 계정이 있으신가요?',
       welcome: '별점보기에 오신 것을 환영합니다',
-      subtitle: '당신의 운명을 탐구하세요'
+      subtitle: '당신의 운명을 탐구하세요',
+      googleLogin: 'Google로 로그인'
     },
   };
 
   const text = texts[language] || texts.zh;
+  const validLang = ['zh','en','id','th','vi','ms','ja','ko'].includes(language) ? language : 'zh';
+
+  const handleGoogleLogin = async () => {
+    setError('');
+    setGoogleLoading(true);
+    try {
+      console.log('[LoginPage] Calling loginWithGoogle with language:', validLang);
+      const result = await loginWithGoogle(validLang);
+      console.log('[LoginPage] loginWithGoogle returned:', result);
+      if (result.success) {
+        console.log('[LoginPage] Success! Pushing to /');
+        router.push('/');
+      } else {
+        console.error('[LoginPage] Failed:', result.error);
+        setError(result.error || 'Google登录失败');
+      }
+    } catch (err: any) {
+      console.error('[LoginPage] Exception during Google login:', err);
+      setError(err.message || 'Google登录失败');
+    } finally {
+      setGoogleLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#020617] text-white flex items-center justify-center p-4">
@@ -159,19 +198,28 @@ export default function LoginPage() {
 
         {/* 语言切换 */}
         <div className="absolute -top-16 right-0 flex gap-2">
-          {['zh', 'en', 'id'].map((lang) => (
-            <button
-              key={lang}
-              onClick={() => setLanguage(lang as 'zh' | 'en' | 'id')}
-              className={`px-3 py-1 rounded-full text-xs font-medium transition-all ${
-                language === lang
-                  ? 'bg-purple-600 text-white'
-                  : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
-              }`}
-            >
-              {lang === 'zh' ? '中文' : lang === 'en' ? 'EN' : 'ID'}
-            </button>
-          ))}
+          {[
+          { code: 'zh', label: '中文' },
+          { code: 'en', label: 'EN' },
+          { code: 'id', label: 'ID' },
+          { code: 'th', label: 'ไทย' },
+          { code: 'vi', label: 'VN' },
+          { code: 'ms', label: 'MS' },
+          { code: 'ja', label: '日本語' },
+          { code: 'ko', label: '한국' },
+        ].map((l) => (
+          <button
+            key={l.code}
+            onClick={() => setLanguage(l.code as any)}
+            className={`px-2 py-1 rounded-full text-xs font-medium transition-all ${
+              language === l.code
+                ? 'bg-purple-600 text-white'
+                : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+            }`}
+          >
+            {l.label}
+          </button>
+        ))}
         </div>
 
         {/* 主卡片 */}
@@ -253,6 +301,29 @@ export default function LoginPage() {
               className="w-full py-4 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl font-bold text-white hover:from-purple-500 hover:to-indigo-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-purple-900/30"
             >
               {loading ? '...' : isLogin ? text.login : text.register}
+            </button>
+
+            {/* 分隔线 */}
+            <div className="flex items-center gap-3 my-4">
+              <div className="flex-1 h-px bg-slate-800"></div>
+              <span className="text-slate-500 text-xs">OR</span>
+              <div className="flex-1 h-px bg-slate-800"></div>
+            </div>
+
+            {/* Google 登录按钮 */}
+            <button
+              type="button"
+              onClick={handleGoogleLogin}
+              disabled={googleLoading}
+              className="w-full py-3 bg-white text-gray-800 rounded-xl font-medium hover:bg-gray-100 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
+              {googleLoading ? '...' : text.googleLogin}
             </button>
           </form>
 
