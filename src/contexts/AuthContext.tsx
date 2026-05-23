@@ -180,7 +180,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       try {
         console.log('[AuthContext] Calling firebase.loginWithGoogle with language:', language);
         const fp = await loginWithGoogle(language as "id" | "en" | "zh");
-        console.log('[AuthContext] firebase.loginWithGoogle returned:', fp ? 'UserProfile' : 'null');
+        console.log('[AuthContext] loginWithGoogle returned:', fp ? 'UserProfile' : 'null');
         const local = toLocalProfile(fp as FirebaseUserProfile);
         console.log('[AuthContext] Setting user:', local.email);
         setUser(local);

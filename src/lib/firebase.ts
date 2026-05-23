@@ -1,12 +1,12 @@
 // Firebase 配置 - 用户系统和社交功能
 
 import { initializeApp } from 'firebase/app';
-import { 
-  getAuth, 
-  signInWithEmailAndPassword, 
+import {
+  getAuth,
+  signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  signInWithPopup,
   GoogleAuthProvider,
+  signInWithPopup,
   signOut,
   onAuthStateChanged,
   User as FirebaseUser
@@ -35,10 +35,22 @@ function cleanEnv(val: string | undefined): string {
   return val.replace(/^﻿/, "").replace(/^�/, "").trim();
 }
 
+// Detect environment - use actual hostname for authDomain to avoid domain mismatch
+function getAuthDomain(): string {
+  if (typeof window === 'undefined') {
+    return cleanEnv(process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN) || 'localhost';
+  }
+  const host = window.location.hostname;
+  // Use the actual hostname. This works for localhost, .web.app, and custom domains.
+  // If it's localhost, use 'localhost' (Firebase Auth requires this exact value).
+  if (host === 'localhost' || host === '127.0.0.1') return 'localhost';
+  return host; // e.g. 'astrology-f32f2.web.app' or 'lunaxstar.com'
+}
+
 // Firebase config (from env vars)
 const firebaseConfig = {
   apiKey: cleanEnv(process.env.NEXT_PUBLIC_FIREBASE_API_KEY),
-  authDomain: cleanEnv(process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN),
+  authDomain: getAuthDomain(),
   projectId: cleanEnv(process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID),
   storageBucket: cleanEnv(process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET),
   messagingSenderId: cleanEnv(process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID),
@@ -151,12 +163,13 @@ export async function loginWithEmail(email: string, password: string): Promise<F
 
 export async function loginWithGoogle(language: 'zh' | 'en' | 'id' | 'th' | 'vi' | 'ms' | 'ja' | 'ko' = 'zh'): Promise<UserProfile> {
   if (!auth || !db) throw new Error("Firebase not configured");
+
   const userCredential = await signInWithPopup(auth, googleProvider);
   const user = userCredential.user;
-  
+
   const existingProfile = await getUserProfile(user.uid);
   if (existingProfile) return existingProfile;
-  
+
   const profile: UserProfile = {
     uid: user.uid,
     email: user.email!,
@@ -167,7 +180,7 @@ export async function loginWithGoogle(language: 'zh' | 'en' | 'id' | 'th' | 'vi'
     updatedAt: Timestamp.now(),
     stats: { postsCount: 0, followersCount: 0, followingCount: 0 }
   };
-  
+
   await setDoc(doc(db, 'users', user.uid), profile);
   return profile;
 }

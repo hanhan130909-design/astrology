@@ -167,7 +167,7 @@ export default function LoginPage() {
       const result = await loginWithGoogle(validLang);
       console.log('[LoginPage] loginWithGoogle returned:', result);
       if (result.success) {
-        console.log('[LoginPage] Success! Pushing to /');
+        console.log('[LoginPage] Success! Google login successful.');
         router.push('/');
       } else {
         console.error('[LoginPage] Failed:', result.error);
