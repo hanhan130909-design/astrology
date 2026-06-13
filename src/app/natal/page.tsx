@@ -90,6 +90,7 @@ export default function NatalPage(){
 
   const planetCodes:Record<string,string>={Sun:"Q",Moon:"W",Mercury:"E",Venus:"R",Mars:"T",Jupiter:"Y",Saturn:"U",Uranus:"I",Neptune:"O",Pluto:"P",North_Node:"<",South_Node:">"};
   const planetCodesFull:Record<string,string>={...planetCodes,Ascendant:"Z",Midheaven:"X"};
+  const planetSymbols:Record<string,string>={Q:"☉",W:"☽",E:"☿",R:"♀",T:"♂",Y:"♃",U:"♄",I:"♅",O:"♆",P:"♇","<":"☊",">":"☋",Z:"AC",X:"MC"};
 
   const dignityRows = chart ? ["Sun","Moon","Mercury","Venus","Mars","Jupiter","Saturn","Uranus","Neptune","Pluto","North_Node","Ascendant","Midheaven"].filter(k=>{
     if(k==="Ascendant")return chart?.ascendant;
@@ -130,6 +131,7 @@ export default function NatalPage(){
 
       <div id="cssmenu" style={{background:"#333",fontSize:"14px",display:"flex",alignItems:"center",padding:"0 16px"}}>
         <span style={{color:"#ccc",padding:"4px 12px"}}>hanhan <i>已登入</i></span>
+        <a href="/" style={{color:"#ccc",padding:"4px 12px",textDecoration:"none",cursor:"pointer"}}>返回首页</a>
         {[{id:"file",l:"文件",items:["列表","新增"]},{id:"tools",l:"工具",items:["星象日历","出生时间反推"]},{id:"settings",l:"设定",items:["修改密码","个人资料","选择语系"]}].map(m=>(
           <span key={m.id} style={{position:"relative"}}>
             <span onClick={()=>setOpenMenu(openMenu===m.id?null:m.id)} style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>{m.l} ▾</span>
@@ -188,18 +190,18 @@ export default function NatalPage(){
                 </thead>
                 <tbody>
                   {dignityRows.map((r,i)=><tr key={i} style={{border:"1px solid #aaa"}}>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{r.code}</em></td>
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{planetSymbols[r.code]||r.code}</em></td>
                     <td align="center" colSpan={3} style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.deg}</td>
                     <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.house}</td>
                     <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.guardianHouse}</td>
                     <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.exaltHouse}</td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{r.ruler}</em>{r.ruler?"+":""}</td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{r.exalt}</em></td>
-                    <td align="center" colSpan={3} style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{r.triplicity}</em></td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{r.term}</em></td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{r.face}</em></td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.detriment?<em>{Object.keys(RULER).find(k=>(DETRIMENT[r.name]||[]).includes(Math.floor(norm(pData?.[r.name]?.longitude??0)/30)))||""}</em>:""}</td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.fall?<em>{Object.keys(FALL).find(k=>FALL[k]===Math.floor(norm(pData?.[r.name]?.longitude??0)/30))||""}</em>:""}</td>
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{planetSymbols[r.ruler]||r.ruler}</em>{r.ruler?"+":""}</td>
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{planetSymbols[r.exalt]||r.exalt}</em></td>
+                    <td align="center" colSpan={3} style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{planetSymbols[r.triplicity]||r.triplicity}</em></td>
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{planetSymbols[r.term]||r.term}</em></td>
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{planetSymbols[r.face]||r.face}</em></td>
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.detriment?<em>{planetSymbols[planetCodes[(Object.keys(RULER).find(k=>(DETRIMENT[r.name]||[]).includes(Math.floor(norm(pData?.[r.name]?.longitude??0)/30)))||"")]]||""}</em>:""}</td>
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.fall?<em>{planetSymbols[planetCodes[(Object.keys(FALL).find(k=>FALL[k]===Math.floor(norm(pData?.[r.name]?.longitude??0)/30))||"")]]||""}</em>:""}</td>
                     <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.score}</td>
                     <td align="center" style={{border:"1px solid #aaa",padding:"3px 4px",fontSize:"10px"}}>{r.state}</td>
                     <td align="center" style={{border:"1px solid #aaa",padding:"3px 4px",fontSize:"10px"}}>{r.speed}</td>
@@ -214,7 +216,7 @@ export default function NatalPage(){
               <div style={{minWidth:120}}>
                 <table style={{borderCollapse:"collapse",width:"100%"}}>
                   <thead><tr style={{border:"1px solid #aaa"}}><th style={{border:"1px solid #aaa",padding:"4px"}}>宫</th><th colSpan={3} style={{border:"1px solid #aaa",padding:"4px"}}>黄经度数</th><th style={{border:"1px solid #aaa",padding:"4px"}}>本垣</th><th style={{border:"1px solid #aaa",padding:"4px"}}>曜升</th><th style={{border:"1px solid #aaa",padding:"4px"}}>宫神星</th></tr></thead>
-                  <tbody>{houseRows.map((r,i)=><tr key={i} style={{border:"1px solid #aaa"}}><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}>{r.house}</td><td align="center" colSpan={3} style={{border:"1px solid #aaa",padding:"2px 4px"}}>{r.deg}</td><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}><em>{r.ruler}</em></td><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}>{r.exalt?<em>{r.exalt}</em>:""}</td><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}>{r.almuten?<em>{r.almuten}</em>:""}</td></tr>)}</tbody>
+                  <tbody>{houseRows.map((r,i)=><tr key={i} style={{border:"1px solid #aaa"}}><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}>{r.house}</td><td align="center" colSpan={3} style={{border:"1px solid #aaa",padding:"2px 4px"}}>{r.deg}</td><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}><em>{planetSymbols[r.ruler]||r.ruler}</em></td><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}>{r.exalt?<em>{planetSymbols[r.exalt]||r.exalt}</em>:""}</td><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}>{r.almuten?<em>{planetSymbols[r.almuten]||r.almuten}</em>:""}</td></tr>)}</tbody>
                 </table>
               </div>
               <div style={{flex:1,minWidth:180}}>
@@ -266,7 +268,7 @@ export default function NatalPage(){
                       cols.push({yr,h,ruler:rulerK?planetCodes[rulerK]||"":""});
                     }
                     return <tr key={row} style={{border:"1px solid #aaa"}}>
-                      {cols.map((c,i)=><Fragment key={i}><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{c.yr}</td><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{c.h}</td><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{c.ruler}</em></td></Fragment>)}
+                      {cols.map((c,i)=><Fragment key={i}><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{c.yr}</td><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{c.h}</td><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{planetSymbols[c.ruler]||c.ruler}</em></td></Fragment>)}
                     </tr>;
                   })}
                 </tbody>
