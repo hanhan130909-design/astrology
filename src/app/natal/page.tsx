@@ -265,7 +265,14 @@ export default function NatalPage(){
           <Link href="/" className="text-[#666] hover:text-[#333] text-xs no-underline">返回首页</Link>
         </div>
         <div className="flex items-center gap-3">
-          <Link href="/login" className="text-[#666] text-xs">登入</Link>
+          {user ? (
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-[#666]">{user.displayName||user.email||'用户'}</span>
+              <button onClick={()=>{}} className="text-xs text-[#999] hover:text-[#666]">登出</button>
+            </div>
+          ) : (
+            <Link href="/login" className="text-[#666] text-xs">已经有帐号？登入</Link>
+          )}
           {(['zh','en','id']as const).map(l=><button key={l} onClick={()=>setLang(l)} className={`text-xs ${lang===l?'font-bold text-[#333]':'text-[#888]'}`}>{l==='zh'?'简体中文':l==='en'?'English':'Indonesia'}</button>)}
           <button onClick={()=>setShowSaved(!showSaved)} className="text-xs text-[#666]">{t.myCharts.replace('{0}',String(saved.length))}</button>
         </div>
