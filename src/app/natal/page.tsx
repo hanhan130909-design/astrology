@@ -43,6 +43,7 @@ export default function NatalPage(){
   const [loading,setLoading] = useState(false);
   const [activeTab,setActiveTab] = useState("chart-tab");
   const [sidebarOpen,setSidebarOpen] = useState(true);
+  const [openMenu,setOpenMenu] = useState<string|null>(null);
 
   const lat = (glatDeg + glatMin / 60) * (glatDir === "S" ? -1 : 1);
   const lng = (glonDeg + glonMin / 60) * (glonDir === "W" ? -1 : 1);
@@ -192,9 +193,14 @@ export default function NatalPage(){
 
       <div id="cssmenu" style={{background:"#333",fontSize:"14px",display:"flex",alignItems:"center",padding:"0 16px"}}>
         <span style={{color:"#ccc",padding:"4px 12px"}}>hanhan <i>已登入</i></span>
-        <span style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>文件 ▾</span>
-        <span style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>工具 ▾</span>
-        <span style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>设定 ▾</span>
+        {[{id:"file",l:"文件",items:["列表","新增"]},{id:"tools",l:"工具",items:["星象日历","出生时间反推"]},{id:"settings",l:"设定",items:["修改密码","个人资料","选择语系"]}].map(m=>(
+          <span key={m.id} style={{position:"relative"}}>
+            <span onClick={()=>setOpenMenu(openMenu===m.id?null:m.id)} style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>{m.l} ▾</span>
+            {openMenu===m.id&&<div style={{position:"absolute",top:"100%",left:0,background:"#444",color:"#ccc",minWidth:120,zIndex:50,border:"1px solid #555"}}>
+              {m.items.map(item=><div key={item} style={{padding:"4px 12px",cursor:"pointer",fontSize:"13px"}} onMouseDown={()=>setOpenMenu(null)}>{item}</div>)}
+            </div>}
+          </span>
+        ))}
         <a href="/natal" style={{color:"#ccc",padding:"4px 12px",textDecoration:"none",cursor:"pointer"}}>快速制图</a>
         <span style={{flex:1}}/>
         <span style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>星缘</span>
@@ -249,7 +255,45 @@ export default function NatalPage(){
               </div>
             </div>}
 
-            {["firdaria-tab","profection-tab","fortune-tab","spirit-tab"].includes(activeTab)&&<div style={{textAlign:"center",color:"#999",padding:20}}>此功能开发中</div>}
+            {activeTab==="firdaria-tab"&&chart&&<div className="list_table" style={{clear:"both",width:"100%",fontSize:"12px"}}>
+              <div style={{fontWeight:"bold",marginBottom:8}}>法达星限 — 行星大运周期</div>
+              <table width="100%" style={{borderCollapse:"collapse"}}>
+                <thead><tr style={{border:"1px solid #aaa"}}><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>行星</th><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>主运年限</th><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>起始年龄</th></tr></thead>
+                <tbody>
+                  {(()=>{const periods=[{p:"Sun",y:10},{p:"Venus",y:8},{p:"Mercury",y:13},{p:"Moon",y:9},{p:"Saturn",y:11},{p:"Jupiter",y:12},{p:"Mars",y:7},{p:"North_Node",y:3},{p:"South_Node",y:2}];let start=0;return periods.map(r=>{const s=start;start+=r.y;return<tr key={r.p} style={{border:"1px solid #aaa"}}><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>{r.p}</td><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>{r.y}年</td><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>{s}岁</td></tr>;})})()}
+                </tbody>
+              </table>
+            </div>}
+
+            {activeTab==="profection-tab"&&chart&&<div className="list_table" style={{clear:"both",width:"100%",fontSize:"12px"}}>
+              <div style={{fontWeight:"bold",marginBottom:8}}>小限法 — 年度岁宫 (以{year}年生日起限)</div>
+              <table width="100%" style={{borderCollapse:"collapse"}}>
+                <thead><tr style={{border:"1px solid #aaa"}}><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>年龄</th><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>年份</th><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>岁宫</th></tr></thead>
+                <tbody>
+                  {Array.from({length:12},(_,i)=>{const age=new Date().getFullYear()-year;const h=((age+i)%12)+1;return<tr key={i} style={{border:"1px solid #aaa"}}><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>{age+i}岁</td><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>{year+i}</td><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>第{h}宫</td></tr>;})}
+                </tbody>
+              </table>
+            </div>}
+
+            {activeTab==="fortune-tab"&&chart&&<div className="list_table" style={{clear:"both",width:"100%",fontSize:"12px"}}>
+              <div style={{fontWeight:"bold",marginBottom:8}}>福点 Aphesis</div>
+              <table width="100%" style={{borderCollapse:"collapse"}}>
+                <thead><tr style={{border:"1px solid #aaa"}}><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>年份</th><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>主星</th><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>次星</th><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>起始日期</th></tr></thead>
+                <tbody>
+                  {Array.from({length:12},(_,i)=>{const d=new Date(year+i,month-1,day);return<tr key={i} style={{border:"1px solid #aaa"}}><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>{year+i}</td><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>—</td><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>—</td><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>{d.toLocaleDateString("zh-CN")}</td></tr>;})}
+                </tbody>
+              </table>
+            </div>}
+
+            {activeTab==="spirit-tab"&&chart&&<div className="list_table" style={{clear:"both",width:"100%",fontSize:"12px"}}>
+              <div style={{fontWeight:"bold",marginBottom:8}}>精神点 Aphesis</div>
+              <table width="100%" style={{borderCollapse:"collapse"}}>
+                <thead><tr style={{border:"1px solid #aaa"}}><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>年份</th><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>主星</th><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>次星</th><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>起始日期</th></tr></thead>
+                <tbody>
+                  {Array.from({length:12},(_,i)=>{const d=new Date(year+i,month-1,day);return<tr key={i} style={{border:"1px solid #aaa"}}><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>{year+i}</td><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>—</td><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>—</td><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>{d.toLocaleDateString("zh-CN")}</td></tr>;})}
+                </tbody>
+              </table>
+            </div>}
           </div>}
 
           {chart&&<div style={{marginTop:10,display:"flex",gap:8}}>
