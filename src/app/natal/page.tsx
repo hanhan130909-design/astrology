@@ -788,7 +788,8 @@ export default function NatalPage() {
 
   return (
     <div className="min-h-screen bg-[#f5f3f0] text-[#333] font-sans">
-      {/* Header — clean white bar */}
+      {/* Header — clean white bar, hidden when showing Almuten result */}
+      {!isAlmutenResult && (
       <div className="border-b border-[#d2d2d2] bg-white sticky top-0 z-50 shadow-sm">
         <div className="max-w-[1380px] mx-auto px-5 py-3 flex items-center justify-between">
           <div className="flex items-center gap-4">
@@ -814,6 +815,7 @@ export default function NatalPage() {
           </div>
         </div>
       </div>
+      )}
 
       {isAlmutenResult ? (
         <AlmutenChartLayout chart={chart} form={form} chartType={chartType} cityName={cityName} saveMsg={saveMsg} onBack={() => { setChart(null); setTab('chart'); }} onSave={handleSave} />
