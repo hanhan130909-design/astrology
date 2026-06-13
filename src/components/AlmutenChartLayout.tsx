@@ -295,7 +295,7 @@ export default function AlmutenChartLayout({chart,form,chartType,onBack,onSave,s
               <AspectMatrix chart={chart}/>
             </div>
             <div className="flex justify-center pt-0">
-              <NatalChartWheel />
+              <NatalChartWheel chart={chart} />
             </div>
             <div className="flex justify-end pt-1">
               <ChartFeaturePanel chart={chart}/>

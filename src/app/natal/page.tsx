@@ -6,9 +6,21 @@ import { AspectMatrix } from "@/components/AlmutenChartLayout";
 
 const MONTHS = ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];
 const SIGN_SYMBOLS = ["♈","♉","♊","♋","♌","♍","♎","♏","♐","♑","♒","♓"];
+const DEFAULT_LAT = 25 + 3 / 60;
+const DEFAULT_LNG = 121 + 30 / 60;
+const DEFAULT_HOUSE_SYSTEM = "B";
 
 function norm(v:number){return((v%360)+360)%360;}
 function fmt2(n:number){return String(Math.trunc(n)).padStart(2,"0");}
+function coordinateParts(value:number){
+  let degrees = Math.trunc(Math.abs(value));
+  let minutes = Math.round((Math.abs(value) % 1) * 60);
+  if(minutes === 60){
+    degrees += 1;
+    minutes = 0;
+  }
+  return {degrees, minutes};
+}
 
 export default function NatalPage(){
   const now = new Date();
@@ -16,8 +28,8 @@ export default function NatalPage(){
   const [month,setMonth] = useState(now.getMonth()+1);
   const [day,setDay] = useState(now.getDate());
   const [year,setYear] = useState(now.getFullYear());
-  const [hour,setHour] = useState(12);
-  const [minute,setMinute] = useState(41);
+  const [hour,setHour] = useState(now.getHours());
+  const [minute,setMinute] = useState(now.getMinutes());
   const [city,setCity] = useState("台北市");
   const [glonDeg,setGlonDeg] = useState(121);
   const [glonMin,setGlonMin] = useState(30);
@@ -26,7 +38,7 @@ export default function NatalPage(){
   const [glatMin,setGlatMin] = useState(3);
   const [glatDir,setGlatDir] = useState("N");
   const [tz,setTz] = useState(480);
-  const [hsys,setHsys] = useState("B");
+  const [hsys,setHsys] = useState(DEFAULT_HOUSE_SYSTEM);
   const [chart,setChart] = useState<any>(null);
   const [loading,setLoading] = useState(false);
   const [activeTab,setActiveTab] = useState("chart-tab");
@@ -36,10 +48,9 @@ export default function NatalPage(){
   const lng = (glonDeg + glonMin / 60) * (glonDir === "W" ? -1 : 1);
   const tzHours = tz / 60;
 
-  const drawChart = async()=>{
+  const requestChart = async(body:any)=>{
     setLoading(true);
     try{
-      const body = {year,month,day,hour:Number(hour),minute:Number(minute),latitude:lat,longitude:lng,timezone:tzHours,houseSystem:hsys};
       const r = await fetch("/api/chart",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
       const d = await r.json();
       if(d.error) throw new Error(d.error);
@@ -50,7 +61,75 @@ export default function NatalPage(){
     }
   };
 
-  useEffect(()=>{drawChart();},[]);
+  const drawChart = async()=>{
+    await requestChart({year,month,day,hour:Number(hour),minute:Number(minute),latitude:lat,longitude:lng,timezone:tzHours,houseSystem:hsys});
+  };
+
+  useEffect(()=>{
+    const current = new Date();
+    const currentTz = -current.getTimezoneOffset();
+    const base = {
+      year: current.getFullYear(),
+      month: current.getMonth() + 1,
+      day: current.getDate(),
+      hour: current.getHours(),
+      minute: current.getMinutes(),
+      timezone: currentTz / 60,
+      houseSystem: DEFAULT_HOUSE_SYSTEM,
+    };
+
+    setYear(base.year);
+    setMonth(base.month);
+    setDay(base.day);
+    setHour(base.hour);
+    setMinute(base.minute);
+    setTz(currentTz);
+
+    const fallback = () => requestChart({...base, latitude: DEFAULT_LAT, longitude: DEFAULT_LNG});
+
+    if(!navigator.geolocation){
+      fallback();
+      return;
+    }
+
+    let settled = false;
+    const timer = window.setTimeout(()=>{
+      if(settled) return;
+      settled = true;
+      fallback();
+    },3000);
+
+    navigator.geolocation.getCurrentPosition(
+      position=>{
+        if(settled) return;
+        settled = true;
+        window.clearTimeout(timer);
+
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        const latParts = coordinateParts(latitude);
+        const lngParts = coordinateParts(longitude);
+
+        setCity("当前位置");
+        setGlatDeg(latParts.degrees);
+        setGlatMin(latParts.minutes);
+        setGlatDir(latitude >= 0 ? "N" : "S");
+        setGlonDeg(lngParts.degrees);
+        setGlonMin(lngParts.minutes);
+        setGlonDir(longitude >= 0 ? "E" : "W");
+        requestChart({...base, latitude, longitude});
+      },
+      ()=>{
+        if(settled) return;
+        settled = true;
+        window.clearTimeout(timer);
+        fallback();
+      },
+      {enableHighAccuracy:false, maximumAge:600000, timeout:2500}
+    );
+
+    return ()=>window.clearTimeout(timer);
+  },[]);
 
   const codeAddress = async()=>{
     try{
@@ -118,7 +197,7 @@ export default function NatalPage(){
 
           {chart&&<div id="chartwrap">
             <div id="aspgrid"><AspectMatrix chart={chart}/></div>
-            <div id="chart"><NatalChartWheel /></div>
+            <div id="chart"><NatalChartWheel chart={chart}/></div>
           </div>}
 
           <div style={{clear:"both"}}/>
