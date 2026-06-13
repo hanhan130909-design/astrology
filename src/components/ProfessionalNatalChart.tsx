@@ -39,7 +39,7 @@ export default function ProfessionalNatalChart({planets,houses=[],aspects=[],asc
     const p=planets[k];const lon=norm(p.longitude??0);
     const si=Math.floor(lon/30);const deg=lon%30;
     const lbl=PLANET_LABELS[k]||{code:k[0],color:'#666'};
-    return{key:k,code:lbl.code,color:lbl.color,longitude:lon,degree:deg,sign:si,degStr:`${Math.floor(deg)}°`,minStr:`${Math.round((deg%1)*60)}'`,rx:p.retrograde??false};
+    return{key:k,code:lbl.code,color:lbl.color,longitude:lon,degree:deg,sign:si,degStr:`${Math.floor(deg)}°`,minStr:`${Math.round((deg%1)*60)}\u2032`,rx:p.retrograde??false};
   }).sort((a,b)=>a.longitude-b.longitude);
 
   // Cluster offsets for outer labels
@@ -77,7 +77,7 @@ export default function ProfessionalNatalChart({planets,houses=[],aspects=[],asc
       {showDegrees&&houses.map((h,i)=>{const dv=h.degree!=null?h.degree:(norm(h.longitude)%30);const si=Math.floor(norm(h.longitude)/30);const pdeg=xy(h.longitude,ascLon,R_Z_IN-8);const psym=xy(h.longitude,ascLon,R_Z_IN+14);const el=ELEMENT[si];return<g key={'h'+i}>
         <text x={pdeg.x} y={pdeg.y+3} textAnchor="middle" fontSize="8" fill="#666">{Math.floor(dv)}°</text>
         <text x={psym.x} y={psym.y+4} textAnchor="middle" fontSize="14" fontWeight="bold" fill={EL_COLOR[el]||'#666'} fontFamily="Apple Symbols,DejaVu Sans,serif">{SIGN_SYMBOLS[si]}</text>
-        <text x={psym.x+13} y={psym.y+2} textAnchor="middle" fontSize="7" fill="#888">{Math.round((dv%1)*60)}'</text>
+        <text x={psym.x+13} y={psym.y+2} textAnchor="middle" fontSize="7" fill="#888">{Math.round((dv%1)*60)}{'\u2032'}</text>
       </g>;})}
 
       {/* Aspect lines through center */}
