@@ -131,7 +131,7 @@ export default function NatalPage(){
 
       <div id="cssmenu" style={{background:"#333",fontSize:"14px",display:"flex",alignItems:"center",padding:"0 16px"}}>
         <span style={{color:"#ccc",padding:"4px 12px"}}>hanhan <i>已登入</i></span>
-        <a href="/" style={{color:"#ccc",padding:"4px 12px",textDecoration:"none",cursor:"pointer"}}>返回首页</a>
+        <span onClick={()=>window.location.href="/"} style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>返回首页</span>
         {[{id:"file",l:"文件",items:["列表","新增"]},{id:"tools",l:"工具",items:["星象日历","出生时间反推"]},{id:"settings",l:"设定",items:["修改密码","个人资料","选择语系"]}].map(m=>(
           <span key={m.id} style={{position:"relative"}}>
             <span onClick={()=>setOpenMenu(openMenu===m.id?null:m.id)} style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>{m.l} ▾</span>
