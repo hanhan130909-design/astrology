@@ -784,72 +784,70 @@ export default function NatalPage() {
   const mc = chart?.midheaven || 0;
   const dayOffset = chart?.daysSinceBirth;
 
-  const isAlmutenResult = false; // 不再跳转到独立白底页面
+  const isAlmutenResult = Boolean(chart) && tab !== 'saved';
 
   return (
-    <div className={isAlmutenResult ? "min-h-screen bg-white text-[#222]" : "min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 text-white"}>
-      {/* Header */}
-      {!isAlmutenResult && <div className="border-b border-slate-800/50 bg-slate-950/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div className="min-h-screen bg-[#f5f3f0] text-[#333] font-sans">
+      {/* Header — clean white bar */}
+      <div className="border-b border-[#d2d2d2] bg-white sticky top-0 z-50 shadow-sm">
+        <div className="max-w-[1380px] mx-auto px-5 py-3 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <Link href="/" className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
-              <ArrowLeft size={18}/><span className="text-sm">{tx('back', lang)}</span>
+            <Link href="/" className="flex items-center gap-1.5 text-[#777] hover:text-[#333] transition-colors">
+              <ArrowLeft size={16}/><span className="text-sm">{tx('back', lang)}</span>
             </Link>
-            <div className="w-px h-5 bg-slate-700"/>
-            <h1 className="text-lg font-bold text-white">{tx('title', lang)}</h1>
+            <div className="w-px h-4 bg-[#ddd]"/>
+            <h1 className="text-lg text-[#333]">{tx('title', lang)}</h1>
           </div>
-          <div className="flex items-center gap-3">
-            <div className="flex rounded-xl bg-slate-800/60 p-1">
+          <div className="flex items-center gap-2">
+            <div className="flex rounded border border-[#ccc] bg-[#f5f5f5] p-0.5">
               {(['zh', 'en', 'id'] as const).map(l => (
                 <button key={l} onClick={() => setLang(l)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${lang === l ? 'bg-indigo-600 text-white shadow' : 'text-slate-400 hover:text-white'}`}>
+                  className={`px-3 py-1 rounded text-xs font-medium transition-all ${lang === l ? 'bg-white text-[#333] shadow-sm border border-[#ddd]' : 'text-[#888] hover:text-[#555]'}`}>
                   {l.toUpperCase()}
                 </button>
               ))}
             </div>
             <button onClick={() => setTab(tab === 'saved' ? 'chart' : 'saved')}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/60 text-slate-300 hover:text-white transition-colors text-xs">
-              <Star size={13}/>{tx('myCharts', lang)}({saved.length})
+              className="flex items-center gap-1 px-3 py-1.5 rounded border border-[#ccc] bg-white hover:bg-[#f9f9f9] text-[#666] text-xs transition-colors">
+              <Star size={12}/>{tx('myCharts', lang)}({saved.length})
             </button>
           </div>
         </div>
-      </div>}
+      </div>
 
       {isAlmutenResult ? (
         <AlmutenChartLayout chart={chart} form={form} chartType={chartType} cityName={cityName} saveMsg={saveMsg} onBack={() => { setChart(null); setTab('chart'); }} onSave={handleSave} />
       ) : (
-      <div className="max-w-7xl mx-auto px-4 py-6 grid grid-cols-1 lg:grid-cols-5 gap-6">
-        {/* Left Panel: Form */}
-        <div className="lg:col-span-2 space-y-5">
-          {/* Saved Charts Drawer */}
-          {tab === 'saved' && (
-            <div className="bg-slate-800/30 rounded-2xl border border-slate-700/50 p-5">
-              <h3 className="text-sm font-semibold text-slate-300 mb-3">{tx('savedCharts', lang)}</h3>
-              {saved.length === 0 ? (
-                <p className="text-slate-500 text-xs">{tx('noSaved', lang)}</p>
-              ) : (
-                <div className="space-y-2">
-                  {saved.map(c => (
-                    <div key={c.ts} className="flex items-center justify-between p-3 rounded-xl bg-slate-800/40 hover:bg-slate-800/60 transition-colors">
-                      <button onClick={() => handleLoad(c)} className="text-left flex-1">
-                        <div className="text-sm text-white font-medium">{c.name}</div>
-                        <div className="text-xs text-slate-400">{new Date(c.ts).toLocaleDateString()}</div>
-                      </button>
-                      <button onClick={() => handleDelete(c.ts)} className="p-1.5 rounded-lg text-slate-500 hover:text-red-400 hover:bg-red-900/20 transition-colors ml-2">
-                        <X size={13}/>
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
+      <div className="max-w-[1380px] mx-auto px-5 py-8">
+        {/* Saved Charts */}
+        {tab === 'saved' && (
+          <div className="mb-6 bg-white rounded border border-[#ddd] p-5 shadow-sm">
+            <h3 className="text-sm font-semibold text-[#555] mb-3">{tx('savedCharts', lang)}</h3>
+            {saved.length === 0 ? (
+              <p className="text-[#999] text-xs">{tx('noSaved', lang)}</p>
+            ) : (
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                {saved.map(c => (
+                  <div key={c.ts} className="flex items-center justify-between p-3 rounded border border-[#eee] bg-[#fafafa] hover:bg-[#f5f5f5] transition-colors">
+                    <button onClick={() => handleLoad(c)} className="text-left flex-1">
+                      <div className="text-sm text-[#333] font-medium">{c.name}</div>
+                      <div className="text-[11px] text-[#999]">{new Date(c.ts).toLocaleDateString()}</div>
+                    </button>
+                    <button onClick={() => handleDelete(c.ts)} className="p-1 rounded text-[#bbb] hover:text-red-500 hover:bg-red-50 transition-colors ml-2"><X size={13}/></button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
 
-          {/* Chart Type */}
-          {tab !== 'saved' && (
-            <>
-              <div className="bg-slate-800/30 rounded-2xl border border-slate-700/50 p-5">
-                <div className="flex flex-wrap gap-2">
+        {tab !== 'saved' && (
+          <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-8">
+            {/* Left — Form */}
+            <div className="space-y-5">
+              {/* Chart Type Tabs */}
+              <div className="bg-white rounded border border-[#ddd] p-4 shadow-sm">
+                <div className="flex flex-wrap gap-1.5">
                   {[
                     { id: 'natal', icon: Star, label: 'natal' },
                     { id: 'transit', icon: TrendingUp, label: 'transit' },
@@ -859,426 +857,260 @@ export default function NatalPage() {
                     { id: 'composite', icon: Heart, label: 'composite' },
                   ].map(({ id, icon: Icon, label }) => (
                     <button key={id} onClick={() => setChartType(id)}
-                      className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium transition-all ${chartType === id ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/25' : 'bg-slate-800/50 text-slate-400 hover:text-white hover:bg-slate-800'}`}>
-                      <Icon size={13}/>{tx(label, lang)}
+                      className={`flex items-center gap-1 px-3 py-1.5 rounded text-xs font-medium transition-all border ${chartType === id ? 'bg-[#333] text-white border-[#333]' : 'bg-white text-[#666] border-[#ddd] hover:bg-[#f5f5f5]'}`}>
+                      <Icon size={12}/>{tx(label, lang)}
                     </button>
                   ))}
                 </div>
               </div>
 
-              {/* Birth Info Form */}
-              <div className="bg-slate-800/30 rounded-2xl border border-slate-700/50 p-5">
-                <h3 className="text-sm font-semibold text-slate-300 mb-4">{tx('birthInfo', lang)}</h3>
+              {/* Birth Info */}
+              <div className="bg-white rounded border border-[#ddd] p-5 shadow-sm">
+                <h3 className="text-sm font-semibold text-[#555] mb-4 pb-2 border-b border-[#eee]">{tx('birthInfo', lang)}</h3>
                 <div className="space-y-3">
                   <input type="text" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                    placeholder={tx('chartName', lang)} className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-indigo-500 transition-colors"/>
+                    placeholder={tx('chartName', lang)} className="w-full px-3 py-2.5 rounded border border-[#ddd] bg-white text-sm text-[#333] placeholder:text-[#bbb] focus:outline-none focus:border-[#999] transition-colors"/>
 
                   {/* City Search */}
-                  <div className="space-y-1.5">
-                    <label className="text-xs text-slate-400">{tx('city', lang)}</label>
+                  <div>
+                    <label className="text-xs text-[#888] block mb-1">{tx('city', lang)}</label>
                     <div className="flex gap-2">
                       <input id="cityInput" type="text" placeholder={lang === 'zh' ? '输入城市名称搜索...' : lang === 'id' ? 'Ketik nama kota...' : 'Enter city name...'}
-                        className="flex-1 p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-indigo-500 transition-colors"/>
+                        className="flex-1 px-3 py-2.5 rounded border border-[#ddd] bg-white text-sm text-[#333] placeholder:text-[#bbb] focus:outline-none focus:border-[#999] transition-colors"/>
                       <button onClick={() => {
                           const input = document.getElementById('cityInput') as HTMLInputElement;
                           if (input) geocodeAddress(input.value);
-                        }}
-                        disabled={geoLoading}
-                        className="px-4 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white text-sm font-medium transition-colors flex items-center gap-2 whitespace-nowrap">
-                        {geoLoading ? <><Loader2 size={14} className="animate-spin"/>...</> : (lang === 'zh' ? '搜索' : 'Cari')}
+                        }} disabled={geoLoading}
+                        className="px-4 py-2.5 rounded border border-[#ddd] bg-[#f5f5f5] hover:bg-[#eee] disabled:opacity-50 text-sm text-[#555] transition-colors flex items-center gap-1.5 whitespace-nowrap">
+                        {geoLoading ? <><Loader2 size={13} className="animate-spin"/></> : (lang === 'zh' ? '搜索' : 'Cari')}
                       </button>
                     </div>
-                    {geoError && <p className="text-xs text-red-400">{geoError}</p>}
-                    {geoLoadingTz && !geoError && (
-                      <p className="text-xs text-indigo-400 flex items-center gap-1">
-                        <Loader2 size={11} className="animate-spin"/>{lang === 'zh' ? '正在根据经纬度查询时区...' : 'Getting timezone from coordinates...'}
-                      </p>
-                    )}
+                    {geoError && <p className="text-xs text-red-500 mt-1">{geoError}</p>}
                     {form.lat !== 0 && form.lng !== 0 && (
-                      <p className="text-xs text-green-400">
-                        ✓ {lang === 'zh' ? '位置已设定' : 'Location set'}: {form.lat.toFixed(4)}, {form.lng.toFixed(4)} | TZ: UTC{form.tz >= 0 ? '+' : ''}{form.tz}
-                      </p>
+                      <p className="text-xs text-[#999] mt-1">✓ {form.lat.toFixed(4)}, {form.lng.toFixed(4)} | UTC{form.tz >= 0 ? '+' : ''}{form.tz}</p>
                     )}
                   </div>
 
                   <div className="grid grid-cols-3 gap-2">
-                    <div>
-                      <label className="text-xs text-slate-400 block mb-1">{tx('year', lang)}</label>
-                      <input type="number" value={form.year} min={1900} max={2100} onChange={e => setForm(f => ({ ...f, year: parseInt(e.target.value) || 1990 }))}
-                        className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors"/>
-                    </div>
-                    <div>
-                      <label className="text-xs text-slate-400 block mb-1">{tx('month', lang)}</label>
-                      <input type="number" value={form.month} min={1} max={12} onChange={e => setForm(f => ({ ...f, month: parseInt(e.target.value) || 1 }))}
-                        className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors"/>
-                    </div>
-                    <div>
-                      <label className="text-xs text-slate-400 block mb-1">{tx('day', lang)}</label>
-                      <input type="number" value={form.day} min={1} max={31} onChange={e => setForm(f => ({ ...f, day: parseInt(e.target.value) || 1 }))}
-                        className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors"/>
-                    </div>
+                    {['year','month','day'].map(field => (
+                      <div key={field}>
+                        <label className="text-xs text-[#888] block mb-1">{tx(field, lang)}</label>
+                        <input type="number" value={(form as any)[field]}
+                          min={field==='year'?1900:field==='month'?1:1}
+                          max={field==='year'?2100:field==='month'?12:31}
+                          onChange={e => setForm(f => ({ ...f, [field]: parseInt(e.target.value) || (field==='year'?1990:1) }))}
+                          className="w-full px-3 py-2.5 rounded border border-[#ddd] bg-white text-sm text-[#333] focus:outline-none focus:border-[#999] transition-colors"/>
+                      </div>
+                    ))}
                   </div>
 
                   <div className="grid grid-cols-2 gap-2">
-                    <div>
-                      <label className="text-xs text-slate-400 block mb-1">{tx('hour', lang)}</label>
-                      <input type="number" value={form.hour} min={0} max={23} onChange={e => setForm(f => ({ ...f, hour: parseInt(e.target.value) || 0 }))}
-                        className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors"/>
-                    </div>
-                    <div>
-                      <label className="text-xs text-slate-400 block mb-1">{tx('minute', lang)}</label>
-                      <input type="number" value={form.minute} min={0} max={59} onChange={e => setForm(f => ({ ...f, minute: parseInt(e.target.value) || 0 }))}
-                        className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors"/>
-                    </div>
+                    {['hour','minute'].map(field => (
+                      <div key={field}>
+                        <label className="text-xs text-[#888] block mb-1">{tx(field, lang)}</label>
+                        <input type="number" value={(form as any)[field]}
+                          min={0} max={field==='hour'?23:59}
+                          onChange={e => setForm(f => ({ ...f, [field]: parseInt(e.target.value) || 0 }))}
+                          className="w-full px-3 py-2.5 rounded border border-[#ddd] bg-white text-sm text-[#333] focus:outline-none focus:border-[#999] transition-colors"/>
+                      </div>
+                    ))}
                   </div>
 
-                  {/* Coordinates + Timezone */}
                   <div className="grid grid-cols-3 gap-2">
-                    <div>
-                      <label className="text-xs text-slate-400 block mb-1">LAT</label>
-                      <input type="number" step="0.0001" value={form.lat || ''} onChange={e => setForm(f => ({ ...f, lat: parseFloat(e.target.value) || 0 }))}
-                        placeholder="0.0000" className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-indigo-500 transition-colors"/>
-                    </div>
-                    <div>
-                      <label className="text-xs text-slate-400 block mb-1">LNG</label>
-                      <input type="number" step="0.0001" value={form.lng || ''} onChange={e => setForm(f => ({ ...f, lng: parseFloat(e.target.value) || 0 }))}
-                        placeholder="0.0000" className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-indigo-500 transition-colors"/>
-                    </div>
-                    <div>
-                      <label className="text-xs text-slate-400 block mb-1">UTC TZ</label>
-                      <input type="number" step="0.5" value={form.tz} onChange={e => setForm(f => ({ ...f, tz: parseFloat(e.target.value) || 0 }))}
-                        placeholder="+8" className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-indigo-500 transition-colors"/>
-                    </div>
+                    {[{key:'lat',label:'LAT'},{key:'lng',label:'LNG'},{key:'tz',label:'TZ'}].map(({key,label}) => (
+                      <div key={key}>
+                        <label className="text-xs text-[#888] block mb-1">{label}</label>
+                        <input type="number" step={key==='tz'?'0.5':'0.0001'}
+                          value={(form as any)[key] || ''}
+                          onChange={e => setForm(f => ({ ...f, [key]: parseFloat(e.target.value) || 0 }))}
+                          placeholder={key==='tz'?'+8':'0.0000'}
+                          className="w-full px-3 py-2.5 rounded border border-[#ddd] bg-white text-sm text-[#333] placeholder:text-[#bbb] focus:outline-none focus:border-[#999] transition-colors"/>
+                      </div>
+                    ))}
                   </div>
 
-                  <CustomSelect
-                    label={tx('houseSystem', lang)}
-                    value={form.houseSystem}
+                  <CustomSelect label={tx('houseSystem', lang)} value={form.houseSystem}
                     onChange={v => setForm(f => ({ ...f, houseSystem: v }))}
-                    options={HOUSE_SYSTEMS.map(h => ({ id: h.id, name: h.name[lang] || h.name.zh }))}
-                  />
+                    options={HOUSE_SYSTEMS.map(h => ({ id: h.id, name: h.name[lang] || h.name.zh }))}/>
 
-                  {/* Secondary form for transit/composite */}
-                  {['transit', 'solar', 'lunar', 'progression', 'composite'].includes(chartType) && (
-                    <div className="border-t border-slate-700/50 pt-3 space-y-3">
-                      <h4 className="text-xs font-semibold text-slate-400">{chartType === 'composite' ? tx('person2', lang) : tx('transitDate', lang)}</h4>
-                      {chartType === 'progression' ? (
-                        <div>
-                          <label className="text-xs text-slate-400 block mb-1">{tx('targetYear', lang)}</label>
-                          <input type="number" value={secForm.year} onChange={e => setSecForm(f => ({ ...f, year: parseInt(e.target.value) }))}
-                            className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors"/>
+                  {/* Secondary form */}
+                  {['transit','solar','lunar','progression','composite'].includes(chartType) && (
+                    <div className="border-t border-[#eee] pt-3 space-y-3">
+                      <h4 className="text-xs font-semibold text-[#888]">{chartType==='composite'?tx('person2',lang):tx('transitDate',lang)}</h4>
+                      {chartType==='progression' ? (
+                        <div><label className="text-xs text-[#888] block mb-1">{tx('targetYear',lang)}</label>
+                          <input type="number" value={secForm.year} onChange={e=>setSecForm(f=>({...f,year:parseInt(e.target.value)}))}
+                            className="w-full px-3 py-2.5 rounded border border-[#ddd] bg-white text-sm text-[#333] focus:outline-none focus:border-[#999]"/></div>
+                      ) : chartType==='composite' ? (
+                        <div className="space-y-2">
+                          <div className="grid grid-cols-3 gap-2">
+                            {['year','month','day'].map(f=>(
+                              <div key={f}><label className="text-xs text-[#888] block mb-1">{tx(f,lang)}</label>
+                                <input type="number" value={(p2Form as any)[f]} onChange={e=>setP2Form(prev=>({...prev,[f]:parseInt(e.target.value)}))}
+                                  className="w-full px-3 py-2.5 rounded border border-[#ddd] bg-white text-sm text-[#333] focus:outline-none focus:border-[#999]"/></div>
+                            ))}
+                          </div>
+                          <div className="grid grid-cols-2 gap-2">
+                            {['hour','minute'].map(f=>(
+                              <div key={f}><label className="text-xs text-[#888] block mb-1">{tx(f,lang)}</label>
+                                <input type="number" value={(p2Form as any)[f]} onChange={e=>setP2Form(prev=>({...prev,[f]:parseInt(e.target.value)}))}
+                                  className="w-full px-3 py-2.5 rounded border border-[#ddd] bg-white text-sm text-[#333] focus:outline-none focus:border-[#999]"/></div>
+                            ))}
+                          </div>
                         </div>
                       ) : (
                         <div className="grid grid-cols-3 gap-2">
-                          <div>
-                            <label className="text-xs text-slate-400 block mb-1">{tx('year', lang)}</label>
-                            <input type="number" value={secForm.year} onChange={e => setSecForm(f => ({ ...f, year: parseInt(e.target.value) }))}
-                              className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors"/>
-                          </div>
-                          <div>
-                            <label className="text-xs text-slate-400 block mb-1">{tx('month', lang)}</label>
-                            <input type="number" value={secForm.month} min={1} max={12} onChange={e => setSecForm(f => ({ ...f, month: parseInt(e.target.value) }))}
-                              className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors"/>
-                          </div>
-                          <div>
-                            <label className="text-xs text-slate-400 block mb-1">{tx('day', lang)}</label>
-                            <input type="number" value={secForm.day} min={1} max={31} onChange={e => setSecForm(f => ({ ...f, day: parseInt(e.target.value) }))}
-                              className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors"/>
-                          </div>
-                        </div>
-                      )}
-                      {chartType === 'composite' && (
-                        <div className="grid grid-cols-2 gap-2">
-                          <div>
-                            <label className="text-xs text-slate-400 block mb-1">{tx('hour', lang)}</label>
-                            <input type="number" value={p2Form.hour} onChange={e => setP2Form(f => ({ ...f, hour: parseInt(e.target.value) }))}
-                              className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors"/>
-                          </div>
-                          <div>
-                            <label className="text-xs text-slate-400 block mb-1">{tx('minute', lang)}</label>
-                            <input type="number" value={p2Form.minute} onChange={e => setP2Form(f => ({ ...f, minute: parseInt(e.target.value) }))}
-                              className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors"/>
-                          </div>
+                          {['year','month','day'].map(f=>(
+                            <div key={f}><label className="text-xs text-[#888] block mb-1">{tx(f,lang)}</label>
+                              <input type="number" value={(secForm as any)[f]} onChange={e=>setSecForm(prev=>({...prev,[f]:parseInt(e.target.value)}))}
+                                className="w-full px-3 py-2.5 rounded border border-[#ddd] bg-white text-sm text-[#333] focus:outline-none focus:border-[#999]"/></div>
+                          ))}
                         </div>
                       )}
                     </div>
                   )}
 
                   <button onClick={calculate} disabled={loading}
-                    className="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 disabled:opacity-50 text-white text-sm font-semibold transition-all shadow-lg shadow-indigo-500/25 flex items-center justify-center gap-2">
-                    {loading ? <><Loader2 size={15} className="animate-spin"/>{tx('calculating', lang)}</> : <><Sparkles size={15}/>{tx('calculate', lang)}</>}
+                    className="w-full py-2.5 rounded border border-[#333] bg-[#333] hover:bg-[#555] disabled:opacity-40 text-white text-sm font-medium transition-all flex items-center justify-center gap-2">
+                    {loading ? <><Loader2 size={14} className="animate-spin"/>{tx('calculating',lang)}</> : <>{tx('calculate',lang)}</>}
                   </button>
 
-                  {error && (
-                    <div className="p-3 rounded-xl bg-red-900/20 border border-red-800/40 text-red-300 text-xs flex items-center gap-2">
-                      <X size={13}/>{error}
-                    </div>
-                  )}
-
-                  {saveMsg && (
-                    <div className="p-3 rounded-xl bg-green-900/20 border border-green-800/40 text-green-300 text-xs flex items-center gap-2">
-                      <Check size={13}/>{saveMsg}
-                    </div>
-                  )}
+                  {error && <div className="p-3 rounded border border-red-200 bg-red-50 text-red-600 text-xs flex items-center gap-2"><X size={13}/>{error}</div>}
+                  {saveMsg && <div className="p-3 rounded border border-green-200 bg-green-50 text-green-600 text-xs flex items-center gap-2"><Check size={13}/>{saveMsg}</div>}
 
                   {chart && (
-                    <div className="flex gap-2">
-                      <button onClick={handleSave}
-                        className="flex-1 py-2.5 rounded-xl bg-emerald-600/80 hover:bg-emerald-500 text-white text-xs font-medium transition-colors flex items-center justify-center gap-1.5">
-                        <Save size={13}/>{tx('saveChart', lang)}
-                      </button>
-                      <button onClick={handleShare}
-                        className="flex-1 py-2.5 rounded-xl bg-emerald-900/40 hover:bg-emerald-800/50 border border-emerald-700/40 text-emerald-300 text-xs font-medium transition-colors flex items-center justify-center gap-1.5">
-                        <Share2 size={13}/>{tx('shareWA', lang)}
-                      </button>
+                    <div className="flex gap-2 pt-1">
+                      <button onClick={handleSave} className="flex-1 py-2 rounded border border-[#ddd] bg-white hover:bg-[#f5f5f5] text-[#555] text-xs transition-colors flex items-center justify-center gap-1.5"><Save size={12}/>{tx('saveChart',lang)}</button>
+                      <button onClick={handleShare} className="flex-1 py-2 rounded border border-[#ddd] bg-[#f5f5f5] hover:bg-[#eee] text-[#777] text-xs transition-colors flex items-center justify-center gap-1.5"><Share2 size={12}/>{tx('shareWA',lang)}</button>
                     </div>
                   )}
                 </div>
               </div>
 
-              {/* Info Cards */}
-              <div className="bg-slate-800/20 rounded-2xl border border-slate-700/30 p-5 space-y-3">
-                <p className="text-slate-400 text-xs leading-relaxed">{tx('descP1', lang)}</p>
-                <p className="text-slate-400 text-xs leading-relaxed">{tx('descP2', lang)}</p>
-                <div className="border-t border-slate-700/30 pt-3">
-                  <h4 className="text-xs font-semibold text-slate-400 mb-2">{tx('faqTitle', lang)}</h4>
-                  {[
-                    { q: 'faq1Q', a: 'faq1A' },
-                    { q: 'faq2Q', a: 'faq2A' },
-                    { q: 'faq3Q', a: 'faq3A' },
-                    { q: 'faq4Q', a: 'faq4A' },
-                    { q: 'faq5Q', a: 'faq5A' },
-                  ].map(({ q, a }, i) => (
-                    <details key={i} className="mb-1.5">
-                      <summary className="cursor-pointer text-xs text-slate-300 hover:text-white transition-colors">{tx(q, lang)}</summary>
-                      <p className="mt-1 text-xs text-slate-500 leading-relaxed pl-2 border-l border-slate-700">{tx(a, lang)}</p>
+              {/* FAQ */}
+              <div className="bg-white rounded border border-[#ddd] p-5 shadow-sm">
+                <h4 className="text-sm font-semibold text-[#555] mb-3">{tx('faqTitle',lang)}</h4>
+                <div className="space-y-1">
+                  {['faq1','faq2','faq3','faq4','faq5'].map((n,i) => (
+                    <details key={i} className="group">
+                      <summary className="cursor-pointer text-xs text-[#666] hover:text-[#333] py-1.5 transition-colors">{tx((n+'Q') as any,lang)}</summary>
+                      <p className="pb-2 text-xs text-[#999] leading-relaxed pl-3 border-l-2 border-[#eee]">{tx((n+'A') as any,lang)}</p>
                     </details>
                   ))}
                 </div>
               </div>
-            </>
-          )}
-        </div>
-
-        {/* Right Panel: Chart */}
-        <div className="lg:col-span-3 space-y-5">
-          {/* Tabs */}
-          {chart && (
-            <div className="flex gap-2">
-              {[
-                { id: 'chart', label: 'chart', icon: Star },
-                { id: 'planets', label: 'planets', icon: Sun },
-                { id: 'houses', label: 'houses', icon: Calendar },
-                { id: 'aspects', label: 'aspects', icon: TrendingUp },
-                { id: 'ai', label: 'ai', icon: Sparkles },
-              ].map(({ id, label, icon: Icon }) => (
-                <button key={id} onClick={() => setTab(id)}
-                  className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-medium transition-all ${tab === id ? 'bg-indigo-600 text-white' : 'bg-slate-800/50 text-slate-400 hover:text-white'}`}>
-                  <Icon size={13}/>{tx(label, lang)}
-                </button>
-              ))}
             </div>
-          )}
 
-          {/* Chart Tab */}
-          {tab === 'chart' && (
+            {/* Right — Chart Preview */}
             <div className="space-y-5">
-              <div className="overflow-x-auto rounded border border-[#b8b8b8] bg-white p-4 shadow-sm">
-                <ProfessionalNatalChart
-                  planets={pData}
-                  houses={hData || []}
-                  aspects={aData || []}
-                  ascendant={asc}
-                  midheaven={mc}
-                  size={560}
-                  showDegrees={true}
-                  showAspectLines={true}
-                />
-              </div>
-            </div>
-          )}
-
-          {/* Planet Data */}
-          {tab === 'planets' && (
-            <div className="bg-slate-800/30 rounded-2xl border border-slate-700/50 overflow-hidden">
-              <div className="p-5 pb-3">
-                <h3 className="text-sm font-semibold text-slate-300">{tx('planetPositions', lang)}</h3>
-                {dayOffset != null && (
-                  <p className="text-xs text-slate-500 mt-1">{tx('dayAfterBirth', lang).replace('{0}', dayOffset.toLocaleString())}</p>
-                )}
-              </div>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="border-t border-slate-700/50">
-                      <th className="text-left px-5 py-2.5 text-xs font-medium text-slate-500 uppercase tracking-wider">{tx('planet', lang)}</th>
-                      <th className="text-left px-3 py-2.5 text-xs font-medium text-slate-500 uppercase tracking-wider">{tx('sign', lang)}</th>
-                      <th className="text-left px-3 py-2.5 text-xs font-medium text-slate-500 uppercase tracking-wider">{tx('degree', lang)}</th>
-                      <th className="text-left px-3 py-2.5 text-xs font-medium text-slate-500 uppercase tracking-wider">{tx('house', lang)}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {PLANET_KEYS.filter(k => pData?.[k] && !pData[k].error).map(k => {
-                      const p = pData[k];
-                      const lon = p.longitude;
-                      const signIdx = Math.floor(((lon % 360) + 360) % 360 / 30);
-                      const deg = ((lon % 360) + 360) % 360 % 30;
-                      return (
-                        <tr key={k} className="border-t border-slate-800 hover:bg-slate-800/30 transition-colors">
-                          <td className="px-5 py-2.5">
-                            <div className="flex items-center gap-2">
-                              <span className="text-base" style={{ color: PLANET_COLORS[k] }}>{PLANET_SYMBOLS[k]}</span>
-                              <span className="text-slate-300 text-xs">{PLANETS_CN[k] || k}</span>
-                            </div>
-                          </td>
-                          <td className="px-3 py-2.5">
-                            <div className="flex items-center gap-1.5">
-                              <span style={{ color: SIGN_COLORS[signIdx] }}>{SIGN_SYMBOLS[signIdx]}</span>
-                              <span className="text-slate-300 text-xs">{SIGN_CN[Object.keys(SIGN_CN)[signIdx]]}</span>
-                            </div>
-                          </td>
-                          <td className="px-3 py-2.5 text-slate-300 text-xs">{Math.floor(deg).toString().padStart(2, '0') + "'" + Math.floor((deg % 1) * 60).toString().padStart(2, '0') + "''"}{p.retrograde ? <sup className="text-red-400 ml-0.5">R</sup> : ''}</td>
-                          <td className="px-3 py-2.5 text-slate-400 text-xs">{p.house || '-'}</td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          )}
-
-          {/* Houses */}
-          {tab === 'houses' && (
-            <div className="bg-slate-800/30 rounded-2xl border border-slate-700/50 overflow-hidden">
-              <div className="p-5 pb-3">
-                <h3 className="text-sm font-semibold text-slate-300">{tx('houseInfo', lang)}</h3>
-              </div>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="border-t border-slate-700/50">
-                      <th className="text-left px-5 py-2.5 text-xs font-medium text-slate-500 uppercase">#</th>
-                      <th className="text-left px-3 py-2.5 text-xs font-medium text-slate-500 uppercase">{tx('sign', lang)}</th>
-                      <th className="text-left px-3 py-2.5 text-xs font-medium text-slate-500 uppercase">{tx('degree', lang)}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {(hData || []).map((h: any) => {
-                      const lon = h.longitude;
-                      const signIdx = Math.floor(((lon % 360) + 360) % 360 / 30);
-                      const deg = ((lon % 360) + 360) % 360 % 30;
-                      const isAngular = [1, 4, 7, 10].includes(h.house);
-                      return (
-                        <tr key={h.house} className="border-t border-slate-800 hover:bg-slate-800/30 transition-colors">
-                          <td className={`px-5 py-2.5 font-medium ${isAngular ? 'text-indigo-300' : 'text-slate-300'} text-xs`}>
-                            {h.house}{isAngular ? ' ⭐' : ''}
-                          </td>
-                          <td className="px-3 py-2.5">
-                            <div className="flex items-center gap-1.5">
-                              <span style={{ color: SIGN_COLORS[signIdx] }}>{SIGN_SYMBOLS[signIdx]}</span>
-                              <span className="text-slate-300 text-xs">{SIGN_CN[Object.keys(SIGN_CN)[signIdx]]}</span>
-                            </div>
-                          </td>
-                          <td className="px-3 py-2.5 text-slate-300 text-xs">{Math.floor(deg).toString().padStart(2, '0') + "'" + Math.floor((deg % 1) * 60).toString().padStart(2, '0') + "''"}</td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          )}
-
-          {/* Aspects */}
-          {tab === 'aspects' && (
-            <div className="bg-slate-800/30 rounded-2xl border border-slate-700/50 overflow-hidden">
-              <div className="p-5 pb-3">
-                <h3 className="text-sm font-semibold text-slate-300">{tx('majorAspects', lang)}</h3>
-                <div className="flex gap-3 mt-2 flex-wrap">
-                  {Object.entries(ASPECT_NAMES).map(([k, v]) => (
-                    <div key={k} className="flex items-center gap-1 text-xs text-slate-400">
-                      <span style={{ color: ASPECT_STYLES[k]?.color }}>{ASPECT_STYLES[k]?.label}</span>
-                      <span>{v[lang] || v.zh}</span>
-                    </div>
+              {/* Tabs */}
+              {chart && (
+                <div className="flex gap-1.5">
+                  {[
+                    {id:'chart',label:'chart',icon:Star},{id:'planets',label:'planets',icon:Sun},
+                    {id:'houses',label:'houses',icon:Calendar},{id:'aspects',label:'aspects',icon:TrendingUp},
+                    {id:'ai',label:'ai',icon:Sparkles},
+                  ].map(({id,label,icon:Icon})=>(
+                    <button key={id} onClick={()=>setTab(id)}
+                      className={`flex items-center gap-1 px-3.5 py-1.5 rounded text-xs font-medium transition-all border ${tab===id?'bg-[#333] text-white border-[#333]':'bg-white text-[#666] border-[#ddd] hover:bg-[#f5f5f5]'}`}>
+                      <Icon size={12}/>{tx(label,lang)}
+                    </button>
                   ))}
                 </div>
-              </div>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="border-t border-slate-700/50">
-                      <th className="text-left px-5 py-2.5 text-xs font-medium text-slate-500 uppercase">Planet 1</th>
-                      <th className="text-left px-3 py-2.5 text-xs font-medium text-slate-500 uppercase">Aspect</th>
-                      <th className="text-left px-3 py-2.5 text-xs font-medium text-slate-500 uppercase">Planet 2</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {(aData || []).slice(0, 30).map((a: any, i: number) => {
-                      const aspType = a.aspect || a.type;
-                      return (
-                        <tr key={i} className="border-t border-slate-800 hover:bg-slate-800/30 transition-colors">
-                          <td className="px-5 py-2.5">
-                            <div className="flex items-center gap-1.5">
-                              <span style={{ color: PLANET_COLORS[a.planet1] }}>{PLANET_SYMBOLS[a.planet1]}</span>
-                              <span className="text-slate-300 text-xs">{PLANETS_CN[a.planet1] || a.planet1}</span>
-                            </div>
-                          </td>
-                          <td className="px-3 py-2.5">
-                            <span className="text-xs font-medium" style={{ color: ASPECT_STYLES[aspType]?.color }}>
-                              {ASPECT_NAMES[aspType]?.[lang] || ASPECT_NAMES[aspType]?.zh || aspType}
-                            </span>
-                          </td>
-                          <td className="px-3 py-2.5">
-                            <div className="flex items-center gap-1.5">
-                              <span style={{ color: PLANET_COLORS[a.planet2] }}>{PLANET_SYMBOLS[a.planet2]}</span>
-                              <span className="text-slate-300 text-xs">{PLANETS_CN[a.planet2] || a.planet2}</span>
-                            </div>
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          )}
+              )}
 
-          {/* AI Reading */}
-          {tab === 'ai' && chart && (
-            <div className="space-y-4">
-              {PLANET_KEYS.filter(k => pData?.[k] && AI_READINGS[k]?.[lang]).slice(0, 4).map(k => {
-                const p = pData[k];
-                const lon = p.longitude;
-                const signIdx = Math.floor(((lon % 360) + 360) % 360 / 30);
-                const signKey = Object.keys(SIGN_CN)[signIdx];
-                const reading = AI_READINGS[k]?.[lang]?.[signKey];
-                if (!reading) return null;
-                return (
-                  <div key={k} className="bg-slate-800/30 rounded-2xl border border-slate-700/50 p-5">
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="text-2xl" style={{ color: PLANET_COLORS[k] }}>{PLANET_SYMBOLS[k]}</span>
-                      <div>
-                        <div className="text-sm font-semibold text-white">{PLANETS_CN[k] || k}</div>
-                        <div className="text-xs" style={{ color: SIGN_COLORS[signIdx] }}>{SIGN_SYMBOLS[signIdx]} {SIGN_CN[signKey]}</div>
+              {/* Chart SVG */}
+              {tab==='chart' && (
+                <div className="bg-white rounded border border-[#ddd] p-6 shadow-sm flex justify-center">
+                  <ProfessionalNatalChart planets={pData} houses={hData||[]} aspects={aData||[]} ascendant={asc} midheaven={mc} size={520} showDegrees showAspectLines/>
+                </div>
+              )}
+
+              {/* Planets Table */}
+              {tab==='planets' && (
+                <div className="bg-white rounded border border-[#ddd] shadow-sm overflow-hidden">
+                  <div className="px-5 py-3 border-b border-[#eee]"><h3 className="text-sm font-semibold text-[#555]">{tx('planetPositions',lang)}</h3></div>
+                  <table className="w-full text-sm">
+                    <thead><tr className="bg-[#fafafa]">{['planet','sign','degree','house'].map(h=><th key={h} className="text-left px-5 py-2.5 text-xs font-medium text-[#888] uppercase">{tx(h,lang)}</th>)}</tr></thead>
+                    <tbody>
+                      {PLANET_KEYS.filter(k=>pData?.[k]&&!pData[k].error).map(k=>{
+                        const p=pData[k];const lon=p.longitude;
+                        const si=Math.floor(((lon%360)+360)%360/30);const d=((lon%360)+360)%360%30;
+                        return <tr key={k} className="border-t border-[#eee] hover:bg-[#fafafa]">
+                          <td className="px-5 py-2.5"><div className="flex items-center gap-2"><span className="text-base" style={{color:PLANET_COLORS[k]}}>{PLANET_SYMBOLS[k]}</span><span className="text-[#555] text-xs">{PLANETS_CN[k]||k}</span></div></td>
+                          <td className="px-3 py-2.5"><div className="flex items-center gap-1.5"><span style={{color:SIGN_COLORS[si]}}>{SIGN_SYMBOLS[si]}</span><span className="text-[#555] text-xs">{SIGN_CN[Object.keys(SIGN_CN)[si]]}</span></div></td>
+                          <td className="px-3 py-2.5 text-[#555] text-xs">{Math.floor(d).toString().padStart(2,'0')}&deg;{Math.floor((d%1)*60).toString().padStart(2,'0')}&prime;{p.retrograde?<sup className="text-red-500 ml-0.5">R</sup>:''}</td>
+                          <td className="px-3 py-2.5 text-[#888] text-xs">{p.house||'-'}</td>
+                        </tr>;
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
+              {/* Houses Table */}
+              {tab==='houses' && (
+                <div className="bg-white rounded border border-[#ddd] shadow-sm overflow-hidden">
+                  <div className="px-5 py-3 border-b border-[#eee]"><h3 className="text-sm font-semibold text-[#555]">{tx('houseInfo',lang)}</h3></div>
+                  <table className="w-full text-sm">
+                    <thead><tr className="bg-[#fafafa]"><th className="text-left px-5 py-2.5 text-xs font-medium text-[#888]">#</th><th className="text-left px-3 py-2.5 text-xs font-medium text-[#888]">{tx('sign',lang)}</th><th className="text-left px-3 py-2.5 text-xs font-medium text-[#888]">{tx('degree',lang)}</th></tr></thead>
+                    <tbody>
+                      {(hData||[]).map((h:any)=>{
+                        const lon=h.longitude;const si=Math.floor(((lon%360)+360)%360/30);const d=((lon%360)+360)%360%30;
+                        const isAng=[1,4,7,10].includes(h.house);
+                        return <tr key={h.house} className="border-t border-[#eee] hover:bg-[#fafafa]">
+                          <td className={`px-5 py-2.5 font-medium text-xs ${isAng?'text-[#333]':'text-[#888]'}`}>{h.house}{isAng?' ⭐':''}</td>
+                          <td className="px-3 py-2.5"><div className="flex items-center gap-1.5"><span style={{color:SIGN_COLORS[si]}}>{SIGN_SYMBOLS[si]}</span><span className="text-[#555] text-xs">{SIGN_CN[Object.keys(SIGN_CN)[si]]}</span></div></td>
+                          <td className="px-3 py-2.5 text-[#555] text-xs">{Math.floor(d).toString().padStart(2,'0')}&deg;{Math.floor((d%1)*60).toString().padStart(2,'0')}&prime;</td>
+                        </tr>;
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
+              {/* Aspects Table */}
+              {tab==='aspects' && (
+                <div className="bg-white rounded border border-[#ddd] shadow-sm overflow-hidden">
+                  <div className="px-5 py-3 border-b border-[#eee]"><h3 className="text-sm font-semibold text-[#555]">{tx('majorAspects',lang)}</h3></div>
+                  <table className="w-full text-sm">
+                    <thead><tr className="bg-[#fafafa]"><th className="text-left px-5 py-2.5 text-xs font-medium text-[#888]">Planet 1</th><th className="text-left px-3 py-2.5 text-xs font-medium text-[#888]">Aspect</th><th className="text-left px-3 py-2.5 text-xs font-medium text-[#888]">Planet 2</th></tr></thead>
+                    <tbody>
+                      {(aData||[]).slice(0,30).map((a:any,i:number)=>{
+                        const at=a.aspect||a.type;
+                        return <tr key={i} className="border-t border-[#eee] hover:bg-[#fafafa]">
+                          <td className="px-5 py-2.5"><div className="flex items-center gap-1.5"><span style={{color:PLANET_COLORS[a.planet1]}}>{PLANET_SYMBOLS[a.planet1]}</span><span className="text-[#555] text-xs">{PLANETS_CN[a.planet1]||a.planet1}</span></div></td>
+                          <td className="px-3 py-2.5"><span className="text-xs font-medium" style={{color:ASPECT_STYLES[at]?.color}}>{ASPECT_NAMES[at]?.[lang]||ASPECT_NAMES[at]?.zh||at}</span></td>
+                          <td className="px-3 py-2.5"><div className="flex items-center gap-1.5"><span style={{color:PLANET_COLORS[a.planet2]}}>{PLANET_SYMBOLS[a.planet2]}</span><span className="text-[#555] text-xs">{PLANETS_CN[a.planet2]||a.planet2}</span></div></td>
+                        </tr>;
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
+              {/* AI Reading */}
+              {tab==='ai' && chart && (
+                <div className="space-y-4">
+                  {PLANET_KEYS.filter(k=>pData?.[k]&&AI_READINGS[k]?.[lang]).slice(0,4).map(k=>{
+                    const p=pData[k];const lon=p.longitude;
+                    const si=Math.floor(((lon%360)+360)%360/30);const sk=Object.keys(SIGN_CN)[si];
+                    const r=AI_READINGS[k]?.[lang]?.[sk];if(!r)return null;
+                    return <div key={k} className="bg-white rounded border border-[#ddd] p-5 shadow-sm">
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="text-2xl" style={{color:PLANET_COLORS[k]}}>{PLANET_SYMBOLS[k]}</span>
+                        <div><div className="text-sm font-semibold text-[#333]">{PLANETS_CN[k]||k}</div><div className="text-xs" style={{color:SIGN_COLORS[si]}}>{SIGN_SYMBOLS[si]} {SIGN_CN[sk]}</div></div>
                       </div>
-                    </div>
-                    <p className="text-slate-300 text-xs leading-relaxed mb-3">{reading.summary}</p>
-                    <div className="flex flex-wrap gap-1.5 mb-3">
-                      {reading.traits.map((t: string, i: number) => (
-                        <span key={i} className="px-2 py-1 rounded-full bg-indigo-900/30 text-indigo-300 text-xs border border-indigo-800/40">{t}</span>
-                      ))}
-                    </div>
-                    <div className="flex items-start gap-2 p-3 rounded-xl bg-amber-900/10 border border-amber-800/20">
-                      <span className="text-amber-400 mt-0.5">💡</span>
-                      <p className="text-amber-200/80 text-xs leading-relaxed">{reading.advice}</p>
-                    </div>
-                  </div>
-                );
-              })}
+                      <p className="text-[#555] text-xs leading-relaxed mb-3">{r.summary}</p>
+                      <div className="flex flex-wrap gap-1.5 mb-3">{r.traits.map((t:string,i:number)=><span key={i} className="px-2 py-1 rounded-full bg-[#f0edff] text-[#6b5ce7] text-xs">{t}</span>)}</div>
+                      <div className="flex items-start gap-2 p-3 rounded bg-[#fffbf0] border border-[#f0e6c0]"><span className="text-amber-500 mt-0.5">💡</span><p className="text-[#887744] text-xs leading-relaxed">{r.advice}</p></div>
+                    </div>;
+                  })}
+                </div>
+              )}
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
       )}
     </div>
