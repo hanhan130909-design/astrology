@@ -106,9 +106,9 @@ export default function NatalPage(){
         <span style={{color:'#ccc',padding:'4px 12px',cursor:'pointer'}}>文件 ▾</span>
         <span style={{color:'#ccc',padding:'4px 12px',cursor:'pointer'}}>工具 ▾</span>
         <span style={{color:'#ccc',padding:'4px 12px',cursor:'pointer'}}>设定 ▾</span>
-        <a href="/" style={{color:'#ccc',padding:'4px 12px',textDecoration:'none'}}>快速制图</a>
+        <a href="/" onClick={(e:any)=>{e.preventDefault();/*nav*/}} style={{color:'#ccc',padding:'4px 12px',textDecoration:'none'}}>快速制图</a>
         <span style={{flex:1}}/>
-        <a href="/" style={{color:'#ccc',padding:'4px 12px',textDecoration:'none'}}>宫神星网 ▾</a>
+        <a href="/" onClick={(e:any)=>{e.preventDefault();/*nav*/}} style={{color:'#ccc',padding:'4px 12px',textDecoration:'none'}}>宫神星网 ▾</a>
       </div>
 
       <div style={{position:'relative'}}>
