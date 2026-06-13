@@ -7,9 +7,9 @@ Reference used: Almuten screenshot supplied in chat and yesterday's local compon
 Prototype checked: `http://localhost:3000/natal?almutenpage=1781318492768`.
 
 Production project checked: `astrology`.
-Production deployment checked: `https://astrology-5atdmqxg8-astrology-420da605.vercel.app`.
+Production deployment checked: `https://astrology-kj4b5ebz4-astrology-420da605.vercel.app`.
 
-Custom domain checked: `https://lunaxstar.com/natal?final-original=1781321065697`.
+Custom domain checked: `https://lunaxstar.com/natal?browser-final-d=1781331566645`.
 
 Checks:
 - Wheel renders as a white chart panel with thin grey circular rings.
@@ -42,5 +42,7 @@ Automated DOM evidence:
 - Production generated page: `han - 本命图`, 95 SVG text nodes, aspect matrix present, feature panel present, bottom table present, no `计算错误`.
 - Custom domain `/api/chart`: HTTP 200, `success: true`, 27 aspects.
 - Custom domain generated page: `han - 本命图`, 95 SVG text nodes, aspect matrix present, feature panel present, bottom table present, no `计算错误`, no old test-domain text.
+- Final browser check: default inputs are `han`, `1986-11-14 18:33`, `41.66`, `123.34`, `UTC+8`; generated page renders the white `NatalChartWheel` SVG with `viewBox="0 0 520 520"`, first circle `fill="white"`, Pluto glyph present, aspect matrix present, bottom table present, no `计算错误`.
+- Service worker cache was disabled and old caches are cleared to prevent stale `/natal` pages.
 
 final result: passed

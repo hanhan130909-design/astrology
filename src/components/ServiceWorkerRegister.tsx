@@ -8,33 +8,15 @@ export function ServiceWorkerRegister() {
       return;
     }
 
-    const isLocalDev =
-      process.env.NODE_ENV !== "production" ||
-      window.location.hostname === "localhost" ||
-      window.location.hostname === "127.0.0.1";
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      registrations.forEach((registration) => registration.unregister());
+    });
 
-    if (isLocalDev) {
-      navigator.serviceWorker.getRegistrations().then((registrations) => {
-        registrations.forEach((registration) => registration.unregister());
+    if ("caches" in window) {
+      caches.keys().then((keys) => {
+        keys.forEach((key) => caches.delete(key));
       });
-
-      if ("caches" in window) {
-        caches.keys().then((keys) => {
-          keys.forEach((key) => caches.delete(key));
-        });
-      }
-
-      return;
     }
-
-    navigator.serviceWorker
-      .register("/sw.js")
-      .then((registration) => {
-        console.log("SW registered:", registration.scope);
-      })
-      .catch((error) => {
-        console.log("SW registration failed:", error);
-      });
   }, []);
 
   return null;

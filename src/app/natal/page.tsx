@@ -6,7 +6,7 @@ import ProfessionalNatalChart from '@/components/ProfessionalNatalChart';
 import AlmutenChartLayout from '@/components/AlmutenChartLayout';
 import ProfessionalDataTables from '@/components/ProfessionalDataTables';
 import AspectGridMatrix from '@/components/AspectGridMatrix';
-import { ArrowLeft, Save, Star, Sun, Moon, Calendar, TrendingUp, Heart, Loader2, ChevronDown, Check, X, Sparkles, Lock, Share2, CheckCircle, MessageCircle, User } from 'lucide-react';
+import { ArrowLeft, Save, Star, Sun, Moon, Calendar, TrendingUp, Heart, Loader2, ChevronDown, Check, X, Sparkles, Lock, Share2, CheckCircle, MessageCircle, User, Copy, Download } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { saveChartToCloud, loadChartsFromCloud, deleteChartFromCloud, syncLocalChartsToCloud } from '@/lib/chartSync';
 
@@ -553,7 +553,7 @@ export default function NatalPage() {
   const [lang, setLang] = useState<'zh' | 'en' | 'id'>('zh');
   const [chartType, setChartType] = useState('natal');
   const browserTz = typeof window !== 'undefined' ? -(new Date().getTimezoneOffset() / 60) : 8;
-  const [form, setForm] = useState({ name: '', year: 1990, month: 6, day: 15, hour: 12, minute: 0, houseSystem: 'P', lat: 25.05, lng: 121.5, tz: 8 });
+  const [form, setForm] = useState({ name: 'han', year: 1986, month: 11, day: 14, hour: 18, minute: 33, houseSystem: 'P', lat: 41.66, lng: 123.34, tz: 8 });
   const [secForm, setSecForm] = useState({ year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() });
   const [p2Form, setP2Form] = useState({ year: 1992, month: 3, day: 20, hour: 10, minute: 0 });
   const [chart, setChart] = useState<any>(null);
@@ -663,10 +663,34 @@ export default function NatalPage() {
   const saveUnlockState = (updates: any) => { try { localStorage.setItem('natal_ai_unlock', JSON.stringify({ ...JSON.parse(localStorage.getItem('natal_ai_unlock') || '{}'), ...updates })); } catch {} };
 
   const handleShare = () => {
-    const txt = lang === 'zh' ? '\u6211\u521A\u521A\u7528\u661F\u7F18\u751F\u6210\u4E86\u6211\u7684\u672C\u547D\u76D8\uFF0C\u5FEB\u6765\u8BD5\u8BD5\uFF01https://astrology-clean.vercel.app/natal' : lang === 'id' ? `Saya baru saja membuat bagan lahir saya di Xingyuan, coba juga! https://astrology-clean.vercel.app/natal` : `I just generated my natal chart on Starry Fate, come try it! https://astrology-clean.vercel.app/natal`;
+    const txt = lang === 'zh' ? '我刚刚用星缘生成了我的本命盘，快来试试！https://lunaxstar.com/natal' : lang === 'id' ? `Saya baru saja membuat bagan lahir saya di Xingyuan, coba juga! https://lunaxstar.com/natal` : `I just generated my natal chart on Starry Fate, come try it! https://lunaxstar.com/natal`;
     window.open(`https://wa.me/?text=${encodeURIComponent(txt)}`, '_blank');
     const n = Math.min(shareCount + 1, 3); setShareCount(n); saveUnlockState({ shareCount: n });
     if (n >= 3) { setTimeout(() => { setIsUnlocked(true); saveUnlockState({ isUnlocked: true }); }, 1500); }
+  };
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      setSaveMsg(lang === 'zh' ? '链接已复制！' : lang === 'id' ? 'Tautan disalin!' : 'Link copied!');
+      setTimeout(() => setSaveMsg(null), 2000);
+    });
+  };
+
+  const handleExportImage = async () => {
+    const chartEl = document.getElementById('chart-export-area');
+    if (!chartEl) return;
+    try {
+      const { default: html2canvas } = await import('html2canvas');
+      const canvas = await html2canvas(chartEl, { backgroundColor: '#0f0f1a', scale: 2 });
+      const link = document.createElement('a');
+      link.download = `natal-chart-${form.year}-${form.month}-${form.day}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+      setSaveMsg(lang === 'zh' ? '图片已下载！' : lang === 'id' ? 'Gambar diunduh!' : 'Image downloaded!');
+      setTimeout(() => setSaveMsg(null), 2000);
+    } catch (e) {
+      console.error('Export failed:', e);
+    }
   };
 
   const activeLat = form.lat, activeLng = form.lng;
@@ -1039,7 +1063,15 @@ export default function NatalPage() {
                       </button>
                       <button onClick={handleShare}
                         className="flex-1 py-2.5 rounded-xl bg-emerald-900/40 hover:bg-emerald-800/50 border border-emerald-700/40 text-emerald-300 text-xs font-medium transition-colors flex items-center justify-center gap-1.5">
-                        <Share2 size={13}/>{tx('shareWA', lang)}
+                        <Share2 size={13}/>WhatsApp
+                      </button>
+                      <button onClick={handleCopyLink}
+                        className="flex-1 py-2.5 rounded-xl bg-slate-700/60 hover:bg-slate-700 border border-slate-600 text-slate-300 text-xs font-medium transition-colors flex items-center justify-center gap-1.5">
+                        <Copy size={13}/>{lang === 'zh' ? '复制' : 'Copy'}
+                      </button>
+                      <button onClick={handleExportImage}
+                        className="flex-1 py-2.5 rounded-xl bg-indigo-900/40 hover:bg-indigo-800/50 border border-indigo-700/40 text-indigo-300 text-xs font-medium transition-colors flex items-center justify-center gap-1.5">
+                        <Download size={13}/>{lang === 'zh' ? '导出' : 'Export'}
                       </button>
                     </div>
                   )}
@@ -1111,7 +1143,7 @@ export default function NatalPage() {
           {/* Chart Tab */}
           {tab === 'chart' && (
             <div className="space-y-5">
-              <div className="bg-slate-800/30 rounded-2xl border border-slate-700/50 p-5">
+              <div className="bg-slate-800/30 rounded-2xl border border-slate-700/50 p-5" id="chart-export-area">
                 <ProfessionalNatalChart
                   planets={pData}
                   houses={hData || []}
