@@ -27,8 +27,8 @@ export default function OpenGraphImage() {
 
         {/* Logo/Title */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 40 }}>
-          <div style={{ display: 'flex', width: 80, height: 80, borderRadius: 20, background: 'linear-gradient(135deg, #7c3aed, #ec4899, #f59e0b)', alignItems: 'center', justifyContent: 'center', fontSize: 48, color: 'white' }}>
-            <span>⭐</span>
+          <div style={{ display: 'flex', width: 80, height: 80, borderRadius: 20, background: 'linear-gradient(135deg, #7c3aed, #ec4899, #f59e0b)', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
+            <span style={{ fontSize: 30, fontWeight: 900, fontFamily: 'Arial, sans-serif' }}>LX</span>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <span style={{ fontSize: 64, fontWeight: 900, color: 'white' }}>星缘</span>
@@ -59,7 +59,7 @@ export default function OpenGraphImage() {
         </div>
 
         {/* URL */}
-        <span style={{ display: 'flex', position: 'absolute', bottom: 30, fontSize: 20, color: '#64748b' }}>astrology-clean.vercel.app</span>
+        <span style={{ display: 'flex', position: 'absolute', bottom: 30, fontSize: 20, color: '#64748b' }}>lunaxstar.com</span>
       </div>
     ),
     { ...size }

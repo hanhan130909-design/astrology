@@ -39,7 +39,7 @@ const LABELS: Record<string, Record<string, string>> = {
     shareWA: "分享到 WhatsApp",
     friend: "好友",
     shareText: "我刚刚用星缘生成了我的AI星盘解读，快来试试！",
-    shareLink: "https://astrology-clean.vercel.app/ai-reading",
+    shareLink: "https://lunaxstar.com/ai-reading",
   },
   en: {
     title: "AI Chart Reading",
@@ -74,7 +74,7 @@ const LABELS: Record<string, Record<string, string>> = {
     shareWA: "Share to WhatsApp",
     friend: "Friend",
     shareText: "I just generated my AI birth chart reading on Starry Fate, come try it!",
-    shareLink: "https://astrology-clean.vercel.app/ai-reading",
+    shareLink: "https://lunaxstar.com/ai-reading",
   },
   id: {
     title: "Pembacaan Bagan AI",
@@ -109,7 +109,7 @@ const LABELS: Record<string, Record<string, string>> = {
     shareWA: "Bagikan ke WhatsApp",
     friend: "Teman",
     shareText: "Saya baru saja membuat pembacaan bagan AI saya di Xingyuan, coba juga!",
-    shareLink: "https://astrology-clean.vercel.app/ai-reading",
+    shareLink: "https://lunaxstar.com/ai-reading",
   },
 };
 

@@ -784,7 +784,7 @@ export default function NatalPage() {
   const mc = chart?.midheaven || 0;
   const dayOffset = chart?.daysSinceBirth;
 
-  const isAlmutenResult = Boolean(chart) && tab !== 'saved';
+  const isAlmutenResult = false; // 不再跳转到独立白底页面
 
   return (
     <div className={isAlmutenResult ? "min-h-screen bg-white text-[#222]" : "min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 text-white"}>

@@ -26,7 +26,7 @@ export default function Icon() {
           backgroundColor: 'rgba(255,255,255,0.95)',
           borderRadius: 60,
         }}>
-          <span style={{ fontSize: 200, color: '#7c3aed' }}>⭐</span>
+          <span style={{ fontSize: 128, fontWeight: 900, color: '#7c3aed', fontFamily: 'Arial, sans-serif' }}>LX</span>
         </div>
       </div>
     ),

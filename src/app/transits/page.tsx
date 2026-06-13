@@ -182,10 +182,10 @@ export default function TransitPage() {
   // WhatsApp share handler
   const handleShare = () => {
     const shareText = language === 'zh' 
-      ? `我刚刚用星缘查看了我的行星推运，快来试试！https://astrology-clean.vercel.app/transits`
+      ? `我刚刚用星缘查看了我的行星推运，快来试试！https://lunaxstar.com/transits`
       : language === 'id' 
-      ? `Saya baru saja melihat transit planet saya di Xingyuan, coba juga! https://astrology-clean.vercel.app/transits`
-      : `I just checked my planetary transits on Starry Fate, come try it! https://astrology-clean.vercel.app/transits`;
+      ? `Saya baru saja melihat transit planet saya di Xingyuan, coba juga! https://lunaxstar.com/transits`
+      : `I just checked my planetary transits on Starry Fate, come try it! https://lunaxstar.com/transits`;
     const waUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
     window.open(waUrl, '_blank');
     

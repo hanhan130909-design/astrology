@@ -232,10 +232,10 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
   // WhatsApp share handler
   const handleShare = () => {
     const shareText = language === 'zh' 
-      ? `我刚刚用星缘测试了和${p2.name || 'TA'}的配对指数，太准了！快来试试 https://astrology-clean.vercel.app/compatibility`
+      ? `我刚刚用星缘测试了和${p2.name || 'TA'}的配对指数，太准了！快来试试 https://lunaxstar.com/compatibility`
       : language === 'id' 
-      ? `Saya baru saja menguji kecocokan dengan ${p2.name || 'mantan'} di Xingyuan, sangat akurat! Coba juga https://astrology-clean.vercel.app/compatibility`
-      : `I just tested my compatibility with ${p2.name || 'my partner'} on Starry Fate, so accurate! Try it https://astrology-clean.vercel.app/compatibility`;
+      ? `Saya baru saja menguji kecocokan dengan ${p2.name || 'mantan'} di Xingyuan, sangat akurat! Coba juga https://lunaxstar.com/compatibility`
+      : `I just tested my compatibility with ${p2.name || 'my partner'} on Starry Fate, so accurate! Try it https://lunaxstar.com/compatibility`;
     const waUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
     window.open(waUrl, '_blank');
     

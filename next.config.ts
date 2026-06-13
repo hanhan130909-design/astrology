@@ -27,7 +27,6 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ["lucide-react"],
     reactCompiler: false,
   },
-  output: "export",
 };
 
 export default nextConfig;

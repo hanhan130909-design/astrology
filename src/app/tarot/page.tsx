@@ -263,7 +263,7 @@ export default function TarotPage() {
   };
 
   const handleShare = () => {
-    const shareText = `${t.shareText} https://astrology-clean.vercel.app/tarot`;
+    const shareText = `${t.shareText} https://lunaxstar.com/tarot`;
     const waUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
     window.open(waUrl, '_blank');
     
