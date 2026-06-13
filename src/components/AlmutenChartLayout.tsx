@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowLeft, Save } from "lucide-react";
-import ProfessionalNatalChart from "@/components/ProfessionalNatalChart";
+import NatalChartWheel from "@/components/NatalChartWheel";
 
 type ChartData = {
   planets?: Record<string, any>;
@@ -295,7 +295,7 @@ export default function AlmutenChartLayout({chart,form,chartType,onBack,onSave,s
               <AspectMatrix chart={chart}/>
             </div>
             <div className="flex justify-center pt-0">
-              <ProfessionalNatalChart planets={chart.planets} houses={chart.houses||[]} aspects={chart.aspects||[]} ascendant={chart.ascendant} midheaven={chart.midheaven} size={560} showDegrees showAspectLines/>
+              <NatalChartWheel />
             </div>
             <div className="flex justify-end pt-1">
               <ChartFeaturePanel chart={chart}/>

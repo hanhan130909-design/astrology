@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import Link from 'next/link';
 import ProfessionalNatalChart from '@/components/ProfessionalNatalChart';
+import AlmutenChartLayout from '@/components/AlmutenChartLayout';
 import ProfessionalDataTables from '@/components/ProfessionalDataTables';
 import AspectGridMatrix from '@/components/AspectGridMatrix';
 import { ArrowLeft, Save, Star, Sun, Moon, Calendar, TrendingUp, Heart, Loader2, ChevronDown, Check, X, Sparkles, Lock, Share2, CheckCircle, MessageCircle, User } from 'lucide-react';
@@ -552,7 +553,7 @@ export default function NatalPage() {
   const [lang, setLang] = useState<'zh' | 'en' | 'id'>('zh');
   const [chartType, setChartType] = useState('natal');
   const browserTz = typeof window !== 'undefined' ? -(new Date().getTimezoneOffset() / 60) : 8;
-  const [form, setForm] = useState({ name: '', year: 1990, month: 6, day: 15, hour: 12, minute: 0, houseSystem: 'P', lat: 0, lng: 0, tz: Math.round(browserTz) });
+  const [form, setForm] = useState({ name: '', year: 1990, month: 6, day: 15, hour: 12, minute: 0, houseSystem: 'P', lat: 25.05, lng: 121.5, tz: 8 });
   const [secForm, setSecForm] = useState({ year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() });
   const [p2Form, setP2Form] = useState({ year: 1992, month: 3, day: 20, hour: 10, minute: 0 });
   const [chart, setChart] = useState<any>(null);
@@ -564,6 +565,7 @@ export default function NatalPage() {
   const [geoLoading, setGeoLoading] = useState(false);
   const [geoError, setGeoError] = useState<string | null>(null);
   const [geoLoadingTz, setGeoLoadingTz] = useState(false);
+  const [cityName, setCityName] = useState('台北市');
 
   // ─── 自动时区功能 ───
   // 根据经纬度估算 IANA 时区名称（浏览器原生 Intl API，无需 API Key）
@@ -635,6 +637,7 @@ export default function NatalPage() {
         const tzOffset = getTimezoneFromLatLng(lat, lng);
         
         setForm(prev => ({ ...prev, lat, lng, tz: tzOffset }));
+        setCityName(data[0].display_name?.split(',')[0] || address);
         setGeoError(null);
       } else {
         setGeoError(lang === 'zh' ? '未找到该地址，请尝试其他关键词' : lang === 'id' ? 'Alamat tidak ditemukan' : 'Address not found');
@@ -783,6 +786,19 @@ export default function NatalPage() {
   const mc = chart?.midheaven || 0;
   const dayOffset = chart?.daysSinceBirth;
 
+  if (chartType === 'natal' && chart && tab === 'chart') {
+    return (
+      <AlmutenChartLayout
+        chart={chart}
+        form={form}
+        chartType={chartType}
+        onBack={() => setChart(null)}
+        onSave={handleSave}
+        saveMsg={saveMsg}
+      />
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 text-white">
       {/* Header */}
@@ -890,7 +906,7 @@ export default function NatalPage() {
                     )}
                     {form.lat !== 0 && form.lng !== 0 && (
                       <p className="text-xs text-green-400">
-                        ✓ {lang === 'zh' ? '位置已设定' : 'Location set'}: {form.lat.toFixed(4)}, {form.lng.toFixed(4)} | TZ: UTC{form.tz >= 0 ? '+' : ''}{form.tz}
+                        ✓ {cityName} ({form.lat.toFixed(4)}, {form.lng.toFixed(4)}) | UTC{form.tz >= 0 ? '+' : ''}{form.tz}
                       </p>
                     )}
                   </div>
@@ -1056,6 +1072,24 @@ export default function NatalPage() {
 
         {/* Right Panel: Chart */}
         <div className="lg:col-span-3 space-y-5">
+          {/* Birth Info Card */}
+          {chart && (
+            <div className="bg-slate-800/40 rounded-xl border border-slate-700/50 p-4 text-sm">
+              <div className="flex items-center justify-between">
+                <div className="space-y-0.5">
+                  <div className="text-slate-200 font-medium">{form.name || 'Quick Chart'}</div>
+                  <div className="text-slate-400 text-xs">
+                    {form.year}-{String(form.month).padStart(2,'0')}-{String(form.day).padStart(2,'0')} {String(form.hour).padStart(2,'0')}:{String(form.minute).padStart(2,'0')}
+                    {' · '}{cityName}
+                    {' · '}UTC{form.tz >= 0 ? '+' : ''}{form.tz}
+                  </div>
+                </div>
+                <button onClick={() => { setChart(null); setTab('chart'); }} className="text-xs text-indigo-400 hover:text-indigo-300 flex items-center gap-1">
+                  <ArrowLeft size={12}/> 返回修改
+                </button>
+              </div>
+            </div>
+          )}
           {/* Tabs */}
           {chart && (
             <div className="flex gap-2">
