@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 import NatalChartWheel from "@/components/NatalChartWheel";
 import { AspectMatrix } from "@/components/AlmutenChartLayout";
 
@@ -15,10 +15,7 @@ function fmt2(n:number){return String(Math.trunc(n)).padStart(2,"0");}
 function coordinateParts(value:number){
   let degrees = Math.trunc(Math.abs(value));
   let minutes = Math.round((Math.abs(value) % 1) * 60);
-  if(minutes === 60){
-    degrees += 1;
-    minutes = 0;
-  }
+  if(minutes === 60){degrees += 1;minutes = 0;}
   return {degrees, minutes};
 }
 
@@ -56,136 +53,76 @@ export default function NatalPage(){
       const d = await r.json();
       if(d.error) throw new Error(d.error);
       setChart(d.data || d);
-    }catch{
-    }finally{
-      setLoading(false);
-    }
+    }catch{}finally{setLoading(false);}
   };
-
-  const drawChart = async()=>{
-    await requestChart({year,month,day,hour:Number(hour),minute:Number(minute),latitude:lat,longitude:lng,timezone:tzHours,houseSystem:hsys});
-  };
+  const drawChart = async()=>{await requestChart({year,month,day,hour:Number(hour),minute:Number(minute),latitude:lat,longitude:lng,timezone:tzHours,houseSystem:hsys});};
 
   useEffect(()=>{
-    const current = new Date();
-    const currentTz = -current.getTimezoneOffset();
-    const base = {
-      year: current.getFullYear(),
-      month: current.getMonth() + 1,
-      day: current.getDate(),
-      hour: current.getHours(),
-      minute: current.getMinutes(),
-      timezone: currentTz / 60,
-      houseSystem: DEFAULT_HOUSE_SYSTEM,
-    };
-
-    setYear(base.year);
-    setMonth(base.month);
-    setDay(base.day);
-    setHour(base.hour);
-    setMinute(base.minute);
-    setTz(currentTz);
-
+    const current = new Date();const currentTz = -current.getTimezoneOffset();
+    const base = {year:current.getFullYear(),month:current.getMonth()+1,day:current.getDate(),hour:current.getHours(),minute:current.getMinutes(),timezone:currentTz/60,houseSystem:DEFAULT_HOUSE_SYSTEM};
+    setYear(base.year);setMonth(base.month);setDay(base.day);setHour(base.hour);setMinute(base.minute);setTz(currentTz);
     const fallback = () => requestChart({...base, latitude: DEFAULT_LAT, longitude: DEFAULT_LNG});
-
-    if(!navigator.geolocation){
-      fallback();
-      return;
-    }
-
-    let settled = false;
-    const timer = window.setTimeout(()=>{
-      if(settled) return;
-      settled = true;
-      fallback();
-    },3000);
-
-    navigator.geolocation.getCurrentPosition(
-      position=>{
-        if(settled) return;
-        settled = true;
-        window.clearTimeout(timer);
-
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-        const latParts = coordinateParts(latitude);
-        const lngParts = coordinateParts(longitude);
-
-        setCity("当前位置");
-        setGlatDeg(latParts.degrees);
-        setGlatMin(latParts.minutes);
-        setGlatDir(latitude >= 0 ? "N" : "S");
-        setGlonDeg(lngParts.degrees);
-        setGlonMin(lngParts.minutes);
-        setGlonDir(longitude >= 0 ? "E" : "W");
-        requestChart({...base, latitude, longitude});
-      },
-      ()=>{
-        if(settled) return;
-        settled = true;
-        window.clearTimeout(timer);
-        fallback();
-      },
-      {enableHighAccuracy:false, maximumAge:600000, timeout:2500}
-    );
-
+    if(!navigator.geolocation){fallback();return;}
+    let settled = false;const timer = window.setTimeout(()=>{if(!settled){settled=true;fallback();}},3000);
+    navigator.geolocation.getCurrentPosition(p=>{if(settled)return;settled=true;window.clearTimeout(timer);const lp=coordinateParts(p.coords.latitude);const lnp=coordinateParts(p.coords.longitude);setCity("当前位置");setGlatDeg(lp.degrees);setGlatMin(lp.minutes);setGlatDir(p.coords.latitude>=0?"N":"S");setGlonDeg(lnp.degrees);setGlonMin(lnp.minutes);setGlonDir(p.coords.longitude>=0?"E":"W");requestChart({...base,latitude:p.coords.latitude,longitude:p.coords.longitude});},()=>{if(!settled){settled=true;window.clearTimeout(timer);fallback();}},{enableHighAccuracy:false,maximumAge:600000,timeout:2500});
     return ()=>window.clearTimeout(timer);
   },[]);
 
   const codeAddress = async()=>{
-    try{
-      const r = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(city)}&limit=1`);
-      const d = await r.json();
-      if(d?.[0]){
-        const la = parseFloat(d[0].lat);
-        const lo = parseFloat(d[0].lon);
-        setGlatDeg(Math.trunc(Math.abs(la)));
-        setGlatMin(Math.round((Math.abs(la)%1)*60));
-        setGlatDir(la>=0?"N":"S");
-        setGlonDeg(Math.trunc(Math.abs(lo)));
-        setGlonMin(Math.round((Math.abs(lo)%1)*60));
-        setGlonDir(lo>=0?"E":"W");
-        setTz(Math.round(lo/15)*60);
-      }
-    }catch{}
+    try{const r=await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(city)}&limit=1`);const d=await r.json();if(d?.[0]){const la=parseFloat(d[0].lat),lo=parseFloat(d[0].lon);setGlatDeg(Math.trunc(Math.abs(la)));setGlatMin(Math.round((Math.abs(la)%1)*60));setGlatDir(la>=0?"N":"S");setGlonDeg(Math.trunc(Math.abs(lo)));setGlonMin(Math.round((Math.abs(lo)%1)*60));setGlonDir(lo>=0?"E":"W");setTz(Math.round(lo/15)*60);}}catch{}
   };
-
-  const handleSave = ()=>{
-    if(!chart)return;
-    const saved = JSON.parse(localStorage.getItem("natal_charts")||"[]");
-    saved.unshift({name,ts:Date.now(),birthData:{name,year,month,day,hour,minute,lat,lng,tz,hsys}});
-    localStorage.setItem("natal_charts",JSON.stringify(saved.slice(0,20)));
-    alert("已储存");
-  };
+  const handleSave = ()=>{if(!chart)return;const s=JSON.parse(localStorage.getItem("natal_charts")||"[]");s.unshift({name,ts:Date.now(),birthData:{name,year,month,day,hour,minute,lat,lng,tz,hsys}});localStorage.setItem("natal_charts",JSON.stringify(s.slice(0,20)));alert("已储存");};
   const handleCopyLink = ()=>{navigator.clipboard.writeText(window.location.href).then(()=>alert("链接已复制"));};
-  const handleExportImage = async()=>{
-    const el = document.getElementById("chart");if(!el)return;
-    try{const{default:h}=await import("html2canvas");const c=await h(el,{backgroundColor:"#0f0f1a",scale:2});
-    const a=document.createElement("a");a.download=`chart-${year}-${month}-${day}.png`;a.href=c.toDataURL();a.click();}catch{}
-  };
+  const handleExportImage = async()=>{const el=document.getElementById("chart");if(!el)return;try{const{default:h}=await import("html2canvas");const c=await h(el,{backgroundColor:"#0f0f1a",scale:2});const a=document.createElement("a");a.download=`chart-${year}-${month}-${day}.png`;a.href=c.toDataURL();a.click();}catch{}};
 
   const pData = chart?.planets;
   const hData = chart?.houses;
+  const aData = chart?.aspects;
 
-  const dignRows = chart ? ["Sun","Moon","Mercury","Venus","Mars","Jupiter","Saturn","Uranus","Neptune","Pluto","North_Node"].filter(k=>pData?.[k]).map(k=>{
-    const p = pData[k];
-    const lon = norm(p.longitude ?? 0);
-    const si = Math.floor(lon/30);
-    const d = lon % 30;
-    let house = "-";
-    if(hData) for(let i=0;i<hData.length;i++){
-      const c = norm(hData[i].longitude);
-      const n = norm(hData[(i+1)%hData.length].longitude);
-      if(c<=n ? lon>=c && lon<n : lon>=c || lon<n){house = String(hData[i].house);break;}
-    }
-    const rules:Record<string,number[]> = {Sun:[4],Moon:[3],Mercury:[2,5],Venus:[1,6],Mars:[0,7],Jupiter:[8,11],Saturn:[9,10]};
-    const ex:Record<string,number> = {Sun:0,Moon:1,Mercury:5,Venus:11,Mars:9,Jupiter:3,Saturn:6};
-    let dign = "中度";
-    let score = 0;
-    if((rules[k]||[]).includes(si)){dign="得令";score=5;}
-    else if(ex[k]===si){dign="曜升";score=4;}
-    return [k,`${Math.floor(d)}°${SIGN_SYMBOLS[si]} ${String(Math.round((d%1)*60)).padStart(2,"0")}′${p.retrograde?" R":""}`,house,dign,String(score)];
-  }) : [];
+  // ─── Essential Dignity Data ───
+  const RULER:Record<string,number[]>={Sun:[4],Moon:[3],Mercury:[2,5],Venus:[1,6],Mars:[0,7],Jupiter:[8,11],Saturn:[9,10],Uranus:[10],Neptune:[11],Pluto:[7]};
+  const DETRIMENT:Record<string,number[]>={Sun:[10],Moon:[9],Mercury:[8,11],Venus:[0,7],Mars:[1,6],Jupiter:[2,5],Saturn:[3,4]};
+  const EXALT:Record<string,number>={Sun:0,Moon:1,Mercury:5,Venus:11,Mars:9,Jupiter:3,Saturn:6,Uranus:7,Neptune:4,Pluto:7};
+  const FALL:Record<string,number>={Sun:6,Moon:7,Mercury:11,Venus:5,Mars:3,Jupiter:9,Saturn:0};
+  const TRIPLICITY:Record<string,number[]>={Sun:[0,4,8],Moon:[1,5,9],Mercury:[2,6,10],Venus:[1,5,9],Mars:[3,7,11],Jupiter:[0,4,8],Saturn:[2,6,10]};
+  const TERMS:Record<number,{p:string;e:number}[]>={0:[{p:"Jupiter",e:6},{p:"Venus",e:12},{p:"Mercury",e:20},{p:"Mars",e:25},{p:"Saturn",e:30}],1:[{p:"Venus",e:8},{p:"Mercury",e:14},{p:"Jupiter",e:22},{p:"Saturn",e:27},{p:"Mars",e:30}],2:[{p:"Mercury",e:6},{p:"Jupiter",e:12},{p:"Venus",e:17},{p:"Mars",e:24},{p:"Saturn",e:30}],3:[{p:"Mars",e:7},{p:"Venus",e:13},{p:"Mercury",e:19},{p:"Jupiter",e:26},{p:"Saturn",e:30}],4:[{p:"Jupiter",e:6},{p:"Venus",e:11},{p:"Saturn",e:24},{p:"Mercury",e:30}],5:[{p:"Mercury",e:7},{p:"Venus",e:17},{p:"Jupiter",e:21},{p:"Mars",e:28},{p:"Saturn",e:30}],6:[{p:"Saturn",e:6},{p:"Mercury",e:14},{p:"Jupiter",e:21},{p:"Venus",e:28},{p:"Mars",e:30}],7:[{p:"Mars",e:7},{p:"Venus",e:11},{p:"Mercury",e:19},{p:"Jupiter",e:24},{p:"Saturn",e:30}],8:[{p:"Jupiter",e:12},{p:"Venus",e:17},{p:"Mercury",e:21},{p:"Saturn",e:26},{p:"Mars",e:30}],9:[{p:"Venus",e:7},{p:"Mercury",e:14},{p:"Jupiter",e:22},{p:"Saturn",e:26},{p:"Mars",e:30}],10:[{p:"Mercury",e:7},{p:"Venus",e:13},{p:"Jupiter",e:20},{p:"Mars",e:25},{p:"Saturn",e:30}],11:[{p:"Venus",e:12},{p:"Jupiter",e:16},{p:"Mercury",e:19},{p:"Mars",e:28},{p:"Saturn",e:30}]};
+  const FACES:Record<number,string[]>={0:["Mars","Sun","Venus"],1:["Mercury","Moon","Saturn"],2:["Jupiter","Mars","Sun"],3:["Venus","Mercury","Moon"],4:["Saturn","Jupiter","Mars"],5:["Mercury","Saturn","Jupiter"],6:["Venus","Mars","Sun"],7:["Moon","Venus","Mercury"],8:["Saturn","Sun","Moon"],9:["Jupiter","Mercury","Saturn"],10:["Mars","Jupiter","Venus"],11:["Sun","Moon","Mercury"]};
+
+  const planetCodes:Record<string,string>={Sun:"Q",Moon:"W",Mercury:"E",Venus:"R",Mars:"T",Jupiter:"Y",Saturn:"U",Uranus:"I",Neptune:"O",Pluto:"P",North_Node:"<",South_Node:">"};
+  const planetCodesFull:Record<string,string>={...planetCodes,Ascendant:"Z",Midheaven:"X"};
+
+  const dignityRows = chart ? ["Sun","Moon","Mercury","Venus","Mars","Jupiter","Saturn","Uranus","Neptune","Pluto","North_Node","Ascendant","Midheaven"].filter(k=>{
+    if(k==="Ascendant")return chart?.ascendant;
+    if(k==="Midheaven")return chart?.midheaven;
+    return pData?.[k];
+  }).map(k=>{
+    let lon:number,retro=false;
+    if(k==="Ascendant"){lon=typeof chart.ascendant==='number'?chart.ascendant:chart.ascendant?.longitude??hData?.[0]?.longitude??0;}
+    else if(k==="Midheaven"){lon=typeof chart.midheaven==='number'?chart.midheaven:chart.midheaven?.longitude??hData?.[9]?.longitude??0;}
+    else{const p=pData[k];lon=norm(p.longitude??0);retro=p.retrograde??false;}
+    const si=Math.floor(lon/30);const d=lon%30;
+    let house="-";if(hData)for(let i=0;i<hData.length;i++){const c=norm(hData[i].longitude),n=norm(hData[(i+1)%hData.length].longitude);if(c<=n?lon>=c&&lon<n:lon>=c||lon<n){house=String(hData[i].house);break;}}
+    const r=(RULER[k]||[]).includes(si)?planetCodes[Object.keys(RULER).find(rk=>(RULER[rk]||[]).includes(si))||k]||"":"";
+    const ex=EXALT[k]===si?planetCodes[Object.keys(EXALT).find(ek=>EXALT[ek]===si)||""]||"":"";
+    const tri=(TRIPLICITY[k]||[]).includes(si)?planetCodes[k]||"":"";
+    const term=TERMS[si]?.find(t=>d<t.e);
+    const tP=term?planetCodes[term.p]||"":"";
+    const faceIdx=Math.floor(d/10);
+    const face=FACES[si]?.[faceIdx]||"";
+    const faceP=face?planetCodes[face]||"":"";
+    const det=(DETRIMENT[k]||[]).includes(si)?"1":"";
+    const fal=FALL[k]===si?"1":"";
+    const rulerScore=r?5:0,exScore=ex?4:0,triScore=tri?3:0,termScore=tP?2:0,faceScore=faceP?1:0;
+    const totalScore=rulerScore+exScore+triScore+termScore+faceScore-(det?4:0)-(fal?5:0);
+    return{code:planetCodesFull[k]||k[0],name:k,deg:`${Math.floor(d)}°${SIGN_SYMBOLS[si]} ${String(Math.round((d%1)*60)).padStart(2,"0")}′${retro?" R":""}`,house,guardianHouse:"-",exaltHouse:"-",ruler:r,exalt:ex,triplicity:tri,term:tP,face:faceP,detriment:det,fall:fal,score:totalScore>0?"+"+totalScore:String(totalScore),state:totalScore>=5?"强":totalScore>=0?"平均":"弱",speed:"平均",sect:["Sun","Jupiter","Saturn"].includes(k)?"得时":"-",orient:retro?"西入":"东出"};
+  }):[];
+
+  const houseRows = (hData||[]).map((h:any)=>{
+    const si=Math.floor(norm(h.longitude)/30);const d=norm(h.longitude)%30;
+    const rulerK=Object.keys(RULER).find(k=>(RULER[k]||[]).includes(si));
+    const exK=Object.keys(EXALT).find(k=>EXALT[k]===si);
+    return{house:h.house,deg:`${Math.floor(d)}°${SIGN_SYMBOLS[si]} ${String(Math.round((d%1)*60)).padStart(2,"0")}′`,ruler:rulerK?planetCodes[rulerK]||"":"",exalt:exK?planetCodes[exK]||"":"",almuten:rulerK?planetCodes[rulerK]||"":""};
+  });
 
   return(
     <div className="min-h-screen bg-white text-[#333]">
@@ -229,68 +166,131 @@ export default function NatalPage(){
               ))}
             </div>
 
-            {activeTab==="chart-tab"&&<div className="list_table" style={{clear:"both",width:"100%"}}>
-              <table width="100%" style={{borderCollapse:"collapse",fontSize:"12px"}}>
+            {/* === 黄道状态 === */}
+            {activeTab==="chart-tab"&&<div className="list_table" style={{clear:"both",width:"100%",fontSize:"11px",overflowX:"auto"}}>
+              <table style={{borderCollapse:"collapse"}}>
                 <thead>
-                  <tr style={{border:"1px solid #aaa"}}><th rowSpan={2} style={{border:"1px solid #aaa",padding:"6px 10px"}}>星体</th><th rowSpan={2} colSpan={4} style={{border:"1px solid #aaa",padding:"6px 10px"}}>黄经度数</th><th rowSpan={2} style={{border:"1px solid #aaa",padding:"6px 10px"}}>落宫</th><th rowSpan={2} style={{border:"1px solid #aaa",padding:"6px 10px"}}>先天黄道状态</th><th style={{border:"1px solid #aaa",padding:"6px 10px"}}>分数</th></tr>
+                  <tr style={{border:"1px solid #aaa"}}>
+                    <th rowSpan={2} style={{border:"1px solid #aaa",padding:"4px 6px"}}>星体</th>
+                    <th rowSpan={2} colSpan={3} style={{border:"1px solid #aaa",padding:"4px 6px"}}>黄经度数</th>
+                    <th rowSpan={2} style={{border:"1px solid #aaa",padding:"4px 6px"}}>落宫</th>
+                    <th rowSpan={2} style={{border:"1px solid #aaa",padding:"4px 6px"}}>守护宫</th>
+                    <th rowSpan={2} style={{border:"1px solid #aaa",padding:"4px 6px"}}>曜升宫</th>
+                    <th colSpan={10} style={{border:"1px solid #aaa",padding:"4px 6px"}}>先天黄道状态</th>
+                    <th colSpan={4} rowSpan={2} style={{border:"1px solid #aaa",padding:"4px 6px"}}>附属状态</th>
+                  </tr>
+                  <tr style={{border:"1px solid #aaa"}}>
+                    <th style={{border:"1px solid #aaa",padding:"2px 4px"}}>本垣</th><th style={{border:"1px solid #aaa",padding:"2px 4px"}}>曜升</th>
+                    <th colSpan={3} style={{border:"1px solid #aaa",padding:"2px 4px"}}>三分</th><th style={{border:"1px solid #aaa",padding:"2px 4px"}}>界</th>
+                    <th style={{border:"1px solid #aaa",padding:"2px 4px"}}>十度</th><th style={{border:"1px solid #aaa",padding:"2px 4px"}}>陷</th>
+                    <th style={{border:"1px solid #aaa",padding:"2px 4px"}}>落</th><th style={{border:"1px solid #aaa",padding:"2px 4px"}}>分数</th>
+                  </tr>
                 </thead>
                 <tbody>
-                  {dignRows.map((r,i)=><tr key={i} style={{border:"1px solid #aaa"}}>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"4px 10px"}}><em>{r[0]}</em></td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"4px 10px"}} colSpan={4}>{r[1]}</td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"4px 10px"}}>{r[2]}</td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"4px 10px"}}>{r[3]}</td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"4px 10px"}}>{r[4]}</td>
+                  {dignityRows.map((r,i)=><tr key={i} style={{border:"1px solid #aaa"}}>
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{r.code}</em></td>
+                    <td align="center" colSpan={3} style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.deg}</td>
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.house}</td>
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.guardianHouse}</td>
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.exaltHouse}</td>
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{r.ruler}</em>{r.ruler?"+":""}</td>
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{r.exalt}</em></td>
+                    <td align="center" colSpan={3} style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{r.triplicity}</em></td>
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{r.term}</em></td>
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{r.face}</em></td>
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.detriment?<em>{Object.keys(RULER).find(k=>(DETRIMENT[r.name]||[]).includes(Math.floor(norm(pData?.[r.name]?.longitude??0)/30)))||""}</em>:""}</td>
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.fall?<em>{Object.keys(FALL).find(k=>FALL[k]===Math.floor(norm(pData?.[r.name]?.longitude??0)/30))||""}</em>:""}</td>
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.score}</td>
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 4px",fontSize:"10px"}}>{r.state}</td>
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 4px",fontSize:"10px"}}>{r.speed}</td>
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 4px",fontSize:"10px"}}>{r.sect==="-"?r.orient:r.sect}</td>
                   </tr>)}
                 </tbody>
               </table>
             </div>}
 
-            {activeTab==="dignity2-tab"&&chart&&<div className="list_table" style={{display:"flex",gap:16,fontSize:"12px"}}>
-              <div style={{width:"32%"}}>
-                <table width="100%" style={{borderCollapse:"collapse"}}>
-                  <thead><tr style={{border:"1px solid #aaa"}}><th style={{border:"1px solid #aaa",padding:"4px"}}>宫</th><th colSpan={3} style={{border:"1px solid #aaa",padding:"4px"}}>度数</th></tr></thead>
-                  <tbody>{(hData||[]).map((h:any)=>{const si=Math.floor(norm(h.longitude)/30);const d=norm(h.longitude)%30;return <tr key={h.house} style={{border:"1px solid #aaa"}}><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}>{h.house}</td><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}>{Math.floor(d)}°</td><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}><em>{SIGN_SYMBOLS[si]}</em></td><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}>{Math.round((d%1)*60)}′</td></tr>;})}</tbody>
+            {/* === 黄道状态-2 === */}
+            {activeTab==="dignity2-tab"&&chart&&<div className="list_table" style={{display:"flex",gap:16,fontSize:"11px",flexWrap:"wrap"}}>
+              <div style={{minWidth:120}}>
+                <table style={{borderCollapse:"collapse",width:"100%"}}>
+                  <thead><tr style={{border:"1px solid #aaa"}}><th style={{border:"1px solid #aaa",padding:"4px"}}>宫</th><th colSpan={3} style={{border:"1px solid #aaa",padding:"4px"}}>黄经度数</th><th style={{border:"1px solid #aaa",padding:"4px"}}>本垣</th><th style={{border:"1px solid #aaa",padding:"4px"}}>曜升</th><th style={{border:"1px solid #aaa",padding:"4px"}}>宫神星</th></tr></thead>
+                  <tbody>{houseRows.map((r,i)=><tr key={i} style={{border:"1px solid #aaa"}}><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}>{r.house}</td><td align="center" colSpan={3} style={{border:"1px solid #aaa",padding:"2px 4px"}}>{r.deg}</td><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}><em>{r.ruler}</em></td><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}>{r.exalt?<em>{r.exalt}</em>:""}</td><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}>{r.almuten?<em>{r.almuten}</em>:""}</td></tr>)}</tbody>
+                </table>
+              </div>
+              <div style={{flex:1,minWidth:180}}>
+                <div style={{fontWeight:"bold",marginBottom:4}}>特征</div>
+                <div style={{fontSize:"11px",lineHeight:1.6}}>此功能需要服务端计算完整接纳/映点/紧要度数数据。</div>
+              </div>
+              <div style={{minWidth:120}}>
+                <div style={{fontWeight:"bold",marginBottom:4}}>阿拉伯点</div>
+                <table style={{borderCollapse:"collapse",width:"100%",fontSize:"11px"}}>
+                  <thead><tr style={{border:"1px solid #aaa"}}><th style={{border:"1px solid #aaa",padding:"2px 4px"}}>名称</th><th colSpan={3} style={{border:"1px solid #aaa",padding:"2px 4px"}}>度数</th></tr></thead>
+                  <tbody>{["福点","精神点","物质点","婚姻点(男)","婚姻点(女)","子女点"].map(p=><tr key={p} style={{border:"1px solid #aaa"}}><td style={{border:"1px solid #aaa",padding:"2px 4px"}}>{p}</td><td align="center" colSpan={3} style={{border:"1px solid #aaa",padding:"2px 4px"}}>—</td></tr>)}</tbody>
+                </table>
+              </div>
+              <div style={{minWidth:120}}>
+                <div style={{fontWeight:"bold",marginBottom:4}}>恒星</div>
+                <table style={{borderCollapse:"collapse",width:"100%",fontSize:"11px"}}>
+                  <thead><tr style={{border:"1px solid #aaa"}}><th style={{border:"1px solid #aaa",padding:"2px 4px"}}>名称</th><th colSpan={3} style={{border:"1px solid #aaa",padding:"2px 4px"}}>度数</th><th style={{border:"1px solid #aaa",padding:"2px 4px"}}>合相</th></tr></thead>
+                  <tbody>{["参宿五","五车二","参宿三","五车五","南河三","北落师门","天苑一"].map(s=><tr key={s} style={{border:"1px solid #aaa"}}><td style={{border:"1px solid #aaa",padding:"2px 4px"}}>{s}</td><td align="center" colSpan={3} style={{border:"1px solid #aaa",padding:"2px 4px"}}>—</td><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}>—</td></tr>)}</tbody>
                 </table>
               </div>
             </div>}
 
-            {activeTab==="firdaria-tab"&&chart&&<div className="list_table" style={{clear:"both",width:"100%",fontSize:"12px"}}>
-              <div style={{fontWeight:"bold",marginBottom:8}}>法达星限 — 行星大运周期</div>
-              <table width="100%" style={{borderCollapse:"collapse"}}>
-                <thead><tr style={{border:"1px solid #aaa"}}><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>行星</th><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>主运年限</th><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>起始年龄</th></tr></thead>
+            {/* === 法达星限 === */}
+            {activeTab==="firdaria-tab"&&chart&&<div className="list_table" style={{clear:"both",width:"100%",fontSize:"11px",overflowX:"auto"}}>
+              <div style={{fontWeight:"bold",marginBottom:8}}>法达星限</div>
+              <table style={{borderCollapse:"collapse"}}>
+                <thead><tr style={{border:"1px solid #aaa"}}><th colSpan={18} style={{border:"1px solid #aaa",padding:"4px 6px"}}>法达星限</th></tr></thead>
                 <tbody>
-                  {(()=>{const periods=[{p:"Sun",y:10},{p:"Venus",y:8},{p:"Mercury",y:13},{p:"Moon",y:9},{p:"Saturn",y:11},{p:"Jupiter",y:12},{p:"Mars",y:7},{p:"North_Node",y:3},{p:"South_Node",y:2}];let start=0;return periods.map(r=>{const s=start;start+=r.y;return<tr key={r.p} style={{border:"1px solid #aaa"}}><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>{r.p}</td><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>{r.y}年</td><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>{s}岁</td></tr>;})})()}
+                  {(()=>{const periods=[{p:"Q",y:10},{p:"R",y:8},{p:"E",y:13},{p:"W",y:9},{p:"U",y:11},{p:"Y",y:12},{p:"T",y:7},{p:"<",y:3},{p:">",y:2}];let start=new Date(year,month-1,day);const rows:any[]=[];periods.forEach(r=>{const end=new Date(start);end.setFullYear(end.getFullYear()+r.y);rows.push({p:r.p,y:r.y,start:start.toLocaleDateString("zh-CN")});start=end;});return rows.map((r,i)=><tr key={i} style={{border:"1px solid #aaa"}}><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{r.p}</em></td><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.y}年</td><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.start}</td></tr>);})()}
                 </tbody>
               </table>
             </div>}
 
-            {activeTab==="profection-tab"&&chart&&<div className="list_table" style={{clear:"both",width:"100%",fontSize:"12px"}}>
-              <div style={{fontWeight:"bold",marginBottom:8}}>小限法 — 年度岁宫 (以{year}年生日起限)</div>
-              <table width="100%" style={{borderCollapse:"collapse"}}>
-                <thead><tr style={{border:"1px solid #aaa"}}><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>年龄</th><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>年份</th><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>岁宫</th></tr></thead>
+            {/* === 小限法 === */}
+            {activeTab==="profection-tab"&&chart&&<div className="list_table" style={{clear:"both",width:"100%",fontSize:"11px",overflowX:"auto"}}>
+              <div style={{fontWeight:"bold",marginBottom:8}}>小限法 (该年生日起限)</div>
+              <table style={{borderCollapse:"collapse"}}>
+                <thead><tr style={{border:"1px solid #aaa"}}>
+                  {["年","宫","主星","年","宫","主星","年","宫","主星","年","宫","主星","年","宫","主星","年","宫","主星"].map((h,i)=><th key={i} style={{border:"1px solid #aaa",padding:"3px 6px"}}>{h}</th>)}
+                </tr></thead>
                 <tbody>
-                  {Array.from({length:12},(_,i)=>{const age=new Date().getFullYear()-year;const h=((age+i)%12)+1;return<tr key={i} style={{border:"1px solid #aaa"}}><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>{age+i}岁</td><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>{year+i}</td><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>第{h}宫</td></tr>;})}
+                  {Array.from({length:17},(_,row)=>{
+                    const cols=[];
+                    for(let c=0;c<6;c++){
+                      const yr=year+row+c*17;
+                      const h=((yr-year)%12)+1;
+                      const si=Math.floor(norm(hData?.[h-1]?.longitude??0)/30);
+                      const rulerK=Object.keys(RULER).find(k=>(RULER[k]||[]).includes(si));
+                      cols.push({yr,h,ruler:rulerK?planetCodes[rulerK]||"":""});
+                    }
+                    return <tr key={row} style={{border:"1px solid #aaa"}}>
+                      {cols.map((c,i)=><Fragment key={i}><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{c.yr}</td><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{c.h}</td><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{c.ruler}</em></td></Fragment>)}
+                    </tr>;
+                  })}
                 </tbody>
               </table>
             </div>}
 
-            {activeTab==="fortune-tab"&&chart&&<div className="list_table" style={{clear:"both",width:"100%",fontSize:"12px"}}>
+            {/* === 福点 Aphesis === */}
+            {activeTab==="fortune-tab"&&chart&&<div className="list_table" style={{clear:"both",width:"100%",fontSize:"11px",overflowX:"auto"}}>
               <div style={{fontWeight:"bold",marginBottom:8}}>福点 Aphesis</div>
-              <table width="100%" style={{borderCollapse:"collapse"}}>
-                <thead><tr style={{border:"1px solid #aaa"}}><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>年份</th><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>主星</th><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>次星</th><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>起始日期</th></tr></thead>
+              <table style={{borderCollapse:"collapse"}}>
+                <thead><tr style={{border:"1px solid #aaa"}}><th colSpan={18} style={{border:"1px solid #aaa",padding:"4px 6px"}}>福点 Aphesis</th></tr></thead>
                 <tbody>
-                  {Array.from({length:12},(_,i)=>{const d=new Date(year+i,month-1,day);return<tr key={i} style={{border:"1px solid #aaa"}}><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>{year+i}</td><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>—</td><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>—</td><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>{d.toLocaleDateString("zh-CN")}</td></tr>;})}
+                  {Array.from({length:12},(_,i)=>{const d=new Date(year+i,month-1,day);return<tr key={i} style={{border:"1px solid #aaa"}}><td colSpan={2} align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>—</td><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{d.toLocaleDateString("zh-CN")}</td><td colSpan={15} style={{border:"1px solid #aaa"}}></td></tr>;})}
                 </tbody>
               </table>
             </div>}
 
-            {activeTab==="spirit-tab"&&chart&&<div className="list_table" style={{clear:"both",width:"100%",fontSize:"12px"}}>
+            {/* === 精神点 Aphesis === */}
+            {activeTab==="spirit-tab"&&chart&&<div className="list_table" style={{clear:"both",width:"100%",fontSize:"11px",overflowX:"auto"}}>
               <div style={{fontWeight:"bold",marginBottom:8}}>精神点 Aphesis</div>
-              <table width="100%" style={{borderCollapse:"collapse"}}>
-                <thead><tr style={{border:"1px solid #aaa"}}><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>年份</th><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>主星</th><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>次星</th><th style={{border:"1px solid #aaa",padding:"4px 8px"}}>起始日期</th></tr></thead>
+              <table style={{borderCollapse:"collapse"}}>
+                <thead><tr style={{border:"1px solid #aaa"}}><th colSpan={18} style={{border:"1px solid #aaa",padding:"4px 6px"}}>精神点 Aphesis</th></tr></thead>
                 <tbody>
-                  {Array.from({length:12},(_,i)=>{const d=new Date(year+i,month-1,day);return<tr key={i} style={{border:"1px solid #aaa"}}><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>{year+i}</td><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>—</td><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>—</td><td style={{border:"1px solid #aaa",padding:"4px 8px"}}>{d.toLocaleDateString("zh-CN")}</td></tr>;})}
+                  {Array.from({length:12},(_,i)=>{const d=new Date(year+i,month-1,day);return<tr key={i} style={{border:"1px solid #aaa"}}><td colSpan={2} align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>—</td><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{d.toLocaleDateString("zh-CN")}</td><td colSpan={15} style={{border:"1px solid #aaa"}}></td></tr>;})}
                 </tbody>
               </table>
             </div>}
