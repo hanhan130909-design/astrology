@@ -365,7 +365,7 @@ export default function NatalPage(){
 
             {/* Right: Chart wheel */}
             <div className="flex justify-center">
-              <ProfessionalNatalChart planets={pData} houses={hData||[]} aspects={aData||[]} ascendant={chart?.ascendant} midheaven={chart?.midheaven} size={420} showDegrees showAspectLines/>
+              <ProfessionalNatalChart planets={pData} houses={hData||[]} aspects={aData||[]} ascendant={chart?.ascendant} midheaven={chart?.midheaven} size={500} showDegrees showAspectLines/>
             </div>
           </div>
 
