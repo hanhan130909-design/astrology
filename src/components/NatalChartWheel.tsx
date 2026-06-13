@@ -150,7 +150,7 @@ export default function NatalChartWheel() {
   const planetPoints = planets.map((planet) => point(planet.degree, rings.aspect))
 
   return (
-    <section className="flex w-[560px] justify-center">
+    <section className="flex w-[520px] justify-center">
       <svg viewBox="0 0 520 520" className="h-[500px] w-[500px]" role="img" aria-label="本命盘">
         <circle cx={center} cy={center} r={rings.outer} fill="white" stroke="#777" strokeWidth="1.6" />
         <circle cx={center} cy={center} r={rings.zodiac} fill="none" stroke="#777" strokeWidth="1.6" />

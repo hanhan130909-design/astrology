@@ -159,7 +159,7 @@ function ChartInfoCard({form, cityName}:{form:BirthForm;cityName?:string}){
   );
 }
 
-function AspectMatrix({chart}:{chart:ChartData}){
+export function AspectMatrix({chart}:{chart:ChartData}){
   const map = new Map<string,{mark:string;value:string;className:string}>();
   (chart.aspects||[]).forEach(a=>{
     const s=aspectGlyphs[a.aspect||a.type];if(!s||!a.planet1||!a.planet2)return;
