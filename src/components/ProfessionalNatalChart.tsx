@@ -28,7 +28,7 @@ const ASP_COLORS: Record<string,string> = {Conjunction:'brown',Sextile:'#008000'
 const PLANET_ORDER = ['Sun','Moon','Mercury','Venus','Mars','Jupiter','Saturn','Uranus','Neptune','Pluto','North_Node','South_Node'];
 
 function norm(a:number){return((a%360)+360)%360;}
-function a2r(lon:number,asc:number):number{return(norm(lon-asc+180)*Math.PI)/180;}
+function a2r(lon:number,asc:number):number{return(norm(lon-asc+60)*Math.PI)/180;}
 function xy(lon:number,asc:number,r:number){const a=a2r(lon,asc);return{x:CX+r*Math.cos(a),y:CY-r*Math.sin(a)};}
 
 export default function ProfessionalNatalChart({planets,houses=[],aspects=[],ascendant:ascIn,midheaven:mcIn,showDegrees=true,showAspectLines=true}:Props){
@@ -90,11 +90,11 @@ export default function ProfessionalNatalChart({planets,houses=[],aspects=[],asc
       {/* Planets — almuten style: outside zodiac ring with codes */}
       {planetEntries.map(p=>{
         const o=offsets[p.key]||0;
-        const baseR=R_Z_OUT+2+Math.abs(o)*0.7;
-        const sP=xy(p.longitude,ascLon,baseR+14);
-        const dP=xy(p.longitude,ascLon,baseR+29);
-        const gP=xy(p.longitude,ascLon,baseR+46);
-        const mP=xy(p.longitude,ascLon,baseR+61);
+        const baseR=184+Math.abs(o)*0.7;
+        const sP=xy(p.longitude,ascLon,baseR-4);
+        const dP=xy(p.longitude,ascLon,baseR+13);
+        const gP=xy(p.longitude,ascLon,baseR+30);
+        const mP=xy(p.longitude,ascLon,baseR+45);
         return<g key={p.key}>
           <text x={sP.x} y={sP.y+5} textAnchor="middle" fontSize="13" fontWeight="bold" fill={p.color} fontFamily="Apple Symbols,DejaVu Sans,serif">{p.code}</text>
           <text x={dP.x} y={dP.y+4} textAnchor="middle" fontSize="10" fill="black">{p.degStr}</text>
