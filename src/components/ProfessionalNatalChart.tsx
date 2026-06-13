@@ -29,7 +29,7 @@ const PLANET_ORDER = ['Sun','Moon','Mercury','Venus','Mars','Jupiter','Saturn','
 
 function norm(a:number){return((a%360)+360)%360;}
 function a2r(lon:number,asc:number):number{return(norm(lon-asc+180)*Math.PI)/180;}
-function xy(lon:number,asc:number,r:number){const a=a2r(lon,asc);return{x:CX+r*Math.cos(a),y:CY+r*Math.sin(a)};}
+function xy(lon:number,asc:number,r:number){const a=a2r(lon,asc);return{x:CX+r*Math.cos(a),y:CY-r*Math.sin(a)};}
 
 export default function ProfessionalNatalChart({planets,houses=[],aspects=[],ascendant:ascIn,midheaven:mcIn,showDegrees=true,showAspectLines=true}:Props){
   const ascLon=typeof ascIn==='number'?ascIn:ascIn?.longitude??(houses[0]?.longitude??0);
