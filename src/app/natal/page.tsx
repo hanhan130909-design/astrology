@@ -33,6 +33,8 @@ export default function NatalPage(){
   const lng=(lngDeg+lngMin/60)*(lngDir==='W'?-1:1);
 
   useEffect(()=>{try{const s=localStorage.getItem('natal_charts');if(s)setSaved(JSON.parse(s));}catch{}},[]);
+  // Auto-calculate on first load
+  useEffect(()=>{calculate();},[]);
 
   const calculate=async()=>{
     setLoading(true);setError(null);
