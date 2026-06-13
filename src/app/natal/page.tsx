@@ -149,6 +149,20 @@ export default function NatalPage(){
     }catch{}
   };
 
+  const handleSave = ()=>{
+    if(!chart)return;
+    const saved = JSON.parse(localStorage.getItem("natal_charts")||"[]");
+    saved.unshift({name,ts:Date.now(),birthData:{name,year,month,day,hour,minute,lat,lng,tz,hsys}});
+    localStorage.setItem("natal_charts",JSON.stringify(saved.slice(0,20)));
+    alert("已储存");
+  };
+  const handleCopyLink = ()=>{navigator.clipboard.writeText(window.location.href).then(()=>alert("链接已复制"));};
+  const handleExportImage = async()=>{
+    const el = document.getElementById("chart");if(!el)return;
+    try{const{default:h}=await import("html2canvas");const c=await h(el,{backgroundColor:"#0f0f1a",scale:2});
+    const a=document.createElement("a");a.download=`chart-${year}-${month}-${day}.png`;a.href=c.toDataURL();a.click();}catch{}
+  };
+
   const pData = chart?.planets;
   const hData = chart?.houses;
 
@@ -181,7 +195,7 @@ export default function NatalPage(){
         <span style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>文件 ▾</span>
         <span style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>工具 ▾</span>
         <span style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>设定 ▾</span>
-        <span style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>快速制图</span>
+        <a href="/natal" style={{color:"#ccc",padding:"4px 12px",textDecoration:"none",cursor:"pointer"}}>快速制图</a>
         <span style={{flex:1}}/>
         <span style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>星缘</span>
       </div>
@@ -236,6 +250,12 @@ export default function NatalPage(){
             </div>}
 
             {["firdaria-tab","profection-tab","fortune-tab","spirit-tab"].includes(activeTab)&&<div style={{textAlign:"center",color:"#999",padding:20}}>此功能开发中</div>}
+          </div>}
+
+          {chart&&<div style={{marginTop:10,display:"flex",gap:8}}>
+            <button onClick={handleSave} style={{border:"1px solid #aaa",padding:"4px 12px",fontSize:"12px",background:"#eee",cursor:"pointer"}}>储存星图</button>
+            <button onClick={handleCopyLink} style={{border:"1px solid #aaa",padding:"4px 12px",fontSize:"12px",background:"#eee",cursor:"pointer"}}>复制链接</button>
+            <button onClick={handleExportImage} style={{border:"1px solid #aaa",padding:"4px 12px",fontSize:"12px",background:"#eee",cursor:"pointer"}}>导出图片</button>
           </div>}
         </div>
 
