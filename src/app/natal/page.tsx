@@ -190,12 +190,12 @@ export default function NatalPage(){
                 </thead>
                 <tbody>
                   {dignityRows.map((r,i)=><tr key={i} style={{border:"1px solid #aaa"}}>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{planetSymbols[r.code]||r.code}</em></td>
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em style={{fontSize:16}}>{planetSymbols[r.code]||r.code}</em></td>
                     <td align="center" colSpan={3} style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.deg}</td>
                     <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.house}</td>
                     <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.guardianHouse}</td>
                     <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.exaltHouse}</td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{planetSymbols[r.ruler]||r.ruler}</em>{r.ruler?"+":""}</td>
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em style={{fontSize:14}}>{planetSymbols[r.ruler]||r.ruler}</em>{r.ruler?"+":""}</td>
                     <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{planetSymbols[r.exalt]||r.exalt}</em></td>
                     <td align="center" colSpan={3} style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{planetSymbols[r.triplicity]||r.triplicity}</em></td>
                     <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{planetSymbols[r.term]||r.term}</em></td>
@@ -216,7 +216,7 @@ export default function NatalPage(){
               <div style={{minWidth:120}}>
                 <table style={{borderCollapse:"collapse",width:"100%"}}>
                   <thead><tr style={{border:"1px solid #aaa"}}><th style={{border:"1px solid #aaa",padding:"4px"}}>宫</th><th colSpan={3} style={{border:"1px solid #aaa",padding:"4px"}}>黄经度数</th><th style={{border:"1px solid #aaa",padding:"4px"}}>本垣</th><th style={{border:"1px solid #aaa",padding:"4px"}}>曜升</th><th style={{border:"1px solid #aaa",padding:"4px"}}>宫神星</th></tr></thead>
-                  <tbody>{houseRows.map((r,i)=><tr key={i} style={{border:"1px solid #aaa"}}><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}>{r.house}</td><td align="center" colSpan={3} style={{border:"1px solid #aaa",padding:"2px 4px"}}>{r.deg}</td><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}><em>{planetSymbols[r.ruler]||r.ruler}</em></td><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}>{r.exalt?<em>{planetSymbols[r.exalt]||r.exalt}</em>:""}</td><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}>{r.almuten?<em>{planetSymbols[r.almuten]||r.almuten}</em>:""}</td></tr>)}</tbody>
+                  <tbody>{houseRows.map((r,i)=><tr key={i} style={{border:"1px solid #aaa"}}><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}>{r.house}</td><td align="center" colSpan={3} style={{border:"1px solid #aaa",padding:"2px 4px"}}>{r.deg}</td><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}><em style={{fontSize:14}}>{planetSymbols[r.ruler]||r.ruler}</em></td><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}>{r.exalt?<em>{planetSymbols[r.exalt]||r.exalt}</em>:""}</td><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}>{r.almuten?<em>{planetSymbols[r.almuten]||r.almuten}</em>:""}</td></tr>)}</tbody>
                 </table>
               </div>
               <div style={{flex:1,minWidth:180}}>
@@ -245,7 +245,7 @@ export default function NatalPage(){
               <table style={{borderCollapse:"collapse"}}>
                 <thead><tr style={{border:"1px solid #aaa"}}><th colSpan={18} style={{border:"1px solid #aaa",padding:"4px 6px"}}>法达星限</th></tr></thead>
                 <tbody>
-                  {(()=>{const periods=[{p:"Q",y:10},{p:"R",y:8},{p:"E",y:13},{p:"W",y:9},{p:"U",y:11},{p:"Y",y:12},{p:"T",y:7},{p:"<",y:3},{p:">",y:2}];let start=new Date(year,month-1,day);const rows:any[]=[];periods.forEach(r=>{const end=new Date(start);end.setFullYear(end.getFullYear()+r.y);rows.push({p:r.p,y:r.y,start:start.toLocaleDateString("zh-CN")});start=end;});return rows.map((r,i)=><tr key={i} style={{border:"1px solid #aaa"}}><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{r.p}</em></td><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.y}年</td><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.start}</td></tr>);})()}
+                  {(()=>{const periods=[{p:"Q",y:10},{p:"R",y:8},{p:"E",y:13},{p:"W",y:9},{p:"U",y:11},{p:"Y",y:12},{p:"T",y:7},{p:"<",y:3},{p:">",y:2}];let start=new Date(year,month-1,day);const rows:any[]=[];periods.forEach(r=>{const end=new Date(start);end.setFullYear(end.getFullYear()+r.y);rows.push({p:r.p,y:r.y,start:start.toLocaleDateString("zh-CN")});start=end;});return rows.map((r,i)=><tr key={i} style={{border:"1px solid #aaa"}}><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em style={{fontSize:16}}>{planetSymbols[r.p]||r.p}</em></td><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.y}年</td><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.start}</td></tr>);})()}
                 </tbody>
               </table>
             </div>}
