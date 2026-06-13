@@ -108,8 +108,8 @@ export default function ProfessionalNatalChart({
   const rCenter = 45;                   // 中心圆
 
   // ASC 上升点（左侧）
-  const ascLon = ascendant || houses?.[0]?.longitude || 0;
-  const mcLon = midheaven || houses?.[9]?.longitude || 0;
+  const ascLon = typeof ascendant === 'number' ? ascendant : ascendant?.longitude ?? houses?.[0]?.longitude ?? 0;
+  const mcLon = typeof midheaven === 'number' ? midheaven : midheaven?.longitude ?? houses?.[9]?.longitude ?? 0;
 
   // 黄道经度转换为 SVG 角度（ASC 在左侧，逆时针）
   const lonToAngle = (lon: number) => {
