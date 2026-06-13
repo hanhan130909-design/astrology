@@ -183,7 +183,7 @@ export default function NatalPage(){
         <span style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>设定 ▾</span>
         <span style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>快速制图</span>
         <span style={{flex:1}}/>
-        <span style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>宫神星网 ▾</span>
+        <span style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>星缘</span>
       </div>
 
       <div style={{position:"relative"}}>
