@@ -230,7 +230,7 @@ export default function NatalPage(){
 
   const handleSave=async()=>{
     if(!chart)return;
-    const nc={name:name||`${year}-${month}-${day}`,birthData:{name,year,month,day,hour:hour24,minute,lat,lng,tz,houseSys},chartData:chart,ts:Date.now()};
+    const nc:any={name:name||`${year}-${month}-${day}`,birthData:{name,year,month,day,hour:hour24,minute,lat,lng,tz,houseSys},chartData:chart,ts:Date.now()};
     if(user&&isFirebaseReady){try{await saveChartToCloud(nc,user.uid);setSaved(await loadChartsFromCloud(user.uid));}catch{const ns=[nc,...saved.slice(0,9)];setSaved(ns);localStorage.setItem('natal_charts',JSON.stringify(ns));}}
     else{const ns=[nc,...saved.slice(0,9)];setSaved(ns);localStorage.setItem('natal_charts',JSON.stringify(ns));}
     setSaveMsg(t.saved);setTimeout(()=>setSaveMsg(null),3000);
