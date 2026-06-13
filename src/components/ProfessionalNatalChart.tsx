@@ -78,8 +78,8 @@ interface ProfessionalNatalChartProps {
   planets: any;
   houses: any[];
   aspects: any[];
-  ascendant?: number;
-  midheaven?: number;
+  ascendant?: number | { longitude: number };
+  midheaven?: number | { longitude: number };
   size?: number;
   showDegrees?: boolean;
   showAspectLines?: boolean;
