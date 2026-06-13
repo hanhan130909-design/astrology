@@ -3,8 +3,7 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import Link from 'next/link';
 import ProfessionalNatalChart from '@/components/ProfessionalNatalChart';
-import ProfessionalDataTables from '@/components/ProfessionalDataTables';
-import AspectGridMatrix from '@/components/AspectGridMatrix';
+import AlmutenChartLayout from '@/components/AlmutenChartLayout';
 import { ArrowLeft, Save, Star, Sun, Moon, Calendar, TrendingUp, Heart, Loader2, ChevronDown, Check, X, Sparkles, Lock, Share2, CheckCircle, MessageCircle, User } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { saveChartToCloud, loadChartsFromCloud, deleteChartFromCloud, syncLocalChartsToCloud } from '@/lib/chartSync';
@@ -552,7 +551,8 @@ export default function NatalPage() {
   const [lang, setLang] = useState<'zh' | 'en' | 'id'>('zh');
   const [chartType, setChartType] = useState('natal');
   const browserTz = typeof window !== 'undefined' ? -(new Date().getTimezoneOffset() / 60) : 8;
-  const [form, setForm] = useState({ name: '', year: 1990, month: 6, day: 15, hour: 12, minute: 0, houseSystem: 'P', lat: 0, lng: 0, tz: Math.round(browserTz) });
+  const [form, setForm] = useState({ name: 'han', year: 1986, month: 11, day: 14, hour: 18, minute: 33, houseSystem: 'P', lat: 41.66, lng: 123.34, tz: 8 });
+  const [cityName, setCityName] = useState('中国辽宁省沈阳市苏家屯区');
   const [secForm, setSecForm] = useState({ year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() });
   const [p2Form, setP2Form] = useState({ year: 1992, month: 3, day: 20, hour: 10, minute: 0 });
   const [chart, setChart] = useState<any>(null);
@@ -635,6 +635,7 @@ export default function NatalPage() {
         const tzOffset = getTimezoneFromLatLng(lat, lng);
         
         setForm(prev => ({ ...prev, lat, lng, tz: tzOffset }));
+        setCityName(data[0].display_name?.split(',')[0] || address);
         setGeoError(null);
       } else {
         setGeoError(lang === 'zh' ? '未找到该地址，请尝试其他关键词' : lang === 'id' ? 'Alamat tidak ditemukan' : 'Address not found');
@@ -660,7 +661,7 @@ export default function NatalPage() {
   const saveUnlockState = (updates: any) => { try { localStorage.setItem('natal_ai_unlock', JSON.stringify({ ...JSON.parse(localStorage.getItem('natal_ai_unlock') || '{}'), ...updates })); } catch {} };
 
   const handleShare = () => {
-    const txt = lang === 'zh' ? '\u6211\u521A\u521A\u7528\u661F\u7F18\u751F\u6210\u4E86\u6211\u7684\u672C\u547D\u76D8\uFF0C\u5FEB\u6765\u8BD5\u8BD5\uFF01https://astrology-clean.vercel.app/natal' : lang === 'id' ? `Saya baru saja membuat bagan lahir saya di Xingyuan, coba juga! https://astrology-clean.vercel.app/natal` : `I just generated my natal chart on Starry Fate, come try it! https://astrology-clean.vercel.app/natal`;
+    const txt = lang === 'zh' ? '\u6211\u521A\u521A\u7528\u661F\u7F18\u751F\u6210\u4E86\u6211\u7684\u672C\u547D\u76D8\uFF0C\u5FEB\u6765\u8BD5\u8BD5\uFF01https://lunaxstar.com/natal' : lang === 'id' ? `Saya baru saja membuat bagan lahir saya di Xingyuan, coba juga! https://lunaxstar.com/natal` : `I just generated my natal chart on Starry Fate, come try it! https://lunaxstar.com/natal`;
     window.open(`https://wa.me/?text=${encodeURIComponent(txt)}`, '_blank');
     const n = Math.min(shareCount + 1, 3); setShareCount(n); saveUnlockState({ shareCount: n });
     if (n >= 3) { setTimeout(() => { setIsUnlocked(true); saveUnlockState({ isUnlocked: true }); }, 1500); }
@@ -783,10 +784,12 @@ export default function NatalPage() {
   const mc = chart?.midheaven || 0;
   const dayOffset = chart?.daysSinceBirth;
 
+  const isAlmutenResult = Boolean(chart) && tab !== 'saved';
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 text-white">
+    <div className={isAlmutenResult ? "min-h-screen bg-white text-[#222]" : "min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 text-white"}>
       {/* Header */}
-      <div className="border-b border-slate-800/50 bg-slate-950/80 backdrop-blur-sm sticky top-0 z-50">
+      {!isAlmutenResult && <div className="border-b border-slate-800/50 bg-slate-950/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link href="/" className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
@@ -810,8 +813,11 @@ export default function NatalPage() {
             </button>
           </div>
         </div>
-      </div>
+      </div>}
 
+      {isAlmutenResult ? (
+        <AlmutenChartLayout chart={chart} form={form} chartType={chartType} cityName={cityName} saveMsg={saveMsg} onBack={() => { setChart(null); setTab('chart'); }} onSave={handleSave} />
+      ) : (
       <div className="max-w-7xl mx-auto px-4 py-6 grid grid-cols-1 lg:grid-cols-5 gap-6">
         {/* Left Panel: Form */}
         <div className="lg:col-span-2 space-y-5">
@@ -1077,14 +1083,14 @@ export default function NatalPage() {
           {/* Chart Tab */}
           {tab === 'chart' && (
             <div className="space-y-5">
-              <div className="bg-slate-800/30 rounded-2xl border border-slate-700/50 p-5">
+              <div className="overflow-x-auto rounded border border-[#b8b8b8] bg-white p-4 shadow-sm">
                 <ProfessionalNatalChart
                   planets={pData}
                   houses={hData || []}
                   aspects={aData || []}
                   ascendant={asc}
                   midheaven={mc}
-                  size={480}
+                  size={560}
                   showDegrees={true}
                   showAspectLines={true}
                 />
@@ -1274,6 +1280,7 @@ export default function NatalPage() {
           )}
         </div>
       </div>
+      )}
     </div>
   );
 }
