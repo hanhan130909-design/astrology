@@ -1,33 +1,36 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const T: Record<string, Record<string, string>> = {
-  zh: { home:"首页", horoscope:"运势", natal:"星盘", compatibility:"配对", ai:"AI解读", learn:"学习", transits:"天象", community:"社区", tarot:"塔罗" },
-  en: { home:"Home", horoscope:"Horoscope", natal:"Chart", compatibility:"Match", ai:"AI", learn:"Learn", transits:"Transits", community:"Community", tarot:"Tarot" },
-  id: { home:"Beranda", horoscope:"Horoskop", natal:"Bagan", compatibility:"Cocok", ai:"AI", learn:"Belajar", transits:"Transit", community:"Komunitas", tarot:"Tarot" },
-  th: { home:"หน้าแรก", horoscope:"ดูดวง", natal:"ดวง", compatibility:"คู่", ai:"AI", learn:"เรียน", transits:"ดาว", community:"ชุมชน", tarot:"ไพ่" },
-  vi: { home:"Trang chủ", horoscope:"Tử vi", natal:"Bản đồ", compatibility:"Hợp", ai:"AI", learn:"Học", transits:"Quá cảnh", community:"Cộng đồng", tarot:"Tarot" },
-  ms: { home:"Utama", horoscope:"Horoskop", natal:"Carta", compatibility:"Serasi", ai:"AI", learn:"Belajar", transits:"Transit", community:"Komuniti", tarot:"Tarot" },
-  ja: { home:"ホーム", horoscope:"運勢", natal:"星図", compatibility:"相性", ai:"AI", learn:"学習", transits:"トランジット", community:"掲示板", tarot:"タロット" },
-  ko: { home:"홈", horoscope:"운세", natal:"차트", compatibility:"궁합", ai:"AI", learn:"배우기", transits:"행성", community:"커뮤니티", tarot:"타로" },
+  zh: { horoscope:"运势", natal:"星盘", compatibility:"配对", ai:"AI解读", learn:"学习", transits:"天象", community:"社区", tarot:"塔罗" },
+  en: { horoscope:"Horoscope", natal:"Chart", compatibility:"Match", ai:"AI", learn:"Learn", transits:"Transits", community:"Community", tarot:"Tarot" },
+  id: { horoscope:"Horoskop", natal:"Bagan", compatibility:"Cocok", ai:"AI", learn:"Belajar", transits:"Transit", community:"Komunitas", tarot:"Tarot" },
+  th: { horoscope:"ดูดวง", natal:"ดวง", compatibility:"คู่", ai:"AI", learn:"เรียน", transits:"ดาว", community:"ชุมชน", tarot:"ไพ่" },
+  vi: { horoscope:"Tử vi", natal:"Bản đồ", compatibility:"Hợp", ai:"AI", learn:"Học", transits:"Quá cảnh", community:"Cộng đồng", tarot:"Tarot" },
+  ms: { horoscope:"Horoskop", natal:"Carta", compatibility:"Serasi", ai:"AI", learn:"Belajar", transits:"Transit", community:"Komuniti", tarot:"Tarot" },
+  ja: { horoscope:"運勢", natal:"星図", compatibility:"相性", ai:"AI", learn:"学習", transits:"トランジット", community:"掲示板", tarot:"タロット" },
+  ko: { horoscope:"운세", natal:"차트", compatibility:"궁합", ai:"AI", learn:"배우기", transits:"행성", community:"커뮤니티", tarot:"타로" },
 };
 
 const LANGUAGES = [
-  { code:"zh", flag:"🇨🇳", label:"中文" },
-  { code:"en", flag:"🇺🇸", label:"EN" },
-  { code:"id", flag:"🇮🇩", label:"ID" },
-  { code:"th", flag:"🇹🇭", label:"ไทย" },
-  { code:"vi", flag:"🇻🇳", label:"VN" },
-  { code:"ms", flag:"🇲🇾", label:"MS" },
-  { code:"ja", flag:"🇯🇵", label:"日本語" },
-  { code:"ko", flag:"🇰🇷", label:"한국" },
+  { code:"zh", flag:"🇨🇳", label:"中文", short:"中" },
+  { code:"en", flag:"🇺🇸", label:"EN", short:"EN" },
+  { code:"id", flag:"🇮🇩", label:"ID", short:"ID" },
+  { code:"th", flag:"🇹🇭", label:"ไทย", short:"TH" },
+  { code:"vi", flag:"🇻🇳", label:"VN", short:"VN" },
+  { code:"ms", flag:"🇲🇾", label:"MS", short:"MS" },
+  { code:"ja", flag:"🇯🇵", label:"日本語", short:"JA" },
+  { code:"ko", flag:"🇰🇷", label:"한국", short:"KO" },
 ];
 
 export default function Navbar() {
   const { language, setLanguage } = useLanguage();
   const t = T[language] || T.zh;
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
 
   const links = [
     { name: t.horoscope, href: "/horoscope" },
@@ -40,48 +43,91 @@ export default function Navbar() {
     { name: t.community, href: "/community" },
   ];
 
+  const currentLang = LANGUAGES.find(l => l.code === language) || LANGUAGES[0];
+
   return (
     <nav className="sticky top-0 z-50 bg-white/92 backdrop-blur-sm" style={{boxShadow:"0px 0px 0px 1px rgba(0,0,0,0.08)"}}>
-      <div className="max-w-[1200px] mx-auto px-6 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-8">
-          <Link href="/" className="flex items-center gap-2 text-lg font-semibold tracking-tight text-[#171717] no-underline">
+      <div className="max-w-[1200px] mx-auto px-4 py-2.5 flex items-center justify-between">
+        {/* Left: Logo + Desktop links */}
+        <div className="flex items-center gap-6">
+          <Link href="/" className="flex items-center gap-1.5 text-lg font-semibold tracking-tight text-[#171717] no-underline shrink-0">
             ✨ 星缘
           </Link>
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-5">
             {links.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-[13px] font-medium text-gray-500 hover:text-[#171717] transition-colors no-underline"
-              >
+              <Link key={item.href} href={item.href}
+                className="text-[13px] font-medium text-gray-500 hover:text-[#171717] transition-colors no-underline">
                 {item.name}
               </Link>
             ))}
           </div>
         </div>
-        <div className="flex items-center">
-          {/* 8-language switcher — visible, labeled */}
-          <div className="flex gap-0.5 mr-3 bg-gray-100 rounded-lg p-0.5">
+
+        {/* Right: Language + PRO + Login + Hamburger */}
+        <div className="flex items-center gap-2">
+          {/* Desktop: full language bar */}
+          <div className="hidden md:flex gap-0.5 bg-gray-100 rounded-lg p-0.5">
             {LANGUAGES.map((l) => (
-              <button
-                key={l.code}
-                onClick={() => setLanguage(l.code)}
-                title={l.label}
-                className={`px-2 py-1.5 rounded-md text-xs font-medium transition-all flex items-center gap-1 ${
-                  language === l.code
-                    ? "bg-white text-[#171717] shadow-sm"
-                    : "text-gray-400 hover:text-gray-600"
-                }`}
-              >
-                <span>{l.flag}</span>
-                <span className="hidden lg:inline">{l.label}</span>
+              <button key={l.code} onClick={() => setLanguage(l.code)} title={l.label}
+                className={`px-2 py-1.5 rounded-md text-xs font-medium transition-all ${
+                  language === l.code ? "bg-white text-[#171717] shadow-sm" : "text-gray-400 hover:text-gray-600"
+                }`}>
+                <span>{l.flag}</span><span className="hidden lg:inline ml-1">{l.label}</span>
               </button>
             ))}
           </div>
-          <Link href="/pricing" className="text-xs font-medium text-gray-400 hover:text-[#171717] no-underline mr-3 shrink-0">PRO</Link>
+
+          {/* Mobile: dropdown language picker */}
+          <div className="md:hidden relative">
+            <button onClick={() => setLangOpen(!langOpen)}
+              className="px-2 py-1.5 rounded-md text-xs font-medium bg-gray-100 text-gray-700 flex items-center gap-1">
+              {currentLang.flag} {currentLang.short} ▾
+            </button>
+            {langOpen && (
+              <div className="absolute right-0 top-full mt-1 bg-white rounded-lg shadow-lg border border-gray-200 p-2 grid grid-cols-4 gap-1 z-50 min-w-[200px]">
+                {LANGUAGES.map((l) => (
+                  <button key={l.code} onClick={() => { setLanguage(l.code); setLangOpen(false); }}
+                    className={`px-2 py-1.5 rounded text-xs font-medium text-center ${
+                      language === l.code ? "bg-gray-100 text-[#171717]" : "text-gray-500 hover:bg-gray-50"
+                    }`}>
+                    {l.flag} {l.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <Link href="/pricing" className="text-xs font-medium text-gray-400 hover:text-[#171717] no-underline shrink-0 hidden sm:inline">PRO</Link>
           <Link href="/login" className="text-xs font-medium text-gray-400 hover:text-[#171717] no-underline shrink-0">登录</Link>
+
+          {/* Mobile hamburger */}
+          <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden p-1.5 rounded-md hover:bg-gray-100 ml-1">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-gray-600">
+              {menuOpen
+                ? <path d="M4 4l10 10M14 4L4 14" />
+                : <path d="M3 5h12M3 9h12M3 13h12" />}
+            </svg>
+          </button>
         </div>
       </div>
+
+      {/* Mobile menu dropdown */}
+      {menuOpen && (
+        <div className="lg:hidden border-t border-gray-100 bg-white px-4 py-3">
+          <div className="grid grid-cols-2 gap-1">
+            {links.map((item) => (
+              <Link key={item.href} href={item.href} onClick={() => setMenuOpen(false)}
+                className="px-3 py-2.5 rounded-md text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-[#171717] no-underline transition-colors">
+                {item.name}
+              </Link>
+            ))}
+          </div>
+          <div className="mt-3 pt-3 border-t border-gray-100">
+            <Link href="/pricing" onClick={() => setMenuOpen(false)}
+              className="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-600 hover:bg-gray-50 no-underline sm:hidden">PRO</Link>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

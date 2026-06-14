@@ -50,8 +50,28 @@ export default function HomePage() {
   return (
     <div className="bg-white text-[#171717]">
       {/* Hero */}
-      <section className="text-center py-20 px-6 max-w-[800px] mx-auto">
-        <span className="inline-block text-[11px] font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full mb-6 tracking-wide uppercase">
+      <section className="relative text-center py-20 px-6 max-w-[800px] mx-auto overflow-hidden">
+        {/* Subtle zodiac wheel background */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.04]">
+          <svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="250" cy="250" r="240" stroke="black" strokeWidth="0.5"/>
+            <circle cx="250" cy="250" r="200" stroke="black" strokeWidth="0.5"/>
+            <circle cx="250" cy="250" r="160" stroke="black" strokeWidth="0.5"/>
+            <circle cx="250" cy="250" r="120" stroke="black" strokeWidth="0.3"/>
+            <circle cx="250" cy="250" r="80" stroke="black" strokeWidth="0.3"/>
+            <line x1="250" y1="10" x2="250" y2="490" stroke="black" strokeWidth="0.3"/>
+            <line x1="10" y1="250" x2="490" y2="250" stroke="black" strokeWidth="0.3"/>
+            <line x1="80" y1="80" x2="420" y2="420" stroke="black" strokeWidth="0.3"/>
+            <line x1="420" y1="80" x2="80" y2="420" stroke="black" strokeWidth="0.3"/>
+            <line x1="250" y1="50" x2="250" y2="120" stroke="black" strokeWidth="0.8"/>
+            <line x1="370" y1="130" x2="330" y2="170" stroke="black" strokeWidth="0.5"/>
+            <text x="250" y="40" textAnchor="middle" fontSize="10" fontWeight="600" fill="black" opacity="0.3">MC</text>
+            <text x="250" y="478" textAnchor="middle" fontSize="8" fill="black" opacity="0.3">IC</text>
+            <text x="480" y="254" fontSize="8" fill="black" opacity="0.3">ASC</text>
+            <text x="8" y="254" textAnchor="end" fontSize="8" fill="black" opacity="0.3">DSC</text>
+          </svg>
+        </div>
+        <span className="relative inline-block text-[11px] font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full mb-6 tracking-wide uppercase">
           {t.badge}
         </span>
         <h1 className="text-5xl font-semibold tracking-[-2px] leading-[1.1] mb-4">{t.hero}</h1>
