@@ -121,14 +121,14 @@ export default function ChartHubPage() {
   const t = T[language] || T.en;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#ffffff] via-white to-[#ffffff] text-gray-900">
+    <div className="min-h-screen bg-gradient-to-b from-white via-white to-[#ffffff] text-gray-900">
       {/* Navigation */}
       
 
       {/* Header */}
       <main className="max-w-7xl mx-auto px-6 py-8">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/20 rounded-full text-sm text-purple-700 mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 rounded-full text-sm text-purple-700 mb-6">
             <Star size={16} className="fill-purple-300" />
             {language === 'zh' ? '专业占星工具' : language === 'id' ? 'Alat Astrologi Profesional' : 'Professional Astrology Tools'}
           </div>
@@ -146,7 +146,7 @@ export default function ChartHubPage() {
             const card = t[item.key as keyof typeof t] || t.natal;
             return (
               <Link key={idx} href={item.href}
-                className="group relative p-6 rounded-2xl bg-slate-900/80 border border-slate-700/50 hover:border-slate-600 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-purple-500/10 overflow-hidden">
+                className="group relative p-6 rounded-2xl bg-gray-50 border border-gray-200 hover:border-purple-200 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-purple-200/50 overflow-hidden">
                 {/* Background gradient */}
                 <div className={"absolute inset-0 bg-gradient-to-br " + item.color + " opacity-0 group-hover:opacity-5 transition-opacity duration-300"}/>
 
@@ -189,12 +189,12 @@ export default function ChartHubPage() {
             </p>
           </div>
           
-          <div className="p-8 rounded-2xl bg-gradient-to-br from-purple-900/30 via-slate-900/80 to-indigo-900/30 border border-purple-500/20">
+          <div className="p-8 rounded-2xl bg-gradient-to-br from-purple-50 via-white to-indigo-50 border border-purple-200">
             <div className="grid md:grid-cols-3 gap-8">
               {/* Feature 1 */}
               <div className="text-center">
-                <div className="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="10" strokeWidth="1.5"/>
                     <path strokeLinecap="round" d="M12 2v20M2 12h20"/>
                     <circle cx="12" cy="12" r="4" fill="currentColor" opacity="0.3"/>
@@ -208,8 +208,8 @@ export default function ChartHubPage() {
               
               {/* Feature 2 */}
               <div className="text-center">
-                <div className="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 rounded-full bg-cyan-100 flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <rect x="3" y="3" width="18" height="18" rx="2" strokeWidth="1.5"/>
                     <path strokeLinecap="round" d="M3 9h18M9 3v18"/>
                   </svg>
@@ -246,19 +246,19 @@ export default function ChartHubPage() {
 
         {/* Quick Links */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <Link href="/horoscope" className="p-4 rounded-xl bg-slate-800/50 border border-slate-700/50 hover:border-slate-600 hover:bg-slate-800 transition-all text-center group">
+          <Link href="/horoscope" className="p-4 rounded-xl bg-slate-800/50 border border-gray-200 hover:border-purple-200 hover:bg-slate-800 transition-all text-center group">
             <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">♈</div>
             <div className="text-sm font-medium text-gray-600">{language === 'zh' ? '每日运势' : language === 'id' ? 'Horoskop Harian' : 'Daily Horoscope'}</div>
           </Link>
-          <Link href="/ai-reading" className="p-4 rounded-xl bg-slate-800/50 border border-slate-700/50 hover:border-slate-600 hover:bg-slate-800 transition-all text-center group">
+          <Link href="/ai-reading" className="p-4 rounded-xl bg-slate-800/50 border border-gray-200 hover:border-purple-200 hover:bg-slate-800 transition-all text-center group">
             <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">🔮</div>
             <div className="text-sm font-medium text-gray-600">{language === 'zh' ? 'AI智能解读' : language === 'id' ? 'Pembacaan AI' : 'AI Reading'}</div>
           </Link>
-          <Link href="/community" className="p-4 rounded-xl bg-slate-800/50 border border-slate-700/50 hover:border-slate-600 hover:bg-slate-800 transition-all text-center group">
+          <Link href="/community" className="p-4 rounded-xl bg-slate-800/50 border border-gray-200 hover:border-purple-200 hover:bg-slate-800 transition-all text-center group">
             <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">🌟</div>
             <div className="text-sm font-medium text-gray-600">{language === 'zh' ? '星象社区' : language === 'id' ? 'Komunitas' : 'Community'}</div>
           </Link>
-          <Link href="/learn" className="p-4 rounded-xl bg-slate-800/50 border border-slate-700/50 hover:border-slate-600 hover:bg-slate-800 transition-all text-center group">
+          <Link href="/learn" className="p-4 rounded-xl bg-slate-800/50 border border-gray-200 hover:border-purple-200 hover:bg-slate-800 transition-all text-center group">
             <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">📚</div>
             <div className="text-sm font-medium text-gray-600">{language === 'zh' ? '占星学习' : language === 'id' ? 'Belajar' : 'Learn Astrology'}</div>
           </Link>

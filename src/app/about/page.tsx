@@ -3,164 +3,113 @@
 import Link from "next/link";
 import { useLanguage, translations } from "@/contexts/LanguageContext";
 
-const COLORS = {
-  midnightBlue: "#0f172a",
-  deepNavy: "#1e293b",
-  navyBorder: "#334155",
-  champagneGold: "#d4a574",
-  warmGold: "#f5d89a",
-  creamWhite: "#fef3e2",
-  softBlue: "#64748b",
-};
-
 export default function AboutPage() {
-  const { language, setLanguage } = useLanguage();
+  const { language } = useLanguage();
   const t = (translations as Record<string, any>)[language] || translations.zh;
 
   return (
-    <div className="min-h-screen text-gray-900" style={{ background: `linear-gradient(180deg, ${COLORS.midnightBlue} 0%, ${COLORS.deepNavy} 50%, ${COLORS.midnightBlue} 100%)` }}>
-      {/* Navigation */}
-      
-
-      {/* Main Content */}
+    <div className="min-h-screen bg-white text-gray-800">
       <main className="max-w-4xl mx-auto px-4 py-16">
-        <h1 className="text-4xl font-bold text-center mb-16" style={{ color: COLORS.warmGold }}>{t.about.title}</h1>
+        <h1 className="text-3xl font-bold text-center mb-4 text-purple-700">{t.about?.title || "关于星缘"}</h1>
+        <p className="text-center text-gray-500 mb-16 max-w-xl mx-auto">
+          基于真实天文计算的专业占星平台
+        </p>
 
-        {/* What Is This */}
-        <section className="mb-16">
-          <div 
-            className="p-8 rounded-2xl"
-            style={{ 
-              background: `linear-gradient(135deg, ${COLORS.deepNavy} 0%, ${COLORS.midnightBlue} 100%)`,
-              border: `1px solid ${COLORS.champagneGold}`,
-              borderLeft: `4px solid ${COLORS.champagneGold}`
-            }}
-          >
-            <div className="flex items-start gap-4">
-              <div className="text-4xl">🔬</div>
-              <div>
-                <h2 className="text-2xl font-bold mb-4" style={{ color: COLORS.champagneGold }}>{t.about.what}</h2>
-                <p className="leading-relaxed whitespace-pre-line" style={{ color: COLORS.creamWhite }}>{t.about.whatDesc}</p>
-              </div>
+        {/* 品牌故事 */}
+        <section className="mb-12 p-8 rounded-2xl bg-purple-50 border border-purple-100">
+          <div className="flex items-start gap-4">
+            <div className="text-3xl">✨</div>
+            <div>
+              <h2 className="text-xl font-bold mb-3 text-purple-700">{t.about?.what || "星缘是什么"}</h2>
+              <p className="leading-relaxed text-gray-600">
+                {t.about?.whatDesc || "星缘是一个基于专业天文计算引擎的在线占星平台。我们使用 astronomy-engine 算法库，精确计算行星位置、宫位系统和相位关系，为你提供专业级的星盘分析。"}
+              </p>
             </div>
           </div>
         </section>
 
-        {/* What Is This NOT */}
-        <section className="mb-16">
-          <div 
-            className="p-8 rounded-2xl"
-            style={{ 
-              background: `linear-gradient(135deg, ${COLORS.deepNavy} 0%, ${COLORS.midnightBlue} 100%)`,
-              border: `1px solid #dc2626`,
-              borderLeft: `4px solid #dc2626`
-            }}
-          >
-            <div className="flex items-start gap-4">
-              <div className="text-4xl">⚠️</div>
-              <div>
-                <h2 className="text-2xl font-bold mb-4" style={{ color: "#fca5a5" }}>{t.about.not}</h2>
-                <p className="leading-relaxed whitespace-pre-line" style={{ color: COLORS.creamWhite }}>{t.about.notDesc}</p>
-              </div>
+        {/* 定位说明 */}
+        <section className="mb-12 p-8 rounded-2xl bg-rose-50 border border-rose-100">
+          <div className="flex items-start gap-4">
+            <div className="text-3xl">🎯</div>
+            <div>
+              <h2 className="text-xl font-bold mb-3 text-rose-600">{t.about?.not || "星缘不是什么"}</h2>
+              <p className="leading-relaxed text-gray-600">
+                {t.about?.notDesc || "星缘不是迷信算命工具，不是娱乐性格测试。我们提供基于天文学数据的专业占星解读，帮助你理解星盘中的能量模式与人生趋势。"}
+              </p>
             </div>
           </div>
         </section>
 
-        {/* How It Works */}
-        <section className="mb-16">
-          <div 
-            className="p-8 rounded-2xl"
-            style={{ 
-              background: `linear-gradient(135deg, ${COLORS.deepNavy} 0%, ${COLORS.midnightBlue} 100%)`,
-              border: `1px solid ${COLORS.navyBorder}`,
-              borderLeft: `4px solid #22c55e`
-            }}
-          >
-            <div className="flex items-start gap-4">
-              <div className="text-4xl">⚙️</div>
-              <div>
-                <h2 className="text-2xl font-bold mb-4" style={{ color: "#86efac" }}>{t.about.how}</h2>
-                <p className="leading-relaxed whitespace-pre-line" style={{ color: COLORS.creamWhite }}>{t.about.howDesc}</p>
-              </div>
+        {/* 工作原理 */}
+        <section className="mb-12 p-8 rounded-2xl bg-emerald-50 border border-emerald-100">
+          <div className="flex items-start gap-4">
+            <div className="text-3xl">⚙️</div>
+            <div>
+              <h2 className="text-xl font-bold mb-3 text-emerald-700">{t.about?.how || "如何工作"}</h2>
+              <p className="leading-relaxed text-gray-600">
+                {t.about?.howDesc || "输入你的出生日期、时间和地点，系统调用 astronomy-engine 计算精确的行星黄道位置，结合宫位系统和相位算法，生成完整的星盘报告。"}
+              </p>
             </div>
           </div>
         </section>
 
-        {/* Technical Details */}
+        {/* 功能概览 */}
         <section className="mb-16">
-          <div 
-            className="p-8 rounded-2xl"
-            style={{ 
-              backgroundColor: COLORS.deepNavy,
-              border: `1px solid ${COLORS.navyBorder}`
-            }}
-          >
-            <h2 className="text-2xl font-bold mb-6" style={{ color: COLORS.champagneGold }}>
-              {language === "zh" ? "技术说明" : language === "id" ? "Informasi Teknis" : "Technical Details"}
-            </h2>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <span style={{ color: COLORS.champagneGold }}>📡</span>
-                <span style={{ color: COLORS.creamWhite }}>
-                  {language === "zh" 
-                    ? "算法库: astronomy-engine (专业天文计算库)" 
-                    : language === "id" 
-                    ? "Library: astronomy-engine (library kalkulasi astronomi profesional)" 
-                    : "Algorithm: astronomy-engine (professional astronomy calculation library)"}
+          <h2 className="text-2xl font-bold text-center mb-8 text-gray-800">核心功能</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { emoji:"🪐", title:"本命盘分析", desc:"完整行星落位、宫位、相位深度解读" },
+              { emoji:"🔮", title:"推运盘", desc:"行运追踪、日返盘、月返盘" },
+              { emoji:"💫", title:"合盘分析", desc:"组合盘、比较盘、关系相位" },
+              { emoji:"🤖", title:"AI解读", desc:"基于大模型的智能星盘解读" },
+              { emoji:"📅", title:"运势日历", desc:"每日运势、每月运势、年度报告" },
+              { emoji:"🃏", title:"塔罗占卜", desc:"78张经典塔罗牌阵" },
+            ].map((f, i) => (
+              <div key={i} className="p-6 rounded-xl bg-gray-50 border border-gray-100 hover:shadow-md transition-shadow">
+                <div className="text-2xl mb-3">{f.emoji}</div>
+                <h3 className="font-bold text-gray-800 mb-1">{f.title}</h3>
+                <p className="text-sm text-gray-500">{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* 技术说明 */}
+        <section className="mb-16 p-8 rounded-2xl bg-gray-50 border border-gray-200">
+          <h2 className="text-xl font-bold mb-6 text-gray-800">
+            {language === "zh" ? "技术说明" : language === "id" ? "Informasi Teknis" : "Technical Details"}
+          </h2>
+          <div className="space-y-3">
+            {[
+              { icon:"📡", zh:"算法库: astronomy-engine (专业天文计算库)", en:"Algorithm: astronomy-engine", id:"Library: astronomy-engine" },
+              { icon:"🌍", zh:"坐标系统: 黄道坐标 (Ecliptic coordinates)", en:"Coordinate: Ecliptic coordinates", id:"Koordinat: Ekliptika" },
+              { icon:"🏠", zh:"宫位系统: Placidus / Porphyry / 等宫制 / 整宫制", en:"House: Placidus/Porphyry/Equal/Whole", id:"Rumah: Placidus/Porphyry" },
+              { icon:"⚖️", zh:"相位容许度: 标准占星学设定", en:"Orbs: Standard astrology", id:"Orb: Standar astrologi" },
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-3">
+                <span>{item.icon}</span>
+                <span className="text-gray-600">
+                  {language === "zh" ? item.zh : language === "id" ? item.id : item.en}
                 </span>
               </div>
-              <div className="flex items-center gap-3">
-                <span style={{ color: COLORS.champagneGold }}>🌍</span>
-                <span style={{ color: COLORS.creamWhite }}>
-                  {language === "zh" 
-                    ? "坐标系统: 黄道坐标 (Ecliptic coordinates)" 
-                    : language === "id" 
-                    ? "Sistem Koordinat: Koordinat ekliptika" 
-                    : "Coordinate System: Ecliptic coordinates"}
-                </span>
-              </div>
-              <div className="flex items-center gap-3">
-                <span style={{ color: COLORS.champagneGold }}>🏠</span>
-                <span style={{ color: COLORS.creamWhite }}>
-                  {language === "zh" 
-                    ? "宫位系统: Placidus (经典宫位划分)" 
-                    : language === "id" 
-                    ? "Sistem Rumah: Placidus" 
-                    : "House System: Placidus"}
-                </span>
-              </div>
-              <div className="flex items-center gap-3">
-                <span style={{ color: COLORS.champagneGold }}>⚖️</span>
-                <span style={{ color: COLORS.creamWhite }}>
-                  {language === "zh" 
-                    ? "相位容许度: 标准占星学设定" 
-                    : language === "id" 
-                    ? "Orb Aspek: Pengaturan astrologi standar" 
-                    : "Aspect Orbs: Standard astrology settings"}
-                </span>
-              </div>
-            </div>
+            ))}
           </div>
         </section>
 
         {/* CTA */}
         <div className="text-center">
-          <Link 
-            href="/chart" 
-            className="inline-block px-8 py-4 rounded-full font-semibold transition-all text-lg"
-            style={{ 
-              background: `linear-gradient(135deg, ${COLORS.champagneGold} 0%, ${COLORS.warmGold} 100%)`,
-              color: COLORS.midnightBlue
-            }}
+          <Link
+            href="/natal"
+            className="inline-block px-8 py-4 rounded-full font-semibold text-lg bg-purple-600 text-white hover:bg-purple-700 transition-colors shadow-lg shadow-purple-200"
           >
-            {language === "zh" ? "开始计算你的星盘" : language === "id" ? "Hitung Bagan Bintang Anda" : "Calculate Your Birth Chart"} ✨
+            {language === "zh" ? "立即生成你的星盘" : language === "id" ? "Hitung Bagan Anda" : "Generate Your Chart"} ✨
           </Link>
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="py-8 px-4 text-center" style={{ borderTop: `1px solid ${COLORS.navyBorder}`, backgroundColor: `rgba(15, 23, 42, 0.5)` }}>
-        <p className="text-sm" style={{ color: COLORS.softBlue }}>© 2026 {t.siteName}. All rights reserved.</p>
+      <footer className="py-8 px-4 text-center border-t border-gray-100 bg-gray-50">
+        <p className="text-sm text-gray-400">© 2026 星缘. All rights reserved.</p>
       </footer>
     </div>
   );
