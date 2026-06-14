@@ -25,10 +25,10 @@ const CATEGORIES = ['daily', 'question', 'experience', 'learning'] as const;
 type Category = typeof CATEGORIES[number];
 
 const CATEGORY_COLORS: Record<Category, string> = {
-  daily: 'bg-blue-500/20 text-blue-300',
+  daily: 'bg-blue-100 text-blue-700',
   question: 'bg-purple-500/20 text-purple-700',
-  experience: 'bg-green-500/20 text-green-300',
-  learning: 'bg-orange-500/20 text-orange-300',
+  experience: 'bg-green-100 text-green-700',
+  learning: 'bg-orange-100 text-orange-700',
 };
 
 const ZODIAC_SIGNS = [
@@ -393,7 +393,7 @@ export default function CommunityPage() {
         {/* New Post Modal */}
         {showNewPost && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-            <div className="w-full max-w-lg bg-[#0f0f23] rounded-2xl border border-gray-200 p-6">
+            <div className="w-full max-w-lg bg-[#f9fafb] rounded-2xl border border-gray-200 p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-semibold text-gray-900">{t.newPost}</h3>
                 <button

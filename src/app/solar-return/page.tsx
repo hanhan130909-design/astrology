@@ -88,7 +88,7 @@ export default function SolarReturnPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#020617] via-[#0f0f23] to-[#020617] text-gray-900">
+    <div className="min-h-screen bg-gradient-to-b from-[#ffffff] via-white to-[#ffffff] text-gray-900">
       
 
       {showSaved && charts.length > 0 && (

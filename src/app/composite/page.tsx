@@ -208,7 +208,7 @@ export default function CompositePage() {
 
   const handleDownload = async () => {
     if (!chartRef.current) return;
-    const canvas = await html2canvas(chartRef.current, { backgroundColor: '#0f0f23' });
+    const canvas = await html2canvas(chartRef.current, { backgroundColor: '#f9fafb' });
     const link = document.createElement('a');
     link.download = 'composite-chart.png';
     link.href = canvas.toDataURL();
@@ -239,7 +239,7 @@ export default function CompositePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#020617] via-[#0f0f23] to-[#020617] text-gray-900">
+    <div className="min-h-screen bg-gradient-to-b from-[#ffffff] via-white to-[#ffffff] text-gray-900">
       
 
       <main className="max-w-7xl mx-auto px-6 py-8">
@@ -527,7 +527,7 @@ export default function CompositePage() {
         {/* Save/Share Message */}
         {saveMsg && (
           <div className="text-center mb-4">
-            <span className="inline-block px-4 py-2 bg-green-500/20 text-green-300 rounded-lg text-sm">{saveMsg}</span>
+            <span className="inline-block px-4 py-2 bg-green-100 text-green-700 rounded-lg text-sm">{saveMsg}</span>
           </div>
         )}
 

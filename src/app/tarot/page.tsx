@@ -319,7 +319,7 @@ export default function TarotPage() {
   const allRevealed = drawnCards.length > 0 && revealedCards.length === drawnCards.length;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#020617] via-[#0f0f23] to-[#020617] text-gray-900">
+    <div className="min-h-screen bg-gradient-to-b from-[#ffffff] via-white to-[#ffffff] text-gray-900">
       {/* Navigation */}
       
 

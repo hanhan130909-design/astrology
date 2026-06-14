@@ -310,7 +310,7 @@ export default function BlogPage() {
               >
                 {/* Gradient Image Area */}
                 <div className="aspect-video bg-gradient-to-br from-purple-900/30 via-pink-900/20 to-indigo-900/30 flex items-center justify-center relative">
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#030014] to-transparent opacity-60" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent opacity-60" />
                   <span className="text-5xl relative z-10">✨</span>
                   
                   {/* Category Badge */}

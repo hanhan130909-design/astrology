@@ -21,7 +21,7 @@ export default function SwissEphemerisPage() {
   const t = titles[language] || titles.zh;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0a0a1a] via-[#1a1a3a] to-[#0a0a1a] text-white">
+    <div className="min-h-screen bg-gradient-to-b from-[#f8fafc] via-[#1a1a3a] to-[#f8fafc] text-white">
       <PageNav title={t.title} subtitle={t.subtitle} />
       <div className="max-w-4xl mx-auto px-4 py-8">
         <SwissEphemerisDemo language={language} />

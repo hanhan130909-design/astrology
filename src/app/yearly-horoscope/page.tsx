@@ -134,7 +134,7 @@ export default function YearlyHoroscopePage() {
   if (!mounted) return null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#030014] via-[#0f0f23] to-[#030014] text-gray-900">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 text-gray-900">
       {/* 导航 */}
       
 
@@ -161,7 +161,7 @@ export default function YearlyHoroscopePage() {
                   onClick={() => setSelectedSign(sign.id)}
                   className={`relative p-3 rounded-xl text-center transition-all ${
                     isActive
-                      ? "bg-purple-600/30 border border-purple-500 text-gray-900"
+                      ? "bg-purple-100 border border-purple-300 text-purple-700"
                       : "bg-white/5 hover:bg-white/10 text-gray-600 border border-transparent"
                   }`}
                 >

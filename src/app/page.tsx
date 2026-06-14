@@ -531,7 +531,7 @@ export default function HomePage() {
                   key={l.code}
                   onClick={() => setLanguage(l.code as any)}
                   className={`px-2 py-1.5 rounded-lg text-xs font-medium transition-all ${
-                    language === l.code ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-gray-900 shadow-lg' : 'text-gray-500 hover:text-purple-700'
+                    language === l.code ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg' : 'text-gray-500 hover:text-purple-700'
                   }`}
                 >
                   {l.label}

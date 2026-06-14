@@ -755,7 +755,7 @@ export default function HoroscopePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#030014] via-[#0f0f23] to-[#030014] text-gray-900">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 text-gray-900">
       {/* 导航栏 */}
       
 
@@ -798,7 +798,7 @@ export default function HoroscopePage() {
                   onClick={() => { setSelectedSign(id); setShowDropdown(false); }}
                   className={`p-2 rounded-xl text-center transition-all ${
                     selectedSign === id 
-                      ? "bg-purple-600/30 border border-purple-500 text-gray-900" 
+                      ? "bg-purple-100 border border-purple-300 text-purple-700" 
                       : "bg-white/5 hover:bg-white/10 text-gray-600"
                   }`}
                 >
@@ -818,7 +818,7 @@ export default function HoroscopePage() {
               onClick={() => setActiveTab(tab)}
               className={`flex-1 py-2.5 rounded-lg text-sm font-medium transition-all ${
                 activeTab === tab 
-                  ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-gray-900" 
+                  ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white" 
                   : "text-gray-500 hover:text-purple-700"
               }`}
             >

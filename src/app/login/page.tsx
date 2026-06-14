@@ -182,7 +182,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#020617] text-white flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#ffffff] text-white flex items-center justify-center p-4">
       {/* 背景装饰 */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl" />

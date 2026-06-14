@@ -306,7 +306,7 @@ export default function ProfilePage() {
 
   if (authLoading || !isFirebaseReady) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#030014] via-[#0f0f23] to-[#030014] flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 flex items-center justify-center">
         <div className="text-center">
           <Loader2 size={40} className="animate-spin text-purple-400 mx-auto mb-3" />
           <p className="text-gray-500 text-sm">{tx("loading", lang)}</p>
@@ -317,7 +317,7 @@ export default function ProfilePage() {
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#030014] via-[#0f0f23] to-[#030014] flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 flex items-center justify-center">
         <div className="text-center max-w-sm mx-auto px-6">
           <div className="w-20 h-20 rounded-full bg-purple-600/20 border border-purple-500/30 flex items-center justify-center mx-auto mb-6">
             <User size={36} className="text-purple-400" />
@@ -337,7 +337,7 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#030014] via-[#0f0f23] to-[#030014] text-gray-900">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 text-gray-900">
       {/* Navigation Bar */}
       
 

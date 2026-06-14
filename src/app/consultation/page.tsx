@@ -494,7 +494,7 @@ export default function ConsultationPage() {
                   {selectedAstrologer.avatar}
                 </div>
                 {selectedAstrologer.isOnline && (
-                  <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-[#030014]" />
+                  <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-[#ffffff]" />
                 )}
               </div>
               <div className="flex-1">
@@ -686,7 +686,7 @@ export default function ConsultationPage() {
                         {astrologer.avatar}
                       </div>
                       {astrologer.isOnline && (
-                        <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-[#030014]" />
+                        <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-[#ffffff]" />
                       )}
                     </div>
                     <div className="flex-1">
@@ -737,7 +737,7 @@ export default function ConsultationPage() {
                       {astrologer.avatar}
                     </div>
                     {astrologer.isOnline && (
-                      <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-[#030014]" />
+                      <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-[#ffffff]" />
                     )}
                   </div>
                   <div className="flex-1 min-w-0">

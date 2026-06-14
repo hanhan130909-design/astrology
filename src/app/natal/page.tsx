@@ -32,6 +32,7 @@ function formatFirdariaDate(date:Date){return date.toLocaleDateString("zh-CN",{y
 function formatYmd(date:Date){return `${date.getFullYear()}-${fmt2(date.getMonth()+1)}-${fmt2(date.getDate())}`;}
 function addMonths(date:Date,months:number){const d=new Date(date);d.setMonth(d.getMonth()+months);return d;}
 function lonParts(lon:number){const n=norm(lon);const sign=Math.floor(n/30)%12;const inSign=n%30;return{sign,deg:Math.floor(inSign),min:Math.round((inSign%1)*60)};}
+function signGlyph(sign:number){return `${SIGN_SYMBOLS[sign]}\uFE0E`;}
 function groupedRows<T>(items:T[],groups=6){const rows=Math.ceil(items.length/groups)||0;return Array.from({length:rows},(_,row)=>Array.from({length:groups},(_,group)=>items[row+group*rows]||null));}
 function findHouseForLongitude(lon:number,houses:any[]){for(let i=0;i<houses.length;i++){const c=norm(houses[i].longitude),n=norm(houses[(i+1)%houses.length].longitude);if(c<=n?lon>=c&&lon<n:lon>=c||lon<n)return Number(houses[i].house);}return 0;}
 function buildFirdariaPeriods(chart:any,year:number,month:number,day:number){
@@ -154,19 +155,18 @@ export default function NatalPage(){
     const fal=FALL[k]===si?"1":"";
     const rulerScore=r?5:0,exScore=ex?4:0,triScore=tri?3:0,termScore=tP?2:0,faceScore=faceP?1:0;
     const totalScore=rulerScore+exScore+triScore+termScore+faceScore-(det?4:0)-(fal?5:0);
-    return{code:planetCodesFull[k]||k[0],name:k,deg:`${Math.floor(d)}°${SIGN_SYMBOLS[si]} ${String(Math.round((d%1)*60)).padStart(2,"0")}′${retro?" R":""}`,house,guardianHouse:"-",exaltHouse:"-",ruler:r,exalt:ex,triplicity:tri,term:tP,face:faceP,detriment:det,fall:fal,score:totalScore>0?"+"+totalScore:String(totalScore),state:totalScore>=5?"强":totalScore>=0?"平均":"弱",speed:"平均",sect:["Sun","Jupiter","Saturn"].includes(k)?"得时":"-",orient:retro?"西入":"东出"};
+    return{code:planetCodesFull[k]||k[0],name:k,deg:`${Math.floor(d)}°${signGlyph(si)} ${String(Math.round((d%1)*60)).padStart(2,"0")}′${retro?" R":""}`,house,guardianHouse:"-",exaltHouse:"-",ruler:r,exalt:ex,triplicity:tri,term:tP,face:faceP,detriment:det,fall:fal,score:totalScore>0?"+"+totalScore:String(totalScore),state:totalScore>=5?"强":totalScore>=0?"平均":"弱",speed:"平均",sect:["Sun","Jupiter","Saturn"].includes(k)?"得时":"-",orient:retro?"西入":"东出"};
   }):[];
 
   const houseRows = (hData||[]).map((h:any)=>{
     const si=Math.floor(norm(h.longitude)/30);const d=norm(h.longitude)%30;
     const rulerK=Object.keys(RULER).find(k=>(RULER[k]||[]).includes(si));
     const exK=Object.keys(EXALT).find(k=>EXALT[k]===si);
-    return{house:h.house,lon:norm(h.longitude),deg:`${Math.floor(d)}°${SIGN_SYMBOLS[si]} ${String(Math.round((d%1)*60)).padStart(2,"0")}′`,ruler:rulerK?planetCodes[rulerK]||"":"",exalt:exK?planetCodes[exK]||"":"",almuten:rulerK?planetCodes[rulerK]||"":""};
+    return{house:h.house,lon:norm(h.longitude),deg:`${Math.floor(d)}°${signGlyph(si)} ${String(Math.round((d%1)*60)).padStart(2,"0")}′`,ruler:rulerK?planetCodes[rulerK]||"":"",exalt:exK?planetCodes[exK]||"":"",almuten:rulerK?planetCodes[rulerK]||"":""};
   });
   const firdaria = chart ? buildFirdariaPeriods(chart, year, month, day) : {isDay:true, periods:[] as FirdariaPeriod[]};
   const glyph = (code?:string,size=16)=><em className="astro-glyph" style={{fontSize:size}}>{planetSymbols[code||""]||code||""}</em>;
-  const lonText = (lon:number)=>{const p=lonParts(lon);return `${p.deg} ${SIGN_SYMBOLS[p.sign]} ${fmt2(p.min)}`;};
-  const lonCells = (lon:number)=>{const p=lonParts(lon);return <><span>{p.deg}</span><span className="zodiac-cell">{SIGN_SYMBOLS[p.sign]}</span><span>{fmt2(p.min)}</span></>;};
+  const lonCells = (lon:number)=>{const p=lonParts(lon);return <><span>{p.deg}</span><span className="zodiac-cell">{signGlyph(p.sign)}</span><span>{fmt2(p.min)}</span></>;};
   const pointLon = (key:string)=>{
     if(key==="Ascendant")return typeof chart?.ascendant==="number"?chart.ascendant:chart?.ascendant?.longitude??hData?.[0]?.longitude??0;
     if(key==="Midheaven")return typeof chart?.midheaven==="number"?chart.midheaven:chart?.midheaven?.longitude??hData?.[9]?.longitude??0;
@@ -214,7 +214,7 @@ export default function NatalPage(){
   const buildAphesisItems = (startLon:number)=>Array.from({length:78},(_,i)=>{
     const sign=Math.floor(norm(startLon+i*30)/30)%12;
     const sub=(sign+i+1)%12;
-    return {main:SIGN_SYMBOLS[sign],sub:i%13===5?"- LB":SIGN_SYMBOLS[sub],date:formatYmd(addMonths(new Date(year,month-1,day),Math.round(i*15.5)))};
+    return {main:signGlyph(sign),sub:i%13===5?"- LB":signGlyph(sub),date:formatYmd(addMonths(new Date(year,month-1,day),Math.round(i*15.5)))};
   });
   const fortuneGrid = groupedRows(buildAphesisItems(fortuneLon),6);
   const spiritGrid = groupedRows(buildAphesisItems(spiritLon),6);
