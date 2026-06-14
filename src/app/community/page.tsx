@@ -4,7 +4,6 @@ import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { 
   ArrowLeft, MessageSquare, Heart, MoreHorizontal,
   Plus, Search, Send, X, ChevronDown, LogIn, User
@@ -336,28 +335,59 @@ export default function CommunityPage() {
       )
     : posts;
 
-  // If not logged in, show login prompt
+  // If not logged in, show login prompt with preview
   if (!user) {
     return (
       <div className="min-h-screen bg-white">
-        
+        <div className="max-w-4xl mx-auto px-4 py-16">
+          {/* Preview content behind semi-transparent overlay */}
+          <div className="relative mb-12 opacity-30 pointer-events-none select-none">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-xl font-semibold">占星社区</h2>
+              <div className="flex gap-2">
+                {['日常','提问','经验','学习'].map(c => (
+                  <span key={c} className="px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-700">{c}</span>
+                ))}
+              </div>
+            </div>
+            <div className="space-y-4">
+              {[
+                { author:'星友小王', cat:'日常', content:'今天看了日返盘，发现明年木星进第一宫，太期待了！有同样配置的朋友吗？', likes:12, comments:5 },
+                { author:'占星学习者', cat:'提问', content:'请问各位大神，月亮空亡（VoC Moon）期间适合做什么？不适合做什么？', likes:8, comments:15 },
+                { author:'星座达人', cat:'经验', content:'分享一个看事业宫的小技巧：重点看10宫主星和MC的相位关系，比单纯看10宫内行星更准。', likes:24, comments:9 },
+              ].map((post, i) => (
+                <div key={i} className="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-sm font-medium">{post.author}</span>
+                    <span className="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">{post.cat}</span>
+                  </div>
+                  <p className="text-sm mb-2">{post.content}</p>
+                  <div className="flex gap-4 text-xs text-gray-400">
+                    <span>❤ {post.likes}</span>
+                    <span>💬 {post.comments}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
-        <div className="max-w-4xl mx-auto px-4 py-20 text-center">
-          <div className="text-6xl mb-6">🔒</div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">{t.loginPrompt}</h2>
-          <p className="text-gray-400 mb-8">{t.loginDesc}</p>
-          <button
-            onClick={handleLogin}
-            className="inline-flex items-center gap-3 px-8 py-4 bg-white text-gray-900 rounded-xl font-semibold hover:bg-gray-100 transition-all"
-          >
-            <svg className="w-5 h-5" viewBox="0 0 24 24">
-              <path fill="#4285F4" d="M23.745 12.27c0-.79-.07-1.54-.19-2.27h-11.3v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/>
-              <path fill="#34A853" d="M12.255 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96h-3.98v3.09C3.515 21.3 7.695 24 12.255 24z"/>
-              <path fill="#FBBC05" d="M5.525 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62h-3.98a11.86 11.86 0 000 10.76l3.98-3.09z"/>
-              <path fill="#EA4335" d="M12.255 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C18.205 1.19 15.495 0 12.255 0c-4.56 0-8.74 2.7-10.71 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96z"/>
-            </svg>
-            {t.loginWithGoogle}
-          </button>
+          {/* Login CTA */}
+          <div className="text-center">
+            <h2 className="text-2xl font-semibold text-gray-900 mb-3">{t.loginPrompt}</h2>
+            <p className="text-gray-500 mb-8">{t.loginDesc}</p>
+            <button
+              onClick={handleLogin}
+              className="inline-flex items-center gap-3 px-8 py-3 bg-[#171717] text-white rounded-lg font-medium hover:bg-black transition-colors"
+            >
+              <svg className="w-5 h-5" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M23.745 12.27c0-.79-.07-1.54-.19-2.27h-11.3v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/>
+                <path fill="#34A853" d="M12.255 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96h-3.98v3.09C3.515 21.3 7.695 24 12.255 24z"/>
+                <path fill="#FBBC05" d="M5.525 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62h-3.98a11.86 11.86 0 000 10.76l3.98-3.09z"/>
+                <path fill="#EA4335" d="M12.255 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C18.205 1.19 15.495 0 12.255 0c-4.56 0-8.74 2.7-10.71 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96z"/>
+              </svg>
+              {t.loginWithGoogle}
+            </button>
+          </div>
         </div>
       </div>
     );

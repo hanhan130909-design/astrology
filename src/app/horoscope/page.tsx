@@ -3,7 +3,6 @@
 import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { Star, Sun, ArrowLeft, ChevronDown, Heart, Briefcase, Wallet, Activity, Sparkles, TrendingUp, Users, Calendar, Lock, Share2, CheckCircle, MessageCircle, RefreshCw, Shuffle } from "lucide-react";
 
 // Complete zodiac data with full details
@@ -991,142 +990,50 @@ export default function HoroscopePage() {
           </div>
         )}
 
-        {/* SEO Description Block */}
+        {/* SEO Description */}
         <section className="max-w-4xl mx-auto mt-12 mb-8 px-4">
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-sm font-medium text-gray-700 mb-2">关于每日运势</h3>
-              <p className="text-xs text-gray-500 leading-relaxed">
-                每日运势基于占星学原理，结合行星运行位置与星座特质，为您提供个性化的运势分析。
-                涵盖爱情、事业、财运、健康四大维度，助您把握每一天的机遇与挑战。
-              </p>
-            </div>
-            <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-sm font-medium text-gray-700 mb-2">About Daily Horoscope</h3>
-              <p className="text-xs text-gray-500 leading-relaxed">
-                Daily horoscope based on astrological principles, combining planetary positions with zodiac traits.
-                Covers love, career, finance, and health dimensions to help you seize opportunities and navigate challenges.
-              </p>
-            </div>
-            <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-sm font-medium text-gray-700 mb-2">Tentang Horoskop Harian</h3>
-              <p className="text-xs text-gray-500 leading-relaxed">
-                Horoskop harian berdasarkan prinsip astrologi, menggabungkan posisi planet dengan sifat zodiak.
-                Mencakup cinta, karier, keuangan, dan kesehatan untuk membantu Anda meraih peluang.
-              </p>
-            </div>
+          <div className="bg-gray-50 rounded-xl p-6 text-center">
+            <p className="text-sm text-gray-500 leading-relaxed">
+              {lang === 'zh' 
+                ? '每日运势基于占星学原理，结合行星运行位置与星座特质，为你提供个性化运势分析。涵盖爱情、事业、财运、健康四大维度。'
+                : lang === 'id'
+                ? 'Horoskop harian berdasarkan prinsip astrologi, menggabungkan posisi planet dengan sifat zodiak. Mencakup cinta, karier, keuangan, dan kesehatan.'
+                : 'Daily horoscope based on astrological principles, combining planetary positions with zodiac traits. Covers love, career, finance, and health dimensions.'}
+            </p>
           </div>
         </section>
 
-        {/* SEO Description Section */}
-        <section className="max-w-4xl mx-auto mt-12 mb-8 px-4">
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-lg font-semibold text-gray-700 mb-2">中文</h3>
-              <p className="text-gray-600/80 text-sm leading-relaxed">占星运势提供基于真实天文计算的个性化指引。根据完整出生信息（日期、时间、地点）结合当前行星运行，给出真正属于你的能量趋势。支持日运、月运和年度运势（Solar Return）。</p>
-            </div>
-            <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-lg font-semibold text-gray-700 mb-2">English</h3>
-              <p className="text-gray-600/80 text-sm leading-relaxed">Astrological horoscopes provide personalized guidance based on real astronomical calculations. Using complete birth information (date, time, location) combined with current planetary movements, it delivers energy trends truly yours. Supports daily, monthly, and yearly forecasts (Solar Return).</p>
-            </div>
-            <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-lg font-semibold text-gray-700 mb-2">Bahasa Indonesia</h3>
-              <p className="text-gray-600/80 text-sm leading-relaxed">Horoskop astrologi memberikan panduan personal berdasarkan perhitungan astronomi nyata. Menggunakan informasi kelahiran lengkap (tanggal, waktu, lokasi) dikombinasikan dengan pergerakan planet saat ini, memberikan tren energi yang benar-benar milik Anda. Mendukung ramalan harian, bulanan, dan tahunan (Solar Return).</p>
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ Section */}
+        {/* FAQ */}
         <section className="max-w-4xl mx-auto mb-12 px-4">
-          <h2 className="text-xl font-bold text-gray-900 text-center mb-6">
-            {lang === 'zh' ? '常见问题' : lang === 'id' ? 'Pertanyaan Umum' : 'Frequently Asked Questions'}
+          <h2 className="text-xl font-semibold text-center mb-6">
+            {lang === 'zh' ? '常见问题' : lang === 'id' ? 'Pertanyaan Umum' : 'FAQ'}
           </h2>
           <div className="space-y-3">
-            {/* FAQ 1 */}
-            <div className="border border-gray-200 rounded-lg overflow-hidden">
-              <button
-                onClick={() => setFaqOpen(faqOpen === 0 ? -1 : 0)}
-                className="w-full p-4 flex items-center justify-between bg-white/5 hover:bg-white/10 transition-all"
-              >
-                <span className="text-sm text-gray-900">每日运势的准确度如何？</span>
-                <ChevronDown size={18} className={`text-gray-400 transition-transform ${faqOpen === 0 ? 'rotate-180' : ''}`} />
-              </button>
-              {faqOpen === 0 && (
-                <div className="p-4 bg-white/5 border-t border-gray-500/10">
-                  <p className="text-sm text-gray-600 mb-2">每日运势基于传统占星学理论，结合行星运行轨迹与星座特质进行分析。虽然不能保证100%准确，但能为您提供有价值的参考和指引。</p>
-                  <p className="text-xs text-gray-400 mb-1"><span className="text-gray-700">EN:</span> Daily horoscope is based on traditional astrology, combining planetary movements with zodiac traits. While not 100% accurate, it provides valuable reference and guidance.</p>
-                  <p className="text-xs text-gray-400"><span className="text-gray-700">ID:</span> Horoskop harian berdasarkan astrologi tradisional, menggabungkan pergerakan planet dengan sifat zodiak. Memberikan referensi dan panduan berharga.</p>
-                </div>
-              )}
-            </div>
-            {/* FAQ 2 */}
-            <div className="border border-gray-200 rounded-lg overflow-hidden">
-              <button
-                onClick={() => setFaqOpen(faqOpen === 1 ? -1 : 1)}
-                className="w-full p-4 flex items-center justify-between bg-white/5 hover:bg-white/10 transition-all"
-              >
-                <span className="text-sm text-gray-900">如何根据运势规划一天？</span>
-                <ChevronDown size={18} className={`text-gray-400 transition-transform ${faqOpen === 1 ? 'rotate-180' : ''}`} />
-              </button>
-              {faqOpen === 1 && (
-                <div className="p-4 bg-white/5 border-t border-gray-500/10">
-                  <p className="text-sm text-gray-600 mb-2">建议在幸运时间段处理重要事务，关注运势提示的领域。例如财运佳时适合理财决策，感情运佳时适合约会沟通。</p>
-                  <p className="text-xs text-gray-400 mb-1"><span className="text-gray-700">EN:</span> We recommend handling important matters during lucky time periods. Focus on highlighted areas - good finance luck for financial decisions, good love luck for dating.</p>
-                  <p className="text-xs text-gray-400"><span className="text-gray-700">ID:</span> Kami sarankan menangani hal penting di waktu beruntung. Fokus pada area yang disorot - keuangan baik untuk keputusan finansial, cinta baik untuk kencan.</p>
-                </div>
-              )}
-            </div>
-            {/* FAQ 3 */}
-            <div className="border border-gray-200 rounded-lg overflow-hidden">
-              <button
-                onClick={() => setFaqOpen(faqOpen === 2 ? -1 : 2)}
-                className="w-full p-4 flex items-center justify-between bg-white/5 hover:bg-white/10 transition-all"
-              >
-                <span className="text-sm text-gray-900">不同星座之间有什么关联？</span>
-                <ChevronDown size={18} className={`text-gray-400 transition-transform ${faqOpen === 2 ? 'rotate-180' : ''}`} />
-              </button>
-              {faqOpen === 2 && (
-                <div className="p-4 bg-white/5 border-t border-gray-500/10">
-                  <p className="text-sm text-gray-600 mb-2">星座按元素分为火象、土象、风象、水象四类。同元素星座性格相似，相邻元素互补。速配星座通常属于和谐元素组合。</p>
-                  <p className="text-xs text-gray-400 mb-1"><span className="text-gray-700">EN:</span> Zodiac signs are grouped into Fire, Earth, Air, and Water elements. Same element signs share similar traits. Compatible signs usually have harmonious element combinations.</p>
-                  <p className="text-xs text-gray-400"><span className="text-gray-700">ID:</span> Zodiak dikelompokkan menjadi elemen Api, Tanah, Udara, dan Air. Zodiak elemen sama memiliki sifat mirip. Zodiak cocok biasanya kombinasi elemen harmonis.</p>
-                </div>
-              )}
-            </div>
-            {/* FAQ 4 */}
-            <div className="border border-gray-200 rounded-lg overflow-hidden">
-              <button
-                onClick={() => setFaqOpen(faqOpen === 3 ? -1 : 3)}
-                className="w-full p-4 flex items-center justify-between bg-white/5 hover:bg-white/10 transition-all"
-              >
-                <span className="text-sm text-gray-900">运势指数是如何计算的？</span>
-                <ChevronDown size={18} className={`text-gray-400 transition-transform ${faqOpen === 3 ? 'rotate-180' : ''}`} />
-              </button>
-              {faqOpen === 3 && (
-                <div className="p-4 bg-white/5 border-t border-gray-500/10">
-                  <p className="text-sm text-gray-600 mb-2">运势指数综合考量当前行星位置、星座守护星状态、月相周期等多重因素，通过占星学公式计算得出，反映当日各领域的能量强度。</p>
-                  <p className="text-xs text-gray-400 mb-1"><span className="text-gray-700">EN:</span> Fortune scores consider planetary positions, ruling planet status, moon phase and more. Calculated through astrological formulas to reflect energy intensity in each area.</p>
-                  <p className="text-xs text-gray-400"><span className="text-gray-700">ID:</span> Skor keberuntungan mempertimbangkan posisi planet, status planet penguasa, fase bulan dan lainnya. Dihitung melalui formula astrologi untuk mencerminkan intensitas energi.</p>
-                </div>
-              )}
-            </div>
-            {/* FAQ 5 */}
-            <div className="border border-gray-200 rounded-lg overflow-hidden">
-              <button
-                onClick={() => setFaqOpen(faqOpen === 4 ? -1 : 4)}
-                className="w-full p-4 flex items-center justify-between bg-white/5 hover:bg-white/10 transition-all"
-              >
-                <span className="text-sm text-gray-900">可以同时参考多个时间维度的运势吗？</span>
-                <ChevronDown size={18} className={`text-gray-400 transition-transform ${faqOpen === 4 ? 'rotate-180' : ''}`} />
-              </button>
-              {faqOpen === 4 && (
-                <div className="p-4 bg-white/5 border-t border-gray-500/10">
-                  <p className="text-sm text-gray-600 mb-2">当然可以！建议结合每日、每周、每月运势综合判断。短期运势看细节执行，长期运势看大方向规划，相互印证效果更佳。</p>
-                  <p className="text-xs text-gray-400 mb-1"><span className="text-gray-700">EN:</span> Absolutely! We recommend combining daily, weekly, and monthly horoscopes. Short-term for details, long-term for big picture planning - cross-reference for better insights.</p>
-                  <p className="text-xs text-gray-400"><span className="text-gray-700">ID:</span> Tentu! Kami sarankan menggabungkan horoskop harian, mingguan, dan bulanan. Jangka pendek untuk detail, jangka panjang untuk gambaran besar.</p>
-                </div>
-              )}
-            </div>
+            {[
+              { q: lang==='zh'?'每日运势的准确度如何？':lang==='id'?'Seberapa akurat horoskop harian?':'How accurate is the daily horoscope?',
+                a: lang==='zh'?'基于传统占星学理论，结合行星运行轨迹与星座特质分析，提供有价值的参考和指引。':lang==='id'?'Berdasarkan astrologi tradisional, memberikan referensi dan panduan berharga.':'Based on traditional astrology, combining planetary movements with zodiac traits for valuable guidance.' },
+              { q: lang==='zh'?'如何根据运势规划一天？':lang==='id'?'Bagaimana merencanakan hari?':'How to plan your day?',
+                a: lang==='zh'?'早晨查看运势，了解今日能量趋势，合理安排重要事务的时间节点。':lang==='id'?'Periksa horoskop di pagi hari untuk memahami tren energi.':'Check your horoscope in the morning to understand energy trends.' },
+              { q: lang==='zh'?'不同星座之间有什么关联？':lang==='id'?'Apa hubungan antar zodiak?':'How are zodiac signs related?',
+                a: lang==='zh'?'星座按元素分为火土风水四象，同元素星座性格相近，对宫星座互补。':lang==='id'?'Zodiak dibagi menjadi empat elemen: api, tanah, udara, air.':'Signs are grouped by four elements: fire, earth, air, water.' },
+              { q: lang==='zh'?'运势指数如何计算？':lang==='id'?'Bagaimana skor dihitung?':'How are scores calculated?',
+                a: lang==='zh'?'综合行星相位、宫位能量和星座特质，通过占星学模型综合评估得出。':lang==='id'?'Menggabungkan aspek planet dan energi rumah untuk penilaian.':'Combining planetary aspects and house energies for assessment.' },
+              { q: lang==='zh'?'可以同时参考多个时间维度吗？':lang==='id'?'Bisa lihat beberapa periode?':'Can I check multiple periods?',
+                a: lang==='zh'?'建议结合日运、周运、月运综合判断，短期看执行，长期看规划。':lang==='id'?'Kami sarankan menggabungkan harian, mingguan, dan bulanan.':'Combine daily, weekly, and monthly for better insights.' },
+            ].map((faq, i) => (
+              <div key={i} className="border border-gray-200 rounded-lg overflow-hidden">
+                <button onClick={() => setFaqOpen(faqOpen === i ? -1 : i)}
+                  className="w-full p-4 flex items-center justify-between bg-gray-50 hover:bg-gray-100 transition-colors text-left">
+                  <span className="text-sm font-medium text-gray-900">{faq.q}</span>
+                  <ChevronDown size={18} className={`text-gray-400 transition-transform ${faqOpen === i ? 'rotate-180' : ''}`} />
+                </button>
+                {faqOpen === i && (
+                  <div className="p-4 bg-white border-t border-gray-100">
+                    <p className="text-sm text-gray-600">{faq.a}</p>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </section>
 

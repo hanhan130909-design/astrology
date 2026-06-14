@@ -140,9 +140,9 @@ export default function HomePage() {
 
       {/* Footer */}
       <footer className="border-t border-gray-200 py-6 text-center">
-        <Link href="#" className="text-xs text-gray-400 no-underline mx-3 hover:text-[#171717]">{t.privacy}</Link>
-        <Link href="#" className="text-xs text-gray-400 no-underline mx-3 hover:text-[#171717]">{t.terms}</Link>
-        <Link href="#" className="text-xs text-gray-400 no-underline mx-3 hover:text-[#171717]">{t.contact}</Link>
+        <Link href="/about" className="text-xs text-gray-400 no-underline mx-3 hover:text-[#171717]">{t.privacy}</Link>
+        <Link href="/about" className="text-xs text-gray-400 no-underline mx-3 hover:text-[#171717]">{t.terms}</Link>
+        <Link href="/about" className="text-xs text-gray-400 no-underline mx-3 hover:text-[#171717]">{t.contact}</Link>
       </footer>
     </div>
   );

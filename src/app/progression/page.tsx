@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { ArrowLeft, TrendingUp, Calendar, Clock, Star } from 'lucide-react';
 import NatalChart from '@/components/NatalChart';
 import { useChartStorage } from '../natal/useChartStorage';

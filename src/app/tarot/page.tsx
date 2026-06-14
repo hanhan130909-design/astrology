@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { ArrowLeft, Sparkles, Shuffle, RefreshCw, Lock, Share2, CheckCircle, MessageCircle } from "lucide-react";
 
 // Complete Tarot Card Data with full meanings

@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { ArrowLeft, Star, Search, MapPin, X, Sparkles, Lock, Share2, CheckCircle, MessageCircle, ChevronDown } from 'lucide-react';
 import ProfessionalNatalChart from '@/components/ProfessionalNatalChart';
 import TransitOverlay from '@/components/TransitOverlay';

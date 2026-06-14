@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ArrowLeft, Moon, Star, Sun, Calendar, ChevronDown, Loader2, Info, ChevronLeft, ChevronRight } from 'lucide-react';
 

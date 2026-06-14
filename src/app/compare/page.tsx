@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { 
   ArrowLeft, Users, Plus, X, ChevronRight, Heart, 
   Sparkles, GitCompare, Info
