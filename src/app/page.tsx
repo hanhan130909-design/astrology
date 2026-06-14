@@ -492,68 +492,7 @@ export default function HomePage() {
       </div>
 
       {/* Navigation */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-white/95 backdrop-blur-xl border-b border-gray-200 py-3' : 'bg-transparent py-5'}`}>
-        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative">
-              <div className="w-11 h-11 bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/30 group-hover:shadow-purple-500/50 transition-shadow">
-                <Star className="w-6 h-6 text-gray-900 fill-white" />
-              </div>
-              <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-500 rounded-xl blur opacity-30 group-hover:opacity-50 transition-opacity" />
-            </div>
-            <div>
-              <h1 className="text-xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-amber-400 bg-clip-text text-transparent">
-                {t('siteName')}
-              </h1>
-              <p className="text-[9px] text-gray-400 tracking-[0.2em] uppercase">Astrology</p>
-            </div>
-          </Link>
-
-          <div className="hidden md:flex items-center gap-8">
-            <a href="#features" className="text-sm text-gray-500 hover:text-purple-700 transition-colors">{t_nav.features}</a>
-            <a href="#zodiac" className="text-sm text-gray-500 hover:text-purple-700 transition-colors">{t_zodiac.title.split(' ')[0]}</a>
-            <a href="#reviews" className="text-sm text-gray-500 hover:text-purple-700 transition-colors">{t_testimonials.title}</a>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <div className="flex gap-1 bg-white/5 rounded-xl p-1 border border-gray-200">
-              {([
-                { code: 'zh', label: '中文' },
-                { code: 'en', label: 'EN' },
-                { code: 'id', label: 'ID' },
-                { code: 'th', label: 'ไทย' },
-                { code: 'vi', label: 'VN' },
-                { code: 'ms', label: 'MS' },
-                { code: 'ja', label: '日本語' },
-                { code: 'ko', label: '한국' },
-              ] as const).map((l) => (
-                <button
-                  key={l.code}
-                  onClick={() => setLanguage(l.code as any)}
-                  className={`px-2 py-1.5 rounded-lg text-xs font-medium transition-all ${
-                    language === l.code ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg' : 'text-gray-500 hover:text-purple-700'
-                  }`}
-                >
-                  {l.label}
-                </button>
-              ))}
-            </div>
-            
-            {user ? (
-              <div className="flex items-center gap-2">
-                <Link href="/profile" className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center text-gray-900 font-bold text-sm shadow-lg shadow-purple-500/20">
-                  {user.displayName?.[0] || user.email?.[0] || 'U'}
-                </Link>
-                <button onClick={logout} className="p-2 text-gray-500 hover:text-purple-700 transition-colors"><LogOut size={16} /></button>
-              </div>
-            ) : (
-              <Link href="/login" className="hidden sm:flex px-4 py-2 bg-white/5 hover:bg-white/10 border border-gray-200 rounded-xl text-sm font-medium text-gray-900 transition-all">
-                {t_nav.login}
-              </Link>
-            )}
-          </div>
-        </div>
-      </nav>
+      
 
       <main className="relative">
         {/* Hero Section */}
