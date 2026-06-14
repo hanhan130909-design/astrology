@@ -168,17 +168,18 @@ export function AspectMatrix({chart}:{chart:ChartData}){
     map.set(`${a.planet1}-${a.planet2}`,cell);map.set(`${a.planet2}-${a.planet1}`,cell);
   });
   const bodies=[{label:"☉",key:"Sun"},{label:"☽",key:"Moon"},{label:"☿",key:"Mercury"},{label:"♀",key:"Venus"},{label:"♂",key:"Mars"},{label:"♃",key:"Jupiter"},{label:"♄",key:"Saturn"},{label:"♅",key:"Uranus"},{label:"♆",key:"Neptune"},{label:"pluto",key:"Pluto"},{label:"☊",key:"North_Node"},{label:"AC",key:"Ascendant"},{label:"MC",key:"Midheaven"}];
+  const isAngle = (body:{label:string;key:string}) => body.key === "Ascendant" || body.key === "Midheaven";
   return (
     <section className="mt-12 w-[430px]">
       <table className="border-collapse text-center leading-none">
         <tbody>
           {bodies.map((b,ri)=><tr key={b.key}>
-            <th className="h-[31px] w-[26px] pr-1 text-center text-[22px] font-normal leading-none text-black"><span className="inline-flex h-[24px] w-[24px] items-center justify-center align-middle">{b.label==='pluto'?<PlutoGlyph className="h-[22px] w-[16px]"/>:b.key==='AC'||b.key==='MC'?<span className="text-[7px] leading-none">{b.key}</span>:b.label}</span></th>
+            <th className="h-[31px] w-[26px] pr-1 text-center text-[22px] font-normal leading-none text-black"><span className="inline-flex h-[24px] w-[24px] items-center justify-center align-middle">{b.label==='pluto'?<PlutoGlyph className="h-[22px] w-[16px]"/>:isAngle(b)?<span style={{fontSize:13,lineHeight:1}}>{b.label}</span>:b.label}</span></th>
             {bodies.map((cb,ci)=>{
               if(ci>ri)return<td key={`${b.key}-${cb.key}`} className="box-border h-[31px] w-[31px] p-0"/>;
               const a=map.get(`${b.key}-${cb.key}`);
               return <td key={`${b.key}-${cb.key}`} className="relative box-border h-[31px] w-[31px] overflow-hidden border border-[#999] bg-[#fbfbfb] p-0 text-center align-middle leading-none">
-                {a?<div className="absolute inset-[1px] flex flex-col items-center justify-center overflow-hidden"><span className={`block h-[15px] max-w-full text-[15px] font-bold leading-[15px] ${a.className}`}>{a.mark}</span><span className={`block max-w-full whitespace-nowrap text-[7px] leading-[8px] ${a.className}`}>{a.value}</span></div>:ci===ri?<span className="absolute inset-0 flex items-center justify-center overflow-hidden text-[17px] leading-none text-black">{b.label==='pluto'?<PlutoGlyph className="h-[19px] w-[14px]"/>:b.key==='AC'||b.key==='MC'?<span className="text-[6px] leading-none">{b.key}</span>:b.label}</span>:""}
+                {a?<div className="absolute inset-[1px] flex flex-col items-center justify-center overflow-hidden"><span className={`block h-[15px] max-w-full text-[15px] font-bold leading-[15px] ${a.className}`}>{a.mark}</span><span className={`block max-w-full whitespace-nowrap text-[7px] leading-[8px] ${a.className}`}>{a.value}</span></div>:ci===ri?<span className="absolute inset-0 flex items-center justify-center overflow-hidden text-[17px] leading-none text-black">{b.label==='pluto'?<PlutoGlyph className="h-[19px] w-[14px]"/>:isAngle(b)?<span style={{fontSize:13,lineHeight:1}}>{b.label}</span>:b.label}</span>:""}
               </td>;
             })}
           </tr>)}
