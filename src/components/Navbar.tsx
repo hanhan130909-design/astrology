@@ -7,7 +7,23 @@ const T: Record<string, Record<string, string>> = {
   zh: { home:"首页", horoscope:"运势", natal:"星盘", compatibility:"配对", ai:"AI解读", learn:"学习", transits:"天象", community:"社区", tarot:"塔罗" },
   en: { home:"Home", horoscope:"Horoscope", natal:"Chart", compatibility:"Match", ai:"AI", learn:"Learn", transits:"Transits", community:"Community", tarot:"Tarot" },
   id: { home:"Beranda", horoscope:"Horoskop", natal:"Bagan", compatibility:"Cocok", ai:"AI", learn:"Belajar", transits:"Transit", community:"Komunitas", tarot:"Tarot" },
+  th: { home:"หน้าแรก", horoscope:"ดูดวง", natal:"ดวง", compatibility:"คู่", ai:"AI", learn:"เรียน", transits:"ดาว", community:"ชุมชน", tarot:"ไพ่" },
+  vi: { home:"Trang chủ", horoscope:"Tử vi", natal:"Bản đồ", compatibility:"Hợp", ai:"AI", learn:"Học", transits:"Quá cảnh", community:"Cộng đồng", tarot:"Tarot" },
+  ms: { home:"Utama", horoscope:"Horoskop", natal:"Carta", compatibility:"Serasi", ai:"AI", learn:"Belajar", transits:"Transit", community:"Komuniti", tarot:"Tarot" },
+  ja: { home:"ホーム", horoscope:"運勢", natal:"星図", compatibility:"相性", ai:"AI", learn:"学習", transits:"トランジット", community:"掲示板", tarot:"タロット" },
+  ko: { home:"홈", horoscope:"운세", natal:"차트", compatibility:"궁합", ai:"AI", learn:"배우기", transits:"행성", community:"커뮤니티", tarot:"타로" },
 };
+
+const LANGUAGES = [
+  { code:"zh", flag:"🇨🇳", label:"中文" },
+  { code:"en", flag:"🇺🇸", label:"EN" },
+  { code:"id", flag:"🇮🇩", label:"ID" },
+  { code:"th", flag:"🇹🇭", label:"ไทย" },
+  { code:"vi", flag:"🇻🇳", label:"VN" },
+  { code:"ms", flag:"🇲🇾", label:"MS" },
+  { code:"ja", flag:"🇯🇵", label:"日本語" },
+  { code:"ko", flag:"🇰🇷", label:"한국" },
+];
 
 export default function Navbar() {
   const { language, setLanguage } = useLanguage();
@@ -44,20 +60,25 @@ export default function Navbar() {
           </div>
         </div>
         <div className="flex items-center">
-          <div className="flex gap-1 mr-3">
-            {(["zh","en","id"] as const).map((l) => (
+          {/* 8-language switcher — visible, labeled */}
+          <div className="flex gap-0.5 mr-3 bg-gray-100 rounded-lg p-0.5">
+            {LANGUAGES.map((l) => (
               <button
-                key={l}
-                onClick={() => setLanguage(l)}
-                className={`text-[11px] font-medium px-2 py-1 rounded transition-colors ${
-                  language === l ? "bg-gray-100 text-[#171717]" : "text-gray-400 hover:text-[#171717]"
+                key={l.code}
+                onClick={() => setLanguage(l.code)}
+                title={l.label}
+                className={`px-2 py-1.5 rounded-md text-xs font-medium transition-all flex items-center gap-1 ${
+                  language === l.code
+                    ? "bg-white text-[#171717] shadow-sm"
+                    : "text-gray-400 hover:text-gray-600"
                 }`}
               >
-                {{zh:"中",en:"EN",id:"ID"}[l]}
+                <span>{l.flag}</span>
+                <span className="hidden lg:inline">{l.label}</span>
               </button>
             ))}
           </div>
-          <Link href="/login" className="text-xs font-medium text-gray-400 hover:text-[#171717] no-underline">登录</Link>
+          <Link href="/login" className="text-xs font-medium text-gray-400 hover:text-[#171717] no-underline shrink-0">登录</Link>
         </div>
       </div>
     </nav>
