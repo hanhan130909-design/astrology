@@ -18,53 +18,9 @@ export default function AboutPage() {
   const t = (translations as Record<string, any>)[language] || translations.zh;
 
   return (
-    <div className="min-h-screen text-white" style={{ background: `linear-gradient(180deg, ${COLORS.midnightBlue} 0%, ${COLORS.deepNavy} 50%, ${COLORS.midnightBlue} 100%)` }}>
+    <div className="min-h-screen text-gray-900" style={{ background: `linear-gradient(180deg, ${COLORS.midnightBlue} 0%, ${COLORS.deepNavy} 50%, ${COLORS.midnightBlue} 100%)` }}>
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 backdrop-blur-md border-b" style={{ backgroundColor: `rgba(15, 23, 42, 0.9)`, borderColor: COLORS.navyBorder }}>
-        <div className="max-w-6xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <span className="text-2xl">✨</span>
-              <span className="text-xl font-bold" style={{ color: COLORS.warmGold }}>{t.siteName}</span>
-            </Link>
-            <div className="flex items-center gap-2">
-              <button 
-                onClick={() => setLanguage("id")} 
-                className="px-3 py-1.5 rounded-lg text-sm transition-all"
-                style={{ 
-                  backgroundColor: language === "id" ? `rgba(212, 165, 116, 0.2)` : 'transparent',
-                  color: language === "id" ? COLORS.warmGold : COLORS.softBlue,
-                  border: language === "id" ? `1px solid ${COLORS.champagneGold}` : 'none'
-                }}
-              >
-                🇮🇩
-              </button>
-              <button 
-                onClick={() => setLanguage("en")} 
-                className="px-3 py-1.5 rounded-lg text-sm transition-all"
-                style={{ 
-                  backgroundColor: language === "en" ? `rgba(212, 165, 116, 0.2)` : 'transparent',
-                  color: language === "en" ? COLORS.warmGold : COLORS.softBlue,
-                  border: language === "en" ? `1px solid ${COLORS.champagneGold}` : 'none'
-                }}
-              >
-                🇺🇸
-              </button>
-              <button 
-                onClick={() => setLanguage("zh")} 
-                className="px-3 py-1.5 rounded-lg text-sm transition-all"
-                style={{ 
-                  backgroundColor: language === "zh" ? `rgba(212, 165, 116, 0.2)` : 'transparent',
-                  color: language === "zh" ? COLORS.warmGold : COLORS.softBlue,
-                  border: language === "zh" ? `1px solid ${COLORS.champagneGold}` : 'none'
-                }}
-              >
-                🇨🇳
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      
 
       {/* Main Content */}
       <main className="max-w-4xl mx-auto px-4 py-16">

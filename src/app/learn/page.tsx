@@ -75,35 +75,26 @@ export default function LearnPage() {
   const planets = Object.keys(PLANET_DATA.zh);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#030014] via-[#0f0f23] to-[#030014] text-white">
+    <div className="min-h-screen bg-gradient-to-b from-[#030014] via-[#0f0f23] to-[#030014] text-gray-900">
       {/* 导航栏 */}
-      <nav className="sticky top-0 z-50 backdrop-blur-xl bg-[#030014]/90 border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 text-purple-300 hover:text-white">
-            <ArrowLeft size={20} />
-            <span className="text-sm">{labels.back}</span>
-          </Link>
-          <h1 className="text-lg font-bold text-white hidden sm:block">星缘</h1>
-          <LanguageSwitcher />
-        </div>
-      </nav>
+      
 
       <main className="max-w-4xl mx-auto px-6 py-8">
         {/* 标题 */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/20 rounded-full text-sm text-purple-300 mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/20 rounded-full text-sm text-purple-700 mb-4">
             <BookOpen size={16} />
             <span>{lang === 'zh' ? '知识库' : lang === 'id' ? 'Pustaka' : 'Knowledge Base'}</span>
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">{labels.title}</h1>
-          <p className="text-slate-400">{labels.subtitle}</p>
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">{labels.title}</h1>
+          <p className="text-gray-500">{labels.subtitle}</p>
         </div>
 
         {/* 行星选择器 */}
         <div className="relative mb-8">
           <button
             onClick={() => setShowList(!showList)}
-            className="w-full p-4 rounded-2xl bg-white/5 border border-white/10 text-left flex items-center justify-between hover:bg-white/10 transition-all"
+            className="w-full p-4 rounded-2xl bg-white/5 border border-gray-200 text-left flex items-center justify-between hover:bg-white/10 transition-all"
           >
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center">
@@ -111,14 +102,14 @@ export default function LearnPage() {
               </div>
               <div>
                 <div className="text-2xl">{planetInfo.symbol}</div>
-                <div className="font-bold text-white">{planetInfo.name}</div>
+                <div className="font-bold text-gray-900">{planetInfo.name}</div>
               </div>
             </div>
-            <ChevronDown size={20} className={`text-slate-400 transition-transform ${showList ? "rotate-180" : ""}`} />
+            <ChevronDown size={20} className={`text-gray-500 transition-transform ${showList ? "rotate-180" : ""}`} />
           </button>
 
           {showList && (
-            <div className="absolute top-full left-0 right-0 mt-2 p-3 rounded-2xl bg-slate-900/95 border border-white/10 backdrop-blur-xl z-50 grid grid-cols-5 gap-2">
+            <div className="absolute top-full left-0 right-0 mt-2 p-3 rounded-2xl bg-slate-900/95 border border-gray-200 backdrop-blur-xl z-50 grid grid-cols-5 gap-2">
               {planets.map(p => {
                 const info = PLANET_DATA.zh[p as keyof typeof PLANET_DATA.zh];
                 const Icon = PLANET_ICONS[p] || Star;
@@ -129,8 +120,8 @@ export default function LearnPage() {
                     onClick={() => { setSelectedPlanet(p); setShowList(false); }}
                     className={`p-3 rounded-xl text-center transition-all ${
                       isActive 
-                        ? "bg-purple-600/30 border border-purple-500 text-white" 
-                        : "bg-white/5 hover:bg-white/10 text-slate-300"
+                        ? "bg-purple-600/30 border border-purple-500 text-gray-900" 
+                        : "bg-white/5 hover:bg-white/10 text-gray-600"
                     }`}
                   >
                     <div className="text-2xl mb-1">{info.symbol}</div>
@@ -145,21 +136,21 @@ export default function LearnPage() {
         {/* 行星详情 */}
         <div className="space-y-6">
           {/* 核心含义 */}
-          <div className="p-6 rounded-2xl bg-gradient-to-br from-purple-900/30 to-pink-900/20 border border-white/10">
-            <h3 className="text-sm font-bold text-amber-300 mb-3 flex items-center gap-2">
+          <div className="p-6 rounded-2xl bg-gradient-to-br from-purple-900/30 to-pink-900/20 border border-gray-200">
+            <h3 className="text-sm font-bold text-amber-600 mb-3 flex items-center gap-2">
               <Star size={16} className="fill-amber-300" /> {labels.meaning}
             </h3>
             <div className="text-3xl mb-3">{planetInfo.symbol}</div>
-            <h4 className="text-xl font-bold text-white mb-2">{planetInfo.name}</h4>
-            <p className="text-slate-300 leading-relaxed">{planetInfo.meaning}</p>
+            <h4 className="text-xl font-bold text-gray-900 mb-2">{planetInfo.name}</h4>
+            <p className="text-gray-600 leading-relaxed">{planetInfo.meaning}</p>
           </div>
 
           {/* 特质标签 */}
-          <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
-            <h3 className="text-sm font-bold text-purple-300 mb-3">{labels.traits}</h3>
+          <div className="p-6 rounded-2xl bg-white/5 border border-gray-200">
+            <h3 className="text-sm font-bold text-purple-700 mb-3">{labels.traits}</h3>
             <div className="flex flex-wrap gap-2">
               {(planetInfo.traits as string[]).map((trait, i) => (
-                <span key={i} className="px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-200 text-sm">
+                <span key={i} className="px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-600 text-sm">
                   {trait}
                 </span>
               ))}
@@ -168,32 +159,32 @@ export default function LearnPage() {
 
           {/* 基本信息 */}
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
-              <div className="text-xs text-slate-400 mb-1">{labels.ruling}</div>
-              <div className="font-bold text-white">{planetInfo.ruling}</div>
+            <div className="p-4 rounded-xl bg-white/5 border border-gray-200 text-center">
+              <div className="text-xs text-gray-500 mb-1">{labels.ruling}</div>
+              <div className="font-bold text-gray-900">{planetInfo.ruling}</div>
             </div>
-            <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
-              <div className="text-xs text-slate-400 mb-1">{labels.day}</div>
-              <div className="font-bold text-white">{planetInfo.day}</div>
+            <div className="p-4 rounded-xl bg-white/5 border border-gray-200 text-center">
+              <div className="text-xs text-gray-500 mb-1">{labels.day}</div>
+              <div className="font-bold text-gray-900">{planetInfo.day}</div>
             </div>
-            <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
-              <div className="text-xs text-slate-400 mb-1">{labels.stone}</div>
-              <div className="font-bold text-white text-sm">{planetInfo.stone}</div>
+            <div className="p-4 rounded-xl bg-white/5 border border-gray-200 text-center">
+              <div className="text-xs text-gray-500 mb-1">{labels.stone}</div>
+              <div className="font-bold text-gray-900 text-sm">{planetInfo.stone}</div>
             </div>
-            <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
-              <div className="text-xs text-slate-400 mb-1">{labels.color}</div>
-              <div className="font-bold text-white">{planetInfo.color}</div>
+            <div className="p-4 rounded-xl bg-white/5 border border-gray-200 text-center">
+              <div className="text-xs text-gray-500 mb-1">{labels.color}</div>
+              <div className="font-bold text-gray-900">{planetInfo.color}</div>
             </div>
-            <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
-              <div className="text-xs text-slate-400 mb-1">{labels.element}</div>
-              <div className="font-bold text-white">{planetInfo.element}</div>
+            <div className="p-4 rounded-xl bg-white/5 border border-gray-200 text-center">
+              <div className="text-xs text-gray-500 mb-1">{labels.element}</div>
+              <div className="font-bold text-gray-900">{planetInfo.element}</div>
             </div>
           </div>
         </div>
 
         {/* 底部导航 */}
         <div className="mt-12 text-center">
-          <Link href="/horoscope" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-xl font-bold text-white transition-all">
+          <Link href="/horoscope" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-xl font-bold text-gray-900 transition-all">
             <Star size={18} className="fill-white" />
             {lang === 'zh' ? '查看星座运势' : lang === 'id' ? 'Lihat Horoskop' : 'View Horoscopes'}
           </Link>

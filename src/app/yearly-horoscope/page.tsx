@@ -134,33 +134,24 @@ export default function YearlyHoroscopePage() {
   if (!mounted) return null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#030014] via-[#0f0f23] to-[#030014] text-white">
+    <div className="min-h-screen bg-gradient-to-b from-[#030014] via-[#0f0f23] to-[#030014] text-gray-900">
       {/* 导航 */}
-      <nav className="sticky top-0 z-50 backdrop-blur-xl bg-[#030014]/90 border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 text-purple-300 hover:text-white">
-            <ArrowLeft size={20} />
-            <span className="text-sm">{labels.back}</span>
-          </Link>
-          <h1 className="text-lg font-bold text-white hidden sm:block">星缘</h1>
-          <LanguageSwitcher />
-        </div>
-      </nav>
+      
 
       <main className="max-w-5xl mx-auto px-6 py-8">
         {/* 标题 */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/20 rounded-full text-sm text-amber-300 mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/20 rounded-full text-sm text-amber-600 mb-4">
             <Calendar size={16} className="fill-amber-300" />
             <span>2026</span>
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">{labels.title}</h1>
-          <p className="text-slate-400">{labels.subtitle}</p>
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">{labels.title}</h1>
+          <p className="text-gray-500">{labels.subtitle}</p>
         </div>
 
         {/* 星座选择 */}
         <div className="mb-8">
-          <p className="text-sm text-slate-400 mb-3 text-center">{labels.select}</p>
+          <p className="text-sm text-gray-500 mb-3 text-center">{labels.select}</p>
           <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-12 gap-2">
             {SIGNS.map(sign => {
               const isActive = selectedSign === sign.id;
@@ -170,8 +161,8 @@ export default function YearlyHoroscopePage() {
                   onClick={() => setSelectedSign(sign.id)}
                   className={`relative p-3 rounded-xl text-center transition-all ${
                     isActive
-                      ? "bg-purple-600/30 border border-purple-500 text-white"
-                      : "bg-white/5 hover:bg-white/10 text-slate-300 border border-transparent"
+                      ? "bg-purple-600/30 border border-purple-500 text-gray-900"
+                      : "bg-white/5 hover:bg-white/10 text-gray-600 border border-transparent"
                   }`}
                 >
                   <div className="text-2xl mb-1">{sign.symbol}</div>
@@ -191,15 +182,15 @@ export default function YearlyHoroscopePage() {
           <h2 className="text-2xl font-bold" style={{ color: elemColor }}>
             {signData.names[lang as keyof typeof signData.names] || signData.names.zh}
           </h2>
-          <p className="text-slate-400 text-sm mt-1">2026 {labels.highlight}</p>
+          <p className="text-gray-500 text-sm mt-1">2026 {labels.highlight}</p>
         </div>
 
         {/* 年度总览 */}
-        <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/20 border border-white/10 rounded-2xl p-6 mb-6">
-          <h3 className="text-sm font-bold text-amber-300 mb-3 flex items-center gap-2">
+        <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/20 border border-gray-200 rounded-2xl p-6 mb-6">
+          <h3 className="text-sm font-bold text-amber-600 mb-3 flex items-center gap-2">
             <Star size={16} className="fill-amber-300" /> {labels.overall}
           </h3>
-          <p className="text-slate-300 leading-relaxed text-sm">{yearlyData.overall}</p>
+          <p className="text-gray-600 leading-relaxed text-sm">{yearlyData.overall}</p>
         </div>
 
         {/* 五维度 */}
@@ -211,19 +202,19 @@ export default function YearlyHoroscopePage() {
             { key: "health", color: "#FF6B6B", icon: "❤️" },
             { key: "spiritual", color: "#A78BFA", icon: "🧘" },
           ].map(({ key, color, icon }) => (
-            <div key={key} className="bg-white/5 border border-white/10 rounded-xl p-4">
+            <div key={key} className="bg-white/5 border border-gray-200 rounded-xl p-4">
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-lg">{icon}</span>
                 <span className="text-sm font-medium" style={{ color }}>{(labels as any)[key]}</span>
               </div>
-              <p className="text-xs text-slate-400 leading-relaxed">{(yearlyData as any)[key]}</p>
+              <p className="text-xs text-gray-500 leading-relaxed">{(yearlyData as any)[key]}</p>
             </div>
           ))}
         </div>
 
         {/* 每月主题 */}
-        <div className="bg-white/5 border border-white/10 rounded-2xl p-5">
-          <h3 className="text-sm font-bold text-amber-300 mb-3 flex items-center gap-2">
+        <div className="bg-white/5 border border-gray-200 rounded-2xl p-5">
+          <h3 className="text-sm font-bold text-amber-600 mb-3 flex items-center gap-2">
             <Calendar size={16} /> {labels.months}
           </h3>
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2">
@@ -234,11 +225,11 @@ export default function YearlyHoroscopePage() {
                 <div key={month}
                   className={`text-center p-2 rounded-lg text-xs ${
                     isNow
-                      ? "bg-amber-500/20 border border-amber-500/40 text-amber-200"
-                      : "bg-white/5 text-slate-400"
+                      ? "bg-amber-500/20 border border-amber-500/40 text-amber-600"
+                      : "bg-white/5 text-gray-500"
                   }`}
                 >
-                  <div className={`font-bold text-base mb-0.5 ${isNow ? "text-amber-300" : "text-slate-300"}`}>
+                  <div className={`font-bold text-base mb-0.5 ${isNow ? "text-amber-600" : "text-gray-600"}`}>
                     {month}{lang === 'zh' ? '月' : ''}
                   </div>
                   <div className="truncate">{theme}</div>

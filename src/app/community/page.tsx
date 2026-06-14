@@ -26,7 +26,7 @@ type Category = typeof CATEGORIES[number];
 
 const CATEGORY_COLORS: Record<Category, string> = {
   daily: 'bg-blue-500/20 text-blue-300',
-  question: 'bg-purple-500/20 text-purple-300',
+  question: 'bg-purple-500/20 text-purple-700',
   experience: 'bg-green-500/20 text-green-300',
   learning: 'bg-orange-500/20 text-orange-300',
 };
@@ -339,24 +339,12 @@ export default function CommunityPage() {
   // If not logged in, show login prompt
   if (!user) {
     return (
-      <div className="min-h-screen bg-[#030014]">
-        <header className="sticky top-0 z-50 bg-[#030014]/80 backdrop-blur-xl border-b border-white/5">
-          <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <Link href="/" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
-                <ArrowLeft className="w-5 h-5" />
-              </Link>
-              <h1 className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                {t.title}
-              </h1>
-            </div>
-            <LanguageSwitcher />
-          </div>
-        </header>
+      <div className="min-h-screen bg-white">
+        
 
         <div className="max-w-4xl mx-auto px-4 py-20 text-center">
           <div className="text-6xl mb-6">🔒</div>
-          <h2 className="text-2xl font-bold text-white mb-4">{t.loginPrompt}</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">{t.loginPrompt}</h2>
           <p className="text-gray-400 mb-8">{t.loginDesc}</p>
           <button
             onClick={handleLogin}
@@ -376,29 +364,9 @@ export default function CommunityPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#030014]">
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-[#030014]/80 backdrop-blur-xl border-b border-white/5">
-        <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Link href="/" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
-              <ArrowLeft className="w-5 h-5" />
-            </Link>
-            <h1 className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              {t.title}
-            </h1>
-          </div>
-          <div className="flex items-center gap-3">
-            <LanguageSwitcher />
-            <button
-              onClick={handleLogout}
-              className="text-sm text-gray-400 hover:text-white transition-colors"
-            >
-              {t.logout}
-            </button>
-          </div>
-        </div>
-      </header>
+      
 
       <div className="max-w-4xl mx-auto px-4 py-6">
         {/* Search & New Post */}
@@ -410,12 +378,12 @@ export default function CommunityPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={t.search}
-              className="w-full pl-12 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-purple-500/50 focus:outline-none"
+              className="w-full pl-12 pr-4 py-3 bg-white/5 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-500 focus:border-purple-500/50 focus:outline-none"
             />
           </div>
           <button
             onClick={() => setShowNewPost(true)}
-            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl text-white font-medium hover:from-purple-500 hover:to-indigo-500 transition-all"
+            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl text-gray-900 font-medium hover:from-purple-500 hover:to-indigo-500 transition-all"
           >
             <Plus className="w-5 h-5" />
             <span className="hidden sm:inline">{t.newPost}</span>
@@ -425,12 +393,12 @@ export default function CommunityPage() {
         {/* New Post Modal */}
         {showNewPost && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-            <div className="w-full max-w-lg bg-[#0f0f23] rounded-2xl border border-white/10 p-6">
+            <div className="w-full max-w-lg bg-[#0f0f23] rounded-2xl border border-gray-200 p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-white">{t.newPost}</h3>
+                <h3 className="text-lg font-semibold text-gray-900">{t.newPost}</h3>
                 <button
                   onClick={() => { setShowNewPost(false); setNewPostContent(''); setNewPostZodiac(''); }}
-                  className="text-gray-400 hover:text-white"
+                  className="text-gray-400 hover:text-purple-700"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -462,7 +430,7 @@ export default function CommunityPage() {
                 <select
                   value={newPostZodiac}
                   onChange={(e) => setNewPostZodiac(e.target.value)}
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:border-purple-500/50 focus:outline-none appearance-none cursor-pointer"
+                  className="w-full px-4 py-3 bg-white/5 border border-gray-200 rounded-xl text-gray-900 focus:border-purple-500/50 focus:outline-none appearance-none cursor-pointer"
                 >
                   <option value="">{t.zodiacTag}</option>
                   {ZODIAC_SIGNS.map(sign => (
@@ -476,20 +444,20 @@ export default function CommunityPage() {
                 value={newPostContent}
                 onChange={(e) => setNewPostContent(e.target.value)}
                 placeholder={t.writeSomething}
-                className="w-full h-32 p-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 resize-none focus:border-purple-500/50 focus:outline-none mb-4"
+                className="w-full h-32 p-4 bg-white/5 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-500 resize-none focus:border-purple-500/50 focus:outline-none mb-4"
               />
 
               <div className="flex items-center justify-end gap-2">
                 <button
                   onClick={() => { setShowNewPost(false); setNewPostContent(''); setNewPostZodiac(''); }}
-                  className="px-4 py-2 text-gray-400 hover:text-white transition-colors"
+                  className="px-4 py-2 text-gray-400 hover:text-purple-700 transition-colors"
                 >
                   {t.cancel}
                 </button>
                 <button
                   onClick={handlePost}
                   disabled={!newPostContent.trim()}
-                  className="flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg text-white font-medium hover:from-purple-500 hover:to-indigo-500 transition-all disabled:opacity-50"
+                  className="flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg text-gray-900 font-medium hover:from-purple-500 hover:to-indigo-500 transition-all disabled:opacity-50"
                 >
                   <Send className="w-4 h-4" />
                   {t.post}
@@ -505,7 +473,7 @@ export default function CommunityPage() {
         ) : filteredPosts.length === 0 ? (
           <div className="text-center py-12">
             <div className="text-6xl mb-4">💫</div>
-            <h3 className="text-xl font-semibold text-white mb-2">{t.noPosts}</h3>
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">{t.noPosts}</h3>
             <p className="text-gray-400">{t.beFirst}</p>
           </div>
         ) : (
@@ -513,11 +481,11 @@ export default function CommunityPage() {
             {filteredPosts.map((post) => (
               <article
                 key={post.id}
-                className="bg-white/5 rounded-2xl p-6 border border-white/5 hover:border-purple-500/20 transition-all"
+                className="bg-white/5 rounded-2xl p-6 border border-gray-200 hover:border-purple-500/20 transition-all"
               >
                 {/* Author */}
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-lg text-white">
+                  <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-lg text-gray-900">
                     {post.authorPhoto ? (
                       <img src={post.authorPhoto} alt="" className="w-full h-full rounded-full object-cover" />
                     ) : (
@@ -525,12 +493,12 @@ export default function CommunityPage() {
                     )}
                   </div>
                   <div>
-                    <div className="font-medium text-white">{post.authorName || t.unknown}</div>
+                    <div className="font-medium text-gray-900">{post.authorName || t.unknown}</div>
                     <div className="text-sm text-gray-500">
                       {post.zodiacTag && `${post.zodiacTag} · `}{formatTime(post.createdAt)}
                     </div>
                   </div>
-                  <button className="ml-auto text-gray-500 hover:text-white">
+                  <button className="ml-auto text-gray-500 hover:text-purple-700">
                     <MoreHorizontal className="w-5 h-5" />
                   </button>
                 </div>
@@ -546,7 +514,7 @@ export default function CommunityPage() {
                 <p className="text-gray-300 mb-4 leading-relaxed whitespace-pre-wrap">{post.content}</p>
 
                 {/* Actions */}
-                <div className="flex items-center gap-6 pt-4 border-t border-white/5">
+                <div className="flex items-center gap-6 pt-4 border-t border-gray-200">
                   <button
                     onClick={() => handleLike(post.id)}
                     className={`flex items-center gap-2 transition-colors ${
@@ -567,7 +535,7 @@ export default function CommunityPage() {
 
                 {/* Comments Section */}
                 {expandedComments[post.id] && (
-                  <div className="mt-4 pt-4 border-t border-white/5">
+                  <div className="mt-4 pt-4 border-t border-gray-200">
                     {/* Comment List */}
                     {comments[post.id] && comments[post.id].length > 0 ? (
                       <div className="space-y-3 mb-4">
@@ -577,11 +545,11 @@ export default function CommunityPage() {
                               {comment.authorPhoto ? (
                                 <img src={comment.authorPhoto} alt="" className="w-full h-full rounded-full object-cover" />
                               ) : (
-                                <User className="w-4 h-4 text-white" />
+                                <User className="w-4 h-4 text-gray-900" />
                               )}
                             </div>
                             <div className="flex-1">
-                              <div className="text-sm font-medium text-white">{comment.authorName || t.unknown}</div>
+                              <div className="text-sm font-medium text-gray-900">{comment.authorName || t.unknown}</div>
                               <div className="text-sm text-gray-400 mt-1">{comment.content}</div>
                               <div className="text-xs text-gray-500 mt-1">{formatTime(comment.createdAt)}</div>
                             </div>
@@ -599,13 +567,13 @@ export default function CommunityPage() {
                         value={newComments[post.id] || ''}
                         onChange={(e) => setNewComments(prev => ({ ...prev, [post.id]: e.target.value }))}
                         placeholder={t.comment}
-                        className="flex-1 px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 text-sm focus:border-purple-500/50 focus:outline-none"
+                        className="flex-1 px-4 py-2 bg-white/5 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 text-sm focus:border-purple-500/50 focus:outline-none"
                         onKeyDown={(e) => e.key === 'Enter' && handleAddComment(post.id)}
                       />
                       <button
                         onClick={() => handleAddComment(post.id)}
                         disabled={!newComments[post.id]?.trim()}
-                        className="px-4 py-2 bg-purple-600 text-white rounded-lg text-sm hover:bg-purple-500 transition-all disabled:opacity-50"
+                        className="px-4 py-2 bg-purple-600 text-gray-900 rounded-lg text-sm hover:bg-purple-500 transition-all disabled:opacity-50"
                       >
                         {t.submitComment}
                       </button>

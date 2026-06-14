@@ -483,7 +483,7 @@ export default function HomePage() {
   const currentZodiac = ZODIAC_DATA[selectedZodiac as keyof typeof ZODIAC_DATA];
 
   return (
-    <div className="min-h-screen bg-[#030014] text-slate-200 font-sans antialiased">
+    <div className="min-h-screen bg-white text-gray-800 font-sans antialiased">
       {/* Animated Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 -left-40 w-80 h-80 bg-purple-500/20 rounded-full blur-[100px] animate-pulse" />
@@ -492,12 +492,12 @@ export default function HomePage() {
       </div>
 
       {/* Navigation */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-[#030014]/95 backdrop-blur-xl border-b border-white/5 py-3' : 'bg-transparent py-5'}`}>
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-white/95 backdrop-blur-xl border-b border-gray-200 py-3' : 'bg-transparent py-5'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative">
               <div className="w-11 h-11 bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/30 group-hover:shadow-purple-500/50 transition-shadow">
-                <Star className="w-6 h-6 text-white fill-white" />
+                <Star className="w-6 h-6 text-gray-900 fill-white" />
               </div>
               <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-500 rounded-xl blur opacity-30 group-hover:opacity-50 transition-opacity" />
             </div>
@@ -505,18 +505,18 @@ export default function HomePage() {
               <h1 className="text-xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-amber-400 bg-clip-text text-transparent">
                 {t('siteName')}
               </h1>
-              <p className="text-[9px] text-slate-500 tracking-[0.2em] uppercase">Astrology</p>
+              <p className="text-[9px] text-gray-400 tracking-[0.2em] uppercase">Astrology</p>
             </div>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
-            <a href="#features" className="text-sm text-slate-400 hover:text-white transition-colors">{t_nav.features}</a>
-            <a href="#zodiac" className="text-sm text-slate-400 hover:text-white transition-colors">{t_zodiac.title.split(' ')[0]}</a>
-            <a href="#reviews" className="text-sm text-slate-400 hover:text-white transition-colors">{t_testimonials.title}</a>
+            <a href="#features" className="text-sm text-gray-500 hover:text-purple-700 transition-colors">{t_nav.features}</a>
+            <a href="#zodiac" className="text-sm text-gray-500 hover:text-purple-700 transition-colors">{t_zodiac.title.split(' ')[0]}</a>
+            <a href="#reviews" className="text-sm text-gray-500 hover:text-purple-700 transition-colors">{t_testimonials.title}</a>
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="flex gap-1 bg-white/5 rounded-xl p-1 border border-white/5">
+            <div className="flex gap-1 bg-white/5 rounded-xl p-1 border border-gray-200">
               {([
                 { code: 'zh', label: '中文' },
                 { code: 'en', label: 'EN' },
@@ -531,7 +531,7 @@ export default function HomePage() {
                   key={l.code}
                   onClick={() => setLanguage(l.code as any)}
                   className={`px-2 py-1.5 rounded-lg text-xs font-medium transition-all ${
-                    language === l.code ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'
+                    language === l.code ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-gray-900 shadow-lg' : 'text-gray-500 hover:text-purple-700'
                   }`}
                 >
                   {l.label}
@@ -541,13 +541,13 @@ export default function HomePage() {
             
             {user ? (
               <div className="flex items-center gap-2">
-                <Link href="/profile" className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-purple-500/20">
+                <Link href="/profile" className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center text-gray-900 font-bold text-sm shadow-lg shadow-purple-500/20">
                   {user.displayName?.[0] || user.email?.[0] || 'U'}
                 </Link>
-                <button onClick={logout} className="p-2 text-slate-400 hover:text-white transition-colors"><LogOut size={16} /></button>
+                <button onClick={logout} className="p-2 text-gray-500 hover:text-purple-700 transition-colors"><LogOut size={16} /></button>
               </div>
             ) : (
-              <Link href="/login" className="hidden sm:flex px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-sm font-medium text-white transition-all">
+              <Link href="/login" className="hidden sm:flex px-4 py-2 bg-white/5 hover:bg-white/10 border border-gray-200 rounded-xl text-sm font-medium text-gray-900 transition-all">
                 {t_nav.login}
               </Link>
             )}
@@ -560,9 +560,9 @@ export default function HomePage() {
         <section className="relative min-h-[90vh] flex items-center pt-32 pb-20">
           <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-gray-200 mb-6">
                 <Sparkle size={14} className="text-amber-400 fill-amber-400" />
-                <span className="text-sm text-slate-300">{t_hero.badge}</span>
+                <span className="text-sm text-gray-600">{t_hero.badge}</span>
               </div>
               
               <h1 className="text-5xl lg:text-6xl xl:text-7xl font-black mb-6 leading-tight">
@@ -575,22 +575,22 @@ export default function HomePage() {
                 </span>
               </h1>
               
-              <p className="text-lg text-slate-400 mb-8 max-w-lg leading-relaxed">
+              <p className="text-lg text-gray-500 mb-8 max-w-lg leading-relaxed">
                 {t_hero.subtitle}
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Link href="/natal" className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-2xl font-bold text-white transition-all shadow-2xl shadow-purple-500/30 hover:shadow-purple-500/50 hover:scale-105">
+                <Link href="/natal" className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-2xl font-bold text-gray-900 transition-all shadow-2xl shadow-purple-500/30 hover:shadow-purple-500/50 hover:scale-105">
                   {t_hero.cta}
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <a href="#features" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl font-medium text-white transition-all">
+                <a href="#features" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/5 hover:bg-white/10 border border-gray-200 rounded-2xl font-medium text-gray-900 transition-all">
                   <Play size={18} />
                   {t_hero.ctaSecondary}
                 </a>
               </div>
 
-              <div className="flex items-center gap-4 text-sm text-slate-500">
+              <div className="flex items-center gap-4 text-sm text-gray-400">
                 <Shield size={16} className="text-emerald-500" />
                 <span>{t_hero.free}</span>
               </div>
@@ -655,7 +655,7 @@ export default function HomePage() {
         </section>
 
         {/* Stats Section */}
-        <section className="py-16 border-y border-white/5 bg-white/[0.02]">
+        <section className="py-16 border-y border-gray-200 bg-white/[0.02]">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-3 gap-8">
               {STATS.map((stat, i) => (
@@ -663,7 +663,7 @@ export default function HomePage() {
                   <div className="text-4xl lg:text-5xl font-black bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-slate-400">{getText(stat.label, lang)}</div>
+                  <div className="text-sm text-gray-500">{getText(stat.label, lang)}</div>
                 </div>
               ))}
             </div>
@@ -675,8 +675,8 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
               <span className="text-purple-400 text-sm font-medium tracking-wider uppercase">{t_features.subtitle}</span>
-              <h2 className="text-4xl lg:text-5xl font-black text-white mt-3 mb-4">{t_features.title}</h2>
-              <p className="text-slate-400 max-w-2xl mx-auto">{lang === 'zh' ? '专为初学者和专家设计的专业占星工具' : lang === 'en' ? 'Discover professional astrology tools designed for both beginners and experts' : lang === 'id' ? 'Temukan alat astrologi profesional untuk pemula dan ahli' : lang === 'th' ? 'ค้นพบเครื่องมือโหราศาสตร์มืออาชีพสำหรับทั้งผู้เริ่มต้นและผู้เชี่ยวชาญ' : lang === 'vi' ? 'Khám phá các công cụ chiêm tinh chuyên nghiệp dành cho cả người mới và chuyên gia' : lang === 'ms' ? 'Temui alat astrologi profesional untuk pemula dan pakar' : lang === 'ja' ? '初心者から専門家まで、プロフェッショナルな占星ツール' : lang === 'ko' ? '초보자와 전문가 모두를 위한 전문 점성술 도구' : 'Discover professional astrology tools designed for both beginners and experts'}</p>
+              <h2 className="text-4xl lg:text-5xl font-black text-gray-900 mt-3 mb-4">{t_features.title}</h2>
+              <p className="text-gray-500 max-w-2xl mx-auto">{lang === 'zh' ? '专为初学者和专家设计的专业占星工具' : lang === 'en' ? 'Discover professional astrology tools designed for both beginners and experts' : lang === 'id' ? 'Temukan alat astrologi profesional untuk pemula dan ahli' : lang === 'th' ? 'ค้นพบเครื่องมือโหราศาสตร์มืออาชีพสำหรับทั้งผู้เริ่มต้นและผู้เชี่ยวชาญ' : lang === 'vi' ? 'Khám phá các công cụ chiêm tinh chuyên nghiệp dành cho cả người mới và chuyên gia' : lang === 'ms' ? 'Temui alat astrologi profesional untuk pemula dan pakar' : lang === 'ja' ? '初心者から専門家まで、プロフェッショナルな占星ツール' : lang === 'ko' ? '초보자와 전문가 모두를 위한 전문 점성술 도구' : 'Discover professional astrology tools designed for both beginners and experts'}</p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -697,7 +697,7 @@ export default function HomePage() {
                     }`}
                   >
                     {feature.premium && (
-                      <div className="absolute top-4 right-4 px-2 py-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full text-[10px] font-bold text-white">
+                      <div className="absolute top-4 right-4 px-2 py-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full text-[10px] font-bold text-gray-900">
                         PRO
                       </div>
                     )}
@@ -711,8 +711,8 @@ export default function HomePage() {
                     }`}>
                       <Icon className="w-7 h-7" />
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-2">{getText(feature.title, lang)}</h3>
-                    <p className="text-sm text-slate-400 mb-4">{getText(feature.desc, lang)}</p>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{getText(feature.title, lang)}</h3>
+                    <p className="text-sm text-gray-500 mb-4">{getText(feature.desc, lang)}</p>
                     <div className={`flex items-center gap-1 text-sm font-medium ${
                       feature.color === 'purple' ? 'text-purple-400' :
                       feature.color === 'cyan' ? 'text-cyan-400' :
@@ -736,8 +736,8 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
               <span className="text-purple-400 text-sm font-medium tracking-wider uppercase">✨ {t_zodiac.title.split(' ')[0]}</span>
-              <h2 className="text-4xl lg:text-5xl font-black text-white mt-3 mb-4">{t_zodiac.title}</h2>
-              <p className="text-slate-400">{t_zodiac.subtitle}</p>
+              <h2 className="text-4xl lg:text-5xl font-black text-gray-900 mt-3 mb-4">{t_zodiac.title}</h2>
+              <p className="text-gray-500">{t_zodiac.subtitle}</p>
             </div>
 
             <div className="relative">
@@ -750,14 +750,14 @@ export default function HomePage() {
                     className={`group relative p-4 rounded-2xl border transition-all duration-300 hover:scale-105 ${
                       selectedZodiac === id 
                         ? 'bg-white/10 border-white/20' 
-                        : 'bg-white/[0.02] border-white/5 hover:border-white/10'
+                        : 'bg-white/[0.02] border-gray-200 hover:border-gray-200'
                     }`}
                     onMouseEnter={() => setSelectedZodiac(id)}
                   >
                     <div className="text-center">
                       <div className="text-4xl mb-2 transition-transform group-hover:scale-110">{data.icon}</div>
-                      <div className="text-sm font-medium text-white capitalize">{id}</div>
-                      <div className="text-xs text-slate-500 mt-1">{data.dates}</div>
+                      <div className="text-sm font-medium text-gray-900 capitalize">{id}</div>
+                      <div className="text-xs text-gray-400 mt-1">{data.dates}</div>
                     </div>
                     {selectedZodiac === id && (
                       <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${data.gradient} opacity-10 -z-10`} />
@@ -768,19 +768,19 @@ export default function HomePage() {
 
               {/* Selected Zodiac Detail */}
               <div className={`mt-8 p-6 rounded-2xl bg-gradient-to-r ${currentZodiac?.gradient || 'from-purple-600 to-pink-600'} opacity-10`} />
-              <div className="-mt-24 relative z-10 p-8 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10">
+              <div className="-mt-24 relative z-10 p-8 rounded-2xl bg-white/5 backdrop-blur-xl border border-gray-200">
                 <div className="flex items-start gap-6">
                   <div className="text-6xl">{currentZodiac?.icon}</div>
                   <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-white mb-1 capitalize">{selectedZodiac}</h3>
-                    <p className="text-sm text-slate-400 mb-4">{currentZodiac?.dates} · {getText({...ELEMENT_COLORS[currentZodiac?.element as keyof typeof ELEMENT_COLORS]?.label}, lang)}</p>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-1 capitalize">{selectedZodiac}</h3>
+                    <p className="text-sm text-gray-500 mb-4">{currentZodiac?.dates} · {getText({...ELEMENT_COLORS[currentZodiac?.element as keyof typeof ELEMENT_COLORS]?.label}, lang)}</p>
                     <div className="flex flex-wrap gap-2">
                       {(currentZodiac?.traits[validLang as keyof typeof currentZodiac.traits] || currentZodiac?.traits.zh || [])?.map((trait, i) => (
-                        <span key={i} className="px-3 py-1 bg-white/10 rounded-full text-sm text-white/80">{trait}</span>
+                        <span key={i} className="px-3 py-1 bg-white/10 rounded-full text-sm text-gray-900/80">{trait}</span>
                       ))}
                     </div>
                   </div>
-                  <Link href={`/horoscope?sign=${selectedZodiac}`} className="px-6 py-3 bg-white/10 hover:bg-white/20 rounded-xl text-sm font-medium text-white transition-all">
+                  <Link href={`/horoscope?sign=${selectedZodiac}`} className="px-6 py-3 bg-white/10 hover:bg-white/20 rounded-xl text-sm font-medium text-gray-900 transition-all">
                     {lang === 'zh' ? '查看运势' : lang === 'en' ? 'View Horoscope' : lang === 'id' ? 'Lihat Horoskop' : lang === 'th' ? 'ดูดวงชะตา' : lang === 'vi' ? 'Xem Tử vi' : lang === 'ms' ? 'Lihat Horoskop' : lang === 'ja' ? '運勢を見る' : '운세 보기'}
                   </Link>
                 </div>
@@ -794,26 +794,26 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
               <span className="text-purple-400 text-sm font-medium tracking-wider uppercase">💬 {t_testimonials.subtitle}</span>
-              <h2 className="text-4xl lg:text-5xl font-black text-white mt-3 mb-4">{t_testimonials.title}</h2>
+              <h2 className="text-4xl lg:text-5xl font-black text-gray-900 mt-3 mb-4">{t_testimonials.title}</h2>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
               {TESTIMONIALS.map((testimonial, i) => (
-                <div key={i} className="p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/10 transition-all">
+                <div key={i} className="p-6 rounded-2xl bg-white/[0.03] border border-gray-200 hover:border-gray-200 transition-all">
                   <div className="flex gap-1 mb-4">
                     {Array.from({ length: testimonial.rating }).map((_, j) => (
                       <StarIcon key={j} size={14} className="fill-amber-400 text-amber-400" />
                     ))}
                   </div>
                   <Quote size={24} className="text-purple-500/50 mb-3" />
-                  <p className="text-sm text-slate-300 mb-6 leading-relaxed">&ldquo;{getText(testimonial.content, lang)}&rdquo;</p>
+                  <p className="text-sm text-gray-600 mb-6 leading-relaxed">&ldquo;{getText(testimonial.content, lang)}&rdquo;</p>
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center text-white font-bold text-sm">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center text-gray-900 font-bold text-sm">
                       {testimonial.avatar}
                     </div>
                     <div>
-                      <div className="font-medium text-white text-sm">{getText(testimonial.name, lang)}</div>
-                      <div className="text-xs text-slate-500">{getText(testimonial.role, lang)}</div>
+                      <div className="font-medium text-gray-900 text-sm">{getText(testimonial.name, lang)}</div>
+                      <div className="text-xs text-gray-400">{getText(testimonial.role, lang)}</div>
                     </div>
                   </div>
                 </div>
@@ -831,9 +831,9 @@ export default function HomePage() {
               
               <div className="relative z-10">
                 <Sparkles size={40} className="mx-auto text-amber-400 mb-6" />
-                <h2 className="text-3xl lg:text-4xl font-black text-white mb-4">{t_cta.title}</h2>
-                <p className="text-slate-400 mb-8 max-w-xl mx-auto">{t_cta.subtitle}</p>
-                <Link href="/natal" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-2xl font-bold text-white transition-all shadow-2xl shadow-purple-500/30">
+                <h2 className="text-3xl lg:text-4xl font-black text-gray-900 mb-4">{t_cta.title}</h2>
+                <p className="text-gray-500 mb-8 max-w-xl mx-auto">{t_cta.subtitle}</p>
+                <Link href="/natal" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-2xl font-bold text-gray-900 transition-all shadow-2xl shadow-purple-500/30">
                   {t_cta.button}
                   <ArrowRight size={18} />
                 </Link>
@@ -843,52 +843,52 @@ export default function HomePage() {
         </section>
 
         {/* Footer */}
-        <footer className="border-t border-white/5 py-12">
+        <footer className="border-t border-gray-200 py-12">
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl flex items-center justify-center">
-                  <Star className="w-5 h-5 text-white fill-white" />
+                  <Star className="w-5 h-5 text-gray-900 fill-white" />
                 </div>
-                <span className="font-bold text-white">{t('siteName')}</span>
+                <span className="font-bold text-gray-900">{t('siteName')}</span>
               </div>
-              <div className="flex gap-6 text-sm text-slate-400">
-                <a href="#" className="hover:text-white transition-colors">{lang === 'zh' ? '隐私政策' : lang === 'en' ? 'Privacy' : lang === 'id' ? 'Kebijakan Privasi' : lang === 'th' ? 'นโยบายความเป็นส่วนตัว' : lang === 'vi' ? 'Chính sách bảo mật' : lang === 'ms' ? 'Dasar Privasi' : lang === 'ja' ? 'プライバシーポリシー' : '개인정보 처리방침'}</a>
-                <a href="#" className="hover:text-white transition-colors">{lang === 'zh' ? '服务条款' : lang === 'en' ? 'Terms' : lang === 'id' ? 'Syarat Layanan' : lang === 'th' ? 'ข้อกำหนดการใช้งาน' : lang === 'vi' ? 'Điều khoản dịch vụ' : lang === 'ms' ? 'Terma Perkhidmatan' : lang === 'ja' ? '利用規約' : '서비스 약관'}</a>
-                <a href="#" className="hover:text-white transition-colors">{lang === 'zh' ? '联系我们' : lang === 'en' ? 'Contact' : lang === 'id' ? 'Hubungi Kami' : lang === 'th' ? 'ติดต่อเรา' : lang === 'vi' ? 'Liên hệ' : lang === 'ms' ? 'Hubungi Kami' : lang === 'ja' ? 'お問い合わせ' : '문의하기'}</a>
+              <div className="flex gap-6 text-sm text-gray-500">
+                <a href="#" className="hover:text-purple-700 transition-colors">{lang === 'zh' ? '隐私政策' : lang === 'en' ? 'Privacy' : lang === 'id' ? 'Kebijakan Privasi' : lang === 'th' ? 'นโยบายความเป็นส่วนตัว' : lang === 'vi' ? 'Chính sách bảo mật' : lang === 'ms' ? 'Dasar Privasi' : lang === 'ja' ? 'プライバシーポリシー' : '개인정보 처리방침'}</a>
+                <a href="#" className="hover:text-purple-700 transition-colors">{lang === 'zh' ? '服务条款' : lang === 'en' ? 'Terms' : lang === 'id' ? 'Syarat Layanan' : lang === 'th' ? 'ข้อกำหนดการใช้งาน' : lang === 'vi' ? 'Điều khoản dịch vụ' : lang === 'ms' ? 'Terma Perkhidmatan' : lang === 'ja' ? '利用規約' : '서비스 약관'}</a>
+                <a href="#" className="hover:text-purple-700 transition-colors">{lang === 'zh' ? '联系我们' : lang === 'en' ? 'Contact' : lang === 'id' ? 'Hubungi Kami' : lang === 'th' ? 'ติดต่อเรา' : lang === 'vi' ? 'Liên hệ' : lang === 'ms' ? 'Hubungi Kami' : lang === 'ja' ? 'お問い合わせ' : '문의하기'}</a>
               </div>
-              <div className="text-sm text-slate-500">© 2024 {t('siteName')}. {lang === 'zh' ? '版权所有' : lang === 'en' ? 'All rights reserved' : lang === 'id' ? 'Hak cipta' : lang === 'th' ? 'สงวนลิขสิทธิ์' : lang === 'vi' ? 'Bảo lưu mọi quyền' : lang === 'ms' ? 'Hak cipta terpelihara' : lang === 'ja' ? '全著作権所有' : '모든 권리 보유'}.</div>
+              <div className="text-sm text-gray-400">© 2024 {t('siteName')}. {lang === 'zh' ? '版权所有' : lang === 'en' ? 'All rights reserved' : lang === 'id' ? 'Hak cipta' : lang === 'th' ? 'สงวนลิขสิทธิ์' : lang === 'vi' ? 'Bảo lưu mọi quyền' : lang === 'ms' ? 'Hak cipta terpelihara' : lang === 'ja' ? '全著作権所有' : '모든 권리 보유'}.</div>
             </div>
           </div>
         </footer>
       </main>
 
       {/* Bottom Navigation for Mobile */}
-      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-[#030014]/95 backdrop-blur-xl border-t border-white/5 md:hidden">
+      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-t border-gray-200 md:hidden">
         <div className="flex justify-around py-3">
           <Link href="/" className="flex flex-col items-center gap-1 text-purple-400">
             <Home size={20} />
             <span className="text-[10px]">{t_nav.home}</span>
           </Link>
-          <Link href="/natal" className="flex flex-col items-center gap-1 text-slate-400">
+          <Link href="/natal" className="flex flex-col items-center gap-1 text-gray-500">
             <Orbit size={20} />
             <span className="text-[10px]">{lang === 'zh' ? '星盘' : lang === 'en' ? 'Chart' : lang === 'id' ? 'Bagan' : lang === 'th' ? 'แผนภูมิ' : lang === 'vi' ? 'Biểu đồ' : lang === 'ms' ? 'Carta' : lang === 'ja' ? 'チャート' : '차트'}</span>
           </Link>
-          <Link href="/horoscope" className="flex flex-col items-center gap-1 text-slate-400">
+          <Link href="/horoscope" className="flex flex-col items-center gap-1 text-gray-500">
             <Sun size={20} />
             <span className="text-[10px]">{lang === 'zh' ? '运势' : lang === 'en' ? 'Horoscope' : lang === 'id' ? 'Horoskop' : lang === 'th' ? 'ดวงชะตา' : lang === 'vi' ? 'Tử vi' : lang === 'ms' ? 'Horoskop' : lang === 'ja' ? '運勢' : '운세'}</span>
           </Link>
-          <Link href="/ai-reading" className="flex flex-col items-center gap-1 text-slate-400">
+          <Link href="/ai-reading" className="flex flex-col items-center gap-1 text-gray-500">
             <BrainCircuit size={20} />
             <span className="text-[10px]">AI</span>
           </Link>
           {user ? (
-            <Link href="/user" className="flex flex-col items-center gap-1 text-slate-400">
+            <Link href="/user" className="flex flex-col items-center gap-1 text-gray-500">
               <User size={20} />
               <span className="text-[10px]">{lang === 'zh' ? '我的' : lang === 'en' ? 'Me' : lang === 'id' ? 'Saya' : lang === 'th' ? 'ของฉัน' : lang === 'vi' ? 'Tôi' : lang === 'ms' ? 'Saya' : lang === 'ja' ? 'マイ' : '나'}</span>
             </Link>
           ) : (
-            <Link href="/login" className="flex flex-col items-center gap-1 text-slate-400">
+            <Link href="/login" className="flex flex-col items-center gap-1 text-gray-500">
               <User size={20} />
               <span className="text-[10px]">{t_nav.login}</span>
             </Link>

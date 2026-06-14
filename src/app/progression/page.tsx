@@ -86,29 +86,19 @@ export default function ProgressionPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#020617] via-[#0f0f23] to-[#020617] text-white">
-      <nav className="sticky top-0 z-50 backdrop-blur-md bg-[#020617]/90 border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/chart" className="flex items-center gap-2 text-purple-300 hover:text-purple-200 transition-colors">
-              <ArrowLeft size={20} />
-              <span className="text-sm">{language === 'zh' ? '返回星盘中心' : 'Back'}</span>
-            </Link>
-            <LanguageSwitcher />
-          </div>
-        </div>
-      </nav>
+    <div className="min-h-screen bg-gradient-to-b from-[#020617] via-[#0f0f23] to-[#020617] text-gray-900">
+      
 
       <main className="max-w-7xl mx-auto px-6 py-8">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/20 rounded-full text-sm text-purple-300 mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/20 rounded-full text-sm text-purple-700 mb-4">
             <TrendingUp size={16} />
             {language === 'zh' ? '次限推运 & 法达' : 'Progression & Firdaria'}
           </div>
-          <h1 className="text-3xl font-bold text-white mb-2">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
             {language === 'zh' ? '📈 大运周期分析' : '📈 Life Progression Analysis'}
           </h1>
-          <p className="text-slate-400 max-w-xl mx-auto text-sm">
+          <p className="text-gray-500 max-w-xl mx-auto text-sm">
             {language === 'zh' 
               ? '次限推运(1天=1年)与法达大运周期，洞察人生不同阶段的主题' 
               : 'Secondary progression & Firdaria periods, revealing life stage themes'}
@@ -118,25 +108,25 @@ export default function ProgressionPage() {
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Input Form */}
           <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-700/50">
-            <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+            <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
               <Calendar size={18} className="text-purple-400"/>
               {language === 'zh' ? '出生信息' : 'Birth Information'}
             </h2>
             
             <div className="grid grid-cols-3 gap-3 mb-4">
               <div>
-                <label className="text-xs text-slate-400 block mb-1">{language === 'zh' ? '年' : 'Year'}</label>
-                <input type="number" value={bYear} onChange={e => setBYear(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-white text-sm"/>
+                <label className="text-xs text-gray-500 block mb-1">{language === 'zh' ? '年' : 'Year'}</label>
+                <input type="number" value={bYear} onChange={e => setBYear(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-gray-900 text-sm"/>
               </div>
               <div>
-                <label className="text-xs text-slate-400 block mb-1">{language === 'zh' ? '月' : 'Month'}</label>
-                <select value={bMonth} onChange={e => setBMonth(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-white text-sm">
+                <label className="text-xs text-gray-500 block mb-1">{language === 'zh' ? '月' : 'Month'}</label>
+                <select value={bMonth} onChange={e => setBMonth(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-gray-900 text-sm">
                   {Array.from({length:12},(_,i)=><option key={i+1} value={i+1}>{i+1}</option>)}
                 </select>
               </div>
               <div>
-                <label className="text-xs text-slate-400 block mb-1">{language === 'zh' ? '日' : 'Day'}</label>
-                <select value={bDay} onChange={e => setBDay(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-white text-sm">
+                <label className="text-xs text-gray-500 block mb-1">{language === 'zh' ? '日' : 'Day'}</label>
+                <select value={bDay} onChange={e => setBDay(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-gray-900 text-sm">
                   {Array.from({length:31},(_,i)=><option key={i+1} value={i+1}>{i+1}</option>)}
                 </select>
               </div>
@@ -144,40 +134,40 @@ export default function ProgressionPage() {
 
             <div className="grid grid-cols-2 gap-3 mb-4">
               <div>
-                <label className="text-xs text-slate-400 block mb-1">{language === 'zh' ? '时' : 'Hour'}</label>
-                <select value={bHour} onChange={e => setBHour(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-white text-sm">
+                <label className="text-xs text-gray-500 block mb-1">{language === 'zh' ? '时' : 'Hour'}</label>
+                <select value={bHour} onChange={e => setBHour(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-gray-900 text-sm">
                   {Array.from({length:24},(_,i)=><option key={i} value={i}>{i}:00</option>)}
                 </select>
               </div>
               <div>
-                <label className="text-xs text-slate-400 block mb-1">{language === 'zh' ? '分' : 'Min'}</label>
-                <select value={bMinute} onChange={e => setBMinute(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-white text-sm">
+                <label className="text-xs text-gray-500 block mb-1">{language === 'zh' ? '分' : 'Min'}</label>
+                <select value={bMinute} onChange={e => setBMinute(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-gray-900 text-sm">
                   {Array.from({length:12},(_,i)=><option key={i*5} value={i*5}>{i*5}</option>)}
                 </select>
               </div>
             </div>
 
             <div className="mb-4">
-              <label className="text-xs text-slate-400 block mb-1">{language === 'zh' ? '出生地' : 'Birth Location'}</label>
-              <select value={bCityId} onChange={e => setBCityId(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-white text-sm">
+              <label className="text-xs text-gray-500 block mb-1">{language === 'zh' ? '出生地' : 'Birth Location'}</label>
+              <select value={bCityId} onChange={e => setBCityId(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-gray-900 text-sm">
                 {ALL_CITIES.map(c => <option key={c.id} value={c.id}>{tx(c.name,language)}</option>)}
               </select>
             </div>
 
             <div className="mb-4">
-              <label className="text-xs text-slate-400 block mb-1">{language === 'zh' ? '分宫制' : 'House System'}</label>
-              <select value={houseSystem} onChange={e => setHouseSystem(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-white text-sm">
+              <label className="text-xs text-gray-500 block mb-1">{language === 'zh' ? '分宫制' : 'House System'}</label>
+              <select value={houseSystem} onChange={e => setHouseSystem(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-gray-900 text-sm">
                 {HOUSE_SYSTEMS.map(h => <option key={h.id} value={h.id}>{tx(h.name,language)}</option>)}
               </select>
             </div>
 
             <div className="mb-4">
-              <label className="text-xs text-slate-400 block mb-1">{language === 'zh' ? '目标年份' : 'Target Year'}</label>
-              <input type="number" value={targetYear} onChange={e => setTargetYear(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-white text-sm"/>
-              <p className="text-xs text-slate-500 mt-1">{language === 'zh' ? `相当于出生后第${targetYear - bYear}天` : `Equivalent to day ${targetYear - bYear} after birth`}</p>
+              <label className="text-xs text-gray-500 block mb-1">{language === 'zh' ? '目标年份' : 'Target Year'}</label>
+              <input type="number" value={targetYear} onChange={e => setTargetYear(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-gray-900 text-sm"/>
+              <p className="text-xs text-gray-400 mt-1">{language === 'zh' ? `相当于出生后第${targetYear - bYear}天` : `Equivalent to day ${targetYear - bYear} after birth`}</p>
             </div>
 
-            <button onClick={calculateProgression} disabled={loading} className="w-full py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 disabled:opacity-50 rounded-xl font-bold text-white transition-all flex items-center justify-center gap-2">
+            <button onClick={calculateProgression} disabled={loading} className="w-full py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 disabled:opacity-50 rounded-xl font-bold text-gray-900 transition-all flex items-center justify-center gap-2">
               <TrendingUp size={18} />
               {loading ? (language === 'zh' ? '计算中...' : 'Calculating...') : (language === 'zh' ? '计算推运盘' : 'Calculate Progression')}
             </button>
@@ -191,10 +181,10 @@ export default function ProgressionPage() {
               <div className="space-y-6">
                 {/* Tabs */}
                 <div className="flex gap-2 p-1 rounded-xl bg-slate-800/50">
-                  <button onClick={() => setActiveTab('chart')} className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === 'chart' ? 'bg-purple-500 text-white' : 'text-slate-400 hover:text-white'}`}>
+                  <button onClick={() => setActiveTab('chart')} className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === 'chart' ? 'bg-purple-500 text-gray-900' : 'text-gray-500 hover:text-purple-700'}`}>
                     {language === 'zh' ? '推运盘' : 'Progressed Chart'}
                   </button>
-                  <button onClick={() => setActiveTab('firdaria')} className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === 'firdaria' ? 'bg-purple-500 text-white' : 'text-slate-400 hover:text-white'}`}>
+                  <button onClick={() => setActiveTab('firdaria')} className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === 'firdaria' ? 'bg-purple-500 text-gray-900' : 'text-gray-500 hover:text-purple-700'}`}>
                     {language === 'zh' ? '法达大运' : 'Firdaria'}
                   </button>
                 </div>
@@ -202,14 +192,14 @@ export default function ProgressionPage() {
                 {activeTab === 'chart' && (
                   <>
                     <div className="p-4 rounded-xl bg-purple-900/20 border border-purple-500/30">
-                      <h3 className="font-bold text-purple-300 mb-2 flex items-center gap-2">
+                      <h3 className="font-bold text-purple-700 mb-2 flex items-center gap-2">
                         <Clock size={16}/>
                         {language === 'zh' ? '次限日期' : 'Progressed Date'}
                       </h3>
-                      <p className="text-white">
+                      <p className="text-gray-900">
                         {chart.progression.date.year}-{String(chart.progression.date.month).padStart(2,'0')}-{String(chart.progression.date.day).padStart(2,'0')}
                       </p>
-                      <p className="text-sm text-slate-400 mt-1">
+                      <p className="text-sm text-gray-500 mt-1">
                         {language === 'zh' ? `相当于出生后第 ${chart.progression.equivalentAge} 天` : `Day ${chart.progression.equivalentAge} after birth`}
                       </p>
                     </div>
@@ -227,18 +217,18 @@ export default function ProgressionPage() {
 
                 {activeTab === 'firdaria' && chart.progression.firdaria && (
                   <div className="p-4 rounded-xl bg-slate-900/50 border border-slate-700/50">
-                    <h3 className="font-bold text-white mb-4 flex items-center gap-2">
+                    <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
                       <Star size={16} className="text-amber-400"/>
                       {language === 'zh' ? '法达大运周期' : 'Firdaria Periods'}
                     </h3>
                     
                     {chart.progression.firdaria.currentPeriod && (
                       <div className="mb-4 p-3 rounded-lg bg-amber-500/20 border border-amber-500/30">
-                        <div className="text-sm text-amber-300 mb-1">{language === 'zh' ? '当前大运' : 'Current Period'}</div>
+                        <div className="text-sm text-amber-600 mb-1">{language === 'zh' ? '当前大运' : 'Current Period'}</div>
                         <div className="flex items-center gap-2">
                           <span className="text-2xl">{PLANET_SYMBOLS[chart.progression.firdaria.currentPeriod.planet]}</span>
-                          <span className="font-bold text-white">{chart.progression.firdaria.currentPeriod.planet}</span>
-                          <span className="text-slate-400">
+                          <span className="font-bold text-gray-900">{chart.progression.firdaria.currentPeriod.planet}</span>
+                          <span className="text-gray-500">
                             {chart.progression.firdaria.currentPeriod.startYear}-{chart.progression.firdaria.currentPeriod.endYear}
                           </span>
                         </div>
@@ -252,9 +242,9 @@ export default function ProgressionPage() {
                           <div key={i} className={`flex items-center justify-between p-2 rounded ${isCurrent ? 'bg-purple-500/20 border border-purple-500/30' : 'bg-slate-800/30'}`}>
                             <div className="flex items-center gap-2">
                               <span style={{color: PLANET_COLORS[p.planet] || '#fff'}}>{PLANET_SYMBOLS[p.planet]}</span>
-                              <span className={isCurrent ? 'text-white font-medium' : 'text-slate-400'}>{p.planet}</span>
+                              <span className={isCurrent ? 'text-gray-900 font-medium' : 'text-gray-500'}>{p.planet}</span>
                             </div>
-                            <div className="text-sm text-slate-500">
+                            <div className="text-sm text-gray-400">
                               {p.startYear}-{p.endYear} ({p.years}{language === 'zh' ? '年' : 'y'})
                             </div>
                           </div>
@@ -262,7 +252,7 @@ export default function ProgressionPage() {
                       })}
                     </div>
 
-                    <div className="mt-4 text-xs text-slate-500">
+                    <div className="mt-4 text-xs text-gray-400">
                       <p>{language === 'zh' ? '法达系统：古典占星大运周期，太阳/月亮主导10年，其他行星8年' : 'Firdaria: Classical astrology period system, Sun/Moon 10 years, others 8 years'}</p>
                     </div>
                   </div>
@@ -270,7 +260,7 @@ export default function ProgressionPage() {
               </div>
             ) : (
               <div className="h-full flex items-center justify-center p-8 rounded-2xl bg-slate-900/30 border border-slate-700/30 border-dashed">
-                <div className="text-center text-slate-500">
+                <div className="text-center text-gray-400">
                   <TrendingUp size={48} className="mx-auto mb-4 opacity-50"/>
                   <p>{language === 'zh' ? '输入信息后点击计算' : 'Enter info and click calculate'}</p>
                 </div>

@@ -711,7 +711,7 @@ function ScoreBar({ score, color, label }: { score: number; color: string; label
   return (
     <div className="space-y-1">
       <div className="flex justify-between text-xs">
-        <span className="text-slate-400">{label}</span>
+        <span className="text-gray-500">{label}</span>
         <span className={score >= 80 ? "text-emerald-400" : score >= 60 ? "text-amber-400" : "text-red-400"}>{score}%</span>
       </div>
       <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
@@ -755,60 +755,51 @@ export default function HoroscopePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#030014] via-[#0f0f23] to-[#030014] text-white">
+    <div className="min-h-screen bg-gradient-to-b from-[#030014] via-[#0f0f23] to-[#030014] text-gray-900">
       {/* 导航栏 */}
-      <nav className="sticky top-0 z-50 backdrop-blur-xl bg-[#030014]/90 border-b border-white/5">
-        <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 text-purple-300 hover:text-white">
-            <ArrowLeft size={20} />
-            <span className="text-sm">{labels.back}</span>
-          </Link>
-          <h1 className="text-lg font-bold text-white">星缘</h1>
-          <LanguageSwitcher />
-        </div>
-      </nav>
+      
 
       <main className="max-w-4xl mx-auto px-4 py-6">
         {/* 标题区 */}
         <div className="text-center mb-6">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/20 rounded-full text-sm text-amber-300 mb-3">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/20 rounded-full text-sm text-amber-600 mb-3">
             <Sun size={16} className="fill-amber-300" />
             <span>{today}</span>
           </div>
-          <h1 className="text-2xl md:text-3xl font-bold text-white mb-1">{labels.title}</h1>
-          <p className="text-slate-400 text-sm">{labels.subtitle}</p>
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1">{labels.title}</h1>
+          <p className="text-gray-500 text-sm">{labels.subtitle}</p>
         </div>
 
         {/* 星座选择器 - 优化版 */}
         <div className="relative mb-6">
           <button
             onClick={() => setShowDropdown(!showDropdown)}
-            className="w-full p-4 rounded-2xl bg-white/5 border border-white/10 text-left flex items-center justify-between hover:bg-white/10 transition-all"
+            className="w-full p-4 rounded-2xl bg-white/5 border border-gray-200 text-left flex items-center justify-between hover:bg-white/10 transition-all"
           >
             <div className="flex items-center gap-3">
               <span className="text-4xl" style={{ color: elemColor.color }}>{signData?.symbol}</span>
               <div>
-                <div className="font-bold text-white text-lg">{signData?.names[lang as keyof typeof signData.names] || signData?.names.zh}</div>
-                <div className="text-xs text-slate-400 flex gap-2">
+                <div className="font-bold text-gray-900 text-lg">{signData?.names[lang as keyof typeof signData.names] || signData?.names.zh}</div>
+                <div className="text-xs text-gray-500 flex gap-2">
                   <span>{labels.dates}: {signData?.dates}</span>
                   <span>•</span>
                   <span>{labels.rulingPlanet}: {signData?.rulingPlanet}</span>
                 </div>
               </div>
             </div>
-            <ChevronDown size={20} className={`text-slate-400 transition-transform ${showDropdown ? "rotate-180" : ""}`} />
+            <ChevronDown size={20} className={`text-gray-500 transition-transform ${showDropdown ? "rotate-180" : ""}`} />
           </button>
 
           {showDropdown && (
-            <div className="absolute top-full left-0 right-0 mt-2 p-3 rounded-2xl bg-slate-900/95 border border-white/10 backdrop-blur-xl z-50 grid grid-cols-4 gap-2 max-h-80 overflow-y-auto">
+            <div className="absolute top-full left-0 right-0 mt-2 p-3 rounded-2xl bg-slate-900/95 border border-gray-200 backdrop-blur-xl z-50 grid grid-cols-4 gap-2 max-h-80 overflow-y-auto">
               {Object.entries(ZODIAC_DATA).map(([id, data]) => (
                 <button
                   key={id}
                   onClick={() => { setSelectedSign(id); setShowDropdown(false); }}
                   className={`p-2 rounded-xl text-center transition-all ${
                     selectedSign === id 
-                      ? "bg-purple-600/30 border border-purple-500 text-white" 
-                      : "bg-white/5 hover:bg-white/10 text-slate-300"
+                      ? "bg-purple-600/30 border border-purple-500 text-gray-900" 
+                      : "bg-white/5 hover:bg-white/10 text-gray-600"
                   }`}
                 >
                   <div className="text-2xl mb-1">{data.symbol}</div>
@@ -827,8 +818,8 @@ export default function HoroscopePage() {
               onClick={() => setActiveTab(tab)}
               className={`flex-1 py-2.5 rounded-lg text-sm font-medium transition-all ${
                 activeTab === tab 
-                  ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white" 
-                  : "text-slate-400 hover:text-white"
+                  ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-gray-900" 
+                  : "text-gray-500 hover:text-purple-700"
               }`}
             >
               {tabLabel}
@@ -840,22 +831,22 @@ export default function HoroscopePage() {
         {horoscope && (
           <div className="space-y-4 animate-in fade-in duration-300">
             {/* 星座信息卡 */}
-            <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-purple-900/30 to-pink-900/20 border border-white/10">
+            <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-purple-900/30 to-pink-900/20 border border-gray-200">
               <div className="text-5xl mb-2" style={{ color: elemColor.color }}>{signData?.symbol}</div>
               <h2 className="text-2xl font-bold mb-1" style={{ color: elemColor.color }}>
                 {signData?.names[lang as keyof typeof signData.names] || signData?.names.zh}
               </h2>
-              <p className="text-slate-400 text-sm">{signData?.element} • {signData?.dates}</p>
+              <p className="text-gray-500 text-sm">{signData?.element} • {signData?.dates}</p>
               {/* 关键词 */}
               <div className="mt-3 inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full">
                 <Star size={12} className="text-amber-400 fill-amber-400" />
-                <span className="text-xs text-amber-200">{labels.keyPhrase}: {horoscope.keyPhrase}</span>
+                <span className="text-xs text-amber-600">{labels.keyPhrase}: {horoscope.keyPhrase}</span>
               </div>
             </div>
 
             {/* 四维指数条 */}
-            <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
-              <h3 className="text-sm font-medium text-slate-400 mb-3">📊 {lang === 'zh' ? '运势指数' : lang === 'id' ? 'Skor Keberuntungan' : 'Fortune Scores'}</h3>
+            <div className="p-4 rounded-2xl bg-white/5 border border-gray-200">
+              <h3 className="text-sm font-medium text-gray-500 mb-3">📊 {lang === 'zh' ? '运势指数' : lang === 'id' ? 'Skor Keberuntungan' : 'Fortune Scores'}</h3>
               <div className="grid grid-cols-2 gap-4">
                 <ScoreBar score={horoscope.loveScore} color="#FF6B9D" label={labels.loveScore} />
                 <ScoreBar score={horoscope.careerScore} color="#4ECDC4" label={labels.careerScore} />
@@ -870,12 +861,12 @@ export default function HoroscopePage() {
                 {/* 四维详细 */}
                 <div className="grid grid-cols-2 gap-3">
                   {Object.entries(CATEGORY_ICONS).map(([key, { icon: Icon, color, label: catLabel }]) => (
-                    <div key={key} className="p-4 rounded-xl bg-white/5 border border-white/10">
+                    <div key={key} className="p-4 rounded-xl bg-white/5 border border-gray-200">
                       <div className="flex items-center gap-2 mb-2">
                         <Icon size={16} style={{ color }} />
                         <span className="text-xs font-medium" style={{ color }}>{(labels as unknown as Record<string, string>)[catLabel] || catLabel}</span>
                       </div>
-                      <p className="text-sm text-slate-300 leading-relaxed">{(horoscope as unknown as Record<string, string | number | boolean | null>)[key]}</p>
+                      <p className="text-sm text-gray-600 leading-relaxed">{(horoscope as unknown as Record<string, string | number | boolean | null>)[key]}</p>
                     </div>
                   ))}
                 </div>
@@ -884,37 +875,37 @@ export default function HoroscopePage() {
                 <div className="grid grid-cols-3 gap-3">
                   <div className="p-3 rounded-xl bg-gradient-to-br from-red-500/10 to-pink-500/10 border border-red-500/20 text-center">
                     <div className="text-xl mb-1">🎨</div>
-                    <div className="text-xs text-slate-400">{labels.luckyColor}</div>
+                    <div className="text-xs text-gray-500">{labels.luckyColor}</div>
                     <div className="text-sm font-bold text-red-300">{horoscope.luckyColor}</div>
                   </div>
                   <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20 text-center">
                     <div className="text-xl mb-1">🔢</div>
-                    <div className="text-xs text-slate-400">{labels.luckyNumber}</div>
+                    <div className="text-xs text-gray-500">{labels.luckyNumber}</div>
                     <div className="text-sm font-bold text-blue-300">{horoscope.luckyNumber}</div>
                   </div>
                   <div className="p-3 rounded-xl bg-gradient-to-br from-purple-500/10 to-violet-500/10 border border-purple-500/20 text-center">
                     <div className="text-xl mb-1">⏰</div>
-                    <div className="text-xs text-slate-400">{labels.luckyTime}</div>
-                    <div className="text-xs font-bold text-purple-300">{horoscope.luckyTime}</div>
+                    <div className="text-xs text-gray-500">{labels.luckyTime}</div>
+                    <div className="text-xs font-bold text-purple-700">{horoscope.luckyTime}</div>
                   </div>
                 </div>
 
                 {/* 心情能量 */}
                 <div className="grid grid-cols-3 gap-3">
-                  <div className="p-3 rounded-xl bg-white/5 border border-white/10 text-center">
+                  <div className="p-3 rounded-xl bg-white/5 border border-gray-200 text-center">
                     <div className="text-xl mb-1">😄</div>
-                    <div className="text-xs text-slate-400">{labels.mood}</div>
-                    <div className="text-sm font-bold text-white">{horoscope.mood}</div>
+                    <div className="text-xs text-gray-500">{labels.mood}</div>
+                    <div className="text-sm font-bold text-gray-900">{horoscope.mood}</div>
                   </div>
-                  <div className="p-3 rounded-xl bg-white/5 border border-white/10 text-center">
+                  <div className="p-3 rounded-xl bg-white/5 border border-gray-200 text-center">
                     <div className="text-xl mb-1">⚡</div>
-                    <div className="text-xs text-slate-400">{labels.energy}</div>
-                    <div className="text-sm font-bold text-white">{horoscope.energy}</div>
+                    <div className="text-xs text-gray-500">{labels.energy}</div>
+                    <div className="text-sm font-bold text-gray-900">{horoscope.energy}</div>
                   </div>
-                  <div className="p-3 rounded-xl bg-white/5 border border-white/10 text-center">
+                  <div className="p-3 rounded-xl bg-white/5 border border-gray-200 text-center">
                     <div className="text-xl mb-1">🎯</div>
-                    <div className="text-xs text-slate-400">{labels.focus}</div>
-                    <div className="text-sm font-bold text-white">{horoscope.focus}</div>
+                    <div className="text-xs text-gray-500">{labels.focus}</div>
+                    <div className="text-sm font-bold text-gray-900">{horoscope.focus}</div>
                   </div>
                 </div>
               </>
@@ -926,15 +917,15 @@ export default function HoroscopePage() {
                   <Calendar size={18} className="text-indigo-400" />
                   <span className="text-sm font-medium text-indigo-300">{labels.weekly}</span>
                 </div>
-                <p className="text-sm text-slate-300 leading-relaxed">{horoscope.weekly}</p>
+                <p className="text-sm text-gray-600 leading-relaxed">{horoscope.weekly}</p>
                 <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
                   <div className="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
                     <span className="text-emerald-400">✓ {labels.bestDay}: </span>
-                    <span className="text-white">{horoscope.bestDay}</span>
+                    <span className="text-gray-900">{horoscope.bestDay}</span>
                   </div>
                   <div className="p-2 rounded-lg bg-red-500/10 border border-red-500/20">
                     <span className="text-red-400">⚠ {labels.worstDay}: </span>
-                    <span className="text-white">{horoscope.worstDay}</span>
+                    <span className="text-gray-900">{horoscope.worstDay}</span>
                   </div>
                 </div>
               </div>
@@ -944,37 +935,37 @@ export default function HoroscopePage() {
               <div className="p-4 rounded-xl bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20">
                 <div className="flex items-center gap-2 mb-2">
                   <TrendingUp size={18} className="text-amber-400" />
-                  <span className="text-sm font-medium text-amber-300">{labels.monthly}</span>
+                  <span className="text-sm font-medium text-amber-600">{labels.monthly}</span>
                 </div>
-                <p className="text-sm text-slate-300 leading-relaxed">{horoscope.monthly}</p>
+                <p className="text-sm text-gray-600 leading-relaxed">{horoscope.monthly}</p>
               </div>
             )}
 
             {/* 三项建议 */}
-            <div className="p-4 rounded-xl bg-white/5 border border-white/10 space-y-3">
-              <h3 className="text-sm font-medium text-slate-400 flex items-center gap-2">
+            <div className="p-4 rounded-xl bg-white/5 border border-gray-200 space-y-3">
+              <h3 className="text-sm font-medium text-gray-500 flex items-center gap-2">
                 <Sparkles size={16} className="text-amber-400" />
                 {lang === 'zh' ? '💡 个性化建议' : lang === 'id' ? '💡 Saran Personal' : '💡 Personal Advice'}
               </h3>
               <div className="space-y-2 text-sm">
                 <div className="p-3 rounded-lg bg-pink-500/10 border border-pink-500/20">
                   <span className="text-pink-400 font-medium">{labels.loveAdvice} </span>
-                  <span className="text-slate-300">{horoscope.loveAdvice}</span>
+                  <span className="text-gray-600">{horoscope.loveAdvice}</span>
                 </div>
                 <div className="p-3 rounded-lg bg-cyan-500/10 border border-cyan-500/20">
                   <span className="text-cyan-400 font-medium">{labels.careerAdvice} </span>
-                  <span className="text-slate-300">{horoscope.careerAdvice}</span>
+                  <span className="text-gray-600">{horoscope.careerAdvice}</span>
                 </div>
                 <div className="p-3 rounded-lg bg-amber-500/10 border border-amber-500/20">
                   <span className="text-amber-400 font-medium">{labels.financeAdvice} </span>
-                  <span className="text-slate-300">{horoscope.financeAdvice}</span>
+                  <span className="text-gray-600">{horoscope.financeAdvice}</span>
                 </div>
               </div>
             </div>
 
             {/* 今日提示 */}
             <div className="p-4 rounded-xl bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20">
-              <div className="text-xs font-medium mb-2 text-amber-300 flex items-center gap-2">
+              <div className="text-xs font-medium mb-2 text-amber-600 flex items-center gap-2">
                 <Sparkles size={14} />
                 {labels.tip}
               </div>
@@ -987,13 +978,13 @@ export default function HoroscopePage() {
                 <Users size={18} className="text-rose-400" />
                 <span className="text-sm font-medium text-rose-300">{labels.compatibility}</span>
               </div>
-              <p className="text-sm text-slate-300">{horoscope.compatibility}</p>
+              <p className="text-sm text-gray-600">{horoscope.compatibility}</p>
             </div>
 
             {/* 查看年度运势 */}
             <Link
               href={`/yearly-horoscope?sign=${selectedSign}`}
-              className="block w-full p-4 rounded-xl bg-purple-600/20 border border-purple-500/30 text-center text-purple-300 hover:bg-purple-600/30 transition-all"
+              className="block w-full p-4 rounded-xl bg-purple-600/20 border border-purple-500/30 text-center text-purple-700 hover:bg-purple-600/30 transition-all"
             >
               {labels.viewDetail} →
             </Link>
@@ -1004,22 +995,22 @@ export default function HoroscopePage() {
         <section className="max-w-4xl mx-auto mt-12 mb-8 px-4">
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-sm font-medium text-purple-300 mb-2">关于每日运势</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <h3 className="text-sm font-medium text-purple-700 mb-2">关于每日运势</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">
                 每日运势基于占星学原理，结合行星运行位置与星座特质，为您提供个性化的运势分析。
                 涵盖爱情、事业、财运、健康四大维度，助您把握每一天的机遇与挑战。
               </p>
             </div>
             <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-sm font-medium text-purple-300 mb-2">About Daily Horoscope</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <h3 className="text-sm font-medium text-purple-700 mb-2">About Daily Horoscope</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">
                 Daily horoscope based on astrological principles, combining planetary positions with zodiac traits.
                 Covers love, career, finance, and health dimensions to help you seize opportunities and navigate challenges.
               </p>
             </div>
             <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-sm font-medium text-purple-300 mb-2">Tentang Horoskop Harian</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <h3 className="text-sm font-medium text-purple-700 mb-2">Tentang Horoskop Harian</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">
                 Horoskop harian berdasarkan prinsip astrologi, menggabungkan posisi planet dengan sifat zodiak.
                 Mencakup cinta, karier, keuangan, dan kesehatan untuk membantu Anda meraih peluang.
               </p>
@@ -1031,23 +1022,23 @@ export default function HoroscopePage() {
         <section className="max-w-4xl mx-auto mt-12 mb-8 px-4">
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-lg font-semibold text-purple-300 mb-2">中文</h3>
-              <p className="text-purple-200/80 text-sm leading-relaxed">占星运势提供基于真实天文计算的个性化指引。根据完整出生信息（日期、时间、地点）结合当前行星运行，给出真正属于你的能量趋势。支持日运、月运和年度运势（Solar Return）。</p>
+              <h3 className="text-lg font-semibold text-purple-700 mb-2">中文</h3>
+              <p className="text-purple-600/80 text-sm leading-relaxed">占星运势提供基于真实天文计算的个性化指引。根据完整出生信息（日期、时间、地点）结合当前行星运行，给出真正属于你的能量趋势。支持日运、月运和年度运势（Solar Return）。</p>
             </div>
             <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-lg font-semibold text-purple-300 mb-2">English</h3>
-              <p className="text-purple-200/80 text-sm leading-relaxed">Astrological horoscopes provide personalized guidance based on real astronomical calculations. Using complete birth information (date, time, location) combined with current planetary movements, it delivers energy trends truly yours. Supports daily, monthly, and yearly forecasts (Solar Return).</p>
+              <h3 className="text-lg font-semibold text-purple-700 mb-2">English</h3>
+              <p className="text-purple-600/80 text-sm leading-relaxed">Astrological horoscopes provide personalized guidance based on real astronomical calculations. Using complete birth information (date, time, location) combined with current planetary movements, it delivers energy trends truly yours. Supports daily, monthly, and yearly forecasts (Solar Return).</p>
             </div>
             <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-lg font-semibold text-purple-300 mb-2">Bahasa Indonesia</h3>
-              <p className="text-purple-200/80 text-sm leading-relaxed">Horoskop astrologi memberikan panduan personal berdasarkan perhitungan astronomi nyata. Menggunakan informasi kelahiran lengkap (tanggal, waktu, lokasi) dikombinasikan dengan pergerakan planet saat ini, memberikan tren energi yang benar-benar milik Anda. Mendukung ramalan harian, bulanan, dan tahunan (Solar Return).</p>
+              <h3 className="text-lg font-semibold text-purple-700 mb-2">Bahasa Indonesia</h3>
+              <p className="text-purple-600/80 text-sm leading-relaxed">Horoskop astrologi memberikan panduan personal berdasarkan perhitungan astronomi nyata. Menggunakan informasi kelahiran lengkap (tanggal, waktu, lokasi) dikombinasikan dengan pergerakan planet saat ini, memberikan tren energi yang benar-benar milik Anda. Mendukung ramalan harian, bulanan, dan tahunan (Solar Return).</p>
             </div>
           </div>
         </section>
 
         {/* FAQ Section */}
         <section className="max-w-4xl mx-auto mb-12 px-4">
-          <h2 className="text-xl font-bold text-white text-center mb-6">
+          <h2 className="text-xl font-bold text-gray-900 text-center mb-6">
             {lang === 'zh' ? '常见问题' : lang === 'id' ? 'Pertanyaan Umum' : 'Frequently Asked Questions'}
           </h2>
           <div className="space-y-3">
@@ -1057,14 +1048,14 @@ export default function HoroscopePage() {
                 onClick={() => setFaqOpen(faqOpen === 0 ? -1 : 0)}
                 className="w-full p-4 flex items-center justify-between bg-white/5 hover:bg-white/10 transition-all"
               >
-                <span className="text-sm text-white">每日运势的准确度如何？</span>
+                <span className="text-sm text-gray-900">每日运势的准确度如何？</span>
                 <ChevronDown size={18} className={`text-purple-400 transition-transform ${faqOpen === 0 ? 'rotate-180' : ''}`} />
               </button>
               {faqOpen === 0 && (
                 <div className="p-4 bg-white/5 border-t border-purple-500/10">
-                  <p className="text-sm text-slate-300 mb-2">每日运势基于传统占星学理论，结合行星运行轨迹与星座特质进行分析。虽然不能保证100%准确，但能为您提供有价值的参考和指引。</p>
-                  <p className="text-xs text-slate-500 mb-1"><span className="text-purple-300">EN:</span> Daily horoscope is based on traditional astrology, combining planetary movements with zodiac traits. While not 100% accurate, it provides valuable reference and guidance.</p>
-                  <p className="text-xs text-slate-500"><span className="text-purple-300">ID:</span> Horoskop harian berdasarkan astrologi tradisional, menggabungkan pergerakan planet dengan sifat zodiak. Memberikan referensi dan panduan berharga.</p>
+                  <p className="text-sm text-gray-600 mb-2">每日运势基于传统占星学理论，结合行星运行轨迹与星座特质进行分析。虽然不能保证100%准确，但能为您提供有价值的参考和指引。</p>
+                  <p className="text-xs text-gray-400 mb-1"><span className="text-purple-700">EN:</span> Daily horoscope is based on traditional astrology, combining planetary movements with zodiac traits. While not 100% accurate, it provides valuable reference and guidance.</p>
+                  <p className="text-xs text-gray-400"><span className="text-purple-700">ID:</span> Horoskop harian berdasarkan astrologi tradisional, menggabungkan pergerakan planet dengan sifat zodiak. Memberikan referensi dan panduan berharga.</p>
                 </div>
               )}
             </div>
@@ -1074,14 +1065,14 @@ export default function HoroscopePage() {
                 onClick={() => setFaqOpen(faqOpen === 1 ? -1 : 1)}
                 className="w-full p-4 flex items-center justify-between bg-white/5 hover:bg-white/10 transition-all"
               >
-                <span className="text-sm text-white">如何根据运势规划一天？</span>
+                <span className="text-sm text-gray-900">如何根据运势规划一天？</span>
                 <ChevronDown size={18} className={`text-purple-400 transition-transform ${faqOpen === 1 ? 'rotate-180' : ''}`} />
               </button>
               {faqOpen === 1 && (
                 <div className="p-4 bg-white/5 border-t border-purple-500/10">
-                  <p className="text-sm text-slate-300 mb-2">建议在幸运时间段处理重要事务，关注运势提示的领域。例如财运佳时适合理财决策，感情运佳时适合约会沟通。</p>
-                  <p className="text-xs text-slate-500 mb-1"><span className="text-purple-300">EN:</span> We recommend handling important matters during lucky time periods. Focus on highlighted areas - good finance luck for financial decisions, good love luck for dating.</p>
-                  <p className="text-xs text-slate-500"><span className="text-purple-300">ID:</span> Kami sarankan menangani hal penting di waktu beruntung. Fokus pada area yang disorot - keuangan baik untuk keputusan finansial, cinta baik untuk kencan.</p>
+                  <p className="text-sm text-gray-600 mb-2">建议在幸运时间段处理重要事务，关注运势提示的领域。例如财运佳时适合理财决策，感情运佳时适合约会沟通。</p>
+                  <p className="text-xs text-gray-400 mb-1"><span className="text-purple-700">EN:</span> We recommend handling important matters during lucky time periods. Focus on highlighted areas - good finance luck for financial decisions, good love luck for dating.</p>
+                  <p className="text-xs text-gray-400"><span className="text-purple-700">ID:</span> Kami sarankan menangani hal penting di waktu beruntung. Fokus pada area yang disorot - keuangan baik untuk keputusan finansial, cinta baik untuk kencan.</p>
                 </div>
               )}
             </div>
@@ -1091,14 +1082,14 @@ export default function HoroscopePage() {
                 onClick={() => setFaqOpen(faqOpen === 2 ? -1 : 2)}
                 className="w-full p-4 flex items-center justify-between bg-white/5 hover:bg-white/10 transition-all"
               >
-                <span className="text-sm text-white">不同星座之间有什么关联？</span>
+                <span className="text-sm text-gray-900">不同星座之间有什么关联？</span>
                 <ChevronDown size={18} className={`text-purple-400 transition-transform ${faqOpen === 2 ? 'rotate-180' : ''}`} />
               </button>
               {faqOpen === 2 && (
                 <div className="p-4 bg-white/5 border-t border-purple-500/10">
-                  <p className="text-sm text-slate-300 mb-2">星座按元素分为火象、土象、风象、水象四类。同元素星座性格相似，相邻元素互补。速配星座通常属于和谐元素组合。</p>
-                  <p className="text-xs text-slate-500 mb-1"><span className="text-purple-300">EN:</span> Zodiac signs are grouped into Fire, Earth, Air, and Water elements. Same element signs share similar traits. Compatible signs usually have harmonious element combinations.</p>
-                  <p className="text-xs text-slate-500"><span className="text-purple-300">ID:</span> Zodiak dikelompokkan menjadi elemen Api, Tanah, Udara, dan Air. Zodiak elemen sama memiliki sifat mirip. Zodiak cocok biasanya kombinasi elemen harmonis.</p>
+                  <p className="text-sm text-gray-600 mb-2">星座按元素分为火象、土象、风象、水象四类。同元素星座性格相似，相邻元素互补。速配星座通常属于和谐元素组合。</p>
+                  <p className="text-xs text-gray-400 mb-1"><span className="text-purple-700">EN:</span> Zodiac signs are grouped into Fire, Earth, Air, and Water elements. Same element signs share similar traits. Compatible signs usually have harmonious element combinations.</p>
+                  <p className="text-xs text-gray-400"><span className="text-purple-700">ID:</span> Zodiak dikelompokkan menjadi elemen Api, Tanah, Udara, dan Air. Zodiak elemen sama memiliki sifat mirip. Zodiak cocok biasanya kombinasi elemen harmonis.</p>
                 </div>
               )}
             </div>
@@ -1108,14 +1099,14 @@ export default function HoroscopePage() {
                 onClick={() => setFaqOpen(faqOpen === 3 ? -1 : 3)}
                 className="w-full p-4 flex items-center justify-between bg-white/5 hover:bg-white/10 transition-all"
               >
-                <span className="text-sm text-white">运势指数是如何计算的？</span>
+                <span className="text-sm text-gray-900">运势指数是如何计算的？</span>
                 <ChevronDown size={18} className={`text-purple-400 transition-transform ${faqOpen === 3 ? 'rotate-180' : ''}`} />
               </button>
               {faqOpen === 3 && (
                 <div className="p-4 bg-white/5 border-t border-purple-500/10">
-                  <p className="text-sm text-slate-300 mb-2">运势指数综合考量当前行星位置、星座守护星状态、月相周期等多重因素，通过占星学公式计算得出，反映当日各领域的能量强度。</p>
-                  <p className="text-xs text-slate-500 mb-1"><span className="text-purple-300">EN:</span> Fortune scores consider planetary positions, ruling planet status, moon phase and more. Calculated through astrological formulas to reflect energy intensity in each area.</p>
-                  <p className="text-xs text-slate-500"><span className="text-purple-300">ID:</span> Skor keberuntungan mempertimbangkan posisi planet, status planet penguasa, fase bulan dan lainnya. Dihitung melalui formula astrologi untuk mencerminkan intensitas energi.</p>
+                  <p className="text-sm text-gray-600 mb-2">运势指数综合考量当前行星位置、星座守护星状态、月相周期等多重因素，通过占星学公式计算得出，反映当日各领域的能量强度。</p>
+                  <p className="text-xs text-gray-400 mb-1"><span className="text-purple-700">EN:</span> Fortune scores consider planetary positions, ruling planet status, moon phase and more. Calculated through astrological formulas to reflect energy intensity in each area.</p>
+                  <p className="text-xs text-gray-400"><span className="text-purple-700">ID:</span> Skor keberuntungan mempertimbangkan posisi planet, status planet penguasa, fase bulan dan lainnya. Dihitung melalui formula astrologi untuk mencerminkan intensitas energi.</p>
                 </div>
               )}
             </div>
@@ -1125,14 +1116,14 @@ export default function HoroscopePage() {
                 onClick={() => setFaqOpen(faqOpen === 4 ? -1 : 4)}
                 className="w-full p-4 flex items-center justify-between bg-white/5 hover:bg-white/10 transition-all"
               >
-                <span className="text-sm text-white">可以同时参考多个时间维度的运势吗？</span>
+                <span className="text-sm text-gray-900">可以同时参考多个时间维度的运势吗？</span>
                 <ChevronDown size={18} className={`text-purple-400 transition-transform ${faqOpen === 4 ? 'rotate-180' : ''}`} />
               </button>
               {faqOpen === 4 && (
                 <div className="p-4 bg-white/5 border-t border-purple-500/10">
-                  <p className="text-sm text-slate-300 mb-2">当然可以！建议结合每日、每周、每月运势综合判断。短期运势看细节执行，长期运势看大方向规划，相互印证效果更佳。</p>
-                  <p className="text-xs text-slate-500 mb-1"><span className="text-purple-300">EN:</span> Absolutely! We recommend combining daily, weekly, and monthly horoscopes. Short-term for details, long-term for big picture planning - cross-reference for better insights.</p>
-                  <p className="text-xs text-slate-500"><span className="text-purple-300">ID:</span> Tentu! Kami sarankan menggabungkan horoskop harian, mingguan, dan bulanan. Jangka pendek untuk detail, jangka panjang untuk gambaran besar.</p>
+                  <p className="text-sm text-gray-600 mb-2">当然可以！建议结合每日、每周、每月运势综合判断。短期运势看细节执行，长期运势看大方向规划，相互印证效果更佳。</p>
+                  <p className="text-xs text-gray-400 mb-1"><span className="text-purple-700">EN:</span> Absolutely! We recommend combining daily, weekly, and monthly horoscopes. Short-term for details, long-term for big picture planning - cross-reference for better insights.</p>
+                  <p className="text-xs text-gray-400"><span className="text-purple-700">ID:</span> Tentu! Kami sarankan menggabungkan horoskop harian, mingguan, dan bulanan. Jangka pendek untuk detail, jangka panjang untuk gambaran besar.</p>
                 </div>
               )}
             </div>

@@ -239,17 +239,8 @@ export default function CompositePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#020617] via-[#0f0f23] to-[#020617] text-white">
-      <nav className="sticky top-0 z-50 backdrop-blur-md bg-[#020617]/90 border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/chart" className="flex items-center gap-2 text-purple-300 hover:text-pink-200 transition-colors">
-              <ArrowLeft size={20} />
-              <span className="text-sm">{t('back', language)}</span>
-            </Link>
-          </div>
-        </div>
-      </nav>
+    <div className="min-h-screen bg-gradient-to-b from-[#020617] via-[#0f0f23] to-[#020617] text-gray-900">
+      
 
       <main className="max-w-7xl mx-auto px-6 py-8">
         <div className="text-center mb-8">
@@ -257,16 +248,16 @@ export default function CompositePage() {
             <Heart size={16} />
             {t('badge', language)}
           </div>
-          <h1 className="text-3xl font-bold text-white mb-2">{t('title', language)}</h1>
-          <p className="text-slate-400 max-w-xl mx-auto text-sm">{t('subtitle', language)}</p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">{t('title', language)}</h1>
+          <p className="text-gray-500 max-w-xl mx-auto text-sm">{t('subtitle', language)}</p>
         </div>
 
         {/* Tabs */}
         <div className="flex gap-2 p-1 rounded-xl bg-slate-800/50 max-w-md mx-auto mb-8">
-          <button onClick={() => setActiveTab('composite')} className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === 'composite' ? 'bg-pink-500 text-white' : 'text-slate-400 hover:text-white'}`}>
+          <button onClick={() => setActiveTab('composite')} className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === 'composite' ? 'bg-pink-500 text-gray-900' : 'text-gray-500 hover:text-purple-700'}`}>
             {t('compositeTab', language)}
           </button>
-          <button onClick={() => setActiveTab('synastry')} className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === 'synastry' ? 'bg-pink-500 text-white' : 'text-slate-400 hover:text-white'}`}>
+          <button onClick={() => setActiveTab('synastry')} className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === 'synastry' ? 'bg-pink-500 text-gray-900' : 'text-gray-500 hover:text-purple-700'}`}>
             {t('synastryTab', language)}
           </button>
         </div>
@@ -280,43 +271,43 @@ export default function CompositePage() {
               {t('person1', language)} {p1Name && `- ${p1Name}`}
             </h2>
             <div className="mb-3">
-              <input type="text" value={p1Name} onChange={e => setP1Name(e.target.value)} placeholder={t('namePlaceholder', language)} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-white text-sm placeholder:text-slate-500"/>
+              <input type="text" value={p1Name} onChange={e => setP1Name(e.target.value)} placeholder={t('namePlaceholder', language)} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-gray-900 text-sm placeholder:text-gray-400"/>
             </div>
             <div className="grid grid-cols-3 gap-2 mb-3">
               <div>
-                <label className="text-xs text-slate-400 block mb-1">{t('year', language)}</label>
-                <input type="number" value={p1Year} onChange={e => setP1Year(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-white text-sm"/>
+                <label className="text-xs text-gray-500 block mb-1">{t('year', language)}</label>
+                <input type="number" value={p1Year} onChange={e => setP1Year(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-gray-900 text-sm"/>
               </div>
               <div>
-                <label className="text-xs text-slate-400 block mb-1">{t('month', language)}</label>
-                <select value={p1Month} onChange={e => setP1Month(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-white text-sm">
+                <label className="text-xs text-gray-500 block mb-1">{t('month', language)}</label>
+                <select value={p1Month} onChange={e => setP1Month(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-gray-900 text-sm">
                   {Array.from({length:12},(_,i)=><option key={i+1} value={i+1}>{i+1}</option>)}
                 </select>
               </div>
               <div>
-                <label className="text-xs text-slate-400 block mb-1">{t('day', language)}</label>
-                <select value={p1Day} onChange={e => setP1Day(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-white text-sm">
+                <label className="text-xs text-gray-500 block mb-1">{t('day', language)}</label>
+                <select value={p1Day} onChange={e => setP1Day(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-gray-900 text-sm">
                   {Array.from({length:31},(_,i)=><option key={i+1} value={i+1}>{i+1}</option>)}
                 </select>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-2 mb-3">
               <div>
-                <label className="text-xs text-slate-400 block mb-1">{t('hour', language)}</label>
-                <select value={p1Hour} onChange={e => setP1Hour(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-white text-sm">
+                <label className="text-xs text-gray-500 block mb-1">{t('hour', language)}</label>
+                <select value={p1Hour} onChange={e => setP1Hour(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-gray-900 text-sm">
                   {Array.from({length:24},(_,i)=><option key={i} value={i}>{i}</option>)}
                 </select>
               </div>
               <div>
-                <label className="text-xs text-slate-400 block mb-1">{t('minute', language)}</label>
-                <select value={p1Minute} onChange={e => setP1Minute(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-white text-sm">
+                <label className="text-xs text-gray-500 block mb-1">{t('minute', language)}</label>
+                <select value={p1Minute} onChange={e => setP1Minute(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-gray-900 text-sm">
                   {Array.from({length:12},(_,i)=><option key={i*5} value={i*5}>{i*5}</option>)}
                 </select>
               </div>
             </div>
             <div>
-              <label className="text-xs text-slate-400 block mb-1">{t('city', language)}</label>
-              <select value={p1CityId} onChange={e => setP1CityId(e.target.value)} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-white text-sm">
+              <label className="text-xs text-gray-500 block mb-1">{t('city', language)}</label>
+              <select value={p1CityId} onChange={e => setP1CityId(e.target.value)} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-gray-900 text-sm">
                 {ALL_CITIES.map(c => <option key={c.id} value={c.id}>{tx(c.name,language)}</option>)}
               </select>
             </div>
@@ -329,43 +320,43 @@ export default function CompositePage() {
               {t('person2', language)} {p2Name && `- ${p2Name}`}
             </h2>
             <div className="mb-3">
-              <input type="text" value={p2Name} onChange={e => setP2Name(e.target.value)} placeholder={t('namePlaceholder', language)} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-white text-sm placeholder:text-slate-500"/>
+              <input type="text" value={p2Name} onChange={e => setP2Name(e.target.value)} placeholder={t('namePlaceholder', language)} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-gray-900 text-sm placeholder:text-gray-400"/>
             </div>
             <div className="grid grid-cols-3 gap-2 mb-3">
               <div>
-                <label className="text-xs text-slate-400 block mb-1">{t('year', language)}</label>
-                <input type="number" value={p2Year} onChange={e => setP2Year(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-white text-sm"/>
+                <label className="text-xs text-gray-500 block mb-1">{t('year', language)}</label>
+                <input type="number" value={p2Year} onChange={e => setP2Year(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-gray-900 text-sm"/>
               </div>
               <div>
-                <label className="text-xs text-slate-400 block mb-1">{t('month', language)}</label>
-                <select value={p2Month} onChange={e => setP2Month(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-white text-sm">
+                <label className="text-xs text-gray-500 block mb-1">{t('month', language)}</label>
+                <select value={p2Month} onChange={e => setP2Month(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-gray-900 text-sm">
                   {Array.from({length:12},(_,i)=><option key={i+1} value={i+1}>{i+1}</option>)}
                 </select>
               </div>
               <div>
-                <label className="text-xs text-slate-400 block mb-1">{t('day', language)}</label>
-                <select value={p2Day} onChange={e => setP2Day(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-white text-sm">
+                <label className="text-xs text-gray-500 block mb-1">{t('day', language)}</label>
+                <select value={p2Day} onChange={e => setP2Day(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-gray-900 text-sm">
                   {Array.from({length:31},(_,i)=><option key={i+1} value={i+1}>{i+1}</option>)}
                 </select>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-2 mb-3">
               <div>
-                <label className="text-xs text-slate-400 block mb-1">{t('hour', language)}</label>
-                <select value={p2Hour} onChange={e => setP2Hour(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-white text-sm">
+                <label className="text-xs text-gray-500 block mb-1">{t('hour', language)}</label>
+                <select value={p2Hour} onChange={e => setP2Hour(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-gray-900 text-sm">
                   {Array.from({length:24},(_,i)=><option key={i} value={i}>{i}</option>)}
                 </select>
               </div>
               <div>
-                <label className="text-xs text-slate-400 block mb-1">{t('minute', language)}</label>
-                <select value={p2Minute} onChange={e => setP2Minute(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-white text-sm">
+                <label className="text-xs text-gray-500 block mb-1">{t('minute', language)}</label>
+                <select value={p2Minute} onChange={e => setP2Minute(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-gray-900 text-sm">
                   {Array.from({length:12},(_,i)=><option key={i*5} value={i*5}>{i*5}</option>)}
                 </select>
               </div>
             </div>
             <div>
-              <label className="text-xs text-slate-400 block mb-1">{t('city', language)}</label>
-              <select value={p2CityId} onChange={e => setP2CityId(e.target.value)} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-white text-sm">
+              <label className="text-xs text-gray-500 block mb-1">{t('city', language)}</label>
+              <select value={p2CityId} onChange={e => setP2CityId(e.target.value)} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-gray-900 text-sm">
                 {ALL_CITIES.map(c => <option key={c.id} value={c.id}>{tx(c.name,language)}</option>)}
               </select>
             </div>
@@ -375,8 +366,8 @@ export default function CompositePage() {
         {/* Options */}
         <div className="flex justify-center gap-4 mb-6">
           <div>
-            <label className="text-xs text-slate-400 block mb-1">{t('houseSystem', language)}</label>
-            <select value={houseSystem} onChange={e => setHouseSystem(e.target.value)} className="px-4 py-2 rounded-lg bg-slate-800 border border-slate-700 text-white text-sm">
+            <label className="text-xs text-gray-500 block mb-1">{t('houseSystem', language)}</label>
+            <select value={houseSystem} onChange={e => setHouseSystem(e.target.value)} className="px-4 py-2 rounded-lg bg-slate-800 border border-slate-700 text-gray-900 text-sm">
               {HOUSE_SYSTEMS.map(h => <option key={h.id} value={h.id}>{tx(h.name,language)}</option>)}
             </select>
           </div>
@@ -384,7 +375,7 @@ export default function CompositePage() {
 
         {/* Calculate Button */}
         <div className="text-center mb-8">
-          <button onClick={calculateComposite} disabled={loading} className="px-8 py-3 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 disabled:opacity-50 rounded-xl font-bold text-white transition-all inline-flex items-center gap-2">
+          <button onClick={calculateComposite} disabled={loading} className="px-8 py-3 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 disabled:opacity-50 rounded-xl font-bold text-gray-900 transition-all inline-flex items-center gap-2">
             {loading ? <><Loader2 size={18} className="animate-spin" />{t('calculate', language)}...</> : <><Heart size={18} />{t('calculate', language)}</>}
           </button>
           {error && <div className="mt-4 p-3 rounded-lg bg-red-500/20 text-red-300 text-sm max-w-md mx-auto">{error}</div>}
@@ -396,11 +387,11 @@ export default function CompositePage() {
             {activeTab === 'composite' && chart.composite && (
               <>
                 <div className="text-center">
-                  <h2 className="text-2xl font-bold text-white mb-2 flex items-center justify-center gap-2">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2 flex items-center justify-center gap-2">
                     <Star size={24} className="text-amber-400"/>
                     {t('compositeTitle', language)}
                   </h2>
-                  <p className="text-slate-400 text-sm">{t('compositeDesc', language)}</p>
+                  <p className="text-gray-500 text-sm">{t('compositeDesc', language)}</p>
                 </div>
 
                 <div ref={chartRef} className="flex justify-center max-w-4xl mx-auto">
@@ -415,17 +406,17 @@ export default function CompositePage() {
                 {/* Action Buttons */}
                 <div className="flex flex-wrap justify-center gap-3">
                   {user && (
-                    <button onClick={handleSave} className="px-4 py-2 rounded-lg bg-purple-600/80 hover:bg-purple-500 text-white text-sm inline-flex items-center gap-2 transition-colors">
+                    <button onClick={handleSave} className="px-4 py-2 rounded-lg bg-purple-600/80 hover:bg-purple-500 text-gray-900 text-sm inline-flex items-center gap-2 transition-colors">
                       <Save size={16} />{saveMsg || t('save', language)}
                     </button>
                   )}
-                  <button onClick={handleAIInterpretation} disabled={loadingAI} className="px-4 py-2 rounded-lg bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white text-sm inline-flex items-center gap-2 transition-colors disabled:opacity-50">
+                  <button onClick={handleAIInterpretation} disabled={loadingAI} className="px-4 py-2 rounded-lg bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-gray-900 text-sm inline-flex items-center gap-2 transition-colors disabled:opacity-50">
                     {loadingAI ? <Loader2 size={16} className="animate-spin" /> : <Sparkles size={16} />}{t('aiInterpret', language)}
                   </button>
-                  <button onClick={handleShare} className="px-4 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-white text-sm inline-flex items-center gap-2 transition-colors">
+                  <button onClick={handleShare} className="px-4 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-gray-900 text-sm inline-flex items-center gap-2 transition-colors">
                     <Share2 size={16} />{linkCopied ? t('linkCopied', language) : t('copyLink', language)}
                   </button>
-                  <button onClick={handleDownload} className="px-4 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-white text-sm inline-flex items-center gap-2 transition-colors">
+                  <button onClick={handleDownload} className="px-4 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-gray-900 text-sm inline-flex items-center gap-2 transition-colors">
                     <Download size={16} />{t('download', language)}
                   </button>
                 </div>
@@ -436,20 +427,20 @@ export default function CompositePage() {
                     <h3 className="font-bold text-violet-300 mb-3 flex items-center gap-2">
                       <Sparkles size={18} />{t('aiInterpret', language)}
                     </h3>
-                    <div className="text-slate-200 text-sm leading-relaxed whitespace-pre-wrap">{aiInterpretation}</div>
+                    <div className="text-gray-800 text-sm leading-relaxed whitespace-pre-wrap">{aiInterpretation}</div>
                   </div>
                 )}
 
                 {/* Composite Aspects */}
                 <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-700/50">
-                  <h3 className="font-bold text-white mb-4">{t('majorAspects', language)}</h3>
+                  <h3 className="font-bold text-gray-900 mb-4">{t('majorAspects', language)}</h3>
                   <div className="grid md:grid-cols-2 gap-3">
                     {chart.composite.aspects.filter((a: any) => ['Conjunction','Trine','Square','Opposition'].includes(a.type)).slice(0,8).map((a: any, i: number) => {
                       const colors: Record<string,string> = {Conjunction:'#FFD700',Trine:'#4488FF',Square:'#FF4444',Opposition:'#FF8800'};
                       return (
                         <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-slate-800/50 border border-slate-700/30">
-                          <span className="text-white">{a.planet1} <span style={{color:colors[a.type]}}>{a.type}</span> {a.planet2}</span>
-                          <span className="text-slate-400 text-sm">{a.orb.toFixed(1)}°</span>
+                          <span className="text-gray-900">{a.planet1} <span style={{color:colors[a.type]}}>{a.type}</span> {a.planet2}</span>
+                          <span className="text-gray-500 text-sm">{a.orb.toFixed(1)}°</span>
                         </div>
                       );
                     })}
@@ -461,11 +452,11 @@ export default function CompositePage() {
             {activeTab === 'synastry' && (
               <>
                 <div className="text-center">
-                  <h2 className="text-2xl font-bold text-white mb-2 flex items-center justify-center gap-2">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2 flex items-center justify-center gap-2">
                     <Heart size={24} className="text-pink-400"/>
                     {t('synastryTitle', language)}
                   </h2>
-                  <p className="text-slate-400 text-sm">{t('synastryDesc', language)}</p>
+                  <p className="text-gray-500 text-sm">{t('synastryDesc', language)}</p>
                 </div>
 
                 <div className="flex justify-center max-w-4xl mx-auto">
@@ -480,7 +471,7 @@ export default function CompositePage() {
 
                 {/* Synastry Aspects */}
                 <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-700/50">
-                  <h3 className="font-bold text-white mb-4">{t('planetaryAspects', language)}</h3>
+                  <h3 className="font-bold text-gray-900 mb-4">{t('planetaryAspects', language)}</h3>
                   <div className="space-y-2 max-h-80 overflow-y-auto">
                     {chart.composite.aspects.slice(0,15).map((a: any, i: number) => {
                       const colors: Record<string,string> = {Conjunction:'#FFD700',Trine:'#4488FF',Square:'#FF4444',Opposition:'#FF8800',Sextile:'#00FF88'};
@@ -488,14 +479,14 @@ export default function CompositePage() {
                       return (
                         <div key={i} className={`p-3 rounded-lg ${isGood ? 'bg-green-900/20 border border-green-500/20' : 'bg-slate-800/50 border border-slate-700/30'}`}>
                           <div className="flex items-center justify-between">
-                            <span className="text-white">
+                            <span className="text-gray-900">
                               <span className="text-blue-300">{a.planet1}</span>
-                              <span className="text-slate-400 mx-2">→</span>
+                              <span className="text-gray-500 mx-2">→</span>
                               <span className="text-pink-300">{a.planet2}</span>
                             </span>
                             <span className="font-bold" style={{color: colors[a.type]}}>{a.type}</span>
                           </div>
-                          <div className="text-xs text-slate-400 mt-1">
+                          <div className="text-xs text-gray-500 mt-1">
                             {a.orb.toFixed(1)}° {t('orb', language)}
                           </div>
                         </div>
@@ -513,20 +504,20 @@ export default function CompositePage() {
         {chart && (
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             {user && (
-              <button onClick={handleSave} className="px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 rounded-xl font-bold text-white transition-all inline-flex items-center gap-2">
+              <button onClick={handleSave} className="px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 rounded-xl font-bold text-gray-900 transition-all inline-flex items-center gap-2">
                 <Save size={18} />
                 {language === 'zh' ? '保存合盘' : 'Save Chart'}
               </button>
             )}
-            <button onClick={handleAIInterpretation} disabled={loadingAI} className="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 disabled:opacity-50 rounded-xl font-bold text-white transition-all inline-flex items-center gap-2">
+            <button onClick={handleAIInterpretation} disabled={loadingAI} className="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 disabled:opacity-50 rounded-xl font-bold text-gray-900 transition-all inline-flex items-center gap-2">
               <Sparkles size={18} />
               {loadingAI ? (language === 'zh' ? 'AI解读中...' : 'AI Reading...') : (language === 'zh' ? 'AI 解读' : 'AI Reading')}
             </button>
-            <button onClick={handleDownload} className="px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 rounded-xl font-bold text-white transition-all inline-flex items-center gap-2">
+            <button onClick={handleDownload} className="px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 rounded-xl font-bold text-gray-900 transition-all inline-flex items-center gap-2">
               <Download size={18} />
               {language === 'zh' ? '下载图片' : 'Download'}
             </button>
-            <button onClick={handleShare} className="px-6 py-3 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 rounded-xl font-bold text-white transition-all inline-flex items-center gap-2">
+            <button onClick={handleShare} className="px-6 py-3 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 rounded-xl font-bold text-gray-900 transition-all inline-flex items-center gap-2">
               <Share2 size={18} />
               {language === 'zh' ? '分享链接' : 'Share Link'}
             </button>
@@ -543,11 +534,11 @@ export default function CompositePage() {
         {/* AI Interpretation Card */}
         {aiInterpretation && (
           <div className="max-w-4xl mx-auto mb-8 p-6 rounded-2xl bg-gradient-to-br from-purple-900/30 to-indigo-900/30 border border-purple-500/30">
-            <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <Sparkles size={20} className="text-purple-300" />
+            <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <Sparkles size={20} className="text-purple-700" />
               {language === 'zh' ? 'AI 解读' : 'AI Interpretation'}
             </h3>
-            <div className="text-slate-200 leading-relaxed whitespace-pre-wrap">{aiInterpretation}</div>
+            <div className="text-gray-800 leading-relaxed whitespace-pre-wrap">{aiInterpretation}</div>
           </div>
         )}
 
@@ -570,23 +561,23 @@ export default function CompositePage() {
         <section className="max-w-4xl mx-auto mt-12 mb-8 px-4">
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-lg font-semibold text-purple-300 mb-2">中文</h3>
-              <p className="text-purple-200/80 text-sm leading-relaxed">合盘（Composite Chart）揭示两人关系的灵魂蓝图。计算两人星盘中点，生成代表「关系本身」的星盘。了解深层动力、潜在挑战，AI 提供实用建议。</p>
+              <h3 className="text-lg font-semibold text-purple-700 mb-2">中文</h3>
+              <p className="text-purple-600/80 text-sm leading-relaxed">合盘（Composite Chart）揭示两人关系的灵魂蓝图。计算两人星盘中点，生成代表「关系本身」的星盘。了解深层动力、潜在挑战，AI 提供实用建议。</p>
             </div>
             <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-lg font-semibold text-purple-300 mb-2">English</h3>
-              <p className="text-purple-200/80 text-sm leading-relaxed">The Composite Chart reveals the soul blueprint of a relationship. By calculating midpoints between two natal charts, it generates a chart representing the relationship itself. Understand deep dynamics, potential challenges, and get AI-powered practical advice.</p>
+              <h3 className="text-lg font-semibold text-purple-700 mb-2">English</h3>
+              <p className="text-purple-600/80 text-sm leading-relaxed">The Composite Chart reveals the soul blueprint of a relationship. By calculating midpoints between two natal charts, it generates a chart representing the relationship itself. Understand deep dynamics, potential challenges, and get AI-powered practical advice.</p>
             </div>
             <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-lg font-semibold text-purple-300 mb-2">Bahasa Indonesia</h3>
-              <p className="text-purple-200/80 text-sm leading-relaxed">Composite Chart mengungkap cetak biru jiwa sebuah hubungan. Dengan menghitung titik tengah antara dua chart natal, menghasilkan chart yang mewakili hubungan itu sendiri.</p>
+              <h3 className="text-lg font-semibold text-purple-700 mb-2">Bahasa Indonesia</h3>
+              <p className="text-purple-600/80 text-sm leading-relaxed">Composite Chart mengungkap cetak biru jiwa sebuah hubungan. Dengan menghitung titik tengah antara dua chart natal, menghasilkan chart yang mewakili hubungan itu sendiri.</p>
             </div>
           </div>
         </section>
 
         {/* FAQ Section */}
         <section className="max-w-4xl mx-auto mb-12 px-4">
-          <h2 className="text-2xl font-bold text-white mb-6 text-center">{t('faq', language)}</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">{t('faq', language)}</h2>
           <div className="space-y-3">
             {FAQ_DATA.map((item, i) => (
               <div key={i} className="border border-purple-500/20 rounded-lg overflow-hidden">
@@ -594,14 +585,14 @@ export default function CompositePage() {
                   onClick={() => setOpenFaq(openFaq === i ? -1 : i)}
                   className="w-full px-4 py-3 flex items-center justify-between bg-purple-900/20 hover:bg-purple-900/30 transition-colors text-left"
                 >
-                  <span className="text-white text-sm">{language === 'zh' ? item.q : (language === 'en' ? item.q_en : item.q_id)}</span>
-                  <ChevronDown size={18} className={`text-purple-300 transition-transform ${openFaq === i ? 'rotate-180' : ''}`}/>
+                  <span className="text-gray-900 text-sm">{language === 'zh' ? item.q : (language === 'en' ? item.q_en : item.q_id)}</span>
+                  <ChevronDown size={18} className={`text-purple-700 transition-transform ${openFaq === i ? 'rotate-180' : ''}`}/>
                 </button>
                 {openFaq === i && (
                   <div className="px-4 py-3 bg-purple-950/30 border-t border-purple-500/10">
-                    <p className="text-slate-200 text-sm mb-2">{language === 'zh' ? item.a : (language === 'en' ? item.a_en : item.a_id)}</p>
-                    <p className="text-slate-400 text-xs">{language === 'zh' ? item.a_en : item.a_id}</p>
-                    <p className="text-slate-500 text-xs">{language === 'zh' ? item.a_id : item.a_en}</p>
+                    <p className="text-gray-800 text-sm mb-2">{language === 'zh' ? item.a : (language === 'en' ? item.a_en : item.a_id)}</p>
+                    <p className="text-gray-500 text-xs">{language === 'zh' ? item.a_en : item.a_id}</p>
+                    <p className="text-gray-400 text-xs">{language === 'zh' ? item.a_id : item.a_en}</p>
                   </div>
                 )}
               </div>

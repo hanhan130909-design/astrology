@@ -23,37 +23,21 @@ export default function AIPage() {
   const currentLabels = labels[language] || labels['zh'];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#020617] via-[#0f0f23] to-[#020617] text-white">
+    <div className="min-h-screen bg-gradient-to-b from-[#020617] via-[#0f0f23] to-[#020617] text-gray-900">
       {/* 导航栏 - 统一主页风格 */}
-      <nav className="sticky top-0 z-50 backdrop-blur-md bg-[#020617]/90 border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <Link href="/" className="flex items-center gap-2 text-purple-300 hover:text-amber-200 transition-colors">
-                <ArrowLeft size={20} />
-                <span className="text-sm">{currentLabels.back}</span>
-              </Link>
-              <span className="text-slate-600 hidden sm:block">|</span>
-              <span className="text-lg font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent hidden sm:block">
-                {t.siteName}
-              </span>
-            </div>
-            <LanguageSwitcher />
-          </div>
-        </div>
-      </nav>
+      
 
       {/* 主内容 */}
       <main className="max-w-7xl mx-auto px-6 py-8">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/20 rounded-full text-sm text-purple-300 mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/20 rounded-full text-sm text-purple-700 mb-4">
             <Sparkles size={16} className="fill-purple-300" />
             {language === 'zh' ? 'AI 智能服务' : language === 'id' ? 'Layanan AI Cerdas' : 'AI Smart Service'}
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
             {currentLabels.title}
           </h1>
-          <p className="text-slate-400 max-w-2xl mx-auto">
+          <p className="text-gray-500 max-w-2xl mx-auto">
             {currentLabels.subtitle}
           </p>
         </div>

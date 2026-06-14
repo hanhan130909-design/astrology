@@ -152,25 +152,15 @@ export default function AcademyPage() {
   if (selectedCourse) {
     const courseInfo = getLocalizedCourse(selectedCourse, language);
     return (
-      <div className="min-h-screen bg-[#030014]">
-        <header className="sticky top-0 z-50 bg-[#030014]/80 backdrop-blur-xl border-b border-white/5">
-          <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <button onClick={() => setSelectedCourse(null)} className="flex items-center gap-2 text-gray-400 hover:text-white">
-                <ArrowLeft className="w-5 h-5" />
-              </button>
-              <h1 className="text-lg font-bold text-white truncate">{courseInfo.title}</h1>
-            </div>
-            <LanguageSwitcher />
-          </div>
-        </header>
+      <div className="min-h-screen bg-white">
+        
 
         <div className="max-w-4xl mx-auto px-4 py-6">
           <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 rounded-2xl p-6 border border-purple-500/20 mb-6">
             <div className="flex items-start gap-4">
               <div className="w-20 h-20 bg-white/10 rounded-xl flex items-center justify-center text-4xl">{selectedCourse.thumbnail}</div>
               <div className="flex-1">
-                <h2 className="text-xl font-bold text-white mb-2">{courseInfo.title}</h2>
+                <h2 className="text-xl font-bold text-gray-900 mb-2">{courseInfo.title}</h2>
                 <p className="text-gray-400 text-sm mb-3">{courseInfo.desc}</p>
                 <div className="flex flex-wrap items-center gap-3 text-sm">
                   <span className={`px-2 py-1 rounded-full ${getLevelColor(selectedCourse.level)}`}>{levelLabels[selectedCourse.level as keyof typeof levelLabels] || levelLabels.beginner}</span>
@@ -182,10 +172,10 @@ export default function AcademyPage() {
           </div>
 
           {selectedCourse.progress > 0 && (
-            <div className="bg-white/5 rounded-xl p-4 border border-white/5 mb-6">
+            <div className="bg-white/5 rounded-xl p-4 border border-gray-200 mb-6">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-gray-400">{t.inProgress}</span>
-                <span className="text-white font-medium">{selectedCourse.progress}%</span>
+                <span className="text-gray-900 font-medium">{selectedCourse.progress}%</span>
               </div>
               <div className="h-2 bg-white/10 rounded-full overflow-hidden">
                 <div className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full" style={{ width: `${selectedCourse.progress}%` }} />
@@ -194,19 +184,19 @@ export default function AcademyPage() {
           )}
 
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">{t.courseContent}</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">{t.courseContent}</h3>
             <div className="space-y-3">
               {LESSONS.map((lesson, idx) => (
-                <div key={lesson.id} className={`flex items-center gap-4 p-4 rounded-xl border ${lesson.locked ? "bg-white/5 border-white/5 opacity-60" : "bg-white/5 border-white/10 hover:border-purple-500/30"}`}>
+                <div key={lesson.id} className={`flex items-center gap-4 p-4 rounded-xl border ${lesson.locked ? "bg-white/5 border-gray-200 opacity-60" : "bg-white/5 border-gray-200 hover:border-purple-500/30"}`}>
                   <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm text-gray-400">
                     {lesson.completed ? <CheckCircle className="w-5 h-5 text-green-400" /> : lesson.locked ? <Lock className="w-4 h-4" /> : idx + 1}
                   </div>
                   <div className="flex-1">
-                    <div className="text-white">{getLocalizedLesson(lesson, language)}</div>
+                    <div className="text-gray-900">{getLocalizedLesson(lesson, language)}</div>
                     <div className="text-sm text-gray-500 flex items-center gap-1"><Play className="w-3 h-3" />{lesson.duration} {t.minutes}</div>
                   </div>
                   {!lesson.locked && !lesson.completed && (
-                    <button className="px-4 py-2 bg-purple-500/20 text-purple-300 rounded-lg text-sm hover:bg-purple-500/30">{t.continueLearning}</button>
+                    <button className="px-4 py-2 bg-purple-500/20 text-purple-700 rounded-lg text-sm hover:bg-purple-500/30">{t.continueLearning}</button>
                   )}
                 </div>
               ))}
@@ -218,50 +208,42 @@ export default function AcademyPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#030014]">
-      <header className="sticky top-0 z-50 bg-[#030014]/80 backdrop-blur-xl border-b border-white/5">
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Link href="/" className="flex items-center gap-2 text-gray-400 hover:text-white"><ArrowLeft className="w-5 h-5" /></Link>
-            <h1 className="text-xl font-bold gradient-text">{t.title}</h1>
-          </div>
-          <LanguageSwitcher />
-        </div>
-      </header>
+    <div className="min-h-screen bg-white">
+      
 
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-white mb-2">{t.title}</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-2">{t.title}</h2>
           <p className="text-gray-400">{t.subtitle}</p>
         </div>
 
         <div className="flex justify-center mb-8">
           <div className="flex bg-white/5 rounded-xl p-1">
-            <button onClick={() => setActiveTab("my")} className={`px-6 py-2 rounded-lg text-sm font-medium transition-all ${activeTab === "my" ? "bg-purple-500/20 text-purple-300" : "text-gray-400 hover:text-white"}`}>{t.myCourses}</button>
-            <button onClick={() => setActiveTab("all")} className={`px-6 py-2 rounded-lg text-sm font-medium transition-all ${activeTab === "all" ? "bg-purple-500/20 text-purple-300" : "text-gray-400 hover:text-white"}`}>{t.allCourses}</button>
+            <button onClick={() => setActiveTab("my")} className={`px-6 py-2 rounded-lg text-sm font-medium transition-all ${activeTab === "my" ? "bg-purple-500/20 text-purple-700" : "text-gray-400 hover:text-purple-700"}`}>{t.myCourses}</button>
+            <button onClick={() => setActiveTab("all")} className={`px-6 py-2 rounded-lg text-sm font-medium transition-all ${activeTab === "all" ? "bg-purple-500/20 text-purple-700" : "text-gray-400 hover:text-purple-700"}`}>{t.allCourses}</button>
           </div>
         </div>
 
         <div className="flex flex-wrap justify-center gap-2 mb-8">
-          <button onClick={() => setFilterLevel("all")} className={`px-4 py-2 rounded-full text-sm transition-all ${filterLevel === "all" ? "bg-purple-500/20 text-purple-300 border border-purple-500/30" : "bg-white/5 text-gray-400 border border-white/5 hover:bg-white/10"}`}>{language === "zh" ? "全部" : language === "id" ? "Semua" : "All"}</button>
-          <button onClick={() => setFilterLevel("beginner")} className={`px-4 py-2 rounded-full text-sm transition-all ${filterLevel === "beginner" ? "bg-purple-500/20 text-purple-300 border border-purple-500/30" : "bg-white/5 text-gray-400 border border-white/5 hover:bg-white/10"}`}>{levelLabels.beginner}</button>
-          <button onClick={() => setFilterLevel("intermediate")} className={`px-4 py-2 rounded-full text-sm transition-all ${filterLevel === "intermediate" ? "bg-purple-500/20 text-purple-300 border border-purple-500/30" : "bg-white/5 text-gray-400 border border-white/5 hover:bg-white/10"}`}>{levelLabels.intermediate}</button>
-          <button onClick={() => setFilterLevel("advanced")} className={`px-4 py-2 rounded-full text-sm transition-all ${filterLevel === "advanced" ? "bg-purple-500/20 text-purple-300 border border-purple-500/30" : "bg-white/5 text-gray-400 border border-white/5 hover:bg-white/10"}`}>{levelLabels.advanced}</button>
+          <button onClick={() => setFilterLevel("all")} className={`px-4 py-2 rounded-full text-sm transition-all ${filterLevel === "all" ? "bg-purple-500/20 text-purple-700 border border-purple-500/30" : "bg-white/5 text-gray-400 border border-gray-200 hover:bg-white/10"}`}>{language === "zh" ? "全部" : language === "id" ? "Semua" : "All"}</button>
+          <button onClick={() => setFilterLevel("beginner")} className={`px-4 py-2 rounded-full text-sm transition-all ${filterLevel === "beginner" ? "bg-purple-500/20 text-purple-700 border border-purple-500/30" : "bg-white/5 text-gray-400 border border-gray-200 hover:bg-white/10"}`}>{levelLabels.beginner}</button>
+          <button onClick={() => setFilterLevel("intermediate")} className={`px-4 py-2 rounded-full text-sm transition-all ${filterLevel === "intermediate" ? "bg-purple-500/20 text-purple-700 border border-purple-500/30" : "bg-white/5 text-gray-400 border border-gray-200 hover:bg-white/10"}`}>{levelLabels.intermediate}</button>
+          <button onClick={() => setFilterLevel("advanced")} className={`px-4 py-2 rounded-full text-sm transition-all ${filterLevel === "advanced" ? "bg-purple-500/20 text-purple-700 border border-purple-500/30" : "bg-white/5 text-gray-400 border border-gray-200 hover:bg-white/10"}`}>{levelLabels.advanced}</button>
         </div>
 
         {activeTab === "my" && myCourses.length > 0 && (
           <div className="mb-8">
-            <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2"><Eye className="w-5 h-5 text-purple-400" />{t.myCourses}</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2"><Eye className="w-5 h-5 text-purple-400" />{t.myCourses}</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {myCourses.map((course) => {
                 const info = getLocalizedCourse(course, language);
                 return (
-                  <div key={course.id} onClick={() => setSelectedCourse(course)} className="cursor-pointer bg-white/5 rounded-2xl overflow-hidden border border-white/5 hover:border-purple-500/30 transition-all">
+                  <div key={course.id} onClick={() => setSelectedCourse(course)} className="cursor-pointer bg-white/5 rounded-2xl overflow-hidden border border-gray-200 hover:border-purple-500/30 transition-all">
                     <div className="aspect-video bg-gradient-to-br from-purple-900/50 to-pink-900/50 flex items-center justify-center text-6xl">{course.thumbnail}</div>
                     <div className="p-5">
-                      <h4 className="text-lg font-semibold text-white mb-2 line-clamp-1">{info.title}</h4>
+                      <h4 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-1">{info.title}</h4>
                       <div className="space-y-2">
-                        <div className="flex items-center justify-between text-sm"><span className="text-gray-400">{t.inProgress}</span><span className="text-white">{course.progress}%</span></div>
+                        <div className="flex items-center justify-between text-sm"><span className="text-gray-400">{t.inProgress}</span><span className="text-gray-900">{course.progress}%</span></div>
                         <div className="h-2 bg-white/10 rounded-full overflow-hidden"><div className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full" style={{ width: `${course.progress}%` }} /></div>
                       </div>
                     </div>
@@ -273,19 +255,19 @@ export default function AcademyPage() {
         )}
 
         <div>
-          <h3 className="text-lg font-semibold text-white mb-4">{t.allCourses}</h3>
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">{t.allCourses}</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredCourses.map((course) => {
               const info = getLocalizedCourse(course, language);
               return (
-                <div key={course.id} onClick={() => setSelectedCourse(course)} className="cursor-pointer bg-white/5 rounded-2xl overflow-hidden border border-white/5 hover:border-purple-500/30 transition-all">
+                <div key={course.id} onClick={() => setSelectedCourse(course)} className="cursor-pointer bg-white/5 rounded-2xl overflow-hidden border border-gray-200 hover:border-purple-500/30 transition-all">
                   <div className="aspect-video bg-gradient-to-br from-purple-900/50 to-pink-900/50 flex items-center justify-center text-6xl">{course.thumbnail}</div>
                   <div className="p-5">
                     <div className="flex items-center justify-between mb-2">
                       <span className={`px-2 py-1 rounded-full text-xs ${getLevelColor(course.level)}`}>{levelLabels[course.level as keyof typeof levelLabels]}</span>
                       <div className="flex items-center gap-1 text-amber-400 text-sm"><Star className="w-4 h-4 fill-current" />{course.rating}</div>
                     </div>
-                    <h4 className="text-lg font-semibold text-white mb-2 line-clamp-1">{info.title}</h4>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-1">{info.title}</h4>
                     <p className="text-gray-400 text-sm mb-4 line-clamp-2">{info.desc}</p>
                     <div className="flex items-center gap-4 text-sm text-gray-500">
                       <span className="flex items-center gap-1"><BookOpen className="w-4 h-4" />{course.lessons} {t.lessons}</span>
@@ -294,7 +276,7 @@ export default function AcademyPage() {
                     </div>
                     {course.progress > 0 && (
                       <div className="mt-4 space-y-2">
-                        <div className="flex items-center justify-between text-sm"><span className="text-gray-400">{t.inProgress}</span><span className="text-white">{course.progress}%</span></div>
+                        <div className="flex items-center justify-between text-sm"><span className="text-gray-400">{t.inProgress}</span><span className="text-gray-900">{course.progress}%</span></div>
                         <div className="h-2 bg-white/10 rounded-full overflow-hidden"><div className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full" style={{ width: `${course.progress}%` }} /></div>
                       </div>
                     )}

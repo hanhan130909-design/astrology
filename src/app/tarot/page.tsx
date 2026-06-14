@@ -203,14 +203,14 @@ function TarotCardVisual({ card, isRevealed, index, spreadLength }: { card: type
           // Card front
           <div className={`absolute inset-0 bg-gradient-to-br ${gradClass} flex flex-col`}>
             {/* Card number */}
-            <div className="absolute top-2 left-2 text-white/80 text-xs font-bold">{card.image}</div>
+            <div className="absolute top-2 left-2 text-gray-900/80 text-xs font-bold">{card.image}</div>
             {/* Card symbol */}
             <div className="flex-1 flex items-center justify-center">
               <span className="text-4xl">{card.number === 0 ? "0" : card.number}</span>
             </div>
             {/* Card name */}
             <div className="bg-black/30 px-2 py-1.5">
-              <p className="text-white text-[10px] font-medium text-center truncate">{card.name.en}</p>
+              <p className="text-gray-900 text-[10px] font-medium text-center truncate">{card.name.en}</p>
             </div>
           </div>
         )}
@@ -319,20 +319,9 @@ export default function TarotPage() {
   const allRevealed = drawnCards.length > 0 && revealedCards.length === drawnCards.length;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#020617] via-[#0f0f23] to-[#020617] text-white">
+    <div className="min-h-screen bg-gradient-to-b from-[#020617] via-[#0f0f23] to-[#020617] text-gray-900">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 backdrop-blur-md bg-[#020617]/90 border-b border-white/5">
-        <div className="max-w-4xl mx-auto px-4 py-3">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2 text-purple-300 hover:text-amber-200 transition-colors">
-              <ArrowLeft size={20} />
-              <span className="text-sm">{language === 'zh' ? '首页' : language === 'id' ? 'Beranda' : 'Home'}</span>
-            </Link>
-            <h1 className="text-lg font-bold text-white">星缘</h1>
-            <LanguageSwitcher />
-          </div>
-        </div>
-      </nav>
+      
 
       <main className="max-w-4xl mx-auto px-4 py-6">
         {/* Header */}
@@ -340,27 +329,27 @@ export default function TarotPage() {
           <h1 className="text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-purple-400 via-pink-400 to-amber-400 bg-clip-text text-transparent">
             {t.title}
           </h1>
-          <p className="text-slate-400">{t.subtitle}</p>
+          <p className="text-gray-500">{t.subtitle}</p>
         </div>
 
         {/* Controls */}
         <div className="bg-slate-900/50 border border-slate-700 rounded-2xl p-5 mb-6 space-y-4">
           {/* Question Input */}
           <div>
-            <label className="block text-sm text-slate-400 mb-2">{t.question}</label>
+            <label className="block text-sm text-gray-500 mb-2">{t.question}</label>
             <input
               type="text"
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
               placeholder={t.questionPlaceholder}
-              className="w-full bg-slate-800 border border-slate-600 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-purple-500"
+              className="w-full bg-slate-800 border border-slate-600 rounded-xl px-4 py-3 text-gray-900 placeholder-slate-500 focus:outline-none focus:border-purple-500"
             />
           </div>
 
           {/* Category & Spread */}
           <div className="grid md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm text-slate-400 mb-2">{t.category}</label>
+              <label className="block text-sm text-gray-500 mb-2">{t.category}</label>
               <div className="flex gap-2">
                 {(['general', 'love', 'career'] as const).map((c) => (
                   <button
@@ -368,8 +357,8 @@ export default function TarotPage() {
                     onClick={() => setCategory(c)}
                     className={`flex-1 py-2 rounded-lg text-sm font-medium transition-all ${
                       category === c 
-                        ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white' 
-                        : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                        ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-gray-900' 
+                        : 'bg-slate-800 text-gray-500 hover:bg-slate-700'
                     }`}
                   >
                     {t[c]}
@@ -378,11 +367,11 @@ export default function TarotPage() {
               </div>
             </div>
             <div>
-              <label className="block text-sm text-slate-400 mb-2">{t.spread}</label>
+              <label className="block text-sm text-gray-500 mb-2">{t.spread}</label>
               <select
                 value={selectedSpread.id}
                 onChange={(e) => { setSelectedSpread(SPREADS.find(s => s.id === e.target.value) || SPREADS[0]); setDrawnCards([]); setRevealedCards([]); }}
-                className="w-full bg-slate-800 border border-slate-600 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-purple-500"
+                className="w-full bg-slate-800 border border-slate-600 rounded-xl px-4 py-2.5 text-gray-900 focus:outline-none focus:border-purple-500"
               >
                 {SPREADS.map((s) => (
                   <option key={s.id} value={s.id}>
@@ -397,7 +386,7 @@ export default function TarotPage() {
           <button
             onClick={shuffleCards}
             disabled={isShuffling}
-            className="w-full py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 disabled:from-slate-600 disabled:to-slate-600 rounded-xl font-bold text-white transition-all flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30"
+            className="w-full py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 disabled:from-slate-600 disabled:to-slate-600 rounded-xl font-bold text-gray-900 transition-all flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30"
           >
             {isShuffling ? <RefreshCw size={20} className="animate-spin" /> : <Shuffle size={20} />}
             {isShuffling ? t.shuffling : t.shuffle}
@@ -415,7 +404,7 @@ export default function TarotPage() {
                   return (
                     <div key={i} className="flex flex-col items-center gap-2">
                       {/* Position label */}
-                      <div className="text-xs text-slate-400 text-center bg-slate-800/50 px-2 py-1 rounded-lg">
+                      <div className="text-xs text-gray-500 text-center bg-slate-800/50 px-2 py-1 rounded-lg">
                         {currentPositions[i] || `${t.position} ${i + 1}`}
                       </div>
                       {/* Card */}
@@ -431,7 +420,7 @@ export default function TarotPage() {
                         />
                         {!isRevealed && (
                           <div className="absolute inset-0 flex items-center justify-center">
-                            <span className="text-xs text-slate-400 bg-black/50 px-2 py-1 rounded">{t.tapToReveal}</span>
+                            <span className="text-xs text-gray-500 bg-black/50 px-2 py-1 rounded">{t.tapToReveal}</span>
                           </div>
                         )}
                       </div>
@@ -453,18 +442,18 @@ export default function TarotPage() {
                   </h3>
                   <div className="space-y-4">
                     {drawnCards.map((card, i) => (
-                      <div key={i} className="p-4 rounded-xl bg-white/5 border border-white/10">
+                      <div key={i} className="p-4 rounded-xl bg-white/5 border border-gray-200">
                         <div className="flex items-center gap-2 mb-3">
                           <span className="text-2xl font-bold text-purple-400">{card.image}</span>
                           <div>
-                            <span className="font-bold text-white">{card.name[language] || card.name.en}</span>
-                            <span className="text-slate-400 text-sm ml-2">({card.element})</span>
+                            <span className="font-bold text-gray-900">{card.name[language] || card.name.en}</span>
+                            <span className="text-gray-500 text-sm ml-2">({card.element})</span>
                           </div>
                         </div>
-                        <p className="text-slate-300 text-sm mb-3">{getCardReading(card)}</p>
+                        <p className="text-gray-600 text-sm mb-3">{getCardReading(card)}</p>
                         <div className="flex flex-wrap gap-2">
                           {card.keywords[language]?.map((kw: string, j: number) => (
-                            <span key={j} className="px-2 py-1 bg-purple-500/20 rounded-full text-xs text-purple-300">{kw}</span>
+                            <span key={j} className="px-2 py-1 bg-purple-500/20 rounded-full text-xs text-purple-700">{kw}</span>
                           ))}
                         </div>
                       </div>
@@ -488,7 +477,7 @@ export default function TarotPage() {
                           <div className="p-4 rounded-xl bg-slate-800"><div className="h-4 bg-slate-700 rounded w-3/4 mb-2" /><div className="h-3 bg-slate-700/50 rounded w-full" /></div>
                         </div>
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <Lock size={32} className="text-slate-400" />
+                          <Lock size={32} className="text-gray-500" />
                         </div>
                       </div>
                       
@@ -496,20 +485,20 @@ export default function TarotPage() {
                       <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20">
                         <div className="flex items-center gap-3 mb-3">
                           <MessageCircle size={20} className="text-green-400" />
-                          <div className="font-medium text-white text-sm">{t.shareUnlock}</div>
+                          <div className="font-medium text-gray-900 text-sm">{t.shareUnlock}</div>
                         </div>
                         <div className="flex gap-2 mb-3">
                           {[1, 2, 3].map(n => (
                             <div key={n} className={`flex-1 h-2 rounded-full transition-all ${shareCount >= n ? "bg-green-500" : "bg-slate-700"}`} />
                           ))}
                         </div>
-                        <div className="text-xs text-slate-400 mb-3">{t.shareProgress}: {shareCount}/3</div>
+                        <div className="text-xs text-gray-500 mb-3">{t.shareProgress}: {shareCount}/3</div>
                         
                         {shareCount < 3 ? (
                           <div className="grid grid-cols-3 gap-2">
                             {[1, 2, 3].map(n => (
                               <button key={n} onClick={handleShare} disabled={shareCount >= n}
-                                className={`py-2 rounded-lg text-xs font-medium flex items-center justify-center gap-1 transition-all ${shareCount >= n ? "bg-green-500/20 text-green-400 border border-green-500/30" : "bg-slate-800 hover:bg-green-500/20 text-slate-300 hover:text-green-300 border border-slate-700"}`}>
+                                className={`py-2 rounded-lg text-xs font-medium flex items-center justify-center gap-1 transition-all ${shareCount >= n ? "bg-green-500/20 text-green-400 border border-green-500/30" : "bg-slate-800 hover:bg-green-500/20 text-gray-600 hover:text-green-300 border border-slate-700"}`}>
                                 {shareCount >= n ? <CheckCircle size={12} /> : <Share2 size={12} />}
                                 {language === 'zh' ? '好友' : language === 'id' ? 'Teman' : language === 'th' ? 'เพื่อน' : language === 'vi' ? 'Bạn' : 'Friend'} {n}
                               </button>

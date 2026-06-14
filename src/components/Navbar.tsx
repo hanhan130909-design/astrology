@@ -3,92 +3,61 @@
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const navTranslations: Record<string, { name: string; href: string }[]> = {
-  id: [
-    { name: "首页", href: "/" },
-    { name: "运势", href: "/horoscope" },
-    { name: "星盘", href: "/chart" },
-    { name: "配对", href: "/compatibility" },
-    { name: "AI解读", href: "/ai-reading" },
-    { name: "学习", href: "/learn" },
-    { name: "天象", href: "/transits" },
-    { name: "社区", href: "/community" },
-  ],
-  en: [
-    { name: "Home", href: "/" },
-    { name: "Horoscope", href: "/horoscope" },
-    { name: "Chart", href: "/chart" },
-    { name: "Compatibility", href: "/compatibility" },
-    { name: "AI Reading", href: "/ai-reading" },
-    { name: "Learn", href: "/learn" },
-    { name: "Transits", href: "/transits" },
-    { name: "Community", href: "/community" },
-  ],
-  zh: [
-    { name: "首页", href: "/" },
-    { name: "运势", href: "/horoscope" },
-    { name: "星盘", href: "/chart" },
-    { name: "配对", href: "/compatibility" },
-    { name: "AI解读", href: "/ai-reading" },
-    { name: "学习", href: "/learn" },
-    { name: "天象", href: "/transits" },
-    { name: "社区", href: "/community" },
-  ],
+const T: Record<string, Record<string, string>> = {
+  zh: { home:"首页", horoscope:"运势", natal:"星盘", compatibility:"配对", ai:"AI解读", learn:"学习", transits:"天象", community:"社区", tarot:"塔罗", yearly:"年度运势", academy:"学院", compare:"对比" },
+  en: { home:"Home", horoscope:"Horoscope", natal:"Chart", compatibility:"Match", ai:"AI", learn:"Learn", transits:"Transits", community:"Community", tarot:"Tarot", yearly:"Yearly", academy:"Academy", compare:"Compare" },
+  id: { home:"Beranda", horoscope:"Horoskop", natal:"Bagan", compatibility:"Cocok", ai:"AI", learn:"Belajar", transits:"Transit", community:"Komunitas", tarot:"Tarot", yearly:"Tahunan", academy:"Akademi", compare:"Banding" },
 };
 
 export default function Navbar() {
   const { language, setLanguage } = useLanguage();
-  const navItems = navTranslations[language];
+  const t = T[language] || T.zh;
+
+  const links = [
+    { name: t.home, href: "/" },
+    { name: t.horoscope, href: "/horoscope" },
+    { name: t.natal, href: "/natal" },
+    { name: t.compatibility, href: "/compatibility" },
+    { name: t.ai, href: "/ai-reading" },
+    { name: t.tarot, href: "/tarot" },
+    { name: t.transits, href: "/transits" },
+    { name: t.learn, href: "/learn" },
+    { name: t.community, href: "/community" },
+  ];
 
   return (
-    <nav className="sticky top-0 z-50 backdrop-blur-md bg-[#0a0a1a]/90 border-b border-purple-900/30">
-      <div className="max-w-6xl mx-auto px-4 py-3">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <Link href="/" className="flex items-center gap-2">
-              <span className="text-2xl">✨</span>
-              <span className="text-lg font-bold text-amber-200">
-                {language === "id" ? "Bintang Jodoh" : language === "en" ? "Star Destiny" : "星缘占星"}
-              </span>
-            </Link>
-            <div className="hidden md:flex items-center gap-4">
-              {navItems.slice(0, 6).map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-sm text-purple-200/80 hover:text-amber-200 transition-colors"
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
+    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+      <div className="max-w-6xl mx-auto px-4 py-2.5 flex items-center justify-between">
+        <div className="flex items-center gap-5">
+          <Link href="/" className="flex items-center gap-1.5 shrink-0">
+            <span className="text-xl">✨</span>
+            <span className="text-base font-bold text-gray-800">星缘</span>
+          </Link>
+          <div className="hidden md:flex items-center gap-3 flex-wrap">
+            {links.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-xs text-gray-500 hover:text-purple-600 transition-colors whitespace-nowrap"
+              >
+                {item.name}
+              </Link>
+            ))}
           </div>
-          <div className="flex items-center gap-2">
+        </div>
+        <div className="flex items-center gap-1">
+          {(["zh","en","id"] as const).map((l) => (
             <button
-              onClick={() => setLanguage("id")}
-              className={`px-2 py-1 rounded text-sm ${
-                language === "id" ? "bg-amber-500/30 text-amber-200" : "text-purple-300"
+              key={l}
+              onClick={() => setLanguage(l)}
+              className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
+                language === l ? "bg-purple-100 text-purple-700" : "text-gray-400 hover:text-gray-600"
               }`}
             >
-              🇮🇩 ID
+              {{zh:"中",en:"EN",id:"ID"}[l]}
             </button>
-            <button
-              onClick={() => setLanguage("en")}
-              className={`px-2 py-1 rounded text-sm ${
-                language === "en" ? "bg-amber-500/30 text-amber-200" : "text-purple-300"
-              }`}
-            >
-              🇺🇸 EN
-            </button>
-            <button
-              onClick={() => setLanguage("zh")}
-              className={`px-2 py-1 rounded text-sm ${
-                language === "zh" ? "bg-amber-500/30 text-amber-200" : "text-purple-300"
-              }`}
-            >
-              🇨🇳 中
-            </button>
-          </div>
+          ))}
+          <Link href="/login" className="ml-2 text-xs text-gray-400 hover:text-purple-600">登录</Link>
         </div>
       </div>
     </nav>

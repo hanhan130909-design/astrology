@@ -304,24 +304,14 @@ export default function ComparePage() {
   const isValid = people.filter(p => p.name && p.birthDate).length >= 2;
 
   return (
-    <div className="min-h-screen bg-[#030014]">
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-[#030014]/80 backdrop-blur-xl border-b border-white/5">
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Link href="/" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
-              <ArrowLeft className="w-5 h-5" />
-            </Link>
-            <h1 className="text-xl font-bold gradient-text">{t.title}</h1>
-          </div>
-          <LanguageSwitcher />
-        </div>
-      </header>
+      
 
       <div className="max-w-6xl mx-auto px-4 py-8">
         {/* Hero */}
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-white mb-2">{t.title}</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-2">{t.title}</h2>
           <p className="text-gray-400">{t.subtitle}</p>
         </div>
 
@@ -332,8 +322,8 @@ export default function ComparePage() {
               onClick={() => setActiveTab("synastry")}
               className={`px-6 py-2 rounded-lg text-sm font-medium transition-all ${
                 activeTab === "synastry"
-                  ? "bg-purple-500/20 text-purple-300"
-                  : "text-gray-400 hover:text-white"
+                  ? "bg-purple-500/20 text-purple-700"
+                  : "text-gray-400 hover:text-purple-700"
               }`}
             >
               {t.synastry}
@@ -342,8 +332,8 @@ export default function ComparePage() {
               onClick={() => setActiveTab("composite")}
               className={`px-6 py-2 rounded-lg text-sm font-medium transition-all ${
                 activeTab === "composite"
-                  ? "bg-purple-500/20 text-purple-300"
-                  : "text-gray-400 hover:text-white"
+                  ? "bg-purple-500/20 text-purple-700"
+                  : "text-gray-400 hover:text-purple-700"
               }`}
             >
               {t.composite}
@@ -354,11 +344,11 @@ export default function ComparePage() {
         {/* People Forms */}
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           {people.map((person, index) => (
-            <div key={person.id} className="bg-white/5 rounded-2xl p-6 border border-white/5">
+            <div key={person.id} className="bg-white/5 rounded-2xl p-6 border border-gray-200">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
                   <Users className="w-5 h-5 text-purple-400" />
-                  <span className="text-white font-medium">
+                  <span className="text-gray-900 font-medium">
                     {language === "zh" ? `人物 ${index + 1}` : language === "id" ? `Orang ${index + 1}` : `Person ${index + 1}`}
                   </span>
                 </div>
@@ -379,7 +369,7 @@ export default function ComparePage() {
                     type="text"
                     value={person.name}
                     onChange={(e) => updatePerson(person.id, "name", e.target.value)}
-                    className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-purple-500/50 focus:outline-none"
+                    className="w-full px-4 py-2 bg-white/5 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-500 focus:border-purple-500/50 focus:outline-none"
                     placeholder={language === "zh" ? "输入姓名" : language === "id" ? "Masukkan nama" : "Enter name"}
                   />
                 </div>
@@ -390,7 +380,7 @@ export default function ComparePage() {
                       type="date"
                       value={person.birthDate}
                       onChange={(e) => updatePerson(person.id, "birthDate", e.target.value)}
-                      className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-white focus:border-purple-500/50 focus:outline-none"
+                      className="w-full px-4 py-2 bg-white/5 border border-gray-200 rounded-xl text-gray-900 focus:border-purple-500/50 focus:outline-none"
                     />
                   </div>
                   <div>
@@ -399,7 +389,7 @@ export default function ComparePage() {
                       type="time"
                       value={person.birthTime}
                       onChange={(e) => updatePerson(person.id, "birthTime", e.target.value)}
-                      className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-white focus:border-purple-500/50 focus:outline-none"
+                      className="w-full px-4 py-2 bg-white/5 border border-gray-200 rounded-xl text-gray-900 focus:border-purple-500/50 focus:outline-none"
                     />
                   </div>
                 </div>
@@ -409,7 +399,7 @@ export default function ComparePage() {
                     type="text"
                     value={person.location}
                     onChange={(e) => updatePerson(person.id, "location", e.target.value)}
-                    className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-purple-500/50 focus:outline-none"
+                    className="w-full px-4 py-2 bg-white/5 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-500 focus:border-purple-500/50 focus:outline-none"
                     placeholder={language === "zh" ? "城市名称" : language === "id" ? "Nama kota" : "City name"}
                   />
                 </div>
@@ -423,7 +413,7 @@ export default function ComparePage() {
           <div className="flex justify-center mb-8">
             <button
               onClick={addPerson}
-              className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-gray-300 hover:bg-white/10 hover:text-white transition-colors"
+              className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-gray-200 rounded-xl text-gray-300 hover:bg-white/10 hover:text-purple-700 transition-colors"
             >
               <Plus className="w-5 h-5" />
               {t.addPerson}
@@ -436,7 +426,7 @@ export default function ComparePage() {
           <button
             onClick={handleCompare}
             disabled={!isValid || loading}
-            className="flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl text-white font-semibold hover:from-purple-500 hover:to-pink-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl text-gray-900 font-semibold hover:from-purple-500 hover:to-pink-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? (
               <>
@@ -474,15 +464,15 @@ export default function ComparePage() {
             </div>
 
             {/* Elements */}
-            <div className="bg-white/5 rounded-2xl p-6 border border-white/5">
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <div className="bg-white/5 rounded-2xl p-6 border border-gray-200">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <Sparkles className="w-5 h-5 text-purple-400" />
                 {t.elements}
               </h3>
               <div className="grid grid-cols-4 gap-4">
                 {Object.entries(result.elements).map(([element, value]) => (
                   <div key={element} className="text-center">
-                    <div className="text-2xl font-bold text-white mb-1">{value}%</div>
+                    <div className="text-2xl font-bold text-gray-900 mb-1">{value}%</div>
                     <div className="text-sm text-gray-400">
                       {t[element as keyof typeof t]}
                     </div>
@@ -498,8 +488,8 @@ export default function ComparePage() {
             </div>
 
             {/* Aspects */}
-            <div className="bg-white/5 rounded-2xl p-6 border border-white/5">
-              <h3 className="text-lg font-semibold text-white mb-4">{t.aspects}</h3>
+            <div className="bg-white/5 rounded-2xl p-6 border border-gray-200">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">{t.aspects}</h3>
               <div className="space-y-3">
                 {result.aspects.map((aspect, idx) => (
                   <div key={idx} className="flex items-center gap-4 p-4 bg-white/5 rounded-xl">
@@ -508,7 +498,7 @@ export default function ComparePage() {
                       <span className="text-gray-500">→</span>
                       <span className="text-pink-400 font-medium">{aspect.planet2}</span>
                     </div>
-                    <span className="px-2 py-1 bg-purple-500/20 rounded text-purple-300 text-sm">
+                    <span className="px-2 py-1 bg-purple-500/20 rounded text-purple-700 text-sm">
                       {aspect.aspect}
                     </span>
                     <span className="text-gray-400 text-sm">±{aspect.orb}°</span>

@@ -276,31 +276,15 @@ export default function BlogPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#030014]">
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-[#030014]/80 backdrop-blur-xl border-b border-white/5">
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Link
-              href="/"
-              className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              <span className="hidden sm:inline">{currentT.back}</span>
-            </Link>
-            <h1 className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              {currentT.title}
-            </h1>
-          </div>
-          <LanguageSwitcher />
-        </div>
-      </header>
+      
 
       {/* Hero Section */}
       <section className="py-20 px-4 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-pink-900/20" />
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             {currentT.title}
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
@@ -312,7 +296,7 @@ export default function BlogPage() {
       {/* Featured Section */}
       <section className="px-4 mb-12">
         <div className="max-w-6xl mx-auto">
-          <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+          <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-3">
             <span className="w-1 h-6 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full inline-block" />
             {currentT.featured}
           </h3>
@@ -322,7 +306,7 @@ export default function BlogPage() {
             {blogArticles.map((article) => (
               <article
                 key={article.id}
-                className="group bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-purple-500/30 transition-all duration-300 hover:-translate-y-1"
+                className="group bg-white/5 rounded-2xl overflow-hidden border border-gray-200 hover:border-purple-500/30 transition-all duration-300 hover:-translate-y-1"
               >
                 {/* Gradient Image Area */}
                 <div className="aspect-video bg-gradient-to-br from-purple-900/30 via-pink-900/20 to-indigo-900/30 flex items-center justify-center relative">
@@ -349,7 +333,7 @@ export default function BlogPage() {
                   </div>
                   
                   {/* Title */}
-                  <h4 className="text-lg font-bold text-white mb-3 group-hover:text-purple-400 transition-colors line-clamp-2">
+                  <h4 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-purple-400 transition-colors line-clamp-2">
                     {article.title[language] || article.title.en}
                   </h4>
                   
@@ -371,13 +355,13 @@ export default function BlogPage() {
                   </div>
                   
                   {/* Footer */}
-                  <div className="flex items-center justify-between pt-4 border-t border-white/5">
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-200">
                     <div className="text-sm text-gray-500">
                       {currentT.by} {language === 'zh' ? article.author : language === 'id' ? article.authorId : article.authorEn}
                     </div>
                     <Link
                       href={`/blog/${article.slug}`}
-                      className="flex items-center gap-1 text-purple-400 hover:text-purple-300 text-sm font-medium transition-colors"
+                      className="flex items-center gap-1 text-purple-400 hover:text-purple-700 text-sm font-medium transition-colors"
                     >
                       {currentT.readMore}
                       <ChevronRight className="w-4 h-4" />

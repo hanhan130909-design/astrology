@@ -22,27 +22,9 @@ export default function CompatibilityPage() {
   const t = translations[language];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#020617] via-[#0f0f23] to-[#020617] text-white">
+    <div className="min-h-screen bg-gradient-to-b from-[#020617] via-[#0f0f23] to-[#020617] text-gray-900">
       {/* 导航栏 - 统一主页风格 */}
-      <nav className="sticky top-0 z-50 backdrop-blur-md bg-[#020617]/90 border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <Link href="/" className="flex items-center gap-2 text-purple-300 hover:text-amber-200 transition-colors">
-                <ArrowLeft size={20} />
-                <span className="text-sm">
-                  {language === "zh" ? "返回首页" : language === "id" ? "Beranda" : language === "th" ? "หน้าแรก" : language === "vi" ? "Trang chủ" : language === "ms" ? "Laman Utama" : language === "ja" ? "ホーム" : "홈"}
-                </span>
-              </Link>
-              <span className="text-slate-600 hidden sm:block">|</span>
-              <span className="text-lg font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent hidden sm:block">
-                {t.siteName}
-              </span>
-            </div>
-            <LanguageSwitcher />
-          </div>
-        </div>
-      </nav>
+      
 
       {/* 主内容 */}
       <main className="max-w-7xl mx-auto px-6 py-8">
@@ -51,10 +33,10 @@ export default function CompatibilityPage() {
             <HeartHandshake size={16} className="fill-rose-300" />
             {language === 'zh' ? '寻找灵魂伴侣' : language === 'id' ? 'Temukan Jodoh' : language === 'th' ? 'ค้นหาแฟนที่ใช่' : language === 'vi' ? 'Tìm ngườii yêu' : language === 'ms' ? 'Cari pasangan' : language === 'ja' ? '運命の相手を探す' : language === 'ko' ? '영혼의 반쪽을 찾다' : 'Find Your Soulmate'}
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
             {t.title}
           </h1>
-          <p className="text-slate-400 max-w-2xl mx-auto">
+          <p className="text-gray-500 max-w-2xl mx-auto">
             {t.subtitle}
           </p>
         </div>

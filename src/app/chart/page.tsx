@@ -121,39 +121,21 @@ export default function ChartHubPage() {
   const t = T[language] || T.en;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#020617] via-[#0f0f23] to-[#020617] text-white">
+    <div className="min-h-screen bg-gradient-to-b from-[#020617] via-[#0f0f23] to-[#020617] text-gray-900">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 backdrop-blur-md bg-[#020617]/90 border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <Link href="/" className="flex items-center gap-2 text-purple-300 hover:text-amber-200 transition-colors">
-                <ArrowLeft size={20} />
-                <span className="text-sm">
-                  {language === 'zh' ? '返回首页' : language === 'id' ? 'Beranda' : 'Home'}
-                </span>
-              </Link>
-              <span className="text-slate-600 hidden sm:block">|</span>
-              <span className="text-lg font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent hidden sm:block">
-                {language === 'zh' ? '星缘' : language === 'id' ? 'Starry Fate' : 'Starry Fate'}
-              </span>
-            </div>
-            <LanguageSwitcher />
-          </div>
-        </div>
-      </nav>
+      
 
       {/* Header */}
       <main className="max-w-7xl mx-auto px-6 py-8">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/20 rounded-full text-sm text-purple-300 mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/20 rounded-full text-sm text-purple-700 mb-6">
             <Star size={16} className="fill-purple-300" />
             {language === 'zh' ? '专业占星工具' : language === 'id' ? 'Alat Astrologi Profesional' : 'Professional Astrology Tools'}
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             {t.title}
           </h1>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
             {t.subtitle}
           </p>
         </div>
@@ -174,19 +156,19 @@ export default function ChartHubPage() {
                 </div>
 
                 {/* Title */}
-                <h3 className="relative text-lg font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">
+                <h3 className="relative text-lg font-bold text-gray-900 mb-2 group-hover:text-purple-700 transition-colors">
                   {(card as any).name}
                 </h3>
 
                 {/* Description */}
-                <p className="relative text-sm text-slate-400 leading-relaxed">
+                <p className="relative text-sm text-gray-500 leading-relaxed">
                   {(card as any).desc}
                 </p>
 
                 {/* Arrow indicator */}
                 <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
                   <div className={"w-8 h-8 rounded-full bg-gradient-to-br " + item.color + " flex items-center justify-center"}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-900">
                       <polyline points="9 18 15 12 9 6"/>
                     </svg>
                   </div>
@@ -199,10 +181,10 @@ export default function ChartHubPage() {
         {/* Featured Section: Natal Chart */}
         <div className="mt-16">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">
               {language === 'zh' ? '核心工具：本命盘分析' : language === 'id' ? 'Alat Inti: Analisis Bagan Lahir' : 'Core Tool: Natal Chart Analysis'}
             </h2>
-            <p className="text-slate-400">
+            <p className="text-gray-500">
               {language === 'zh' ? '基于您精确的出生时间地点，计算完整的本命盘星象图' : language === 'id' ? 'Hitung bagan kelahiran lengkap berdasarkan waktu dan tempat lahir Anda' : 'Calculate complete natal chart based on your precise birth time and location'}
             </p>
           </div>
@@ -218,8 +200,8 @@ export default function ChartHubPage() {
                     <circle cx="12" cy="12" r="4" fill="currentColor" opacity="0.3"/>
                   </svg>
                 </div>
-                <h4 className="font-bold text-white mb-2">{language === 'zh' ? '行星位置' : 'Planet Positions'}</h4>
-                <p className="text-sm text-slate-400">
+                <h4 className="font-bold text-gray-900 mb-2">{language === 'zh' ? '行星位置' : 'Planet Positions'}</h4>
+                <p className="text-sm text-gray-500">
                   {language === 'zh' ? '太阳、月亮、水星至冥王星，精确黄道经纬度' : 'Matahari hingga Pluto, dengan koordinat ekliptik yang tepat'}
                 </p>
               </div>
@@ -232,8 +214,8 @@ export default function ChartHubPage() {
                     <path strokeLinecap="round" d="M3 9h18M9 3v18"/>
                   </svg>
                 </div>
-                <h4 className="font-bold text-white mb-2">{language === 'zh' ? '宫位系统' : 'House System'}</h4>
-                <p className="text-sm text-slate-400">
+                <h4 className="font-bold text-gray-900 mb-2">{language === 'zh' ? '宫位系统' : 'House System'}</h4>
+                <p className="text-sm text-gray-500">
                   {language === 'zh' ? 'Placidus/等宫/整宫制，12宫位含义解读' : 'Sistem Placidus/Equal/Whole dengan 12 rumah dan artinya'}
                 </p>
               </div>
@@ -245,8 +227,8 @@ export default function ChartHubPage() {
                     <path strokeLinecap="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                   </svg>
                 </div>
-                <h4 className="font-bold text-white mb-2">{language === 'zh' ? '相位分析' : 'Aspect Analysis'}</h4>
-                <p className="text-sm text-slate-400">
+                <h4 className="font-bold text-gray-900 mb-2">{language === 'zh' ? '相位分析' : 'Aspect Analysis'}</h4>
+                <p className="text-sm text-gray-500">
                   {language === 'zh' ? '合/六/四/三分/对分等主要相位及容许度' : 'Konjungsi, Sextile, Square, Trine, Oposisi dan orbs'}
                 </p>
               </div>
@@ -254,7 +236,7 @@ export default function ChartHubPage() {
             
             <div className="mt-8 text-center">
               <Link href="/natal"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-xl font-bold text-white transition-all hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20">
+                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-xl font-bold text-gray-900 transition-all hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20">
                 <Star size={20} className="fill-white"/>
                 {language === 'zh' ? '开始分析本命盘' : language === 'id' ? 'Mulai Analisis Bagan Lahir' : 'Start Natal Chart Analysis'}
               </Link>
@@ -266,19 +248,19 @@ export default function ChartHubPage() {
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
           <Link href="/horoscope" className="p-4 rounded-xl bg-slate-800/50 border border-slate-700/50 hover:border-slate-600 hover:bg-slate-800 transition-all text-center group">
             <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">♈</div>
-            <div className="text-sm font-medium text-slate-300">{language === 'zh' ? '每日运势' : language === 'id' ? 'Horoskop Harian' : 'Daily Horoscope'}</div>
+            <div className="text-sm font-medium text-gray-600">{language === 'zh' ? '每日运势' : language === 'id' ? 'Horoskop Harian' : 'Daily Horoscope'}</div>
           </Link>
           <Link href="/ai-reading" className="p-4 rounded-xl bg-slate-800/50 border border-slate-700/50 hover:border-slate-600 hover:bg-slate-800 transition-all text-center group">
             <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">🔮</div>
-            <div className="text-sm font-medium text-slate-300">{language === 'zh' ? 'AI智能解读' : language === 'id' ? 'Pembacaan AI' : 'AI Reading'}</div>
+            <div className="text-sm font-medium text-gray-600">{language === 'zh' ? 'AI智能解读' : language === 'id' ? 'Pembacaan AI' : 'AI Reading'}</div>
           </Link>
           <Link href="/community" className="p-4 rounded-xl bg-slate-800/50 border border-slate-700/50 hover:border-slate-600 hover:bg-slate-800 transition-all text-center group">
             <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">🌟</div>
-            <div className="text-sm font-medium text-slate-300">{language === 'zh' ? '星象社区' : language === 'id' ? 'Komunitas' : 'Community'}</div>
+            <div className="text-sm font-medium text-gray-600">{language === 'zh' ? '星象社区' : language === 'id' ? 'Komunitas' : 'Community'}</div>
           </Link>
           <Link href="/learn" className="p-4 rounded-xl bg-slate-800/50 border border-slate-700/50 hover:border-slate-600 hover:bg-slate-800 transition-all text-center group">
             <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">📚</div>
-            <div className="text-sm font-medium text-slate-300">{language === 'zh' ? '占星学习' : language === 'id' ? 'Belajar' : 'Learn Astrology'}</div>
+            <div className="text-sm font-medium text-gray-600">{language === 'zh' ? '占星学习' : language === 'id' ? 'Belajar' : 'Learn Astrology'}</div>
           </Link>
         </div>
       </main>

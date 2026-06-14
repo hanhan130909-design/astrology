@@ -255,32 +255,23 @@ export default function LunarReturnPage() {
   const currentMoonSign = result?.lunarReturn?.planets?.Moon?.sign || 'Leo';
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#030014] via-[#0f0f23] to-[#030014] text-white">
+    <div className="min-h-screen bg-gradient-to-b from-[#030014] via-[#0f0f23] to-[#030014] text-gray-900">
       {/* Nav */}
-      <nav className="sticky top-0 z-50 backdrop-blur-xl bg-[#030014]/90 border-b border-white/5">
-        <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/chart" className="flex items-center gap-2 text-purple-300 hover:text-white">
-            <ArrowLeft size={20} />
-            <span className="text-sm">{labels.back}</span>
-          </Link>
-          <h1 className="text-lg font-bold text-white">星缘</h1>
-          <LanguageSwitcher />
-        </div>
-      </nav>
+      
 
       <main className="max-w-4xl mx-auto px-6 py-8">
         {/* 标题 */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-400/20 rounded-full text-sm text-slate-300 mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-400/20 rounded-full text-sm text-gray-600 mb-4">
             <Moon size={16} className="fill-slate-300" />
             {labels.subtitle}
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">{labels.title}</h1>
-          <p className="text-slate-400 max-w-xl mx-auto">{labels.intro}</p>
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">{labels.title}</h1>
+          <p className="text-gray-500 max-w-xl mx-auto">{labels.intro}</p>
         </div>
 
         {/* 输入表单 */}
-        <div className="p-6 rounded-2xl bg-white/5 border border-white/10 mb-6">
+        <div className="p-6 rounded-2xl bg-white/5 border border-gray-200 mb-6">
           <h3 className="font-bold mb-4 flex items-center gap-2">
             <Star size={18} className="text-purple-400" />
             {labels.birthInfo}
@@ -289,11 +280,11 @@ export default function LunarReturnPage() {
           <div className="grid md:grid-cols-2 gap-4">
             {/* 城市 */}
             <div>
-              <label className="block text-xs text-slate-400 mb-1">{labels.city}</label>
+              <label className="block text-xs text-gray-500 mb-1">{labels.city}</label>
               <select
                 value={form.cityId}
                 onChange={e => setForm({ ...form, cityId: e.target.value })}
-                className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white"
+                className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-gray-900"
               >
                 {CITIES.map(c => (
                   <option key={c.id} value={c.id}>{c.name[lang as keyof typeof c.name] || c.name.zh}</option>
@@ -303,15 +294,15 @@ export default function LunarReturnPage() {
 
             {/* 日期 */}
             <div>
-              <label className="block text-xs text-slate-400 mb-1">{labels.birthDate}</label>
+              <label className="block text-xs text-gray-500 mb-1">{labels.birthDate}</label>
               <div className="grid grid-cols-3 gap-2">
-                <select value={form.year} onChange={e => setForm({ ...form, year: +e.target.value })} className="p-2 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm">
+                <select value={form.year} onChange={e => setForm({ ...form, year: +e.target.value })} className="p-2 rounded-xl bg-slate-800/50 border border-slate-700 text-gray-900 text-sm">
                   {years.map(y => <option key={y} value={y}>{y}</option>)}
                 </select>
-                <select value={form.month} onChange={e => setForm({ ...form, month: +e.target.value })} className="p-2 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm">
+                <select value={form.month} onChange={e => setForm({ ...form, month: +e.target.value })} className="p-2 rounded-xl bg-slate-800/50 border border-slate-700 text-gray-900 text-sm">
                   {months.map(m => <option key={m} value={m}>{m}</option>)}
                 </select>
-                <select value={form.day} onChange={e => setForm({ ...form, day: +e.target.value })} className="p-2 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm">
+                <select value={form.day} onChange={e => setForm({ ...form, day: +e.target.value })} className="p-2 rounded-xl bg-slate-800/50 border border-slate-700 text-gray-900 text-sm">
                   {Array.from({ length: 31 }, (_, i) => i + 1).map(d => <option key={d} value={d}>{d}</option>)}
                 </select>
               </div>
@@ -319,12 +310,12 @@ export default function LunarReturnPage() {
 
             {/* 时间 */}
             <div>
-              <label className="block text-xs text-slate-400 mb-1">{labels.hour} / {labels.minute}</label>
+              <label className="block text-xs text-gray-500 mb-1">{labels.hour} / {labels.minute}</label>
               <div className="grid grid-cols-2 gap-2">
-                <select value={form.hour} onChange={e => setForm({ ...form, hour: +e.target.value })} className="p-2 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm">
+                <select value={form.hour} onChange={e => setForm({ ...form, hour: +e.target.value })} className="p-2 rounded-xl bg-slate-800/50 border border-slate-700 text-gray-900 text-sm">
                   {Array.from({ length: 24 }, (_, i) => <option key={i} value={i}>{String(i).padStart(2, '0')}</option>)}
                 </select>
-                <select value={form.minute} onChange={e => setForm({ ...form, minute: +e.target.value })} className="p-2 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm">
+                <select value={form.minute} onChange={e => setForm({ ...form, minute: +e.target.value })} className="p-2 rounded-xl bg-slate-800/50 border border-slate-700 text-gray-900 text-sm">
                   {Array.from({ length: 60 }, (_, i) => i % 5 === 0 && <option key={i} value={i}>{String(i).padStart(2, '0')}</option>)}
                 </select>
               </div>
@@ -332,12 +323,12 @@ export default function LunarReturnPage() {
 
             {/* 目标月份 */}
             <div>
-              <label className="block text-xs text-slate-400 mb-1">{labels.targetMonth}</label>
+              <label className="block text-xs text-gray-500 mb-1">{labels.targetMonth}</label>
               <div className="grid grid-cols-2 gap-2">
-                <select value={targetYear} onChange={e => setTargetYear(+e.target.value)} className="p-2 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm">
+                <select value={targetYear} onChange={e => setTargetYear(+e.target.value)} className="p-2 rounded-xl bg-slate-800/50 border border-slate-700 text-gray-900 text-sm">
                   {years.map(y => <option key={y} value={y}>{y}</option>)}
                 </select>
-                <select value={targetMonth} onChange={e => setTargetMonth(+e.target.value)} className="p-2 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm">
+                <select value={targetMonth} onChange={e => setTargetMonth(+e.target.value)} className="p-2 rounded-xl bg-slate-800/50 border border-slate-700 text-gray-900 text-sm">
                   {months.map(m => <option key={m} value={m}>{m}{lang === 'zh' ? '月' : lang === 'id' ? 'Bulan' : 'Month'}</option>)}
                 </select>
               </div>
@@ -347,7 +338,7 @@ export default function LunarReturnPage() {
           <button
             onClick={handleCalculate}
             disabled={loading}
-            className="w-full mt-6 py-3 bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-500 hover:to-slate-600 disabled:opacity-50 rounded-xl font-bold text-white transition-all flex items-center justify-center gap-2"
+            className="w-full mt-6 py-3 bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-500 hover:to-slate-600 disabled:opacity-50 rounded-xl font-bold text-gray-900 transition-all flex items-center justify-center gap-2"
           >
             {loading ? <><Loader2 size={18} className="animate-spin" />{labels.calculating}</> : <><Moon size={18} className="fill-white" />{labels.calculate}</>}
           </button>
@@ -366,7 +357,7 @@ export default function LunarReturnPage() {
             <div className="flex gap-2 p-1 rounded-xl bg-white/5 mb-6">
               {['info', 'chart', 'planets', 'aspects'].map(t => (
                 <button key={t} onClick={() => setTab(t)}
-                  className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${tab === t ? 'bg-slate-600 text-white' : 'text-slate-400'}`}>
+                  className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${tab === t ? 'bg-slate-600 text-gray-900' : 'text-gray-500'}`}>
                   {labels[t as keyof typeof labels] || t}
                 </button>
               ))}
@@ -376,34 +367,34 @@ export default function LunarReturnPage() {
             {tab === 'info' && (
               <div className="space-y-4">
                 {/* 月返信息卡片 */}
-                <div className="p-6 rounded-2xl bg-gradient-to-br from-slate-600/30 to-slate-800/30 border border-white/10">
+                <div className="p-6 rounded-2xl bg-gradient-to-br from-slate-600/30 to-slate-800/30 border border-gray-200">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-16 h-16 rounded-full bg-gradient-to-br from-slate-400/30 to-slate-600/30 flex items-center justify-center">
-                      <Moon size={32} className="text-slate-300 fill-slate-300" />
+                      <Moon size={32} className="text-gray-600 fill-slate-300" />
                     </div>
                     <div>
-                      <div className="text-sm text-slate-400">{labels.lunarReturnDate}</div>
+                      <div className="text-sm text-gray-500">{labels.lunarReturnDate}</div>
                       <div className="text-xl font-bold">{result.lunarReturnDate}</div>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
                     <div className="p-4 rounded-xl bg-white/5">
-                      <div className="text-xs text-slate-400 mb-1">{labels.natalMoon}</div>
+                      <div className="text-xs text-gray-500 mb-1">{labels.natalMoon}</div>
                       <div className="text-2xl">{SIGN_SYMBOLS[natalMoonSign]}</div>
-                      <div className="text-sm text-slate-300">{natalMoonSign}</div>
+                      <div className="text-sm text-gray-600">{natalMoonSign}</div>
                     </div>
                     <div className="p-4 rounded-xl bg-white/5">
-                      <div className="text-xs text-slate-400 mb-1">{labels.currentMoon}</div>
+                      <div className="text-xs text-gray-500 mb-1">{labels.currentMoon}</div>
                       <div className="text-2xl">{SIGN_SYMBOLS[currentMoonSign]}</div>
-                      <div className="text-sm text-slate-300">{currentMoonSign}</div>
+                      <div className="text-sm text-gray-600">{currentMoonSign}</div>
                     </div>
                   </div>
                 </div>
 
                 {/* 月亮主题 */}
                 {moonTheme && (
-                  <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+                  <div className="p-6 rounded-2xl bg-white/5 border border-gray-200">
                     <h3 className="font-bold mb-4 flex items-center gap-2">
                       <Star size={18} className="text-amber-400 fill-amber-400" />
                       {labels.monthlyTheme}
@@ -412,7 +403,7 @@ export default function LunarReturnPage() {
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20">
                         <div className="text-xs text-amber-400 mb-1">{labels.themes}</div>
-                        <div className="text-lg font-bold text-amber-200">{moonTheme.theme}</div>
+                        <div className="text-lg font-bold text-amber-600">{moonTheme.theme}</div>
                       </div>
                       <div className="p-4 rounded-xl bg-pink-500/10 border border-pink-500/20">
                         <div className="text-xs text-pink-400 mb-1">{labels.emotional}</div>
@@ -431,12 +422,12 @@ export default function LunarReturnPage() {
                 )}
 
                 {/* 什么是月返盘 */}
-                <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+                <div className="p-6 rounded-2xl bg-white/5 border border-gray-200">
                   <h3 className="font-bold mb-4 flex items-center gap-2">
                     <Info size={18} className="text-cyan-400" />
                     {labels.info}
                   </h3>
-                  <div className="text-sm text-slate-400 leading-relaxed space-y-3">
+                  <div className="text-sm text-gray-500 leading-relaxed space-y-3">
                     <p>{lang === 'zh' ? '月返盘（Lunar Return）是你出生时月亮黄道位置在宇宙中再次对齐的时刻。这个周期大约每27.3天发生一次。' : lang === 'id' ? 'Lunar Return terjadi saat posisi Bulan kembali ke posisi saat lahir. Siklus ini terjadi setiap ~27.3 hari.' : 'A Lunar Return chart is drawn for when the Moon returns to its natal zodiac position, occurring roughly every 27.3 days.'}</p>
                     <p>{lang === 'zh' ? '月返盘可以帮助你：' : lang === 'id' ? 'Bagan Lunar Return membantu Anda:' : 'A Lunar Return chart helps you:'}</p>
                     <ul className="list-disc list-inside space-y-1 ml-2">
@@ -451,7 +442,7 @@ export default function LunarReturnPage() {
 
             {/* Chart Tab */}
             {tab === 'chart' && (
-              <div className="p-6 rounded-2xl bg-white/5 border border-white/10 text-center">
+              <div className="p-6 rounded-2xl bg-white/5 border border-gray-200 text-center">
                 <h3 className="font-bold mb-4">{labels.chart}</h3>
                 <svg viewBox="0 0 400 400" className="w-full max-w-md mx-auto">
                   <defs>
@@ -493,7 +484,7 @@ export default function LunarReturnPage() {
 
             {/* Planets Tab */}
             {tab === 'planets' && (
-              <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+              <div className="p-6 rounded-2xl bg-white/5 border border-gray-200">
                 <h3 className="font-bold mb-4">{labels.planets}</h3>
                 <div className="space-y-2">
                   {result.lunarReturn?.planets && Object.entries(result.lunarReturn.planets).map(([key, p]: [string, any]) => {
@@ -506,8 +497,8 @@ export default function LunarReturnPage() {
                         </div>
                         <div className="text-right">
                           <span className="mr-2">{SIGN_SYMBOLS[p.sign]}</span>
-                          <span className="text-slate-400">{p.sign_cn || p.sign}</span>
-                          <span className="text-slate-500 ml-2">{Math.floor(p.degree)}°</span>
+                          <span className="text-gray-500">{p.sign_cn || p.sign}</span>
+                          <span className="text-gray-400 ml-2">{Math.floor(p.degree)}°</span>
                         </div>
                       </div>
                     );
@@ -518,7 +509,7 @@ export default function LunarReturnPage() {
 
             {/* Aspects Tab */}
             {tab === 'aspects' && (
-              <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+              <div className="p-6 rounded-2xl bg-white/5 border border-gray-200">
                 <h3 className="font-bold mb-4">{labels.aspects}</h3>
                 <div className="grid gap-2">
                   {result.lunarReturn?.aspects?.slice(0, 15).map((asp: any, i: number) => (
@@ -528,7 +519,7 @@ export default function LunarReturnPage() {
                         <span style={{ color: ASPECT_COLORS[asp.aspect] || '#888' }}>{asp.aspect}</span>
                         <span className="text-amber-400">{PLANET_SYMBOLS[asp.planet2] || asp.planet2}</span>
                       </div>
-                      <span className="text-slate-400 text-sm">{Math.abs(asp.orb).toFixed(1)}°</span>
+                      <span className="text-gray-500 text-sm">{Math.abs(asp.orb).toFixed(1)}°</span>
                     </div>
                   ))}
                 </div>
