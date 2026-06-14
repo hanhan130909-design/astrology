@@ -170,7 +170,7 @@ export function AspectMatrix({chart}:{chart:ChartData}){
   const bodies=[{label:"☉",key:"Sun"},{label:"☽",key:"Moon"},{label:"☿",key:"Mercury"},{label:"♀",key:"Venus"},{label:"♂",key:"Mars"},{label:"♃",key:"Jupiter"},{label:"♄",key:"Saturn"},{label:"♅",key:"Uranus"},{label:"♆",key:"Neptune"},{label:"pluto",key:"Pluto"},{label:"☊",key:"North_Node"},{label:"AC",key:"Ascendant"},{label:"MC",key:"Midheaven"}];
   const isAngle = (body:{label:string;key:string}) => body.key === "Ascendant" || body.key === "Midheaven";
   return (
-    <section className="mt-12 w-[430px]">
+    <section className="mt-12 w-full md:w-[430px] overflow-x-auto">
       <table className="border-collapse text-center leading-none">
         <tbody>
           {bodies.map((b,ri)=><tr key={b.key}>

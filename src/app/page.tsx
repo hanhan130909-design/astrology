@@ -49,7 +49,7 @@ export default function HomePage() {
   return (
     <div className="bg-white text-[#171717]">
       {/* Hero */}
-      <section className="relative text-center py-20 px-6 max-w-[800px] mx-auto overflow-hidden">
+      <section className="relative text-center py-12 md:py-20 px-6 max-w-[800px] mx-auto overflow-hidden">
         {/* Subtle zodiac wheel background */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.04]">
           <svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -73,8 +73,8 @@ export default function HomePage() {
         <span className="relative inline-block text-[11px] font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full mb-6 tracking-wide uppercase">
           {t.badge}
         </span>
-        <h1 className="text-5xl font-semibold tracking-[-2px] leading-[1.1] mb-4">{t.hero}</h1>
-        <p className="text-lg text-[#4d4d4d] leading-relaxed max-w-[520px] mx-auto mb-8">{t.heroSub}</p>
+        <h1 className="text-4xl md:text-5xl font-semibold tracking-[-1px] md:tracking-[-2px] leading-[1.1] mb-4">{t.hero}</h1>
+        <p className="text-base md:text-lg text-[#4d4d4d] leading-relaxed max-w-[520px] mx-auto mb-8">{t.heroSub}</p>
         <div className="flex gap-3 justify-center">
           <Link href="/natal" className="no-underline text-sm font-medium px-6 py-2.5 rounded-md bg-[#171717] text-white hover:bg-black transition-colors">{t.cta}</Link>
           <Link href="#features" className="no-underline text-sm font-medium px-6 py-2.5 rounded-md bg-white text-[#171717] hover:bg-gray-50 transition-colors" style={{boxShadow:"0px 0px 0px 1px rgba(0,0,0,0.08)"}}>{t.learn}</Link>
@@ -82,16 +82,16 @@ export default function HomePage() {
       </section>
 
       {/* Stats */}
-      <div className="flex justify-center gap-12 pb-16">
-        <div className="text-center"><div className="text-[32px] font-semibold tracking-[-1px]">100%</div><div className="text-[13px] text-gray-500 mt-1">{t.free}</div></div>
-        <div className="text-center"><div className="text-[32px] font-semibold tracking-[-1px]">Real</div><div className="text-[13px] text-gray-500 mt-1">{t.real}</div></div>
-        <div className="text-center"><div className="text-[32px] font-semibold tracking-[-1px]">8</div><div className="text-[13px] text-gray-500 mt-1">{t.lang}</div></div>
+      <div className="flex justify-center gap-6 md:gap-12 pb-16">
+        <div className="text-center"><div className="text-2xl md:text-2xl md:text-\[32px\] font-semibold tracking-[-1px]">100%</div><div className="text-[13px] text-gray-500 mt-1">{t.free}</div></div>
+        <div className="text-center"><div className="text-2xl md:text-2xl md:text-\[32px\] font-semibold tracking-[-1px]">Real</div><div className="text-[13px] text-gray-500 mt-1">{t.real}</div></div>
+        <div className="text-center"><div className="text-2xl md:text-2xl md:text-\[32px\] font-semibold tracking-[-1px]">8</div><div className="text-[13px] text-gray-500 mt-1">{t.lang}</div></div>
       </div>
 
       {/* Features */}
-      <section id="features" className="py-20 px-6">
+      <section id="features" className="py-12 md:py-20 px-6">
         <div className="max-w-[1200px] mx-auto">
-          <h2 className="text-[32px] font-semibold tracking-[-1px] text-center mb-3">{t.features}</h2>
+          <h2 className="text-2xl md:text-2xl md:text-\[32px\] font-semibold tracking-[-1px] text-center mb-3">{t.features}</h2>
           <p className="text-base text-gray-500 text-center mb-12">{t.featSub}</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {features.map((f) => (
@@ -113,9 +113,9 @@ export default function HomePage() {
       </section>
 
       {/* Zodiac */}
-      <section className="py-20 px-6">
+      <section className="py-12 md:py-20 px-6">
         <div className="max-w-[1200px] mx-auto">
-          <h2 className="text-[32px] font-semibold tracking-[-1px] text-center mb-3">{t.zodiac}</h2>
+          <h2 className="text-2xl md:text-\[32px\] font-semibold tracking-[-1px] text-center mb-3">{t.zodiac}</h2>
           <p className="text-base text-gray-500 text-center mb-12">{t.zodiacSub}</p>
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 max-w-[720px] mx-auto">
             {zodiacs.map((z) => (
@@ -131,9 +131,9 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 px-6">
+      <section className="py-12 md:py-20 px-6">
         <div className="max-w-[1200px] mx-auto">
-          <h2 className="text-[32px] font-semibold tracking-[-1px] text-center mb-3">{t.testimonials}</h2>
+          <h2 className="text-2xl md:text-\[32px\] font-semibold tracking-[-1px] text-center mb-3">{t.testimonials}</h2>
           <p className="text-base text-gray-500 text-center mb-12">{t.testSub}</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
@@ -152,8 +152,8 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="text-center py-20 px-6">
-        <h2 className="text-[28px] font-semibold tracking-[-0.8px] mb-6">{t.cta2}</h2>
+      <section className="text-center py-12 md:py-20 px-6">
+        <h2 className="text-xl md:text-\[28px\] font-semibold tracking-[-0.8px] mb-6">{t.cta2}</h2>
         <Link href="/natal" className="inline-block no-underline text-sm font-medium px-8 py-3 bg-[#171717] text-white rounded-md hover:bg-black transition-colors">{t.ctaBtn}</Link>
       </section>
 
