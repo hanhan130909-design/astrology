@@ -83,6 +83,11 @@ function zodiacGlyphSize(glyph: string) {
   return 15;
 }
 
+function houseCuspGlyphSize(glyph: string) {
+  if (glyph === "♈" || glyph === "♆") return 17;
+  return 18;
+}
+
 function aspectPoint(lon: number, ascLon: number): Point {
   return pointFromLongitude(lon, ascLon, rings.aspect);
 }
@@ -92,6 +97,15 @@ function pointFromLongitude(lon: number, ascLon: number, radius: number): Point 
   return {
     x: center + Math.cos(angle) * radius,
     y: center - Math.sin(angle) * radius,
+  };
+}
+
+function pointBesideLongitude(lon: number, ascLon: number, radius: number, tangentOffset: number): Point {
+  const angle = ((normalize(lon - ascLon) + 180) * Math.PI) / 180;
+  const base = pointFromLongitude(lon, ascLon, radius);
+  return {
+    x: base.x - Math.sin(angle) * tangentOffset,
+    y: base.y - Math.cos(angle) * tangentOffset,
   };
 }
 
@@ -218,19 +232,19 @@ export default function NatalChartWheel({ chart }: { chart?: ChartData }) {
         {houses.map((house: any) => {
           const lon = longitudeOf(house);
           const parts = signParts(lon);
-          const glyphPoint = pointFromLongitude(lon, ascLon, rings.outer - 7);
-          const degreePoint = pointFromLongitude(lon, ascLon, rings.zodiac + 1);
-          const minutePoint = pointFromLongitude(lon, ascLon, rings.zodiac - 13);
+          const glyphPoint = pointFromLongitude(lon, ascLon, rings.outer - 8);
+          const degreePoint = pointBesideLongitude(lon, ascLon, rings.outer - 8, -17);
+          const minutePoint = pointBesideLongitude(lon, ascLon, rings.outer - 8, 17);
 
           return (
             <g key={`house-cusp-${house.house}`}>
-              <text x={glyphPoint.x} y={glyphPoint.y} fill={parts.color} className="font-bold" dominantBaseline="middle" fontSize={zodiacGlyphSize(parts.glyph)} fontFamily={symbolFontFamily} textAnchor="middle">
+              <text x={glyphPoint.x} y={glyphPoint.y} fill={parts.color} className="font-bold" dominantBaseline="middle" fontSize={houseCuspGlyphSize(parts.glyph)} fontFamily={symbolFontFamily} textAnchor="middle">
                 {parts.glyph}
               </text>
-              <text x={degreePoint.x} y={degreePoint.y} fill="black" className="text-[11px] font-bold" dominantBaseline="middle" fontFamily={symbolFontFamily} textAnchor="middle">
+              <text x={degreePoint.x} y={degreePoint.y} fill="black" className="text-[10px] font-bold" dominantBaseline="middle" fontFamily={symbolFontFamily} textAnchor="middle">
                 {parts.degreeText}
               </text>
-              <text x={minutePoint.x} y={minutePoint.y} fill="black" className="text-[9px]" dominantBaseline="middle" fontFamily={symbolFontFamily} textAnchor="middle">
+              <text x={minutePoint.x} y={minutePoint.y} fill="black" className="text-[8px]" dominantBaseline="middle" fontFamily={symbolFontFamily} textAnchor="middle">
                 {parts.minuteText}
               </text>
             </g>
