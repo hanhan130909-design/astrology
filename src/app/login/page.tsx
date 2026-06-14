@@ -191,7 +191,7 @@ export default function LoginPage() {
 
       <div className="relative w-full max-w-md">
         {/* 返回按钮 */}
-        <Link href="/" className="absolute -top-16 left-0 flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
+        <Link href="/" className="absolute -top-16 left-0 flex items-center gap-2 text-gray-500 hover:text-white transition-colors">
           <ArrowLeft size={20} />
           <span>{language === 'zh' ? '返回首页' : language === 'en' ? 'Back' : 'Kembali'}</span>
         </Link>
@@ -214,7 +214,7 @@ export default function LoginPage() {
             className={`px-2 py-1 rounded-full text-xs font-medium transition-all ${
               language === l.code
                 ? 'bg-purple-600 text-white'
-                : 'bg-white text-slate-400 hover:bg-gray-100'
+                : 'bg-white text-gray-500 hover:bg-gray-100'
             }`}
           >
             {l.label}
@@ -223,7 +223,7 @@ export default function LoginPage() {
         </div>
 
         {/* 主卡片 */}
-        <div className="bg-gray-50 backdrop-blur-xl border border-slate-800 rounded-3xl p-8">
+        <div className="bg-gray-50 backdrop-blur-xl border border-gray-200 rounded-3xl p-8">
           {/* Logo */}
           <div className="text-center mb-8">
             <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -232,7 +232,7 @@ export default function LoginPage() {
             <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
               {text.welcome}
             </h1>
-            <p className="text-slate-400 text-sm mt-2">{text.subtitle}</p>
+            <p className="text-gray-500 text-sm mt-2">{text.subtitle}</p>
           </div>
 
           {/* 错误提示 */}
@@ -246,12 +246,12 @@ export default function LoginPage() {
           <form onSubmit={handleSubmit} className="space-y-4">
             {!isLogin && (
               <div>
-                <label className="block text-sm text-slate-400 mb-2">{text.name}</label>
+                <label className="block text-sm text-gray-500 mb-2">{text.name}</label>
                 <input
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-purple-500 transition-colors"
+                  className="w-full bg-slate-950 border border-gray-200 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-purple-500 transition-colors"
                   placeholder={text.name}
                   required={!isLogin}
                 />
@@ -259,14 +259,14 @@ export default function LoginPage() {
             )}
 
             <div>
-              <label className="block text-sm text-slate-400 mb-2">{text.email}</label>
+              <label className="block text-sm text-gray-500 mb-2">{text.email}</label>
               <div className="relative">
-                <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" />
+                <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
                 <input
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-12 pr-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-purple-500 transition-colors"
+                  className="w-full bg-slate-950 border border-gray-200 rounded-xl pl-12 pr-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-purple-500 transition-colors"
                   placeholder={text.email}
                   required
                 />
@@ -274,21 +274,21 @@ export default function LoginPage() {
             </div>
 
             <div>
-              <label className="block text-sm text-slate-400 mb-2">{text.password}</label>
+              <label className="block text-sm text-gray-500 mb-2">{text.password}</label>
               <div className="relative">
-                <Lock size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" />
+                <Lock size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
                 <input
                   type={showPassword ? 'text' : 'password'}
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-12 pr-12 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-purple-500 transition-colors"
+                  className="w-full bg-slate-950 border border-gray-200 rounded-xl pl-12 pr-12 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-purple-500 transition-colors"
                   placeholder={text.password}
                   required
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
@@ -306,7 +306,7 @@ export default function LoginPage() {
             {/* 分隔线 */}
             <div className="flex items-center gap-3 my-4">
               <div className="flex-1 h-px bg-white"></div>
-              <span className="text-slate-500 text-xs">OR</span>
+              <span className="text-gray-400 text-xs">OR</span>
               <div className="flex-1 h-px bg-white"></div>
             </div>
 
@@ -329,7 +329,7 @@ export default function LoginPage() {
 
           {/* 切换登录/注册 */}
           <div className="mt-6 text-center">
-            <span className="text-slate-400 text-sm">
+            <span className="text-gray-500 text-sm">
               {isLogin ? text.noAccount : text.hasAccount}
             </span>
             <button

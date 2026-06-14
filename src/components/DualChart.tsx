@@ -246,7 +246,7 @@ export default function DualChart({ planets1, planets2, size = 500 }: DualChartP
             return (
               <div className="text-gray-600">
                 <div>{p.sign_cn || p.sign} {Math.floor(p.degree)}°</div>
-                <div className="text-xs text-slate-500">{p.longitude.toFixed(1)}°</div>
+                <div className="text-xs text-gray-400">{p.longitude.toFixed(1)}°</div>
               </div>
             );
           })()}
@@ -257,11 +257,11 @@ export default function DualChart({ planets1, planets2, size = 500 }: DualChartP
       <div className="mt-4 flex justify-center gap-6 text-xs">
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full bg-blue-400"></div>
-          <span className="text-slate-400">Person 1 (Inner)</span>
+          <span className="text-gray-500">Person 1 (Inner)</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full border border-pink-400 border-dashed"></div>
-          <span className="text-slate-400">Person 2 (Outer)</span>
+          <span className="text-gray-500">Person 2 (Outer)</span>
         </div>
       </div>
     </div>

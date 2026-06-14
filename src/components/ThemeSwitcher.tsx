@@ -40,7 +40,7 @@ export function ThemeSwitcher({ variant = "buttons", showLabel = false }: ThemeS
           <span className="text-sm capitalize">{theme}</span>
         </button>
         
-        <div className="absolute top-full right-0 mt-2 w-40 bg-gray-900 border border-white/10 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+        <div className="absolute top-full right-0 mt-2 w-40 bg-white border border-white/10 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
           {THEMES.map((t) => (
             <button
               key={t.id}

@@ -248,7 +248,7 @@ const categoryColors: Record<string, string> = {
   tutorial: 'bg-blue-500/20 text-blue-400',
   guide: 'bg-purple-500/20 text-purple-400',
   analysis: 'bg-green-500/20 text-green-400',
-  horoscope: 'bg-amber-500/20 text-amber-400',
+  horoscope: 'bg-amber-500/20 text-amber-600',
   technology: 'bg-cyan-500/20 text-cyan-400',
 };
 

@@ -158,13 +158,13 @@ export default function TransitOverlay({
       <div className="absolute top-0 left-0 z-10 flex gap-2">
         <button 
           onClick={() => setShowTransits(!showTransits)}
-          className={`px-3 py-1 rounded-lg text-xs font-medium transition-colors ${showTransits ? 'bg-orange-500 text-white' : 'bg-gray-100 text-slate-400'}`}
+          className={`px-3 py-1 rounded-lg text-xs font-medium transition-colors ${showTransits ? 'bg-orange-500 text-white' : 'bg-gray-100 text-gray-500'}`}
         >
           Transit
         </button>
         <button 
           onClick={() => setShowAspects(!showAspects)}
-          className={`px-3 py-1 rounded-lg text-xs font-medium transition-colors ${showAspects ? 'bg-purple-500 text-white' : 'bg-gray-100 text-slate-400'}`}
+          className={`px-3 py-1 rounded-lg text-xs font-medium transition-colors ${showAspects ? 'bg-purple-500 text-white' : 'bg-gray-100 text-gray-500'}`}
         >
           Aspects
         </button>
@@ -311,7 +311,7 @@ export default function TransitOverlay({
             return (
               <div className="text-gray-600 text-xs">
                 <div>{p.sign_cn || p.sign} {Math.floor(p.degree)}°</div>
-                <div className="text-slate-500">{p.longitude.toFixed(1)}°</div>
+                <div className="text-gray-400">{p.longitude.toFixed(1)}°</div>
               </div>
             );
           })()}
@@ -322,15 +322,15 @@ export default function TransitOverlay({
       <div className="mt-4 flex flex-wrap justify-center gap-4 text-xs">
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full bg-blue-400"></div>
-          <span className="text-slate-400">Natal (Inner)</span>
+          <span className="text-gray-500">Natal (Inner)</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full border border-orange-400 border-dashed"></div>
-          <span className="text-slate-400">Transit (Outer)</span>
+          <span className="text-gray-500">Transit (Outer)</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-6 h-0.5 bg-yellow-400"></div>
-          <span className="text-slate-400">Aspect</span>
+          <span className="text-gray-500">Aspect</span>
         </div>
       </div>
     </div>

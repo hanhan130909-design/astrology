@@ -79,7 +79,7 @@ export default function PremiumFeatures({ language = "id" }: PremiumFeaturesProp
     <div className="p-6 rounded-2xl bg-gradient-to-br from-amber-900/30 to-purple-900/40 border border-amber-500/30">
       <div className="text-center mb-6">
         <h3 className="text-2xl font-bold text-amber-100 mb-2">{t.title}</h3>
-        <p className="text-purple-200/60">{t.subtitle}</p>
+        <p className="text-purple-600/60">{t.subtitle}</p>
       </div>
 
       {/* 计划选择 */}
@@ -89,7 +89,7 @@ export default function PremiumFeatures({ language = "id" }: PremiumFeaturesProp
           className={`px-6 py-2 rounded-full transition-all ${
             selectedPlan === "monthly"
               ? "bg-gradient-to-r from-amber-500 to-purple-600 text-white"
-              : "bg-purple-900/50 text-purple-200 border border-purple-200"
+              : "bg-purple-900/50 text-purple-600 border border-purple-200"
           }`}
         >
           {t.monthly}
@@ -99,7 +99,7 @@ export default function PremiumFeatures({ language = "id" }: PremiumFeaturesProp
           className={`px-6 py-2 rounded-full transition-all relative ${
             selectedPlan === "yearly"
               ? "bg-gradient-to-r from-amber-500 to-purple-600 text-white"
-              : "bg-purple-900/50 text-purple-200 border border-purple-200"
+              : "bg-purple-900/50 text-purple-600 border border-purple-200"
           }`}
         >
           {t.yearly}
@@ -122,7 +122,7 @@ export default function PremiumFeatures({ language = "id" }: PremiumFeaturesProp
       {/* 功能列表 */}
       <ul className="space-y-3 mb-6">
         {t.features.map((feature, index) => (
-          <li key={index} className="flex items-center gap-3 text-purple-200">
+          <li key={index} className="flex items-center gap-3 text-purple-600">
             <span className="text-green-400">✓</span>
             {feature}
           </li>

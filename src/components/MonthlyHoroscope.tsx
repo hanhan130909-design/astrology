@@ -159,7 +159,7 @@ export default function MonthlyHoroscope() {
             }`}
           >
             <div className="text-2xl">{sign.symbol}</div>
-            <div className="text-xs text-purple-200">{sign.name}</div>
+            <div className="text-xs text-purple-600">{sign.name}</div>
           </button>
         ))}
       </div>
@@ -174,26 +174,26 @@ export default function MonthlyHoroscope() {
 
           {/* 总览 */}
           <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200">
-            <p className="text-purple-200 leading-relaxed">{currentData.overview}</p>
+            <p className="text-purple-600 leading-relaxed">{currentData.overview}</p>
           </div>
 
           {/* 详细内容 */}
           <div className="grid md:grid-cols-2 gap-4">
             <div className="p-4 rounded-xl bg-pink-900/30 border border-pink-500/20">
               <h4 className="text-pink-100 font-semibold mb-2">💕 Love & Relationships</h4>
-              <p className="text-purple-200 text-sm">{currentData.love}</p>
+              <p className="text-purple-600 text-sm">{currentData.love}</p>
             </div>
             <div className="p-4 rounded-xl bg-blue-900/30 border border-blue-500/20">
               <h4 className="text-blue-100 font-semibold mb-2">💼 Career & Work</h4>
-              <p className="text-purple-200 text-sm">{currentData.career}</p>
+              <p className="text-purple-600 text-sm">{currentData.career}</p>
             </div>
             <div className="p-4 rounded-xl bg-green-900/30 border border-green-500/20">
               <h4 className="text-green-100 font-semibold mb-2">💪 Health & Wellness</h4>
-              <p className="text-purple-200 text-sm">{currentData.health}</p>
+              <p className="text-purple-600 text-sm">{currentData.health}</p>
             </div>
             <div className="p-4 rounded-xl bg-amber-900/30 border border-amber-500/20">
               <h4 className="text-amber-100 font-semibold mb-2">💰 Finance & Money</h4>
-              <p className="text-purple-200 text-sm">{currentData.finance}</p>
+              <p className="text-purple-600 text-sm">{currentData.finance}</p>
             </div>
           </div>
 

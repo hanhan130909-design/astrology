@@ -79,7 +79,7 @@ export default function AspectGridMatrix({ planets, aspects, ascendant, midheave
             <tr>
               {/* 左上角空白格 */}
               <th className="p-1 border border-slate-200 bg-slate-50 sticky left-0 z-10 min-w-[48px]">
-                <span className="text-[10px] text-slate-500 block">
+                <span className="text-[10px] text-gray-400 block">
                   {lang === 'zh' ? '行星' : 'Planet'}
                 </span>
               </th>
@@ -96,7 +96,7 @@ export default function AspectGridMatrix({ planets, aspects, ascendant, midheave
                     {PLANET_SYMBOLS[p] || p[0]}
                   </span>
                   {/* 中文名 */}
-                  <span className="text-[9px] text-slate-500 block">{PLANET_NAMES_CN[p] || p}</span>
+                  <span className="text-[9px] text-gray-400 block">{PLANET_NAMES_CN[p] || p}</span>
                 </th>
               ))}
             </tr>
@@ -112,7 +112,7 @@ export default function AspectGridMatrix({ planets, aspects, ascendant, midheave
                   >
                     {PLANET_SYMBOLS[row] || row[0]}
                   </span>
-                  <span className="text-[9px] text-slate-500 block">{PLANET_NAMES_CN[row] || row}</span>
+                  <span className="text-[9px] text-gray-400 block">{PLANET_NAMES_CN[row] || row}</span>
                 </td>
 
                 {GRID_PLANETS.map(col => {

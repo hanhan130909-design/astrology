@@ -98,7 +98,7 @@ export default function LearnPage() {
           >
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center">
-                <PlanetIcon size={24} className="text-amber-400" />
+                <PlanetIcon size={24} className="text-amber-600" />
               </div>
               <div>
                 <div className="text-2xl">{planetInfo.symbol}</div>

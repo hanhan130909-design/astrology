@@ -132,7 +132,7 @@ function getLocalizedLesson(lesson: LessonData, lang: string) {
 function getLevelColor(level: string) {
   switch (level) {
     case "beginner": return "bg-green-500/20 text-green-400";
-    case "intermediate": return "bg-amber-500/20 text-amber-400";
+    case "intermediate": return "bg-amber-500/20 text-amber-600";
     case "advanced": return "bg-red-500/20 text-red-400";
     default: return "bg-gray-500/20 text-gray-400";
   }
@@ -165,7 +165,7 @@ export default function AcademyPage() {
                 <div className="flex flex-wrap items-center gap-3 text-sm">
                   <span className={`px-2 py-1 rounded-full ${getLevelColor(selectedCourse.level)}`}>{levelLabels[selectedCourse.level as keyof typeof levelLabels] || levelLabels.beginner}</span>
                   <span className="text-gray-400">{courseInfo.instructor}</span>
-                  <span className="flex items-center gap-1 text-amber-400"><Star className="w-4 h-4 fill-current" />{selectedCourse.rating}</span>
+                  <span className="flex items-center gap-1 text-amber-600"><Star className="w-4 h-4 fill-current" />{selectedCourse.rating}</span>
                 </div>
               </div>
             </div>
@@ -265,7 +265,7 @@ export default function AcademyPage() {
                   <div className="p-5">
                     <div className="flex items-center justify-between mb-2">
                       <span className={`px-2 py-1 rounded-full text-xs ${getLevelColor(course.level)}`}>{levelLabels[course.level as keyof typeof levelLabels]}</span>
-                      <div className="flex items-center gap-1 text-amber-400 text-sm"><Star className="w-4 h-4 fill-current" />{course.rating}</div>
+                      <div className="flex items-center gap-1 text-amber-600 text-sm"><Star className="w-4 h-4 fill-current" />{course.rating}</div>
                     </div>
                     <h4 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-1">{info.title}</h4>
                     <p className="text-gray-400 text-sm mb-4 line-clamp-2">{info.desc}</p>

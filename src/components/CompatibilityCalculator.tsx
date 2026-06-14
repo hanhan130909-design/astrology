@@ -220,7 +220,7 @@ export default function CompatibilityCalculator({ language = "id" }: Compatibili
           <div className={`text-6xl font-bold ${getScoreColor(result.score)}`}>
             {result.score}%
           </div>
-          <div className="text-lg text-purple-200 mt-2">{result.summary}</div>
+          <div className="text-lg text-purple-600 mt-2">{result.summary}</div>
         </div>
 
         {/* 详细分数 */}
@@ -242,7 +242,7 @@ export default function CompatibilityCalculator({ language = "id" }: Compatibili
         {/* 详细解读 */}
         <div className="p-4 rounded-xl bg-purple-800/30 border border-purple-200">
           <h4 className="font-semibold text-amber-100 mb-2">{t.detail}</h4>
-          <p className="text-purple-200 leading-relaxed">{result.detail}</p>
+          <p className="text-purple-600 leading-relaxed">{result.detail}</p>
         </div>
       </div>
     </div>

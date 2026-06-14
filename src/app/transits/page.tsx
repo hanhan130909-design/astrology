@@ -561,7 +561,7 @@ export default function TransitPage() {
                 {/* Free Simple Reading */}
                 <div className="p-6 rounded-2xl bg-gray-50 border border-gray-300">
                   <h3 className="font-bold mb-4 flex items-center gap-2">
-                    <Sparkles size={18} className="text-amber-400" />
+                    <Sparkles size={18} className="text-amber-600" />
                     {language === 'zh' ? '简要推运解读' : language === 'id' ? 'Bacaan Transit Ringkas' : 'Simple Transit Reading'}
                     <span className="ml-2 px-2 py-0.5 rounded-full bg-green-500/20 text-green-400 text-xs">{language === 'zh' ? '免费' : language === 'id' ? 'Gratis' : 'Free'}</span>
                   </h3>

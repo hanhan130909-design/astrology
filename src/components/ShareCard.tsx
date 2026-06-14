@@ -207,7 +207,7 @@ export default function ShareCard({
               <div className="relative z-10">
                 {/* Title area */}
                 <div className="mb-4">
-                  <span className="inline-block px-2 py-0.5 rounded-full text-xs font-semibold bg-purple-400/30 text-purple-200 mb-2">
+                  <span className="inline-block px-2 py-0.5 rounded-full text-xs font-semibold bg-purple-400/30 text-purple-600 mb-2">
                     {chartType}
                   </span>
                   <h2 className="text-xl font-bold text-white">{title}</h2>
@@ -245,7 +245,7 @@ export default function ShareCard({
                           key={planet}
                           className="flex justify-between text-sm"
                         >
-                          <span className="text-purple-200">{getPlanetShort(planet)}</span>
+                          <span className="text-purple-600">{getPlanetShort(planet)}</span>
                           <span className="text-white font-medium">{getSignShort(sign)}</span>
                         </div>
                       ))}

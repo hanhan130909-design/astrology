@@ -24,7 +24,7 @@ const ZODIAC_DATA: Record<string, { symbol: string; names: Record<string, string
 
 const ELEMENT_COLORS = {
   fire: { color: "#FF6B6B", gradient: "from-red-500/20 to-orange-500/20", border: "border-red-500/30", text: "text-red-400", icon: "🔥", label: { zh: "火象", en: "Fire", id: "Api" } },
-  earth: { color: "#8B7355", gradient: "from-amber-700/20 to-yellow-600/20", border: "border-amber-600/30", text: "text-amber-400", icon: "🌍", label: { zh: "土象", en: "Earth", id: "Tanah" } },
+  earth: { color: "#8B7355", gradient: "from-amber-700/20 to-yellow-600/20", border: "border-amber-600/30", text: "text-amber-600", icon: "🌍", label: { zh: "土象", en: "Earth", id: "Tanah" } },
   air: { color: "#74B9FF", gradient: "from-blue-400/20 to-cyan-400/20", border: "border-blue-400/30", text: "text-blue-400", icon: "💨", label: { zh: "风象", en: "Air", id: "Udara" } },
   water: { color: "#0984E3", gradient: "from-cyan-600/20 to-blue-600/20", border: "border-cyan-500/30", text: "text-cyan-400", icon: "💧", label: { zh: "水象", en: "Water", id: "Air" } },
 };
@@ -712,7 +712,7 @@ function ScoreBar({ score, color, label }: { score: number; color: string; label
     <div className="space-y-1">
       <div className="flex justify-between text-xs">
         <span className="text-gray-500">{label}</span>
-        <span className={score >= 80 ? "text-emerald-400" : score >= 60 ? "text-amber-400" : "text-red-400"}>{score}%</span>
+        <span className={score >= 80 ? "text-emerald-400" : score >= 60 ? "text-amber-600" : "text-red-400"}>{score}%</span>
       </div>
       <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
         <div 
@@ -839,7 +839,7 @@ export default function HoroscopePage() {
               <p className="text-gray-500 text-sm">{signData?.element} • {signData?.dates}</p>
               {/* 关键词 */}
               <div className="mt-3 inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full">
-                <Star size={12} className="text-amber-400 fill-amber-400" />
+                <Star size={12} className="text-amber-600 fill-amber-400" />
                 <span className="text-xs text-amber-600">{labels.keyPhrase}: {horoscope.keyPhrase}</span>
               </div>
             </div>
@@ -934,7 +934,7 @@ export default function HoroscopePage() {
             {activeTab === "monthly" && (
               <div className="p-4 rounded-xl bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20">
                 <div className="flex items-center gap-2 mb-2">
-                  <TrendingUp size={18} className="text-amber-400" />
+                  <TrendingUp size={18} className="text-amber-600" />
                   <span className="text-sm font-medium text-amber-600">{labels.monthly}</span>
                 </div>
                 <p className="text-sm text-gray-600 leading-relaxed">{horoscope.monthly}</p>
@@ -944,7 +944,7 @@ export default function HoroscopePage() {
             {/* 三项建议 */}
             <div className="p-4 rounded-xl bg-white/5 border border-gray-200 space-y-3">
               <h3 className="text-sm font-medium text-gray-500 flex items-center gap-2">
-                <Sparkles size={16} className="text-amber-400" />
+                <Sparkles size={16} className="text-amber-600" />
                 {lang === 'zh' ? '💡 个性化建议' : lang === 'id' ? '💡 Saran Personal' : '💡 Personal Advice'}
               </h3>
               <div className="space-y-2 text-sm">
@@ -957,7 +957,7 @@ export default function HoroscopePage() {
                   <span className="text-gray-600">{horoscope.careerAdvice}</span>
                 </div>
                 <div className="p-3 rounded-lg bg-amber-500/10 border border-amber-500/20">
-                  <span className="text-amber-400 font-medium">{labels.financeAdvice} </span>
+                  <span className="text-amber-600 font-medium">{labels.financeAdvice} </span>
                   <span className="text-gray-600">{horoscope.financeAdvice}</span>
                 </div>
               </div>

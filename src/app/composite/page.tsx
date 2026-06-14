@@ -265,7 +265,7 @@ export default function CompositePage() {
         {/* Two Person Input */}
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           {/* Person 1 */}
-          <div className="p-5 rounded-2xl bg-gradient-to-br from-blue-900/30 to-slate-900/50 border border-blue-500/30">
+          <div className="p-5 rounded-2xl bg-gradient-to-br from-blue-900/30 to-gray-50/50 border border-blue-500/30">
             <h2 className="text-lg font-bold text-blue-300 mb-4 flex items-center gap-2">
               <Users size={18} />
               {t('person1', language)} {p1Name && `- ${p1Name}`}
@@ -314,7 +314,7 @@ export default function CompositePage() {
           </div>
 
           {/* Person 2 */}
-          <div className="p-5 rounded-2xl bg-gradient-to-br from-pink-900/30 to-slate-900/50 border border-pink-500/30">
+          <div className="p-5 rounded-2xl bg-gradient-to-br from-pink-900/30 to-gray-50/50 border border-pink-500/30">
             <h2 className="text-lg font-bold text-pink-300 mb-4 flex items-center gap-2">
               <Users size={18} />
               {t('person2', language)} {p2Name && `- ${p2Name}`}
@@ -388,7 +388,7 @@ export default function CompositePage() {
               <>
                 <div className="text-center">
                   <h2 className="text-2xl font-bold text-gray-900 mb-2 flex items-center justify-center gap-2">
-                    <Star size={24} className="text-amber-400"/>
+                    <Star size={24} className="text-amber-600"/>
                     {t('compositeTitle', language)}
                   </h2>
                   <p className="text-gray-500 text-sm">{t('compositeDesc', language)}</p>

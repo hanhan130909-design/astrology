@@ -148,9 +148,9 @@ export function EmailSubscribe() {
             className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-purple-500/50 transition-colors appearance-none cursor-pointer"
             required
           >
-            <option value="" className="bg-gray-900">{t.selectZodiac}</option>
+            <option value="" className="bg-white">{t.selectZodiac}</option>
             {ZODIAC_SIGNS.map((sign) => (
-              <option key={sign.id} value={sign.id} className="bg-gray-900">
+              <option key={sign.id} value={sign.id} className="bg-white">
                 {sign.symbol} {sign.name[language]}
               </option>
             ))}

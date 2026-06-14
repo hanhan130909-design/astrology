@@ -136,7 +136,7 @@ export default function Horoscope({ language }: Props) {
             }`}
           >
             <div className="text-2xl mb-1 group-hover:scale-110 transition-transform">{sign.symbol}</div>
-            <div className="text-xs text-purple-200 truncate">{sign.name[language]}</div>
+            <div className="text-xs text-purple-600 truncate">{sign.name[language]}</div>
             {selectedSign === sign.id && (
               <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-amber-400 rounded-full" />
             )}
@@ -187,7 +187,7 @@ export default function Horoscope({ language }: Props) {
             </div>
             <div className="text-right">
               <div className="text-xs text-purple-400">{t.current}</div>
-              <div className="text-lg font-medium text-amber-200">{horoscopeData?.currentDate || "---"}</div>
+              <div className="text-lg font-medium text-amber-600">{horoscopeData?.currentDate || "---"}</div>
             </div>
           </div>
 
@@ -217,7 +217,7 @@ export default function Horoscope({ language }: Props) {
             <div className="space-y-6">
               {/* 运势描述 */}
               <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200">
-                <p className="text-purple-100 leading-relaxed text-lg">
+                <p className="text-purple-700 leading-relaxed text-lg">
                   {language === "zh" && horoscopeData.descriptionZh 
                     ? horoscopeData.descriptionZh 
                     : language === "id" && horoscopeData.descriptionId
@@ -231,22 +231,22 @@ export default function Horoscope({ language }: Props) {
                 <div className="p-4 rounded-xl bg-purple-900/20 text-center">
                   <div className="text-2xl mb-2">🔢</div>
                   <div className="text-xs text-purple-400 mb-1">{t.luckyNumber}</div>
-                  <div className="text-xl font-bold text-amber-200">{horoscopeData.luckyNumber}</div>
+                  <div className="text-xl font-bold text-amber-600">{horoscopeData.luckyNumber}</div>
                 </div>
                 <div className="p-4 rounded-xl bg-purple-900/20 text-center">
                   <div className="text-2xl mb-2">⏰</div>
                   <div className="text-xs text-purple-400 mb-1">{t.luckyTime}</div>
-                  <div className="text-xl font-bold text-amber-200">{horoscopeData.luckyTime}</div>
+                  <div className="text-xl font-bold text-amber-600">{horoscopeData.luckyTime}</div>
                 </div>
                 <div className="p-4 rounded-xl bg-purple-900/20 text-center">
                   <div className="text-2xl mb-2">🎨</div>
                   <div className="text-xs text-purple-400 mb-1">{t.color}</div>
-                  <div className="text-xl font-bold text-amber-200">{horoscopeData.color}</div>
+                  <div className="text-xl font-bold text-amber-600">{horoscopeData.color}</div>
                 </div>
                 <div className="p-4 rounded-xl bg-purple-900/20 text-center">
                   <div className="text-2xl mb-2">💫</div>
                   <div className="text-xs text-purple-400 mb-1">{t.mood}</div>
-                  <div className="text-xl font-bold text-amber-200">{horoscopeData.mood}</div>
+                  <div className="text-xl font-bold text-amber-600">{horoscopeData.mood}</div>
                 </div>
               </div>
 

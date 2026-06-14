@@ -131,8 +131,8 @@ export default function SwissEphemerisDemo({ language }: Props) {
       {/* 标题 */}
       <div className="text-center mb-8">
         <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/20 rounded-full mb-4">
-          <span className="text-amber-400">✦</span>
-          <span className="text-amber-300 text-sm">Swiss Ephemeris</span>
+          <span className="text-amber-600">✦</span>
+          <span className="text-amber-600 text-sm">Swiss Ephemeris</span>
         </div>
         <h2 className="text-3xl font-bold text-white mb-2">{t.title}</h2>
         <p className="text-purple-300">{t.subtitle}</p>
@@ -231,7 +231,7 @@ export default function SwissEphemerisDemo({ language }: Props) {
 
           {/* 行星位置 */}
           <div className="rounded-2xl bg-purple-900/30 border border-purple-200 p-6">
-            <h3 className="text-xl font-bold text-amber-200 mb-4 flex items-center gap-2">
+            <h3 className="text-xl font-bold text-amber-600 mb-4 flex items-center gap-2">
               <span className="text-2xl">🪐</span> {t.planets}
             </h3>
             <div className="grid gap-2">
@@ -275,7 +275,7 @@ export default function SwissEphemerisDemo({ language }: Props) {
 
           {/* 宫位 */}
           <div className="rounded-2xl bg-purple-900/30 border border-purple-200 p-6">
-            <h3 className="text-xl font-bold text-amber-200 mb-4 flex items-center gap-2">
+            <h3 className="text-xl font-bold text-amber-600 mb-4 flex items-center gap-2">
               <span className="text-2xl">🏠</span> {t.houses}
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
@@ -284,7 +284,7 @@ export default function SwissEphemerisDemo({ language }: Props) {
                   key={house.number}
                   className="p-3 bg-purple-900/30 rounded-xl text-center"
                 >
-                  <div className="text-lg font-bold text-amber-300">
+                  <div className="text-lg font-bold text-amber-600">
                     {house.number}
                   </div>
                   <div className={`text-sm ${getElementColor(house.element)}`}>
@@ -303,7 +303,7 @@ export default function SwissEphemerisDemo({ language }: Props) {
             <div className="text-sm text-purple-300 mb-2">
               {language === "zh" ? "上升点 (ASC)" : language === "id" ? "Ascendant" : "Ascendant"}
             </div>
-            <div className="text-3xl font-bold text-amber-200">
+            <div className="text-3xl font-bold text-amber-600">
               {getSignSymbol(chart.ascendant.sign)} {chart.ascendant.sign.charAt(0).toUpperCase() + chart.ascendant.sign.slice(1)} {chart.ascendant.degree.toFixed(1)}°
             </div>
           </div>
@@ -311,7 +311,7 @@ export default function SwissEphemerisDemo({ language }: Props) {
           {/* 主要相位 */}
           {chart.aspects.length > 0 && (
             <div className="rounded-2xl bg-purple-900/30 border border-purple-200 p-6">
-              <h3 className="text-xl font-bold text-amber-200 mb-4 flex items-center gap-2">
+              <h3 className="text-xl font-bold text-amber-600 mb-4 flex items-center gap-2">
                 <span className="text-2xl">✨</span> {t.aspects}
               </h3>
               <div className="grid gap-2">

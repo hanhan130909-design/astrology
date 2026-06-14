@@ -396,13 +396,13 @@ export default function LunarReturnPage() {
                 {moonTheme && (
                   <div className="p-6 rounded-2xl bg-white/5 border border-gray-200">
                     <h3 className="font-bold mb-4 flex items-center gap-2">
-                      <Star size={18} className="text-amber-400 fill-amber-400" />
+                      <Star size={18} className="text-amber-600 fill-amber-400" />
                       {labels.monthlyTheme}
                     </h3>
                     
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20">
-                        <div className="text-xs text-amber-400 mb-1">{labels.themes}</div>
+                        <div className="text-xs text-amber-600 mb-1">{labels.themes}</div>
                         <div className="text-lg font-bold text-amber-600">{moonTheme.theme}</div>
                       </div>
                       <div className="p-4 rounded-xl bg-pink-500/10 border border-pink-500/20">
@@ -493,7 +493,7 @@ export default function LunarReturnPage() {
                       <div key={key} className="flex items-center justify-between p-3 rounded-lg bg-white/5">
                         <div className="flex items-center gap-3">
                           <span className="text-xl">{PLANET_SYMBOLS[key] || key[0]}</span>
-                          <span className="text-amber-400">{key === 'Sun' ? (lang === 'zh' ? '太阳' : lang === 'id' ? 'Matahari' : 'Sun') : key === 'Moon' ? (lang === 'zh' ? '月亮' : lang === 'id' ? 'Bulan' : 'Moon') : key}</span>
+                          <span className="text-amber-600">{key === 'Sun' ? (lang === 'zh' ? '太阳' : lang === 'id' ? 'Matahari' : 'Sun') : key === 'Moon' ? (lang === 'zh' ? '月亮' : lang === 'id' ? 'Bulan' : 'Moon') : key}</span>
                         </div>
                         <div className="text-right">
                           <span className="mr-2">{SIGN_SYMBOLS[p.sign]}</span>
@@ -515,9 +515,9 @@ export default function LunarReturnPage() {
                   {result.lunarReturn?.aspects?.slice(0, 15).map((asp: any, i: number) => (
                     <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-white/5">
                       <div className="flex items-center gap-2">
-                        <span className="text-amber-400">{PLANET_SYMBOLS[asp.planet1] || asp.planet1}</span>
+                        <span className="text-amber-600">{PLANET_SYMBOLS[asp.planet1] || asp.planet1}</span>
                         <span style={{ color: ASPECT_COLORS[asp.aspect] || '#888' }}>{asp.aspect}</span>
-                        <span className="text-amber-400">{PLANET_SYMBOLS[asp.planet2] || asp.planet2}</span>
+                        <span className="text-amber-600">{PLANET_SYMBOLS[asp.planet2] || asp.planet2}</span>
                       </div>
                       <span className="text-gray-500 text-sm">{Math.abs(asp.orb).toFixed(1)}°</span>
                     </div>

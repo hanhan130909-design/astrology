@@ -65,7 +65,7 @@ export default function TransitsFAQ() {
             </button>
             {open === i && (
               <div className="px-4 pb-4">
-                <p className="text-purple-200 text-sm mb-2">{item.a}</p>
+                <p className="text-purple-600 text-sm mb-2">{item.a}</p>
                 <p className="text-purple-300/70 text-xs mb-1">EN: {item.aEn}</p>
                 <p className="text-purple-300/70 text-xs">ID: {item.aId}</p>
               </div>

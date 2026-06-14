@@ -162,7 +162,7 @@ export default function ChartOptions({
               value={person1Name}
               onChange={(e) => onPerson1NameChange?.(e.target.value)}
               placeholder={lang === "zh" ? "姓名" : "Name"}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white bg-white dark:bg-gray-700"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white bg-white dark:bg-gray-100"
             />
           </div>
           <div>
@@ -174,7 +174,7 @@ export default function ChartOptions({
               value={person2Name}
               onChange={(e) => onPerson2NameChange?.(e.target.value)}
               placeholder={lang === "zh" ? "姓名" : "Name"}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white bg-white dark:bg-gray-700"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white bg-white dark:bg-gray-100"
             />
           </div>
         </div>

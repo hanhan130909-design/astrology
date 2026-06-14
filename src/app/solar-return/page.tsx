@@ -126,7 +126,7 @@ export default function SolarReturnPage() {
           {/* Input Form */}
           <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200">
             <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-              <Calendar size={18} className="text-amber-400"/>
+              <Calendar size={18} className="text-amber-600"/>
               {language === 'zh' ? '出生信息' : 'Birth Information'}
             </h2>
             

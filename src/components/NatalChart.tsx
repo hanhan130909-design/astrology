@@ -404,14 +404,14 @@ export default function NatalChart({
 
     return (
       <div
-        className="fixed z-50 bg-gray-900 text-white px-3 py-2 rounded-lg shadow-xl text-sm pointer-events-none"
+        className="fixed z-50 bg-white text-white px-3 py-2 rounded-lg shadow-xl text-sm pointer-events-none"
         style={{
           left: tooltipPos.x + 15,
           top: tooltipPos.y + 15,
           border: "1px solid rgba(255,215,0,0.3)"
         }}
       >
-        <div className="font-bold text-amber-400">
+        <div className="font-bold text-amber-600">
           {PLANET_SYMBOLS[planetName]} {planetName} {isOverlay && "(Transit)"}
         </div>
         <div className="text-gray-700">

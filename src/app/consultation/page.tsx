@@ -501,7 +501,7 @@ export default function ConsultationPage() {
                 <h2 className="text-xl font-bold text-gray-900 mb-1">{selectedAstrologer.name}</h2>
                 <p className="text-purple-400 text-sm mb-2">{selectedAstrologer.title}</p>
                 <div className="flex items-center gap-4 text-sm">
-                  <span className="flex items-center gap-1 text-amber-400">
+                  <span className="flex items-center gap-1 text-amber-600">
                     <Star className="w-4 h-4 fill-current" />
                     {selectedAstrologer.rating} ({selectedAstrologer.reviews} {t.reviews})
                   </span>
@@ -671,7 +671,7 @@ export default function ConsultationPage() {
         {!filterOnline && (
           <div className="mb-8">
             <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-              <Award className="w-5 h-5 text-amber-400" />
+              <Award className="w-5 h-5 text-amber-600" />
               {t.featured}
             </h3>
             <div className="grid md:grid-cols-2 gap-4">
@@ -692,13 +692,13 @@ export default function ConsultationPage() {
                     <div className="flex-1">
                       <div className="flex items-center gap-2">
                         <h4 className="font-bold text-gray-900">{astrologer.name}</h4>
-                        <span className="px-2 py-0.5 bg-amber-500/20 text-amber-400 rounded text-xs">
+                        <span className="px-2 py-0.5 bg-amber-500/20 text-amber-600 rounded text-xs">
                           {t.featured}
                         </span>
                       </div>
                       <p className="text-purple-400 text-sm mb-2">{astrologer.title}</p>
                       <div className="flex items-center gap-3 text-sm">
-                        <span className="flex items-center gap-1 text-amber-400">
+                        <span className="flex items-center gap-1 text-amber-600">
                           <Star className="w-4 h-4 fill-current" />
                           {astrologer.rating}
                         </span>
@@ -751,7 +751,7 @@ export default function ConsultationPage() {
                 </div>
 
                 <div className="flex items-center gap-3 text-sm mb-3">
-                  <span className="flex items-center gap-1 text-amber-400">
+                  <span className="flex items-center gap-1 text-amber-600">
                     <Star className="w-3 h-3 fill-current" />
                     {astrologer.rating}
                   </span>

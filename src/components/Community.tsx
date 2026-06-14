@@ -398,7 +398,7 @@ export default function Community({ language }: Props) {
                 </div>
 
                 {/* 内容 */}
-                <p className="text-purple-100 leading-relaxed whitespace-pre-wrap text-base mb-4">{post.content}</p>
+                <p className="text-purple-700 leading-relaxed whitespace-pre-wrap text-base mb-4">{post.content}</p>
 
                 {/* 操作栏 */}
                 <div className="flex items-center gap-6 pt-4 border-t border-purple-500/10">
@@ -407,7 +407,7 @@ export default function Community({ language }: Props) {
                     className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
                       likedPosts.has(post.id) 
                         ? "bg-red-500/20 text-red-300" 
-                        : "bg-purple-800/30 text-purple-300 hover:bg-purple-700/40 hover:text-amber-200"
+                        : "bg-purple-800/30 text-purple-300 hover:bg-purple-700/40 hover:text-amber-600"
                     }`}
                   >
                     <span className="text-lg">{likedPosts.has(post.id) ? "❤️" : "🤍"}</span>
@@ -425,7 +425,7 @@ export default function Community({ language }: Props) {
                     className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
                       commentingPost === post.id
                         ? "bg-blue-500/20 text-blue-300"
-                        : "bg-purple-800/30 text-purple-300 hover:bg-purple-700/40 hover:text-amber-200"
+                        : "bg-purple-800/30 text-purple-300 hover:bg-purple-700/40 hover:text-amber-600"
                     }`}
                   >
                     <span className="text-lg">💬</span>
@@ -449,7 +449,7 @@ export default function Community({ language }: Props) {
                                 <span className="text-sm font-medium text-amber-100">{comment.authorName}</span>
                                 <span className="text-xs text-purple-500">{formatTime(comment.createdAt)}</span>
                               </div>
-                              <p className="text-sm text-purple-200 mt-1">{comment.content}</p>
+                              <p className="text-sm text-purple-600 mt-1">{comment.content}</p>
                             </div>
                           </div>
                         ))}

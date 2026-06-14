@@ -190,7 +190,7 @@ function TarotCardVisual({ card, isRevealed, index, spreadLength }: { card: type
       `}>
         {!isRevealed ? (
           // Card back design
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-slate-800 to-slate-900 flex items-center justify-center">
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-gray-100 to-gray-50 flex items-center justify-center">
             <div className="w-full h-full border-2 border-purple-500/50 m-2 rounded-lg flex items-center justify-center">
               <div className="grid grid-cols-3 gap-1 p-2">
                 {Array.from({ length: 9 }).map((_, i) => (
@@ -436,7 +436,7 @@ export default function TarotPage() {
                 {/* Free Reading */}
                 <div className="bg-gradient-to-r from-purple-50/40 to-pink-900/40 border border-purple-200 rounded-2xl p-6">
                   <h3 className="font-bold mb-4 flex items-center gap-2">
-                    <Sparkles size={18} className="text-amber-400" />
+                    <Sparkles size={18} className="text-amber-600" />
                     {t.reading}
                     <span className="ml-2 px-2 py-0.5 rounded-full bg-green-500/20 text-green-400 text-xs">{t.free}</span>
                   </h3>
@@ -466,7 +466,7 @@ export default function TarotPage() {
                   <div className="rounded-2xl overflow-hidden border border-gray-300">
                     <div className="p-5 bg-gradient-to-r from-amber-900/40 to-orange-900/40 flex items-center justify-between">
                       <h3 className="font-bold flex items-center gap-2">
-                        <Lock size={18} className="text-amber-400" />
+                        <Lock size={18} className="text-amber-600" />
                         {t.deepReading}
                       </h3>
                     </div>

@@ -306,7 +306,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
           const label = idx === 0 ? t.person1 : t.person2;
           return (
             <div key={idx} className="bg-indigo-950/50 border border-indigo-800/30 rounded-2xl p-5 space-y-3">
-              <h3 className="text-sm font-bold text-amber-300 flex items-center gap-2">
+              <h3 className="text-sm font-bold text-amber-600 flex items-center gap-2">
                 <span className="w-6 h-6 rounded-full bg-indigo-600 text-white text-xs flex items-center justify-center font-bold">{idx+1}</span>
                 {label}
               </h3>
@@ -372,7 +372,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-indigo-950/40 border border-indigo-800/30 rounded-2xl p-4">
                 <div className="text-center mb-3">
-                  <div className="text-amber-200 font-bold">{p1.name || "第一人"}</div>
+                  <div className="text-amber-600 font-bold">{p1.name || "第一人"}</div>
                   <div className="text-xs text-indigo-400">{data1.ascendant} 上升 · {data1.midheaven} 天顶</div>
                 </div>
                 <div className="flex justify-center">
@@ -393,7 +393,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
 
           {/* 行星相位分析 */}
           <div className="space-y-3">
-            <h3 className="text-base font-bold text-amber-200">{t.synastry} ({aspects.length})</h3>
+            <h3 className="text-base font-bold text-amber-600">{t.synastry} ({aspects.length})</h3>
 
             {/* 强连接 */}
             {strongAspects.length > 0 && (
@@ -424,7 +424,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
             {/* 挑战 */}
             {challengeAspects.length > 0 && (
               <div className="bg-amber-950/30 border border-amber-800/30 rounded-xl p-4">
-                <div className="text-sm font-bold text-amber-300 mb-2">⚡ {t.challenges}</div>
+                <div className="text-sm font-bold text-amber-600 mb-2">⚡ {t.challenges}</div>
                 <div className="space-y-2">
                   {challengeAspects.map((a, i) => {
                     const m = getAspectMeaning(a.type);
@@ -471,7 +471,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
             {/* 简要解读 - 免费 */}
             <div className="bg-indigo-950/50 border border-indigo-800/30 rounded-2xl p-6">
               <h3 className="font-bold mb-4 flex items-center gap-2">
-                <Sparkles size={18} className="text-amber-400" />
+                <Sparkles size={18} className="text-amber-600" />
                 {t.aiReading} - {t.simpleReading}
                 <span className="ml-2 px-2 py-0.5 rounded-full bg-green-500/20 text-green-400 text-xs">{t.free}</span>
               </h3>
@@ -481,7 +481,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
                 return (
                   <div className="p-4 rounded-xl bg-purple-500/10 border border-purple-200">
                     <p className="text-gray-600 text-sm mb-2">{reading.summary}</p>
-                    <p className="text-xs text-slate-400 italic">💡 {reading.advice}</p>
+                    <p className="text-xs text-gray-500 italic">💡 {reading.advice}</p>
                   </div>
                 );
               })()}
@@ -492,7 +492,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
               {/* Header */}
               <div className="p-5 bg-gradient-to-r from-purple-50/40 to-pink-900/40 flex items-center justify-between">
                 <h3 className="font-bold flex items-center gap-2">
-                  {isUnlocked ? <Sparkles size={18} className="text-purple-400" /> : <Lock size={18} className="text-slate-400" />}
+                  {isUnlocked ? <Sparkles size={18} className="text-purple-400" /> : <Lock size={18} className="text-gray-500" />}
                   {t.aiReading} - {t.deepReading}
                 </h3>
                 {isUnlocked && <span className="text-xs text-green-400 flex items-center gap-1"><CheckCircle size={14} />{t.shareComplete}</span>}
@@ -523,7 +523,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
                   </div>
                   {/* 事业建议 */}
                   <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20">
-                    <h4 className="font-bold mb-2 text-amber-400">💼 {t.career}</h4>
+                    <h4 className="font-bold mb-2 text-amber-600">💼 {t.career}</h4>
                     <p className="text-gray-600 text-sm">
                       {language === 'zh' ? '在事业上，你们可以互相支持和鼓励，共同成长。' : 'In career, you can support and encourage each other.'}
                     </p>
@@ -540,7 +540,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
                     </div>
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="text-center">
-                        <Lock size={32} className="text-slate-400 mx-auto mb-2" />
+                        <Lock size={32} className="text-gray-500 mx-auto mb-2" />
                         <p className="text-gray-600 font-medium">{t.unlockDeep}</p>
                       </div>
                     </div>
@@ -558,7 +558,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
                         <div key={n} className={`flex-1 h-2 rounded-full transition-all ${shareCount >= n ? "bg-green-500" : "bg-gray-100"}`} />
                       ))}
                     </div>
-                    <div className="text-xs text-slate-400 mb-3">{t.shareProgress}: {shareCount}/3</div>
+                    <div className="text-xs text-gray-500 mb-3">{t.shareProgress}: {shareCount}/3</div>
                     
                     {shareCount < 3 ? (
                       <div className="grid grid-cols-3 gap-2">

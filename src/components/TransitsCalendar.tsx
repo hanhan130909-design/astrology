@@ -233,10 +233,10 @@ export default function TransitsCalendar() {
               {selectedEvent.type === "direct" && t.direct}
               {selectedEvent.type === "aspect" && selectedEvent.aspect}
             </h3>
-            <p className="text-purple-200 leading-relaxed">{selectedEvent.description[language]}</p>
+            <p className="text-purple-600 leading-relaxed">{selectedEvent.description[language]}</p>
             <button
               onClick={() => setSelectedEvent(null)}
-              className="mt-4 w-full py-2 bg-purple-600/30 rounded-lg text-purple-200 hover:bg-purple-600/50 transition-colors"
+              className="mt-4 w-full py-2 bg-purple-600/30 rounded-lg text-purple-600 hover:bg-purple-600/50 transition-colors"
             >
               ✕ {language === "zh" ? "关闭" : language === "id" ? "Tutup" : "Close"}
             </button>

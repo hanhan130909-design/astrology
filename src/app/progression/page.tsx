@@ -218,7 +218,7 @@ export default function ProgressionPage() {
                 {activeTab === 'firdaria' && chart.progression.firdaria && (
                   <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
                     <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                      <Star size={16} className="text-amber-400"/>
+                      <Star size={16} className="text-amber-600"/>
                       {language === 'zh' ? '法达大运周期' : 'Firdaria Periods'}
                     </h3>
                     

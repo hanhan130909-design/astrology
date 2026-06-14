@@ -19,7 +19,7 @@ export function LoadingSpinner({ size = "md", text }: LoadingSpinnerProps) {
       <div
         className={`${sizeClasses[size]} rounded-full border-purple-200 border-t-purple-500 animate-spin`}
       />
-      {text && <p className="text-sm text-slate-400 animate-pulse">{text}</p>}
+      {text && <p className="text-sm text-gray-500 animate-pulse">{text}</p>}
     </div>
   );
 }
@@ -72,7 +72,7 @@ export function PageLoader() {
 
       {/* Loading text */}
       <h2 className="text-xl font-bold text-white mb-2">星缘</h2>
-      <p className="text-sm text-slate-400 mb-6">正在加载星象数据...</p>
+      <p className="text-sm text-gray-500 mb-6">正在加载星象数据...</p>
 
       {/* Progress bar */}
       <div className="w-48 h-1 bg-white rounded-full overflow-hidden">
@@ -92,7 +92,7 @@ export function PageLoader() {
 
 export function SkeletonCard() {
   return (
-    <div className="p-6 rounded-2xl bg-gray-50 border border-slate-800 animate-pulse">
+    <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 animate-pulse">
       <div className="flex items-center gap-4 mb-4">
         <div className="w-12 h-12 rounded-xl bg-white" />
         <div className="flex-1">

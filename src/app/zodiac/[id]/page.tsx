@@ -194,7 +194,7 @@ export default function ZodiacDetailPage() {
         </div>
 
         <div className="p-6 rounded-2xl bg-purple-900/30 border border-purple-200">
-          <p className="text-purple-200 leading-relaxed text-lg">{sign.description[language]}</p>
+          <p className="text-purple-600 leading-relaxed text-lg">{sign.description[language]}</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-4">
@@ -218,7 +218,7 @@ export default function ZodiacDetailPage() {
 
         <div className="grid grid-cols-3 gap-4">
           <div className="p-4 rounded-xl bg-amber-900/20 border border-amber-500/30">
-            <h4 className="text-amber-300 text-sm mb-2">{labels.numbers}</h4>
+            <h4 className="text-amber-600 text-sm mb-2">{labels.numbers}</h4>
             <div className="flex gap-2">{sign.lucky.numbers.map(n => <span key={n} className="px-3 py-1 bg-amber-500/20 rounded-full text-amber-100">{n}</span>)}</div>
           </div>
           <div className="p-4 rounded-xl bg-pink-900/20 border border-pink-500/30">
@@ -232,14 +232,14 @@ export default function ZodiacDetailPage() {
         </div>
 
         <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200">
-          <h3 className="text-amber-200 font-semibold mb-3">{labels.bestMatch}</h3>
+          <h3 className="text-amber-600 font-semibold mb-3">{labels.bestMatch}</h3>
           <div className="flex gap-3">
             {sign.compatibility.map(c => {
               const matchSign = SIGN_DATA[c];
               return (
                 <Link key={c} href={`/zodiac/${c}`} className="p-3 rounded-xl bg-purple-800/30 hover:bg-purple-700/30 transition-colors">
                   <div className="text-2xl" style={{ color: ELEMENT_COLORS[matchSign?.element || "fire"] }}>{matchSign?.symbol}</div>
-                  <div className="text-sm text-purple-200 mt-1">{matchSign?.name[language]}</div>
+                  <div className="text-sm text-purple-600 mt-1">{matchSign?.name[language]}</div>
                 </Link>
               );
             })}

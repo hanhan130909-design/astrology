@@ -335,7 +335,7 @@ export default function ProfessionalBirthChart({ language = "id" }: Professional
               </div>
               <div className="text-xs text-purple-300">{chartData.planets.sun.degree.toFixed(1)}°</div>
             </div>
-            <div className="text-center p-4 rounded-xl bg-gray-900/20 border border-gray-500/30">
+            <div className="text-center p-4 rounded-xl bg-white/20 border border-gray-500/30">
               <div className="text-3xl mb-2">☽</div>
               <div className="text-sm text-purple-300">{t.moon}</div>
               <div className="font-bold text-amber-100">
@@ -365,7 +365,7 @@ export default function ProfessionalBirthChart({ language = "id" }: Professional
                     <div className="flex items-center gap-2">
                       <span style={{ color: planet?.color }} className="text-lg">{planet?.symbol}</span>
                       <div>
-                        <div className="text-sm text-purple-200">{sign?.symbol} {sign?.name[language]}</div>
+                        <div className="text-sm text-purple-600">{sign?.symbol} {sign?.name[language]}</div>
                         <div className="text-xs text-purple-400">{data.degree.toFixed(0)}° H{data.house}</div>
                       </div>
                       {data.retrograde && <span className="text-red-400 text-xs">R</span>}

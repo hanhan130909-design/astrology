@@ -196,8 +196,8 @@ export default function PlanetGuide() {
   return (
     <div className="w-full space-y-6">
       {/* 行星选择 */}
-      <div className="p-4 rounded-2xl bg-gradient-to-br from-slate-900/80 to-slate-950/80 border border-slate-800">
-        <h3 className="text-sm font-medium text-slate-400 mb-3">{t.selectPlanet}</h3>
+      <div className="p-4 rounded-2xl bg-gradient-to-br from-gray-50/80 to-slate-950/80 border border-gray-200">
+        <h3 className="text-sm font-medium text-gray-500 mb-3">{t.selectPlanet}</h3>
         <div className="grid grid-cols-5 sm:grid-cols-10 gap-2">
           {planets.map((p) => (
             <button
@@ -210,7 +210,7 @@ export default function PlanetGuide() {
               }`}
             >
               <span style={{ color: p.color }} className="text-2xl block">{p.symbol}</span>
-              <span className="text-[10px] text-slate-400 mt-1 block">{language === 'zh' ? p.name.zh : language === 'id' ? p.name.id : p.name.en}</span>
+              <span className="text-[10px] text-gray-500 mt-1 block">{language === 'zh' ? p.name.zh : language === 'id' ? p.name.id : p.name.en}</span>
             </button>
           ))}
         </div>
@@ -239,8 +239,8 @@ export default function PlanetGuide() {
       )}
 
       {/* 星座选择 */}
-      <div className="p-4 rounded-2xl bg-gradient-to-br from-slate-900/80 to-slate-950/80 border border-slate-800">
-        <h3 className="text-sm font-medium text-slate-400 mb-3">{t.selectSign}</h3>
+      <div className="p-4 rounded-2xl bg-gradient-to-br from-gray-50/80 to-slate-950/80 border border-gray-200">
+        <h3 className="text-sm font-medium text-gray-500 mb-3">{t.selectSign}</h3>
         <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
           {signs.map((s) => (
             <button
@@ -253,7 +253,7 @@ export default function PlanetGuide() {
               }`}
             >
               <span className="text-xl block">{s.symbol}</span>
-              <span className="text-[10px] text-slate-400 mt-1 block">{s.name[language]}</span>
+              <span className="text-[10px] text-gray-500 mt-1 block">{s.name[language]}</span>
             </button>
           ))}
         </div>
@@ -264,7 +264,7 @@ export default function PlanetGuide() {
         <div className="p-6 rounded-2xl bg-gradient-to-br from-indigo-900/40 to-purple-900/40 border border-indigo-500/20 space-y-4">
           <div className="flex items-center gap-4 mb-4">
             <span style={{ color: planet.color }} className="text-4xl">{planet.symbol}</span>
-            <span className="text-3xl text-amber-300">+</span>
+            <span className="text-3xl text-amber-600">+</span>
             <span className="text-3xl">{sign.symbol}</span>
             <div className="ml-4">
               <div className="text-sm text-purple-300">{t.planetIn}</div>
@@ -273,8 +273,8 @@ export default function PlanetGuide() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="p-4 rounded-xl bg-gray-50 border border-slate-800">
-              <div className="text-xs text-slate-500 mb-2">{t.traits}</div>
+            <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
+              <div className="text-xs text-gray-400 mb-2">{t.traits}</div>
               <div className="flex flex-wrap gap-2">
                 {interpretation.traits.map((trait: string, i: number) => (
                   <span key={i} className="px-3 py-1 bg-purple-500/20 rounded-full text-xs text-purple-300">
@@ -306,16 +306,16 @@ export default function PlanetGuide() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-gray-300">
-                  <th className="text-left p-2 text-slate-400">行星</th>
-                  <th className="text-left p-2 text-slate-400">火象</th>
-                  <th className="text-left p-2 text-slate-400">土象</th>
-                  <th className="text-left p-2 text-slate-400">风象</th>
-                  <th className="text-left p-2 text-slate-400">水象</th>
+                  <th className="text-left p-2 text-gray-500">行星</th>
+                  <th className="text-left p-2 text-gray-500">火象</th>
+                  <th className="text-left p-2 text-gray-500">土象</th>
+                  <th className="text-left p-2 text-gray-500">风象</th>
+                  <th className="text-left p-2 text-gray-500">水象</th>
                 </tr>
               </thead>
               <tbody>
                 {planets.map((p) => (
-                  <tr key={p.id} className="border-b border-slate-800">
+                  <tr key={p.id} className="border-b border-gray-200">
                     <td className="p-2">
                       <span style={{ color: p.color }}>{p.symbol}</span> {p.name[language]}
                     </td>

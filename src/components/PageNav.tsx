@@ -26,10 +26,10 @@ export default function PageNav({ title, subtitle }: PageNavProps) {
           <div className="flex items-center gap-4">
             <Link 
               href="/" 
-              className="flex items-center gap-2 text-indigo-300 hover:text-amber-200 transition-colors group"
+              className="flex items-center gap-2 text-indigo-300 hover:text-amber-600 transition-colors group"
             >
               <span className="text-xl">✨</span>
-              <span className="text-sm group-hover:text-amber-200">{t.backToHome}</span>
+              <span className="text-sm group-hover:text-amber-600">{t.backToHome}</span>
             </Link>
             {title && (
               <div className="hidden sm:block border-l border-indigo-700 pl-4">
@@ -41,7 +41,7 @@ export default function PageNav({ title, subtitle }: PageNavProps) {
 
           {/* 右侧：网站名 + 语言选择 */}
           <div className="flex items-center gap-4">
-            <Link href="/" className="text-lg font-bold text-amber-200 hover:text-amber-100 transition">
+            <Link href="/" className="text-lg font-bold text-amber-600 hover:text-amber-100 transition">
               {t.siteName}
             </Link>
             <div className="flex items-center gap-1 bg-indigo-900/50 rounded-lg p-1">
@@ -49,8 +49,8 @@ export default function PageNav({ title, subtitle }: PageNavProps) {
                 onClick={() => setLanguage("zh")}
                 className={`px-3 py-1.5 rounded-md text-sm transition ${
                   language === "zh"
-                    ? "bg-amber-500/30 text-amber-200"
-                    : "text-indigo-300 hover:text-amber-200"
+                    ? "bg-amber-500/30 text-amber-600"
+                    : "text-indigo-300 hover:text-amber-600"
                 }`}
               >
                 🇨🇳
@@ -59,8 +59,8 @@ export default function PageNav({ title, subtitle }: PageNavProps) {
                 onClick={() => setLanguage("id")}
                 className={`px-3 py-1.5 rounded-md text-sm transition ${
                   language === "id"
-                    ? "bg-amber-500/30 text-amber-200"
-                    : "text-indigo-300 hover:text-amber-200"
+                    ? "bg-amber-500/30 text-amber-600"
+                    : "text-indigo-300 hover:text-amber-600"
                 }`}
               >
                 🇮🇩
@@ -69,8 +69,8 @@ export default function PageNav({ title, subtitle }: PageNavProps) {
                 onClick={() => setLanguage("en")}
                 className={`px-3 py-1.5 rounded-md text-sm transition ${
                   language === "en"
-                    ? "bg-amber-500/30 text-amber-200"
-                    : "text-indigo-300 hover:text-amber-200"
+                    ? "bg-amber-500/30 text-amber-600"
+                    : "text-indigo-300 hover:text-amber-600"
                 }`}
               >
                 🇺🇸

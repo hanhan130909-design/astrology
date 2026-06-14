@@ -233,7 +233,7 @@ export default function YearlyHoroscopePage() {
                     {month}{lang === 'zh' ? '月' : ''}
                   </div>
                   <div className="truncate">{theme}</div>
-                  {isNow && <div className="text-[8px] text-amber-400 mt-0.5">NOW</div>}
+                  {isNow && <div className="text-[8px] text-amber-600 mt-0.5">NOW</div>}
                 </div>
               );
             })}

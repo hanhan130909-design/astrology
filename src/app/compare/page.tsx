@@ -522,11 +522,11 @@ export default function ComparePage() {
                 </ul>
               </div>
               <div className="bg-amber-500/10 rounded-2xl p-6 border border-amber-500/20">
-                <h3 className="text-lg font-semibold text-amber-400 mb-4">{t.challenges}</h3>
+                <h3 className="text-lg font-semibold text-amber-600 mb-4">{t.challenges}</h3>
                 <ul className="space-y-2">
                   {result.challenges.map((challenge, idx) => (
                     <li key={idx} className="flex items-center gap-2 text-gray-700">
-                      <span className="text-amber-400">!</span>
+                      <span className="text-amber-600">!</span>
                       {challenge}
                     </li>
                   ))}

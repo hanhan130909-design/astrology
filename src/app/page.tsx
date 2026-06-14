@@ -500,7 +500,7 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative z-10">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-gray-200 mb-6">
-                <Sparkle size={14} className="text-amber-400 fill-amber-400" />
+                <Sparkle size={14} className="text-amber-600 fill-amber-400" />
                 <span className="text-sm text-gray-600">{t_hero.badge}</span>
               </div>
               
@@ -644,7 +644,7 @@ export default function HomePage() {
                       feature.color === 'purple' ? 'bg-purple-600/20 text-purple-400' :
                       feature.color === 'cyan' ? 'bg-cyan-600/20 text-cyan-400' :
                       feature.color === 'rose' ? 'bg-rose-600/20 text-rose-400' :
-                      feature.color === 'amber' ? 'bg-amber-600/20 text-amber-400' :
+                      feature.color === 'amber' ? 'bg-amber-600/20 text-amber-600' :
                       feature.color === 'indigo' ? 'bg-indigo-600/20 text-indigo-400' :
                       'bg-emerald-600/20 text-emerald-400'
                     }`}>
@@ -656,7 +656,7 @@ export default function HomePage() {
                       feature.color === 'purple' ? 'text-purple-400' :
                       feature.color === 'cyan' ? 'text-cyan-400' :
                       feature.color === 'rose' ? 'text-rose-400' :
-                      feature.color === 'amber' ? 'text-amber-400' :
+                      feature.color === 'amber' ? 'text-amber-600' :
                       feature.color === 'indigo' ? 'text-indigo-400' :
                       'text-emerald-400'
                     } group-hover:gap-2 transition-all`}>
@@ -741,7 +741,7 @@ export default function HomePage() {
                 <div key={i} className="p-6 rounded-2xl bg-gray-50 border border-gray-200 hover:border-gray-200 transition-all">
                   <div className="flex gap-1 mb-4">
                     {Array.from({ length: testimonial.rating }).map((_, j) => (
-                      <StarIcon key={j} size={14} className="fill-amber-400 text-amber-400" />
+                      <StarIcon key={j} size={14} className="fill-amber-400 text-amber-600" />
                     ))}
                   </div>
                   <Quote size={24} className="text-purple-500/50 mb-3" />
@@ -769,7 +769,7 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')]" />
               
               <div className="relative z-10">
-                <Sparkles size={40} className="mx-auto text-amber-400 mb-6" />
+                <Sparkles size={40} className="mx-auto text-amber-600 mb-6" />
                 <h2 className="text-3xl lg:text-4xl font-black text-gray-900 mb-4">{t_cta.title}</h2>
                 <p className="text-gray-500 mb-8 max-w-xl mx-auto">{t_cta.subtitle}</p>
                 <Link href="/natal" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-2xl font-bold text-gray-900 transition-all shadow-2xl shadow-purple-200/40">

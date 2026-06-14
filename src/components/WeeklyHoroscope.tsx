@@ -55,7 +55,7 @@ export default function WeeklyHoroscope() {
             }`}
           >
             <div className="text-2xl">{sign.symbol}</div>
-            <div className="text-xs text-purple-200">{sign.name}</div>
+            <div className="text-xs text-purple-600">{sign.name}</div>
           </button>
         ))}
       </div>
@@ -66,33 +66,33 @@ export default function WeeklyHoroscope() {
           {/* 综合评分 */}
           <div className="text-center p-6 rounded-2xl bg-gradient-to-r from-amber-900/30 to-purple-900/30 border border-amber-500/30">
             <div className="text-6xl font-bold text-amber-100 mb-2">{currentData.overall}%</div>
-            <div className="text-purple-200">Weekly Score for {currentSign?.symbol} {currentSign?.name}</div>
+            <div className="text-purple-600">Weekly Score for {currentSign?.symbol} {currentSign?.name}</div>
           </div>
 
           {/* 详细内容 */}
           <div className="grid md:grid-cols-2 gap-4">
             <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200">
               <h4 className="text-amber-100 font-semibold mb-2">🎯 Focus</h4>
-              <p className="text-purple-200">{currentData.focus}</p>
+              <p className="text-purple-600">{currentData.focus}</p>
             </div>
             <div className="p-4 rounded-xl bg-pink-900/30 border border-pink-500/20">
               <h4 className="text-pink-100 font-semibold mb-2">💕 Love</h4>
-              <p className="text-purple-200">{currentData.love}</p>
+              <p className="text-purple-600">{currentData.love}</p>
             </div>
             <div className="p-4 rounded-xl bg-blue-900/30 border border-blue-500/20">
               <h4 className="text-blue-100 font-semibold mb-2">💼 Career</h4>
-              <p className="text-purple-200">{currentData.career}</p>
+              <p className="text-purple-600">{currentData.career}</p>
             </div>
             <div className="p-4 rounded-xl bg-green-900/30 border border-green-500/20">
               <h4 className="text-green-100 font-semibold mb-2">💡 Advice</h4>
-              <p className="text-purple-200">{currentData.advice}</p>
+              <p className="text-purple-600">{currentData.advice}</p>
             </div>
           </div>
 
           {/* 幸运指南 */}
           <div className="grid grid-cols-3 gap-3">
             <div className="text-center p-4 rounded-xl bg-amber-900/20 border border-amber-500/30">
-              <div className="text-xs text-amber-300 mb-1">Lucky Day</div>
+              <div className="text-xs text-amber-600 mb-1">Lucky Day</div>
               <div className="text-lg font-bold text-amber-100">{currentData.lucky.day}</div>
             </div>
             <div className="text-center p-4 rounded-xl bg-pink-900/20 border border-pink-500/30">

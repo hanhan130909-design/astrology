@@ -11,8 +11,8 @@ export default function LanguageButtons() {
         onClick={() => setLanguage("id")}
         className={`px-2 py-1 rounded text-xs ${
           language === "id" 
-            ? "bg-amber-500/30 text-amber-200 border border-amber-500/50" 
-            : "text-purple-300 hover:text-amber-200"
+            ? "bg-amber-500/30 text-amber-600 border border-amber-500/50" 
+            : "text-purple-300 hover:text-amber-600"
         }`}
       >
         🇮🇩 ID
@@ -21,8 +21,8 @@ export default function LanguageButtons() {
         onClick={() => setLanguage("en")}
         className={`px-2 py-1 rounded text-xs ${
           language === "en" 
-            ? "bg-amber-500/30 text-amber-200 border border-amber-500/50" 
-            : "text-purple-300 hover:text-amber-200"
+            ? "bg-amber-500/30 text-amber-600 border border-amber-500/50" 
+            : "text-purple-300 hover:text-amber-600"
         }`}
       >
         🇺🇸 EN
@@ -31,8 +31,8 @@ export default function LanguageButtons() {
         onClick={() => setLanguage("zh")}
         className={`px-2 py-1 rounded text-xs ${
           language === "zh" 
-            ? "bg-amber-500/30 text-amber-200 border border-amber-500/50" 
-            : "text-purple-300 hover:text-amber-200"
+            ? "bg-amber-500/30 text-amber-600 border border-amber-500/50" 
+            : "text-purple-300 hover:text-amber-600"
         }`}
       >
         🇨🇳 中
