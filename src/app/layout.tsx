@@ -120,7 +120,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-white text-gray-900 antialiased min-h-screen">
+      <body className="bg-white text-gray-900 antialiased min-h-screen overflow-x-hidden">
         <ServiceWorkerRegister />
         <ThemeProvider>
           <LanguageProvider>
