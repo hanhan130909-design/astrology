@@ -105,8 +105,8 @@ export default function ChartOptions({
               onClick={() => onChartTypeChange(type.value)}
               className={`p-3 rounded-lg border text-left transition-all ${
                 chartType === type.value
-                  ? "border-indigo-500 bg-indigo-50 dark:bg-indigo-900/30"
-                  : "border-gray-200 dark:border-gray-700 hover:border-indigo-300"
+                  ? "border-gray-500 bg-gray-50 dark:bg-gray-900/30"
+                  : "border-gray-200 dark:border-gray-700 hover:border-gray-300"
               }`}
             >
               <div className="flex items-center gap-2 mb-1">
@@ -135,8 +135,8 @@ export default function ChartOptions({
               onClick={() => onHouseSystemChange(sys.value)}
               className={`flex-1 p-3 rounded-lg border transition-all ${
                 houseSystem === sys.value
-                  ? "border-indigo-500 bg-indigo-50 dark:bg-indigo-900/30"
-                  : "border-gray-200 dark:border-gray-700 hover:border-indigo-300"
+                  ? "border-gray-500 bg-gray-50 dark:bg-gray-900/30"
+                  : "border-gray-200 dark:border-gray-700 hover:border-gray-300"
               }`}
             >
               <div className="font-medium text-sm text-gray-900 dark:text-white">
@@ -152,7 +152,7 @@ export default function ChartOptions({
 
       {/* 合盘选项（当选择合盘类型时显示） */}
       {showSynastryOptions && (
-        <div className="grid grid-cols-2 gap-4 p-4 bg-pink-50 dark:bg-pink-900/20 rounded-lg">
+        <div className="grid grid-cols-2 gap-4 p-4 bg-gray-50 dark:bg-gray-900/20 rounded-lg">
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-700 mb-1">
               {lang === "zh" ? "第一人" : "Person 1"}

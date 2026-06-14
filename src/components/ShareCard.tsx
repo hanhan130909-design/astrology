@@ -163,7 +163,7 @@ export default function ShareCard({
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="flex items-center gap-2 px-4 py-2 rounded-full bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium transition-colors"
+        className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-600 hover:bg-gray-700 text-white text-sm font-medium transition-colors"
       >
         <Share2 size={16} />
         Share
@@ -207,27 +207,27 @@ export default function ShareCard({
               <div className="relative z-10">
                 {/* Title area */}
                 <div className="mb-4">
-                  <span className="inline-block px-2 py-0.5 rounded-full text-xs font-semibold bg-purple-400/30 text-purple-600 mb-2">
+                  <span className="inline-block px-2 py-0.5 rounded-full text-xs font-semibold bg-gray-400/30 text-gray-600 mb-2">
                     {chartType}
                   </span>
                   <h2 className="text-xl font-bold text-white">{title}</h2>
                   {subtitle && (
-                    <p className="text-sm text-purple-300 mt-1">{subtitle}</p>
+                    <p className="text-sm text-gray-300 mt-1">{subtitle}</p>
                   )}
                 </div>
 
                 {/* Three columns: ASC / Sun / Moon */}
                 <div className="grid grid-cols-3 gap-3 mb-4">
                   <div className="text-center p-3 rounded-xl bg-white/10">
-                    <div className="text-xs text-purple-300 mb-1">ASC</div>
+                    <div className="text-xs text-gray-300 mb-1">ASC</div>
                     <div className="text-lg font-bold text-white">{ascSign}</div>
                   </div>
                   <div className="text-center p-3 rounded-xl bg-white/10">
-                    <div className="text-xs text-purple-300 mb-1">Sun</div>
+                    <div className="text-xs text-gray-300 mb-1">Sun</div>
                     <div className="text-lg font-bold text-white">{sunSign}</div>
                   </div>
                   <div className="text-center p-3 rounded-xl bg-white/10">
-                    <div className="text-xs text-purple-300 mb-1">Moon</div>
+                    <div className="text-xs text-gray-300 mb-1">Moon</div>
                     <div className="text-lg font-bold text-white">{moonSign}</div>
                   </div>
                 </div>
@@ -235,7 +235,7 @@ export default function ShareCard({
                 {/* Planet list */}
                 {planetEntries.length > 0 && (
                   <div className="mb-4 p-3 rounded-xl bg-white/5">
-                    <div className="flex items-center gap-1 mb-2 text-purple-300 text-xs">
+                    <div className="flex items-center gap-1 mb-2 text-gray-300 text-xs">
                       <Sparkles size={12} />
                       <span>Planets</span>
                     </div>
@@ -245,7 +245,7 @@ export default function ShareCard({
                           key={planet}
                           className="flex justify-between text-sm"
                         >
-                          <span className="text-purple-600">{getPlanetShort(planet)}</span>
+                          <span className="text-gray-600">{getPlanetShort(planet)}</span>
                           <span className="text-white font-medium">{getSignShort(sign)}</span>
                         </div>
                       ))}
@@ -254,7 +254,7 @@ export default function ShareCard({
                 )}
 
                 {/* Footer */}
-                <div className="text-center text-xs text-purple-400 pt-2 border-t border-white/10">
+                <div className="text-center text-xs text-gray-400 pt-2 border-t border-white/10">
                   lunaxstar.com
                 </div>
               </div>
@@ -264,7 +264,7 @@ export default function ShareCard({
             <div className="flex gap-2 mt-4">
               <button
                 onClick={handleSaveImage}
-                className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium transition-colors"
+                className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gray-600 hover:bg-gray-700 text-white text-sm font-medium transition-colors"
               >
                 <Download size={16} />
                 Save Image

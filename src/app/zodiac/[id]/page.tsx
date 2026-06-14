@@ -174,72 +174,72 @@ export default function ZodiacDetailPage() {
       <div className="max-w-4xl mx-auto px-4 py-8 space-y-8">
         <div className="text-center">
           <div className="text-8xl mb-4" style={{ color: ELEMENT_COLORS[sign.element] }}>{sign.symbol}</div>
-          <h1 className="text-4xl font-bold text-amber-100 mb-2">{sign.name[language]}</h1>
-          <p className="text-purple-300">{sign.dates}</p>
+          <h1 className="text-4xl font-bold text-gray-100 mb-2">{sign.name[language]}</h1>
+          <p className="text-gray-300">{sign.dates}</p>
         </div>
 
         <div className="grid grid-cols-3 gap-4">
-          <div className="text-center p-4 rounded-xl bg-purple-900/30 border border-purple-200">
-            <div className="text-sm text-purple-300 mb-1">{labels.element}</div>
+          <div className="text-center p-4 rounded-xl bg-gray-900/30 border border-gray-200">
+            <div className="text-sm text-gray-300 mb-1">{labels.element}</div>
             <div className="text-xl font-bold" style={{ color: ELEMENT_COLORS[sign.element] }}>{sign.element.charAt(0).toUpperCase() + sign.element.slice(1)}</div>
           </div>
-          <div className="text-center p-4 rounded-xl bg-purple-900/30 border border-purple-200">
-            <div className="text-sm text-purple-300 mb-1">{labels.mode}</div>
-            <div className="text-xl font-bold text-amber-100">{MODE_NAMES[sign.mode][language]}</div>
+          <div className="text-center p-4 rounded-xl bg-gray-900/30 border border-gray-200">
+            <div className="text-sm text-gray-300 mb-1">{labels.mode}</div>
+            <div className="text-xl font-bold text-gray-100">{MODE_NAMES[sign.mode][language]}</div>
           </div>
-          <div className="text-center p-4 rounded-xl bg-purple-900/30 border border-purple-200">
-            <div className="text-sm text-purple-300 mb-1">{labels.ruler}</div>
-            <div className="text-xl font-bold text-amber-100">{sign.ruler}</div>
+          <div className="text-center p-4 rounded-xl bg-gray-900/30 border border-gray-200">
+            <div className="text-sm text-gray-300 mb-1">{labels.ruler}</div>
+            <div className="text-xl font-bold text-gray-100">{sign.ruler}</div>
           </div>
         </div>
 
-        <div className="p-6 rounded-2xl bg-purple-900/30 border border-purple-200">
-          <p className="text-purple-600 leading-relaxed text-lg">{sign.description[language]}</p>
+        <div className="p-6 rounded-2xl bg-gray-900/30 border border-gray-200">
+          <p className="text-gray-600 leading-relaxed text-lg">{sign.description[language]}</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-4">
-          <div className="p-4 rounded-xl bg-green-900/20 border border-green-500/30">
-            <h3 className="text-green-300 font-semibold mb-3">{labels.strengths}</h3>
+          <div className="p-4 rounded-xl bg-gray-900/20 border border-gray-500/30">
+            <h3 className="text-gray-300 font-semibold mb-3">{labels.strengths}</h3>
             <ul className="space-y-2">
               {sign.strengths[language].map((s, i) => (
-                <li key={i} className="flex items-center gap-2 text-green-200"><span>✓</span> {s}</li>
+                <li key={i} className="flex items-center gap-2 text-gray-200"><span>✓</span> {s}</li>
               ))}
             </ul>
           </div>
-          <div className="p-4 rounded-xl bg-orange-900/20 border border-orange-500/30">
-            <h3 className="text-orange-300 font-semibold mb-3">{labels.weaknesses}</h3>
+          <div className="p-4 rounded-xl bg-gray-900/20 border border-gray-500/30">
+            <h3 className="text-gray-300 font-semibold mb-3">{labels.weaknesses}</h3>
             <ul className="space-y-2">
               {sign.weaknesses[language].map((w, i) => (
-                <li key={i} className="flex items-center gap-2 text-orange-200"><span>!</span> {w}</li>
+                <li key={i} className="flex items-center gap-2 text-gray-200"><span>!</span> {w}</li>
               ))}
             </ul>
           </div>
         </div>
 
         <div className="grid grid-cols-3 gap-4">
-          <div className="p-4 rounded-xl bg-amber-900/20 border border-amber-500/30">
-            <h4 className="text-amber-600 text-sm mb-2">{labels.numbers}</h4>
-            <div className="flex gap-2">{sign.lucky.numbers.map(n => <span key={n} className="px-3 py-1 bg-amber-500/20 rounded-full text-amber-100">{n}</span>)}</div>
+          <div className="p-4 rounded-xl bg-gray-900/20 border border-gray-500/30">
+            <h4 className="text-gray-600 text-sm mb-2">{labels.numbers}</h4>
+            <div className="flex gap-2">{sign.lucky.numbers.map(n => <span key={n} className="px-3 py-1 bg-gray-500/20 rounded-full text-gray-100">{n}</span>)}</div>
           </div>
-          <div className="p-4 rounded-xl bg-pink-900/20 border border-pink-500/30">
-            <h4 className="text-pink-300 text-sm mb-2">{labels.colors}</h4>
-            <div className="flex gap-2">{sign.lucky.colors.map(c => <span key={c} className="px-3 py-1 bg-pink-500/20 rounded-full text-pink-100">{c}</span>)}</div>
+          <div className="p-4 rounded-xl bg-gray-900/20 border border-gray-500/30">
+            <h4 className="text-gray-300 text-sm mb-2">{labels.colors}</h4>
+            <div className="flex gap-2">{sign.lucky.colors.map(c => <span key={c} className="px-3 py-1 bg-gray-500/20 rounded-full text-gray-100">{c}</span>)}</div>
           </div>
-          <div className="p-4 rounded-xl bg-blue-900/20 border border-blue-500/30">
-            <h4 className="text-blue-300 text-sm mb-2">{labels.days}</h4>
-            <div className="flex gap-2">{sign.lucky.days.map(d => <span key={d} className="px-3 py-1 bg-blue-500/20 rounded-full text-blue-100">{d}</span>)}</div>
+          <div className="p-4 rounded-xl bg-gray-900/20 border border-gray-500/30">
+            <h4 className="text-gray-300 text-sm mb-2">{labels.days}</h4>
+            <div className="flex gap-2">{sign.lucky.days.map(d => <span key={d} className="px-3 py-1 bg-gray-500/20 rounded-full text-gray-100">{d}</span>)}</div>
           </div>
         </div>
 
-        <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200">
-          <h3 className="text-amber-600 font-semibold mb-3">{labels.bestMatch}</h3>
+        <div className="p-4 rounded-xl bg-gray-900/30 border border-gray-200">
+          <h3 className="text-gray-600 font-semibold mb-3">{labels.bestMatch}</h3>
           <div className="flex gap-3">
             {sign.compatibility.map(c => {
               const matchSign = SIGN_DATA[c];
               return (
-                <Link key={c} href={`/zodiac/${c}`} className="p-3 rounded-xl bg-purple-800/30 hover:bg-purple-700/30 transition-colors">
+                <Link key={c} href={`/zodiac/${c}`} className="p-3 rounded-xl bg-gray-800/30 hover:bg-gray-700/30 transition-colors">
                   <div className="text-2xl" style={{ color: ELEMENT_COLORS[matchSign?.element || "fire"] }}>{matchSign?.symbol}</div>
-                  <div className="text-sm text-purple-600 mt-1">{matchSign?.name[language]}</div>
+                  <div className="text-sm text-gray-600 mt-1">{matchSign?.name[language]}</div>
                 </Link>
               );
             })}

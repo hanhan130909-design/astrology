@@ -25,10 +25,10 @@ const CATEGORIES = ['daily', 'question', 'experience', 'learning'] as const;
 type Category = typeof CATEGORIES[number];
 
 const CATEGORY_COLORS: Record<Category, string> = {
-  daily: 'bg-blue-100 text-blue-700',
-  question: 'bg-purple-500/20 text-purple-700',
-  experience: 'bg-green-100 text-green-700',
-  learning: 'bg-orange-100 text-orange-700',
+  daily: 'bg-gray-100 text-gray-700',
+  question: 'bg-gray-500/20 text-gray-700',
+  experience: 'bg-gray-100 text-gray-700',
+  learning: 'bg-gray-100 text-gray-700',
 };
 
 const ZODIAC_SIGNS = [
@@ -378,12 +378,12 @@ export default function CommunityPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={t.search}
-              className="w-full pl-12 pr-4 py-3 bg-white/5 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-500 focus:border-purple-500/50 focus:outline-none"
+              className="w-full pl-12 pr-4 py-3 bg-white/5 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-500 focus:border-gray-500/50 focus:outline-none"
             />
           </div>
           <button
             onClick={() => setShowNewPost(true)}
-            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl text-gray-900 font-medium hover:from-purple-500 hover:to-indigo-500 transition-all"
+            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gray-600 to-gray-600 rounded-xl text-gray-900 font-medium hover:from-gray-500 hover:to-gray-500 transition-all"
           >
             <Plus className="w-5 h-5" />
             <span className="hidden sm:inline">{t.newPost}</span>
@@ -398,7 +398,7 @@ export default function CommunityPage() {
                 <h3 className="text-lg font-semibold text-gray-900">{t.newPost}</h3>
                 <button
                   onClick={() => { setShowNewPost(false); setNewPostContent(''); setNewPostZodiac(''); }}
-                  className="text-gray-400 hover:text-purple-700"
+                  className="text-gray-400 hover:text-gray-700"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -430,7 +430,7 @@ export default function CommunityPage() {
                 <select
                   value={newPostZodiac}
                   onChange={(e) => setNewPostZodiac(e.target.value)}
-                  className="w-full px-4 py-3 bg-white/5 border border-gray-200 rounded-xl text-gray-900 focus:border-purple-500/50 focus:outline-none appearance-none cursor-pointer"
+                  className="w-full px-4 py-3 bg-white/5 border border-gray-200 rounded-xl text-gray-900 focus:border-gray-500/50 focus:outline-none appearance-none cursor-pointer"
                 >
                   <option value="">{t.zodiacTag}</option>
                   {ZODIAC_SIGNS.map(sign => (
@@ -444,20 +444,20 @@ export default function CommunityPage() {
                 value={newPostContent}
                 onChange={(e) => setNewPostContent(e.target.value)}
                 placeholder={t.writeSomething}
-                className="w-full h-32 p-4 bg-white/5 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-500 resize-none focus:border-purple-500/50 focus:outline-none mb-4"
+                className="w-full h-32 p-4 bg-white/5 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-500 resize-none focus:border-gray-500/50 focus:outline-none mb-4"
               />
 
               <div className="flex items-center justify-end gap-2">
                 <button
                   onClick={() => { setShowNewPost(false); setNewPostContent(''); setNewPostZodiac(''); }}
-                  className="px-4 py-2 text-gray-400 hover:text-purple-700 transition-colors"
+                  className="px-4 py-2 text-gray-400 hover:text-gray-700 transition-colors"
                 >
                   {t.cancel}
                 </button>
                 <button
                   onClick={handlePost}
                   disabled={!newPostContent.trim()}
-                  className="flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg text-gray-900 font-medium hover:from-purple-500 hover:to-indigo-500 transition-all disabled:opacity-50"
+                  className="flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-gray-600 to-gray-600 rounded-lg text-gray-900 font-medium hover:from-gray-500 hover:to-gray-500 transition-all disabled:opacity-50"
                 >
                   <Send className="w-4 h-4" />
                   {t.post}
@@ -481,11 +481,11 @@ export default function CommunityPage() {
             {filteredPosts.map((post) => (
               <article
                 key={post.id}
-                className="bg-white/5 rounded-2xl p-6 border border-gray-200 hover:border-purple-200 transition-all"
+                className="bg-white/5 rounded-2xl p-6 border border-gray-200 hover:border-gray-200 transition-all"
               >
                 {/* Author */}
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-lg text-gray-900">
+                  <div className="w-10 h-10 bg-gradient-to-br from-gray-500 to-gray-500 rounded-full flex items-center justify-center text-lg text-gray-900">
                     {post.authorPhoto ? (
                       <img src={post.authorPhoto} alt="" className="w-full h-full rounded-full object-cover" />
                     ) : (
@@ -498,7 +498,7 @@ export default function CommunityPage() {
                       {post.zodiacTag && `${post.zodiacTag} · `}{formatTime(post.createdAt)}
                     </div>
                   </div>
-                  <button className="ml-auto text-gray-500 hover:text-purple-700">
+                  <button className="ml-auto text-gray-500 hover:text-gray-700">
                     <MoreHorizontal className="w-5 h-5" />
                   </button>
                 </div>
@@ -518,7 +518,7 @@ export default function CommunityPage() {
                   <button
                     onClick={() => handleLike(post.id)}
                     className={`flex items-center gap-2 transition-colors ${
-                      likedPosts.has(post.id) ? 'text-pink-500' : 'text-gray-400 hover:text-pink-500'
+                      likedPosts.has(post.id) ? 'text-gray-500' : 'text-gray-400 hover:text-gray-500'
                     }`}
                   >
                     <Heart className={`w-5 h-5 ${likedPosts.has(post.id) ? 'fill-current' : ''}`} />
@@ -526,7 +526,7 @@ export default function CommunityPage() {
                   </button>
                   <button
                     onClick={() => toggleComments(post.id)}
-                    className="flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors"
+                    className="flex items-center gap-2 text-gray-400 hover:text-gray-400 transition-colors"
                   >
                     <MessageSquare className="w-5 h-5" />
                     <span>{post.commentsCount}</span>
@@ -541,7 +541,7 @@ export default function CommunityPage() {
                       <div className="space-y-3 mb-4">
                         {comments[post.id].map((comment) => (
                           <div key={comment.id} className="flex gap-3">
-                            <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <div className="w-8 h-8 bg-gradient-to-br from-gray-500 to-gray-500 rounded-full flex items-center justify-center flex-shrink-0">
                               {comment.authorPhoto ? (
                                 <img src={comment.authorPhoto} alt="" className="w-full h-full rounded-full object-cover" />
                               ) : (
@@ -567,13 +567,13 @@ export default function CommunityPage() {
                         value={newComments[post.id] || ''}
                         onChange={(e) => setNewComments(prev => ({ ...prev, [post.id]: e.target.value }))}
                         placeholder={t.comment}
-                        className="flex-1 px-4 py-2 bg-white/5 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 text-sm focus:border-purple-500/50 focus:outline-none"
+                        className="flex-1 px-4 py-2 bg-white/5 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 text-sm focus:border-gray-500/50 focus:outline-none"
                         onKeyDown={(e) => e.key === 'Enter' && handleAddComment(post.id)}
                       />
                       <button
                         onClick={() => handleAddComment(post.id)}
                         disabled={!newComments[post.id]?.trim()}
-                        className="px-4 py-2 bg-purple-600 text-gray-900 rounded-lg text-sm hover:bg-purple-500 transition-all disabled:opacity-50"
+                        className="px-4 py-2 bg-gray-600 text-gray-900 rounded-lg text-sm hover:bg-gray-500 transition-all disabled:opacity-50"
                       >
                         {t.submitComment}
                       </button>

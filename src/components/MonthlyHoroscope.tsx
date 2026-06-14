@@ -154,12 +154,12 @@ export default function MonthlyHoroscope() {
             onClick={() => setSelectedSign(sign.id)}
             className={`p-3 rounded-xl text-center transition-all ${
               selectedSign === sign.id
-                ? "bg-gradient-to-br from-amber-500/30 to-purple-600/30 border-2 border-amber-400"
-                : "bg-purple-900/30 border border-purple-200 hover:border-purple-400/50"
+                ? "bg-gradient-to-br from-gray-500/30 to-gray-600/30 border-2 border-gray-400"
+                : "bg-gray-900/30 border border-gray-200 hover:border-gray-400/50"
             }`}
           >
             <div className="text-2xl">{sign.symbol}</div>
-            <div className="text-xs text-purple-600">{sign.name}</div>
+            <div className="text-xs text-gray-600">{sign.name}</div>
           </button>
         ))}
       </div>
@@ -168,44 +168,44 @@ export default function MonthlyHoroscope() {
       {currentData && (
         <div className="space-y-4">
           {/* 星座标题 */}
-          <div className="text-center p-4 rounded-2xl bg-gradient-to-r from-amber-900/30 to-purple-900/30 border border-amber-500/30">
-            <h3 className="text-2xl font-bold text-amber-100">{currentSign?.symbol} {currentSign?.name} - April 2026</h3>
+          <div className="text-center p-4 rounded-2xl bg-gradient-to-r from-gray-900/30 to-gray-900/30 border border-gray-500/30">
+            <h3 className="text-2xl font-bold text-gray-100">{currentSign?.symbol} {currentSign?.name} - April 2026</h3>
           </div>
 
           {/* 总览 */}
-          <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200">
-            <p className="text-purple-600 leading-relaxed">{currentData.overview}</p>
+          <div className="p-4 rounded-xl bg-gray-900/30 border border-gray-200">
+            <p className="text-gray-600 leading-relaxed">{currentData.overview}</p>
           </div>
 
           {/* 详细内容 */}
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="p-4 rounded-xl bg-pink-900/30 border border-pink-500/20">
-              <h4 className="text-pink-100 font-semibold mb-2">💕 Love & Relationships</h4>
-              <p className="text-purple-600 text-sm">{currentData.love}</p>
+            <div className="p-4 rounded-xl bg-gray-900/30 border border-gray-500/20">
+              <h4 className="text-gray-100 font-semibold mb-2">💕 Love & Relationships</h4>
+              <p className="text-gray-600 text-sm">{currentData.love}</p>
             </div>
-            <div className="p-4 rounded-xl bg-blue-900/30 border border-blue-500/20">
-              <h4 className="text-blue-100 font-semibold mb-2">💼 Career & Work</h4>
-              <p className="text-purple-600 text-sm">{currentData.career}</p>
+            <div className="p-4 rounded-xl bg-gray-900/30 border border-gray-500/20">
+              <h4 className="text-gray-100 font-semibold mb-2">💼 Career & Work</h4>
+              <p className="text-gray-600 text-sm">{currentData.career}</p>
             </div>
-            <div className="p-4 rounded-xl bg-green-900/30 border border-green-500/20">
-              <h4 className="text-green-100 font-semibold mb-2">💪 Health & Wellness</h4>
-              <p className="text-purple-600 text-sm">{currentData.health}</p>
+            <div className="p-4 rounded-xl bg-gray-900/30 border border-gray-500/20">
+              <h4 className="text-gray-100 font-semibold mb-2">💪 Health & Wellness</h4>
+              <p className="text-gray-600 text-sm">{currentData.health}</p>
             </div>
-            <div className="p-4 rounded-xl bg-amber-900/30 border border-amber-500/20">
-              <h4 className="text-amber-100 font-semibold mb-2">💰 Finance & Money</h4>
-              <p className="text-purple-600 text-sm">{currentData.finance}</p>
+            <div className="p-4 rounded-xl bg-gray-900/30 border border-gray-500/20">
+              <h4 className="text-gray-100 font-semibold mb-2">💰 Finance & Money</h4>
+              <p className="text-gray-600 text-sm">{currentData.finance}</p>
             </div>
           </div>
 
           {/* 亮点和注意 */}
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="p-4 rounded-xl bg-gradient-to-r from-green-900/30 to-emerald-900/30 border border-green-500/30">
-              <h4 className="text-green-300 font-semibold mb-1">⭐ Highlight</h4>
-              <p className="text-green-100">{currentData.highlight}</p>
+            <div className="p-4 rounded-xl bg-gradient-to-r from-gray-900/30 to-gray-900/30 border border-gray-500/30">
+              <h4 className="text-gray-300 font-semibold mb-1">⭐ Highlight</h4>
+              <p className="text-gray-100">{currentData.highlight}</p>
             </div>
-            <div className="p-4 rounded-xl bg-gradient-to-r from-orange-900/30 to-red-900/30 border border-orange-500/30">
-              <h4 className="text-orange-300 font-semibold mb-1">⚠️ Caution</h4>
-              <p className="text-orange-100">{currentData.caution}</p>
+            <div className="p-4 rounded-xl bg-gradient-to-r from-gray-900/30 to-gray-900/30 border border-gray-500/30">
+              <h4 className="text-gray-300 font-semibold mb-1">⚠️ Caution</h4>
+              <p className="text-gray-100">{currentData.caution}</p>
             </div>
           </div>
         </div>

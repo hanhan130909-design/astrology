@@ -224,27 +224,27 @@ export default function BirthChart({ language = "id", onLanguageChange }: BirthC
   return (
     <div className="w-full space-y-6">
       {/* 输入表单 */}
-      <div className="p-6 rounded-2xl bg-purple-900/30 border border-purple-200 space-y-4">
+      <div className="p-6 rounded-2xl bg-gray-900/30 border border-gray-200 space-y-4">
         {/* 姓名 */}
         <div>
-          <label className="text-sm text-purple-300">{t.name}</label>
+          <label className="text-sm text-gray-300">{t.name}</label>
           <input
             type="text"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            className="w-full p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white mt-1"
+            className="w-full p-3 bg-gray-900/50 border border-gray-200 rounded-xl text-white mt-1"
             placeholder={t.name}
           />
         </div>
 
         {/* 出生日期 */}
         <div>
-          <label className="text-sm text-purple-300">{t.birthDate}</label>
+          <label className="text-sm text-gray-300">{t.birthDate}</label>
           <div className="grid grid-cols-3 gap-2 mt-1">
             <select
               value={formData.year}
               onChange={(e) => setFormData({ ...formData, year: parseInt(e.target.value) })}
-              className="p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white"
+              className="p-3 bg-gray-900/50 border border-gray-200 rounded-xl text-white"
             >
               {Array.from({ length: 100 }, (_, i) => 2025 - i).map(y => (
                 <option key={y} value={y}>{y}</option>
@@ -253,7 +253,7 @@ export default function BirthChart({ language = "id", onLanguageChange }: BirthC
             <select
               value={formData.month}
               onChange={(e) => setFormData({ ...formData, month: parseInt(e.target.value) })}
-              className="p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white"
+              className="p-3 bg-gray-900/50 border border-gray-200 rounded-xl text-white"
             >
               {Array.from({ length: 12 }, (_, i) => i + 1).map(m => (
                 <option key={m} value={m}>{m}</option>
@@ -262,7 +262,7 @@ export default function BirthChart({ language = "id", onLanguageChange }: BirthC
             <select
               value={formData.day}
               onChange={(e) => setFormData({ ...formData, day: parseInt(e.target.value) })}
-              className="p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white"
+              className="p-3 bg-gray-900/50 border border-gray-200 rounded-xl text-white"
             >
               {Array.from({ length: 31 }, (_, i) => i + 1).map(d => (
                 <option key={d} value={d}>{d}</option>
@@ -273,12 +273,12 @@ export default function BirthChart({ language = "id", onLanguageChange }: BirthC
 
         {/* 出生时间 */}
         <div>
-          <label className="text-sm text-purple-300">{t.birthTime}</label>
+          <label className="text-sm text-gray-300">{t.birthTime}</label>
           <div className="grid grid-cols-2 gap-2 mt-1">
             <select
               value={formData.hour}
               onChange={(e) => setFormData({ ...formData, hour: parseInt(e.target.value) })}
-              className="p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white"
+              className="p-3 bg-gray-900/50 border border-gray-200 rounded-xl text-white"
             >
               {Array.from({ length: 24 }, (_, i) => i).map(h => (
                 <option key={h} value={h}>{h.toString().padStart(2, '0')}:00</option>
@@ -287,7 +287,7 @@ export default function BirthChart({ language = "id", onLanguageChange }: BirthC
             <select
               value={formData.minute}
               onChange={(e) => setFormData({ ...formData, minute: parseInt(e.target.value) })}
-              className="p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white"
+              className="p-3 bg-gray-900/50 border border-gray-200 rounded-xl text-white"
             >
               {[0, 15, 30, 45].map(m => (
                 <option key={m} value={m}>{m.toString().padStart(2, '0')} min</option>
@@ -298,11 +298,11 @@ export default function BirthChart({ language = "id", onLanguageChange }: BirthC
 
         {/* 出生地点 */}
         <div>
-          <label className="text-sm text-purple-300">{t.birthPlace}</label>
+          <label className="text-sm text-gray-300">{t.birthPlace}</label>
           <select
             value={formData.cityIndex}
             onChange={(e) => setFormData({ ...formData, cityIndex: parseInt(e.target.value) })}
-            className="w-full p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white mt-1"
+            className="w-full p-3 bg-gray-900/50 border border-gray-200 rounded-xl text-white mt-1"
           >
             {CITIES.map((city, i) => (
               <option key={i} value={i}>{city.name[language]}</option>
@@ -314,7 +314,7 @@ export default function BirthChart({ language = "id", onLanguageChange }: BirthC
         <button
           onClick={calculateChart}
           disabled={isLoading}
-          className="w-full py-4 bg-gradient-to-r from-amber-500 to-purple-600 rounded-xl font-semibold hover:from-amber-400 hover:to-purple-500 transition-all disabled:opacity-50"
+          className="w-full py-4 bg-gradient-to-r from-gray-500 to-gray-600 rounded-xl font-semibold hover:from-gray-400 hover:to-gray-500 transition-all disabled:opacity-50"
         >
           {isLoading ? t.calculating : `✨ ${t.calculate}`}
         </button>
@@ -324,51 +324,51 @@ export default function BirthChart({ language = "id", onLanguageChange }: BirthC
       {chartData && (
         <div className="space-y-6">
           {/* SVG 星盘图 */}
-          <div className="flex justify-center p-4 rounded-2xl bg-gradient-to-br from-purple-50/40 to-purple-950/60 border border-purple-200">
+          <div className="flex justify-center p-4 rounded-2xl bg-gradient-to-br from-gray-50/40 to-gray-950/60 border border-gray-200">
             {renderChartSVG()}
           </div>
 
           {/* 三要素 */}
           <div className="grid grid-cols-3 gap-4">
-            <div className="text-center p-4 rounded-xl bg-amber-900/20 border border-amber-500/30">
+            <div className="text-center p-4 rounded-xl bg-gray-900/20 border border-gray-500/30">
               <div className="text-3xl mb-2">☉</div>
-              <div className="text-sm text-purple-300">{t.sun}</div>
-              <div className="font-bold text-amber-100">
+              <div className="text-sm text-gray-300">{t.sun}</div>
+              <div className="font-bold text-gray-100">
                 {SIGNS.find(s => s.id === chartData.planets.sun.sign)?.symbol} {SIGNS.find(s => s.id === chartData.planets.sun.sign)?.name[language]}
               </div>
-              <div className="text-xs text-purple-300">{chartData.planets.sun.degree.toFixed(1)}°</div>
+              <div className="text-xs text-gray-300">{chartData.planets.sun.degree.toFixed(1)}°</div>
             </div>
             <div className="text-center p-4 rounded-xl bg-white/20 border border-gray-500/30">
               <div className="text-3xl mb-2">☽</div>
-              <div className="text-sm text-purple-300">{t.moon}</div>
-              <div className="font-bold text-amber-100">
+              <div className="text-sm text-gray-300">{t.moon}</div>
+              <div className="font-bold text-gray-100">
                 {SIGNS.find(s => s.id === chartData.planets.moon.sign)?.symbol} {SIGNS.find(s => s.id === chartData.planets.moon.sign)?.name[language]}
               </div>
-              <div className="text-xs text-purple-300">{chartData.planets.moon.degree.toFixed(1)}°</div>
+              <div className="text-xs text-gray-300">{chartData.planets.moon.degree.toFixed(1)}°</div>
             </div>
-            <div className="text-center p-4 rounded-xl bg-purple-900/20 border border-purple-200">
+            <div className="text-center p-4 rounded-xl bg-gray-900/20 border border-gray-200">
               <div className="text-3xl mb-2">↑</div>
-              <div className="text-sm text-purple-300">{t.rising}</div>
-              <div className="font-bold text-amber-100">
+              <div className="text-sm text-gray-300">{t.rising}</div>
+              <div className="font-bold text-gray-100">
                 {SIGNS.find(s => s.id === chartData.ascendant.sign)?.symbol} {SIGNS.find(s => s.id === chartData.ascendant.sign)?.name[language]}
               </div>
-              <div className="text-xs text-purple-300">{chartData.ascendant.degree.toFixed(1)}°</div>
+              <div className="text-xs text-gray-300">{chartData.ascendant.degree.toFixed(1)}°</div>
             </div>
           </div>
 
           {/* 行星表格 */}
-          <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200">
-            <h4 className="font-semibold text-amber-100 mb-4">{t.planets}</h4>
+          <div className="p-4 rounded-xl bg-gray-900/30 border border-gray-200">
+            <h4 className="font-semibold text-gray-100 mb-4">{t.planets}</h4>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
               {Object.entries(chartData.planets).map(([planetId, data]: [string, any]) => {
                 const planet = PLANETS.find(p => p.id === planetId);
                 const sign = SIGNS.find(s => s.id === data.sign);
                 return (
-                  <div key={planetId} className="p-2 rounded-lg bg-purple-800/30 flex items-center gap-2">
+                  <div key={planetId} className="p-2 rounded-lg bg-gray-800/30 flex items-center gap-2">
                     <span style={{ color: planet?.color }} className="text-lg">{planet?.symbol}</span>
                     <div>
-                      <div className="text-sm text-purple-600">{sign?.symbol} {sign?.name[language]}</div>
-                      <div className="text-xs text-purple-400">{data.degree.toFixed(0)}° · H{data.house}</div>
+                      <div className="text-sm text-gray-600">{sign?.symbol} {sign?.name[language]}</div>
+                      <div className="text-xs text-gray-400">{data.degree.toFixed(0)}° · H{data.house}</div>
                     </div>
                   </div>
                 );

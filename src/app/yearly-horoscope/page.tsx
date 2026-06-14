@@ -141,8 +141,8 @@ export default function YearlyHoroscopePage() {
       <main className="max-w-5xl mx-auto px-6 py-8">
         {/* 标题 */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/20 rounded-full text-sm text-amber-600 mb-4">
-            <Calendar size={16} className="fill-amber-300" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-500/20 rounded-full text-sm text-gray-600 mb-4">
+            <Calendar size={16} className="fill-gray-300" />
             <span>2026</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">{labels.title}</h1>
@@ -161,7 +161,7 @@ export default function YearlyHoroscopePage() {
                   onClick={() => setSelectedSign(sign.id)}
                   className={`relative p-3 rounded-xl text-center transition-all ${
                     isActive
-                      ? "bg-purple-100 border border-purple-300 text-purple-700"
+                      ? "bg-gray-100 border border-gray-300 text-gray-700"
                       : "bg-white/5 hover:bg-white/10 text-gray-600 border border-transparent"
                   }`}
                 >
@@ -186,9 +186,9 @@ export default function YearlyHoroscopePage() {
         </div>
 
         {/* 年度总览 */}
-        <div className="bg-gradient-to-br from-purple-50/30 to-pink-900/20 border border-gray-200 rounded-2xl p-6 mb-6">
-          <h3 className="text-sm font-bold text-amber-600 mb-3 flex items-center gap-2">
-            <Star size={16} className="fill-amber-300" /> {labels.overall}
+        <div className="bg-gradient-to-br from-gray-50/30 to-gray-900/20 border border-gray-200 rounded-2xl p-6 mb-6">
+          <h3 className="text-sm font-bold text-gray-600 mb-3 flex items-center gap-2">
+            <Star size={16} className="fill-gray-300" /> {labels.overall}
           </h3>
           <p className="text-gray-600 leading-relaxed text-sm">{yearlyData.overall}</p>
         </div>
@@ -214,7 +214,7 @@ export default function YearlyHoroscopePage() {
 
         {/* 每月主题 */}
         <div className="bg-white/5 border border-gray-200 rounded-2xl p-5">
-          <h3 className="text-sm font-bold text-amber-600 mb-3 flex items-center gap-2">
+          <h3 className="text-sm font-bold text-gray-600 mb-3 flex items-center gap-2">
             <Calendar size={16} /> {labels.months}
           </h3>
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2">
@@ -225,15 +225,15 @@ export default function YearlyHoroscopePage() {
                 <div key={month}
                   className={`text-center p-2 rounded-lg text-xs ${
                     isNow
-                      ? "bg-amber-500/20 border border-amber-500/40 text-amber-600"
+                      ? "bg-gray-500/20 border border-gray-500/40 text-gray-600"
                       : "bg-white/5 text-gray-500"
                   }`}
                 >
-                  <div className={`font-bold text-base mb-0.5 ${isNow ? "text-amber-600" : "text-gray-600"}`}>
+                  <div className={`font-bold text-base mb-0.5 ${isNow ? "text-gray-600" : "text-gray-600"}`}>
                     {month}{lang === 'zh' ? '月' : ''}
                   </div>
                   <div className="truncate">{theme}</div>
-                  {isNow && <div className="text-[8px] text-amber-600 mt-0.5">NOW</div>}
+                  {isNow && <div className="text-[8px] text-gray-600 mt-0.5">NOW</div>}
                 </div>
               );
             })}

@@ -106,14 +106,14 @@ const T: Record<string, Record<string, any>> = {
 };
 
 const chartTypes = [
-  { key: 'natal', href: '/natal', color: 'from-purple-500 to-indigo-600', glow: 'purple' },
-  { key: 'transit', href: '/transits', color: 'from-cyan-500 to-blue-600', glow: 'cyan' },
-  { key: 'solar_return', href: '/solar-return', color: 'from-amber-500 to-orange-600', glow: 'amber' },
-  { key: 'lunar_return', href: '/lunar-return', color: 'from-slate-400 to-gray-600', glow: 'gray' },
-  { key: 'composite', href: '/composite', color: 'from-pink-500 to-rose-600', glow: 'pink' },
-  { key: 'progression', href: '/progression', color: 'from-emerald-500 to-teal-600', glow: 'emerald' },
-  { key: 'compatibility', href: '/compatibility', color: 'from-violet-500 to-purple-600', glow: 'violet' },
-  { key: 'seasonal', href: '/yearly-horoscope', color: 'from-sky-500 to-blue-600', glow: 'sky' },
+  { key: 'natal', href: '/natal', color: 'from-gray-500 to-gray-600', glow: 'purple' },
+  { key: 'transit', href: '/transits', color: 'from-gray-500 to-gray-600', glow: 'cyan' },
+  { key: 'solar_return', href: '/solar-return', color: 'from-gray-500 to-gray-600', glow: 'amber' },
+  { key: 'lunar_return', href: '/lunar-return', color: 'from-gray-400 to-gray-600', glow: 'gray' },
+  { key: 'composite', href: '/composite', color: 'from-gray-500 to-gray-600', glow: 'pink' },
+  { key: 'progression', href: '/progression', color: 'from-gray-500 to-gray-600', glow: 'emerald' },
+  { key: 'compatibility', href: '/compatibility', color: 'from-gray-500 to-gray-600', glow: 'violet' },
+  { key: 'seasonal', href: '/yearly-horoscope', color: 'from-gray-500 to-gray-600', glow: 'sky' },
 ];
 
 export default function ChartHubPage() {
@@ -128,8 +128,8 @@ export default function ChartHubPage() {
       {/* Header */}
       <main className="max-w-7xl mx-auto px-6 py-8">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 rounded-full text-sm text-purple-700 mb-6">
-            <Star size={16} className="fill-purple-300" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-700 mb-6">
+            <Star size={16} className="fill-gray-300" />
             {language === 'zh' ? '专业占星工具' : language === 'id' ? 'Alat Astrologi Profesional' : 'Professional Astrology Tools'}
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -146,7 +146,7 @@ export default function ChartHubPage() {
             const card = t[item.key as keyof typeof t] || t.natal;
             return (
               <Link key={idx} href={item.href}
-                className="group relative p-6 rounded-2xl bg-gray-50 border border-gray-200 hover:border-purple-200 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-purple-200/50 overflow-hidden">
+                className="group relative p-6 rounded-2xl bg-gray-50 border border-gray-200 hover:border-gray-200 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-gray-200/50 overflow-hidden">
                 {/* Background gradient */}
                 <div className={"absolute inset-0 bg-gradient-to-br " + item.color + " opacity-0 group-hover:opacity-5 transition-opacity duration-300"}/>
 
@@ -156,7 +156,7 @@ export default function ChartHubPage() {
                 </div>
 
                 {/* Title */}
-                <h3 className="relative text-lg font-bold text-gray-900 mb-2 group-hover:text-purple-700 transition-colors">
+                <h3 className="relative text-lg font-bold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">
                   {(card as any).name}
                 </h3>
 
@@ -189,12 +189,12 @@ export default function ChartHubPage() {
             </p>
           </div>
           
-          <div className="p-8 rounded-2xl bg-gradient-to-br from-purple-50 via-white to-indigo-50 border border-purple-200">
+          <div className="p-8 rounded-2xl bg-gradient-to-br from-gray-50 via-white to-gray-50 border border-gray-200">
             <div className="grid md:grid-cols-3 gap-8">
               {/* Feature 1 */}
               <div className="text-center">
-                <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="10" strokeWidth="1.5"/>
                     <path strokeLinecap="round" d="M12 2v20M2 12h20"/>
                     <circle cx="12" cy="12" r="4" fill="currentColor" opacity="0.3"/>
@@ -208,8 +208,8 @@ export default function ChartHubPage() {
               
               {/* Feature 2 */}
               <div className="text-center">
-                <div className="w-12 h-12 rounded-full bg-cyan-100 flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <rect x="3" y="3" width="18" height="18" rx="2" strokeWidth="1.5"/>
                     <path strokeLinecap="round" d="M3 9h18M9 3v18"/>
                   </svg>
@@ -222,8 +222,8 @@ export default function ChartHubPage() {
               
               {/* Feature 3 */}
               <div className="text-center">
-                <div className="w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 rounded-full bg-gray-500/20 flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                   </svg>
                 </div>
@@ -236,7 +236,7 @@ export default function ChartHubPage() {
             
             <div className="mt-8 text-center">
               <Link href="/natal"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-xl font-bold text-gray-900 transition-all hover:scale-105 hover:shadow-xl hover:shadow-purple-200/30">
+                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 rounded-xl font-bold text-gray-900 transition-all hover:scale-105 hover:shadow-xl hover:shadow-gray-200/30">
                 <Star size={20} className="fill-white"/>
                 {language === 'zh' ? '开始分析本命盘' : language === 'id' ? 'Mulai Analisis Bagan Lahir' : 'Start Natal Chart Analysis'}
               </Link>
@@ -246,19 +246,19 @@ export default function ChartHubPage() {
 
         {/* Quick Links */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <Link href="/horoscope" className="p-4 rounded-xl bg-gray-100 border border-gray-200 hover:border-purple-200 hover:bg-white transition-all text-center group">
+          <Link href="/horoscope" className="p-4 rounded-xl bg-gray-100 border border-gray-200 hover:border-gray-200 hover:bg-white transition-all text-center group">
             <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">♈</div>
             <div className="text-sm font-medium text-gray-600">{language === 'zh' ? '每日运势' : language === 'id' ? 'Horoskop Harian' : 'Daily Horoscope'}</div>
           </Link>
-          <Link href="/ai-reading" className="p-4 rounded-xl bg-gray-100 border border-gray-200 hover:border-purple-200 hover:bg-white transition-all text-center group">
+          <Link href="/ai-reading" className="p-4 rounded-xl bg-gray-100 border border-gray-200 hover:border-gray-200 hover:bg-white transition-all text-center group">
             <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">🔮</div>
             <div className="text-sm font-medium text-gray-600">{language === 'zh' ? 'AI智能解读' : language === 'id' ? 'Pembacaan AI' : 'AI Reading'}</div>
           </Link>
-          <Link href="/community" className="p-4 rounded-xl bg-gray-100 border border-gray-200 hover:border-purple-200 hover:bg-white transition-all text-center group">
+          <Link href="/community" className="p-4 rounded-xl bg-gray-100 border border-gray-200 hover:border-gray-200 hover:bg-white transition-all text-center group">
             <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">🌟</div>
             <div className="text-sm font-medium text-gray-600">{language === 'zh' ? '星象社区' : language === 'id' ? 'Komunitas' : 'Community'}</div>
           </Link>
-          <Link href="/learn" className="p-4 rounded-xl bg-gray-100 border border-gray-200 hover:border-purple-200 hover:bg-white transition-all text-center group">
+          <Link href="/learn" className="p-4 rounded-xl bg-gray-100 border border-gray-200 hover:border-gray-200 hover:bg-white transition-all text-center group">
             <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">📚</div>
             <div className="text-sm font-medium text-gray-600">{language === 'zh' ? '占星学习' : language === 'id' ? 'Belajar' : 'Learn Astrology'}</div>
           </Link>

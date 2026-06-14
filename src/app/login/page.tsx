@@ -185,8 +185,8 @@ export default function LoginPage() {
     <div className="min-h-screen bg-[#ffffff] text-white flex items-center justify-center p-4">
       {/* 背景装饰 */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gray-600/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gray-600/10 rounded-full blur-3xl" />
       </div>
 
       <div className="relative w-full max-w-md">
@@ -213,7 +213,7 @@ export default function LoginPage() {
             onClick={() => setLanguage(l.code as any)}
             className={`px-2 py-1 rounded-full text-xs font-medium transition-all ${
               language === l.code
-                ? 'bg-purple-600 text-white'
+                ? 'bg-gray-600 text-white'
                 : 'bg-white text-gray-500 hover:bg-gray-100'
             }`}
           >
@@ -226,10 +226,10 @@ export default function LoginPage() {
         <div className="bg-gray-50 backdrop-blur-xl border border-gray-200 rounded-3xl p-8">
           {/* Logo */}
           <div className="text-center mb-8">
-            <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-gradient-to-br from-gray-600 to-gray-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
               <Star size={32} className="text-white fill-white" />
             </div>
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-gray-400 to-gray-400 bg-clip-text text-transparent">
               {text.welcome}
             </h1>
             <p className="text-gray-500 text-sm mt-2">{text.subtitle}</p>
@@ -237,7 +237,7 @@ export default function LoginPage() {
 
           {/* 错误提示 */}
           {error && (
-            <div className="mb-4 p-3 bg-red-500/20 border border-red-500/30 rounded-xl text-red-400 text-sm text-center">
+            <div className="mb-4 p-3 bg-gray-500/20 border border-gray-500/30 rounded-xl text-gray-400 text-sm text-center">
               {error}
             </div>
           )}
@@ -251,7 +251,7 @@ export default function LoginPage() {
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full bg-slate-950 border border-gray-200 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-purple-500 transition-colors"
+                  className="w-full bg-gray-950 border border-gray-200 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-gray-500 transition-colors"
                   placeholder={text.name}
                   required={!isLogin}
                 />
@@ -266,7 +266,7 @@ export default function LoginPage() {
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full bg-slate-950 border border-gray-200 rounded-xl pl-12 pr-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-purple-500 transition-colors"
+                  className="w-full bg-gray-950 border border-gray-200 rounded-xl pl-12 pr-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-gray-500 transition-colors"
                   placeholder={text.email}
                   required
                 />
@@ -281,7 +281,7 @@ export default function LoginPage() {
                   type={showPassword ? 'text' : 'password'}
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  className="w-full bg-slate-950 border border-gray-200 rounded-xl pl-12 pr-12 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-purple-500 transition-colors"
+                  className="w-full bg-gray-950 border border-gray-200 rounded-xl pl-12 pr-12 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-gray-500 transition-colors"
                   placeholder={text.password}
                   required
                 />
@@ -298,7 +298,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-4 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl font-bold text-white hover:from-purple-500 hover:to-indigo-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-purple-900/30"
+              className="w-full py-4 bg-gradient-to-r from-gray-600 to-gray-600 rounded-xl font-bold text-white hover:from-gray-500 hover:to-gray-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-gray-900/30"
             >
               {loading ? '...' : isLogin ? text.login : text.register}
             </button>
@@ -334,7 +334,7 @@ export default function LoginPage() {
             </span>
             <button
               onClick={() => setIsLogin(!isLogin)}
-              className="ml-2 text-purple-400 text-sm font-medium hover:text-purple-300 transition-colors"
+              className="ml-2 text-gray-400 text-sm font-medium hover:text-gray-300 transition-colors"
             >
               {isLogin ? text.register : text.login}
             </button>

@@ -72,7 +72,7 @@ export default function AIPage() {
       <main className="max-w-7xl mx-auto px-6 py-12">
         {/* Hero */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 rounded-full text-sm text-purple-600 mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-600 mb-4">
             <Sparkles size={16} />
             {t.badge}
           </div>
@@ -84,7 +84,7 @@ export default function AIPage() {
         {/* Feature grid */}
         <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-16">
           {t.features.map((f, i) => (
-            <div key={i} className="p-6 rounded-xl bg-purple-50 border border-purple-100 hover:shadow-md transition-shadow">
+            <div key={i} className="p-6 rounded-xl bg-gray-50 border border-gray-100 hover:shadow-md transition-shadow">
               <div className="text-2xl mb-3">{f.icon}</div>
               <h3 className="font-bold text-gray-800 mb-1">{f.title}</h3>
               <p className="text-sm text-gray-500">{f.desc}</p>
@@ -99,12 +99,12 @@ export default function AIPage() {
 
         {/* Tip */}
         <div className="text-center mt-12 pb-8">
-          <div className="inline-flex items-center gap-2 px-5 py-3 bg-amber-50 rounded-xl border border-amber-200 text-sm text-amber-700">
+          <div className="inline-flex items-center gap-2 px-5 py-3 bg-gray-50 rounded-xl border border-gray-200 text-sm text-gray-700">
             <Sparkles size={16} />
             {t.tip}
           </div>
           <div className="mt-4">
-            <Link href="/natal" className="text-purple-600 hover:text-purple-700 text-sm font-medium">
+            <Link href="/natal" className="text-gray-600 hover:text-gray-700 text-sm font-medium">
               → 先生成本命盘
             </Link>
           </div>

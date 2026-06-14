@@ -166,9 +166,9 @@ export default function TransitsCalendar() {
 
   const getImpactColor = (impact: string) => {
     switch (impact) {
-      case "high": return "border-red-500/50 bg-red-900/20";
-      case "medium": return "border-yellow-500/50 bg-yellow-900/20";
-      default: return "border-blue-500/50 bg-blue-900/20";
+      case "high": return "border-gray-500/50 bg-gray-900/20";
+      case "medium": return "border-gray-500/50 bg-gray-900/20";
+      default: return "border-gray-500/50 bg-gray-900/20";
     }
   };
 
@@ -195,20 +195,20 @@ export default function TransitsCalendar() {
               <div className="flex items-center gap-3">
                 <span className="text-2xl">{planetSymbols[event.planet] || "🌟"}</span>
                 <div>
-                  <div className="font-semibold text-amber-100">
+                  <div className="font-semibold text-gray-100">
                     {event.planet} {event.type === "planet-enter" && `${t.enters} ${event.sign}`}
                     {event.type === "retrograde" && t.retrograde}
                     {event.type === "direct" && t.direct}
                     {event.type === "aspect" && event.aspect}
                   </div>
-                  <div className="text-sm text-purple-300">{formatDate(event.date)}</div>
+                  <div className="text-sm text-gray-300">{formatDate(event.date)}</div>
                 </div>
               </div>
               <div className="text-right">
                 <span className={`text-xs px-2 py-1 rounded-full ${
-                  event.impact === "high" ? "bg-red-500/30 text-red-300" :
-                  event.impact === "medium" ? "bg-yellow-500/30 text-yellow-300" :
-                  "bg-blue-500/30 text-blue-300"
+                  event.impact === "high" ? "bg-gray-500/30 text-gray-300" :
+                  event.impact === "medium" ? "bg-gray-500/30 text-gray-300" :
+                  "bg-gray-500/30 text-gray-300"
                 }`}>
                   {t[event.impact as keyof typeof t]}
                 </span>
@@ -221,22 +221,22 @@ export default function TransitsCalendar() {
       {/* 详情弹窗 */}
       {selectedEvent && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4" onClick={() => setSelectedEvent(null)}>
-          <div className="bg-[#1a1a3a] rounded-2xl p-6 max-w-md w-full border border-purple-200" onClick={e => e.stopPropagation()}>
+          <div className="bg-[#1a1a3a] rounded-2xl p-6 max-w-md w-full border border-gray-200" onClick={e => e.stopPropagation()}>
             <div className="flex items-center gap-3 mb-4">
               <span className="text-4xl">{planetSymbols[selectedEvent.planet]}</span>
               {selectedEvent.sign && <span className="text-3xl">{signSymbols[selectedEvent.sign]}</span>}
             </div>
-            <div className="text-sm text-purple-300 mb-2">{formatDate(selectedEvent.date)}</div>
-            <h3 className="text-xl font-bold text-amber-100 mb-3">
+            <div className="text-sm text-gray-300 mb-2">{formatDate(selectedEvent.date)}</div>
+            <h3 className="text-xl font-bold text-gray-100 mb-3">
               {selectedEvent.planet} {selectedEvent.type === "planet-enter" && `${t.enters} ${selectedEvent.sign}`}
               {selectedEvent.type === "retrograde" && t.retrograde}
               {selectedEvent.type === "direct" && t.direct}
               {selectedEvent.type === "aspect" && selectedEvent.aspect}
             </h3>
-            <p className="text-purple-600 leading-relaxed">{selectedEvent.description[language]}</p>
+            <p className="text-gray-600 leading-relaxed">{selectedEvent.description[language]}</p>
             <button
               onClick={() => setSelectedEvent(null)}
-              className="mt-4 w-full py-2 bg-purple-600/30 rounded-lg text-purple-600 hover:bg-purple-600/50 transition-colors"
+              className="mt-4 w-full py-2 bg-gray-600/30 rounded-lg text-gray-600 hover:bg-gray-600/50 transition-colors"
             >
               ✕ {language === "zh" ? "关闭" : language === "id" ? "Tutup" : "Close"}
             </button>

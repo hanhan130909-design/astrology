@@ -38,7 +38,7 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-xs text-gray-500 hover:text-purple-600 transition-colors whitespace-nowrap"
+                className="text-xs text-gray-500 hover:text-gray-600 transition-colors whitespace-nowrap"
               >
                 {item.name}
               </Link>
@@ -51,13 +51,13 @@ export default function Navbar() {
               key={l}
               onClick={() => setLanguage(l)}
               className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
-                language === l ? "bg-purple-100 text-purple-700" : "text-gray-400 hover:text-gray-600"
+                language === l ? "bg-gray-100 text-gray-700" : "text-gray-400 hover:text-gray-600"
               }`}
             >
               {{zh:"中",en:"EN",id:"ID"}[l]}
             </button>
           ))}
-          <Link href="/login" className="ml-2 text-xs text-gray-400 hover:text-purple-600">登录</Link>
+          <Link href="/login" className="ml-2 text-xs text-gray-400 hover:text-gray-600">登录</Link>
         </div>
       </div>
     </nav>

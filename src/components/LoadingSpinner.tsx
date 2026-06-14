@@ -17,7 +17,7 @@ export function LoadingSpinner({ size = "md", text }: LoadingSpinnerProps) {
   return (
     <div className="flex flex-col items-center justify-center gap-3">
       <div
-        className={`${sizeClasses[size]} rounded-full border-purple-200 border-t-purple-500 animate-spin`}
+        className={`${sizeClasses[size]} rounded-full border-gray-200 border-t-purple-500 animate-spin`}
       />
       {text && <p className="text-sm text-gray-500 animate-pulse">{text}</p>}
     </div>
@@ -58,7 +58,7 @@ export function PageLoader() {
 
       {/* Logo */}
       <div className="relative mb-8">
-        <div className="w-20 h-20 bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-200/40">
+        <div className="w-20 h-20 bg-gradient-to-br from-gray-600 via-gray-500 to-gray-400 rounded-2xl flex items-center justify-center shadow-lg shadow-gray-200/40">
           <svg
             className="w-10 h-10 text-white"
             fill="currentColor"
@@ -67,7 +67,7 @@ export function PageLoader() {
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
           </svg>
         </div>
-        <div className="absolute -inset-2 bg-gradient-to-r from-purple-600 to-pink-500 rounded-2xl blur opacity-30 animate-pulse" />
+        <div className="absolute -inset-2 bg-gradient-to-r from-gray-600 to-gray-500 rounded-2xl blur opacity-30 animate-pulse" />
       </div>
 
       {/* Loading text */}
@@ -77,7 +77,7 @@ export function PageLoader() {
       {/* Progress bar */}
       <div className="w-48 h-1 bg-white rounded-full overflow-hidden">
         <div
-          className="h-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-300 ease-out"
+          className="h-full bg-gradient-to-r from-gray-500 to-gray-500 transition-all duration-300 ease-out"
           style={{ width: `${Math.min(progress, 100)}%` }}
         />
       </div>

@@ -194,7 +194,7 @@ export default function CitySearch({ value, onChange, language = "zh", placehold
           onFocus={() => setIsOpen(true)}
           onKeyDown={handleKeyDown}
           placeholder={placeholder || (language === "zh" ? "搜索城市..." : "Search city...")}
-          className="w-full px-4 py-2.5 pl-10 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-gray-900"
+          className="w-full px-4 py-2.5 pl-10 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent text-gray-900"
         />
         <svg
           className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
@@ -217,7 +217,7 @@ export default function CitySearch({ value, onChange, language = "zh", placehold
         </svg>
         {isLoading && (
           <div className="absolute right-3 top-1/2 -translate-y-1/2">
-            <svg className="animate-spin w-4 h-4 text-indigo-500" fill="none" viewBox="0 0 24 24">
+            <svg className="animate-spin w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
             </svg>
@@ -238,7 +238,7 @@ export default function CitySearch({ value, onChange, language = "zh", placehold
                 key={`${city.name}-${city.lat}-${city.lon}`}
                 onClick={() => handleSelect(city)}
                 className={`px-4 py-2.5 cursor-pointer flex items-center justify-between ${
-                  index === selectedIndex ? "bg-indigo-50" : "hover:bg-gray-50"
+                  index === selectedIndex ? "bg-gray-50" : "hover:bg-gray-50"
                 }`}
               >
                 <div>

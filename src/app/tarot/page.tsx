@@ -150,31 +150,31 @@ const TAROT_READINGS: Record<string, Record<string, Record<string, string>>> = {
 // Tarot card visual component with actual card design
 function TarotCardVisual({ card, isRevealed, index, spreadLength }: { card: typeof TAROT_CARDS[0]; isRevealed: boolean; index: number; spreadLength: number }) {
   const bgColors: Record<number, string> = {
-    0: "from-amber-600 to-yellow-500", // Fool
-    1: "from-red-600 to-orange-500", // Magician
-    2: "from-blue-700 to-indigo-600", // Priestess
-    3: "from-green-600 to-emerald-500", // Empress
-    4: "from-red-700 to-rose-600", // Emperor
-    5: "from-pink-600 to-rose-500", // Hierophant
-    6: "from-cyan-500 to-sky-400", // Lovers
-    7: "from-amber-700 to-orange-600", // Chariot
-    8: "from-orange-600 to-amber-500", // Strength
-    9: "from-slate-600 to-gray-500", // Hermit
-    10: "from-purple-600 to-violet-500", // Wheel
-    11: "from-yellow-500 to-amber-400", // Justice
-    12: "from-blue-600 to-cyan-500", // Hanged
-    13: "from-slate-800 to-gray-700", // Death
-    14: "from-teal-500 to-cyan-400", // Temperance
-    15: "from-red-800 to-rose-700", // Devil
-    16: "from-red-700 to-orange-600", // Tower
-    17: "from-blue-400 to-cyan-300", // Star
-    18: "from-indigo-700 to-purple-600", // Moon
-    19: "from-yellow-400 to-amber-300", // Sun
-    20: "from-pink-500 to-rose-400", // Judgement
-    21: "from-emerald-500 to-teal-400", // World
+    0: "from-gray-600 to-gray-500", // Fool
+    1: "from-gray-600 to-gray-500", // Magician
+    2: "from-gray-700 to-gray-600", // Priestess
+    3: "from-gray-600 to-gray-500", // Empress
+    4: "from-gray-700 to-gray-600", // Emperor
+    5: "from-gray-600 to-gray-500", // Hierophant
+    6: "from-gray-500 to-gray-400", // Lovers
+    7: "from-gray-700 to-gray-600", // Chariot
+    8: "from-gray-600 to-gray-500", // Strength
+    9: "from-gray-600 to-gray-500", // Hermit
+    10: "from-gray-600 to-gray-500", // Wheel
+    11: "from-gray-500 to-gray-400", // Justice
+    12: "from-gray-600 to-gray-500", // Hanged
+    13: "from-gray-800 to-gray-700", // Death
+    14: "from-gray-500 to-gray-400", // Temperance
+    15: "from-gray-800 to-gray-700", // Devil
+    16: "from-gray-700 to-gray-600", // Tower
+    17: "from-gray-400 to-gray-300", // Star
+    18: "from-gray-700 to-gray-600", // Moon
+    19: "from-gray-400 to-gray-300", // Sun
+    20: "from-gray-500 to-gray-400", // Judgement
+    21: "from-gray-500 to-gray-400", // World
   };
   
-  const gradClass = bgColors[card.id] || "from-slate-600 to-gray-500";
+  const gradClass = bgColors[card.id] || "from-gray-600 to-gray-500";
   const isLarge = spreadLength <= 3;
   
   return (
@@ -190,11 +190,11 @@ function TarotCardVisual({ card, isRevealed, index, spreadLength }: { card: type
       `}>
         {!isRevealed ? (
           // Card back design
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-gray-100 to-gray-50 flex items-center justify-center">
-            <div className="w-full h-full border-2 border-purple-500/50 m-2 rounded-lg flex items-center justify-center">
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50 flex items-center justify-center">
+            <div className="w-full h-full border-2 border-gray-500/50 m-2 rounded-lg flex items-center justify-center">
               <div className="grid grid-cols-3 gap-1 p-2">
                 {Array.from({ length: 9 }).map((_, i) => (
-                  <div key={i} className="w-3 h-3 bg-purple-500/30 rounded-full" />
+                  <div key={i} className="w-3 h-3 bg-gray-500/30 rounded-full" />
                 ))}
               </div>
             </div>
@@ -326,7 +326,7 @@ export default function TarotPage() {
       <main className="max-w-4xl mx-auto px-4 py-6">
         {/* Header */}
         <div className="text-center mb-6">
-          <h1 className="text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-purple-400 via-pink-400 to-amber-400 bg-clip-text text-transparent">
+          <h1 className="text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-gray-400 via-gray-400 to-gray-400 bg-clip-text text-transparent">
             {t.title}
           </h1>
           <p className="text-gray-500">{t.subtitle}</p>
@@ -342,7 +342,7 @@ export default function TarotPage() {
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
               placeholder={t.questionPlaceholder}
-              className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder-slate-500 focus:outline-none focus:border-purple-500"
+              className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-gray-500"
             />
           </div>
 
@@ -357,7 +357,7 @@ export default function TarotPage() {
                     onClick={() => setCategory(c)}
                     className={`flex-1 py-2 rounded-lg text-sm font-medium transition-all ${
                       category === c 
-                        ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-gray-900' 
+                        ? 'bg-gradient-to-r from-gray-600 to-gray-600 text-gray-900' 
                         : 'bg-white text-gray-500 hover:bg-gray-100'
                     }`}
                   >
@@ -371,7 +371,7 @@ export default function TarotPage() {
               <select
                 value={selectedSpread.id}
                 onChange={(e) => { setSelectedSpread(SPREADS.find(s => s.id === e.target.value) || SPREADS[0]); setDrawnCards([]); setRevealedCards([]); }}
-                className="w-full bg-white border border-gray-300 rounded-xl px-4 py-2.5 text-gray-900 focus:outline-none focus:border-purple-500"
+                className="w-full bg-white border border-gray-300 rounded-xl px-4 py-2.5 text-gray-900 focus:outline-none focus:border-gray-500"
               >
                 {SPREADS.map((s) => (
                   <option key={s.id} value={s.id}>
@@ -386,7 +386,7 @@ export default function TarotPage() {
           <button
             onClick={shuffleCards}
             disabled={isShuffling}
-            className="w-full py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 disabled:from-slate-600 disabled:to-slate-600 rounded-xl font-bold text-gray-900 transition-all flex items-center justify-center gap-2 shadow-lg shadow-purple-200/40"
+            className="w-full py-4 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 disabled:from-gray-600 disabled:to-gray-600 rounded-xl font-bold text-gray-900 transition-all flex items-center justify-center gap-2 shadow-lg shadow-gray-200/40"
           >
             {isShuffling ? <RefreshCw size={20} className="animate-spin" /> : <Shuffle size={20} />}
             {isShuffling ? t.shuffling : t.shuffle}
@@ -434,17 +434,17 @@ export default function TarotPage() {
             {allRevealed && (
               <div className="space-y-4">
                 {/* Free Reading */}
-                <div className="bg-gradient-to-r from-purple-50/40 to-pink-900/40 border border-purple-200 rounded-2xl p-6">
+                <div className="bg-gradient-to-r from-gray-50/40 to-gray-900/40 border border-gray-200 rounded-2xl p-6">
                   <h3 className="font-bold mb-4 flex items-center gap-2">
-                    <Sparkles size={18} className="text-amber-600" />
+                    <Sparkles size={18} className="text-gray-600" />
                     {t.reading}
-                    <span className="ml-2 px-2 py-0.5 rounded-full bg-green-500/20 text-green-400 text-xs">{t.free}</span>
+                    <span className="ml-2 px-2 py-0.5 rounded-full bg-gray-500/20 text-gray-400 text-xs">{t.free}</span>
                   </h3>
                   <div className="space-y-4">
                     {drawnCards.map((card, i) => (
                       <div key={i} className="p-4 rounded-xl bg-white/5 border border-gray-200">
                         <div className="flex items-center gap-2 mb-3">
-                          <span className="text-2xl font-bold text-purple-400">{card.image}</span>
+                          <span className="text-2xl font-bold text-gray-400">{card.image}</span>
                           <div>
                             <span className="font-bold text-gray-900">{card.name[language] || card.name.en}</span>
                             <span className="text-gray-500 text-sm ml-2">({card.element})</span>
@@ -453,7 +453,7 @@ export default function TarotPage() {
                         <p className="text-gray-600 text-sm mb-3">{getCardReading(card)}</p>
                         <div className="flex flex-wrap gap-2">
                           {card.keywords[language]?.map((kw: string, j: number) => (
-                            <span key={j} className="px-2 py-1 bg-purple-500/20 rounded-full text-xs text-purple-700">{kw}</span>
+                            <span key={j} className="px-2 py-1 bg-gray-500/20 rounded-full text-xs text-gray-700">{kw}</span>
                           ))}
                         </div>
                       </div>
@@ -464,9 +464,9 @@ export default function TarotPage() {
                 {/* Deep Reading - Unlock */}
                 {!isUnlocked && drawnCards.length > 1 && (
                   <div className="rounded-2xl overflow-hidden border border-gray-300">
-                    <div className="p-5 bg-gradient-to-r from-amber-900/40 to-orange-900/40 flex items-center justify-between">
+                    <div className="p-5 bg-gradient-to-r from-gray-900/40 to-gray-900/40 flex items-center justify-between">
                       <h3 className="font-bold flex items-center gap-2">
-                        <Lock size={18} className="text-amber-600" />
+                        <Lock size={18} className="text-gray-600" />
                         {t.deepReading}
                       </h3>
                     </div>
@@ -482,14 +482,14 @@ export default function TarotPage() {
                       </div>
                       
                       {/* WhatsApp Share */}
-                      <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20">
+                      <div className="p-4 rounded-xl bg-gray-500/10 border border-gray-500/20">
                         <div className="flex items-center gap-3 mb-3">
-                          <MessageCircle size={20} className="text-green-400" />
+                          <MessageCircle size={20} className="text-gray-400" />
                           <div className="font-medium text-gray-900 text-sm">{t.shareUnlock}</div>
                         </div>
                         <div className="flex gap-2 mb-3">
                           {[1, 2, 3].map(n => (
-                            <div key={n} className={`flex-1 h-2 rounded-full transition-all ${shareCount >= n ? "bg-green-500" : "bg-gray-100"}`} />
+                            <div key={n} className={`flex-1 h-2 rounded-full transition-all ${shareCount >= n ? "bg-gray-500" : "bg-gray-100"}`} />
                           ))}
                         </div>
                         <div className="text-xs text-gray-500 mb-3">{t.shareProgress}: {shareCount}/3</div>
@@ -498,14 +498,14 @@ export default function TarotPage() {
                           <div className="grid grid-cols-3 gap-2">
                             {[1, 2, 3].map(n => (
                               <button key={n} onClick={handleShare} disabled={shareCount >= n}
-                                className={`py-2 rounded-lg text-xs font-medium flex items-center justify-center gap-1 transition-all ${shareCount >= n ? "bg-green-500/20 text-green-400 border border-green-500/30" : "bg-white hover:bg-green-500/20 text-gray-600 hover:text-green-300 border border-gray-300"}`}>
+                                className={`py-2 rounded-lg text-xs font-medium flex items-center justify-center gap-1 transition-all ${shareCount >= n ? "bg-gray-500/20 text-gray-400 border border-gray-500/30" : "bg-white hover:bg-gray-500/20 text-gray-600 hover:text-gray-300 border border-gray-300"}`}>
                                 {shareCount >= n ? <CheckCircle size={12} /> : <Share2 size={12} />}
                                 {language === 'zh' ? '好友' : language === 'id' ? 'Teman' : language === 'th' ? 'เพื่อน' : language === 'vi' ? 'Bạn' : 'Friend'} {n}
                               </button>
                             ))}
                           </div>
                         ) : (
-                          <div className="text-center text-green-400 font-medium text-sm flex items-center justify-center gap-2">
+                          <div className="text-center text-gray-400 font-medium text-sm flex items-center justify-center gap-2">
                             <CheckCircle size={16} />{language === 'zh' ? '已解锁！' : language === 'id' ? 'Terbuka!' : 'Unlocked!'}
                           </div>
                         )}

@@ -308,7 +308,7 @@ export default function ProfilePage() {
     return (
       <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <Loader2 size={40} className="animate-spin text-purple-400 mx-auto mb-3" />
+          <Loader2 size={40} className="animate-spin text-gray-400 mx-auto mb-3" />
           <p className="text-gray-500 text-sm">{tx("loading", lang)}</p>
         </div>
       </div>
@@ -319,14 +319,14 @@ export default function ProfilePage() {
     return (
       <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 flex items-center justify-center">
         <div className="text-center max-w-sm mx-auto px-6">
-          <div className="w-20 h-20 rounded-full bg-purple-600/20 border border-purple-200 flex items-center justify-center mx-auto mb-6">
-            <User size={36} className="text-purple-400" />
+          <div className="w-20 h-20 rounded-full bg-gray-600/20 border border-gray-200 flex items-center justify-center mx-auto mb-6">
+            <User size={36} className="text-gray-400" />
           </div>
           <h2 className="text-xl font-bold text-gray-900 mb-2">{tx("title", lang)}</h2>
           <p className="text-gray-500 text-sm mb-6">{tx("loginPrompt", lang)}</p>
           <Link
             href="/login"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-xl text-gray-900 font-medium text-sm transition-all"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 rounded-xl text-gray-900 font-medium text-sm transition-all"
           >
             <ExternalLink size={16} />
             {tx("goLogin", lang)}
@@ -349,21 +349,21 @@ export default function ProfilePage() {
               <img
                 src={user.photoURL}
                 alt={user.displayName}
-                className="w-16 h-16 rounded-full border-2 border-purple-500/50"
+                className="w-16 h-16 rounded-full border-2 border-gray-500/50"
               />
             ) : (
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center text-2xl font-bold text-gray-900">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-gray-600 to-gray-600 flex items-center justify-center text-2xl font-bold text-gray-900">
                 {user.displayName?.[0]?.toUpperCase() || "U"}
               </div>
             )}
             <div className="flex-1 min-w-0">
-              <p className="text-xs text-purple-400 mb-0.5">{tx("welcome", lang)}</p>
+              <p className="text-xs text-gray-400 mb-0.5">{tx("welcome", lang)}</p>
               <h2 className="text-lg font-bold text-gray-900 truncate">{user.displayName || user.email}</h2>
               <p className="text-sm text-gray-500 truncate">{user.email}</p>
             </div>
             <button
               onClick={handleLogout}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-red-500/10 border border-gray-200 hover:border-red-500/30 text-gray-600 hover:text-red-400 text-sm transition-all flex-shrink-0"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-gray-500/10 border border-gray-200 hover:border-gray-500/30 text-gray-600 hover:text-gray-400 text-sm transition-all flex-shrink-0"
             >
               <LogOut size={16} />
               {tx("signOut", lang)}
@@ -374,34 +374,34 @@ export default function ProfilePage() {
         {/* Charts Section */}
         <div className="p-6 rounded-2xl bg-white/5 border border-gray-200">
           <div className="flex items-center gap-2 mb-5">
-            <Star size={18} className="text-purple-400" />
+            <Star size={18} className="text-gray-400" />
             <h3 className="font-bold text-gray-900">{tx("myCharts", lang)}</h3>
             {charts.length > 0 && (
-              <span className="ml-auto px-2 py-0.5 rounded-full bg-purple-600/20 text-purple-400 text-xs font-medium">
+              <span className="ml-auto px-2 py-0.5 rounded-full bg-gray-600/20 text-gray-400 text-xs font-medium">
                 {charts.length}
               </span>
             )}
           </div>
 
           {deleteMsg && (
-            <div className="mb-4 px-4 py-2 rounded-xl bg-green-500/10 border border-green-500/30 text-green-400 text-sm text-center">
+            <div className="mb-4 px-4 py-2 rounded-xl bg-gray-500/10 border border-gray-500/30 text-gray-400 text-sm text-center">
               {deleteMsg}
             </div>
           )}
 
           {loadingCharts && (
             <div className="flex items-center justify-center py-12">
-              <Loader2 size={28} className="animate-spin text-purple-400" />
+              <Loader2 size={28} className="animate-spin text-gray-400" />
             </div>
           )}
 
           {chartsError && !loadingCharts && (
             <div className="flex items-center justify-center py-8 gap-3">
-              <AlertCircle size={18} className="text-red-400" />
-              <p className="text-red-400 text-sm">{chartsError}</p>
+              <AlertCircle size={18} className="text-gray-400" />
+              <p className="text-gray-400 text-sm">{chartsError}</p>
               <button
                 onClick={() => user && loadChartsFromCloud(user.uid).then(setCharts).catch(() => setChartsError(tx("error", lang)))}
-                className="px-3 py-1 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-xs hover:bg-red-500/20 transition-colors"
+                className="px-3 py-1 rounded-lg bg-gray-500/10 border border-gray-500/30 text-gray-400 text-xs hover:bg-gray-500/20 transition-colors"
               >
                 {tx("retry", lang)}
               </button>
@@ -410,11 +410,11 @@ export default function ProfilePage() {
 
           {!loadingCharts && !chartsError && charts.length === 0 && (
             <div className="text-center py-10">
-              <Star size={40} className="text-slate-600 mx-auto mb-3" />
+              <Star size={40} className="text-gray-600 mx-auto mb-3" />
               <p className="text-gray-500 text-sm">{tx("noCharts", lang)}</p>
               <Link
                 href="/natal"
-                className="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-xl text-gray-900 text-sm font-medium transition-all"
+                className="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 rounded-xl text-gray-900 text-sm font-medium transition-all"
               >
                 <Star size={14} />
                 {tx("loadChart", lang)}
@@ -427,12 +427,12 @@ export default function ProfilePage() {
               {charts.map((chart) => (
                 <div
                   key={chart.id}
-                  className="p-4 rounded-xl bg-white/5 border border-gray-200 hover:border-purple-200 transition-all group"
+                  className="p-4 rounded-xl bg-white/5 border border-gray-200 hover:border-gray-200 transition-all group"
                 >
                   <div className="flex items-start gap-3">
                     {/* Chart icon */}
-                    <div className="w-10 h-10 rounded-lg bg-purple-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Star size={18} className="text-purple-400" />
+                    <div className="w-10 h-10 rounded-lg bg-gray-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Star size={18} className="text-gray-400" />
                     </div>
 
                     {/* Chart info */}
@@ -460,7 +460,7 @@ export default function ProfilePage() {
                     <div className="flex items-center gap-2 flex-shrink-0">
                       <button
                         onClick={() => handleLoadChart(chart)}
-                        className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-gray-900 text-xs font-medium transition-all flex items-center gap-1"
+                        className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 text-gray-900 text-xs font-medium transition-all flex items-center gap-1"
                         title={tx("loadChart", lang)}
                       >
                         <Upload size={12} />
@@ -471,13 +471,13 @@ export default function ProfilePage() {
                           <button
                             onClick={() => handleDeleteChart(chart.id!)}
                             disabled={deletingId === chart.id}
-                            className="px-2 py-1.5 rounded-lg bg-red-500 hover:bg-red-600 text-gray-900 text-xs font-medium transition-all"
+                            className="px-2 py-1.5 rounded-lg bg-gray-500 hover:bg-gray-600 text-gray-900 text-xs font-medium transition-all"
                           >
                             {deletingId === chart.id ? <Loader2 size={10} className="animate-spin" /> : tx("deleteChart", lang)}
                           </button>
                           <button
                             onClick={() => setShowConfirm(null)}
-                            className="px-2 py-1.5 rounded-lg bg-white/5 border border-gray-200 text-gray-500 text-xs hover:text-purple-700 transition-all"
+                            className="px-2 py-1.5 rounded-lg bg-white/5 border border-gray-200 text-gray-500 text-xs hover:text-gray-700 transition-all"
                           >
                             {tx("cancel", lang)}
                           </button>
@@ -485,7 +485,7 @@ export default function ProfilePage() {
                       ) : (
                         <button
                           onClick={() => setShowConfirm(chart.id!)}
-                          className="p-1.5 rounded-lg bg-white/5 hover:bg-red-500/10 border border-gray-200 hover:border-red-500/30 text-gray-500 hover:text-red-400 transition-all"
+                          className="p-1.5 rounded-lg bg-white/5 hover:bg-gray-500/10 border border-gray-200 hover:border-gray-500/30 text-gray-500 hover:text-gray-400 transition-all"
                           title={tx("deleteChart", lang)}
                         >
                           <Trash2 size={14} />
@@ -502,10 +502,10 @@ export default function ProfilePage() {
         {/* Composite Charts Section */}
         <div className="p-6 rounded-2xl bg-white/5 border border-gray-200">
           <div className="flex items-center gap-2 mb-5">
-            <Star size={18} className="text-pink-400" />
+            <Star size={18} className="text-gray-400" />
             <h3 className="font-bold text-gray-900">{tx("compositeCharts", lang)}</h3>
             {compositeCharts.length > 0 && (
-              <span className="ml-auto px-2 py-0.5 rounded-full bg-pink-500/20 text-pink-400 text-xs font-medium">
+              <span className="ml-auto px-2 py-0.5 rounded-full bg-gray-500/20 text-gray-400 text-xs font-medium">
                 {compositeCharts.length}
               </span>
             )}
@@ -513,17 +513,17 @@ export default function ProfilePage() {
 
           {loadingComposite && (
             <div className="flex items-center justify-center py-12">
-              <Loader2 size={28} className="animate-spin text-pink-400" />
+              <Loader2 size={28} className="animate-spin text-gray-400" />
             </div>
           )}
 
           {compositeError && !loadingComposite && (
             <div className="flex items-center justify-center py-8 gap-3">
-              <AlertCircle size={18} className="text-red-400" />
-              <p className="text-red-400 text-sm">{compositeError}</p>
+              <AlertCircle size={18} className="text-gray-400" />
+              <p className="text-gray-400 text-sm">{compositeError}</p>
               <button
                 onClick={() => getSavedCompositeCharts(20).then(setCompositeCharts).catch(() => setCompositeError(tx("error", lang)))}
-                className="px-3 py-1 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-xs hover:bg-red-500/20 transition-colors"
+                className="px-3 py-1 rounded-lg bg-gray-500/10 border border-gray-500/30 text-gray-400 text-xs hover:bg-gray-500/20 transition-colors"
               >
                 {tx("retry", lang)}
               </button>
@@ -532,11 +532,11 @@ export default function ProfilePage() {
 
           {!loadingComposite && !compositeError && compositeCharts.length === 0 && (
             <div className="text-center py-10">
-              <Star size={40} className="text-slate-600 mx-auto mb-3" />
+              <Star size={40} className="text-gray-600 mx-auto mb-3" />
               <p className="text-gray-500 text-sm">{tx("noCompositeCharts", lang)}</p>
               <Link
                 href="/composite"
-                className="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 rounded-xl text-gray-900 text-sm font-medium transition-all"
+                className="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 rounded-xl text-gray-900 text-sm font-medium transition-all"
               >
                 <Star size={14} />
                 {tx("loadComposite", lang)}
@@ -549,20 +549,20 @@ export default function ProfilePage() {
               {compositeCharts.map((composite) => (
                 <div
                   key={composite.id}
-                  className="p-4 rounded-xl bg-white/5 border border-gray-200 hover:border-pink-500/30 transition-all group"
+                  className="p-4 rounded-xl bg-white/5 border border-gray-200 hover:border-gray-500/30 transition-all group"
                 >
                   <div className="flex items-start gap-3">
                     {/* Composite icon */}
-                    <div className="w-10 h-10 rounded-lg bg-pink-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Star size={18} className="text-pink-400" />
+                    <div className="w-10 h-10 rounded-lg bg-gray-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Star size={18} className="text-gray-400" />
                     </div>
 
                     {/* Composite info */}
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="font-semibold text-pink-300">{composite.person1Name || tx("person1Short", lang)}</span>
+                        <span className="font-semibold text-gray-300">{composite.person1Name || tx("person1Short", lang)}</span>
                         <span className="text-gray-400">+</span>
-                        <span className="font-semibold text-purple-700">{composite.person2Name || tx("person2Short", lang)}</span>
+                        <span className="font-semibold text-gray-700">{composite.person2Name || tx("person2Short", lang)}</span>
                       </div>
                       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-500">
                         <span className="flex items-center gap-1">
@@ -581,7 +581,7 @@ export default function ProfilePage() {
                     <div className="flex items-center gap-2 flex-shrink-0">
                       <button
                         onClick={() => handleLoadCompositeChart(composite)}
-                        className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-gray-900 text-xs font-medium transition-all flex items-center gap-1"
+                        className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 text-gray-900 text-xs font-medium transition-all flex items-center gap-1"
                         title={tx("loadComposite", lang)}
                       >
                         <Upload size={12} />
@@ -592,13 +592,13 @@ export default function ProfilePage() {
                           <button
                             onClick={() => handleDeleteCompositeChart(composite.id!)}
                             disabled={deletingCompositeId === composite.id}
-                            className="px-2 py-1.5 rounded-lg bg-red-500 hover:bg-red-600 text-gray-900 text-xs font-medium transition-all"
+                            className="px-2 py-1.5 rounded-lg bg-gray-500 hover:bg-gray-600 text-gray-900 text-xs font-medium transition-all"
                           >
                             {deletingCompositeId === composite.id ? <Loader2 size={10} className="animate-spin" /> : tx("deleteComposite", lang)}
                           </button>
                           <button
                             onClick={() => setShowCompositeConfirm(null)}
-                            className="px-2 py-1.5 rounded-lg bg-white/5 border border-gray-200 text-gray-500 text-xs hover:text-purple-700 transition-all"
+                            className="px-2 py-1.5 rounded-lg bg-white/5 border border-gray-200 text-gray-500 text-xs hover:text-gray-700 transition-all"
                           >
                             {tx("cancel", lang)}
                           </button>
@@ -606,7 +606,7 @@ export default function ProfilePage() {
                       ) : (
                         <button
                           onClick={() => setShowCompositeConfirm(composite.id!)}
-                          className="p-1.5 rounded-lg bg-white/5 hover:bg-red-500/10 border border-gray-200 hover:border-red-500/30 text-gray-500 hover:text-red-400 transition-all"
+                          className="p-1.5 rounded-lg bg-white/5 hover:bg-gray-500/10 border border-gray-200 hover:border-gray-500/30 text-gray-500 hover:text-gray-400 transition-all"
                           title={tx("deleteComposite", lang)}
                         >
                           <Trash2 size={14} />

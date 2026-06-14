@@ -76,10 +76,10 @@ export default function PremiumFeatures({ language = "id" }: PremiumFeaturesProp
   }[language];
 
   return (
-    <div className="p-6 rounded-2xl bg-gradient-to-br from-amber-900/30 to-purple-900/40 border border-amber-500/30">
+    <div className="p-6 rounded-2xl bg-gradient-to-br from-gray-900/30 to-gray-900/40 border border-gray-500/30">
       <div className="text-center mb-6">
-        <h3 className="text-2xl font-bold text-amber-100 mb-2">{t.title}</h3>
-        <p className="text-purple-600/60">{t.subtitle}</p>
+        <h3 className="text-2xl font-bold text-gray-100 mb-2">{t.title}</h3>
+        <p className="text-gray-600/60">{t.subtitle}</p>
       </div>
 
       {/* 计划选择 */}
@@ -88,8 +88,8 @@ export default function PremiumFeatures({ language = "id" }: PremiumFeaturesProp
           onClick={() => setSelectedPlan("monthly")}
           className={`px-6 py-2 rounded-full transition-all ${
             selectedPlan === "monthly"
-              ? "bg-gradient-to-r from-amber-500 to-purple-600 text-white"
-              : "bg-purple-900/50 text-purple-600 border border-purple-200"
+              ? "bg-gradient-to-r from-gray-500 to-gray-600 text-white"
+              : "bg-gray-900/50 text-gray-600 border border-gray-200"
           }`}
         >
           {t.monthly}
@@ -98,12 +98,12 @@ export default function PremiumFeatures({ language = "id" }: PremiumFeaturesProp
           onClick={() => setSelectedPlan("yearly")}
           className={`px-6 py-2 rounded-full transition-all relative ${
             selectedPlan === "yearly"
-              ? "bg-gradient-to-r from-amber-500 to-purple-600 text-white"
-              : "bg-purple-900/50 text-purple-600 border border-purple-200"
+              ? "bg-gradient-to-r from-gray-500 to-gray-600 text-white"
+              : "bg-gray-900/50 text-gray-600 border border-gray-200"
           }`}
         >
           {t.yearly}
-          <span className="absolute -top-2 -right-2 px-2 py-0.5 text-xs bg-green-500 text-white rounded-full">
+          <span className="absolute -top-2 -right-2 px-2 py-0.5 text-xs bg-gray-500 text-white rounded-full">
             {t.yearlyDiscount}
           </span>
         </button>
@@ -111,10 +111,10 @@ export default function PremiumFeatures({ language = "id" }: PremiumFeaturesProp
 
       {/* 价格 */}
       <div className="text-center mb-6">
-        <span className="text-4xl font-bold text-amber-100">
+        <span className="text-4xl font-bold text-gray-100">
           {selectedPlan === "monthly" ? t.price : t.priceYearly}
         </span>
-        <span className="text-purple-300">
+        <span className="text-gray-300">
           {selectedPlan === "monthly" ? t.perMonth : t.perYear}
         </span>
       </div>
@@ -122,19 +122,19 @@ export default function PremiumFeatures({ language = "id" }: PremiumFeaturesProp
       {/* 功能列表 */}
       <ul className="space-y-3 mb-6">
         {t.features.map((feature, index) => (
-          <li key={index} className="flex items-center gap-3 text-purple-600">
-            <span className="text-green-400">✓</span>
+          <li key={index} className="flex items-center gap-3 text-gray-600">
+            <span className="text-gray-400">✓</span>
             {feature}
           </li>
         ))}
       </ul>
 
       {/* 订阅按钮 */}
-      <button className="w-full py-3 bg-gradient-to-r from-amber-500 to-purple-600 rounded-lg font-semibold hover:from-amber-400 hover:to-purple-500 transition-all mb-3">
+      <button className="w-full py-3 bg-gradient-to-r from-gray-500 to-gray-600 rounded-lg font-semibold hover:from-gray-400 hover:to-gray-500 transition-all mb-3">
         {t.cta}
       </button>
 
-      <p className="text-center text-xs text-purple-300/60">{t.guarantee}</p>
+      <p className="text-center text-xs text-gray-300/60">{t.guarantee}</p>
     </div>
   );
 }

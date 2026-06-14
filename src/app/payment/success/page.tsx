@@ -78,7 +78,7 @@ function PaymentSuccessContent() {
           style={{ backgroundColor: COLORS.card, border: `2px solid #ef4444` }}
         >
           <div className="text-6xl mb-4">❌</div>
-          <h1 className="text-2xl font-bold mb-3 text-red-400">
+          <h1 className="text-2xl font-bold mb-3 text-gray-400">
             {language === 'zh' ? '支付失败' : language === 'id' ? 'Pembayaran Gagal' : 'Payment Failed'}
           </h1>
           <p className="mb-6" style={{ color: COLORS.textMuted }}>

@@ -91,7 +91,7 @@ export default function ProgressionPage() {
 
       <main className="max-w-7xl mx-auto px-6 py-8">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/20 rounded-full text-sm text-purple-700 mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-500/20 rounded-full text-sm text-gray-700 mb-4">
             <TrendingUp size={16} />
             {language === 'zh' ? '次限推运 & 法达' : 'Progression & Firdaria'}
           </div>
@@ -109,7 +109,7 @@ export default function ProgressionPage() {
           {/* Input Form */}
           <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200">
             <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-              <Calendar size={18} className="text-purple-400"/>
+              <Calendar size={18} className="text-gray-400"/>
               {language === 'zh' ? '出生信息' : 'Birth Information'}
             </h2>
             
@@ -167,12 +167,12 @@ export default function ProgressionPage() {
               <p className="text-xs text-gray-400 mt-1">{language === 'zh' ? `相当于出生后第${targetYear - bYear}天` : `Equivalent to day ${targetYear - bYear} after birth`}</p>
             </div>
 
-            <button onClick={calculateProgression} disabled={loading} className="w-full py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 disabled:opacity-50 rounded-xl font-bold text-gray-900 transition-all flex items-center justify-center gap-2">
+            <button onClick={calculateProgression} disabled={loading} className="w-full py-3 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 disabled:opacity-50 rounded-xl font-bold text-gray-900 transition-all flex items-center justify-center gap-2">
               <TrendingUp size={18} />
               {loading ? (language === 'zh' ? '计算中...' : 'Calculating...') : (language === 'zh' ? '计算推运盘' : 'Calculate Progression')}
             </button>
 
-            {error && <div className="mt-4 p-3 rounded-lg bg-red-500/20 text-red-300 text-sm">{error}</div>}
+            {error && <div className="mt-4 p-3 rounded-lg bg-gray-500/20 text-gray-300 text-sm">{error}</div>}
           </div>
 
           {/* Results */}
@@ -181,18 +181,18 @@ export default function ProgressionPage() {
               <div className="space-y-6">
                 {/* Tabs */}
                 <div className="flex gap-2 p-1 rounded-xl bg-gray-100">
-                  <button onClick={() => setActiveTab('chart')} className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === 'chart' ? 'bg-purple-500 text-gray-900' : 'text-gray-500 hover:text-purple-700'}`}>
+                  <button onClick={() => setActiveTab('chart')} className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === 'chart' ? 'bg-gray-500 text-gray-900' : 'text-gray-500 hover:text-gray-700'}`}>
                     {language === 'zh' ? '推运盘' : 'Progressed Chart'}
                   </button>
-                  <button onClick={() => setActiveTab('firdaria')} className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === 'firdaria' ? 'bg-purple-500 text-gray-900' : 'text-gray-500 hover:text-purple-700'}`}>
+                  <button onClick={() => setActiveTab('firdaria')} className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === 'firdaria' ? 'bg-gray-500 text-gray-900' : 'text-gray-500 hover:text-gray-700'}`}>
                     {language === 'zh' ? '法达大运' : 'Firdaria'}
                   </button>
                 </div>
 
                 {activeTab === 'chart' && (
                   <>
-                    <div className="p-4 rounded-xl bg-purple-900/20 border border-purple-200">
-                      <h3 className="font-bold text-purple-700 mb-2 flex items-center gap-2">
+                    <div className="p-4 rounded-xl bg-gray-900/20 border border-gray-200">
+                      <h3 className="font-bold text-gray-700 mb-2 flex items-center gap-2">
                         <Clock size={16}/>
                         {language === 'zh' ? '次限日期' : 'Progressed Date'}
                       </h3>
@@ -218,13 +218,13 @@ export default function ProgressionPage() {
                 {activeTab === 'firdaria' && chart.progression.firdaria && (
                   <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
                     <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                      <Star size={16} className="text-amber-600"/>
+                      <Star size={16} className="text-gray-600"/>
                       {language === 'zh' ? '法达大运周期' : 'Firdaria Periods'}
                     </h3>
                     
                     {chart.progression.firdaria.currentPeriod && (
-                      <div className="mb-4 p-3 rounded-lg bg-amber-500/20 border border-amber-500/30">
-                        <div className="text-sm text-amber-600 mb-1">{language === 'zh' ? '当前大运' : 'Current Period'}</div>
+                      <div className="mb-4 p-3 rounded-lg bg-gray-500/20 border border-gray-500/30">
+                        <div className="text-sm text-gray-600 mb-1">{language === 'zh' ? '当前大运' : 'Current Period'}</div>
                         <div className="flex items-center gap-2">
                           <span className="text-2xl">{PLANET_SYMBOLS[chart.progression.firdaria.currentPeriod.planet]}</span>
                           <span className="font-bold text-gray-900">{chart.progression.firdaria.currentPeriod.planet}</span>
@@ -239,7 +239,7 @@ export default function ProgressionPage() {
                       {chart.progression.firdaria.periods.map((p: any, i: number) => {
                         const isCurrent = targetYear >= p.startYear && targetYear < p.endYear;
                         return (
-                          <div key={i} className={`flex items-center justify-between p-2 rounded ${isCurrent ? 'bg-purple-500/20 border border-purple-200' : 'bg-white/30'}`}>
+                          <div key={i} className={`flex items-center justify-between p-2 rounded ${isCurrent ? 'bg-gray-500/20 border border-gray-200' : 'bg-white/30'}`}>
                             <div className="flex items-center gap-2">
                               <span style={{color: PLANET_COLORS[p.planet] || '#fff'}}>{PLANET_SYMBOLS[p.planet]}</span>
                               <span className={isCurrent ? 'text-gray-900 font-medium' : 'text-gray-500'}>{p.planet}</span>

@@ -244,7 +244,7 @@ export default function CompositePage() {
 
       <main className="max-w-7xl mx-auto px-6 py-8">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-pink-500/20 rounded-full text-sm text-pink-300 mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-500/20 rounded-full text-sm text-gray-300 mb-4">
             <Heart size={16} />
             {t('badge', language)}
           </div>
@@ -254,10 +254,10 @@ export default function CompositePage() {
 
         {/* Tabs */}
         <div className="flex gap-2 p-1 rounded-xl bg-gray-100 max-w-md mx-auto mb-8">
-          <button onClick={() => setActiveTab('composite')} className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === 'composite' ? 'bg-pink-500 text-gray-900' : 'text-gray-500 hover:text-purple-700'}`}>
+          <button onClick={() => setActiveTab('composite')} className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === 'composite' ? 'bg-gray-500 text-gray-900' : 'text-gray-500 hover:text-gray-700'}`}>
             {t('compositeTab', language)}
           </button>
-          <button onClick={() => setActiveTab('synastry')} className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === 'synastry' ? 'bg-pink-500 text-gray-900' : 'text-gray-500 hover:text-purple-700'}`}>
+          <button onClick={() => setActiveTab('synastry')} className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === 'synastry' ? 'bg-gray-500 text-gray-900' : 'text-gray-500 hover:text-gray-700'}`}>
             {t('synastryTab', language)}
           </button>
         </div>
@@ -265,8 +265,8 @@ export default function CompositePage() {
         {/* Two Person Input */}
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           {/* Person 1 */}
-          <div className="p-5 rounded-2xl bg-gradient-to-br from-blue-900/30 to-gray-50/50 border border-blue-500/30">
-            <h2 className="text-lg font-bold text-blue-300 mb-4 flex items-center gap-2">
+          <div className="p-5 rounded-2xl bg-gradient-to-br from-gray-900/30 to-gray-50/50 border border-gray-500/30">
+            <h2 className="text-lg font-bold text-gray-300 mb-4 flex items-center gap-2">
               <Users size={18} />
               {t('person1', language)} {p1Name && `- ${p1Name}`}
             </h2>
@@ -314,8 +314,8 @@ export default function CompositePage() {
           </div>
 
           {/* Person 2 */}
-          <div className="p-5 rounded-2xl bg-gradient-to-br from-pink-900/30 to-gray-50/50 border border-pink-500/30">
-            <h2 className="text-lg font-bold text-pink-300 mb-4 flex items-center gap-2">
+          <div className="p-5 rounded-2xl bg-gradient-to-br from-gray-900/30 to-gray-50/50 border border-gray-500/30">
+            <h2 className="text-lg font-bold text-gray-300 mb-4 flex items-center gap-2">
               <Users size={18} />
               {t('person2', language)} {p2Name && `- ${p2Name}`}
             </h2>
@@ -375,10 +375,10 @@ export default function CompositePage() {
 
         {/* Calculate Button */}
         <div className="text-center mb-8">
-          <button onClick={calculateComposite} disabled={loading} className="px-8 py-3 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 disabled:opacity-50 rounded-xl font-bold text-gray-900 transition-all inline-flex items-center gap-2">
+          <button onClick={calculateComposite} disabled={loading} className="px-8 py-3 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 disabled:opacity-50 rounded-xl font-bold text-gray-900 transition-all inline-flex items-center gap-2">
             {loading ? <><Loader2 size={18} className="animate-spin" />{t('calculate', language)}...</> : <><Heart size={18} />{t('calculate', language)}</>}
           </button>
-          {error && <div className="mt-4 p-3 rounded-lg bg-red-500/20 text-red-300 text-sm max-w-md mx-auto">{error}</div>}
+          {error && <div className="mt-4 p-3 rounded-lg bg-gray-500/20 text-gray-300 text-sm max-w-md mx-auto">{error}</div>}
         </div>
 
         {/* Results */}
@@ -388,7 +388,7 @@ export default function CompositePage() {
               <>
                 <div className="text-center">
                   <h2 className="text-2xl font-bold text-gray-900 mb-2 flex items-center justify-center gap-2">
-                    <Star size={24} className="text-amber-600"/>
+                    <Star size={24} className="text-gray-600"/>
                     {t('compositeTitle', language)}
                   </h2>
                   <p className="text-gray-500 text-sm">{t('compositeDesc', language)}</p>
@@ -406,25 +406,25 @@ export default function CompositePage() {
                 {/* Action Buttons */}
                 <div className="flex flex-wrap justify-center gap-3">
                   {user && (
-                    <button onClick={handleSave} className="px-4 py-2 rounded-lg bg-purple-600/80 hover:bg-purple-500 text-gray-900 text-sm inline-flex items-center gap-2 transition-colors">
+                    <button onClick={handleSave} className="px-4 py-2 rounded-lg bg-gray-600/80 hover:bg-gray-500 text-gray-900 text-sm inline-flex items-center gap-2 transition-colors">
                       <Save size={16} />{saveMsg || t('save', language)}
                     </button>
                   )}
-                  <button onClick={handleAIInterpretation} disabled={loadingAI} className="px-4 py-2 rounded-lg bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-gray-900 text-sm inline-flex items-center gap-2 transition-colors disabled:opacity-50">
+                  <button onClick={handleAIInterpretation} disabled={loadingAI} className="px-4 py-2 rounded-lg bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 text-gray-900 text-sm inline-flex items-center gap-2 transition-colors disabled:opacity-50">
                     {loadingAI ? <Loader2 size={16} className="animate-spin" /> : <Sparkles size={16} />}{t('aiInterpret', language)}
                   </button>
-                  <button onClick={handleShare} className="px-4 py-2 rounded-lg bg-gray-100 hover:bg-slate-600 text-gray-900 text-sm inline-flex items-center gap-2 transition-colors">
+                  <button onClick={handleShare} className="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-600 text-gray-900 text-sm inline-flex items-center gap-2 transition-colors">
                     <Share2 size={16} />{linkCopied ? t('linkCopied', language) : t('copyLink', language)}
                   </button>
-                  <button onClick={handleDownload} className="px-4 py-2 rounded-lg bg-gray-100 hover:bg-slate-600 text-gray-900 text-sm inline-flex items-center gap-2 transition-colors">
+                  <button onClick={handleDownload} className="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-600 text-gray-900 text-sm inline-flex items-center gap-2 transition-colors">
                     <Download size={16} />{t('download', language)}
                   </button>
                 </div>
 
                 {/* AI Interpretation Card */}
                 {aiInterpretation && (
-                  <div className="max-w-4xl mx-auto p-6 rounded-2xl bg-gradient-to-br from-violet-900/40 to-fuchsia-900/30 border border-violet-500/30">
-                    <h3 className="font-bold text-violet-300 mb-3 flex items-center gap-2">
+                  <div className="max-w-4xl mx-auto p-6 rounded-2xl bg-gradient-to-br from-gray-900/40 to-gray-900/30 border border-gray-500/30">
+                    <h3 className="font-bold text-gray-300 mb-3 flex items-center gap-2">
                       <Sparkles size={18} />{t('aiInterpret', language)}
                     </h3>
                     <div className="text-gray-800 text-sm leading-relaxed whitespace-pre-wrap">{aiInterpretation}</div>
@@ -453,7 +453,7 @@ export default function CompositePage() {
               <>
                 <div className="text-center">
                   <h2 className="text-2xl font-bold text-gray-900 mb-2 flex items-center justify-center gap-2">
-                    <Heart size={24} className="text-pink-400"/>
+                    <Heart size={24} className="text-gray-400"/>
                     {t('synastryTitle', language)}
                   </h2>
                   <p className="text-gray-500 text-sm">{t('synastryDesc', language)}</p>
@@ -477,12 +477,12 @@ export default function CompositePage() {
                       const colors: Record<string,string> = {Conjunction:'#FFD700',Trine:'#4488FF',Square:'#FF4444',Opposition:'#FF8800',Sextile:'#00FF88'};
                       const isGood = ['Trine','Sextile'].includes(a.type);
                       return (
-                        <div key={i} className={`p-3 rounded-lg ${isGood ? 'bg-green-900/20 border border-green-500/20' : 'bg-gray-100 border border-gray-200'}`}>
+                        <div key={i} className={`p-3 rounded-lg ${isGood ? 'bg-gray-900/20 border border-gray-500/20' : 'bg-gray-100 border border-gray-200'}`}>
                           <div className="flex items-center justify-between">
                             <span className="text-gray-900">
-                              <span className="text-blue-300">{a.planet1}</span>
+                              <span className="text-gray-300">{a.planet1}</span>
                               <span className="text-gray-500 mx-2">→</span>
-                              <span className="text-pink-300">{a.planet2}</span>
+                              <span className="text-gray-300">{a.planet2}</span>
                             </span>
                             <span className="font-bold" style={{color: colors[a.type]}}>{a.type}</span>
                           </div>
@@ -504,20 +504,20 @@ export default function CompositePage() {
         {chart && (
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             {user && (
-              <button onClick={handleSave} className="px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 rounded-xl font-bold text-gray-900 transition-all inline-flex items-center gap-2">
+              <button onClick={handleSave} className="px-6 py-3 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 rounded-xl font-bold text-gray-900 transition-all inline-flex items-center gap-2">
                 <Save size={18} />
                 {language === 'zh' ? '保存合盘' : 'Save Chart'}
               </button>
             )}
-            <button onClick={handleAIInterpretation} disabled={loadingAI} className="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 disabled:opacity-50 rounded-xl font-bold text-gray-900 transition-all inline-flex items-center gap-2">
+            <button onClick={handleAIInterpretation} disabled={loadingAI} className="px-6 py-3 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 disabled:opacity-50 rounded-xl font-bold text-gray-900 transition-all inline-flex items-center gap-2">
               <Sparkles size={18} />
               {loadingAI ? (language === 'zh' ? 'AI解读中...' : 'AI Reading...') : (language === 'zh' ? 'AI 解读' : 'AI Reading')}
             </button>
-            <button onClick={handleDownload} className="px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 rounded-xl font-bold text-gray-900 transition-all inline-flex items-center gap-2">
+            <button onClick={handleDownload} className="px-6 py-3 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 rounded-xl font-bold text-gray-900 transition-all inline-flex items-center gap-2">
               <Download size={18} />
               {language === 'zh' ? '下载图片' : 'Download'}
             </button>
-            <button onClick={handleShare} className="px-6 py-3 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 rounded-xl font-bold text-gray-900 transition-all inline-flex items-center gap-2">
+            <button onClick={handleShare} className="px-6 py-3 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 rounded-xl font-bold text-gray-900 transition-all inline-flex items-center gap-2">
               <Share2 size={18} />
               {language === 'zh' ? '分享链接' : 'Share Link'}
             </button>
@@ -527,15 +527,15 @@ export default function CompositePage() {
         {/* Save/Share Message */}
         {saveMsg && (
           <div className="text-center mb-4">
-            <span className="inline-block px-4 py-2 bg-green-100 text-green-700 rounded-lg text-sm">{saveMsg}</span>
+            <span className="inline-block px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm">{saveMsg}</span>
           </div>
         )}
 
         {/* AI Interpretation Card */}
         {aiInterpretation && (
-          <div className="max-w-4xl mx-auto mb-8 p-6 rounded-2xl bg-gradient-to-br from-purple-50/30 to-indigo-50/30 border border-purple-200">
+          <div className="max-w-4xl mx-auto mb-8 p-6 rounded-2xl bg-gradient-to-br from-gray-50/30 to-gray-50/30 border border-gray-200">
             <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-              <Sparkles size={20} className="text-purple-700" />
+              <Sparkles size={20} className="text-gray-700" />
               {language === 'zh' ? 'AI 解读' : 'AI Interpretation'}
             </h3>
             <div className="text-gray-800 leading-relaxed whitespace-pre-wrap">{aiInterpretation}</div>
@@ -561,16 +561,16 @@ export default function CompositePage() {
         <section className="max-w-4xl mx-auto mt-12 mb-8 px-4">
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-lg font-semibold text-purple-700 mb-2">中文</h3>
-              <p className="text-purple-600/80 text-sm leading-relaxed">合盘（Composite Chart）揭示两人关系的灵魂蓝图。计算两人星盘中点，生成代表「关系本身」的星盘。了解深层动力、潜在挑战，AI 提供实用建议。</p>
+              <h3 className="text-lg font-semibold text-gray-700 mb-2">中文</h3>
+              <p className="text-gray-600/80 text-sm leading-relaxed">合盘（Composite Chart）揭示两人关系的灵魂蓝图。计算两人星盘中点，生成代表「关系本身」的星盘。了解深层动力、潜在挑战，AI 提供实用建议。</p>
             </div>
             <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-lg font-semibold text-purple-700 mb-2">English</h3>
-              <p className="text-purple-600/80 text-sm leading-relaxed">The Composite Chart reveals the soul blueprint of a relationship. By calculating midpoints between two natal charts, it generates a chart representing the relationship itself. Understand deep dynamics, potential challenges, and get AI-powered practical advice.</p>
+              <h3 className="text-lg font-semibold text-gray-700 mb-2">English</h3>
+              <p className="text-gray-600/80 text-sm leading-relaxed">The Composite Chart reveals the soul blueprint of a relationship. By calculating midpoints between two natal charts, it generates a chart representing the relationship itself. Understand deep dynamics, potential challenges, and get AI-powered practical advice.</p>
             </div>
             <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-lg font-semibold text-purple-700 mb-2">Bahasa Indonesia</h3>
-              <p className="text-purple-600/80 text-sm leading-relaxed">Composite Chart mengungkap cetak biru jiwa sebuah hubungan. Dengan menghitung titik tengah antara dua chart natal, menghasilkan chart yang mewakili hubungan itu sendiri.</p>
+              <h3 className="text-lg font-semibold text-gray-700 mb-2">Bahasa Indonesia</h3>
+              <p className="text-gray-600/80 text-sm leading-relaxed">Composite Chart mengungkap cetak biru jiwa sebuah hubungan. Dengan menghitung titik tengah antara dua chart natal, menghasilkan chart yang mewakili hubungan itu sendiri.</p>
             </div>
           </div>
         </section>
@@ -580,16 +580,16 @@ export default function CompositePage() {
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">{t('faq', language)}</h2>
           <div className="space-y-3">
             {FAQ_DATA.map((item, i) => (
-              <div key={i} className="border border-purple-200 rounded-lg overflow-hidden">
+              <div key={i} className="border border-gray-200 rounded-lg overflow-hidden">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? -1 : i)}
-                  className="w-full px-4 py-3 flex items-center justify-between bg-purple-900/20 hover:bg-purple-900/30 transition-colors text-left"
+                  className="w-full px-4 py-3 flex items-center justify-between bg-gray-900/20 hover:bg-gray-900/30 transition-colors text-left"
                 >
                   <span className="text-gray-900 text-sm">{language === 'zh' ? item.q : (language === 'en' ? item.q_en : item.q_id)}</span>
-                  <ChevronDown size={18} className={`text-purple-700 transition-transform ${openFaq === i ? 'rotate-180' : ''}`}/>
+                  <ChevronDown size={18} className={`text-gray-700 transition-transform ${openFaq === i ? 'rotate-180' : ''}`}/>
                 </button>
                 {openFaq === i && (
-                  <div className="px-4 py-3 bg-purple-950/30 border-t border-purple-500/10">
+                  <div className="px-4 py-3 bg-gray-950/30 border-t border-gray-500/10">
                     <p className="text-gray-800 text-sm mb-2">{language === 'zh' ? item.a : (language === 'en' ? item.a_en : item.a_id)}</p>
                     <p className="text-gray-500 text-xs">{language === 'zh' ? item.a_en : item.a_id}</p>
                     <p className="text-gray-400 text-xs">{language === 'zh' ? item.a_id : item.a_en}</p>

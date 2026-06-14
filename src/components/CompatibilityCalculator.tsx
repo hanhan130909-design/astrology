@@ -158,10 +158,10 @@ export default function CompatibilityCalculator({ language = "id" }: Compatibili
   const result = getCompatibility();
 
   const getScoreColor = (score: number) => {
-    if (score >= 85) return "text-green-400";
-    if (score >= 70) return "text-yellow-400";
-    if (score >= 55) return "text-orange-400";
-    return "text-red-400";
+    if (score >= 85) return "text-gray-400";
+    if (score >= 70) return "text-gray-400";
+    if (score >= 55) return "text-gray-400";
+    return "text-gray-400";
   };
 
   const getScoreEmoji = (score: number) => {
@@ -177,11 +177,11 @@ export default function CompatibilityCalculator({ language = "id" }: Compatibili
       <div className="grid grid-cols-2 gap-6">
         {/* 星座1 */}
         <div className="space-y-3">
-          <label className="text-sm text-purple-300">{t.select1}</label>
+          <label className="text-sm text-gray-300">{t.select1}</label>
           <select
             value={sign1}
             onChange={(e) => setSign1(e.target.value)}
-            className="w-full p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white"
+            className="w-full p-3 bg-gray-900/50 border border-gray-200 rounded-xl text-white"
           >
             {signs.map((s) => (
               <option key={s.id} value={s.id}>
@@ -193,11 +193,11 @@ export default function CompatibilityCalculator({ language = "id" }: Compatibili
 
         {/* 星座2 */}
         <div className="space-y-3">
-          <label className="text-sm text-purple-300">{t.select2}</label>
+          <label className="text-sm text-gray-300">{t.select2}</label>
           <select
             value={sign2}
             onChange={(e) => setSign2(e.target.value)}
-            className="w-full p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white"
+            className="w-full p-3 bg-gray-900/50 border border-gray-200 rounded-xl text-white"
           >
             {signs.map((s) => (
               <option key={s.id} value={s.id}>
@@ -209,7 +209,7 @@ export default function CompatibilityCalculator({ language = "id" }: Compatibili
       </div>
 
       {/* 配对结果 */}
-      <div className="p-6 rounded-2xl bg-gradient-to-br from-purple-50/40 to-purple-950/60 border border-purple-200 space-y-6">
+      <div className="p-6 rounded-2xl bg-gradient-to-br from-gray-50/40 to-gray-950/60 border border-gray-200 space-y-6">
         {/* 分数展示 */}
         <div className="text-center">
           <div className="flex items-center justify-center gap-4 mb-4">
@@ -220,29 +220,29 @@ export default function CompatibilityCalculator({ language = "id" }: Compatibili
           <div className={`text-6xl font-bold ${getScoreColor(result.score)}`}>
             {result.score}%
           </div>
-          <div className="text-lg text-purple-600 mt-2">{result.summary}</div>
+          <div className="text-lg text-gray-600 mt-2">{result.summary}</div>
         </div>
 
         {/* 详细分数 */}
         <div className="grid grid-cols-3 gap-4">
-          <div className="text-center p-4 rounded-xl bg-pink-900/30 border border-pink-500/30">
-            <div className="text-sm text-pink-300 mb-1">{t.love}</div>
+          <div className="text-center p-4 rounded-xl bg-gray-900/30 border border-gray-500/30">
+            <div className="text-sm text-gray-300 mb-1">{t.love}</div>
             <div className={`text-2xl font-bold ${getScoreColor(result.love)}`}>{result.love}%</div>
           </div>
-          <div className="text-center p-4 rounded-xl bg-blue-900/30 border border-blue-500/30">
-            <div className="text-sm text-blue-300 mb-1">{t.communication}</div>
+          <div className="text-center p-4 rounded-xl bg-gray-900/30 border border-gray-500/30">
+            <div className="text-sm text-gray-300 mb-1">{t.communication}</div>
             <div className={`text-2xl font-bold ${getScoreColor(result.communication)}`}>{result.communication}%</div>
           </div>
-          <div className="text-center p-4 rounded-xl bg-green-900/30 border border-green-500/30">
-            <div className="text-sm text-green-300 mb-1">{t.trust}</div>
+          <div className="text-center p-4 rounded-xl bg-gray-900/30 border border-gray-500/30">
+            <div className="text-sm text-gray-300 mb-1">{t.trust}</div>
             <div className={`text-2xl font-bold ${getScoreColor(result.trust)}`}>{result.trust}%</div>
           </div>
         </div>
 
         {/* 详细解读 */}
-        <div className="p-4 rounded-xl bg-purple-800/30 border border-purple-200">
-          <h4 className="font-semibold text-amber-100 mb-2">{t.detail}</h4>
-          <p className="text-purple-600 leading-relaxed">{result.detail}</p>
+        <div className="p-4 rounded-xl bg-gray-800/30 border border-gray-200">
+          <h4 className="font-semibold text-gray-100 mb-2">{t.detail}</h4>
+          <p className="text-gray-600 leading-relaxed">{result.detail}</p>
         </div>
       </div>
     </div>

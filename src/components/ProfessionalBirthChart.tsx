@@ -240,34 +240,34 @@ export default function ProfessionalBirthChart({ language = "id" }: Professional
   return (
     <div className="w-full space-y-6">
       {/* 表单 */}
-      <div className="p-6 rounded-2xl bg-purple-900/30 border border-purple-200 space-y-4">
+      <div className="p-6 rounded-2xl bg-gray-900/30 border border-gray-200 space-y-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="col-span-2">
-            <label className="text-sm text-purple-300">{t.name}</label>
+            <label className="text-sm text-gray-300">{t.name}</label>
             <input
               type="text"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white mt-1"
+              className="w-full p-3 bg-gray-900/50 border border-gray-200 rounded-xl text-white mt-1"
               placeholder={t.name}
             />
           </div>
           <div>
-            <label className="text-sm text-purple-300">{t.date}</label>
+            <label className="text-sm text-gray-300">{t.date}</label>
             <input
               type="number"
               value={formData.day}
               onChange={(e) => setFormData({ ...formData, day: parseInt(e.target.value) || 1 })}
-              className="w-full p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white mt-1"
+              className="w-full p-3 bg-gray-900/50 border border-gray-200 rounded-xl text-white mt-1"
               min="1" max="31"
             />
           </div>
           <div>
-            <label className="text-sm text-purple-300">{t.month}</label>
+            <label className="text-sm text-gray-300">{t.month}</label>
             <select
               value={formData.month}
               onChange={(e) => setFormData({ ...formData, month: parseInt(e.target.value) })}
-              className="w-full p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white mt-1"
+              className="w-full p-3 bg-gray-900/50 border border-gray-200 rounded-xl text-white mt-1"
             >
               {Array.from({ length: 12 }, (_, i) => i + 1).map(m => (
                 <option key={m} value={m}>{m}</option>
@@ -275,32 +275,32 @@ export default function ProfessionalBirthChart({ language = "id" }: Professional
             </select>
           </div>
           <div>
-            <label className="text-sm text-purple-300">{t.year}</label>
+            <label className="text-sm text-gray-300">{t.year}</label>
             <input
               type="number"
               value={formData.year}
               onChange={(e) => setFormData({ ...formData, year: parseInt(e.target.value) || 1990 })}
-              className="w-full p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white mt-1"
+              className="w-full p-3 bg-gray-900/50 border border-gray-200 rounded-xl text-white mt-1"
               min="1900" max="2100"
             />
           </div>
           <div>
-            <label className="text-sm text-purple-300">{t.hour}</label>
+            <label className="text-sm text-gray-300">{t.hour}</label>
             <input
               type="number"
               value={formData.hour}
               onChange={(e) => setFormData({ ...formData, hour: parseInt(e.target.value) || 0 })}
-              className="w-full p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white mt-1"
+              className="w-full p-3 bg-gray-900/50 border border-gray-200 rounded-xl text-white mt-1"
               min="0" max="23"
             />
           </div>
           <div>
-            <label className="text-sm text-purple-300">{t.minute}</label>
+            <label className="text-sm text-gray-300">{t.minute}</label>
             <input
               type="number"
               value={formData.minute}
               onChange={(e) => setFormData({ ...formData, minute: parseInt(e.target.value) || 0 })}
-              className="w-full p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white mt-1"
+              className="w-full p-3 bg-gray-900/50 border border-gray-200 rounded-xl text-white mt-1"
               min="0" max="59"
             />
           </div>
@@ -309,7 +309,7 @@ export default function ProfessionalBirthChart({ language = "id" }: Professional
         <button
           onClick={calculate}
           disabled={isLoading}
-          className="w-full py-4 bg-gradient-to-r from-amber-500 to-purple-600 rounded-xl font-semibold hover:from-amber-400 hover:to-purple-500 transition-all disabled:opacity-50"
+          className="w-full py-4 bg-gradient-to-r from-gray-500 to-gray-600 rounded-xl font-semibold hover:from-gray-400 hover:to-gray-500 transition-all disabled:opacity-50"
         >
           {isLoading ? "Calculating..." : `✨ ${t.calculate}`}
         </button>
@@ -320,55 +320,55 @@ export default function ProfessionalBirthChart({ language = "id" }: Professional
         <div className="space-y-6">
           {/* SVG 星盘 */}
           <div className="flex justify-center">
-            <div className="p-4 rounded-2xl bg-gradient-to-br from-purple-50/40 to-purple-950/60 border border-purple-200">
+            <div className="p-4 rounded-2xl bg-gradient-to-br from-gray-50/40 to-gray-950/60 border border-gray-200">
               {renderChartSVG()}
             </div>
           </div>
 
           {/* 三要素 */}
           <div className="grid grid-cols-3 gap-4">
-            <div className="text-center p-4 rounded-xl bg-amber-900/20 border border-amber-500/30">
+            <div className="text-center p-4 rounded-xl bg-gray-900/20 border border-gray-500/30">
               <div className="text-3xl mb-2">☉</div>
-              <div className="text-sm text-purple-300">{t.sun}</div>
-              <div className="font-bold text-amber-100">
+              <div className="text-sm text-gray-300">{t.sun}</div>
+              <div className="font-bold text-gray-100">
                 {SIGNS.find(s => s.id === chartData.planets.sun.sign)?.symbol} {SIGNS.find(s => s.id === chartData.planets.sun.sign)?.name[language]}
               </div>
-              <div className="text-xs text-purple-300">{chartData.planets.sun.degree.toFixed(1)}°</div>
+              <div className="text-xs text-gray-300">{chartData.planets.sun.degree.toFixed(1)}°</div>
             </div>
             <div className="text-center p-4 rounded-xl bg-white/20 border border-gray-500/30">
               <div className="text-3xl mb-2">☽</div>
-              <div className="text-sm text-purple-300">{t.moon}</div>
-              <div className="font-bold text-amber-100">
+              <div className="text-sm text-gray-300">{t.moon}</div>
+              <div className="font-bold text-gray-100">
                 {SIGNS.find(s => s.id === chartData.planets.moon.sign)?.symbol} {SIGNS.find(s => s.id === chartData.planets.moon.sign)?.name[language]}
               </div>
-              <div className="text-xs text-purple-300">{chartData.planets.moon.degree.toFixed(1)}°</div>
+              <div className="text-xs text-gray-300">{chartData.planets.moon.degree.toFixed(1)}°</div>
             </div>
-            <div className="text-center p-4 rounded-xl bg-purple-900/20 border border-purple-200">
+            <div className="text-center p-4 rounded-xl bg-gray-900/20 border border-gray-200">
               <div className="text-3xl mb-2">↑</div>
-              <div className="text-sm text-purple-300">{t.rising}</div>
-              <div className="font-bold text-amber-100">
+              <div className="text-sm text-gray-300">{t.rising}</div>
+              <div className="font-bold text-gray-100">
                 {SIGNS.find(s => s.id === chartData.ascendant.sign)?.symbol} {SIGNS.find(s => s.id === chartData.ascendant.sign)?.name[language]}
               </div>
-              <div className="text-xs text-purple-300">{chartData.ascendant.degree.toFixed(1)}°</div>
+              <div className="text-xs text-gray-300">{chartData.ascendant.degree.toFixed(1)}°</div>
             </div>
           </div>
 
           {/* 行星表格 */}
-          <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200">
-            <h4 className="font-semibold text-amber-100 mb-4">{t.planets}</h4>
+          <div className="p-4 rounded-xl bg-gray-900/30 border border-gray-200">
+            <h4 className="font-semibold text-gray-100 mb-4">{t.planets}</h4>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
               {Object.entries(chartData.planets).map(([planetId, data]) => {
                 const planet = PLANETS.find(p => p.id === planetId);
                 const sign = SIGNS.find(s => s.id === data.sign);
                 return (
-                  <div key={planetId} className={`p-2 rounded-lg ${data.retrograde ? "bg-red-900/20 border border-red-500/30" : "bg-purple-800/30"}`}>
+                  <div key={planetId} className={`p-2 rounded-lg ${data.retrograde ? "bg-gray-900/20 border border-gray-500/30" : "bg-gray-800/30"}`}>
                     <div className="flex items-center gap-2">
                       <span style={{ color: planet?.color }} className="text-lg">{planet?.symbol}</span>
                       <div>
-                        <div className="text-sm text-purple-600">{sign?.symbol} {sign?.name[language]}</div>
-                        <div className="text-xs text-purple-400">{data.degree.toFixed(0)}° H{data.house}</div>
+                        <div className="text-sm text-gray-600">{sign?.symbol} {sign?.name[language]}</div>
+                        <div className="text-xs text-gray-400">{data.degree.toFixed(0)}° H{data.house}</div>
                       </div>
-                      {data.retrograde && <span className="text-red-400 text-xs">R</span>}
+                      {data.retrograde && <span className="text-gray-400 text-xs">R</span>}
                     </div>
                   </div>
                 );
@@ -378,8 +378,8 @@ export default function ProfessionalBirthChart({ language = "id" }: Professional
 
           {/* 主要相位 */}
           {chartData.aspects.length > 0 && (
-            <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200">
-              <h4 className="font-semibold text-amber-100 mb-4">{t.aspects}</h4>
+            <div className="p-4 rounded-xl bg-gray-900/30 border border-gray-200">
+              <h4 className="font-semibold text-gray-100 mb-4">{t.aspects}</h4>
               <div className="space-y-2">
                 {chartData.aspects.slice(0, 10).map((aspect, i) => {
                   const p1 = PLANETS.find(p => p.id === aspect.planet1);
@@ -389,11 +389,11 @@ export default function ProfessionalBirthChart({ language = "id" }: Professional
                   const isChallenging = asp?.nature === "challenging";
                   
                   return (
-                    <div key={i} className={`flex items-center gap-2 p-2 rounded-lg ${isHarmonious ? "bg-green-900/20" : isChallenging ? "bg-red-900/20" : "bg-purple-800/20"}`}>
+                    <div key={i} className={`flex items-center gap-2 p-2 rounded-lg ${isHarmonious ? "bg-gray-900/20" : isChallenging ? "bg-gray-900/20" : "bg-gray-800/20"}`}>
                       <span style={{ color: p1?.color }}>{p1?.symbol}</span>
-                      <span className={isHarmonious ? "text-green-400" : isChallenging ? "text-red-400" : "text-yellow-400"}>{asp?.symbol}</span>
+                      <span className={isHarmonious ? "text-gray-400" : isChallenging ? "text-gray-400" : "text-gray-400"}>{asp?.symbol}</span>
                       <span style={{ color: p2?.color }}>{p2?.symbol}</span>
-                      <span className="text-xs text-purple-300 ml-2">{asp?.name[language]} ({aspect.orb.toFixed(1)}°)</span>
+                      <span className="text-xs text-gray-300 ml-2">{asp?.name[language]} ({aspect.orb.toFixed(1)}°)</span>
                     </div>
                   );
                 })}

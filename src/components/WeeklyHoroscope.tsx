@@ -50,12 +50,12 @@ export default function WeeklyHoroscope() {
             onClick={() => setSelectedSign(sign.id)}
             className={`p-3 rounded-xl text-center transition-all ${
               selectedSign === sign.id
-                ? "bg-gradient-to-br from-amber-500/30 to-purple-600/30 border-2 border-amber-400"
-                : "bg-purple-900/30 border border-purple-200 hover:border-purple-400/50"
+                ? "bg-gradient-to-br from-gray-500/30 to-gray-600/30 border-2 border-gray-400"
+                : "bg-gray-900/30 border border-gray-200 hover:border-gray-400/50"
             }`}
           >
             <div className="text-2xl">{sign.symbol}</div>
-            <div className="text-xs text-purple-600">{sign.name}</div>
+            <div className="text-xs text-gray-600">{sign.name}</div>
           </button>
         ))}
       </div>
@@ -64,44 +64,44 @@ export default function WeeklyHoroscope() {
       {currentData && (
         <div className="space-y-4">
           {/* 综合评分 */}
-          <div className="text-center p-6 rounded-2xl bg-gradient-to-r from-amber-900/30 to-purple-900/30 border border-amber-500/30">
-            <div className="text-6xl font-bold text-amber-100 mb-2">{currentData.overall}%</div>
-            <div className="text-purple-600">Weekly Score for {currentSign?.symbol} {currentSign?.name}</div>
+          <div className="text-center p-6 rounded-2xl bg-gradient-to-r from-gray-900/30 to-gray-900/30 border border-gray-500/30">
+            <div className="text-6xl font-bold text-gray-100 mb-2">{currentData.overall}%</div>
+            <div className="text-gray-600">Weekly Score for {currentSign?.symbol} {currentSign?.name}</div>
           </div>
 
           {/* 详细内容 */}
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200">
-              <h4 className="text-amber-100 font-semibold mb-2">🎯 Focus</h4>
-              <p className="text-purple-600">{currentData.focus}</p>
+            <div className="p-4 rounded-xl bg-gray-900/30 border border-gray-200">
+              <h4 className="text-gray-100 font-semibold mb-2">🎯 Focus</h4>
+              <p className="text-gray-600">{currentData.focus}</p>
             </div>
-            <div className="p-4 rounded-xl bg-pink-900/30 border border-pink-500/20">
-              <h4 className="text-pink-100 font-semibold mb-2">💕 Love</h4>
-              <p className="text-purple-600">{currentData.love}</p>
+            <div className="p-4 rounded-xl bg-gray-900/30 border border-gray-500/20">
+              <h4 className="text-gray-100 font-semibold mb-2">💕 Love</h4>
+              <p className="text-gray-600">{currentData.love}</p>
             </div>
-            <div className="p-4 rounded-xl bg-blue-900/30 border border-blue-500/20">
-              <h4 className="text-blue-100 font-semibold mb-2">💼 Career</h4>
-              <p className="text-purple-600">{currentData.career}</p>
+            <div className="p-4 rounded-xl bg-gray-900/30 border border-gray-500/20">
+              <h4 className="text-gray-100 font-semibold mb-2">💼 Career</h4>
+              <p className="text-gray-600">{currentData.career}</p>
             </div>
-            <div className="p-4 rounded-xl bg-green-900/30 border border-green-500/20">
-              <h4 className="text-green-100 font-semibold mb-2">💡 Advice</h4>
-              <p className="text-purple-600">{currentData.advice}</p>
+            <div className="p-4 rounded-xl bg-gray-900/30 border border-gray-500/20">
+              <h4 className="text-gray-100 font-semibold mb-2">💡 Advice</h4>
+              <p className="text-gray-600">{currentData.advice}</p>
             </div>
           </div>
 
           {/* 幸运指南 */}
           <div className="grid grid-cols-3 gap-3">
-            <div className="text-center p-4 rounded-xl bg-amber-900/20 border border-amber-500/30">
-              <div className="text-xs text-amber-600 mb-1">Lucky Day</div>
-              <div className="text-lg font-bold text-amber-100">{currentData.lucky.day}</div>
+            <div className="text-center p-4 rounded-xl bg-gray-900/20 border border-gray-500/30">
+              <div className="text-xs text-gray-600 mb-1">Lucky Day</div>
+              <div className="text-lg font-bold text-gray-100">{currentData.lucky.day}</div>
             </div>
-            <div className="text-center p-4 rounded-xl bg-pink-900/20 border border-pink-500/30">
-              <div className="text-xs text-pink-300 mb-1">Lucky Color</div>
-              <div className="text-lg font-bold text-pink-100">{currentData.lucky.color}</div>
+            <div className="text-center p-4 rounded-xl bg-gray-900/20 border border-gray-500/30">
+              <div className="text-xs text-gray-300 mb-1">Lucky Color</div>
+              <div className="text-lg font-bold text-gray-100">{currentData.lucky.color}</div>
             </div>
-            <div className="text-center p-4 rounded-xl bg-blue-900/20 border border-blue-500/30">
-              <div className="text-xs text-blue-300 mb-1">Lucky Number</div>
-              <div className="text-lg font-bold text-blue-100">{currentData.lucky.number}</div>
+            <div className="text-center p-4 rounded-xl bg-gray-900/20 border border-gray-500/30">
+              <div className="text-xs text-gray-300 mb-1">Lucky Number</div>
+              <div className="text-lg font-bold text-gray-100">{currentData.lucky.number}</div>
             </div>
           </div>
         </div>

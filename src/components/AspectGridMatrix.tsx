@@ -68,8 +68,8 @@ export default function AspectGridMatrix({ planets, aspects, ascendant, midheave
     <div className="overflow-x-auto">
       <div className="min-w-[560px]">
         {/* 标题栏 */}
-        <div className="px-3 py-2 bg-slate-100 border-b border-slate-200 rounded-t-lg">
-          <span className="text-xs font-semibold text-slate-700">
+        <div className="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg">
+          <span className="text-xs font-semibold text-gray-700">
             {lang === 'zh' ? '相位矩阵' : 'Aspect Matrix'} / Aspect Grid
           </span>
         </div>
@@ -78,7 +78,7 @@ export default function AspectGridMatrix({ planets, aspects, ascendant, midheave
           <thead>
             <tr>
               {/* 左上角空白格 */}
-              <th className="p-1 border border-slate-200 bg-slate-50 sticky left-0 z-10 min-w-[48px]">
+              <th className="p-1 border border-gray-200 bg-gray-50 sticky left-0 z-10 min-w-[48px]">
                 <span className="text-[10px] text-gray-400 block">
                   {lang === 'zh' ? '行星' : 'Planet'}
                 </span>
@@ -86,7 +86,7 @@ export default function AspectGridMatrix({ planets, aspects, ascendant, midheave
               {GRID_PLANETS.map(p => (
                 <th
                   key={p}
-                  className="p-1 border border-slate-200 bg-slate-50 text-center min-w-[44px]"
+                  className="p-1 border border-gray-200 bg-gray-50 text-center min-w-[44px]"
                 >
                   {/* 大符号 */}
                   <span
@@ -105,7 +105,7 @@ export default function AspectGridMatrix({ planets, aspects, ascendant, midheave
             {GRID_PLANETS.map(row => (
               <tr key={row}>
                 {/* 第一列 */}
-                <td className="p-1 border border-slate-200 bg-slate-50 text-center min-w-[48px] sticky left-0 z-10">
+                <td className="p-1 border border-gray-200 bg-gray-50 text-center min-w-[48px] sticky left-0 z-10">
                   <span
                     className="block text-lg leading-tight"
                     style={{ fontFamily: "Segoe UI Symbol, Apple Symbols, Noto Sans Symbols 2, serif" }}
@@ -121,10 +121,10 @@ export default function AspectGridMatrix({ planets, aspects, ascendant, midheave
                     return (
                       <td
                         key={col}
-                        className="p-1 border border-slate-200 bg-amber-50 text-center"
+                        className="p-1 border border-gray-200 bg-gray-50 text-center"
                       >
                         <span
-                          className="text-[11px] text-slate-700 block"
+                          className="text-[11px] text-gray-700 block"
                           style={{ fontFamily: "Segoe UI Symbol, Apple Symbols, Noto Sans Symbols 2, serif" }}
                         >
                           {PLANET_SYMBOLS[row]}{' '}{formatCellDeg(col)}
@@ -138,7 +138,7 @@ export default function AspectGridMatrix({ planets, aspects, ascendant, midheave
                     return (
                       <td
                         key={col}
-                        className="p-1 border border-slate-100 bg-white hover:bg-slate-50 transition-colors"
+                        className="p-1 border border-gray-100 bg-white hover:bg-gray-50 transition-colors"
                       />
                     );
                   }
@@ -147,7 +147,7 @@ export default function AspectGridMatrix({ planets, aspects, ascendant, midheave
                   return (
                     <td
                       key={col}
-                      className="p-1 border border-slate-200 text-center transition-colors hover:brightness-95 cursor-default"
+                      className="p-1 border border-gray-200 text-center transition-colors hover:brightness-95 cursor-default"
                       style={{ backgroundColor: style.bg }}
                     >
                       <span
@@ -165,9 +165,9 @@ export default function AspectGridMatrix({ planets, aspects, ascendant, midheave
         </table>
 
         {/* 图例 */}
-        <div className="px-3 py-2 bg-slate-50 border-t border-slate-200 rounded-b-lg flex flex-wrap gap-3">
+        <div className="px-3 py-2 bg-gray-50 border-t border-gray-200 rounded-b-lg flex flex-wrap gap-3">
           {Object.entries(ASPECT_STYLES).map(([key, val]) => (
-            <span key={key} className="flex items-center gap-1 text-[10px] text-slate-600">
+            <span key={key} className="flex items-center gap-1 text-[10px] text-gray-600">
               <span className="text-base font-bold" style={{ color: val.color }}>{val.symbol}</span>
               <span>{key === 'Conjunction' ? '合相' : key === 'Sextile' ? '六分' : key === 'Square' ? '四分' : key === 'Trine' ? '三分' : '对分'}</span>
             </span>

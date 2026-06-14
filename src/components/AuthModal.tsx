@@ -106,16 +106,16 @@ export function AuthModal({
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
       <div className="bg-white dark:bg-gray-100 rounded-2xl shadow-2xl max-w-sm w-full overflow-hidden">
         {/* Header */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-8 text-center">
+        <div className="bg-gradient-to-r from-gray-600 to-gray-600 px-6 py-8 text-center">
           <div className="text-4xl mb-2">✨</div>
           <h2 className="text-xl font-bold text-white">{g(t.title)}</h2>
-          <p className="text-indigo-200 text-sm mt-1">{g(t.subtitle)}</p>
+          <p className="text-gray-200 text-sm mt-1">{g(t.subtitle)}</p>
         </div>
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           {error && (
-            <div className="bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-sm p-3 rounded-lg">
+            <div className="bg-gray-50 dark:bg-gray-900/30 text-gray-600 dark:text-gray-400 text-sm p-3 rounded-lg">
               {error}
             </div>
           )}
@@ -129,7 +129,7 @@ export function AuthModal({
                 type="text"
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent dark:bg-gray-100 dark:text-white text-gray-900 bg-white"
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent dark:bg-gray-100 dark:text-white text-gray-900 bg-white"
                 placeholder={language === "zh" ? "您的昵称" : "Your name"}
                 required
               />
@@ -144,7 +144,7 @@ export function AuthModal({
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent dark:bg-gray-100 dark:text-white text-gray-900 bg-white"
+              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent dark:bg-gray-100 dark:text-white text-gray-900 bg-white"
               placeholder="email@example.com"
               required
             />
@@ -158,7 +158,7 @@ export function AuthModal({
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent dark:bg-gray-100 dark:text-white text-gray-900 bg-white"
+              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent dark:bg-gray-100 dark:text-white text-gray-900 bg-white"
               placeholder="••••••••"
               minLength={6}
               required
@@ -171,7 +171,7 @@ export function AuthModal({
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium rounded-lg hover:from-indigo-700 hover:to-purple-700 transition disabled:opacity-50"
+            className="w-full py-3 bg-gradient-to-r from-gray-600 to-gray-600 text-white font-medium rounded-lg hover:from-gray-700 hover:to-gray-700 transition disabled:opacity-50"
           >
             {isLoading ? "..." : mode === "login" ? g(t.login) : g(t.register)}
           </button>
@@ -187,7 +187,7 @@ export function AuthModal({
                 setMode(mode === "login" ? "register" : "login");
                 setError(null);
               }}
-              className="text-indigo-600 dark:text-indigo-400 font-medium hover:underline"
+              className="text-gray-600 dark:text-gray-400 font-medium hover:underline"
             >
               {mode === "login" ? g(t.toRegister) : g(t.toLogin)}
             </button>
@@ -235,9 +235,9 @@ export function UserMenu() {
     <div className="relative">
       <button
         onClick={() => setShowDropdown(!showDropdown)}
-        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 hover:bg-indigo-200 dark:hover:bg-indigo-900/50 transition"
+        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-900/30 hover:bg-gray-200 dark:hover:bg-gray-900/50 transition"
       >
-        <div className="w-8 h-8 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold">
+        <div className="w-8 h-8 rounded-full bg-gradient-to-r from-gray-500 to-gray-500 flex items-center justify-center text-white font-bold">
           {(profile?.displayName || user.email || "U").charAt(0).toUpperCase()}
         </div>
         <span className="text-sm font-medium text-gray-700 dark:text-gray-700 hidden sm:block">
@@ -276,7 +276,7 @@ export function UserMenu() {
                   signOut();
                   setShowDropdown(false);
                 }}
-                className="w-full text-left px-3 py-2 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded"
+                className="w-full text-left px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-900/20 rounded"
               >
                 🚪 {g(t.logout)}
               </button>

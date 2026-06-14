@@ -287,7 +287,7 @@ export function PDFExport({ chartData, birthInfo, element }: PDFExportProps) {
       <button
         onClick={captureAndExport}
         disabled={isGenerating}
-        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg text-white font-medium hover:from-purple-500 hover:to-pink-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gray-600 to-gray-600 rounded-lg text-white font-medium hover:from-gray-500 hover:to-gray-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isGenerating ? (
           <>

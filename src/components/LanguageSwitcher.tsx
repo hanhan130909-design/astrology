@@ -25,8 +25,8 @@ export function LanguageSwitcher() {
           title={lang.label}
           className={`w-9 h-9 rounded-lg text-lg flex items-center justify-center transition-all ${
             language === lang.code
-              ? "bg-purple-500/30 text-white border border-purple-500/50"
-              : "text-purple-300 hover:bg-purple-500/20 hover:text-white"
+              ? "bg-gray-500/30 text-white border border-gray-500/50"
+              : "text-gray-300 hover:bg-gray-500/20 hover:text-white"
           }`}
         >
           {lang.flag}

@@ -256,11 +256,11 @@ export default function DualChart({ planets1, planets2, size = 500 }: DualChartP
       {/* Legend */}
       <div className="mt-4 flex justify-center gap-6 text-xs">
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full bg-blue-400"></div>
+          <div className="w-3 h-3 rounded-full bg-gray-400"></div>
           <span className="text-gray-500">Person 1 (Inner)</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full border border-pink-400 border-dashed"></div>
+          <div className="w-3 h-3 rounded-full border border-gray-400 border-dashed"></div>
           <span className="text-gray-500">Person 2 (Outer)</span>
         </div>
       </div>

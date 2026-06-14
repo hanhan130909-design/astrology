@@ -196,7 +196,7 @@ export default function PlanetGuide() {
   return (
     <div className="w-full space-y-6">
       {/* 行星选择 */}
-      <div className="p-4 rounded-2xl bg-gradient-to-br from-gray-50/80 to-slate-950/80 border border-gray-200">
+      <div className="p-4 rounded-2xl bg-gradient-to-br from-gray-50/80 to-gray-950/80 border border-gray-200">
         <h3 className="text-sm font-medium text-gray-500 mb-3">{t.selectPlanet}</h3>
         <div className="grid grid-cols-5 sm:grid-cols-10 gap-2">
           {planets.map((p) => (
@@ -205,7 +205,7 @@ export default function PlanetGuide() {
               onClick={() => setSelectedPlanet(p.id)}
               className={`p-3 rounded-xl text-center transition-all ${
                 selectedPlanet === p.id
-                  ? "bg-gradient-to-br from-purple-600/40 to-indigo-600/40 border-2 border-purple-400 shadow-lg shadow-purple-200/30"
+                  ? "bg-gradient-to-br from-gray-600/40 to-gray-600/40 border-2 border-gray-400 shadow-lg shadow-gray-200/30"
                   : "bg-gray-100 border border-gray-300 hover:border-gray-300"
               }`}
             >
@@ -218,19 +218,19 @@ export default function PlanetGuide() {
 
       {/* 行星信息卡 */}
       {planet && (
-        <div className="p-6 rounded-2xl bg-gradient-to-br from-purple-50/30 to-indigo-50/30 border border-purple-200">
+        <div className="p-6 rounded-2xl bg-gradient-to-br from-gray-50/30 to-gray-50/30 border border-gray-200">
           <div className="flex items-center gap-4 mb-4">
             <span style={{ color: planet.color }} className="text-5xl">{planet.symbol}</span>
             <div>
               <h3 className="text-2xl font-bold text-white">
                 {language === 'zh' ? planet.name.zh : language === 'id' ? planet.name.id : planet.name.en}
               </h3>
-              <p className="text-purple-300">{planet.desc[language]}</p>
+              <p className="text-gray-300">{planet.desc[language]}</p>
             </div>
           </div>
           <div className="flex flex-wrap gap-2">
             {planet.keywords[language].map((kw: string, i: number) => (
-              <span key={i} className="px-3 py-1.5 bg-purple-500/20 rounded-full text-xs text-purple-300 border border-purple-200">
+              <span key={i} className="px-3 py-1.5 bg-gray-500/20 rounded-full text-xs text-gray-300 border border-gray-200">
                 {kw}
               </span>
             ))}
@@ -239,7 +239,7 @@ export default function PlanetGuide() {
       )}
 
       {/* 星座选择 */}
-      <div className="p-4 rounded-2xl bg-gradient-to-br from-gray-50/80 to-slate-950/80 border border-gray-200">
+      <div className="p-4 rounded-2xl bg-gradient-to-br from-gray-50/80 to-gray-950/80 border border-gray-200">
         <h3 className="text-sm font-medium text-gray-500 mb-3">{t.selectSign}</h3>
         <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
           {signs.map((s) => (
@@ -248,7 +248,7 @@ export default function PlanetGuide() {
               onClick={() => setSelectedSign(s.id)}
               className={`p-2 rounded-xl text-center transition-all ${
                 selectedSign === s.id
-                  ? "bg-gradient-to-br from-amber-500/30 to-purple-600/30 border-2 border-amber-400"
+                  ? "bg-gradient-to-br from-gray-500/30 to-gray-600/30 border-2 border-gray-400"
                   : "bg-gray-100 border border-gray-300 hover:border-gray-300"
               }`}
             >
@@ -261,13 +261,13 @@ export default function PlanetGuide() {
 
       {/* 解读结果 */}
       {interpretation && sign && planet && (
-        <div className="p-6 rounded-2xl bg-gradient-to-br from-indigo-900/40 to-purple-900/40 border border-indigo-500/20 space-y-4">
+        <div className="p-6 rounded-2xl bg-gradient-to-br from-gray-900/40 to-gray-900/40 border border-gray-500/20 space-y-4">
           <div className="flex items-center gap-4 mb-4">
             <span style={{ color: planet.color }} className="text-4xl">{planet.symbol}</span>
-            <span className="text-3xl text-amber-600">+</span>
+            <span className="text-3xl text-gray-600">+</span>
             <span className="text-3xl">{sign.symbol}</span>
             <div className="ml-4">
-              <div className="text-sm text-purple-300">{t.planetIn}</div>
+              <div className="text-sm text-gray-300">{t.planetIn}</div>
               <div className="text-xl font-bold text-white">{planet.name[language]} {t.planetIn} {sign.name[language]}</div>
             </div>
           </div>
@@ -277,19 +277,19 @@ export default function PlanetGuide() {
               <div className="text-xs text-gray-400 mb-2">{t.traits}</div>
               <div className="flex flex-wrap gap-2">
                 {interpretation.traits.map((trait: string, i: number) => (
-                  <span key={i} className="px-3 py-1 bg-purple-500/20 rounded-full text-xs text-purple-300">
+                  <span key={i} className="px-3 py-1 bg-gray-500/20 rounded-full text-xs text-gray-300">
                     {trait}
                   </span>
                 ))}
               </div>
             </div>
-            <div className="p-4 rounded-xl bg-emerald-900/20 border border-emerald-500/20">
-              <div className="text-xs text-emerald-500 mb-2">{t.strength}</div>
-              <div className="text-sm text-emerald-300">{interpretation.strength}</div>
+            <div className="p-4 rounded-xl bg-gray-900/20 border border-gray-500/20">
+              <div className="text-xs text-gray-500 mb-2">{t.strength}</div>
+              <div className="text-sm text-gray-300">{interpretation.strength}</div>
             </div>
-            <div className="p-4 rounded-xl bg-rose-900/20 border border-rose-500/20">
-              <div className="text-xs text-rose-500 mb-2">{t.weakness}</div>
-              <div className="text-sm text-rose-300">{interpretation.weakness}</div>
+            <div className="p-4 rounded-xl bg-gray-900/20 border border-gray-500/20">
+              <div className="text-xs text-gray-500 mb-2">{t.weakness}</div>
+              <div className="text-sm text-gray-300">{interpretation.weakness}</div>
             </div>
           </div>
         </div>

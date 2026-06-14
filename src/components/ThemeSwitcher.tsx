@@ -47,7 +47,7 @@ export function ThemeSwitcher({ variant = "buttons", showLabel = false }: ThemeS
               onClick={() => setTheme(t.id)}
               className={`w-full flex items-center gap-3 px-4 py-3 text-sm transition-colors first:rounded-t-xl last:rounded-b-xl ${
                 theme === t.id
-                  ? "bg-purple-500/20 text-purple-300"
+                  ? "bg-gray-500/20 text-gray-300"
                   : "text-gray-700 hover:bg-white/5"
               }`}
             >
@@ -69,7 +69,7 @@ export function ThemeSwitcher({ variant = "buttons", showLabel = false }: ThemeS
           onClick={() => setTheme(t.id)}
           className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-sm transition-all ${
             theme === t.id
-              ? "bg-purple-500/20 text-purple-300"
+              ? "bg-gray-500/20 text-gray-300"
               : "text-gray-400 hover:text-white hover:bg-white/5"
           }`}
         >

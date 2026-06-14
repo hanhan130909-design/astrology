@@ -107,9 +107,9 @@ export function EmailSubscribe() {
 
   if (status === "success") {
     return (
-      <div className="bg-gradient-to-br from-purple-50/20 to-pink-900/20 rounded-2xl p-8 text-center border border-purple-200">
-        <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-          <Check className="w-8 h-8 text-green-400" />
+      <div className="bg-gradient-to-br from-gray-50/20 to-gray-900/20 rounded-2xl p-8 text-center border border-gray-200">
+        <div className="w-16 h-16 bg-gray-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+          <Check className="w-8 h-8 text-gray-400" />
         </div>
         <h3 className="text-xl font-bold text-white mb-2">{t.success}</h3>
         <p className="text-gray-400">{t.successMessage}</p>
@@ -118,10 +118,10 @@ export function EmailSubscribe() {
   }
 
   return (
-    <div className="bg-gradient-to-br from-purple-50/20 to-pink-900/20 rounded-2xl p-8 border border-purple-200">
+    <div className="bg-gradient-to-br from-gray-50/20 to-gray-900/20 rounded-2xl p-8 border border-gray-200">
       <div className="flex items-center gap-3 mb-4">
-        <div className="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
-          <Mail className="w-5 h-5 text-purple-400" />
+        <div className="w-10 h-10 bg-gray-500/20 rounded-lg flex items-center justify-center">
+          <Mail className="w-5 h-5 text-gray-400" />
         </div>
         <div>
           <h3 className="text-xl font-bold text-white">{t.title}</h3>
@@ -136,7 +136,7 @@ export function EmailSubscribe() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder={t.emailPlaceholder}
-            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/50 transition-colors"
+            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-gray-500/50 transition-colors"
             required
           />
         </div>
@@ -145,7 +145,7 @@ export function EmailSubscribe() {
           <select
             value={selectedZodiac}
             onChange={(e) => setSelectedZodiac(e.target.value)}
-            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-purple-500/50 transition-colors appearance-none cursor-pointer"
+            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-gray-500/50 transition-colors appearance-none cursor-pointer"
             required
           >
             <option value="" className="bg-white">{t.selectZodiac}</option>
@@ -158,7 +158,7 @@ export function EmailSubscribe() {
         </div>
 
         {status === "error" && (
-          <div className="flex items-center gap-2 text-red-400 text-sm">
+          <div className="flex items-center gap-2 text-gray-400 text-sm">
             <AlertCircle className="w-4 h-4" />
             <span>{errorMessage}</span>
           </div>
@@ -167,7 +167,7 @@ export function EmailSubscribe() {
         <button
           type="submit"
           disabled={status === "loading" || !email || !selectedZodiac}
-          className="w-full py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl font-semibold text-white hover:from-purple-500 hover:to-pink-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          className="w-full py-3 bg-gradient-to-r from-gray-600 to-gray-600 rounded-xl font-semibold text-white hover:from-gray-500 hover:to-gray-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
         >
           {status === "loading" ? (
             <>

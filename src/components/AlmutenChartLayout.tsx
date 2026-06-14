@@ -48,9 +48,9 @@ const planetsGlyphs: Record<string, string> = {
 };
 
 const aspectGlyphs: Record<string, { mark: string; className: string }> = {
-  Conjunction:{mark:"☌",className:"text-[#8b4513]"}, Sextile:{mark:"✶",className:"text-blue-700"},
-  Square:{mark:"□",className:"text-red-600"}, Trine:{mark:"△",className:"text-green-700"},
-  Opposition:{mark:"☍",className:"text-red-600"},
+  Conjunction:{mark:"☌",className:"text-[#8b4513]"}, Sextile:{mark:"✶",className:"text-gray-700"},
+  Square:{mark:"□",className:"text-gray-600"}, Trine:{mark:"△",className:"text-gray-700"},
+  Opposition:{mark:"☍",className:"text-gray-600"},
 };
 
 const houseLabel: Record<string, string> = {
@@ -284,7 +284,7 @@ export default function AlmutenChartLayout({chart,form,chartType,onBack,onSave,s
             <h1 className="text-[20px] font-normal text-[#333]">{form.name||""} - {typeLabel}</h1>
           </div>
           <div className="flex items-center gap-2">
-            {saveMsg&&<span className="text-xs text-green-600 mr-2">{saveMsg}</span>}
+            {saveMsg&&<span className="text-xs text-gray-600 mr-2">{saveMsg}</span>}
             {onSave&&<button onClick={onSave} className="flex items-center gap-1.5 px-3 py-1.5 rounded border border-[#aaa] bg-white hover:bg-[#f5f5f5] text-sm text-[#555] transition-colors"><Save size={14}/>保存星盘</button>}
           </div>
         </div>

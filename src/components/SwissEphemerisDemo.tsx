@@ -107,10 +107,10 @@ export default function SwissEphemerisDemo({ language }: Props) {
 
   const getElementColor = (element: string) => {
     const colors: Record<string, string> = {
-      Fire: "text-red-400",
-      Earth: "text-green-400",
-      Air: "text-cyan-400",
-      Water: "text-blue-400"
+      Fire: "text-gray-400",
+      Earth: "text-gray-400",
+      Air: "text-gray-400",
+      Water: "text-gray-400"
     };
     return colors[element] || "text-white";
   };
@@ -130,77 +130,77 @@ export default function SwissEphemerisDemo({ language }: Props) {
     <div className="space-y-6">
       {/* 标题 */}
       <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/20 rounded-full mb-4">
-          <span className="text-amber-600">✦</span>
-          <span className="text-amber-600 text-sm">Swiss Ephemeris</span>
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-500/20 rounded-full mb-4">
+          <span className="text-gray-600">✦</span>
+          <span className="text-gray-600 text-sm">Swiss Ephemeris</span>
         </div>
         <h2 className="text-3xl font-bold text-white mb-2">{t.title}</h2>
-        <p className="text-purple-300">{t.subtitle}</p>
+        <p className="text-gray-300">{t.subtitle}</p>
       </div>
 
       {/* 输入表单 */}
-      <div className="grid md:grid-cols-2 gap-6 p-6 rounded-2xl bg-purple-900/30 border border-purple-200">
+      <div className="grid md:grid-cols-2 gap-6 p-6 rounded-2xl bg-gray-900/30 border border-gray-200">
         <div className="space-y-4">
           <div>
-            <label className="block text-sm text-purple-300 mb-2">{t.birthDate}</label>
+            <label className="block text-sm text-gray-300 mb-2">{t.birthDate}</label>
             <input
               type="date"
               value={birthDate}
               onChange={(e) => setBirthDate(e.target.value)}
-              className="w-full px-4 py-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+              className="w-full px-4 py-3 bg-gray-900/50 border border-gray-200 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-gray-500/50"
             />
           </div>
           
           <div>
-            <label className="block text-sm text-purple-300 mb-2">{t.birthTime}</label>
+            <label className="block text-sm text-gray-300 mb-2">{t.birthTime}</label>
             <input
               type="time"
               value={birthTime}
               onChange={(e) => setBirthTime(e.target.value)}
-              className="w-full px-4 py-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+              className="w-full px-4 py-3 bg-gray-900/50 border border-gray-200 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-gray-500/50"
             />
           </div>
           
           <div>
-            <label className="block text-sm text-purple-300 mb-2">{t.birthPlace}</label>
+            <label className="block text-sm text-gray-300 mb-2">{t.birthPlace}</label>
             <input
               type="text"
               value={birthPlace}
               onChange={(e) => setBirthPlace(e.target.value)}
-              className="w-full px-4 py-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+              className="w-full px-4 py-3 bg-gray-900/50 border border-gray-200 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-gray-500/50"
             />
           </div>
         </div>
 
         <div className="space-y-4">
           <div>
-            <label className="block text-sm text-purple-300 mb-2">{t.latitude}</label>
+            <label className="block text-sm text-gray-300 mb-2">{t.latitude}</label>
             <input
               type="number"
               value={lat}
               onChange={(e) => setLat(parseFloat(e.target.value) || 0)}
               step="0.0001"
-              className="w-full px-4 py-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+              className="w-full px-4 py-3 bg-gray-900/50 border border-gray-200 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-gray-500/50"
             />
           </div>
           
           <div>
-            <label className="block text-sm text-purple-300 mb-2">{t.longitude}</label>
+            <label className="block text-sm text-gray-300 mb-2">{t.longitude}</label>
             <input
               type="number"
               value={lng}
               onChange={(e) => setLng(parseFloat(e.target.value) || 0)}
               step="0.0001"
-              className="w-full px-4 py-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+              className="w-full px-4 py-3 bg-gray-900/50 border border-gray-200 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-gray-500/50"
             />
           </div>
           
           <div>
-            <label className="block text-sm text-purple-300 mb-2">{t.timezone}</label>
+            <label className="block text-sm text-gray-300 mb-2">{t.timezone}</label>
             <select
               value={timezone}
               onChange={(e) => setTimezone(parseFloat(e.target.value))}
-              className="w-full px-4 py-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+              className="w-full px-4 py-3 bg-gray-900/50 border border-gray-200 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-gray-500/50"
             >
               <option value={8}>GMT+8 (北京/新加坡/香港)</option>
               <option value={7}>GMT+7 (曼谷/雅加达)</option>
@@ -216,7 +216,7 @@ export default function SwissEphemerisDemo({ language }: Props) {
       {/* 计算按钮 */}
       <button
         onClick={handleCalculate}
-        className="w-full py-4 bg-gradient-to-r from-amber-500 to-purple-600 hover:from-amber-400 hover:to-purple-500 rounded-xl text-white font-bold text-lg shadow-lg shadow-amber-500/25 transition-all duration-300 transform hover:scale-[1.02]"
+        className="w-full py-4 bg-gradient-to-r from-gray-500 to-gray-600 hover:from-gray-400 hover:to-gray-500 rounded-xl text-white font-bold text-lg shadow-lg shadow-gray-500/25 transition-all duration-300 transform hover:scale-[1.02]"
       >
         {t.calculate}
       </button>
@@ -225,13 +225,13 @@ export default function SwissEphemerisDemo({ language }: Props) {
       {chart && (
         <div className="space-y-6">
           {/* Julian Day */}
-          <div className="text-center text-sm text-purple-400">
+          <div className="text-center text-sm text-gray-400">
             JD: {chart.julianDay.toFixed(4)}
           </div>
 
           {/* 行星位置 */}
-          <div className="rounded-2xl bg-purple-900/30 border border-purple-200 p-6">
-            <h3 className="text-xl font-bold text-amber-600 mb-4 flex items-center gap-2">
+          <div className="rounded-2xl bg-gray-900/30 border border-gray-200 p-6">
+            <h3 className="text-xl font-bold text-gray-600 mb-4 flex items-center gap-2">
               <span className="text-2xl">🪐</span> {t.planets}
             </h3>
             <div className="grid gap-2">
@@ -243,7 +243,7 @@ export default function SwissEphemerisDemo({ language }: Props) {
                 return (
                   <div
                     key={planet}
-                    className="flex items-center justify-between p-3 bg-purple-900/30 rounded-xl"
+                    className="flex items-center justify-between p-3 bg-gray-900/30 rounded-xl"
                   >
                     <div className="flex items-center gap-3">
                       <span className="text-2xl">{planetInfo?.symbol}</span>
@@ -251,7 +251,7 @@ export default function SwissEphemerisDemo({ language }: Props) {
                         <div className="font-medium text-white">
                           {language === "zh" ? planetInfo?.zh : language === "id" ? planetInfo?.id : planetInfo?.name}
                         </div>
-                        <div className="text-xs text-purple-400">
+                        <div className="text-xs text-gray-400">
                           {language === "zh" ? "黄经" : language === "id" ? "Bujur" : "Longitude"}: {data.longitude.toFixed(2)}°
                         </div>
                       </div>
@@ -260,10 +260,10 @@ export default function SwissEphemerisDemo({ language }: Props) {
                       <div className={`text-lg font-bold ${getElementColor(data.zodiac.element)}`}>
                         {getSignSymbol(data.zodiac.sign)} {data.zodiac.sign.charAt(0).toUpperCase() + data.zodiac.sign.slice(1)}
                       </div>
-                      <div className="text-sm text-purple-300">
+                      <div className="text-sm text-gray-300">
                         {data.zodiac.degree}°{data.zodiac.minute}&apos;
                         {data.retrograde && (
-                          <span className="ml-2 text-red-400">℞</span>
+                          <span className="ml-2 text-gray-400">℞</span>
                         )}
                       </div>
                     </div>
@@ -274,23 +274,23 @@ export default function SwissEphemerisDemo({ language }: Props) {
           </div>
 
           {/* 宫位 */}
-          <div className="rounded-2xl bg-purple-900/30 border border-purple-200 p-6">
-            <h3 className="text-xl font-bold text-amber-600 mb-4 flex items-center gap-2">
+          <div className="rounded-2xl bg-gray-900/30 border border-gray-200 p-6">
+            <h3 className="text-xl font-bold text-gray-600 mb-4 flex items-center gap-2">
               <span className="text-2xl">🏠</span> {t.houses}
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
               {chart.houses.map((house) => (
                 <div
                   key={house.number}
-                  className="p-3 bg-purple-900/30 rounded-xl text-center"
+                  className="p-3 bg-gray-900/30 rounded-xl text-center"
                 >
-                  <div className="text-lg font-bold text-amber-600">
+                  <div className="text-lg font-bold text-gray-600">
                     {house.number}
                   </div>
                   <div className={`text-sm ${getElementColor(house.element)}`}>
                     {getSignSymbol(house.sign)} {house.sign.charAt(0).toUpperCase() + house.sign.slice(1)}
                   </div>
-                  <div className="text-xs text-purple-400">
+                  <div className="text-xs text-gray-400">
                     {house.cusp.toFixed(1)}°
                   </div>
                 </div>
@@ -299,19 +299,19 @@ export default function SwissEphemerisDemo({ language }: Props) {
           </div>
 
           {/* 上升点 */}
-          <div className="rounded-2xl bg-gradient-to-r from-amber-500/20 to-purple-500/20 border border-amber-500/30 p-6 text-center">
-            <div className="text-sm text-purple-300 mb-2">
+          <div className="rounded-2xl bg-gradient-to-r from-gray-500/20 to-gray-500/20 border border-gray-500/30 p-6 text-center">
+            <div className="text-sm text-gray-300 mb-2">
               {language === "zh" ? "上升点 (ASC)" : language === "id" ? "Ascendant" : "Ascendant"}
             </div>
-            <div className="text-3xl font-bold text-amber-600">
+            <div className="text-3xl font-bold text-gray-600">
               {getSignSymbol(chart.ascendant.sign)} {chart.ascendant.sign.charAt(0).toUpperCase() + chart.ascendant.sign.slice(1)} {chart.ascendant.degree.toFixed(1)}°
             </div>
           </div>
 
           {/* 主要相位 */}
           {chart.aspects.length > 0 && (
-            <div className="rounded-2xl bg-purple-900/30 border border-purple-200 p-6">
-              <h3 className="text-xl font-bold text-amber-600 mb-4 flex items-center gap-2">
+            <div className="rounded-2xl bg-gray-900/30 border border-gray-200 p-6">
+              <h3 className="text-xl font-bold text-gray-600 mb-4 flex items-center gap-2">
                 <span className="text-2xl">✨</span> {t.aspects}
               </h3>
               <div className="grid gap-2">
@@ -322,16 +322,16 @@ export default function SwissEphemerisDemo({ language }: Props) {
                   return (
                     <div
                       key={i}
-                      className="flex items-center justify-between p-3 bg-purple-900/30 rounded-xl"
+                      className="flex items-center justify-between p-3 bg-gray-900/30 rounded-xl"
                     >
                       <div className="flex items-center gap-2">
                         <span className="text-2xl">{p1?.symbol}</span>
-                        <span className="text-purple-300">{getAspectSymbol(aspect.aspect)}</span>
+                        <span className="text-gray-300">{getAspectSymbol(aspect.aspect)}</span>
                         <span className="text-2xl">{p2?.symbol}</span>
                       </div>
                       <div className="text-right">
                         <div className="font-medium text-white capitalize">{aspect.aspect}</div>
-                        <div className="text-xs text-purple-400">
+                        <div className="text-xs text-gray-400">
                           Orb: {aspect.orb.toFixed(1)}°
                         </div>
                       </div>
@@ -346,7 +346,7 @@ export default function SwissEphemerisDemo({ language }: Props) {
 
       {/* 无数据提示 */}
       {!chart && (
-        <div className="text-center py-12 text-purple-400">
+        <div className="text-center py-12 text-gray-400">
           <div className="text-4xl mb-4">🌟</div>
           <p>{t.noData}</p>
         </div>

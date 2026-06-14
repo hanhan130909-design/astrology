@@ -53,7 +53,7 @@ export default function CompatibilityPage() {
       {/* Hero */}
       <main className="max-w-7xl mx-auto px-6 py-12">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-rose-100 rounded-full text-sm text-rose-600 mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-600 mb-4">
             <HeartHandshake size={16} />
             {t.badge}
           </div>
@@ -65,17 +65,17 @@ export default function CompatibilityPage() {
         {/* Feature cards */}
         <div className="grid md:grid-cols-4 gap-4 mb-12 max-w-3xl mx-auto">
           {t.features.map((f, i) => (
-            <div key={i} className="flex items-center gap-2 px-4 py-3 bg-rose-50 rounded-xl border border-rose-100">
-              <CheckCircle size={16} className="text-rose-400 shrink-0" />
+            <div key={i} className="flex items-center gap-2 px-4 py-3 bg-gray-50 rounded-xl border border-gray-100">
+              <CheckCircle size={16} className="text-gray-400 shrink-0" />
               <span className="text-sm text-gray-600">{f}</span>
             </div>
           ))}
         </div>
 
         {/* Quick Zodiac Match Section */}
-        <div className="max-w-3xl mx-auto mb-16 p-8 bg-gradient-to-r from-purple-50 to-rose-50 rounded-2xl border border-purple-100">
+        <div className="max-w-3xl mx-auto mb-16 p-8 bg-gradient-to-r from-gray-50 to-gray-50 rounded-2xl border border-gray-100">
           <h2 className="text-xl font-bold text-gray-800 mb-2 flex items-center gap-2">
-            <Star size={20} className="text-amber-500 fill-amber-500" />
+            <Star size={20} className="text-gray-500 fill-gray-500" />
             {t.quickTitle}
           </h2>
           <p className="text-sm text-gray-500 mb-6">{t.quickDesc}</p>
@@ -84,7 +84,7 @@ export default function CompatibilityPage() {
           <div className="grid grid-cols-3 md:grid-cols-6 gap-3 mb-6">
             {["♈白羊","♉金牛","♊双子","♋巨蟹","♌狮子","♍处女","♎天秤","♏天蝎","♐射手","♑摩羯","♒水瓶","♓双鱼"].map((sign, i) => (
               <Link key={i} href={`/zodiac/${["aries","taurus","gemini","cancer","leo","virgo","libra","scorpio","sagittarius","capricorn","aquarius","pisces"][i]}`}
-                className="px-3 py-2 bg-white rounded-lg border border-gray-200 text-center text-sm text-gray-700 hover:border-purple-300 hover:bg-purple-50 transition-colors"
+                className="px-3 py-2 bg-white rounded-lg border border-gray-200 text-center text-sm text-gray-700 hover:border-gray-300 hover:bg-gray-50 transition-colors"
               >
                 {sign}
               </Link>

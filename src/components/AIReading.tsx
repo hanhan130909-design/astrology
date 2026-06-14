@@ -434,7 +434,7 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
       {!preloadedChart && (
         <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
           <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-            <Sparkles size={20} className="text-purple-400" />
+            <Sparkles size={20} className="text-gray-400" />
             {L.title}
           </h2>
           <p className="text-gray-500 text-sm mb-4">{L.subtitle}</p>
@@ -479,11 +479,11 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
           </div>
 
           <button onClick={handleCalculate} disabled={loading}
-            className="w-full py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 disabled:opacity-50 rounded-xl font-bold text-white transition-all flex items-center justify-center gap-2">
+            className="w-full py-3 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 disabled:opacity-50 rounded-xl font-bold text-white transition-all flex items-center justify-center gap-2">
             {loading ? <><span className="animate-spin">✨</span>{L.generating}</> : L.generate}
           </button>
 
-          {error && <div className="mt-3 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm">{error}</div>}
+          {error && <div className="mt-3 p-3 rounded-xl bg-gray-500/10 border border-gray-500/20 text-gray-400 text-sm">{error}</div>}
         </div>
       )}
 
@@ -491,7 +491,7 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
       {sections.length > 0 && (
         <div className="space-y-4">
           <h3 className="font-bold text-lg flex items-center gap-2">
-            <Sparkles size={18} className="text-amber-600" />
+            <Sparkles size={18} className="text-gray-600" />
             {L.freeTitle}
           </h3>
 
@@ -518,12 +518,12 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
       {sections.length > 0 && (
         <div className="rounded-2xl overflow-hidden border border-white/10">
           {/* 标题 */}
-          <div className="p-5 bg-gradient-to-r from-purple-50/40 to-indigo-50/40 flex items-center justify-between">
+          <div className="p-5 bg-gradient-to-r from-gray-50/40 to-gray-50/40 flex items-center justify-between">
             <h3 className="font-bold text-lg flex items-center gap-2">
-              {canViewDeep ? <Sparkles size={18} className="text-purple-400" /> : <Lock size={18} className="text-gray-500" />}
+              {canViewDeep ? <Sparkles size={18} className="text-gray-400" /> : <Lock size={18} className="text-gray-500" />}
               {L.deepTitle}
             </h3>
-            {canViewDeep && <span className="text-xs text-green-400 flex items-center gap-1"><CheckCircle size={14} />{L.unlocked}</span>}
+            {canViewDeep && <span className="text-xs text-gray-400 flex items-center gap-1"><CheckCircle size={14} />{L.unlocked}</span>}
           </div>
 
           {/* 已解锁：显示深度内容 */}
@@ -571,17 +571,17 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
               </div>
 
               {/* 解锁方式1：登录 */}
-              <div className="p-4 rounded-xl bg-purple-500/10 border border-purple-200">
+              <div className="p-4 rounded-xl bg-gray-500/10 border border-gray-200">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <User size={20} className="text-purple-400" />
+                    <User size={20} className="text-gray-400" />
                     <div>
                       <div className="font-medium text-white text-sm">{L.loginRequired}</div>
                       <div className="text-xs text-gray-500">{L.loginBtn}</div>
                     </div>
                   </div>
                   <button onClick={() => setShowLoginModal(true)}
-                    className="px-4 py-2 bg-purple-600 hover:bg-purple-500 rounded-lg text-sm font-medium text-white transition-colors">
+                    className="px-4 py-2 bg-gray-600 hover:bg-gray-500 rounded-lg text-sm font-medium text-white transition-colors">
                     {L.loginBtn}
                   </button>
                 </div>
@@ -595,9 +595,9 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
               </div>
 
               {/* 解锁方式2：WhatsApp 分享 */}
-              <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20">
+              <div className="p-4 rounded-xl bg-gray-500/10 border border-gray-500/20">
                 <div className="flex items-center gap-3 mb-3">
-                  <MessageCircle size={20} className="text-green-400" />
+                  <MessageCircle size={20} className="text-gray-400" />
                   <div>
                     <div className="font-medium text-white text-sm">{L.shareUnlock}</div>
                     <div className="text-xs text-gray-500">{L.shareDesc}</div>
@@ -607,7 +607,7 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
                 {/* 进度条 */}
                 <div className="flex gap-2 mb-3">
                   {[1, 2, 3].map(n => (
-                    <div key={n} className={`flex-1 h-2 rounded-full transition-all ${shareCount >= n ? "bg-green-500" : "bg-white/10"}`} />
+                    <div key={n} className={`flex-1 h-2 rounded-full transition-all ${shareCount >= n ? "bg-gray-500" : "bg-white/10"}`} />
                   ))}
                 </div>
                 <div className="text-xs text-gray-500 mb-3">{L.shareProgress}: {shareCount}/3</div>
@@ -616,14 +616,14 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
                   <div className="grid grid-cols-3 gap-2">
                     {[1, 2, 3].map(n => (
                       <button key={n} onClick={() => handleShare(n)} disabled={shareCount >= n}
-                        className={`py-2 rounded-lg text-xs font-medium flex items-center justify-center gap-1 transition-all ${shareCount >= n ? "bg-green-500/20 text-green-400 border border-green-500/30" : "bg-white/5 hover:bg-green-500/20 text-gray-600 hover:text-green-300 border border-white/10"}`}>
+                        className={`py-2 rounded-lg text-xs font-medium flex items-center justify-center gap-1 transition-all ${shareCount >= n ? "bg-gray-500/20 text-gray-400 border border-gray-500/30" : "bg-white/5 hover:bg-gray-500/20 text-gray-600 hover:text-gray-300 border border-white/10"}`}>
                         {shareCount >= n ? <CheckCircle size={12} /> : <Share2 size={12} />}
                         {L.friend} {n}
                       </button>
                     ))}
                   </div>
                 ) : (
-                  <div className="text-center text-green-400 font-medium text-sm flex items-center justify-center gap-2">
+                  <div className="text-center text-gray-400 font-medium text-sm flex items-center justify-center gap-2">
                     <CheckCircle size={16} />{L.shareComplete}
                   </div>
                 )}
@@ -647,13 +647,13 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
 
             <div className="space-y-3 mb-4">
               <input type="text" placeholder={L.phone} value={loginForm.phone} onChange={e => setLoginForm({ ...loginForm, phone: e.target.value })}
-                className="w-full p-3 rounded-xl bg-white border border-gray-300 text-white placeholder-slate-500 text-sm" />
+                className="w-full p-3 rounded-xl bg-white border border-gray-300 text-white placeholder-gray-500 text-sm" />
               <input type="password" placeholder={L.password} value={loginForm.password} onChange={e => setLoginForm({ ...loginForm, password: e.target.value })}
-                className="w-full p-3 rounded-xl bg-white border border-gray-300 text-white placeholder-slate-500 text-sm" />
+                className="w-full p-3 rounded-xl bg-white border border-gray-300 text-white placeholder-gray-500 text-sm" />
             </div>
 
             <button onClick={handleLogin} disabled={loginLoading}
-              className="w-full py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 disabled:opacity-50 rounded-xl font-bold text-white transition-all">
+              className="w-full py-3 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 disabled:opacity-50 rounded-xl font-bold text-white transition-all">
               {loginLoading ? "..." : L.loginSubmit}
             </button>
 

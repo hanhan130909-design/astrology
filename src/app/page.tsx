@@ -28,7 +28,7 @@ const ZODIAC_DATA = {
       ja: ['勇敢', '冲动', 'リーダー'],
       ko: ['용감', '충동적', '리더']
     },
-    color: '#FF6B6B', gradient: 'from-red-500 to-orange-500'
+    color: '#FF6B6B', gradient: 'from-gray-500 to-gray-500'
   },
   taurus: { 
     element: 'earth', dates: '4.20-5.20', icon: '♉', 
@@ -42,7 +42,7 @@ const ZODIAC_DATA = {
       ja: ['安定', '実用的', '頑固'],
       ko: ['안정', '실용적', '고집']
     },
-    color: '#4ECDC4', gradient: 'from-green-500 to-emerald-500'
+    color: '#4ECDC4', gradient: 'from-gray-500 to-gray-500'
   },
   gemini: { 
     element: 'air', dates: '5.21-6.21', icon: '♊', 
@@ -56,7 +56,7 @@ const ZODIAC_DATA = {
       ja: ['多才', '賢い', '好奇心'],
       ko: ['다재다능', '똑똑', '호기심']
     },
-    color: '#FFE66D', gradient: 'from-yellow-400 to-amber-400'
+    color: '#FFE66D', gradient: 'from-gray-400 to-gray-400'
   },
   cancer: { 
     element: 'water', dates: '6.22-7.22', icon: '♋', 
@@ -70,7 +70,7 @@ const ZODIAC_DATA = {
       ja: ['敏感', '家庭志向', '感情的'],
       ko: ['민감', '가정적', '감정적']
     },
-    color: '#95E1D3', gradient: 'from-teal-400 to-cyan-400'
+    color: '#95E1D3', gradient: 'from-gray-400 to-gray-400'
   },
   leo: { 
     element: 'fire', dates: '7.23-8.22', icon: '♌', 
@@ -84,7 +84,7 @@ const ZODIAC_DATA = {
       ja: ['自信', 'ドラマチック', '寛大'],
       ko: ['자신감', '극적', '관대']
     },
-    color: '#F38181', gradient: 'from-orange-500 to-pink-500'
+    color: '#F38181', gradient: 'from-gray-500 to-gray-500'
   },
   virgo: { 
     element: 'earth', dates: '8.23-9.22', icon: '♍', 
@@ -98,7 +98,7 @@ const ZODIAC_DATA = {
       ja: ['分析的', '完璧主義', '奉仕'],
       ko: ['분석적', '완벽주의', '봉사']
     },
-    color: '#AA96DA', gradient: 'from-purple-400 to-violet-500'
+    color: '#AA96DA', gradient: 'from-gray-400 to-gray-500'
   },
   libra: { 
     element: 'air', dates: '9.23-10.23', icon: '♎', 
@@ -112,7 +112,7 @@ const ZODIAC_DATA = {
       ja: ['平衡', '調和', '芸術性'],
       ko: ['균형', '조화', '예술적']
     },
-    color: '#FCBAD3', gradient: 'from-pink-400 to-rose-500'
+    color: '#FCBAD3', gradient: 'from-gray-400 to-gray-500'
   },
   scorpio: { 
     element: 'water', dates: '10.24-11.22', icon: '♏', 
@@ -126,7 +126,7 @@ const ZODIAC_DATA = {
       ja: ['神秘的', '深い', '洞察力'],
       ko: ['신비로움', '깊이', '통찰력']
     },
-    color: '#6C5CE7', gradient: 'from-indigo-600 to-purple-600'
+    color: '#6C5CE7', gradient: 'from-gray-600 to-gray-600'
   },
   sagittarius: { 
     element: 'fire', dates: '11.23-12.21', icon: '♐', 
@@ -140,7 +140,7 @@ const ZODIAC_DATA = {
       ja: ['自由', '哲学的', '冒険的'],
       ko: ['자유', '철학적', '모험적']
     },
-    color: '#FDA7DF', gradient: 'from-fuchsia-500 to-purple-500'
+    color: '#FDA7DF', gradient: 'from-gray-500 to-gray-500'
   },
   capricorn: { 
     element: 'earth', dates: '12.22-1.19', icon: '♑', 
@@ -154,7 +154,7 @@ const ZODIAC_DATA = {
       ja: ['責任感', '野心', '規律正しい'],
       ko: ['책임감', '야심', '규律']
     },
-    color: '#A8D8EA', gradient: 'from-slate-500 to-blue-500'
+    color: '#A8D8EA', gradient: 'from-gray-500 to-gray-500'
   },
   aquarius: { 
     element: 'air', dates: '1.20-2.18', icon: '♒', 
@@ -168,7 +168,7 @@ const ZODIAC_DATA = {
       ja: ['革新的', '人道主義', '独立的'],
       ko: ['혁신적', '인도주의', '독립적']
     },
-    color: '#7C3AED', gradient: 'from-violet-600 to-indigo-600'
+    color: '#7C3AED', gradient: 'from-gray-600 to-gray-600'
   },
   pisces: { 
     element: 'water', dates: '2.19-3.20', icon: '♓', 
@@ -182,15 +182,15 @@ const ZODIAC_DATA = {
       ja: ['直感', '夢想的', '芸術的'],
       ko: ['직관', '몽환적', '예술적']
     },
-    color: '#0EA5E9', gradient: 'from-sky-500 to-cyan-500'
+    color: '#0EA5E9', gradient: 'from-gray-500 to-gray-500'
   },
 };
 
 const ELEMENT_COLORS = {
-  fire: { bg: 'from-red-600/20 to-orange-600/20', border: 'border-red-500/30', text: 'text-red-400', icon: '🔥', label: { zh: '火象', en: 'Fire', id: 'Api', th: 'ธาตุไฟ', vi: 'Hỏa', ms: 'Api', ja: '火象', ko: '화염' } },
-  earth: { bg: 'from-green-600/20 to-emerald-600/20', border: 'border-green-500/30', text: 'text-green-400', icon: '🌍', label: { zh: '土象', en: 'Earth', id: 'Tanah', th: 'ธาตุดิน', vi: 'Thổ', ms: 'Tanah', ja: '土象', ko: '토양' } },
-  air: { bg: 'from-blue-600/20 to-cyan-600/20', border: 'border-blue-500/30', text: 'text-blue-400', icon: '💨', label: { zh: '风象', en: 'Air', id: 'Udara', th: 'ธาตุลม', vi: 'Phong', ms: 'Udara', ja: '風象', ko: '공기' } },
-  water: { bg: 'from-purple-600/20 to-indigo-600/20', border: 'border-purple-200', text: 'text-purple-400', icon: '💧', label: { zh: '水象', en: 'Water', id: 'Air', th: 'ธาตุน้ำ', vi: 'Thủy', ms: 'Air', ja: '水象', ko: '물' } },
+  fire: { bg: 'from-gray-600/20 to-gray-600/20', border: 'border-gray-500/30', text: 'text-gray-400', icon: '🔥', label: { zh: '火象', en: 'Fire', id: 'Api', th: 'ธาตุไฟ', vi: 'Hỏa', ms: 'Api', ja: '火象', ko: '화염' } },
+  earth: { bg: 'from-gray-600/20 to-gray-600/20', border: 'border-gray-500/30', text: 'text-gray-400', icon: '🌍', label: { zh: '土象', en: 'Earth', id: 'Tanah', th: 'ธาตุดิน', vi: 'Thổ', ms: 'Tanah', ja: '土象', ko: '토양' } },
+  air: { bg: 'from-gray-600/20 to-gray-600/20', border: 'border-gray-500/30', text: 'text-gray-400', icon: '💨', label: { zh: '风象', en: 'Air', id: 'Udara', th: 'ธาตุลม', vi: 'Phong', ms: 'Udara', ja: '風象', ko: '공기' } },
+  water: { bg: 'from-gray-600/20 to-gray-600/20', border: 'border-gray-200', text: 'text-gray-400', icon: '💧', label: { zh: '水象', en: 'Water', id: 'Air', th: 'ธาตุน้ำ', vi: 'Thủy', ms: 'Air', ja: '水象', ko: '물' } },
 };
 
 // Premium features for commercial platform
@@ -486,9 +486,9 @@ export default function HomePage() {
     <div className="min-h-screen bg-white text-gray-800 font-sans antialiased">
       {/* Animated Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 -left-40 w-80 h-80 bg-purple-500/20 rounded-full blur-[100px] animate-pulse" />
-        <div className="absolute top-40 -right-40 w-80 h-80 bg-cyan-500/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-0 -left-40 w-80 h-80 bg-gray-500/20 rounded-full blur-[100px] animate-pulse" />
+        <div className="absolute top-40 -right-40 w-80 h-80 bg-gray-500/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-gray-500/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
 
       {/* Navigation */}
@@ -500,16 +500,16 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative z-10">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-gray-200 mb-6">
-                <Sparkle size={14} className="text-amber-600 fill-amber-400" />
+                <Sparkle size={14} className="text-gray-600 fill-gray-400" />
                 <span className="text-sm text-gray-600">{t_hero.badge}</span>
               </div>
               
               <h1 className="text-5xl lg:text-6xl xl:text-7xl font-black mb-6 leading-tight">
-                <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
                   {t_hero.title.split(' ')[0]}
                 </span>
                 <br />
-                <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-amber-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-gray-400 via-gray-400 to-gray-400 bg-clip-text text-transparent">
                   {t_hero.title.split(' ').slice(1).join(' ')}
                 </span>
               </h1>
@@ -519,7 +519,7 @@ export default function HomePage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Link href="/natal" className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-2xl font-bold text-gray-900 transition-all shadow-2xl shadow-purple-200/40 hover:shadow-purple-200/50 hover:scale-105">
+                <Link href="/natal" className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 rounded-2xl font-bold text-gray-900 transition-all shadow-2xl shadow-gray-200/40 hover:shadow-gray-200/50 hover:scale-105">
                   {t_hero.cta}
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -530,7 +530,7 @@ export default function HomePage() {
               </div>
 
               <div className="flex items-center gap-4 text-sm text-gray-400">
-                <Shield size={16} className="text-emerald-500" />
+                <Shield size={16} className="text-gray-500" />
                 <span>{t_hero.free}</span>
               </div>
             </div>
@@ -539,7 +539,7 @@ export default function HomePage() {
             <div className="relative hidden lg:flex justify-center items-center">
               <div className="relative w-[450px] h-[450px]">
                 {/* Outer glow rings */}
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-amber-500/20 rounded-full blur-3xl" />
+                <div className="absolute inset-0 bg-gradient-to-r from-gray-500/20 via-gray-500/20 to-gray-500/20 rounded-full blur-3xl" />
                 
                 {/* Main wheel SVG */}
                 {/* Performance: SVG with GPU-accelerated transform only */}
@@ -585,9 +585,9 @@ export default function HomePage() {
                 </svg>
 
                 {/* Floating particles */}
-                <div className="absolute top-10 left-20 w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDuration: '2s' }} />
-                <div className="absolute top-32 right-10 w-1.5 h-1.5 bg-pink-400 rounded-full animate-bounce" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }} />
-                <div className="absolute bottom-20 left-32 w-1 h-1 bg-amber-400 rounded-full animate-bounce" style={{ animationDuration: '3s', animationDelay: '1s' }} />
+                <div className="absolute top-10 left-20 w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDuration: '2s' }} />
+                <div className="absolute top-32 right-10 w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }} />
+                <div className="absolute bottom-20 left-32 w-1 h-1 bg-gray-400 rounded-full animate-bounce" style={{ animationDuration: '3s', animationDelay: '1s' }} />
               </div>
             </div>
           </div>
@@ -599,7 +599,7 @@ export default function HomePage() {
             <div className="grid grid-cols-3 gap-8">
               {STATS.map((stat, i) => (
                 <div key={i} className="text-center">
-                  <div className="text-4xl lg:text-5xl font-black bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2">
+                  <div className="text-4xl lg:text-5xl font-black bg-gradient-to-r from-gray-400 to-gray-400 bg-clip-text text-transparent mb-2">
                     {stat.value}
                   </div>
                   <div className="text-sm text-gray-500">{getText(stat.label, lang)}</div>
@@ -613,7 +613,7 @@ export default function HomePage() {
         <section id="features" className="py-24">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
-              <span className="text-purple-400 text-sm font-medium tracking-wider uppercase">{t_features.subtitle}</span>
+              <span className="text-gray-400 text-sm font-medium tracking-wider uppercase">{t_features.subtitle}</span>
               <h2 className="text-4xl lg:text-5xl font-black text-gray-900 mt-3 mb-4">{t_features.title}</h2>
               <p className="text-gray-500 max-w-2xl mx-auto">{lang === 'zh' ? '专为初学者和专家设计的专业占星工具' : lang === 'en' ? 'Discover professional astrology tools designed for both beginners and experts' : lang === 'id' ? 'Temukan alat astrologi profesional untuk pemula dan ahli' : lang === 'th' ? 'ค้นพบเครื่องมือโหราศาสตร์มืออาชีพสำหรับทั้งผู้เริ่มต้นและผู้เชี่ยวชาญ' : lang === 'vi' ? 'Khám phá các công cụ chiêm tinh chuyên nghiệp dành cho cả người mới và chuyên gia' : lang === 'ms' ? 'Temui alat astrologi profesional untuk pemula dan pakar' : lang === 'ja' ? '初心者から専門家まで、プロフェッショナルな占星ツール' : lang === 'ko' ? '초보자와 전문가 모두를 위한 전문 점성술 도구' : 'Discover professional astrology tools designed for both beginners and experts'}</p>
             </div>
@@ -627,38 +627,38 @@ export default function HomePage() {
                     key={feature.id}
                     href={feature.href}
                     className={`group relative p-6 rounded-2xl border transition-all duration-500 hover:scale-[1.02] ${
-                      feature.color === 'purple' ? 'bg-purple-950/30 border-purple-200 hover:border-purple-400/50 hover:bg-purple-950/50' :
-                      feature.color === 'cyan' ? 'bg-cyan-950/30 border-cyan-500/20 hover:border-cyan-400/50 hover:bg-cyan-950/50' :
-                      feature.color === 'rose' ? 'bg-rose-950/30 border-rose-500/20 hover:border-rose-400/50 hover:bg-rose-950/50' :
-                      feature.color === 'amber' ? 'bg-amber-950/30 border-amber-500/20 hover:border-amber-400/50 hover:bg-amber-950/50' :
-                      feature.color === 'indigo' ? 'bg-indigo-950/30 border-indigo-500/20 hover:border-indigo-400/50 hover:bg-indigo-950/50' :
-                      'bg-emerald-950/30 border-emerald-500/20 hover:border-emerald-400/50 hover:bg-emerald-950/50'
+                      feature.color === 'purple' ? 'bg-gray-950/30 border-gray-200 hover:border-gray-400/50 hover:bg-gray-950/50' :
+                      feature.color === 'cyan' ? 'bg-gray-950/30 border-gray-500/20 hover:border-gray-400/50 hover:bg-gray-950/50' :
+                      feature.color === 'rose' ? 'bg-gray-950/30 border-gray-500/20 hover:border-gray-400/50 hover:bg-gray-950/50' :
+                      feature.color === 'amber' ? 'bg-gray-950/30 border-gray-500/20 hover:border-gray-400/50 hover:bg-gray-950/50' :
+                      feature.color === 'indigo' ? 'bg-gray-950/30 border-gray-500/20 hover:border-gray-400/50 hover:bg-gray-950/50' :
+                      'bg-gray-950/30 border-gray-500/20 hover:border-gray-400/50 hover:bg-gray-950/50'
                     }`}
                   >
                     {feature.premium && (
-                      <div className="absolute top-4 right-4 px-2 py-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full text-[10px] font-bold text-gray-900">
+                      <div className="absolute top-4 right-4 px-2 py-1 bg-gradient-to-r from-gray-500 to-gray-500 rounded-full text-[10px] font-bold text-gray-900">
                         PRO
                       </div>
                     )}
                     <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-4 ${
-                      feature.color === 'purple' ? 'bg-purple-600/20 text-purple-400' :
-                      feature.color === 'cyan' ? 'bg-cyan-600/20 text-cyan-400' :
-                      feature.color === 'rose' ? 'bg-rose-600/20 text-rose-400' :
-                      feature.color === 'amber' ? 'bg-amber-600/20 text-amber-600' :
-                      feature.color === 'indigo' ? 'bg-indigo-600/20 text-indigo-400' :
-                      'bg-emerald-600/20 text-emerald-400'
+                      feature.color === 'purple' ? 'bg-gray-600/20 text-gray-400' :
+                      feature.color === 'cyan' ? 'bg-gray-600/20 text-gray-400' :
+                      feature.color === 'rose' ? 'bg-gray-600/20 text-gray-400' :
+                      feature.color === 'amber' ? 'bg-gray-600/20 text-gray-600' :
+                      feature.color === 'indigo' ? 'bg-gray-600/20 text-gray-400' :
+                      'bg-gray-600/20 text-gray-400'
                     }`}>
                       <Icon className="w-7 h-7" />
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2">{getText(feature.title, lang)}</h3>
                     <p className="text-sm text-gray-500 mb-4">{getText(feature.desc, lang)}</p>
                     <div className={`flex items-center gap-1 text-sm font-medium ${
-                      feature.color === 'purple' ? 'text-purple-400' :
-                      feature.color === 'cyan' ? 'text-cyan-400' :
-                      feature.color === 'rose' ? 'text-rose-400' :
-                      feature.color === 'amber' ? 'text-amber-600' :
-                      feature.color === 'indigo' ? 'text-indigo-400' :
-                      'text-emerald-400'
+                      feature.color === 'purple' ? 'text-gray-400' :
+                      feature.color === 'cyan' ? 'text-gray-400' :
+                      feature.color === 'rose' ? 'text-gray-400' :
+                      feature.color === 'amber' ? 'text-gray-600' :
+                      feature.color === 'indigo' ? 'text-gray-400' :
+                      'text-gray-400'
                     } group-hover:gap-2 transition-all`}>
                       {lang === 'zh' ? '立即使用' : lang === 'en' ? 'Use now' : lang === 'id' ? 'Gunakan' : lang === 'th' ? 'ใช้เลย' : lang === 'vi' ? 'Sử dụng ngay' : lang === 'ms' ? 'Guna sekarang' : lang === 'ja' ? '今すぐ使う' : '지금 사용'}
                       <ArrowRight size={14} />
@@ -671,10 +671,10 @@ export default function HomePage() {
         </section>
 
         {/* Zodiac Section */}
-        <section id="zodiac" className="py-24 bg-gradient-to-b from-transparent via-purple-950/20 to-transparent">
+        <section id="zodiac" className="py-24 bg-gradient-to-b from-transparent via-gray-950/20 to-transparent">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
-              <span className="text-purple-400 text-sm font-medium tracking-wider uppercase">✨ {t_zodiac.title.split(' ')[0]}</span>
+              <span className="text-gray-400 text-sm font-medium tracking-wider uppercase">✨ {t_zodiac.title.split(' ')[0]}</span>
               <h2 className="text-4xl lg:text-5xl font-black text-gray-900 mt-3 mb-4">{t_zodiac.title}</h2>
               <p className="text-gray-500">{t_zodiac.subtitle}</p>
             </div>
@@ -706,7 +706,7 @@ export default function HomePage() {
               </div>
 
               {/* Selected Zodiac Detail */}
-              <div className={`mt-8 p-6 rounded-2xl bg-gradient-to-r ${currentZodiac?.gradient || 'from-purple-600 to-pink-600'} opacity-10`} />
+              <div className={`mt-8 p-6 rounded-2xl bg-gradient-to-r ${currentZodiac?.gradient || 'from-gray-600 to-gray-600'} opacity-10`} />
               <div className="-mt-24 relative z-10 p-8 rounded-2xl bg-white/5 backdrop-blur-xl border border-gray-200">
                 <div className="flex items-start gap-6">
                   <div className="text-6xl">{currentZodiac?.icon}</div>
@@ -732,7 +732,7 @@ export default function HomePage() {
         <section id="reviews" className="py-24">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
-              <span className="text-purple-400 text-sm font-medium tracking-wider uppercase">💬 {t_testimonials.subtitle}</span>
+              <span className="text-gray-400 text-sm font-medium tracking-wider uppercase">💬 {t_testimonials.subtitle}</span>
               <h2 className="text-4xl lg:text-5xl font-black text-gray-900 mt-3 mb-4">{t_testimonials.title}</h2>
             </div>
 
@@ -741,13 +741,13 @@ export default function HomePage() {
                 <div key={i} className="p-6 rounded-2xl bg-gray-50 border border-gray-200 hover:border-gray-200 transition-all">
                   <div className="flex gap-1 mb-4">
                     {Array.from({ length: testimonial.rating }).map((_, j) => (
-                      <StarIcon key={j} size={14} className="fill-amber-400 text-amber-600" />
+                      <StarIcon key={j} size={14} className="fill-gray-400 text-gray-600" />
                     ))}
                   </div>
-                  <Quote size={24} className="text-purple-500/50 mb-3" />
+                  <Quote size={24} className="text-gray-500/50 mb-3" />
                   <p className="text-sm text-gray-600 mb-6 leading-relaxed">&ldquo;{getText(testimonial.content, lang)}&rdquo;</p>
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center text-gray-900 font-bold text-sm">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gray-600 to-gray-600 flex items-center justify-center text-gray-900 font-bold text-sm">
                       {testimonial.avatar}
                     </div>
                     <div>
@@ -765,14 +765,14 @@ export default function HomePage() {
         <section className="py-24">
           <div className="max-w-4xl mx-auto px-6">
             <div className="relative p-12 rounded-3xl overflow-hidden text-center">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 via-pink-600/20 to-amber-600/20" />
+              <div className="absolute inset-0 bg-gradient-to-r from-gray-600/20 via-gray-600/20 to-gray-600/20" />
               <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')]" />
               
               <div className="relative z-10">
-                <Sparkles size={40} className="mx-auto text-amber-600 mb-6" />
+                <Sparkles size={40} className="mx-auto text-gray-600 mb-6" />
                 <h2 className="text-3xl lg:text-4xl font-black text-gray-900 mb-4">{t_cta.title}</h2>
                 <p className="text-gray-500 mb-8 max-w-xl mx-auto">{t_cta.subtitle}</p>
-                <Link href="/natal" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-2xl font-bold text-gray-900 transition-all shadow-2xl shadow-purple-200/40">
+                <Link href="/natal" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 rounded-2xl font-bold text-gray-900 transition-all shadow-2xl shadow-gray-200/40">
                   {t_cta.button}
                   <ArrowRight size={18} />
                 </Link>
@@ -786,15 +786,15 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl flex items-center justify-center">
+                <div className="w-10 h-10 bg-gradient-to-br from-gray-600 to-gray-600 rounded-xl flex items-center justify-center">
                   <Star className="w-5 h-5 text-gray-900 fill-white" />
                 </div>
                 <span className="font-bold text-gray-900">{t('siteName')}</span>
               </div>
               <div className="flex gap-6 text-sm text-gray-500">
-                <a href="#" className="hover:text-purple-700 transition-colors">{lang === 'zh' ? '隐私政策' : lang === 'en' ? 'Privacy' : lang === 'id' ? 'Kebijakan Privasi' : lang === 'th' ? 'นโยบายความเป็นส่วนตัว' : lang === 'vi' ? 'Chính sách bảo mật' : lang === 'ms' ? 'Dasar Privasi' : lang === 'ja' ? 'プライバシーポリシー' : '개인정보 처리방침'}</a>
-                <a href="#" className="hover:text-purple-700 transition-colors">{lang === 'zh' ? '服务条款' : lang === 'en' ? 'Terms' : lang === 'id' ? 'Syarat Layanan' : lang === 'th' ? 'ข้อกำหนดการใช้งาน' : lang === 'vi' ? 'Điều khoản dịch vụ' : lang === 'ms' ? 'Terma Perkhidmatan' : lang === 'ja' ? '利用規約' : '서비스 약관'}</a>
-                <a href="#" className="hover:text-purple-700 transition-colors">{lang === 'zh' ? '联系我们' : lang === 'en' ? 'Contact' : lang === 'id' ? 'Hubungi Kami' : lang === 'th' ? 'ติดต่อเรา' : lang === 'vi' ? 'Liên hệ' : lang === 'ms' ? 'Hubungi Kami' : lang === 'ja' ? 'お問い合わせ' : '문의하기'}</a>
+                <a href="#" className="hover:text-gray-700 transition-colors">{lang === 'zh' ? '隐私政策' : lang === 'en' ? 'Privacy' : lang === 'id' ? 'Kebijakan Privasi' : lang === 'th' ? 'นโยบายความเป็นส่วนตัว' : lang === 'vi' ? 'Chính sách bảo mật' : lang === 'ms' ? 'Dasar Privasi' : lang === 'ja' ? 'プライバシーポリシー' : '개인정보 처리방침'}</a>
+                <a href="#" className="hover:text-gray-700 transition-colors">{lang === 'zh' ? '服务条款' : lang === 'en' ? 'Terms' : lang === 'id' ? 'Syarat Layanan' : lang === 'th' ? 'ข้อกำหนดการใช้งาน' : lang === 'vi' ? 'Điều khoản dịch vụ' : lang === 'ms' ? 'Terma Perkhidmatan' : lang === 'ja' ? '利用規約' : '서비스 약관'}</a>
+                <a href="#" className="hover:text-gray-700 transition-colors">{lang === 'zh' ? '联系我们' : lang === 'en' ? 'Contact' : lang === 'id' ? 'Hubungi Kami' : lang === 'th' ? 'ติดต่อเรา' : lang === 'vi' ? 'Liên hệ' : lang === 'ms' ? 'Hubungi Kami' : lang === 'ja' ? 'お問い合わせ' : '문의하기'}</a>
               </div>
               <div className="text-sm text-gray-400">© 2024 {t('siteName')}. {lang === 'zh' ? '版权所有' : lang === 'en' ? 'All rights reserved' : lang === 'id' ? 'Hak cipta' : lang === 'th' ? 'สงวนลิขสิทธิ์' : lang === 'vi' ? 'Bảo lưu mọi quyền' : lang === 'ms' ? 'Hak cipta terpelihara' : lang === 'ja' ? '全著作権所有' : '모든 권리 보유'}.</div>
             </div>

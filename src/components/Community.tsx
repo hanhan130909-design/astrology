@@ -27,10 +27,10 @@ const CATEGORY_ICONS: Record<string, string> = {
 };
 
 const CATEGORY_COLORS: Record<string, string> = {
-  daily: "from-amber-500/20 to-orange-500/20 border-amber-500/30",
-  question: "from-blue-500/20 to-cyan-500/20 border-blue-500/30",
-  experience: "from-purple-500/20 to-pink-500/20 border-purple-200",
-  learning: "from-green-500/20 to-emerald-500/20 border-green-500/30"
+  daily: "from-gray-500/20 to-gray-500/20 border-gray-500/30",
+  question: "from-gray-500/20 to-gray-500/20 border-gray-500/30",
+  experience: "from-gray-500/20 to-gray-500/20 border-gray-200",
+  learning: "from-gray-500/20 to-gray-500/20 border-gray-500/30"
 };
 
 export default function Community({ language }: Props) {
@@ -262,20 +262,20 @@ export default function Community({ language }: Props) {
     <div className="space-y-6">
       {/* 发帖框 */}
       {user && localProfile ? (
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-50/40 via-indigo-900/30 to-purple-900/40 border border-purple-200 shadow-xl shadow-purple-900/20">
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-50/40 via-gray-900/30 to-gray-900/40 border border-gray-200 shadow-xl shadow-gray-900/20">
           {/* 装饰背景 */}
-          <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-500/10 rounded-full blur-2xl" />
+          <div className="absolute top-0 right-0 w-32 h-32 bg-gray-500/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-24 h-24 bg-gray-500/10 rounded-full blur-2xl" />
           
           <div className="relative p-5">
             {/* 用户信息 */}
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 via-orange-500 to-purple-600 flex items-center justify-center text-white text-lg font-bold shadow-lg shadow-amber-500/20">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gray-400 via-gray-500 to-gray-600 flex items-center justify-center text-white text-lg font-bold shadow-lg shadow-gray-500/20">
                 {localProfile?.displayName?.charAt(0)?.toUpperCase() || "U"}
               </div>
               <div>
-                <div className="font-semibold text-amber-100">{localProfile?.displayName}</div>
-                <div className="text-xs text-purple-400">
+                <div className="font-semibold text-gray-100">{localProfile?.displayName}</div>
+                <div className="text-xs text-gray-400">
                   {language === "zh" ? "正在分享..." : language === "id" ? "Berbagi..." : "Sharing..."}
                 </div>
               </div>
@@ -286,13 +286,13 @@ export default function Community({ language }: Props) {
               value={newPost}
               onChange={e => setNewPost(e.target.value)}
               placeholder={t.newPost}
-              className="w-full p-4 bg-purple-950/50 border border-purple-200 rounded-xl text-white placeholder-purple-400/60 resize-none focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-transparent transition-all"
+              className="w-full p-4 bg-gray-950/50 border border-gray-200 rounded-xl text-white placeholder-gray-400/60 resize-none focus:outline-none focus:ring-2 focus:ring-gray-500/50 focus:border-transparent transition-all"
               rows={3}
             />
 
             {/* 错误提示 */}
             {postingError && (
-              <div className="mt-2 p-2 bg-red-500/20 border border-red-500/30 rounded-lg text-red-300 text-sm">
+              <div className="mt-2 p-2 bg-gray-500/20 border border-gray-500/30 rounded-lg text-gray-300 text-sm">
                 {postingError}
               </div>
             )}
@@ -307,8 +307,8 @@ export default function Community({ language }: Props) {
                     onClick={() => setCategory(key as Post['category'])}
                     className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
                       category === key 
-                        ? "bg-gradient-to-r " + CATEGORY_COLORS[key] + " text-white ring-1 ring-purple-400/50"
-                        : "bg-purple-900/30 text-purple-300 hover:bg-purple-800/40"
+                        ? "bg-gradient-to-r " + CATEGORY_COLORS[key] + " text-white ring-1 ring-gray-400/50"
+                        : "bg-gray-900/30 text-gray-300 hover:bg-gray-800/40"
                     }`}
                   >
                     {label}
@@ -320,7 +320,7 @@ export default function Community({ language }: Props) {
               <button
                 onClick={handlePost}
                 disabled={!newPost.trim() || isPosting}
-                className="px-8 py-2.5 bg-gradient-to-r from-amber-500 via-orange-500 to-purple-600 rounded-xl font-semibold text-white shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-105 active:scale-95 transition-all disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed"
+                className="px-8 py-2.5 bg-gradient-to-r from-gray-500 via-gray-500 to-gray-600 rounded-xl font-semibold text-white shadow-lg shadow-gray-500/25 hover:shadow-gray-500/40 hover:scale-105 active:scale-95 transition-all disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed"
               >
                 {isPosting ? (
                   <span className="flex items-center gap-2">
@@ -340,11 +340,11 @@ export default function Community({ language }: Props) {
           </div>
         </div>
       ) : (
-        <div className="relative overflow-hidden p-8 rounded-2xl bg-gradient-to-br from-purple-50/20 via-indigo-900/10 to-purple-900/20 border border-purple-500/10 text-center">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl" />
+        <div className="relative overflow-hidden p-8 rounded-2xl bg-gradient-to-br from-gray-50/20 via-gray-900/10 to-gray-900/20 border border-gray-500/10 text-center">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gray-500/5 rounded-full blur-3xl" />
           <div className="relative">
             <div className="text-6xl mb-4">🔐</div>
-            <p className="text-purple-300 text-lg">{t.loginToPost}</p>
+            <p className="text-gray-300 text-lg">{t.loginToPost}</p>
           </div>
         </div>
       )}
@@ -353,21 +353,21 @@ export default function Community({ language }: Props) {
       {isLoading ? (
         <div className="flex justify-center py-12">
           <div className="relative">
-            <div className="w-12 h-12 border-4 border-purple-200 border-t-amber-500 rounded-full animate-spin" />
+            <div className="w-12 h-12 border-4 border-gray-200 border-t-amber-500 rounded-full animate-spin" />
             <div className="absolute inset-0 w-12 h-12 border-4 border-transparent border-t-purple-400 rounded-full animate-spin animate-reverse" style={{animationDirection: 'reverse', animationDuration: '1.5s'}} />
           </div>
         </div>
       ) : posts.length === 0 ? (
-        <div className="relative overflow-hidden p-12 rounded-2xl bg-gradient-to-br from-purple-50/20 via-indigo-900/10 to-purple-900/20 border border-purple-500/10 text-center">
+        <div className="relative overflow-hidden p-12 rounded-2xl bg-gradient-to-br from-gray-50/20 via-gray-900/10 to-gray-900/20 border border-gray-500/10 text-center">
           <div className="text-6xl mb-4">📝</div>
-          <p className="text-purple-300 text-lg">{t.noPosts}</p>
+          <p className="text-gray-300 text-lg">{t.noPosts}</p>
         </div>
       ) : (
         <div className="space-y-4">
           {posts.map((post, index) => (
             <div 
               key={post.id} 
-              className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-50/30 via-indigo-900/20 to-purple-900/30 border border-purple-200 hover:border-amber-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-purple-900/20"
+              className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-50/30 via-gray-900/20 to-gray-900/30 border border-gray-200 hover:border-gray-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-gray-900/20"
               style={{animationDelay: `${index * 50}ms`}}
             >
               {/* 左边装饰条 */}
@@ -377,37 +377,37 @@ export default function Community({ language }: Props) {
                 {/* 作者信息 */}
                 <div className="flex items-center gap-3 mb-4">
                   <div className="relative">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 via-orange-500 to-purple-600 flex items-center justify-center text-white text-lg font-bold shadow-lg">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gray-400 via-gray-500 to-gray-600 flex items-center justify-center text-white text-lg font-bold shadow-lg">
                       {post.authorName.charAt(0).toUpperCase()}
                     </div>
-                    <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-purple-800 flex items-center justify-center text-xs">
+                    <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-gray-800 flex items-center justify-center text-xs">
                       {CATEGORY_ICONS[post.category]}
                     </div>
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
-                      <span className="font-semibold text-amber-100">{post.authorName}</span>
+                      <span className="font-semibold text-gray-100">{post.authorName}</span>
                       <span className={`px-2 py-0.5 rounded-full text-xs bg-gradient-to-r ${CATEGORY_COLORS[post.category]}`}>
                         {t.categories[post.category]}
                       </span>
                     </div>
-                    <div className="text-xs text-purple-400 flex items-center gap-1">
+                    <div className="text-xs text-gray-400 flex items-center gap-1">
                       <span>🕐</span> {formatTime(post.createdAt)}
                     </div>
                   </div>
                 </div>
 
                 {/* 内容 */}
-                <p className="text-purple-700 leading-relaxed whitespace-pre-wrap text-base mb-4">{post.content}</p>
+                <p className="text-gray-700 leading-relaxed whitespace-pre-wrap text-base mb-4">{post.content}</p>
 
                 {/* 操作栏 */}
-                <div className="flex items-center gap-6 pt-4 border-t border-purple-500/10">
+                <div className="flex items-center gap-6 pt-4 border-t border-gray-500/10">
                   <button
                     onClick={() => handleLike(post.id)}
                     className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
                       likedPosts.has(post.id) 
-                        ? "bg-red-500/20 text-red-300" 
-                        : "bg-purple-800/30 text-purple-300 hover:bg-purple-700/40 hover:text-amber-600"
+                        ? "bg-gray-500/20 text-gray-300" 
+                        : "bg-gray-800/30 text-gray-300 hover:bg-gray-700/40 hover:text-gray-600"
                     }`}
                   >
                     <span className="text-lg">{likedPosts.has(post.id) ? "❤️" : "🤍"}</span>
@@ -424,8 +424,8 @@ export default function Community({ language }: Props) {
                     }}
                     className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
                       commentingPost === post.id
-                        ? "bg-blue-500/20 text-blue-300"
-                        : "bg-purple-800/30 text-purple-300 hover:bg-purple-700/40 hover:text-amber-600"
+                        ? "bg-gray-500/20 text-gray-300"
+                        : "bg-gray-800/30 text-gray-300 hover:bg-gray-700/40 hover:text-gray-600"
                     }`}
                   >
                     <span className="text-lg">💬</span>
@@ -435,21 +435,21 @@ export default function Community({ language }: Props) {
 
                 {/* 评论区 */}
                 {commentingPost === post.id && (
-                  <div className="mt-4 pt-4 border-t border-purple-500/10 space-y-3">
+                  <div className="mt-4 pt-4 border-t border-gray-500/10 space-y-3">
                     {/* 评论列表 */}
                     {comments[post.id]?.length > 0 && (
                       <div className="space-y-3">
                         {comments[post.id].map(comment => (
-                          <div key={comment.id} className="flex gap-3 p-3 rounded-xl bg-purple-900/20">
-                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-sm font-bold flex-shrink-0">
+                          <div key={comment.id} className="flex gap-3 p-3 rounded-xl bg-gray-900/20">
+                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-500 to-gray-600 flex items-center justify-center text-sm font-bold flex-shrink-0">
                               {comment.authorName.charAt(0)}
                             </div>
                             <div className="flex-1 min-w-0">
                               <div className="flex items-center gap-2">
-                                <span className="text-sm font-medium text-amber-100">{comment.authorName}</span>
-                                <span className="text-xs text-purple-500">{formatTime(comment.createdAt)}</span>
+                                <span className="text-sm font-medium text-gray-100">{comment.authorName}</span>
+                                <span className="text-xs text-gray-500">{formatTime(comment.createdAt)}</span>
                               </div>
-                              <p className="text-sm text-purple-600 mt-1">{comment.content}</p>
+                              <p className="text-sm text-gray-600 mt-1">{comment.content}</p>
                             </div>
                           </div>
                         ))}
@@ -464,7 +464,7 @@ export default function Community({ language }: Props) {
                           value={newComment}
                           onChange={e => setNewComment(e.target.value)}
                           placeholder={t.comment}
-                          className="flex-1 p-3 bg-purple-900/30 border border-purple-200 rounded-xl text-white text-sm placeholder-purple-400/60 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+                          className="flex-1 p-3 bg-gray-900/30 border border-gray-200 rounded-xl text-white text-sm placeholder-gray-400/60 focus:outline-none focus:ring-2 focus:ring-gray-500/50"
                           onKeyDown={e => {
                             if (e.key === 'Enter' && newComment.trim()) {
                               handleComment(post.id);
@@ -474,7 +474,7 @@ export default function Community({ language }: Props) {
                         <button
                           onClick={() => handleComment(post.id)}
                           disabled={!newComment.trim()}
-                          className="px-5 py-2 bg-gradient-to-r from-amber-500/80 to-purple-600/80 rounded-xl text-white text-sm font-medium hover:from-amber-500 hover:to-purple-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="px-5 py-2 bg-gradient-to-r from-gray-500/80 to-gray-600/80 rounded-xl text-white text-sm font-medium hover:from-gray-500 hover:to-gray-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                           {t.send} 🚀
                         </button>

@@ -262,8 +262,8 @@ export default function LunarReturnPage() {
       <main className="max-w-4xl mx-auto px-6 py-8">
         {/* 标题 */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-400/20 rounded-full text-sm text-gray-600 mb-4">
-            <Moon size={16} className="fill-slate-300" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-400/20 rounded-full text-sm text-gray-600 mb-4">
+            <Moon size={16} className="fill-gray-300" />
             {labels.subtitle}
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">{labels.title}</h1>
@@ -273,7 +273,7 @@ export default function LunarReturnPage() {
         {/* 输入表单 */}
         <div className="p-6 rounded-2xl bg-white/5 border border-gray-200 mb-6">
           <h3 className="font-bold mb-4 flex items-center gap-2">
-            <Star size={18} className="text-purple-400" />
+            <Star size={18} className="text-gray-400" />
             {labels.birthInfo}
           </h3>
 
@@ -338,13 +338,13 @@ export default function LunarReturnPage() {
           <button
             onClick={handleCalculate}
             disabled={loading}
-            className="w-full mt-6 py-3 bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-500 hover:to-slate-600 disabled:opacity-50 rounded-xl font-bold text-gray-900 transition-all flex items-center justify-center gap-2"
+            className="w-full mt-6 py-3 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-500 hover:to-gray-600 disabled:opacity-50 rounded-xl font-bold text-gray-900 transition-all flex items-center justify-center gap-2"
           >
             {loading ? <><Loader2 size={18} className="animate-spin" />{labels.calculating}</> : <><Moon size={18} className="fill-white" />{labels.calculate}</>}
           </button>
 
           {error && (
-            <div className="mt-4 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
+            <div className="mt-4 p-3 rounded-xl bg-gray-500/10 border border-gray-500/20 text-gray-400 text-sm">
               {error}
             </div>
           )}
@@ -357,7 +357,7 @@ export default function LunarReturnPage() {
             <div className="flex gap-2 p-1 rounded-xl bg-white/5 mb-6">
               {['info', 'chart', 'planets', 'aspects'].map(t => (
                 <button key={t} onClick={() => setTab(t)}
-                  className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${tab === t ? 'bg-slate-600 text-gray-900' : 'text-gray-500'}`}>
+                  className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${tab === t ? 'bg-gray-600 text-gray-900' : 'text-gray-500'}`}>
                   {labels[t as keyof typeof labels] || t}
                 </button>
               ))}
@@ -367,10 +367,10 @@ export default function LunarReturnPage() {
             {tab === 'info' && (
               <div className="space-y-4">
                 {/* 月返信息卡片 */}
-                <div className="p-6 rounded-2xl bg-gradient-to-br from-slate-600/30 to-slate-800/30 border border-gray-200">
+                <div className="p-6 rounded-2xl bg-gradient-to-br from-gray-600/30 to-gray-800/30 border border-gray-200">
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-slate-400/30 to-slate-600/30 flex items-center justify-center">
-                      <Moon size={32} className="text-gray-600 fill-slate-300" />
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-gray-400/30 to-gray-600/30 flex items-center justify-center">
+                      <Moon size={32} className="text-gray-600 fill-gray-300" />
                     </div>
                     <div>
                       <div className="text-sm text-gray-500">{labels.lunarReturnDate}</div>
@@ -396,26 +396,26 @@ export default function LunarReturnPage() {
                 {moonTheme && (
                   <div className="p-6 rounded-2xl bg-white/5 border border-gray-200">
                     <h3 className="font-bold mb-4 flex items-center gap-2">
-                      <Star size={18} className="text-amber-600 fill-amber-400" />
+                      <Star size={18} className="text-gray-600 fill-gray-400" />
                       {labels.monthlyTheme}
                     </h3>
                     
                     <div className="grid md:grid-cols-2 gap-4">
-                      <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20">
-                        <div className="text-xs text-amber-600 mb-1">{labels.themes}</div>
-                        <div className="text-lg font-bold text-amber-600">{moonTheme.theme}</div>
+                      <div className="p-4 rounded-xl bg-gray-500/10 border border-gray-500/20">
+                        <div className="text-xs text-gray-600 mb-1">{labels.themes}</div>
+                        <div className="text-lg font-bold text-gray-600">{moonTheme.theme}</div>
                       </div>
-                      <div className="p-4 rounded-xl bg-pink-500/10 border border-pink-500/20">
-                        <div className="text-xs text-pink-400 mb-1">{labels.emotional}</div>
-                        <div className="text-sm text-pink-200">{moonTheme.emotional}</div>
+                      <div className="p-4 rounded-xl bg-gray-500/10 border border-gray-500/20">
+                        <div className="text-xs text-gray-400 mb-1">{labels.emotional}</div>
+                        <div className="text-sm text-gray-200">{moonTheme.emotional}</div>
                       </div>
-                      <div className="p-4 rounded-xl bg-blue-500/10 border border-blue-500/20">
-                        <div className="text-xs text-blue-400 mb-1">{labels.reminder}</div>
-                        <div className="text-sm text-blue-200">{moonTheme.reminder}</div>
+                      <div className="p-4 rounded-xl bg-gray-500/10 border border-gray-500/20">
+                        <div className="text-xs text-gray-400 mb-1">{labels.reminder}</div>
+                        <div className="text-sm text-gray-200">{moonTheme.reminder}</div>
                       </div>
-                      <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20">
-                        <div className="text-xs text-green-400 mb-1">{labels.tip}</div>
-                        <div className="text-sm text-green-200">{moonTheme.tip}</div>
+                      <div className="p-4 rounded-xl bg-gray-500/10 border border-gray-500/20">
+                        <div className="text-xs text-gray-400 mb-1">{labels.tip}</div>
+                        <div className="text-sm text-gray-200">{moonTheme.tip}</div>
                       </div>
                     </div>
                   </div>
@@ -424,7 +424,7 @@ export default function LunarReturnPage() {
                 {/* 什么是月返盘 */}
                 <div className="p-6 rounded-2xl bg-white/5 border border-gray-200">
                   <h3 className="font-bold mb-4 flex items-center gap-2">
-                    <Info size={18} className="text-cyan-400" />
+                    <Info size={18} className="text-gray-400" />
                     {labels.info}
                   </h3>
                   <div className="text-sm text-gray-500 leading-relaxed space-y-3">
@@ -493,7 +493,7 @@ export default function LunarReturnPage() {
                       <div key={key} className="flex items-center justify-between p-3 rounded-lg bg-white/5">
                         <div className="flex items-center gap-3">
                           <span className="text-xl">{PLANET_SYMBOLS[key] || key[0]}</span>
-                          <span className="text-amber-600">{key === 'Sun' ? (lang === 'zh' ? '太阳' : lang === 'id' ? 'Matahari' : 'Sun') : key === 'Moon' ? (lang === 'zh' ? '月亮' : lang === 'id' ? 'Bulan' : 'Moon') : key}</span>
+                          <span className="text-gray-600">{key === 'Sun' ? (lang === 'zh' ? '太阳' : lang === 'id' ? 'Matahari' : 'Sun') : key === 'Moon' ? (lang === 'zh' ? '月亮' : lang === 'id' ? 'Bulan' : 'Moon') : key}</span>
                         </div>
                         <div className="text-right">
                           <span className="mr-2">{SIGN_SYMBOLS[p.sign]}</span>
@@ -515,9 +515,9 @@ export default function LunarReturnPage() {
                   {result.lunarReturn?.aspects?.slice(0, 15).map((asp: any, i: number) => (
                     <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-white/5">
                       <div className="flex items-center gap-2">
-                        <span className="text-amber-600">{PLANET_SYMBOLS[asp.planet1] || asp.planet1}</span>
+                        <span className="text-gray-600">{PLANET_SYMBOLS[asp.planet1] || asp.planet1}</span>
                         <span style={{ color: ASPECT_COLORS[asp.aspect] || '#888' }}>{asp.aspect}</span>
-                        <span className="text-amber-600">{PLANET_SYMBOLS[asp.planet2] || asp.planet2}</span>
+                        <span className="text-gray-600">{PLANET_SYMBOLS[asp.planet2] || asp.planet2}</span>
                       </div>
                       <span className="text-gray-500 text-sm">{Math.abs(asp.orb).toFixed(1)}°</span>
                     </div>

@@ -53,21 +53,21 @@ export default function TransitsFAQ() {
       </h2>
       <div className="space-y-3">
         {FAQS.map((item, i) => (
-          <div key={i} className="border border-purple-200 rounded-lg overflow-hidden">
+          <div key={i} className="border border-gray-200 rounded-lg overflow-hidden">
             <button
               onClick={() => setOpen(open === i ? -1 : i)}
-              className="w-full flex items-center justify-between p-4 text-left hover:bg-purple-500/5 transition-colors"
+              className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-500/5 transition-colors"
             >
               <span className="text-white font-medium">{item.q}</span>
               <ChevronDown
-                className={`w-5 h-5 text-purple-400 transition-transform ${open === i ? "rotate-180" : ""}`}
+                className={`w-5 h-5 text-gray-400 transition-transform ${open === i ? "rotate-180" : ""}`}
               />
             </button>
             {open === i && (
               <div className="px-4 pb-4">
-                <p className="text-purple-600 text-sm mb-2">{item.a}</p>
-                <p className="text-purple-300/70 text-xs mb-1">EN: {item.aEn}</p>
-                <p className="text-purple-300/70 text-xs">ID: {item.aId}</p>
+                <p className="text-gray-600 text-sm mb-2">{item.a}</p>
+                <p className="text-gray-300/70 text-xs mb-1">EN: {item.aEn}</p>
+                <p className="text-gray-300/70 text-xs">ID: {item.aId}</p>
               </div>
             )}
           </div>

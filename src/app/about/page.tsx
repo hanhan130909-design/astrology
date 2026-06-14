@@ -10,17 +10,17 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white text-gray-800">
       <main className="max-w-4xl mx-auto px-4 py-16">
-        <h1 className="text-3xl font-bold text-center mb-4 text-purple-700">{t.about?.title || "关于星缘"}</h1>
+        <h1 className="text-3xl font-bold text-center mb-4 text-gray-700">{t.about?.title || "关于星缘"}</h1>
         <p className="text-center text-gray-500 mb-16 max-w-xl mx-auto">
           基于真实天文计算的专业占星平台
         </p>
 
         {/* 品牌故事 */}
-        <section className="mb-12 p-8 rounded-2xl bg-purple-50 border border-purple-100">
+        <section className="mb-12 p-8 rounded-2xl bg-gray-50 border border-gray-100">
           <div className="flex items-start gap-4">
             <div className="text-3xl">✨</div>
             <div>
-              <h2 className="text-xl font-bold mb-3 text-purple-700">{t.about?.what || "星缘是什么"}</h2>
+              <h2 className="text-xl font-bold mb-3 text-gray-700">{t.about?.what || "星缘是什么"}</h2>
               <p className="leading-relaxed text-gray-600">
                 {t.about?.whatDesc || "星缘是一个基于专业天文计算引擎的在线占星平台。我们使用 astronomy-engine 算法库，精确计算行星位置、宫位系统和相位关系，为你提供专业级的星盘分析。"}
               </p>
@@ -29,11 +29,11 @@ export default function AboutPage() {
         </section>
 
         {/* 定位说明 */}
-        <section className="mb-12 p-8 rounded-2xl bg-rose-50 border border-rose-100">
+        <section className="mb-12 p-8 rounded-2xl bg-gray-50 border border-gray-100">
           <div className="flex items-start gap-4">
             <div className="text-3xl">🎯</div>
             <div>
-              <h2 className="text-xl font-bold mb-3 text-rose-600">{t.about?.not || "星缘不是什么"}</h2>
+              <h2 className="text-xl font-bold mb-3 text-gray-600">{t.about?.not || "星缘不是什么"}</h2>
               <p className="leading-relaxed text-gray-600">
                 {t.about?.notDesc || "星缘不是迷信算命工具，不是娱乐性格测试。我们提供基于天文学数据的专业占星解读，帮助你理解星盘中的能量模式与人生趋势。"}
               </p>
@@ -42,11 +42,11 @@ export default function AboutPage() {
         </section>
 
         {/* 工作原理 */}
-        <section className="mb-12 p-8 rounded-2xl bg-emerald-50 border border-emerald-100">
+        <section className="mb-12 p-8 rounded-2xl bg-gray-50 border border-gray-100">
           <div className="flex items-start gap-4">
             <div className="text-3xl">⚙️</div>
             <div>
-              <h2 className="text-xl font-bold mb-3 text-emerald-700">{t.about?.how || "如何工作"}</h2>
+              <h2 className="text-xl font-bold mb-3 text-gray-700">{t.about?.how || "如何工作"}</h2>
               <p className="leading-relaxed text-gray-600">
                 {t.about?.howDesc || "输入你的出生日期、时间和地点，系统调用 astronomy-engine 计算精确的行星黄道位置，结合宫位系统和相位算法，生成完整的星盘报告。"}
               </p>
@@ -101,7 +101,7 @@ export default function AboutPage() {
         <div className="text-center">
           <Link
             href="/natal"
-            className="inline-block px-8 py-4 rounded-full font-semibold text-lg bg-purple-600 text-white hover:bg-purple-700 transition-colors shadow-lg shadow-purple-200"
+            className="inline-block px-8 py-4 rounded-full font-semibold text-lg bg-gray-600 text-white hover:bg-gray-700 transition-colors shadow-lg shadow-gray-200"
           >
             {language === "zh" ? "立即生成你的星盘" : language === "id" ? "Hitung Bagan Anda" : "Generate Your Chart"} ✨
           </Link>

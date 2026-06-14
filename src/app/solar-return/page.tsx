@@ -93,11 +93,11 @@ export default function SolarReturnPage() {
 
       {showSaved && charts.length > 0 && (
         <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="p-4 rounded-xl bg-gray-50 border border-purple-200">
+          <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
             <h3 className="font-bold text-gray-900 mb-3">{language === 'zh' ? '已保存的星盘' : 'Saved Charts'}</h3>
             <div className="flex flex-wrap gap-2">
               {charts.map((c: any, i: number) => (
-                <button key={i} onClick={() => loadSavedChart(c)} className="px-3 py-1.5 rounded-lg bg-purple-500/20 hover:bg-purple-500/30 text-sm">
+                <button key={i} onClick={() => loadSavedChart(c)} className="px-3 py-1.5 rounded-lg bg-gray-500/20 hover:bg-gray-500/30 text-sm">
                   {c.name} - {c.birthDate.year}/{c.birthDate.month}/{c.birthDate.day}
                 </button>
               ))}
@@ -108,8 +108,8 @@ export default function SolarReturnPage() {
 
       <main className="max-w-7xl mx-auto px-6 py-8">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/20 rounded-full text-sm text-amber-600 mb-4">
-            <Sun size={16} className="fill-amber-300"/>
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-500/20 rounded-full text-sm text-gray-600 mb-4">
+            <Sun size={16} className="fill-gray-300"/>
             {language === 'zh' ? '太阳回归盘' : language === 'id' ? 'Solar Return' : 'Solar Return'}
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
@@ -126,7 +126,7 @@ export default function SolarReturnPage() {
           {/* Input Form */}
           <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200">
             <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-              <Calendar size={18} className="text-amber-600"/>
+              <Calendar size={18} className="text-gray-600"/>
               {language === 'zh' ? '出生信息' : 'Birth Information'}
             </h2>
             
@@ -183,20 +183,20 @@ export default function SolarReturnPage() {
               <input type="number" value={srYear} onChange={e => setSrYear(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm"/>
             </div>
 
-            <button onClick={calculateSolarReturn} disabled={loading} className="w-full py-3 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 disabled:opacity-50 rounded-xl font-bold text-gray-900 transition-all flex items-center justify-center gap-2">
+            <button onClick={calculateSolarReturn} disabled={loading} className="w-full py-3 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 disabled:opacity-50 rounded-xl font-bold text-gray-900 transition-all flex items-center justify-center gap-2">
               <Sun size={18} />
               {loading ? (language === 'zh' ? '计算中...' : 'Calculating...') : (language === 'zh' ? '计算日返盘' : 'Calculate Solar Return')}
             </button>
 
-            {error && <div className="mt-4 p-3 rounded-lg bg-red-500/20 text-red-300 text-sm">{error}</div>}
+            {error && <div className="mt-4 p-3 rounded-lg bg-gray-500/20 text-gray-300 text-sm">{error}</div>}
           </div>
 
           {/* Results */}
           <div>
             {chart?.solarReturn ? (
               <div className="space-y-6">
-                <div className="p-4 rounded-xl bg-amber-900/20 border border-amber-500/30">
-                  <h3 className="font-bold text-amber-600 mb-2 flex items-center gap-2">
+                <div className="p-4 rounded-xl bg-gray-900/20 border border-gray-500/30">
+                  <h3 className="font-bold text-gray-600 mb-2 flex items-center gap-2">
                     <Calendar size={16}/>
                     {language === 'zh' ? '日返时刻' : 'Solar Return Time'}
                   </h3>
@@ -235,7 +235,7 @@ export default function SolarReturnPage() {
                       return (
                         <div key={name} className="flex items-center justify-between p-2 rounded bg-gray-100">
                           <span className="text-gray-600">{name}</span>
-                          <span className="text-amber-600">{p.sign_cn || p.sign} {Math.floor(p.degree)}° {house ? `(${house.house}宫)` : ''}</span>
+                          <span className="text-gray-600">{p.sign_cn || p.sign} {Math.floor(p.degree)}° {house ? `(${house.house}宫)` : ''}</span>
                         </div>
                       );
                     })}

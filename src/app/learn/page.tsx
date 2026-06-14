@@ -82,7 +82,7 @@ export default function LearnPage() {
       <main className="max-w-4xl mx-auto px-6 py-8">
         {/* 标题 */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/20 rounded-full text-sm text-purple-700 mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-500/20 rounded-full text-sm text-gray-700 mb-4">
             <BookOpen size={16} />
             <span>{lang === 'zh' ? '知识库' : lang === 'id' ? 'Pustaka' : 'Knowledge Base'}</span>
           </div>
@@ -97,8 +97,8 @@ export default function LearnPage() {
             className="w-full p-4 rounded-2xl bg-white/5 border border-gray-200 text-left flex items-center justify-between hover:bg-white/10 transition-all"
           >
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center">
-                <PlanetIcon size={24} className="text-amber-600" />
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gray-500/20 to-gray-500/20 flex items-center justify-center">
+                <PlanetIcon size={24} className="text-gray-600" />
               </div>
               <div>
                 <div className="text-2xl">{planetInfo.symbol}</div>
@@ -120,7 +120,7 @@ export default function LearnPage() {
                     onClick={() => { setSelectedPlanet(p); setShowList(false); }}
                     className={`p-3 rounded-xl text-center transition-all ${
                       isActive 
-                        ? "bg-purple-100 border border-purple-300 text-purple-700" 
+                        ? "bg-gray-100 border border-gray-300 text-gray-700" 
                         : "bg-white/5 hover:bg-white/10 text-gray-600"
                     }`}
                   >
@@ -136,9 +136,9 @@ export default function LearnPage() {
         {/* 行星详情 */}
         <div className="space-y-6">
           {/* 核心含义 */}
-          <div className="p-6 rounded-2xl bg-gradient-to-br from-purple-50/30 to-pink-900/20 border border-gray-200">
-            <h3 className="text-sm font-bold text-amber-600 mb-3 flex items-center gap-2">
-              <Star size={16} className="fill-amber-300" /> {labels.meaning}
+          <div className="p-6 rounded-2xl bg-gradient-to-br from-gray-50/30 to-gray-900/20 border border-gray-200">
+            <h3 className="text-sm font-bold text-gray-600 mb-3 flex items-center gap-2">
+              <Star size={16} className="fill-gray-300" /> {labels.meaning}
             </h3>
             <div className="text-3xl mb-3">{planetInfo.symbol}</div>
             <h4 className="text-xl font-bold text-gray-900 mb-2">{planetInfo.name}</h4>
@@ -147,10 +147,10 @@ export default function LearnPage() {
 
           {/* 特质标签 */}
           <div className="p-6 rounded-2xl bg-white/5 border border-gray-200">
-            <h3 className="text-sm font-bold text-purple-700 mb-3">{labels.traits}</h3>
+            <h3 className="text-sm font-bold text-gray-700 mb-3">{labels.traits}</h3>
             <div className="flex flex-wrap gap-2">
               {(planetInfo.traits as string[]).map((trait, i) => (
-                <span key={i} className="px-4 py-2 rounded-full bg-purple-500/20 border border-purple-200 text-purple-600 text-sm">
+                <span key={i} className="px-4 py-2 rounded-full bg-gray-500/20 border border-gray-200 text-gray-600 text-sm">
                   {trait}
                 </span>
               ))}
@@ -184,7 +184,7 @@ export default function LearnPage() {
 
         {/* 底部导航 */}
         <div className="mt-12 text-center">
-          <Link href="/horoscope" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-xl font-bold text-gray-900 transition-all">
+          <Link href="/horoscope" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 rounded-xl font-bold text-gray-900 transition-all">
             <Star size={18} className="fill-white" />
             {lang === 'zh' ? '查看星座运势' : lang === 'id' ? 'Lihat Horoskop' : 'View Horoscopes'}
           </Link>

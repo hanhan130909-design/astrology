@@ -225,9 +225,9 @@ export default function DetailedHoroscope({ language = "id" }: DetailedHoroscope
   const currentData = horoscopeData[selectedSign as keyof typeof horoscopeData];
 
   const getScoreColor = (score: number) => {
-    if (score >= 85) return "text-green-400";
-    if (score >= 70) return "text-yellow-400";
-    return "text-orange-400";
+    if (score >= 85) return "text-gray-400";
+    if (score >= 70) return "text-gray-400";
+    return "text-gray-400";
   };
 
   return (
@@ -240,8 +240,8 @@ export default function DetailedHoroscope({ language = "id" }: DetailedHoroscope
             onClick={() => setPeriod(p)}
             className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
               period === p
-                ? "bg-gradient-to-r from-amber-500 to-purple-600 text-white"
-                : "bg-purple-900/50 text-purple-600 border border-purple-200 hover:border-amber-400/50"
+                ? "bg-gradient-to-r from-gray-500 to-gray-600 text-white"
+                : "bg-gray-900/50 text-gray-600 border border-gray-200 hover:border-gray-400/50"
             }`}
           >
             {t[p]}
@@ -257,12 +257,12 @@ export default function DetailedHoroscope({ language = "id" }: DetailedHoroscope
             onClick={() => setSelectedSign(sign.id)}
             className={`p-3 rounded-xl text-center transition-all ${
               selectedSign === sign.id
-                ? "bg-gradient-to-br from-amber-500/30 to-purple-600/30 border-2 border-amber-400"
-                : "bg-purple-900/30 border border-purple-200 hover:border-purple-400/50"
+                ? "bg-gradient-to-br from-gray-500/30 to-gray-600/30 border-2 border-gray-400"
+                : "bg-gray-900/30 border border-gray-200 hover:border-gray-400/50"
             }`}
           >
             <div className="text-2xl">{sign.symbol}</div>
-            <div className="text-xs text-purple-600 mt-1">{sign.name[language]}</div>
+            <div className="text-xs text-gray-600 mt-1">{sign.name[language]}</div>
           </button>
         ))}
       </div>
@@ -271,8 +271,8 @@ export default function DetailedHoroscope({ language = "id" }: DetailedHoroscope
       {currentData && (
         <div className="space-y-4">
           {/* 金句 */}
-          <div className="p-4 rounded-xl bg-gradient-to-r from-amber-900/30 to-purple-900/30 border border-amber-500/30 text-center">
-            <p className="text-lg text-amber-100 italic">&ldquo;{currentData.quote}&rdquo;</p>
+          <div className="p-4 rounded-xl bg-gradient-to-r from-gray-900/30 to-gray-900/30 border border-gray-500/30 text-center">
+            <p className="text-lg text-gray-100 italic">&ldquo;{currentData.quote}&rdquo;</p>
           </div>
 
           {/* 五维运势 */}
@@ -284,43 +284,43 @@ export default function DetailedHoroscope({ language = "id" }: DetailedHoroscope
               { key: "health", icon: "💪", value: currentData.health },
               { key: "finance", icon: "💰", value: currentData.finance },
             ].map((item) => (
-              <div key={item.key} className="text-center p-3 rounded-xl bg-purple-900/30 border border-purple-200">
+              <div key={item.key} className="text-center p-3 rounded-xl bg-gray-900/30 border border-gray-200">
                 <div className="text-2xl mb-1">{item.icon}</div>
                 <div className={`text-xl font-bold ${getScoreColor(item.value)}`}>{item.value}%</div>
-                <div className="text-xs text-purple-300">{t[item.key as keyof typeof t]}</div>
+                <div className="text-xs text-gray-300">{t[item.key as keyof typeof t]}</div>
               </div>
             ))}
           </div>
 
           {/* 详细解读 */}
-          <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200">
-            <h3 className="font-semibold text-amber-100 mb-2">{t.detail}</h3>
-            <p className="text-purple-600 leading-relaxed">{currentData.detail}</p>
+          <div className="p-4 rounded-xl bg-gray-900/30 border border-gray-200">
+            <h3 className="font-semibold text-gray-100 mb-2">{t.detail}</h3>
+            <p className="text-gray-600 leading-relaxed">{currentData.detail}</p>
           </div>
 
           {/* 幸运指南 */}
           <div className="grid grid-cols-3 gap-3">
-            <div className="text-center p-4 rounded-xl bg-gradient-to-br from-green-900/30 to-emerald-900/30 border border-green-500/30">
-              <div className="text-sm text-green-300 mb-1">{t.number}</div>
-              <div className="text-2xl font-bold text-green-400">{currentData.lucky.number}</div>
+            <div className="text-center p-4 rounded-xl bg-gradient-to-br from-gray-900/30 to-gray-900/30 border border-gray-500/30">
+              <div className="text-sm text-gray-300 mb-1">{t.number}</div>
+              <div className="text-2xl font-bold text-gray-400">{currentData.lucky.number}</div>
             </div>
-            <div className="text-center p-4 rounded-xl bg-gradient-to-br from-pink-900/30 to-rose-900/30 border border-pink-500/30">
-              <div className="text-sm text-pink-300 mb-1">{t.color}</div>
-              <div className="text-xl font-bold text-pink-400">{currentData.lucky.color}</div>
+            <div className="text-center p-4 rounded-xl bg-gradient-to-br from-gray-900/30 to-gray-900/30 border border-gray-500/30">
+              <div className="text-sm text-gray-300 mb-1">{t.color}</div>
+              <div className="text-xl font-bold text-gray-400">{currentData.lucky.color}</div>
             </div>
-            <div className="text-center p-4 rounded-xl bg-gradient-to-br from-blue-900/30 to-indigo-50/30 border border-blue-500/30">
-              <div className="text-sm text-blue-300 mb-1">{t.time}</div>
-              <div className="text-lg font-bold text-blue-400">{currentData.lucky.time}</div>
+            <div className="text-center p-4 rounded-xl bg-gradient-to-br from-gray-900/30 to-gray-50/30 border border-gray-500/30">
+              <div className="text-sm text-gray-300 mb-1">{t.time}</div>
+              <div className="text-lg font-bold text-gray-400">{currentData.lucky.time}</div>
             </div>
           </div>
 
           {/* 注意事项 */}
-          <div className="p-4 rounded-xl bg-orange-900/20 border border-orange-500/30">
+          <div className="p-4 rounded-xl bg-gray-900/20 border border-gray-500/30">
             <div className="flex items-start gap-3">
               <span className="text-xl">⚠️</span>
               <div>
-                <h4 className="font-semibold text-orange-300 mb-1">{t.warning}</h4>
-                <p className="text-orange-200 text-sm">{currentData.warning}</p>
+                <h4 className="font-semibold text-gray-300 mb-1">{t.warning}</h4>
+                <p className="text-gray-200 text-sm">{currentData.warning}</p>
               </div>
             </div>
           </div>

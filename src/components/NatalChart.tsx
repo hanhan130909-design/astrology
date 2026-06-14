@@ -411,7 +411,7 @@ export default function NatalChart({
           border: "1px solid rgba(255,215,0,0.3)"
         }}
       >
-        <div className="font-bold text-amber-600">
+        <div className="font-bold text-gray-600">
           {PLANET_SYMBOLS[planetName]} {planetName} {isOverlay && "(Transit)"}
         </div>
         <div className="text-gray-700">

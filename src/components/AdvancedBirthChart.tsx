@@ -149,15 +149,15 @@ export default function AdvancedBirthChart({ language = "id" }: AdvancedBirthCha
   return (
     <div className="w-full space-y-6">
       {/* 高级设置 */}
-      <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200 space-y-4">
+      <div className="p-4 rounded-xl bg-gray-900/30 border border-gray-200 space-y-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {/* 宫位系统选择 */}
           <div>
-            <label className="text-sm text-purple-300">{t.houseSystem}</label>
+            <label className="text-sm text-gray-300">{t.houseSystem}</label>
             <select
               value={formData.houseSystem}
               onChange={(e) => setFormData({ ...formData, houseSystem: e.target.value })}
-              className="w-full p-2 bg-purple-900/50 border border-purple-200 rounded-lg text-white mt-1"
+              className="w-full p-2 bg-gray-900/50 border border-gray-200 rounded-lg text-white mt-1"
             >
               {HOUSE_SYSTEMS.map(h => (
                 <option key={h.id} value={h.id}>{h.name}</option>
@@ -167,7 +167,7 @@ export default function AdvancedBirthChart({ language = "id" }: AdvancedBirthCha
 
           {/* 显示选项 */}
           <div className="col-span-2 flex items-center gap-6 pt-6">
-            <label className="flex items-center gap-2 text-purple-600 cursor-pointer">
+            <label className="flex items-center gap-2 text-gray-600 cursor-pointer">
               <input
                 type="checkbox"
                 checked={showAsteroids}
@@ -176,7 +176,7 @@ export default function AdvancedBirthChart({ language = "id" }: AdvancedBirthCha
               />
               {t.showAsteroids}
             </label>
-            <label className="flex items-center gap-2 text-purple-600 cursor-pointer">
+            <label className="flex items-center gap-2 text-gray-600 cursor-pointer">
               <input
                 type="checkbox"
                 checked={showNodes}
@@ -192,39 +192,39 @@ export default function AdvancedBirthChart({ language = "id" }: AdvancedBirthCha
       {/* 行星分类展示 */}
       <div className="space-y-4">
         {/* 个人行星 */}
-        <div className="p-4 rounded-xl bg-gradient-to-r from-amber-900/20 to-orange-900/20 border border-amber-500/30">
-          <h4 className="text-amber-600 font-semibold mb-3">{t.personalPlanets}</h4>
+        <div className="p-4 rounded-xl bg-gradient-to-r from-gray-900/20 to-gray-900/20 border border-gray-500/30">
+          <h4 className="text-gray-600 font-semibold mb-3">{t.personalPlanets}</h4>
           <div className="flex flex-wrap gap-3">
             {getPlanetsByCategory("personal").map(planet => (
-              <div key={planet.id} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-purple-900/30">
+              <div key={planet.id} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-900/30">
                 <span style={{ color: planet.color }} className="text-xl">{planet.symbol}</span>
-                <span className="text-purple-600 text-sm">{planet.name[language]}</span>
+                <span className="text-gray-600 text-sm">{planet.name[language]}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* 社会行星 */}
-        <div className="p-4 rounded-xl bg-gradient-to-r from-blue-900/20 to-indigo-50/20 border border-blue-500/30">
-          <h4 className="text-blue-200 font-semibold mb-3">{t.socialPlanets}</h4>
+        <div className="p-4 rounded-xl bg-gradient-to-r from-gray-900/20 to-gray-50/20 border border-gray-500/30">
+          <h4 className="text-gray-200 font-semibold mb-3">{t.socialPlanets}</h4>
           <div className="flex flex-wrap gap-3">
             {getPlanetsByCategory("social").map(planet => (
-              <div key={planet.id} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-purple-900/30">
+              <div key={planet.id} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-900/30">
                 <span style={{ color: planet.color }} className="text-xl">{planet.symbol}</span>
-                <span className="text-purple-600 text-sm">{planet.name[language]}</span>
+                <span className="text-gray-600 text-sm">{planet.name[language]}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* 世代行星 */}
-        <div className="p-4 rounded-xl bg-gradient-to-r from-purple-50/20 to-pink-900/20 border border-purple-200">
-          <h4 className="text-purple-600 font-semibold mb-3">{t.transpersonalPlanets}</h4>
+        <div className="p-4 rounded-xl bg-gradient-to-r from-gray-50/20 to-gray-900/20 border border-gray-200">
+          <h4 className="text-gray-600 font-semibold mb-3">{t.transpersonalPlanets}</h4>
           <div className="flex flex-wrap gap-3">
             {getPlanetsByCategory("transpersonal").map(planet => (
-              <div key={planet.id} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-purple-900/30">
+              <div key={planet.id} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-900/30">
                 <span style={{ color: planet.color }} className="text-xl">{planet.symbol}</span>
-                <span className="text-purple-600 text-sm">{planet.name[language]}</span>
+                <span className="text-gray-600 text-sm">{planet.name[language]}</span>
               </div>
             ))}
           </div>
@@ -232,13 +232,13 @@ export default function AdvancedBirthChart({ language = "id" }: AdvancedBirthCha
 
         {/* 敏感点 */}
         {showNodes && (
-          <div className="p-4 rounded-xl bg-gradient-to-r from-green-900/20 to-teal-900/20 border border-green-500/30">
-            <h4 className="text-green-200 font-semibold mb-3">{t.asteroids}</h4>
+          <div className="p-4 rounded-xl bg-gradient-to-r from-gray-900/20 to-gray-900/20 border border-gray-500/30">
+            <h4 className="text-gray-200 font-semibold mb-3">{t.asteroids}</h4>
             <div className="flex flex-wrap gap-3">
               {getPlanetsByCategory("points").map(planet => (
-                <div key={planet.id} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-purple-900/30">
+                <div key={planet.id} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-900/30">
                   <span style={{ color: planet.color }} className="text-xl">{planet.symbol}</span>
-                  <span className="text-purple-600 text-sm">{planet.name[language]}</span>
+                  <span className="text-gray-600 text-sm">{planet.name[language]}</span>
                 </div>
               ))}
             </div>
@@ -247,13 +247,13 @@ export default function AdvancedBirthChart({ language = "id" }: AdvancedBirthCha
 
         {/* 小行星 */}
         {showAsteroids && (
-          <div className="p-4 rounded-xl bg-gradient-to-r from-cyan-900/20 to-blue-900/20 border border-cyan-500/30">
-            <h4 className="text-cyan-200 font-semibold mb-3">{language === "zh" ? "小行星" : "Asteroids"}</h4>
+          <div className="p-4 rounded-xl bg-gradient-to-r from-gray-900/20 to-gray-900/20 border border-gray-500/30">
+            <h4 className="text-gray-200 font-semibold mb-3">{language === "zh" ? "小行星" : "Asteroids"}</h4>
             <div className="flex flex-wrap gap-3">
               {getPlanetsByCategory("asteroid").map(planet => (
-                <div key={planet.id} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-purple-900/30">
+                <div key={planet.id} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-900/30">
                   <span style={{ color: planet.color }} className="text-xl">{planet.symbol}</span>
-                  <span className="text-purple-600 text-sm">{planet.name[language]}</span>
+                  <span className="text-gray-600 text-sm">{planet.name[language]}</span>
                 </div>
               ))}
             </div>
@@ -263,8 +263,8 @@ export default function AdvancedBirthChart({ language = "id" }: AdvancedBirthCha
 
       {/* 元素和模式分析 */}
       <div className="grid md:grid-cols-2 gap-4">
-        <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200">
-          <h4 className="text-amber-600 font-semibold mb-3">{t.elements}</h4>
+        <div className="p-4 rounded-xl bg-gray-900/30 border border-gray-200">
+          <h4 className="text-gray-600 font-semibold mb-3">{t.elements}</h4>
           <div className="space-y-2">
             {["fire", "earth", "air", "water"].map(element => {
               const colors: Record<string, string> = {
@@ -283,19 +283,19 @@ export default function AdvancedBirthChart({ language = "id" }: AdvancedBirthCha
               return (
                 <div key={element} className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded" style={{ backgroundColor: colors[element] }} />
-                  <span className="text-purple-600">{names[element][language]}</span>
-                  <div className="flex-1 h-2 bg-purple-900/50 rounded-full overflow-hidden">
+                  <span className="text-gray-600">{names[element][language]}</span>
+                  <div className="flex-1 h-2 bg-gray-900/50 rounded-full overflow-hidden">
                     <div className="h-full rounded-full" style={{ width: `${count * 20}%`, backgroundColor: colors[element] }} />
                   </div>
-                  <span className="text-purple-300 text-sm">{count}</span>
+                  <span className="text-gray-300 text-sm">{count}</span>
                 </div>
               );
             })}
           </div>
         </div>
 
-        <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200">
-          <h4 className="text-amber-600 font-semibold mb-3">{t.modes}</h4>
+        <div className="p-4 rounded-xl bg-gray-900/30 border border-gray-200">
+          <h4 className="text-gray-600 font-semibold mb-3">{t.modes}</h4>
           <div className="space-y-2">
             {["cardinal", "fixed", "mutable"].map(mode => {
               const colors: Record<string, string> = {
@@ -312,11 +312,11 @@ export default function AdvancedBirthChart({ language = "id" }: AdvancedBirthCha
               return (
                 <div key={mode} className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded" style={{ backgroundColor: colors[mode] }} />
-                  <span className="text-purple-600">{names[mode][language]}</span>
-                  <div className="flex-1 h-2 bg-purple-900/50 rounded-full overflow-hidden">
+                  <span className="text-gray-600">{names[mode][language]}</span>
+                  <div className="flex-1 h-2 bg-gray-900/50 rounded-full overflow-hidden">
                     <div className="h-full rounded-full" style={{ width: `${count * 20}%`, backgroundColor: colors[mode] }} />
                   </div>
-                  <span className="text-purple-300 text-sm">{count}</span>
+                  <span className="text-gray-300 text-sm">{count}</span>
                 </div>
               );
             })}

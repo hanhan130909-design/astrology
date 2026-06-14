@@ -472,9 +472,9 @@ export default function ConsultationPage() {
         {/* Success Modal */}
         {bookingSuccess && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-            <div className="bg-[#0f0f1a] rounded-2xl border border-purple-200 p-8 text-center max-w-sm">
-              <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="w-8 h-8 text-green-400" />
+            <div className="bg-[#0f0f1a] rounded-2xl border border-gray-200 p-8 text-center max-w-sm">
+              <div className="w-16 h-16 bg-gray-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <CheckCircle className="w-8 h-8 text-gray-400" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">{t.bookingSuccess}</h3>
               <p className="text-gray-400 mb-4">
@@ -487,26 +487,26 @@ export default function ConsultationPage() {
 
         <div className="max-w-4xl mx-auto px-4 py-6">
           {/* Profile Card */}
-          <div className="bg-gradient-to-br from-purple-50/30 to-pink-900/30 rounded-2xl p-6 border border-purple-200 mb-6">
+          <div className="bg-gradient-to-br from-gray-50/30 to-gray-900/30 rounded-2xl p-6 border border-gray-200 mb-6">
             <div className="flex items-start gap-4 mb-4">
               <div className="relative">
-                <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-4xl">
+                <div className="w-20 h-20 bg-gradient-to-br from-gray-500 to-gray-500 rounded-full flex items-center justify-center text-4xl">
                   {selectedAstrologer.avatar}
                 </div>
                 {selectedAstrologer.isOnline && (
-                  <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-[#ffffff]" />
+                  <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-gray-500 rounded-full border-2 border-[#ffffff]" />
                 )}
               </div>
               <div className="flex-1">
                 <h2 className="text-xl font-bold text-gray-900 mb-1">{selectedAstrologer.name}</h2>
-                <p className="text-purple-400 text-sm mb-2">{selectedAstrologer.title}</p>
+                <p className="text-gray-400 text-sm mb-2">{selectedAstrologer.title}</p>
                 <div className="flex items-center gap-4 text-sm">
-                  <span className="flex items-center gap-1 text-amber-600">
+                  <span className="flex items-center gap-1 text-gray-600">
                     <Star className="w-4 h-4 fill-current" />
                     {selectedAstrologer.rating} ({selectedAstrologer.reviews} {t.reviews})
                   </span>
                   <span className={`px-2 py-1 rounded-full text-xs ${
-                    selectedAstrologer.isOnline ? "bg-green-500/20 text-green-400" : "bg-gray-500/20 text-gray-400"
+                    selectedAstrologer.isOnline ? "bg-gray-500/20 text-gray-400" : "bg-gray-500/20 text-gray-400"
                   }`}>
                     {selectedAstrologer.isOnline ? t.online : t.offline}
                   </span>
@@ -530,19 +530,19 @@ export default function ConsultationPage() {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-4 mb-6">
             <div className="bg-white/5 rounded-xl p-4 text-center border border-gray-200">
-              <Clock className="w-5 h-5 text-purple-400 mx-auto mb-2" />
+              <Clock className="w-5 h-5 text-gray-400 mx-auto mb-2" />
               <div className="text-gray-900 font-medium">{t.responseTime}</div>
               <div className="text-gray-400 text-sm">{selectedAstrologer.responseTime}</div>
             </div>
             <div className="bg-white/5 rounded-xl p-4 text-center border border-gray-200">
-              <Calendar className="w-5 h-5 text-purple-400 mx-auto mb-2" />
+              <Calendar className="w-5 h-5 text-gray-400 mx-auto mb-2" />
               <div className="text-gray-900 font-medium">
                 {language === "zh" ? "可预约" : language === "id" ? "Tersedia" : "Available"}
               </div>
               <div className="text-gray-400 text-sm">{selectedAstrologer.availability}</div>
             </div>
             <div className="bg-white/5 rounded-xl p-4 text-center border border-gray-200">
-              <MessageSquare className="w-5 h-5 text-purple-400 mx-auto mb-2" />
+              <MessageSquare className="w-5 h-5 text-gray-400 mx-auto mb-2" />
               <div className="text-gray-900 font-medium">{t.languages}</div>
               <div className="text-gray-400 text-sm">{selectedAstrologer.languages.join(", ")}</div>
             </div>
@@ -562,7 +562,7 @@ export default function ConsultationPage() {
                   onClick={() => setSelectedType(type.id as "video" | "voice" | "chat")}
                   className={`p-4 rounded-xl border transition-all ${
                     selectedType === type.id
-                      ? "bg-purple-500/20 border-purple-500/50 text-purple-700"
+                      ? "bg-gray-500/20 border-gray-500/50 text-gray-700"
                       : "bg-white/5 border-gray-200 text-gray-400 hover:border-white/20"
                   }`}
                 >
@@ -589,7 +589,7 @@ export default function ConsultationPage() {
                   disabled={!slot.available}
                   className={`p-3 rounded-xl border text-sm font-medium transition-all ${
                     selectedSlot === slot.time
-                      ? "bg-purple-500/20 border-purple-500/50 text-purple-700"
+                      ? "bg-gray-500/20 border-gray-500/50 text-gray-700"
                       : slot.available
                       ? "bg-white/5 border-gray-200 text-gray-700 hover:border-white/20"
                       : "bg-white/5 border-gray-200 text-gray-600 cursor-not-allowed"
@@ -600,7 +600,7 @@ export default function ConsultationPage() {
               ))}
             </div>
             {selectedSlot && (
-              <div className="mt-4 p-4 bg-purple-500/10 rounded-xl border border-purple-200">
+              <div className="mt-4 p-4 bg-gray-500/10 rounded-xl border border-gray-200">
                 <div className="flex items-center justify-between">
                   <span className="text-gray-700">
                     {language === "zh" ? "选择时间" : language === "id" ? "Waktu dipilih" : "Selected Time"}: 
@@ -618,7 +618,7 @@ export default function ConsultationPage() {
           <button
             onClick={handleBook}
             disabled={!selectedSlot}
-            className="w-full py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl text-gray-900 font-semibold hover:from-purple-500 hover:to-pink-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-4 bg-gradient-to-r from-gray-600 to-gray-600 rounded-xl text-gray-900 font-semibold hover:from-gray-500 hover:to-gray-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {t.bookSession}
           </button>
@@ -647,7 +647,7 @@ export default function ConsultationPage() {
                 type="checkbox"
                 checked={filterOnline}
                 onChange={(e) => setFilterOnline(e.target.checked)}
-                className="w-4 h-4 rounded bg-white/5 border-white/20 text-purple-500 focus:ring-purple-500"
+                className="w-4 h-4 rounded bg-white/5 border-white/20 text-gray-500 focus:ring-gray-500"
               />
               <span className="text-gray-700 text-sm">{t.filterOnline}</span>
             </label>
@@ -657,7 +657,7 @@ export default function ConsultationPage() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-              className="bg-white/5 border border-gray-200 rounded-lg px-3 py-1.5 text-sm text-gray-900 focus:border-purple-500/50 outline-none"
+              className="bg-white/5 border border-gray-200 rounded-lg px-3 py-1.5 text-sm text-gray-900 focus:border-gray-500/50 outline-none"
             >
               <option value="popularity">{t.popularity}</option>
               <option value="priceLow">{t.priceLow}</option>
@@ -671,34 +671,34 @@ export default function ConsultationPage() {
         {!filterOnline && (
           <div className="mb-8">
             <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-              <Award className="w-5 h-5 text-amber-600" />
+              <Award className="w-5 h-5 text-gray-600" />
               {t.featured}
             </h3>
             <div className="grid md:grid-cols-2 gap-4">
               {ASTROLOGERS.filter(a => a.featured).map((astrologer) => (
                 <div
                   key={astrologer.id}
-                  className="bg-gradient-to-br from-amber-900/20 to-orange-900/20 rounded-2xl p-6 border border-amber-500/20"
+                  className="bg-gradient-to-br from-gray-900/20 to-gray-900/20 rounded-2xl p-6 border border-gray-500/20"
                 >
                   <div className="flex items-start gap-4">
                     <div className="relative">
-                      <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full flex items-center justify-center text-3xl">
+                      <div className="w-16 h-16 bg-gradient-to-br from-gray-500 to-gray-500 rounded-full flex items-center justify-center text-3xl">
                         {astrologer.avatar}
                       </div>
                       {astrologer.isOnline && (
-                        <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-[#ffffff]" />
+                        <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-gray-500 rounded-full border-2 border-[#ffffff]" />
                       )}
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-2">
                         <h4 className="font-bold text-gray-900">{astrologer.name}</h4>
-                        <span className="px-2 py-0.5 bg-amber-500/20 text-amber-600 rounded text-xs">
+                        <span className="px-2 py-0.5 bg-gray-500/20 text-gray-600 rounded text-xs">
                           {t.featured}
                         </span>
                       </div>
-                      <p className="text-purple-400 text-sm mb-2">{astrologer.title}</p>
+                      <p className="text-gray-400 text-sm mb-2">{astrologer.title}</p>
                       <div className="flex items-center gap-3 text-sm">
-                        <span className="flex items-center gap-1 text-amber-600">
+                        <span className="flex items-center gap-1 text-gray-600">
                           <Star className="w-4 h-4 fill-current" />
                           {astrologer.rating}
                         </span>
@@ -712,7 +712,7 @@ export default function ConsultationPage() {
                   </div>
                   <button
                     onClick={() => setSelectedAstrologer(astrologer)}
-                    className="w-full mt-4 py-2 bg-gradient-to-r from-amber-600 to-orange-600 rounded-lg text-gray-900 font-medium hover:from-amber-500 hover:to-orange-500 transition-all"
+                    className="w-full mt-4 py-2 bg-gradient-to-r from-gray-600 to-gray-600 rounded-lg text-gray-900 font-medium hover:from-gray-500 hover:to-gray-500 transition-all"
                   >
                     {t.bookSession}
                   </button>
@@ -729,20 +729,20 @@ export default function ConsultationPage() {
             {filteredAstrologers.map((astrologer) => (
               <div
                 key={astrologer.id}
-                className="bg-white/5 rounded-2xl p-5 border border-gray-200 hover:border-purple-200 transition-all"
+                className="bg-white/5 rounded-2xl p-5 border border-gray-200 hover:border-gray-200 transition-all"
               >
                 <div className="flex items-start gap-3 mb-3">
                   <div className="relative">
-                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-2xl">
+                    <div className="w-12 h-12 bg-gradient-to-br from-gray-500 to-gray-500 rounded-full flex items-center justify-center text-2xl">
                       {astrologer.avatar}
                     </div>
                     {astrologer.isOnline && (
-                      <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-[#ffffff]" />
+                      <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-gray-500 rounded-full border-2 border-[#ffffff]" />
                     )}
                   </div>
                   <div className="flex-1 min-w-0">
                     <h4 className="font-semibold text-gray-900 truncate">{astrologer.name}</h4>
-                    <p className="text-purple-400 text-xs truncate">{astrologer.title}</p>
+                    <p className="text-gray-400 text-xs truncate">{astrologer.title}</p>
                   </div>
                   <div className="text-right">
                     <div className="font-bold text-gray-900">${astrologer.hourlyRate}</div>
@@ -751,7 +751,7 @@ export default function ConsultationPage() {
                 </div>
 
                 <div className="flex items-center gap-3 text-sm mb-3">
-                  <span className="flex items-center gap-1 text-amber-600">
+                  <span className="flex items-center gap-1 text-gray-600">
                     <Star className="w-3 h-3 fill-current" />
                     {astrologer.rating}
                   </span>
@@ -774,7 +774,7 @@ export default function ConsultationPage() {
                 <div className="flex gap-2">
                   <button
                     onClick={() => setSelectedAstrologer(astrologer)}
-                    className="flex-1 py-2 bg-purple-500/20 text-purple-700 rounded-lg text-sm font-medium hover:bg-purple-500/30 transition-colors"
+                    className="flex-1 py-2 bg-gray-500/20 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-500/30 transition-colors"
                   >
                     {t.bookSession}
                   </button>

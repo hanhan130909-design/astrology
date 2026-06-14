@@ -245,11 +245,11 @@ const blogArticles: BlogArticle[] = [
 
 // Category color mapping
 const categoryColors: Record<string, string> = {
-  tutorial: 'bg-blue-500/20 text-blue-400',
-  guide: 'bg-purple-500/20 text-purple-400',
-  analysis: 'bg-green-500/20 text-green-400',
-  horoscope: 'bg-amber-500/20 text-amber-600',
-  technology: 'bg-cyan-500/20 text-cyan-400',
+  tutorial: 'bg-gray-500/20 text-gray-400',
+  guide: 'bg-gray-500/20 text-gray-400',
+  analysis: 'bg-gray-500/20 text-gray-400',
+  horoscope: 'bg-gray-500/20 text-gray-600',
+  technology: 'bg-gray-500/20 text-gray-400',
 };
 
 export default function BlogPage() {
@@ -282,7 +282,7 @@ export default function BlogPage() {
 
       {/* Hero Section */}
       <section className="py-20 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-50/20 via-transparent to-pink-900/20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-50/20 via-transparent to-gray-900/20" />
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             {currentT.title}
@@ -297,7 +297,7 @@ export default function BlogPage() {
       <section className="px-4 mb-12">
         <div className="max-w-6xl mx-auto">
           <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-3">
-            <span className="w-1 h-6 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full inline-block" />
+            <span className="w-1 h-6 bg-gradient-to-b from-gray-500 to-gray-500 rounded-full inline-block" />
             {currentT.featured}
           </h3>
           
@@ -306,10 +306,10 @@ export default function BlogPage() {
             {blogArticles.map((article) => (
               <article
                 key={article.id}
-                className="group bg-white/5 rounded-2xl overflow-hidden border border-gray-200 hover:border-purple-200 transition-all duration-300 hover:-translate-y-1"
+                className="group bg-white/5 rounded-2xl overflow-hidden border border-gray-200 hover:border-gray-200 transition-all duration-300 hover:-translate-y-1"
               >
                 {/* Gradient Image Area */}
-                <div className="aspect-video bg-gradient-to-br from-purple-50/30 via-pink-900/20 to-indigo-50/30 flex items-center justify-center relative">
+                <div className="aspect-video bg-gradient-to-br from-gray-50/30 via-gray-900/20 to-gray-50/30 flex items-center justify-center relative">
                   <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent opacity-60" />
                   <span className="text-5xl relative z-10">✨</span>
                   
@@ -333,7 +333,7 @@ export default function BlogPage() {
                   </div>
                   
                   {/* Title */}
-                  <h4 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-purple-400 transition-colors line-clamp-2">
+                  <h4 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-gray-400 transition-colors line-clamp-2">
                     {article.title[language] || article.title.en}
                   </h4>
                   
@@ -361,7 +361,7 @@ export default function BlogPage() {
                     </div>
                     <Link
                       href={`/blog/${article.slug}`}
-                      className="flex items-center gap-1 text-purple-400 hover:text-purple-700 text-sm font-medium transition-colors"
+                      className="flex items-center gap-1 text-gray-400 hover:text-gray-700 text-sm font-medium transition-colors"
                     >
                       {currentT.readMore}
                       <ChevronRight className="w-4 h-4" />

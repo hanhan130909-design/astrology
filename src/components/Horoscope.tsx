@@ -108,10 +108,10 @@ export default function Horoscope({ language }: Props) {
   const element = Object.entries(ELEMENTS).find(([_, signs]) => signs.includes(selectedSign))?.[0] || "Fire";
   
   const elementColors: Record<string, string> = {
-    Fire: "from-red-500/20 to-orange-500/20 border-red-500/30",
-    Earth: "from-green-500/20 to-emerald-500/20 border-green-500/30",
-    Air: "from-cyan-500/20 to-blue-500/20 border-cyan-500/30",
-    Water: "from-blue-500/20 to-purple-500/20 border-blue-500/30"
+    Fire: "from-gray-500/20 to-gray-500/20 border-gray-500/30",
+    Earth: "from-gray-500/20 to-gray-500/20 border-gray-500/30",
+    Air: "from-gray-500/20 to-gray-500/20 border-gray-500/30",
+    Water: "from-gray-500/20 to-gray-500/20 border-gray-500/30"
   };
 
   const elementSymbol: Record<string, string> = {
@@ -131,14 +131,14 @@ export default function Horoscope({ language }: Props) {
             onClick={() => setSelectedSign(sign.id)}
             className={`relative p-3 rounded-xl text-center transition-all duration-300 group ${
               selectedSign === sign.id
-                ? `bg-gradient-to-br ${elementColors[element]} ring-2 ring-amber-500/50 shadow-lg shadow-amber-500/20`
-                : "bg-purple-900/20 hover:bg-purple-800/30"
+                ? `bg-gradient-to-br ${elementColors[element]} ring-2 ring-gray-500/50 shadow-lg shadow-gray-500/20`
+                : "bg-gray-900/20 hover:bg-gray-800/30"
             }`}
           >
             <div className="text-2xl mb-1 group-hover:scale-110 transition-transform">{sign.symbol}</div>
-            <div className="text-xs text-purple-600 truncate">{sign.name[language]}</div>
+            <div className="text-xs text-gray-600 truncate">{sign.name[language]}</div>
             {selectedSign === sign.id && (
-              <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-amber-400 rounded-full" />
+              <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-gray-400 rounded-full" />
             )}
           </button>
         ))}
@@ -152,8 +152,8 @@ export default function Horoscope({ language }: Props) {
             onClick={() => setPeriod(p)}
             className={`px-6 py-2.5 rounded-xl font-medium transition-all ${
               period === p
-                ? "bg-gradient-to-r from-amber-500 to-purple-600 text-white shadow-lg shadow-amber-500/25"
-                : "bg-purple-900/30 text-purple-300 hover:bg-purple-800/40"
+                ? "bg-gradient-to-r from-gray-500 to-gray-600 text-white shadow-lg shadow-gray-500/25"
+                : "bg-gray-900/30 text-gray-300 hover:bg-gray-800/40"
             }`}
           >
             {t.periods[p]}
@@ -164,21 +164,21 @@ export default function Horoscope({ language }: Props) {
       {/* 运势卡片 */}
       <div className={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${elementColors[element]} border p-6`}>
         {/* 装饰背景 */}
-        <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-500/10 rounded-full blur-2xl" />
+        <div className="absolute top-0 right-0 w-32 h-32 bg-gray-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-24 h-24 bg-gray-500/10 rounded-full blur-2xl" />
         
         <div className="relative">
           {/* 头部 */}
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-400 via-orange-500 to-purple-600 flex items-center justify-center text-3xl shadow-lg">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-400 via-gray-500 to-gray-600 flex items-center justify-center text-3xl shadow-lg">
                 {selectedSignData?.symbol}
               </div>
               <div>
-                <h2 className="text-2xl font-bold text-amber-100">
+                <h2 className="text-2xl font-bold text-gray-100">
                   {selectedSignData?.name[language]}
                 </h2>
-                <div className="flex items-center gap-2 text-sm text-purple-300">
+                <div className="flex items-center gap-2 text-sm text-gray-300">
                   <span>{elementSymbol[element]} {element}</span>
                   <span>•</span>
                   <span>{ZODIAC_SIGNS[selectedSign]?.dateRange}</span>
@@ -186,15 +186,15 @@ export default function Horoscope({ language }: Props) {
               </div>
             </div>
             <div className="text-right">
-              <div className="text-xs text-purple-400">{t.current}</div>
-              <div className="text-lg font-medium text-amber-600">{horoscopeData?.currentDate || "---"}</div>
+              <div className="text-xs text-gray-400">{t.current}</div>
+              <div className="text-lg font-medium text-gray-600">{horoscopeData?.currentDate || "---"}</div>
             </div>
           </div>
 
           {/* 加载状态 */}
           {isLoading && (
             <div className="flex justify-center py-12">
-              <div className="w-12 h-12 border-4 border-purple-200 border-t-amber-500 rounded-full animate-spin" />
+              <div className="w-12 h-12 border-4 border-gray-200 border-t-amber-500 rounded-full animate-spin" />
             </div>
           )}
 
@@ -202,10 +202,10 @@ export default function Horoscope({ language }: Props) {
           {error && !isLoading && (
             <div className="text-center py-12">
               <div className="text-4xl mb-4">⚠️</div>
-              <p className="text-purple-300">{error}</p>
+              <p className="text-gray-300">{error}</p>
               <button 
                 onClick={fetchHoroscope}
-                className="mt-4 px-6 py-2 bg-purple-600 hover:bg-purple-500 rounded-xl text-white transition-colors"
+                className="mt-4 px-6 py-2 bg-gray-600 hover:bg-gray-500 rounded-xl text-white transition-colors"
               >
                 {language === "zh" ? "重试" : language === "id" ? "Coba Lagi" : "Retry"}
               </button>
@@ -216,8 +216,8 @@ export default function Horoscope({ language }: Props) {
           {horoscopeData && !isLoading && (
             <div className="space-y-6">
               {/* 运势描述 */}
-              <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200">
-                <p className="text-purple-700 leading-relaxed text-lg">
+              <div className="p-4 rounded-xl bg-gray-900/30 border border-gray-200">
+                <p className="text-gray-700 leading-relaxed text-lg">
                   {language === "zh" && horoscopeData.descriptionZh 
                     ? horoscopeData.descriptionZh 
                     : language === "id" && horoscopeData.descriptionId
@@ -228,38 +228,38 @@ export default function Horoscope({ language }: Props) {
 
               {/* 幸运信息网格 */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="p-4 rounded-xl bg-purple-900/20 text-center">
+                <div className="p-4 rounded-xl bg-gray-900/20 text-center">
                   <div className="text-2xl mb-2">🔢</div>
-                  <div className="text-xs text-purple-400 mb-1">{t.luckyNumber}</div>
-                  <div className="text-xl font-bold text-amber-600">{horoscopeData.luckyNumber}</div>
+                  <div className="text-xs text-gray-400 mb-1">{t.luckyNumber}</div>
+                  <div className="text-xl font-bold text-gray-600">{horoscopeData.luckyNumber}</div>
                 </div>
-                <div className="p-4 rounded-xl bg-purple-900/20 text-center">
+                <div className="p-4 rounded-xl bg-gray-900/20 text-center">
                   <div className="text-2xl mb-2">⏰</div>
-                  <div className="text-xs text-purple-400 mb-1">{t.luckyTime}</div>
-                  <div className="text-xl font-bold text-amber-600">{horoscopeData.luckyTime}</div>
+                  <div className="text-xs text-gray-400 mb-1">{t.luckyTime}</div>
+                  <div className="text-xl font-bold text-gray-600">{horoscopeData.luckyTime}</div>
                 </div>
-                <div className="p-4 rounded-xl bg-purple-900/20 text-center">
+                <div className="p-4 rounded-xl bg-gray-900/20 text-center">
                   <div className="text-2xl mb-2">🎨</div>
-                  <div className="text-xs text-purple-400 mb-1">{t.color}</div>
-                  <div className="text-xl font-bold text-amber-600">{horoscopeData.color}</div>
+                  <div className="text-xs text-gray-400 mb-1">{t.color}</div>
+                  <div className="text-xl font-bold text-gray-600">{horoscopeData.color}</div>
                 </div>
-                <div className="p-4 rounded-xl bg-purple-900/20 text-center">
+                <div className="p-4 rounded-xl bg-gray-900/20 text-center">
                   <div className="text-2xl mb-2">💫</div>
-                  <div className="text-xs text-purple-400 mb-1">{t.mood}</div>
-                  <div className="text-xl font-bold text-amber-600">{horoscopeData.mood}</div>
+                  <div className="text-xs text-gray-400 mb-1">{t.mood}</div>
+                  <div className="text-xl font-bold text-gray-600">{horoscopeData.mood}</div>
                 </div>
               </div>
 
               {/* 配对星座 */}
-              <div className="flex items-center justify-center gap-4 p-4 rounded-xl bg-gradient-to-r from-pink-500/10 to-purple-500/10 border border-pink-500/20">
-                <span className="text-purple-300">
+              <div className="flex items-center justify-center gap-4 p-4 rounded-xl bg-gradient-to-r from-gray-500/10 to-gray-500/10 border border-gray-500/20">
+                <span className="text-gray-300">
                   {language === "zh" ? "最佳配对" : language === "id" ? "Kecocokan Terbaik" : "Best Match"}:
                 </span>
-                <div className="flex items-center gap-2 px-4 py-2 bg-pink-500/20 rounded-xl">
+                <div className="flex items-center gap-2 px-4 py-2 bg-gray-500/20 rounded-xl">
                   <span className="text-2xl">
                     {SIGNS.find(s => s.name.en.toLowerCase() === horoscopeData.compatibility?.toLowerCase().trim())?.symbol || "❤️"}
                   </span>
-                  <span className="font-semibold text-pink-200">{horoscopeData.compatibility}</span>
+                  <span className="font-semibold text-gray-200">{horoscopeData.compatibility}</span>
                 </div>
               </div>
             </div>
@@ -268,7 +268,7 @@ export default function Horoscope({ language }: Props) {
       </div>
 
       {/* 底部提示 */}
-      <div className="text-center text-sm text-purple-400">
+      <div className="text-center text-sm text-gray-400">
         <p>✨ {language === "zh" ? "数据来自 Aztro API" : language === "id" ? "Data dari Aztro API" : "Data from Aztro API"}</p>
       </div>
     </div>
