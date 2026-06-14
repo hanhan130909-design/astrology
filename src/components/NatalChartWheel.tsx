@@ -71,10 +71,16 @@ function signParts(lon: number) {
   };
 }
 
-function chartGlyphSize(glyph: string) {
-  if (glyph === "☽" || glyph === "☊") return 18;
-  if (glyph === "♈" || glyph === "♆") return 16;
-  return 17;
+function planetGlyphSize(glyph: string) {
+  if (glyph === "☽" || glyph === "☊") return 21;
+  if (glyph === "♆") return 20;
+  return 20;
+}
+
+function zodiacGlyphSize(glyph: string) {
+  if (glyph === "☽" || glyph === "☊") return 16;
+  if (glyph === "♈" || glyph === "♆") return 14;
+  return 15;
 }
 
 function aspectPoint(lon: number, ascLon: number): Point {
@@ -136,7 +142,7 @@ function getDisplayOffsets(planets: { key: string; longitude: number }[]) {
   return offsets;
 }
 
-function PlutoGlyphSvg({ x, y, color, size = 15.5 }: { x: number; y: number; color: string; size?: number }) {
+function PlutoGlyphSvg({ x, y, color, size = 18 }: { x: number; y: number; color: string; size?: number }) {
   const scale = size / 24;
 
   return (
@@ -153,7 +159,7 @@ function PlanetGlyph({ glyph, x, y, color }: { glyph: string; x: number; y: numb
   if (glyph === "pluto") return <PlutoGlyphSvg x={x} y={y} color={color} />;
 
   return (
-    <text x={x} y={y} fill={color} className="font-bold" textAnchor="middle" dominantBaseline="middle" fontSize={chartGlyphSize(glyph)} fontFamily={symbolFontFamily}>
+    <text x={x} y={y} fill={color} className="font-bold" textAnchor="middle" dominantBaseline="middle" fontSize={planetGlyphSize(glyph)} fontFamily={symbolFontFamily}>
       {glyph}
     </text>
   );
@@ -212,13 +218,13 @@ export default function NatalChartWheel({ chart }: { chart?: ChartData }) {
         {houses.map((house: any) => {
           const lon = longitudeOf(house);
           const parts = signParts(lon);
-          const glyphPoint = pointFromLongitude(lon, ascLon, rings.outer - 8);
-          const degreePoint = pointFromLongitude(lon, ascLon, rings.zodiac + 7);
-          const minutePoint = pointFromLongitude(lon, ascLon, rings.zodiac - 8);
+          const glyphPoint = pointFromLongitude(lon, ascLon, rings.outer - 7);
+          const degreePoint = pointFromLongitude(lon, ascLon, rings.zodiac + 1);
+          const minutePoint = pointFromLongitude(lon, ascLon, rings.zodiac - 13);
 
           return (
             <g key={`house-cusp-${house.house}`}>
-              <text x={glyphPoint.x} y={glyphPoint.y} fill={parts.color} className="font-bold" dominantBaseline="middle" fontSize={chartGlyphSize(parts.glyph)} fontFamily={symbolFontFamily} textAnchor="middle">
+              <text x={glyphPoint.x} y={glyphPoint.y} fill={parts.color} className="font-bold" dominantBaseline="middle" fontSize={zodiacGlyphSize(parts.glyph)} fontFamily={symbolFontFamily} textAnchor="middle">
                 {parts.glyph}
               </text>
               <text x={degreePoint.x} y={degreePoint.y} fill="black" className="text-[11px] font-bold" dominantBaseline="middle" fontFamily={symbolFontFamily} textAnchor="middle">
@@ -258,7 +264,7 @@ export default function NatalChartWheel({ chart }: { chart?: ChartData }) {
               <text x={degreePoint.x} y={degreePoint.y} fill="black" className="text-[12px] font-bold" textAnchor="middle" dominantBaseline="middle" fontFamily={symbolFontFamily}>
                 {parts.degreeText}
               </text>
-              <text x={signPoint.x} y={signPoint.y} fill={parts.color} className="font-bold" textAnchor="middle" dominantBaseline="middle" fontSize={chartGlyphSize(parts.glyph)} fontFamily={symbolFontFamily}>
+              <text x={signPoint.x} y={signPoint.y} fill={parts.color} className="font-bold" textAnchor="middle" dominantBaseline="middle" fontSize={zodiacGlyphSize(parts.glyph)} fontFamily={symbolFontFamily}>
                 {parts.glyph}
               </text>
               <text x={minutePoint.x} y={minutePoint.y} fill="black" className="text-[10px]" textAnchor="middle" dominantBaseline="middle" fontFamily={symbolFontFamily}>
