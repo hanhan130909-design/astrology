@@ -27,6 +27,23 @@ function signFromLon(lon: number) {
   return { sign: SIGNS[idx], sign_cn: SIGNS_CN[idx], degree: normalizeAngle(lon) % 30, signIndex: idx };
 }
 
+function timezoneOf(data: any): number {
+  const raw = data?.timezone ?? data?.tz ?? 0;
+  if (raw === undefined || raw === null || raw === '') return 0;
+  const tz = Number(raw);
+  return Number.isFinite(tz) ? tz : 0;
+}
+
+function makeUtcDateFromLocal(year: number, month: number, day: number, hour = 12, minute = 0, timezone = 0): Date {
+  const totalLocalMinutes = Math.round(Number(hour || 0) * 60 + Number(minute || 0));
+  const localDateAsUtc = Date.UTC(year, month - 1, day, 0, totalLocalMinutes);
+  return new Date(localDateAsUtc - timezone * 60 * 60 * 1000);
+}
+
+function makeBirthUtcDate(birthData: any): Date {
+  return makeUtcDateFromLocal(birthData.year, birthData.month, birthData.day, birthData.hour ?? 12, birthData.minute ?? 0, timezoneOf(birthData));
+}
+
 function calcPlanet(name: string, time: Astronomy.AstroTime, lat: number, lng: number) {
   try {
     const body = PLANET_BODIES[name];
@@ -114,7 +131,7 @@ function calcAspects(planets: Record<string, any>) {
 
 // Calculate Solar Return date
 function findSolarReturn(birthData: any, year: number) {
-  const birthSun = calcPlanet('Sun', Astronomy.MakeTime(new Date(birthData.year, birthData.month - 1, birthData.day, birthData.hour, birthData.minute)), birthData.lat, birthData.lng);
+  const birthSun = calcPlanet('Sun', Astronomy.MakeTime(makeBirthUtcDate(birthData)), birthData.lat, birthData.lng);
   const targetSunLon = (birthSun as any).longitude;
   
   // Search for when Sun returns to birth position in target year
@@ -158,7 +175,7 @@ function findSolarReturn(birthData: any, year: number) {
 
 // Calculate Lunar Return
 function findLunarReturn(birthData: any, year: number, month: number) {
-  const birthMoon = calcPlanet('Moon', Astronomy.MakeTime(new Date(birthData.year, birthData.month - 1, birthData.day, birthData.hour, birthData.minute)), birthData.lat, birthData.lng);
+  const birthMoon = calcPlanet('Moon', Astronomy.MakeTime(makeBirthUtcDate(birthData)), birthData.lat, birthData.lng);
   const targetMoonLon = (birthMoon as any).longitude;
   
   let bestDate: Date | null = null;
@@ -183,33 +200,46 @@ function findLunarReturn(birthData: any, year: number, month: number) {
 
 // Calculate Secondary Progression (1 day = 1 year)
 function calcProgression(birthData: any, targetYear: number) {
-  const birthDate = new Date(birthData.year, birthData.month - 1, birthData.day, birthData.hour, birthData.minute);
+  const birthDate = makeBirthUtcDate(birthData);
   const yearsDiff = targetYear - birthData.year;
   const progressionDate = new Date(birthDate.getTime() + yearsDiff * 24 * 60 * 60 * 1000);
   return progressionDate;
 }
 
 // Calculate Firdaria periods
-function calcFirdaria(birthData: any) {
-  const planets = ['Sun', 'Venus', 'Mercury', 'Moon', 'Saturn', 'Jupiter', 'Mars', 'North_Node', 'South_Node'];
-  const dayRuler = birthData.hour >= 6 && birthData.hour < 18 ? 'Sun' : 'Moon';
+const FIRDARIA_YEARS: Record<string, number> = { Sun: 10, Venus: 8, Mercury: 13, Moon: 9, Saturn: 11, Jupiter: 12, Mars: 7, North_Node: 3, South_Node: 2 };
+const FIRDARIA_DAY_ORDER = ['Sun', 'Venus', 'Mercury', 'Moon', 'Saturn', 'Jupiter', 'Mars', 'North_Node', 'South_Node'];
+const FIRDARIA_NIGHT_ORDER = ['Moon', 'Saturn', 'Jupiter', 'Mars', 'Sun', 'Venus', 'Mercury', 'North_Node', 'South_Node'];
+
+function houseForLongitude(lon: number, houses: any[]): number {
+  for (let i = 0; i < houses.length; i++) {
+    const current = normalizeAngle(houses[i].longitude);
+    const next = normalizeAngle(houses[(i + 1) % houses.length].longitude);
+    if (current <= next ? lon >= current && lon < next : lon >= current || lon < next) return Number(houses[i].house);
+  }
+  return 0;
+}
+
+function calcFirdaria(birthData: any, natalPlanets: Record<string, any>, natalHouses: any[]) {
+  const sunLon = natalPlanets?.Sun?.longitude;
+  const sunHouse = typeof sunLon === 'number' ? houseForLongitude(normalizeAngle(sunLon), natalHouses) : 0;
+  const isDay = sunHouse >= 7 && sunHouse <= 12;
+  const order = isDay ? FIRDARIA_DAY_ORDER : FIRDARIA_NIGHT_ORDER;
   const periods = [];
   let currentYear = birthData.year;
-  let rulerIndex = planets.indexOf(dayRuler);
-  
-  for (let i = 0; i < 9; i++) {
-    const planet = planets[(rulerIndex + i) % 9];
-    const years = planet === 'Sun' || planet === 'Moon' ? 10 : 8;
+
+  for (const planet of order) {
+    const years = FIRDARIA_YEARS[planet];
     periods.push({
       planet,
       startYear: currentYear,
       endYear: currentYear + years,
       years,
-      isDay: dayRuler === 'Sun'
+      isDay
     });
     currentYear += years;
   }
-  
+
   return periods;
 }
 
@@ -237,7 +267,7 @@ export async function POST(request: NextRequest) {
     
     if (!birthData) return NextResponse.json({ error: 'Missing birthData' }, { status: 400 });
     
-    const birthTime = Astronomy.MakeTime(new Date(birthData.year, birthData.month - 1, birthData.day, birthData.hour, birthData.minute));
+    const birthTime = Astronomy.MakeTime(makeBirthUtcDate(birthData));
     const natalPlanets = calcAllPlanets(birthTime, birthData.lat, birthData.lng);
     const natalHouses = calcHouses(birthTime, birthData.lat, birthData.lng, houseSystem);
     
@@ -254,7 +284,7 @@ export async function POST(request: NextRequest) {
     
     // Transit calculation
     if (type === 'transit' && transitDate) {
-      const transitTime = Astronomy.MakeTime(new Date(transitDate.year, transitDate.month - 1, transitDate.day, transitDate.hour != null ? transitDate.hour : 12, transitDate.minute || 0));
+      const transitTime = Astronomy.MakeTime(makeUtcDateFromLocal(transitDate.year, transitDate.month, transitDate.day, transitDate.hour != null ? transitDate.hour : 12, transitDate.minute || 0, timezoneOf(transitDate)));
       const transitPlanets = calcAllPlanets(transitTime, birthData.lat, birthData.lng);
       
       // Calculate transit aspects to natal
@@ -336,7 +366,7 @@ export async function POST(request: NextRequest) {
       const progHouses = calcHouses(progTime, birthData.lat, birthData.lng, houseSystem);
       
       // Calculate Firdaria
-      const firdaria = calcFirdaria(birthData);
+      const firdaria = calcFirdaria(birthData, natalPlanets, natalHouses.houses);
       const currentPeriod = firdaria.find(p => progYear >= p.startYear && progYear < p.endYear);
       
       result.progression = {
@@ -353,7 +383,7 @@ export async function POST(request: NextRequest) {
     
     // Composite Chart
     if (type === 'composite' && birthData2) {
-      const time2 = Astronomy.MakeTime(new Date(birthData2.year, birthData2.month - 1, birthData2.day, birthData2.hour, birthData2.minute));
+      const time2 = Astronomy.MakeTime(makeBirthUtcDate(birthData2));
       const planets2 = calcAllPlanets(time2, birthData2.lat, birthData2.lng);
       const compositePlanets = calcComposite(natalPlanets, planets2);
       
@@ -416,7 +446,7 @@ export async function POST(request: NextRequest) {
       aspects: result.natal.aspects,
     };
 
-    return NextResponse.json({ success: true, data: chartData });
+    return NextResponse.json({ success: true, data: chartData, ...result });
   } catch (error) {
     console.error('Chart calculation error:', error);
     return NextResponse.json({ error: error instanceof Error ? error.message : 'Calculation error' }, { status: 500 });

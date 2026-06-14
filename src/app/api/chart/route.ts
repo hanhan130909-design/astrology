@@ -640,7 +640,8 @@ export async function POST(request: NextRequest) {
     // 解析坐标
     let lat = parseFloat(body.latitude);
     let lng = parseFloat(body.longitude);
-    let tz = parseFloat(body.timezone) || 8;
+    const rawTimezone = body.timezone;
+    let tz = rawTimezone === undefined || rawTimezone === null || rawTimezone === '' ? 8 : parseFloat(rawTimezone);
     
     // 城市查询
     if (cityKey && CITIES[cityKey]) {
@@ -657,15 +658,15 @@ export async function POST(request: NextRequest) {
     if (isNaN(lat) || isNaN(lng)) {
       return NextResponse.json({ success: false, error: '请提供有效的出生地点' }, { status: 400 });
     }
+    if (isNaN(tz)) {
+      return NextResponse.json({ success: false, error: '请提供有效的时区' }, { status: 400 });
+    }
     
-    // 转换UTC
-    const localHour = hour + minute / 60;
-    const utcHour = ((localHour - tz) % 24 + 24) % 24;
-    // 处理跨日：如果 UTC 小时导致日期偏移
-    let utcDay = day;
-    if (utcHour > localHour && tz > 0) utcDay = day - 1; // 向西跨日
-    if (utcHour < localHour && tz < 0) utcDay = day - 1; // 向东跨日
-    const utcDate = new Date(Date.UTC(year, month - 1, utcDay, Math.floor(utcHour), Math.round((utcHour % 1) * 60)));
+    // 转换UTC：把输入的本地时间当作该时区时间，再减去时区偏移。
+    // 不能用 `parseFloat(value) || 8`，GMT+0 是合法时区。
+    const totalLocalMinutes = Math.round(hour * 60 + minute);
+    const localDateAsUtc = Date.UTC(year, month - 1, day, 0, totalLocalMinutes);
+    const utcDate = new Date(localDateAsUtc - tz * 60 * 60 * 1000);
     const astroTime = Astronomy.MakeTime(utcDate);
     
     // 计算

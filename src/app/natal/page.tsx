@@ -19,6 +19,41 @@ function coordinateParts(value:number){
   return {degrees, minutes};
 }
 
+
+type FirdariaPeriod = {planet:string;years:number;start:Date;end:Date;subPeriods:{planet:string;start:Date;end:Date}[]};
+const FIRDARIA_YEARS:Record<string,number>={Sun:10,Venus:8,Mercury:13,Moon:9,Saturn:11,Jupiter:12,Mars:7,North_Node:3,South_Node:2};
+const FIRDARIA_DAY_ORDER=["Sun","Venus","Mercury","Moon","Saturn","Jupiter","Mars","North_Node","South_Node"];
+const FIRDARIA_NIGHT_ORDER=["Moon","Saturn","Jupiter","Mars","Sun","Venus","Mercury","North_Node","South_Node"];
+const FIRDARIA_CLASSICAL_DAY=["Sun","Venus","Mercury","Moon","Saturn","Jupiter","Mars"];
+const FIRDARIA_CLASSICAL_NIGHT=["Moon","Saturn","Jupiter","Mars","Sun","Venus","Mercury"];
+function addCalendarYears(date:Date,years:number){const d=new Date(date);d.setFullYear(d.getFullYear()+years);return d;}
+function addFirdariaDays(date:Date,years:number){const d=new Date(date);d.setDate(d.getDate()+Math.round(years*365.2425));return d;}
+function formatFirdariaDate(date:Date){return date.toLocaleDateString("zh-CN",{year:"numeric",month:"2-digit",day:"2-digit"});}
+function findHouseForLongitude(lon:number,houses:any[]){for(let i=0;i<houses.length;i++){const c=norm(houses[i].longitude),n=norm(houses[(i+1)%houses.length].longitude);if(c<=n?lon>=c&&lon<n:lon>=c||lon<n)return Number(houses[i].house);}return 0;}
+function buildFirdariaPeriods(chart:any,year:number,month:number,day:number){
+  const houses=chart?.houses||[];
+  const sunLon=chart?.planets?.Sun?.longitude;
+  const sunHouse=typeof sunLon==="number"?findHouseForLongitude(norm(sunLon),houses):0;
+  const isDay=sunHouse>=7&&sunHouse<=12;
+  const order=isDay?FIRDARIA_DAY_ORDER:FIRDARIA_NIGHT_ORDER;
+  const subOrder=isDay?FIRDARIA_CLASSICAL_DAY:FIRDARIA_CLASSICAL_NIGHT;
+  let start=new Date(year,month-1,day);
+  const periods:FirdariaPeriod[]=order.map(planet=>{
+    const years=FIRDARIA_YEARS[planet];
+    const end=addCalendarYears(start,years);
+    const subPeriods=planet.includes("Node")?[]:Array.from({length:7},(_,idx)=>{
+      const subPlanet=subOrder[(subOrder.indexOf(planet)+idx+subOrder.length)%subOrder.length];
+      const subStart=addFirdariaDays(start,idx*years/7);
+      const subEnd=idx===6?end:addFirdariaDays(start,(idx+1)*years/7);
+      return {planet:subPlanet,start:subStart,end:subEnd};
+    });
+    const period={planet,years,start,end,subPeriods};
+    start=end;
+    return period;
+  });
+  return {isDay,periods};
+}
+
 export default function NatalPage(){
   const now = new Date();
   const [name,setName] = useState("Quick Chart");
@@ -124,6 +159,7 @@ export default function NatalPage(){
     const exK=Object.keys(EXALT).find(k=>EXALT[k]===si);
     return{house:h.house,deg:`${Math.floor(d)}°${SIGN_SYMBOLS[si]} ${String(Math.round((d%1)*60)).padStart(2,"0")}′`,ruler:rulerK?planetCodes[rulerK]||"":"",exalt:exK?planetCodes[exK]||"":"",almuten:rulerK?planetCodes[rulerK]||"":""};
   });
+  const firdaria = chart ? buildFirdariaPeriods(chart, year, month, day) : {isDay:true, periods:[] as FirdariaPeriod[]};
 
   return(
     <div className="min-h-screen bg-white text-[#333]">
@@ -245,7 +281,17 @@ export default function NatalPage(){
               <table style={{borderCollapse:"collapse"}}>
                 <thead><tr style={{border:"1px solid #aaa"}}><th colSpan={18} style={{border:"1px solid #aaa",padding:"4px 6px"}}>法达星限</th></tr></thead>
                 <tbody>
-                  {(()=>{const periods=[{p:"Q",y:10},{p:"R",y:8},{p:"E",y:13},{p:"W",y:9},{p:"U",y:11},{p:"Y",y:12},{p:"T",y:7},{p:"<",y:3},{p:">",y:2}];let start=new Date(year,month-1,day);const rows:any[]=[];periods.forEach(r=>{const end=new Date(start);end.setFullYear(end.getFullYear()+r.y);rows.push({p:r.p,y:r.y,start:start.toLocaleDateString("zh-CN")});start=end;});return rows.map((r,i)=><tr key={i} style={{border:"1px solid #aaa"}}><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em style={{fontSize:16}}>{planetSymbols[r.p]||r.p}</em></td><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.y}年</td><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.start}</td></tr>);})()}
+                  <tr style={{border:"1px solid #aaa"}}><td colSpan={8} style={{border:"1px solid #aaa",padding:"4px 6px"}}>盘型：{firdaria.isDay?"日生盘（太阳在地平线上）":"夜生盘（太阳在地平线下）"}</td></tr>
+                  <tr style={{border:"1px solid #aaa"}}><th style={{border:"1px solid #aaa",padding:"3px 6px"}}>主限</th><th style={{border:"1px solid #aaa",padding:"3px 6px"}}>年数</th><th style={{border:"1px solid #aaa",padding:"3px 6px"}}>主限起</th><th style={{border:"1px solid #aaa",padding:"3px 6px"}}>主限止</th><th style={{border:"1px solid #aaa",padding:"3px 6px"}}>副限</th><th style={{border:"1px solid #aaa",padding:"3px 6px"}}>副限起</th><th style={{border:"1px solid #aaa",padding:"3px 6px"}}>副限止</th></tr>
+                  {firdaria.periods.flatMap((r,ri)=>{const code=planetCodes[r.planet]||r.planet;const subs=r.subPeriods.length?r.subPeriods:[{planet:r.planet,start:r.start,end:r.end}];return subs.map((s,si)=><tr key={`${ri}-${si}`} style={{border:"1px solid #aaa"}}>
+                    {si===0&&<td rowSpan={subs.length} align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em style={{fontSize:16}}>{planetSymbols[code]||code}</em></td>}
+                    {si===0&&<td rowSpan={subs.length} align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.years}年</td>}
+                    {si===0&&<td rowSpan={subs.length} align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{formatFirdariaDate(r.start)}</td>}
+                    {si===0&&<td rowSpan={subs.length} align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{formatFirdariaDate(r.end)}</td>}
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{planetSymbols[planetCodes[s.planet]||s.planet]||s.planet}</em></td>
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{formatFirdariaDate(s.start)}</td>
+                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{formatFirdariaDate(s.end)}</td>
+                  </tr>);})}
                 </tbody>
               </table>
             </div>}
