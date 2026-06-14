@@ -18,18 +18,18 @@ const features = [
 ];
 
 const zodiacs = [
-  { emoji:"♈", zh:"白羊", en:"Aries", key:"aries" },
-  { emoji:"♉", zh:"金牛", en:"Taurus", key:"taurus" },
-  { emoji:"♊", zh:"双子", en:"Gemini", key:"gemini" },
-  { emoji:"♋", zh:"巨蟹", en:"Cancer", key:"cancer" },
-  { emoji:"♌", zh:"狮子", en:"Leo", key:"leo" },
-  { emoji:"♍", zh:"处女", en:"Virgo", key:"virgo" },
-  { emoji:"♎", zh:"天秤", en:"Libra", key:"libra" },
-  { emoji:"♏", zh:"天蝎", en:"Scorpio", key:"scorpio" },
-  { emoji:"♐", zh:"射手", en:"Sagittarius", key:"sagittarius" },
-  { emoji:"♑", zh:"摩羯", en:"Capricorn", key:"capricorn" },
-  { emoji:"♒", zh:"水瓶", en:"Aquarius", key:"aquarius" },
-  { emoji:"♓", zh:"双鱼", en:"Pisces", key:"pisces" },
+  { emoji:"♈", zh:"白羊", en:"Aries", id:"Aries", th:"แกะ", vi:"Bạch Dương", ms:"Aries", ja:"牡羊", ko:"양", key:"aries" },
+  { emoji:"♉", zh:"金牛", en:"Taurus", id:"Taurus", th:"พฤกษ", vi:"Kim Ngưu", ms:"Taurus", ja:"牡牛", ko:"황소", key:"taurus" },
+  { emoji:"♊", zh:"双子", en:"Gemini", id:"Gemini", th:"มิถุน", vi:"Song Tử", ms:"Gemini", ja:"双子", ko:"쌍둥이", key:"gemini" },
+  { emoji:"♋", zh:"巨蟹", en:"Cancer", id:"Cancer", th:"กรกฎ", vi:"Cự Giải", ms:"Cancer", ja:"蟹", ko:"게", key:"cancer" },
+  { emoji:"♌", zh:"狮子", en:"Leo", id:"Leo", th:"สิงห์", vi:"Sư Tử", ms:"Leo", ja:"獅子", ko:"사자", key:"leo" },
+  { emoji:"♍", zh:"处女", en:"Virgo", id:"Virgo", th:"กันย์", vi:"Xử Nữ", ms:"Virgo", ja:"乙女", ko:"처녀", key:"virgo" },
+  { emoji:"♎", zh:"天秤", en:"Libra", id:"Libra", th:"ตุลย์", vi:"Thiên Bình", ms:"Libra", ja:"天秤", ko:"천칭", key:"libra" },
+  { emoji:"♏", zh:"天蝎", en:"Scorpio", id:"Scorpio", th:"พิจิก", vi:"Bọ Cạp", ms:"Scorpio", ja:"蠍", ko:"전갈", key:"scorpio" },
+  { emoji:"♐", zh:"射手", en:"Sagittarius", id:"Sagittarius", th:"ธนู", vi:"Nhân Mã", ms:"Sagittarius", ja:"射手", ko:"사수", key:"sagittarius" },
+  { emoji:"♑", zh:"摩羯", en:"Capricorn", id:"Capricorn", th:"มังกร", vi:"Ma Kết", ms:"Capricorn", ja:"山羊", ko:"염소", key:"capricorn" },
+  { emoji:"♒", zh:"水瓶", en:"Aquarius", id:"Aquarius", th:"กุมภ์", vi:"Bảo Bình", ms:"Aquarius", ja:"水瓶", ko:"물병", key:"aquarius" },
+  { emoji:"♓", zh:"双鱼", en:"Pisces", id:"Pisces", th:"มีน", vi:"Song Ngư", ms:"Pisces", ja:"魚", ko:"물고기", key:"pisces" },
 ];
 
 const T: Record<string, Record<string, string>> = {
@@ -83,15 +83,15 @@ export default function HomePage() {
 
       {/* Stats */}
       <div className="flex justify-center gap-6 md:gap-12 pb-16">
-        <div className="text-center"><div className="text-2xl md:text-2xl md:text-\[32px\] font-semibold tracking-[-1px]">100%</div><div className="text-[13px] text-gray-500 mt-1">{t.free}</div></div>
-        <div className="text-center"><div className="text-2xl md:text-2xl md:text-\[32px\] font-semibold tracking-[-1px]">Real</div><div className="text-[13px] text-gray-500 mt-1">{t.real}</div></div>
-        <div className="text-center"><div className="text-2xl md:text-2xl md:text-\[32px\] font-semibold tracking-[-1px]">8</div><div className="text-[13px] text-gray-500 mt-1">{t.lang}</div></div>
+        <div className="text-center"><div className="text-2xl md:text-[32px] font-semibold tracking-[-1px]">100%</div><div className="text-[13px] text-gray-500 mt-1">{t.free}</div></div>
+        <div className="text-center"><div className="text-2xl md:text-[32px] font-semibold tracking-[-1px]">Real</div><div className="text-[13px] text-gray-500 mt-1">{t.real}</div></div>
+        <div className="text-center"><div className="text-2xl md:text-[32px] font-semibold tracking-[-1px]">8</div><div className="text-[13px] text-gray-500 mt-1">{t.lang}</div></div>
       </div>
 
       {/* Features */}
       <section id="features" className="py-12 md:py-20 px-6">
         <div className="max-w-[1200px] mx-auto">
-          <h2 className="text-2xl md:text-2xl md:text-\[32px\] font-semibold tracking-[-1px] text-center mb-3">{t.features}</h2>
+          <h2 className="text-2xl md:text-[32px] font-semibold tracking-[-1px] text-center mb-3">{t.features}</h2>
           <p className="text-base text-gray-500 text-center mb-12">{t.featSub}</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {features.map((f) => (
@@ -123,7 +123,7 @@ export default function HomePage() {
                 className="no-underline text-sm text-gray-600 text-center py-3 px-2 rounded-md hover:text-[#171717] transition-colors"
                 style={{boxShadow:"0px 0px 0px 1px rgba(0,0,0,0.08)"}}
               >
-                {z.emoji} {language==="en"?z.en:z.zh}
+                {z.emoji} {(z as any)[language] || z.zh}
               </Link>
             ))}
           </div>
