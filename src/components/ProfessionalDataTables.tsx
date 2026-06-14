@@ -63,7 +63,7 @@ function PlanetTable({ planets, houses, lang='zh' }: PlanetTableProps) {
             return (
               <tr key={key} className="border-b border-white/5 hover:bg-white/5">
                 <td className="py-2 px-3"><div className="flex items-center gap-2"><span style={{fontFamily:'Segoe UI Symbol, Apple Symbols, serif',color:PLANET_COLORS[key]}}>{PLANET_SYMBOLS[key]}</span><span className="text-amber-400">{NAMES[key] || key}</span></div></td>
-                <td className="py-2 px-3 text-slate-300 font-mono">{Math.floor(deg)}°{min.toString().padStart(2,'0')}′{sec.toString().padStart(2,'0')}″</td>
+                <td className="py-2 px-3 text-gray-600 font-mono">{Math.floor(deg)}°{min.toString().padStart(2,'0')}′{sec.toString().padStart(2,'0')}″</td>
                 <td className="py-2 px-3"><span style={{color:SIGN_COLORS[signIdx]}}>{SIGN_SYMBOLS[signIdx]}</span></td>
                 <td className="py-2 px-3">{dignity ? <span className="px-1.5 py-0.5 rounded text-xs font-bold" style={{backgroundColor:dignity.color+'20',color:dignity.color}}>{dignity.text}</span> : <span className="text-slate-600">—</span>}</td>
                 <td className="py-2 px-3 text-slate-400 font-mono text-xs">{p.speed != null ? p.speed.toFixed(2)+'°/d' : '—'}</td>
@@ -105,7 +105,7 @@ function AspectTable({ aspects, lang='zh' }: AspectTableProps) {
                 <td className="py-2 px-3"><span style={{fontFamily:'Segoe UI Symbol, serif',color:PLANET_COLORS[a.planet1 as keyof typeof PLANET_COLORS]}}>{PLANET_SYMBOLS[a.planet1 as keyof typeof PLANET_SYMBOLS] || a.planet1?.[0]}</span></td>
                 <td className="py-2 px-3"><span className="px-2 py-0.5 rounded text-xs font-bold" style={{backgroundColor:st.color+'20',color:st.color}}>{st.label} {typ}</span></td>
                 <td className="py-2 px-3"><span style={{fontFamily:'Segoe UI Symbol, serif',color:PLANET_COLORS[a.planet2 as keyof typeof PLANET_COLORS]}}>{PLANET_SYMBOLS[a.planet2 as keyof typeof PLANET_SYMBOLS] || a.planet2?.[0]}</span></td>
-                <td className="py-2 px-3 text-slate-300 font-mono">{a.exact != null ? a.exact.toFixed(2)+'°' : '—'}</td>
+                <td className="py-2 px-3 text-gray-600 font-mono">{a.exact != null ? a.exact.toFixed(2)+'°' : '—'}</td>
                 <td className="py-2 px-3"><span className={a.orb <= 1 ? 'text-green-400' : a.orb <= 3 ? 'text-yellow-400' : 'text-slate-400'}>{a.orb != null ? a.orb.toFixed(1)+'°' : '—'}</span></td>
                 <td className="py-2 px-3"><span className={'text-xs px-1.5 py-0.5 rounded ' + (isPos ? 'bg-green-500/20 text-green-400' : isNeg ? 'bg-red-500/20 text-red-400' : 'bg-yellow-500/20 text-yellow-400')}>{isPos ? '和谱' : isNeg ? '紧张' : '中性'}</span></td>
               </tr>
@@ -140,8 +140,8 @@ function HouseTable({ houses, planets, lang='zh' }: HouseTableProps) {
             const min = Math.floor((deg % 1) * 60);
             return (
               <tr key={h.house} className="border-b border-white/5 hover:bg-white/5">
-                <td className="py-2 px-3"><span className={isAng ? 'text-amber-400' : isSuc ? 'text-cyan-400' : 'text-slate-300'}>{h.house}</span></td>
-                <td className="py-2 px-3 text-slate-300 font-mono">{Math.floor(deg)}°{min.toString().padStart(2,'0')}′</td>
+                <td className="py-2 px-3"><span className={isAng ? 'text-amber-400' : isSuc ? 'text-cyan-400' : 'text-gray-600'}>{h.house}</span></td>
+                <td className="py-2 px-3 text-gray-600 font-mono">{Math.floor(deg)}°{min.toString().padStart(2,'0')}′</td>
                 <td className="py-2 px-3"><span style={{color:SIGN_COLORS[signIdx]}}>{SIGN_SYMBOLS[signIdx]}</span></td>
                 <td className="py-2 px-3"><span className="text-slate-600">—</span></td>
                 <td className="py-2 px-3"><span className="text-slate-500/60 text-xs">{isAng ? '角室' : isSuc ? '续室' : '果室'}</span></td>

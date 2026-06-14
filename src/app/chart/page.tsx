@@ -236,7 +236,7 @@ export default function ChartHubPage() {
             
             <div className="mt-8 text-center">
               <Link href="/natal"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-xl font-bold text-gray-900 transition-all hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20">
+                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-xl font-bold text-gray-900 transition-all hover:scale-105 hover:shadow-xl hover:shadow-purple-200/30">
                 <Star size={20} className="fill-white"/>
                 {language === 'zh' ? '开始分析本命盘' : language === 'id' ? 'Mulai Analisis Bagan Lahir' : 'Start Natal Chart Analysis'}
               </Link>
@@ -246,19 +246,19 @@ export default function ChartHubPage() {
 
         {/* Quick Links */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <Link href="/horoscope" className="p-4 rounded-xl bg-slate-800/50 border border-gray-200 hover:border-purple-200 hover:bg-slate-800 transition-all text-center group">
+          <Link href="/horoscope" className="p-4 rounded-xl bg-gray-100 border border-gray-200 hover:border-purple-200 hover:bg-white transition-all text-center group">
             <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">♈</div>
             <div className="text-sm font-medium text-gray-600">{language === 'zh' ? '每日运势' : language === 'id' ? 'Horoskop Harian' : 'Daily Horoscope'}</div>
           </Link>
-          <Link href="/ai-reading" className="p-4 rounded-xl bg-slate-800/50 border border-gray-200 hover:border-purple-200 hover:bg-slate-800 transition-all text-center group">
+          <Link href="/ai-reading" className="p-4 rounded-xl bg-gray-100 border border-gray-200 hover:border-purple-200 hover:bg-white transition-all text-center group">
             <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">🔮</div>
             <div className="text-sm font-medium text-gray-600">{language === 'zh' ? 'AI智能解读' : language === 'id' ? 'Pembacaan AI' : 'AI Reading'}</div>
           </Link>
-          <Link href="/community" className="p-4 rounded-xl bg-slate-800/50 border border-gray-200 hover:border-purple-200 hover:bg-slate-800 transition-all text-center group">
+          <Link href="/community" className="p-4 rounded-xl bg-gray-100 border border-gray-200 hover:border-purple-200 hover:bg-white transition-all text-center group">
             <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">🌟</div>
             <div className="text-sm font-medium text-gray-600">{language === 'zh' ? '星象社区' : language === 'id' ? 'Komunitas' : 'Community'}</div>
           </Link>
-          <Link href="/learn" className="p-4 rounded-xl bg-slate-800/50 border border-gray-200 hover:border-purple-200 hover:bg-slate-800 transition-all text-center group">
+          <Link href="/learn" className="p-4 rounded-xl bg-gray-100 border border-gray-200 hover:border-purple-200 hover:bg-white transition-all text-center group">
             <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">📚</div>
             <div className="text-sm font-medium text-gray-600">{language === 'zh' ? '占星学习' : language === 'id' ? 'Belajar' : 'Learn Astrology'}</div>
           </Link>

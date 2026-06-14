@@ -282,12 +282,12 @@ export default function BlogPage() {
 
       {/* Hero Section */}
       <section className="py-20 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-pink-900/20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-50/20 via-transparent to-pink-900/20" />
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             {currentT.title}
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
             {currentT.subtitle}
           </p>
         </div>
@@ -306,10 +306,10 @@ export default function BlogPage() {
             {blogArticles.map((article) => (
               <article
                 key={article.id}
-                className="group bg-white/5 rounded-2xl overflow-hidden border border-gray-200 hover:border-purple-500/30 transition-all duration-300 hover:-translate-y-1"
+                className="group bg-white/5 rounded-2xl overflow-hidden border border-gray-200 hover:border-purple-200 transition-all duration-300 hover:-translate-y-1"
               >
                 {/* Gradient Image Area */}
-                <div className="aspect-video bg-gradient-to-br from-purple-900/30 via-pink-900/20 to-indigo-900/30 flex items-center justify-center relative">
+                <div className="aspect-video bg-gradient-to-br from-purple-50/30 via-pink-900/20 to-indigo-50/30 flex items-center justify-center relative">
                   <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent opacity-60" />
                   <span className="text-5xl relative z-10">✨</span>
                   

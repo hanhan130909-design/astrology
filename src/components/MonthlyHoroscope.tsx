@@ -155,7 +155,7 @@ export default function MonthlyHoroscope() {
             className={`p-3 rounded-xl text-center transition-all ${
               selectedSign === sign.id
                 ? "bg-gradient-to-br from-amber-500/30 to-purple-600/30 border-2 border-amber-400"
-                : "bg-purple-900/30 border border-purple-500/20 hover:border-purple-400/50"
+                : "bg-purple-900/30 border border-purple-200 hover:border-purple-400/50"
             }`}
           >
             <div className="text-2xl">{sign.symbol}</div>
@@ -173,7 +173,7 @@ export default function MonthlyHoroscope() {
           </div>
 
           {/* 总览 */}
-          <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-500/20">
+          <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200">
             <p className="text-purple-200 leading-relaxed">{currentData.overview}</p>
           </div>
 

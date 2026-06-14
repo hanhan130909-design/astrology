@@ -139,7 +139,7 @@ export default function SwissEphemerisDemo({ language }: Props) {
       </div>
 
       {/* 输入表单 */}
-      <div className="grid md:grid-cols-2 gap-6 p-6 rounded-2xl bg-purple-900/30 border border-purple-500/20">
+      <div className="grid md:grid-cols-2 gap-6 p-6 rounded-2xl bg-purple-900/30 border border-purple-200">
         <div className="space-y-4">
           <div>
             <label className="block text-sm text-purple-300 mb-2">{t.birthDate}</label>
@@ -147,7 +147,7 @@ export default function SwissEphemerisDemo({ language }: Props) {
               type="date"
               value={birthDate}
               onChange={(e) => setBirthDate(e.target.value)}
-              className="w-full px-4 py-3 bg-purple-900/50 border border-purple-500/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+              className="w-full px-4 py-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50"
             />
           </div>
           
@@ -157,7 +157,7 @@ export default function SwissEphemerisDemo({ language }: Props) {
               type="time"
               value={birthTime}
               onChange={(e) => setBirthTime(e.target.value)}
-              className="w-full px-4 py-3 bg-purple-900/50 border border-purple-500/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+              className="w-full px-4 py-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50"
             />
           </div>
           
@@ -167,7 +167,7 @@ export default function SwissEphemerisDemo({ language }: Props) {
               type="text"
               value={birthPlace}
               onChange={(e) => setBirthPlace(e.target.value)}
-              className="w-full px-4 py-3 bg-purple-900/50 border border-purple-500/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+              className="w-full px-4 py-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50"
             />
           </div>
         </div>
@@ -180,7 +180,7 @@ export default function SwissEphemerisDemo({ language }: Props) {
               value={lat}
               onChange={(e) => setLat(parseFloat(e.target.value) || 0)}
               step="0.0001"
-              className="w-full px-4 py-3 bg-purple-900/50 border border-purple-500/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+              className="w-full px-4 py-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50"
             />
           </div>
           
@@ -191,7 +191,7 @@ export default function SwissEphemerisDemo({ language }: Props) {
               value={lng}
               onChange={(e) => setLng(parseFloat(e.target.value) || 0)}
               step="0.0001"
-              className="w-full px-4 py-3 bg-purple-900/50 border border-purple-500/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+              className="w-full px-4 py-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50"
             />
           </div>
           
@@ -200,7 +200,7 @@ export default function SwissEphemerisDemo({ language }: Props) {
             <select
               value={timezone}
               onChange={(e) => setTimezone(parseFloat(e.target.value))}
-              className="w-full px-4 py-3 bg-purple-900/50 border border-purple-500/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+              className="w-full px-4 py-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50"
             >
               <option value={8}>GMT+8 (北京/新加坡/香港)</option>
               <option value={7}>GMT+7 (曼谷/雅加达)</option>
@@ -230,7 +230,7 @@ export default function SwissEphemerisDemo({ language }: Props) {
           </div>
 
           {/* 行星位置 */}
-          <div className="rounded-2xl bg-purple-900/30 border border-purple-500/20 p-6">
+          <div className="rounded-2xl bg-purple-900/30 border border-purple-200 p-6">
             <h3 className="text-xl font-bold text-amber-200 mb-4 flex items-center gap-2">
               <span className="text-2xl">🪐</span> {t.planets}
             </h3>
@@ -274,7 +274,7 @@ export default function SwissEphemerisDemo({ language }: Props) {
           </div>
 
           {/* 宫位 */}
-          <div className="rounded-2xl bg-purple-900/30 border border-purple-500/20 p-6">
+          <div className="rounded-2xl bg-purple-900/30 border border-purple-200 p-6">
             <h3 className="text-xl font-bold text-amber-200 mb-4 flex items-center gap-2">
               <span className="text-2xl">🏠</span> {t.houses}
             </h3>
@@ -310,7 +310,7 @@ export default function SwissEphemerisDemo({ language }: Props) {
 
           {/* 主要相位 */}
           {chart.aspects.length > 0 && (
-            <div className="rounded-2xl bg-purple-900/30 border border-purple-500/20 p-6">
+            <div className="rounded-2xl bg-purple-900/30 border border-purple-200 p-6">
               <h3 className="text-xl font-bold text-amber-200 mb-4 flex items-center gap-2">
                 <span className="text-2xl">✨</span> {t.aspects}
               </h3>

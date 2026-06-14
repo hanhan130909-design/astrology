@@ -35,7 +35,7 @@ export function ThemeSwitcher({ variant = "buttons", showLabel = false }: ThemeS
   if (variant === "dropdown") {
     return (
       <div className="relative group">
-        <button className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:bg-white/10 transition-colors">
+        <button className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-gray-700 hover:text-white hover:bg-white/10 transition-colors">
           {resolvedTheme === "dark" ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
           <span className="text-sm capitalize">{theme}</span>
         </button>
@@ -48,7 +48,7 @@ export function ThemeSwitcher({ variant = "buttons", showLabel = false }: ThemeS
               className={`w-full flex items-center gap-3 px-4 py-3 text-sm transition-colors first:rounded-t-xl last:rounded-b-xl ${
                 theme === t.id
                   ? "bg-purple-500/20 text-purple-300"
-                  : "text-gray-300 hover:bg-white/5"
+                  : "text-gray-700 hover:bg-white/5"
               }`}
             >
               <t.icon className="w-4 h-4" />

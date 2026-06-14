@@ -253,7 +253,7 @@ export default function CompositePage() {
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-2 p-1 rounded-xl bg-slate-800/50 max-w-md mx-auto mb-8">
+        <div className="flex gap-2 p-1 rounded-xl bg-gray-100 max-w-md mx-auto mb-8">
           <button onClick={() => setActiveTab('composite')} className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === 'composite' ? 'bg-pink-500 text-gray-900' : 'text-gray-500 hover:text-purple-700'}`}>
             {t('compositeTab', language)}
           </button>
@@ -271,22 +271,22 @@ export default function CompositePage() {
               {t('person1', language)} {p1Name && `- ${p1Name}`}
             </h2>
             <div className="mb-3">
-              <input type="text" value={p1Name} onChange={e => setP1Name(e.target.value)} placeholder={t('namePlaceholder', language)} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-gray-900 text-sm placeholder:text-gray-400"/>
+              <input type="text" value={p1Name} onChange={e => setP1Name(e.target.value)} placeholder={t('namePlaceholder', language)} className="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm placeholder:text-gray-400"/>
             </div>
             <div className="grid grid-cols-3 gap-2 mb-3">
               <div>
                 <label className="text-xs text-gray-500 block mb-1">{t('year', language)}</label>
-                <input type="number" value={p1Year} onChange={e => setP1Year(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-gray-900 text-sm"/>
+                <input type="number" value={p1Year} onChange={e => setP1Year(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-white border border-gray-300 text-gray-900 text-sm"/>
               </div>
               <div>
                 <label className="text-xs text-gray-500 block mb-1">{t('month', language)}</label>
-                <select value={p1Month} onChange={e => setP1Month(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-gray-900 text-sm">
+                <select value={p1Month} onChange={e => setP1Month(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-white border border-gray-300 text-gray-900 text-sm">
                   {Array.from({length:12},(_,i)=><option key={i+1} value={i+1}>{i+1}</option>)}
                 </select>
               </div>
               <div>
                 <label className="text-xs text-gray-500 block mb-1">{t('day', language)}</label>
-                <select value={p1Day} onChange={e => setP1Day(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-gray-900 text-sm">
+                <select value={p1Day} onChange={e => setP1Day(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-white border border-gray-300 text-gray-900 text-sm">
                   {Array.from({length:31},(_,i)=><option key={i+1} value={i+1}>{i+1}</option>)}
                 </select>
               </div>
@@ -294,20 +294,20 @@ export default function CompositePage() {
             <div className="grid grid-cols-2 gap-2 mb-3">
               <div>
                 <label className="text-xs text-gray-500 block mb-1">{t('hour', language)}</label>
-                <select value={p1Hour} onChange={e => setP1Hour(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-gray-900 text-sm">
+                <select value={p1Hour} onChange={e => setP1Hour(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-white border border-gray-300 text-gray-900 text-sm">
                   {Array.from({length:24},(_,i)=><option key={i} value={i}>{i}</option>)}
                 </select>
               </div>
               <div>
                 <label className="text-xs text-gray-500 block mb-1">{t('minute', language)}</label>
-                <select value={p1Minute} onChange={e => setP1Minute(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-gray-900 text-sm">
+                <select value={p1Minute} onChange={e => setP1Minute(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-white border border-gray-300 text-gray-900 text-sm">
                   {Array.from({length:12},(_,i)=><option key={i*5} value={i*5}>{i*5}</option>)}
                 </select>
               </div>
             </div>
             <div>
               <label className="text-xs text-gray-500 block mb-1">{t('city', language)}</label>
-              <select value={p1CityId} onChange={e => setP1CityId(e.target.value)} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-gray-900 text-sm">
+              <select value={p1CityId} onChange={e => setP1CityId(e.target.value)} className="w-full px-2 py-1.5 rounded bg-white border border-gray-300 text-gray-900 text-sm">
                 {ALL_CITIES.map(c => <option key={c.id} value={c.id}>{tx(c.name,language)}</option>)}
               </select>
             </div>
@@ -320,22 +320,22 @@ export default function CompositePage() {
               {t('person2', language)} {p2Name && `- ${p2Name}`}
             </h2>
             <div className="mb-3">
-              <input type="text" value={p2Name} onChange={e => setP2Name(e.target.value)} placeholder={t('namePlaceholder', language)} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-gray-900 text-sm placeholder:text-gray-400"/>
+              <input type="text" value={p2Name} onChange={e => setP2Name(e.target.value)} placeholder={t('namePlaceholder', language)} className="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm placeholder:text-gray-400"/>
             </div>
             <div className="grid grid-cols-3 gap-2 mb-3">
               <div>
                 <label className="text-xs text-gray-500 block mb-1">{t('year', language)}</label>
-                <input type="number" value={p2Year} onChange={e => setP2Year(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-gray-900 text-sm"/>
+                <input type="number" value={p2Year} onChange={e => setP2Year(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-white border border-gray-300 text-gray-900 text-sm"/>
               </div>
               <div>
                 <label className="text-xs text-gray-500 block mb-1">{t('month', language)}</label>
-                <select value={p2Month} onChange={e => setP2Month(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-gray-900 text-sm">
+                <select value={p2Month} onChange={e => setP2Month(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-white border border-gray-300 text-gray-900 text-sm">
                   {Array.from({length:12},(_,i)=><option key={i+1} value={i+1}>{i+1}</option>)}
                 </select>
               </div>
               <div>
                 <label className="text-xs text-gray-500 block mb-1">{t('day', language)}</label>
-                <select value={p2Day} onChange={e => setP2Day(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-gray-900 text-sm">
+                <select value={p2Day} onChange={e => setP2Day(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-white border border-gray-300 text-gray-900 text-sm">
                   {Array.from({length:31},(_,i)=><option key={i+1} value={i+1}>{i+1}</option>)}
                 </select>
               </div>
@@ -343,20 +343,20 @@ export default function CompositePage() {
             <div className="grid grid-cols-2 gap-2 mb-3">
               <div>
                 <label className="text-xs text-gray-500 block mb-1">{t('hour', language)}</label>
-                <select value={p2Hour} onChange={e => setP2Hour(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-gray-900 text-sm">
+                <select value={p2Hour} onChange={e => setP2Hour(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-white border border-gray-300 text-gray-900 text-sm">
                   {Array.from({length:24},(_,i)=><option key={i} value={i}>{i}</option>)}
                 </select>
               </div>
               <div>
                 <label className="text-xs text-gray-500 block mb-1">{t('minute', language)}</label>
-                <select value={p2Minute} onChange={e => setP2Minute(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-gray-900 text-sm">
+                <select value={p2Minute} onChange={e => setP2Minute(parseInt(e.target.value))} className="w-full px-2 py-1.5 rounded bg-white border border-gray-300 text-gray-900 text-sm">
                   {Array.from({length:12},(_,i)=><option key={i*5} value={i*5}>{i*5}</option>)}
                 </select>
               </div>
             </div>
             <div>
               <label className="text-xs text-gray-500 block mb-1">{t('city', language)}</label>
-              <select value={p2CityId} onChange={e => setP2CityId(e.target.value)} className="w-full px-2 py-1.5 rounded bg-slate-800 border border-slate-700 text-gray-900 text-sm">
+              <select value={p2CityId} onChange={e => setP2CityId(e.target.value)} className="w-full px-2 py-1.5 rounded bg-white border border-gray-300 text-gray-900 text-sm">
                 {ALL_CITIES.map(c => <option key={c.id} value={c.id}>{tx(c.name,language)}</option>)}
               </select>
             </div>
@@ -367,7 +367,7 @@ export default function CompositePage() {
         <div className="flex justify-center gap-4 mb-6">
           <div>
             <label className="text-xs text-gray-500 block mb-1">{t('houseSystem', language)}</label>
-            <select value={houseSystem} onChange={e => setHouseSystem(e.target.value)} className="px-4 py-2 rounded-lg bg-slate-800 border border-slate-700 text-gray-900 text-sm">
+            <select value={houseSystem} onChange={e => setHouseSystem(e.target.value)} className="px-4 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm">
               {HOUSE_SYSTEMS.map(h => <option key={h.id} value={h.id}>{tx(h.name,language)}</option>)}
             </select>
           </div>
@@ -413,10 +413,10 @@ export default function CompositePage() {
                   <button onClick={handleAIInterpretation} disabled={loadingAI} className="px-4 py-2 rounded-lg bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-gray-900 text-sm inline-flex items-center gap-2 transition-colors disabled:opacity-50">
                     {loadingAI ? <Loader2 size={16} className="animate-spin" /> : <Sparkles size={16} />}{t('aiInterpret', language)}
                   </button>
-                  <button onClick={handleShare} className="px-4 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-gray-900 text-sm inline-flex items-center gap-2 transition-colors">
+                  <button onClick={handleShare} className="px-4 py-2 rounded-lg bg-gray-100 hover:bg-slate-600 text-gray-900 text-sm inline-flex items-center gap-2 transition-colors">
                     <Share2 size={16} />{linkCopied ? t('linkCopied', language) : t('copyLink', language)}
                   </button>
-                  <button onClick={handleDownload} className="px-4 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-gray-900 text-sm inline-flex items-center gap-2 transition-colors">
+                  <button onClick={handleDownload} className="px-4 py-2 rounded-lg bg-gray-100 hover:bg-slate-600 text-gray-900 text-sm inline-flex items-center gap-2 transition-colors">
                     <Download size={16} />{t('download', language)}
                   </button>
                 </div>
@@ -432,13 +432,13 @@ export default function CompositePage() {
                 )}
 
                 {/* Composite Aspects */}
-                <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-700/50">
+                <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200">
                   <h3 className="font-bold text-gray-900 mb-4">{t('majorAspects', language)}</h3>
                   <div className="grid md:grid-cols-2 gap-3">
                     {chart.composite.aspects.filter((a: any) => ['Conjunction','Trine','Square','Opposition'].includes(a.type)).slice(0,8).map((a: any, i: number) => {
                       const colors: Record<string,string> = {Conjunction:'#FFD700',Trine:'#4488FF',Square:'#FF4444',Opposition:'#FF8800'};
                       return (
-                        <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-slate-800/50 border border-slate-700/30">
+                        <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-gray-100 border border-gray-200">
                           <span className="text-gray-900">{a.planet1} <span style={{color:colors[a.type]}}>{a.type}</span> {a.planet2}</span>
                           <span className="text-gray-500 text-sm">{a.orb.toFixed(1)}°</span>
                         </div>
@@ -470,14 +470,14 @@ export default function CompositePage() {
                 </div>
 
                 {/* Synastry Aspects */}
-                <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-700/50">
+                <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200">
                   <h3 className="font-bold text-gray-900 mb-4">{t('planetaryAspects', language)}</h3>
                   <div className="space-y-2 max-h-80 overflow-y-auto">
                     {chart.composite.aspects.slice(0,15).map((a: any, i: number) => {
                       const colors: Record<string,string> = {Conjunction:'#FFD700',Trine:'#4488FF',Square:'#FF4444',Opposition:'#FF8800',Sextile:'#00FF88'};
                       const isGood = ['Trine','Sextile'].includes(a.type);
                       return (
-                        <div key={i} className={`p-3 rounded-lg ${isGood ? 'bg-green-900/20 border border-green-500/20' : 'bg-slate-800/50 border border-slate-700/30'}`}>
+                        <div key={i} className={`p-3 rounded-lg ${isGood ? 'bg-green-900/20 border border-green-500/20' : 'bg-gray-100 border border-gray-200'}`}>
                           <div className="flex items-center justify-between">
                             <span className="text-gray-900">
                               <span className="text-blue-300">{a.planet1}</span>
@@ -533,7 +533,7 @@ export default function CompositePage() {
 
         {/* AI Interpretation Card */}
         {aiInterpretation && (
-          <div className="max-w-4xl mx-auto mb-8 p-6 rounded-2xl bg-gradient-to-br from-purple-900/30 to-indigo-900/30 border border-purple-500/30">
+          <div className="max-w-4xl mx-auto mb-8 p-6 rounded-2xl bg-gradient-to-br from-purple-50/30 to-indigo-50/30 border border-purple-200">
             <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
               <Sparkles size={20} className="text-purple-700" />
               {language === 'zh' ? 'AI 解读' : 'AI Interpretation'}
@@ -580,7 +580,7 @@ export default function CompositePage() {
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">{t('faq', language)}</h2>
           <div className="space-y-3">
             {FAQ_DATA.map((item, i) => (
-              <div key={i} className="border border-purple-500/20 rounded-lg overflow-hidden">
+              <div key={i} className="border border-purple-200 rounded-lg overflow-hidden">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? -1 : i)}
                   className="w-full px-4 py-3 flex items-center justify-between bg-purple-900/20 hover:bg-purple-900/30 transition-colors text-left"

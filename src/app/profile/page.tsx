@@ -319,7 +319,7 @@ export default function ProfilePage() {
     return (
       <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 flex items-center justify-center">
         <div className="text-center max-w-sm mx-auto px-6">
-          <div className="w-20 h-20 rounded-full bg-purple-600/20 border border-purple-500/30 flex items-center justify-center mx-auto mb-6">
+          <div className="w-20 h-20 rounded-full bg-purple-600/20 border border-purple-200 flex items-center justify-center mx-auto mb-6">
             <User size={36} className="text-purple-400" />
           </div>
           <h2 className="text-xl font-bold text-gray-900 mb-2">{tx("title", lang)}</h2>
@@ -427,7 +427,7 @@ export default function ProfilePage() {
               {charts.map((chart) => (
                 <div
                   key={chart.id}
-                  className="p-4 rounded-xl bg-white/5 border border-gray-200 hover:border-purple-500/30 transition-all group"
+                  className="p-4 rounded-xl bg-white/5 border border-gray-200 hover:border-purple-200 transition-all group"
                 >
                   <div className="flex items-start gap-3">
                     {/* Chart icon */}
@@ -446,7 +446,7 @@ export default function ProfilePage() {
                           {formatBirthDate(chart, lang)}
                         </span>
                         {chart.birthData?.houseSystem && (
-                          <span className="px-1.5 py-0.5 rounded bg-slate-700/50 text-gray-500 text-[10px]">
+                          <span className="px-1.5 py-0.5 rounded bg-gray-100 text-gray-500 text-[10px]">
                             {chart.birthData.houseSystem === "P" ? "Porphyry" : chart.birthData.houseSystem === "E" ? "Equal" : chart.birthData.houseSystem}
                           </span>
                         )}
@@ -570,7 +570,7 @@ export default function ProfilePage() {
                           {formatDate(composite.createdAt?.seconds ? composite.createdAt.seconds * 1000 : Date.now(), lang)}
                         </span>
                         {composite.houseSystem && (
-                          <span className="px-1.5 py-0.5 rounded bg-slate-700/50 text-gray-500 text-[10px]">
+                          <span className="px-1.5 py-0.5 rounded bg-gray-100 text-gray-500 text-[10px]">
                             {composite.houseSystem === "P" ? "Porphyry" : composite.houseSystem === "E" ? "Equal" : composite.houseSystem}
                           </span>
                         )}

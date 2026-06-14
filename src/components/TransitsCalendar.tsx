@@ -221,7 +221,7 @@ export default function TransitsCalendar() {
       {/* 详情弹窗 */}
       {selectedEvent && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4" onClick={() => setSelectedEvent(null)}>
-          <div className="bg-[#1a1a3a] rounded-2xl p-6 max-w-md w-full border border-purple-500/30" onClick={e => e.stopPropagation()}>
+          <div className="bg-[#1a1a3a] rounded-2xl p-6 max-w-md w-full border border-purple-200" onClick={e => e.stopPropagation()}>
             <div className="flex items-center gap-3 mb-4">
               <span className="text-4xl">{planetSymbols[selectedEvent.planet]}</span>
               {selectedEvent.sign && <span className="text-3xl">{signSymbols[selectedEvent.sign]}</span>}

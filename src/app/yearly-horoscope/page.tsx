@@ -186,7 +186,7 @@ export default function YearlyHoroscopePage() {
         </div>
 
         {/* 年度总览 */}
-        <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/20 border border-gray-200 rounded-2xl p-6 mb-6">
+        <div className="bg-gradient-to-br from-purple-50/30 to-pink-900/20 border border-gray-200 rounded-2xl p-6 mb-6">
           <h3 className="text-sm font-bold text-amber-600 mb-3 flex items-center gap-2">
             <Star size={16} className="fill-amber-300" /> {labels.overall}
           </h3>

@@ -481,7 +481,7 @@ export default function CommunityPage() {
             {filteredPosts.map((post) => (
               <article
                 key={post.id}
-                className="bg-white/5 rounded-2xl p-6 border border-gray-200 hover:border-purple-500/20 transition-all"
+                className="bg-white/5 rounded-2xl p-6 border border-gray-200 hover:border-purple-200 transition-all"
               >
                 {/* Author */}
                 <div className="flex items-center gap-3 mb-4">
@@ -511,7 +511,7 @@ export default function CommunityPage() {
                 </div>
 
                 {/* Content */}
-                <p className="text-gray-300 mb-4 leading-relaxed whitespace-pre-wrap">{post.content}</p>
+                <p className="text-gray-700 mb-4 leading-relaxed whitespace-pre-wrap">{post.content}</p>
 
                 {/* Actions */}
                 <div className="flex items-center gap-6 pt-4 border-t border-gray-200">

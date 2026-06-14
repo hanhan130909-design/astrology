@@ -194,7 +194,7 @@ export default function Horoscope({ language }: Props) {
           {/* 加载状态 */}
           {isLoading && (
             <div className="flex justify-center py-12">
-              <div className="w-12 h-12 border-4 border-purple-500/30 border-t-amber-500 rounded-full animate-spin" />
+              <div className="w-12 h-12 border-4 border-purple-200 border-t-amber-500 rounded-full animate-spin" />
             </div>
           )}
 
@@ -216,7 +216,7 @@ export default function Horoscope({ language }: Props) {
           {horoscopeData && !isLoading && (
             <div className="space-y-6">
               {/* 运势描述 */}
-              <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-500/20">
+              <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200">
                 <p className="text-purple-100 leading-relaxed text-lg">
                   {language === "zh" && horoscopeData.descriptionZh 
                     ? horoscopeData.descriptionZh 

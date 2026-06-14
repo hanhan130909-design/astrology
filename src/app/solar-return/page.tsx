@@ -93,7 +93,7 @@ export default function SolarReturnPage() {
 
       {showSaved && charts.length > 0 && (
         <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="p-4 rounded-xl bg-slate-900/80 border border-purple-500/30">
+          <div className="p-4 rounded-xl bg-gray-50 border border-purple-200">
             <h3 className="font-bold text-gray-900 mb-3">{language === 'zh' ? '已保存的星盘' : 'Saved Charts'}</h3>
             <div className="flex flex-wrap gap-2">
               {charts.map((c: any, i: number) => (
@@ -124,7 +124,7 @@ export default function SolarReturnPage() {
 
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Input Form */}
-          <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-700/50">
+          <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200">
             <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
               <Calendar size={18} className="text-amber-400"/>
               {language === 'zh' ? '出生信息' : 'Birth Information'}
@@ -133,17 +133,17 @@ export default function SolarReturnPage() {
             <div className="grid grid-cols-3 gap-3 mb-4">
               <div>
                 <label className="text-xs text-gray-500 block mb-1">{language === 'zh' ? '年' : 'Year'}</label>
-                <input type="number" value={bYear} onChange={e => setBYear(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-gray-900 text-sm"/>
+                <input type="number" value={bYear} onChange={e => setBYear(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm"/>
               </div>
               <div>
                 <label className="text-xs text-gray-500 block mb-1">{language === 'zh' ? '月' : 'Month'}</label>
-                <select value={bMonth} onChange={e => setBMonth(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-gray-900 text-sm">
+                <select value={bMonth} onChange={e => setBMonth(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm">
                   {Array.from({length:12},(_,i)=><option key={i+1} value={i+1}>{i+1}</option>)}
                 </select>
               </div>
               <div>
                 <label className="text-xs text-gray-500 block mb-1">{language === 'zh' ? '日' : 'Day'}</label>
-                <select value={bDay} onChange={e => setBDay(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-gray-900 text-sm">
+                <select value={bDay} onChange={e => setBDay(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm">
                   {Array.from({length:31},(_,i)=><option key={i+1} value={i+1}>{i+1}</option>)}
                 </select>
               </div>
@@ -152,13 +152,13 @@ export default function SolarReturnPage() {
             <div className="grid grid-cols-2 gap-3 mb-4">
               <div>
                 <label className="text-xs text-gray-500 block mb-1">{language === 'zh' ? '时' : 'Hour'}</label>
-                <select value={bHour} onChange={e => setBHour(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-gray-900 text-sm">
+                <select value={bHour} onChange={e => setBHour(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm">
                   {Array.from({length:24},(_,i)=><option key={i} value={i}>{i}:00</option>)}
                 </select>
               </div>
               <div>
                 <label className="text-xs text-gray-500 block mb-1">{language === 'zh' ? '分' : 'Min'}</label>
-                <select value={bMinute} onChange={e => setBMinute(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-gray-900 text-sm">
+                <select value={bMinute} onChange={e => setBMinute(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm">
                   {Array.from({length:12},(_,i)=><option key={i*5} value={i*5}>{i*5}</option>)}
                 </select>
               </div>
@@ -166,21 +166,21 @@ export default function SolarReturnPage() {
 
             <div className="mb-4">
               <label className="text-xs text-gray-500 block mb-1">{language === 'zh' ? '出生地' : 'Birth Location'}</label>
-              <select value={bCityId} onChange={e => { setBCityId(e.target.value); const c = ALL_CITIES.find(x=>x.id===e.target.value); if(c) setCityName(tx(c.name,language)); }} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-gray-900 text-sm">
+              <select value={bCityId} onChange={e => { setBCityId(e.target.value); const c = ALL_CITIES.find(x=>x.id===e.target.value); if(c) setCityName(tx(c.name,language)); }} className="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm">
                 {ALL_CITIES.map(c => <option key={c.id} value={c.id}>{tx(c.name,language)}</option>)}
               </select>
             </div>
 
             <div className="mb-4">
               <label className="text-xs text-gray-500 block mb-1">{language === 'zh' ? '分宫制' : 'House System'}</label>
-              <select value={houseSystem} onChange={e => setHouseSystem(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-gray-900 text-sm">
+              <select value={houseSystem} onChange={e => setHouseSystem(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm">
                 {HOUSE_SYSTEMS.map(h => <option key={h.id} value={h.id}>{tx(h.name,language)}</option>)}
               </select>
             </div>
 
             <div className="mb-4">
               <label className="text-xs text-gray-500 block mb-1">{language === 'zh' ? '日返年份' : 'Solar Return Year'}</label>
-              <input type="number" value={srYear} onChange={e => setSrYear(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-gray-900 text-sm"/>
+              <input type="number" value={srYear} onChange={e => setSrYear(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm"/>
             </div>
 
             <button onClick={calculateSolarReturn} disabled={loading} className="w-full py-3 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 disabled:opacity-50 rounded-xl font-bold text-gray-900 transition-all flex items-center justify-center gap-2">
@@ -220,7 +220,7 @@ export default function SolarReturnPage() {
                 </div>
 
                 {/* Planet Positions */}
-                <div className="p-4 rounded-xl bg-slate-900/50 border border-slate-700/50">
+                <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
                   <h3 className="font-bold text-gray-900 mb-3">{language === 'zh' ? '行星位置' : 'Planet Positions'}</h3>
                   <div className="grid grid-cols-2 gap-2 text-sm">
                     {Object.entries(chart.solarReturn.planets).filter(([_,p]:[string,any])=>!p.error).map(([name,p]:[string,any])=>{
@@ -233,7 +233,7 @@ export default function SolarReturnPage() {
                         return pLon >= hLon && pLon < nLon;
                       });
                       return (
-                        <div key={name} className="flex items-center justify-between p-2 rounded bg-slate-800/50">
+                        <div key={name} className="flex items-center justify-between p-2 rounded bg-gray-100">
                           <span className="text-gray-600">{name}</span>
                           <span className="text-amber-600">{p.sign_cn || p.sign} {Math.floor(p.degree)}° {house ? `(${house.house}宫)` : ''}</span>
                         </div>
@@ -243,7 +243,7 @@ export default function SolarReturnPage() {
                 </div>
               </div>
             ) : (
-              <div className="h-full flex items-center justify-center p-8 rounded-2xl bg-slate-900/30 border border-slate-700/30 border-dashed">
+              <div className="h-full flex items-center justify-center p-8 rounded-2xl bg-gray-50/30 border border-gray-200 border-dashed">
                 <div className="text-center text-gray-400">
                   <Sun size={48} className="mx-auto mb-4 opacity-50"/>
                   <p>{language === 'zh' ? '输入信息后点击计算' : 'Enter info and click calculate'}</p>

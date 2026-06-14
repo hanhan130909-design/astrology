@@ -7,7 +7,7 @@
   --color-primary: #7c3aed;
   --color-secondary: #db2777;
   --color-accent: #f59e0b;
-  --color-background: #030014;
+  --color-background: #ffffff;
   --color-surface: rgba(255, 255, 255, 0.03);
   --color-border: rgba(255, 255, 255, 0.05);
 }
@@ -73,7 +73,7 @@ html.light .glass {
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-html.light .bg-\[\#030014\] {
+html.light .bg-\[\#ffffff\] {
   background-color: #f8fafc !important;
 }
 
@@ -400,7 +400,7 @@ body {
 
 /* Focus States for Accessibility */
 :focus-visible {
-  @apply outline-none ring-2 ring-purple-500 ring-offset-2 ring-offset-[#030014];
+  @apply outline-none ring-2 ring-purple-500 ring-offset-2 ring-offset-[#ffffff];
 }
 
 /* Custom Selection */
@@ -453,7 +453,7 @@ body {
 
 /* Performance: Critical CSS hint for above-the-fold */
 @layer critical {
-  .bg-\[\#030014\] { background-color: #030014; }
+  .bg-\[\#ffffff\] { background-color: #ffffff; }
   .text-white { color: #ffffff; }
   .min-h-screen { min-height: 100vh; }
 }

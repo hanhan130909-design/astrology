@@ -190,7 +190,7 @@ const ELEMENT_COLORS = {
   fire: { bg: 'from-red-600/20 to-orange-600/20', border: 'border-red-500/30', text: 'text-red-400', icon: '🔥', label: { zh: '火象', en: 'Fire', id: 'Api', th: 'ธาตุไฟ', vi: 'Hỏa', ms: 'Api', ja: '火象', ko: '화염' } },
   earth: { bg: 'from-green-600/20 to-emerald-600/20', border: 'border-green-500/30', text: 'text-green-400', icon: '🌍', label: { zh: '土象', en: 'Earth', id: 'Tanah', th: 'ธาตุดิน', vi: 'Thổ', ms: 'Tanah', ja: '土象', ko: '토양' } },
   air: { bg: 'from-blue-600/20 to-cyan-600/20', border: 'border-blue-500/30', text: 'text-blue-400', icon: '💨', label: { zh: '风象', en: 'Air', id: 'Udara', th: 'ธาตุลม', vi: 'Phong', ms: 'Udara', ja: '風象', ko: '공기' } },
-  water: { bg: 'from-purple-600/20 to-indigo-600/20', border: 'border-purple-500/30', text: 'text-purple-400', icon: '💧', label: { zh: '水象', en: 'Water', id: 'Air', th: 'ธาตุน้ำ', vi: 'Thủy', ms: 'Air', ja: '水象', ko: '물' } },
+  water: { bg: 'from-purple-600/20 to-indigo-600/20', border: 'border-purple-200', text: 'text-purple-400', icon: '💧', label: { zh: '水象', en: 'Water', id: 'Air', th: 'ธาตุน้ำ', vi: 'Thủy', ms: 'Air', ja: '水象', ko: '물' } },
 };
 
 // Premium features for commercial platform
@@ -519,7 +519,7 @@ export default function HomePage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Link href="/natal" className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-2xl font-bold text-gray-900 transition-all shadow-2xl shadow-purple-500/30 hover:shadow-purple-500/50 hover:scale-105">
+                <Link href="/natal" className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-2xl font-bold text-gray-900 transition-all shadow-2xl shadow-purple-200/40 hover:shadow-purple-200/50 hover:scale-105">
                   {t_hero.cta}
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -594,7 +594,7 @@ export default function HomePage() {
         </section>
 
         {/* Stats Section */}
-        <section className="py-16 border-y border-gray-200 bg-white/[0.02]">
+        <section className="py-16 border-y border-gray-200 bg-gray-50">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-3 gap-8">
               {STATS.map((stat, i) => (
@@ -627,7 +627,7 @@ export default function HomePage() {
                     key={feature.id}
                     href={feature.href}
                     className={`group relative p-6 rounded-2xl border transition-all duration-500 hover:scale-[1.02] ${
-                      feature.color === 'purple' ? 'bg-purple-950/30 border-purple-500/20 hover:border-purple-400/50 hover:bg-purple-950/50' :
+                      feature.color === 'purple' ? 'bg-purple-950/30 border-purple-200 hover:border-purple-400/50 hover:bg-purple-950/50' :
                       feature.color === 'cyan' ? 'bg-cyan-950/30 border-cyan-500/20 hover:border-cyan-400/50 hover:bg-cyan-950/50' :
                       feature.color === 'rose' ? 'bg-rose-950/30 border-rose-500/20 hover:border-rose-400/50 hover:bg-rose-950/50' :
                       feature.color === 'amber' ? 'bg-amber-950/30 border-amber-500/20 hover:border-amber-400/50 hover:bg-amber-950/50' :
@@ -689,7 +689,7 @@ export default function HomePage() {
                     className={`group relative p-4 rounded-2xl border transition-all duration-300 hover:scale-105 ${
                       selectedZodiac === id 
                         ? 'bg-white/10 border-white/20' 
-                        : 'bg-white/[0.02] border-gray-200 hover:border-gray-200'
+                        : 'bg-gray-50 border-gray-200 hover:border-gray-200'
                     }`}
                     onMouseEnter={() => setSelectedZodiac(id)}
                   >
@@ -738,7 +738,7 @@ export default function HomePage() {
 
             <div className="grid md:grid-cols-3 gap-6">
               {TESTIMONIALS.map((testimonial, i) => (
-                <div key={i} className="p-6 rounded-2xl bg-white/[0.03] border border-gray-200 hover:border-gray-200 transition-all">
+                <div key={i} className="p-6 rounded-2xl bg-gray-50 border border-gray-200 hover:border-gray-200 transition-all">
                   <div className="flex gap-1 mb-4">
                     {Array.from({ length: testimonial.rating }).map((_, j) => (
                       <StarIcon key={j} size={14} className="fill-amber-400 text-amber-400" />
@@ -772,7 +772,7 @@ export default function HomePage() {
                 <Sparkles size={40} className="mx-auto text-amber-400 mb-6" />
                 <h2 className="text-3xl lg:text-4xl font-black text-gray-900 mb-4">{t_cta.title}</h2>
                 <p className="text-gray-500 mb-8 max-w-xl mx-auto">{t_cta.subtitle}</p>
-                <Link href="/natal" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-2xl font-bold text-gray-900 transition-all shadow-2xl shadow-purple-500/30">
+                <Link href="/natal" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-2xl font-bold text-gray-900 transition-all shadow-2xl shadow-purple-200/40">
                   {t_cta.button}
                   <ArrowRight size={18} />
                 </Link>

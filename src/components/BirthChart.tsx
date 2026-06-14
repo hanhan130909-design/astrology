@@ -224,7 +224,7 @@ export default function BirthChart({ language = "id", onLanguageChange }: BirthC
   return (
     <div className="w-full space-y-6">
       {/* 输入表单 */}
-      <div className="p-6 rounded-2xl bg-purple-900/30 border border-purple-500/20 space-y-4">
+      <div className="p-6 rounded-2xl bg-purple-900/30 border border-purple-200 space-y-4">
         {/* 姓名 */}
         <div>
           <label className="text-sm text-purple-300">{t.name}</label>
@@ -232,7 +232,7 @@ export default function BirthChart({ language = "id", onLanguageChange }: BirthC
             type="text"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            className="w-full p-3 bg-purple-900/50 border border-purple-500/30 rounded-xl text-white mt-1"
+            className="w-full p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white mt-1"
             placeholder={t.name}
           />
         </div>
@@ -244,7 +244,7 @@ export default function BirthChart({ language = "id", onLanguageChange }: BirthC
             <select
               value={formData.year}
               onChange={(e) => setFormData({ ...formData, year: parseInt(e.target.value) })}
-              className="p-3 bg-purple-900/50 border border-purple-500/30 rounded-xl text-white"
+              className="p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white"
             >
               {Array.from({ length: 100 }, (_, i) => 2025 - i).map(y => (
                 <option key={y} value={y}>{y}</option>
@@ -253,7 +253,7 @@ export default function BirthChart({ language = "id", onLanguageChange }: BirthC
             <select
               value={formData.month}
               onChange={(e) => setFormData({ ...formData, month: parseInt(e.target.value) })}
-              className="p-3 bg-purple-900/50 border border-purple-500/30 rounded-xl text-white"
+              className="p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white"
             >
               {Array.from({ length: 12 }, (_, i) => i + 1).map(m => (
                 <option key={m} value={m}>{m}</option>
@@ -262,7 +262,7 @@ export default function BirthChart({ language = "id", onLanguageChange }: BirthC
             <select
               value={formData.day}
               onChange={(e) => setFormData({ ...formData, day: parseInt(e.target.value) })}
-              className="p-3 bg-purple-900/50 border border-purple-500/30 rounded-xl text-white"
+              className="p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white"
             >
               {Array.from({ length: 31 }, (_, i) => i + 1).map(d => (
                 <option key={d} value={d}>{d}</option>
@@ -278,7 +278,7 @@ export default function BirthChart({ language = "id", onLanguageChange }: BirthC
             <select
               value={formData.hour}
               onChange={(e) => setFormData({ ...formData, hour: parseInt(e.target.value) })}
-              className="p-3 bg-purple-900/50 border border-purple-500/30 rounded-xl text-white"
+              className="p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white"
             >
               {Array.from({ length: 24 }, (_, i) => i).map(h => (
                 <option key={h} value={h}>{h.toString().padStart(2, '0')}:00</option>
@@ -287,7 +287,7 @@ export default function BirthChart({ language = "id", onLanguageChange }: BirthC
             <select
               value={formData.minute}
               onChange={(e) => setFormData({ ...formData, minute: parseInt(e.target.value) })}
-              className="p-3 bg-purple-900/50 border border-purple-500/30 rounded-xl text-white"
+              className="p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white"
             >
               {[0, 15, 30, 45].map(m => (
                 <option key={m} value={m}>{m.toString().padStart(2, '0')} min</option>
@@ -302,7 +302,7 @@ export default function BirthChart({ language = "id", onLanguageChange }: BirthC
           <select
             value={formData.cityIndex}
             onChange={(e) => setFormData({ ...formData, cityIndex: parseInt(e.target.value) })}
-            className="w-full p-3 bg-purple-900/50 border border-purple-500/30 rounded-xl text-white mt-1"
+            className="w-full p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white mt-1"
           >
             {CITIES.map((city, i) => (
               <option key={i} value={i}>{city.name[language]}</option>
@@ -324,7 +324,7 @@ export default function BirthChart({ language = "id", onLanguageChange }: BirthC
       {chartData && (
         <div className="space-y-6">
           {/* SVG 星盘图 */}
-          <div className="flex justify-center p-4 rounded-2xl bg-gradient-to-br from-purple-900/40 to-purple-950/60 border border-purple-500/20">
+          <div className="flex justify-center p-4 rounded-2xl bg-gradient-to-br from-purple-50/40 to-purple-950/60 border border-purple-200">
             {renderChartSVG()}
           </div>
 
@@ -346,7 +346,7 @@ export default function BirthChart({ language = "id", onLanguageChange }: BirthC
               </div>
               <div className="text-xs text-purple-300">{chartData.planets.moon.degree.toFixed(1)}°</div>
             </div>
-            <div className="text-center p-4 rounded-xl bg-purple-900/20 border border-purple-500/30">
+            <div className="text-center p-4 rounded-xl bg-purple-900/20 border border-purple-200">
               <div className="text-3xl mb-2">↑</div>
               <div className="text-sm text-purple-300">{t.rising}</div>
               <div className="font-bold text-amber-100">
@@ -357,7 +357,7 @@ export default function BirthChart({ language = "id", onLanguageChange }: BirthC
           </div>
 
           {/* 行星表格 */}
-          <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-500/20">
+          <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200">
             <h4 className="font-semibold text-amber-100 mb-4">{t.planets}</h4>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
               {Object.entries(chartData.planets).map(([planetId, data]: [string, any]) => {

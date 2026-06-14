@@ -107,7 +107,7 @@ export function EmailSubscribe() {
 
   if (status === "success") {
     return (
-      <div className="bg-gradient-to-br from-purple-900/20 to-pink-900/20 rounded-2xl p-8 text-center border border-purple-500/20">
+      <div className="bg-gradient-to-br from-purple-50/20 to-pink-900/20 rounded-2xl p-8 text-center border border-purple-200">
         <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
           <Check className="w-8 h-8 text-green-400" />
         </div>
@@ -118,7 +118,7 @@ export function EmailSubscribe() {
   }
 
   return (
-    <div className="bg-gradient-to-br from-purple-900/20 to-pink-900/20 rounded-2xl p-8 border border-purple-500/20">
+    <div className="bg-gradient-to-br from-purple-50/20 to-pink-900/20 rounded-2xl p-8 border border-purple-200">
       <div className="flex items-center gap-3 mb-4">
         <div className="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
           <Mail className="w-5 h-5 text-purple-400" />

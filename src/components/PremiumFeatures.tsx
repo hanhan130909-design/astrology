@@ -89,7 +89,7 @@ export default function PremiumFeatures({ language = "id" }: PremiumFeaturesProp
           className={`px-6 py-2 rounded-full transition-all ${
             selectedPlan === "monthly"
               ? "bg-gradient-to-r from-amber-500 to-purple-600 text-white"
-              : "bg-purple-900/50 text-purple-200 border border-purple-500/30"
+              : "bg-purple-900/50 text-purple-200 border border-purple-200"
           }`}
         >
           {t.monthly}
@@ -99,7 +99,7 @@ export default function PremiumFeatures({ language = "id" }: PremiumFeaturesProp
           className={`px-6 py-2 rounded-full transition-all relative ${
             selectedPlan === "yearly"
               ? "bg-gradient-to-r from-amber-500 to-purple-600 text-white"
-              : "bg-purple-900/50 text-purple-200 border border-purple-500/30"
+              : "bg-purple-900/50 text-purple-200 border border-purple-200"
           }`}
         >
           {t.yearly}

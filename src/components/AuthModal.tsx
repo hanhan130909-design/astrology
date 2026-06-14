@@ -49,7 +49,7 @@ export function AuthModal({
   if (!isConfigured) {
     return (
       <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
-        <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 max-w-sm w-full">
+        <div className="bg-white dark:bg-gray-100 rounded-2xl p-6 max-w-sm w-full">
           <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4 text-center">
             ⚠️ {g(t.firebaseNotConfigured)}
           </h2>
@@ -58,7 +58,7 @@ export function AuthModal({
           </p>
           <button
             onClick={onClose}
-            className="w-full py-2 bg-gray-200 dark:bg-gray-700 rounded-lg text-gray-700 dark:text-gray-300"
+            className="w-full py-2 bg-gray-200 dark:bg-gray-700 rounded-lg text-gray-700 dark:text-gray-700"
           >
             {g(t.continueAsGuest)}
           </button>
@@ -104,7 +104,7 @@ export function AuthModal({
 
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
-      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-sm w-full overflow-hidden">
+      <div className="bg-white dark:bg-gray-100 rounded-2xl shadow-2xl max-w-sm w-full overflow-hidden">
         {/* Header */}
         <div className="bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-8 text-center">
           <div className="text-4xl mb-2">✨</div>
@@ -122,7 +122,7 @@ export function AuthModal({
 
           {mode === "register" && (
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-700 mb-1">
                 {g(t.displayName)}
               </label>
               <input
@@ -137,7 +137,7 @@ export function AuthModal({
           )}
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-700 mb-1">
               {g(t.email)}
             </label>
             <input
@@ -151,7 +151,7 @@ export function AuthModal({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-700 mb-1">
               {g(t.password)}
             </label>
             <input
@@ -197,7 +197,7 @@ export function AuthModal({
             <button
               type="button"
               onClick={onClose}
-              className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
+              className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-700"
             >
               {g(t.continueAsGuest)}
             </button>
@@ -240,7 +240,7 @@ export function UserMenu() {
         <div className="w-8 h-8 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold">
           {(profile?.displayName || user.email || "U").charAt(0).toUpperCase()}
         </div>
-        <span className="text-sm font-medium text-gray-700 dark:text-gray-300 hidden sm:block">
+        <span className="text-sm font-medium text-gray-700 dark:text-gray-700 hidden sm:block">
           {profile?.displayName || user.email?.split("@")[0]}
         </span>
       </button>
@@ -251,7 +251,7 @@ export function UserMenu() {
             className="fixed inset-0 z-10" 
             onClick={() => setShowDropdown(false)}
           />
-          <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-20">
+          <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-100 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-20">
             <div className="p-3 border-b border-gray-200 dark:border-gray-700">
               <p className="font-medium text-gray-900 dark:text-white truncate">
                 {profile?.displayName}
@@ -261,13 +261,13 @@ export function UserMenu() {
             <div className="p-2">
               <a
                 href="/my-charts"
-                className="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded"
+                className="block px-3 py-2 text-sm text-gray-700 dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 rounded"
               >
                 📊 {g(t.myCharts)}
               </a>
               <a
                 href="/settings"
-                className="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded"
+                className="block px-3 py-2 text-sm text-gray-700 dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 rounded"
               >
                 ⚙️ {g(t.settings)}
               </a>

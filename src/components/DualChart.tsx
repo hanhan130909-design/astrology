@@ -236,7 +236,7 @@ export default function DualChart({ planets1, planets2, size = 500 }: DualChartP
 
       {/* Tooltip */}
       {hoveredPlanet && hoveredPerson && (
-        <div className="absolute top-0 right-0 p-3 rounded-lg bg-slate-900/95 border border-slate-700 text-sm shadow-xl">
+        <div className="absolute top-0 right-0 p-3 rounded-lg bg-white border border-gray-300 text-sm shadow-xl">
           <div className="font-bold text-white mb-1">
             {hoveredPerson === 1 ? 'Person 1' : 'Person 2'}: {hoveredPlanet}
           </div>
@@ -244,7 +244,7 @@ export default function DualChart({ planets1, planets2, size = 500 }: DualChartP
             const p = hoveredPerson === 1 ? planets1[hoveredPlanet] : planets2[hoveredPlanet];
             if (!p || p.error) return null;
             return (
-              <div className="text-slate-300">
+              <div className="text-gray-600">
                 <div>{p.sign_cn || p.sign} {Math.floor(p.degree)}°</div>
                 <div className="text-xs text-slate-500">{p.longitude.toFixed(1)}°</div>
               </div>

@@ -158,13 +158,13 @@ export default function TransitOverlay({
       <div className="absolute top-0 left-0 z-10 flex gap-2">
         <button 
           onClick={() => setShowTransits(!showTransits)}
-          className={`px-3 py-1 rounded-lg text-xs font-medium transition-colors ${showTransits ? 'bg-orange-500 text-white' : 'bg-slate-700 text-slate-400'}`}
+          className={`px-3 py-1 rounded-lg text-xs font-medium transition-colors ${showTransits ? 'bg-orange-500 text-white' : 'bg-gray-100 text-slate-400'}`}
         >
           Transit
         </button>
         <button 
           onClick={() => setShowAspects(!showAspects)}
-          className={`px-3 py-1 rounded-lg text-xs font-medium transition-colors ${showAspects ? 'bg-purple-500 text-white' : 'bg-slate-700 text-slate-400'}`}
+          className={`px-3 py-1 rounded-lg text-xs font-medium transition-colors ${showAspects ? 'bg-purple-500 text-white' : 'bg-gray-100 text-slate-400'}`}
         >
           Aspects
         </button>
@@ -301,7 +301,7 @@ export default function TransitOverlay({
 
       {/* Tooltip */}
       {hoveredPlanet && hoveredType && (
-        <div className="absolute top-0 right-0 p-3 rounded-lg bg-slate-900/95 border border-slate-700 text-sm shadow-xl max-w-[200px]">
+        <div className="absolute top-0 right-0 p-3 rounded-lg bg-white border border-gray-300 text-sm shadow-xl max-w-[200px]">
           <div className={`font-bold mb-1 ${hoveredType === 'natal' ? 'text-blue-300' : 'text-orange-300'}`}>
             {hoveredType === 'natal' ? 'Natal' : 'Transit'}: {hoveredPlanet}
           </div>
@@ -309,7 +309,7 @@ export default function TransitOverlay({
             const p = hoveredType === 'natal' ? natalPlanets[hoveredPlanet] : transitPlanets[hoveredPlanet];
             if (!p || p.error) return null;
             return (
-              <div className="text-slate-300 text-xs">
+              <div className="text-gray-600 text-xs">
                 <div>{p.sign_cn || p.sign} {Math.floor(p.degree)}°</div>
                 <div className="text-slate-500">{p.longitude.toFixed(1)}°</div>
               </div>

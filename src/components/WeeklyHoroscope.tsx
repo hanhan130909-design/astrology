@@ -51,7 +51,7 @@ export default function WeeklyHoroscope() {
             className={`p-3 rounded-xl text-center transition-all ${
               selectedSign === sign.id
                 ? "bg-gradient-to-br from-amber-500/30 to-purple-600/30 border-2 border-amber-400"
-                : "bg-purple-900/30 border border-purple-500/20 hover:border-purple-400/50"
+                : "bg-purple-900/30 border border-purple-200 hover:border-purple-400/50"
             }`}
           >
             <div className="text-2xl">{sign.symbol}</div>
@@ -71,7 +71,7 @@ export default function WeeklyHoroscope() {
 
           {/* 详细内容 */}
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-500/20">
+            <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200">
               <h4 className="text-amber-100 font-semibold mb-2">🎯 Focus</h4>
               <p className="text-purple-200">{currentData.focus}</p>
             </div>

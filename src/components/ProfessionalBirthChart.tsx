@@ -240,7 +240,7 @@ export default function ProfessionalBirthChart({ language = "id" }: Professional
   return (
     <div className="w-full space-y-6">
       {/* 表单 */}
-      <div className="p-6 rounded-2xl bg-purple-900/30 border border-purple-500/20 space-y-4">
+      <div className="p-6 rounded-2xl bg-purple-900/30 border border-purple-200 space-y-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="col-span-2">
             <label className="text-sm text-purple-300">{t.name}</label>
@@ -248,7 +248,7 @@ export default function ProfessionalBirthChart({ language = "id" }: Professional
               type="text"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full p-3 bg-purple-900/50 border border-purple-500/30 rounded-xl text-white mt-1"
+              className="w-full p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white mt-1"
               placeholder={t.name}
             />
           </div>
@@ -258,7 +258,7 @@ export default function ProfessionalBirthChart({ language = "id" }: Professional
               type="number"
               value={formData.day}
               onChange={(e) => setFormData({ ...formData, day: parseInt(e.target.value) || 1 })}
-              className="w-full p-3 bg-purple-900/50 border border-purple-500/30 rounded-xl text-white mt-1"
+              className="w-full p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white mt-1"
               min="1" max="31"
             />
           </div>
@@ -267,7 +267,7 @@ export default function ProfessionalBirthChart({ language = "id" }: Professional
             <select
               value={formData.month}
               onChange={(e) => setFormData({ ...formData, month: parseInt(e.target.value) })}
-              className="w-full p-3 bg-purple-900/50 border border-purple-500/30 rounded-xl text-white mt-1"
+              className="w-full p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white mt-1"
             >
               {Array.from({ length: 12 }, (_, i) => i + 1).map(m => (
                 <option key={m} value={m}>{m}</option>
@@ -280,7 +280,7 @@ export default function ProfessionalBirthChart({ language = "id" }: Professional
               type="number"
               value={formData.year}
               onChange={(e) => setFormData({ ...formData, year: parseInt(e.target.value) || 1990 })}
-              className="w-full p-3 bg-purple-900/50 border border-purple-500/30 rounded-xl text-white mt-1"
+              className="w-full p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white mt-1"
               min="1900" max="2100"
             />
           </div>
@@ -290,7 +290,7 @@ export default function ProfessionalBirthChart({ language = "id" }: Professional
               type="number"
               value={formData.hour}
               onChange={(e) => setFormData({ ...formData, hour: parseInt(e.target.value) || 0 })}
-              className="w-full p-3 bg-purple-900/50 border border-purple-500/30 rounded-xl text-white mt-1"
+              className="w-full p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white mt-1"
               min="0" max="23"
             />
           </div>
@@ -300,7 +300,7 @@ export default function ProfessionalBirthChart({ language = "id" }: Professional
               type="number"
               value={formData.minute}
               onChange={(e) => setFormData({ ...formData, minute: parseInt(e.target.value) || 0 })}
-              className="w-full p-3 bg-purple-900/50 border border-purple-500/30 rounded-xl text-white mt-1"
+              className="w-full p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white mt-1"
               min="0" max="59"
             />
           </div>
@@ -320,7 +320,7 @@ export default function ProfessionalBirthChart({ language = "id" }: Professional
         <div className="space-y-6">
           {/* SVG 星盘 */}
           <div className="flex justify-center">
-            <div className="p-4 rounded-2xl bg-gradient-to-br from-purple-900/40 to-purple-950/60 border border-purple-500/20">
+            <div className="p-4 rounded-2xl bg-gradient-to-br from-purple-50/40 to-purple-950/60 border border-purple-200">
               {renderChartSVG()}
             </div>
           </div>
@@ -343,7 +343,7 @@ export default function ProfessionalBirthChart({ language = "id" }: Professional
               </div>
               <div className="text-xs text-purple-300">{chartData.planets.moon.degree.toFixed(1)}°</div>
             </div>
-            <div className="text-center p-4 rounded-xl bg-purple-900/20 border border-purple-500/30">
+            <div className="text-center p-4 rounded-xl bg-purple-900/20 border border-purple-200">
               <div className="text-3xl mb-2">↑</div>
               <div className="text-sm text-purple-300">{t.rising}</div>
               <div className="font-bold text-amber-100">
@@ -354,7 +354,7 @@ export default function ProfessionalBirthChart({ language = "id" }: Professional
           </div>
 
           {/* 行星表格 */}
-          <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-500/20">
+          <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200">
             <h4 className="font-semibold text-amber-100 mb-4">{t.planets}</h4>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
               {Object.entries(chartData.planets).map(([planetId, data]) => {
@@ -378,7 +378,7 @@ export default function ProfessionalBirthChart({ language = "id" }: Professional
 
           {/* 主要相位 */}
           {chartData.aspects.length > 0 && (
-            <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-500/20">
+            <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200">
               <h4 className="font-semibold text-amber-100 mb-4">{t.aspects}</h4>
               <div className="space-y-2">
                 {chartData.aspects.slice(0, 10).map((aspect, i) => {

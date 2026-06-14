@@ -156,7 +156,7 @@ export default function AcademyPage() {
         
 
         <div className="max-w-4xl mx-auto px-4 py-6">
-          <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 rounded-2xl p-6 border border-purple-500/20 mb-6">
+          <div className="bg-gradient-to-br from-purple-50/30 to-pink-900/30 rounded-2xl p-6 border border-purple-200 mb-6">
             <div className="flex items-start gap-4">
               <div className="w-20 h-20 bg-white/10 rounded-xl flex items-center justify-center text-4xl">{selectedCourse.thumbnail}</div>
               <div className="flex-1">
@@ -187,7 +187,7 @@ export default function AcademyPage() {
             <h3 className="text-lg font-semibold text-gray-900 mb-4">{t.courseContent}</h3>
             <div className="space-y-3">
               {LESSONS.map((lesson, idx) => (
-                <div key={lesson.id} className={`flex items-center gap-4 p-4 rounded-xl border ${lesson.locked ? "bg-white/5 border-gray-200 opacity-60" : "bg-white/5 border-gray-200 hover:border-purple-500/30"}`}>
+                <div key={lesson.id} className={`flex items-center gap-4 p-4 rounded-xl border ${lesson.locked ? "bg-white/5 border-gray-200 opacity-60" : "bg-white/5 border-gray-200 hover:border-purple-200"}`}>
                   <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm text-gray-400">
                     {lesson.completed ? <CheckCircle className="w-5 h-5 text-green-400" /> : lesson.locked ? <Lock className="w-4 h-4" /> : idx + 1}
                   </div>
@@ -225,10 +225,10 @@ export default function AcademyPage() {
         </div>
 
         <div className="flex flex-wrap justify-center gap-2 mb-8">
-          <button onClick={() => setFilterLevel("all")} className={`px-4 py-2 rounded-full text-sm transition-all ${filterLevel === "all" ? "bg-purple-500/20 text-purple-700 border border-purple-500/30" : "bg-white/5 text-gray-400 border border-gray-200 hover:bg-white/10"}`}>{language === "zh" ? "全部" : language === "id" ? "Semua" : "All"}</button>
-          <button onClick={() => setFilterLevel("beginner")} className={`px-4 py-2 rounded-full text-sm transition-all ${filterLevel === "beginner" ? "bg-purple-500/20 text-purple-700 border border-purple-500/30" : "bg-white/5 text-gray-400 border border-gray-200 hover:bg-white/10"}`}>{levelLabels.beginner}</button>
-          <button onClick={() => setFilterLevel("intermediate")} className={`px-4 py-2 rounded-full text-sm transition-all ${filterLevel === "intermediate" ? "bg-purple-500/20 text-purple-700 border border-purple-500/30" : "bg-white/5 text-gray-400 border border-gray-200 hover:bg-white/10"}`}>{levelLabels.intermediate}</button>
-          <button onClick={() => setFilterLevel("advanced")} className={`px-4 py-2 rounded-full text-sm transition-all ${filterLevel === "advanced" ? "bg-purple-500/20 text-purple-700 border border-purple-500/30" : "bg-white/5 text-gray-400 border border-gray-200 hover:bg-white/10"}`}>{levelLabels.advanced}</button>
+          <button onClick={() => setFilterLevel("all")} className={`px-4 py-2 rounded-full text-sm transition-all ${filterLevel === "all" ? "bg-purple-500/20 text-purple-700 border border-purple-200" : "bg-white/5 text-gray-400 border border-gray-200 hover:bg-white/10"}`}>{language === "zh" ? "全部" : language === "id" ? "Semua" : "All"}</button>
+          <button onClick={() => setFilterLevel("beginner")} className={`px-4 py-2 rounded-full text-sm transition-all ${filterLevel === "beginner" ? "bg-purple-500/20 text-purple-700 border border-purple-200" : "bg-white/5 text-gray-400 border border-gray-200 hover:bg-white/10"}`}>{levelLabels.beginner}</button>
+          <button onClick={() => setFilterLevel("intermediate")} className={`px-4 py-2 rounded-full text-sm transition-all ${filterLevel === "intermediate" ? "bg-purple-500/20 text-purple-700 border border-purple-200" : "bg-white/5 text-gray-400 border border-gray-200 hover:bg-white/10"}`}>{levelLabels.intermediate}</button>
+          <button onClick={() => setFilterLevel("advanced")} className={`px-4 py-2 rounded-full text-sm transition-all ${filterLevel === "advanced" ? "bg-purple-500/20 text-purple-700 border border-purple-200" : "bg-white/5 text-gray-400 border border-gray-200 hover:bg-white/10"}`}>{levelLabels.advanced}</button>
         </div>
 
         {activeTab === "my" && myCourses.length > 0 && (
@@ -238,8 +238,8 @@ export default function AcademyPage() {
               {myCourses.map((course) => {
                 const info = getLocalizedCourse(course, language);
                 return (
-                  <div key={course.id} onClick={() => setSelectedCourse(course)} className="cursor-pointer bg-white/5 rounded-2xl overflow-hidden border border-gray-200 hover:border-purple-500/30 transition-all">
-                    <div className="aspect-video bg-gradient-to-br from-purple-900/50 to-pink-900/50 flex items-center justify-center text-6xl">{course.thumbnail}</div>
+                  <div key={course.id} onClick={() => setSelectedCourse(course)} className="cursor-pointer bg-white/5 rounded-2xl overflow-hidden border border-gray-200 hover:border-purple-200 transition-all">
+                    <div className="aspect-video bg-gradient-to-br from-purple-50/50 to-pink-900/50 flex items-center justify-center text-6xl">{course.thumbnail}</div>
                     <div className="p-5">
                       <h4 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-1">{info.title}</h4>
                       <div className="space-y-2">
@@ -260,8 +260,8 @@ export default function AcademyPage() {
             {filteredCourses.map((course) => {
               const info = getLocalizedCourse(course, language);
               return (
-                <div key={course.id} onClick={() => setSelectedCourse(course)} className="cursor-pointer bg-white/5 rounded-2xl overflow-hidden border border-gray-200 hover:border-purple-500/30 transition-all">
-                  <div className="aspect-video bg-gradient-to-br from-purple-900/50 to-pink-900/50 flex items-center justify-center text-6xl">{course.thumbnail}</div>
+                <div key={course.id} onClick={() => setSelectedCourse(course)} className="cursor-pointer bg-white/5 rounded-2xl overflow-hidden border border-gray-200 hover:border-purple-200 transition-all">
+                  <div className="aspect-video bg-gradient-to-br from-purple-50/50 to-pink-900/50 flex items-center justify-center text-6xl">{course.thumbnail}</div>
                   <div className="p-5">
                     <div className="flex items-center justify-between mb-2">
                       <span className={`px-2 py-1 rounded-full text-xs ${getLevelColor(course.level)}`}>{levelLabels[course.level as keyof typeof levelLabels]}</span>

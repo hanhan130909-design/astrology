@@ -29,7 +29,7 @@ const CATEGORY_ICONS: Record<string, string> = {
 const CATEGORY_COLORS: Record<string, string> = {
   daily: "from-amber-500/20 to-orange-500/20 border-amber-500/30",
   question: "from-blue-500/20 to-cyan-500/20 border-blue-500/30",
-  experience: "from-purple-500/20 to-pink-500/20 border-purple-500/30",
+  experience: "from-purple-500/20 to-pink-500/20 border-purple-200",
   learning: "from-green-500/20 to-emerald-500/20 border-green-500/30"
 };
 
@@ -262,7 +262,7 @@ export default function Community({ language }: Props) {
     <div className="space-y-6">
       {/* 发帖框 */}
       {user && localProfile ? (
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-900/40 via-indigo-900/30 to-purple-900/40 border border-purple-500/30 shadow-xl shadow-purple-900/20">
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-50/40 via-indigo-900/30 to-purple-900/40 border border-purple-200 shadow-xl shadow-purple-900/20">
           {/* 装饰背景 */}
           <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-500/10 rounded-full blur-2xl" />
@@ -286,7 +286,7 @@ export default function Community({ language }: Props) {
               value={newPost}
               onChange={e => setNewPost(e.target.value)}
               placeholder={t.newPost}
-              className="w-full p-4 bg-purple-950/50 border border-purple-500/20 rounded-xl text-white placeholder-purple-400/60 resize-none focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-transparent transition-all"
+              className="w-full p-4 bg-purple-950/50 border border-purple-200 rounded-xl text-white placeholder-purple-400/60 resize-none focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-transparent transition-all"
               rows={3}
             />
 
@@ -340,7 +340,7 @@ export default function Community({ language }: Props) {
           </div>
         </div>
       ) : (
-        <div className="relative overflow-hidden p-8 rounded-2xl bg-gradient-to-br from-purple-900/20 via-indigo-900/10 to-purple-900/20 border border-purple-500/10 text-center">
+        <div className="relative overflow-hidden p-8 rounded-2xl bg-gradient-to-br from-purple-50/20 via-indigo-900/10 to-purple-900/20 border border-purple-500/10 text-center">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl" />
           <div className="relative">
             <div className="text-6xl mb-4">🔐</div>
@@ -353,12 +353,12 @@ export default function Community({ language }: Props) {
       {isLoading ? (
         <div className="flex justify-center py-12">
           <div className="relative">
-            <div className="w-12 h-12 border-4 border-purple-500/30 border-t-amber-500 rounded-full animate-spin" />
+            <div className="w-12 h-12 border-4 border-purple-200 border-t-amber-500 rounded-full animate-spin" />
             <div className="absolute inset-0 w-12 h-12 border-4 border-transparent border-t-purple-400 rounded-full animate-spin animate-reverse" style={{animationDirection: 'reverse', animationDuration: '1.5s'}} />
           </div>
         </div>
       ) : posts.length === 0 ? (
-        <div className="relative overflow-hidden p-12 rounded-2xl bg-gradient-to-br from-purple-900/20 via-indigo-900/10 to-purple-900/20 border border-purple-500/10 text-center">
+        <div className="relative overflow-hidden p-12 rounded-2xl bg-gradient-to-br from-purple-50/20 via-indigo-900/10 to-purple-900/20 border border-purple-500/10 text-center">
           <div className="text-6xl mb-4">📝</div>
           <p className="text-purple-300 text-lg">{t.noPosts}</p>
         </div>
@@ -367,7 +367,7 @@ export default function Community({ language }: Props) {
           {posts.map((post, index) => (
             <div 
               key={post.id} 
-              className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-900/30 via-indigo-900/20 to-purple-900/30 border border-purple-500/20 hover:border-amber-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-purple-900/20"
+              className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-50/30 via-indigo-900/20 to-purple-900/30 border border-purple-200 hover:border-amber-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-purple-900/20"
               style={{animationDelay: `${index * 50}ms`}}
             >
               {/* 左边装饰条 */}
@@ -464,7 +464,7 @@ export default function Community({ language }: Props) {
                           value={newComment}
                           onChange={e => setNewComment(e.target.value)}
                           placeholder={t.comment}
-                          className="flex-1 p-3 bg-purple-900/30 border border-purple-500/20 rounded-xl text-white text-sm placeholder-purple-400/60 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+                          className="flex-1 p-3 bg-purple-900/30 border border-purple-200 rounded-xl text-white text-sm placeholder-purple-400/60 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
                           onKeyDown={e => {
                             if (e.key === 'Enter' && newComment.trim()) {
                               handleComment(post.id);

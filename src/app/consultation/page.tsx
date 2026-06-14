@@ -472,7 +472,7 @@ export default function ConsultationPage() {
         {/* Success Modal */}
         {bookingSuccess && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-            <div className="bg-[#0f0f1a] rounded-2xl border border-purple-500/30 p-8 text-center max-w-sm">
+            <div className="bg-[#0f0f1a] rounded-2xl border border-purple-200 p-8 text-center max-w-sm">
               <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <CheckCircle className="w-8 h-8 text-green-400" />
               </div>
@@ -487,7 +487,7 @@ export default function ConsultationPage() {
 
         <div className="max-w-4xl mx-auto px-4 py-6">
           {/* Profile Card */}
-          <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 rounded-2xl p-6 border border-purple-500/20 mb-6">
+          <div className="bg-gradient-to-br from-purple-50/30 to-pink-900/30 rounded-2xl p-6 border border-purple-200 mb-6">
             <div className="flex items-start gap-4 mb-4">
               <div className="relative">
                 <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-4xl">
@@ -517,7 +517,7 @@ export default function ConsultationPage() {
                 <div className="text-sm text-gray-400">{t.perHour}</div>
               </div>
             </div>
-            <p className="text-gray-300 mb-4">{selectedAstrologer.bio}</p>
+            <p className="text-gray-700 mb-4">{selectedAstrologer.bio}</p>
             <div className="flex flex-wrap gap-2">
               {selectedAstrologer.specializations.map((spec) => (
                 <span key={spec} className="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-400">
@@ -591,7 +591,7 @@ export default function ConsultationPage() {
                     selectedSlot === slot.time
                       ? "bg-purple-500/20 border-purple-500/50 text-purple-700"
                       : slot.available
-                      ? "bg-white/5 border-gray-200 text-gray-300 hover:border-white/20"
+                      ? "bg-white/5 border-gray-200 text-gray-700 hover:border-white/20"
                       : "bg-white/5 border-gray-200 text-gray-600 cursor-not-allowed"
                   }`}
                 >
@@ -600,9 +600,9 @@ export default function ConsultationPage() {
               ))}
             </div>
             {selectedSlot && (
-              <div className="mt-4 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
+              <div className="mt-4 p-4 bg-purple-500/10 rounded-xl border border-purple-200">
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-300">
+                  <span className="text-gray-700">
                     {language === "zh" ? "选择时间" : language === "id" ? "Waktu dipilih" : "Selected Time"}: 
                     <span className="text-gray-900 font-medium ml-2">{selectedSlot}</span>
                   </span>
@@ -649,7 +649,7 @@ export default function ConsultationPage() {
                 onChange={(e) => setFilterOnline(e.target.checked)}
                 className="w-4 h-4 rounded bg-white/5 border-white/20 text-purple-500 focus:ring-purple-500"
               />
-              <span className="text-gray-300 text-sm">{t.filterOnline}</span>
+              <span className="text-gray-700 text-sm">{t.filterOnline}</span>
             </label>
           </div>
           <div className="flex items-center gap-2">
@@ -729,7 +729,7 @@ export default function ConsultationPage() {
             {filteredAstrologers.map((astrologer) => (
               <div
                 key={astrologer.id}
-                className="bg-white/5 rounded-2xl p-5 border border-gray-200 hover:border-purple-500/30 transition-all"
+                className="bg-white/5 rounded-2xl p-5 border border-gray-200 hover:border-purple-200 transition-all"
               >
                 <div className="flex items-start gap-3 mb-3">
                   <div className="relative">

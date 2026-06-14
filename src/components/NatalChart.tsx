@@ -414,7 +414,7 @@ export default function NatalChart({
         <div className="font-bold text-amber-400">
           {PLANET_SYMBOLS[planetName]} {planetName} {isOverlay && "(Transit)"}
         </div>
-        <div className="text-gray-300">
+        <div className="text-gray-700">
           {planet.sign_cn} {planet.degree.toFixed(2)}°
         </div>
         {planet.latitude !== undefined && (

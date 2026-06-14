@@ -714,7 +714,7 @@ function ScoreBar({ score, color, label }: { score: number; color: string; label
         <span className="text-gray-500">{label}</span>
         <span className={score >= 80 ? "text-emerald-400" : score >= 60 ? "text-amber-400" : "text-red-400"}>{score}%</span>
       </div>
-      <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
+      <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
         <div 
           className="h-full rounded-full transition-all duration-1000"
           style={{ width: `${score}%`, backgroundColor: color }}
@@ -791,7 +791,7 @@ export default function HoroscopePage() {
           </button>
 
           {showDropdown && (
-            <div className="absolute top-full left-0 right-0 mt-2 p-3 rounded-2xl bg-slate-900/95 border border-gray-200 backdrop-blur-xl z-50 grid grid-cols-4 gap-2 max-h-80 overflow-y-auto">
+            <div className="absolute top-full left-0 right-0 mt-2 p-3 rounded-2xl bg-white border border-gray-200 backdrop-blur-xl z-50 grid grid-cols-4 gap-2 max-h-80 overflow-y-auto">
               {Object.entries(ZODIAC_DATA).map(([id, data]) => (
                 <button
                   key={id}
@@ -831,7 +831,7 @@ export default function HoroscopePage() {
         {horoscope && (
           <div className="space-y-4 animate-in fade-in duration-300">
             {/* 星座信息卡 */}
-            <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-purple-900/30 to-pink-900/20 border border-gray-200">
+            <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-purple-50/30 to-pink-900/20 border border-gray-200">
               <div className="text-5xl mb-2" style={{ color: elemColor.color }}>{signData?.symbol}</div>
               <h2 className="text-2xl font-bold mb-1" style={{ color: elemColor.color }}>
                 {signData?.names[lang as keyof typeof signData.names] || signData?.names.zh}
@@ -883,7 +883,7 @@ export default function HoroscopePage() {
                     <div className="text-xs text-gray-500">{labels.luckyNumber}</div>
                     <div className="text-sm font-bold text-blue-300">{horoscope.luckyNumber}</div>
                   </div>
-                  <div className="p-3 rounded-xl bg-gradient-to-br from-purple-500/10 to-violet-500/10 border border-purple-500/20 text-center">
+                  <div className="p-3 rounded-xl bg-gradient-to-br from-purple-500/10 to-violet-500/10 border border-purple-200 text-center">
                     <div className="text-xl mb-1">⏰</div>
                     <div className="text-xs text-gray-500">{labels.luckyTime}</div>
                     <div className="text-xs font-bold text-purple-700">{horoscope.luckyTime}</div>
@@ -984,7 +984,7 @@ export default function HoroscopePage() {
             {/* 查看年度运势 */}
             <Link
               href={`/yearly-horoscope?sign=${selectedSign}`}
-              className="block w-full p-4 rounded-xl bg-purple-600/20 border border-purple-500/30 text-center text-purple-700 hover:bg-purple-600/30 transition-all"
+              className="block w-full p-4 rounded-xl bg-purple-600/20 border border-purple-200 text-center text-purple-700 hover:bg-purple-600/30 transition-all"
             >
               {labels.viewDetail} →
             </Link>
@@ -1043,7 +1043,7 @@ export default function HoroscopePage() {
           </h2>
           <div className="space-y-3">
             {/* FAQ 1 */}
-            <div className="border border-purple-500/20 rounded-lg overflow-hidden">
+            <div className="border border-purple-200 rounded-lg overflow-hidden">
               <button
                 onClick={() => setFaqOpen(faqOpen === 0 ? -1 : 0)}
                 className="w-full p-4 flex items-center justify-between bg-white/5 hover:bg-white/10 transition-all"
@@ -1060,7 +1060,7 @@ export default function HoroscopePage() {
               )}
             </div>
             {/* FAQ 2 */}
-            <div className="border border-purple-500/20 rounded-lg overflow-hidden">
+            <div className="border border-purple-200 rounded-lg overflow-hidden">
               <button
                 onClick={() => setFaqOpen(faqOpen === 1 ? -1 : 1)}
                 className="w-full p-4 flex items-center justify-between bg-white/5 hover:bg-white/10 transition-all"
@@ -1077,7 +1077,7 @@ export default function HoroscopePage() {
               )}
             </div>
             {/* FAQ 3 */}
-            <div className="border border-purple-500/20 rounded-lg overflow-hidden">
+            <div className="border border-purple-200 rounded-lg overflow-hidden">
               <button
                 onClick={() => setFaqOpen(faqOpen === 2 ? -1 : 2)}
                 className="w-full p-4 flex items-center justify-between bg-white/5 hover:bg-white/10 transition-all"
@@ -1094,7 +1094,7 @@ export default function HoroscopePage() {
               )}
             </div>
             {/* FAQ 4 */}
-            <div className="border border-purple-500/20 rounded-lg overflow-hidden">
+            <div className="border border-purple-200 rounded-lg overflow-hidden">
               <button
                 onClick={() => setFaqOpen(faqOpen === 3 ? -1 : 3)}
                 className="w-full p-4 flex items-center justify-between bg-white/5 hover:bg-white/10 transition-all"
@@ -1111,7 +1111,7 @@ export default function HoroscopePage() {
               )}
             </div>
             {/* FAQ 5 */}
-            <div className="border border-purple-500/20 rounded-lg overflow-hidden">
+            <div className="border border-purple-200 rounded-lg overflow-hidden">
               <button
                 onClick={() => setFaqOpen(faqOpen === 4 ? -1 : 4)}
                 className="w-full p-4 flex items-center justify-between bg-white/5 hover:bg-white/10 transition-all"

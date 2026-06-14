@@ -179,21 +179,21 @@ export default function ZodiacDetailPage() {
         </div>
 
         <div className="grid grid-cols-3 gap-4">
-          <div className="text-center p-4 rounded-xl bg-purple-900/30 border border-purple-500/20">
+          <div className="text-center p-4 rounded-xl bg-purple-900/30 border border-purple-200">
             <div className="text-sm text-purple-300 mb-1">{labels.element}</div>
             <div className="text-xl font-bold" style={{ color: ELEMENT_COLORS[sign.element] }}>{sign.element.charAt(0).toUpperCase() + sign.element.slice(1)}</div>
           </div>
-          <div className="text-center p-4 rounded-xl bg-purple-900/30 border border-purple-500/20">
+          <div className="text-center p-4 rounded-xl bg-purple-900/30 border border-purple-200">
             <div className="text-sm text-purple-300 mb-1">{labels.mode}</div>
             <div className="text-xl font-bold text-amber-100">{MODE_NAMES[sign.mode][language]}</div>
           </div>
-          <div className="text-center p-4 rounded-xl bg-purple-900/30 border border-purple-500/20">
+          <div className="text-center p-4 rounded-xl bg-purple-900/30 border border-purple-200">
             <div className="text-sm text-purple-300 mb-1">{labels.ruler}</div>
             <div className="text-xl font-bold text-amber-100">{sign.ruler}</div>
           </div>
         </div>
 
-        <div className="p-6 rounded-2xl bg-purple-900/30 border border-purple-500/20">
+        <div className="p-6 rounded-2xl bg-purple-900/30 border border-purple-200">
           <p className="text-purple-200 leading-relaxed text-lg">{sign.description[language]}</p>
         </div>
 
@@ -231,7 +231,7 @@ export default function ZodiacDetailPage() {
           </div>
         </div>
 
-        <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-500/20">
+        <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200">
           <h3 className="text-amber-200 font-semibold mb-3">{labels.bestMatch}</h3>
           <div className="flex gap-3">
             {sign.compatibility.map(c => {

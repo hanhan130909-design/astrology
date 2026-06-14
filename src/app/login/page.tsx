@@ -214,7 +214,7 @@ export default function LoginPage() {
             className={`px-2 py-1 rounded-full text-xs font-medium transition-all ${
               language === l.code
                 ? 'bg-purple-600 text-white'
-                : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                : 'bg-white text-slate-400 hover:bg-gray-100'
             }`}
           >
             {l.label}
@@ -223,7 +223,7 @@ export default function LoginPage() {
         </div>
 
         {/* 主卡片 */}
-        <div className="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-3xl p-8">
+        <div className="bg-gray-50 backdrop-blur-xl border border-slate-800 rounded-3xl p-8">
           {/* Logo */}
           <div className="text-center mb-8">
             <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -305,9 +305,9 @@ export default function LoginPage() {
 
             {/* 分隔线 */}
             <div className="flex items-center gap-3 my-4">
-              <div className="flex-1 h-px bg-slate-800"></div>
+              <div className="flex-1 h-px bg-white"></div>
               <span className="text-slate-500 text-xs">OR</span>
-              <div className="flex-1 h-px bg-slate-800"></div>
+              <div className="flex-1 h-px bg-white"></div>
             </div>
 
             {/* Google 登录按钮 */}

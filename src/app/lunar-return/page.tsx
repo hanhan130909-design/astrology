@@ -284,7 +284,7 @@ export default function LunarReturnPage() {
               <select
                 value={form.cityId}
                 onChange={e => setForm({ ...form, cityId: e.target.value })}
-                className="w-full p-3 rounded-xl bg-slate-800/50 border border-slate-700 text-gray-900"
+                className="w-full p-3 rounded-xl bg-gray-100 border border-gray-300 text-gray-900"
               >
                 {CITIES.map(c => (
                   <option key={c.id} value={c.id}>{c.name[lang as keyof typeof c.name] || c.name.zh}</option>
@@ -296,13 +296,13 @@ export default function LunarReturnPage() {
             <div>
               <label className="block text-xs text-gray-500 mb-1">{labels.birthDate}</label>
               <div className="grid grid-cols-3 gap-2">
-                <select value={form.year} onChange={e => setForm({ ...form, year: +e.target.value })} className="p-2 rounded-xl bg-slate-800/50 border border-slate-700 text-gray-900 text-sm">
+                <select value={form.year} onChange={e => setForm({ ...form, year: +e.target.value })} className="p-2 rounded-xl bg-gray-100 border border-gray-300 text-gray-900 text-sm">
                   {years.map(y => <option key={y} value={y}>{y}</option>)}
                 </select>
-                <select value={form.month} onChange={e => setForm({ ...form, month: +e.target.value })} className="p-2 rounded-xl bg-slate-800/50 border border-slate-700 text-gray-900 text-sm">
+                <select value={form.month} onChange={e => setForm({ ...form, month: +e.target.value })} className="p-2 rounded-xl bg-gray-100 border border-gray-300 text-gray-900 text-sm">
                   {months.map(m => <option key={m} value={m}>{m}</option>)}
                 </select>
-                <select value={form.day} onChange={e => setForm({ ...form, day: +e.target.value })} className="p-2 rounded-xl bg-slate-800/50 border border-slate-700 text-gray-900 text-sm">
+                <select value={form.day} onChange={e => setForm({ ...form, day: +e.target.value })} className="p-2 rounded-xl bg-gray-100 border border-gray-300 text-gray-900 text-sm">
                   {Array.from({ length: 31 }, (_, i) => i + 1).map(d => <option key={d} value={d}>{d}</option>)}
                 </select>
               </div>
@@ -312,10 +312,10 @@ export default function LunarReturnPage() {
             <div>
               <label className="block text-xs text-gray-500 mb-1">{labels.hour} / {labels.minute}</label>
               <div className="grid grid-cols-2 gap-2">
-                <select value={form.hour} onChange={e => setForm({ ...form, hour: +e.target.value })} className="p-2 rounded-xl bg-slate-800/50 border border-slate-700 text-gray-900 text-sm">
+                <select value={form.hour} onChange={e => setForm({ ...form, hour: +e.target.value })} className="p-2 rounded-xl bg-gray-100 border border-gray-300 text-gray-900 text-sm">
                   {Array.from({ length: 24 }, (_, i) => <option key={i} value={i}>{String(i).padStart(2, '0')}</option>)}
                 </select>
-                <select value={form.minute} onChange={e => setForm({ ...form, minute: +e.target.value })} className="p-2 rounded-xl bg-slate-800/50 border border-slate-700 text-gray-900 text-sm">
+                <select value={form.minute} onChange={e => setForm({ ...form, minute: +e.target.value })} className="p-2 rounded-xl bg-gray-100 border border-gray-300 text-gray-900 text-sm">
                   {Array.from({ length: 60 }, (_, i) => i % 5 === 0 && <option key={i} value={i}>{String(i).padStart(2, '0')}</option>)}
                 </select>
               </div>
@@ -325,10 +325,10 @@ export default function LunarReturnPage() {
             <div>
               <label className="block text-xs text-gray-500 mb-1">{labels.targetMonth}</label>
               <div className="grid grid-cols-2 gap-2">
-                <select value={targetYear} onChange={e => setTargetYear(+e.target.value)} className="p-2 rounded-xl bg-slate-800/50 border border-slate-700 text-gray-900 text-sm">
+                <select value={targetYear} onChange={e => setTargetYear(+e.target.value)} className="p-2 rounded-xl bg-gray-100 border border-gray-300 text-gray-900 text-sm">
                   {years.map(y => <option key={y} value={y}>{y}</option>)}
                 </select>
-                <select value={targetMonth} onChange={e => setTargetMonth(+e.target.value)} className="p-2 rounded-xl bg-slate-800/50 border border-slate-700 text-gray-900 text-sm">
+                <select value={targetMonth} onChange={e => setTargetMonth(+e.target.value)} className="p-2 rounded-xl bg-gray-100 border border-gray-300 text-gray-900 text-sm">
                   {months.map(m => <option key={m} value={m}>{m}{lang === 'zh' ? '月' : lang === 'id' ? 'Bulan' : 'Month'}</option>)}
                 </select>
               </div>

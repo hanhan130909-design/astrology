@@ -53,7 +53,7 @@ export default function TransitsFAQ() {
       </h2>
       <div className="space-y-3">
         {FAQS.map((item, i) => (
-          <div key={i} className="border border-purple-500/20 rounded-lg overflow-hidden">
+          <div key={i} className="border border-purple-200 rounded-lg overflow-hidden">
             <button
               onClick={() => setOpen(open === i ? -1 : i)}
               className="w-full flex items-center justify-between p-4 text-left hover:bg-purple-500/5 transition-colors"

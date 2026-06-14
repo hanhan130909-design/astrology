@@ -353,11 +353,11 @@ export default function TransitPage() {
 
         {/* Saved Charts */}
         {loaded && charts.length > 0 && (
-          <div className="rounded-2xl bg-slate-900/60 border border-slate-700/50 p-4 mb-6">
+          <div className="rounded-2xl bg-gray-50 border border-gray-200 p-4 mb-6">
             <h3 className="text-sm font-bold text-purple-700 mb-3">{language === 'zh' ? '加载已保存的星盘' : 'Load Saved Chart'}</h3>
             <div className="flex gap-2 overflow-x-auto pb-2">
               {charts.map((sc: any) => (
-                <button key={sc.id} onClick={() => loadSavedChart(sc)} className="flex-shrink-0 p-3 rounded-xl bg-slate-800/80 border border-slate-600/50 hover:border-purple-500/50 text-left min-w-[140px]">
+                <button key={sc.id} onClick={() => loadSavedChart(sc)} className="flex-shrink-0 p-3 rounded-xl bg-white/80 border border-gray-200 hover:border-purple-500/50 text-left min-w-[140px]">
                   <div className="text-xs text-gray-900 font-medium truncate">{sc.name}</div>
                   <div className="text-xs text-gray-500">{sc.birthData.year}-{sc.birthData.month}-{sc.birthData.day}</div>
                 </button>
@@ -367,7 +367,7 @@ export default function TransitPage() {
         )}
 
         {/* Input Form */}
-        <div className="p-6 rounded-2xl bg-slate-900/80 border border-slate-700 mb-8">
+        <div className="p-6 rounded-2xl bg-gray-50 border border-gray-300 mb-8">
           <div className="grid md:grid-cols-2 gap-8">
             {/* Birth Data */}
             <div>
@@ -382,14 +382,14 @@ export default function TransitPage() {
                     <MapPin size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"/>
                     <input type="text" value={cityQuery} onChange={e => { setCityQuery(e.target.value); setShowCityDropdown(true); }}
                       onFocus={() => setShowCityDropdown(true)} placeholder={language === 'zh' ? '搜索城市...' : 'Search city...'}
-                      className="w-full pl-9 pr-8 py-2.5 rounded-xl bg-slate-800 border border-slate-600 text-gray-900 text-sm"/>
+                      className="w-full pl-9 pr-8 py-2.5 rounded-xl bg-white border border-gray-300 text-gray-900 text-sm"/>
                     {cityQuery && <button onClick={() => { setCityQuery(''); setShowCityDropdown(false); }} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"><X size={14}/></button>}
                   </div>
                   {showCityDropdown && (
-                    <div className="absolute z-50 w-full mt-1 bg-slate-800 border border-slate-600 rounded-xl shadow-xl max-h-60 overflow-y-auto">
+                    <div className="absolute z-50 w-full mt-1 bg-white border border-gray-300 rounded-xl shadow-xl max-h-60 overflow-y-auto">
                       {isSearching && <div className="px-4 py-3 text-gray-500 text-sm">Searching...</div>}
                       {!isSearching && cityResults.map((city, i) => (
-                        <button key={i} onClick={() => selectCity(city)} className="w-full px-4 py-2.5 text-left hover:bg-slate-700/50 border-b border-slate-700/30 last:border-0">
+                        <button key={i} onClick={() => selectCity(city)} className="w-full px-4 py-2.5 text-left hover:bg-gray-100 border-b border-gray-200 last:border-0">
                           <div className="text-sm text-gray-900">{typeof city.name === 'object' ? (city.name[language] || city.name.zh || city.name.en) : city.name}</div>
                         </button>
                       ))}
@@ -399,17 +399,17 @@ export default function TransitPage() {
                 <div className="grid grid-cols-3 gap-2">
                   <div>
                     <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '年' : 'Year'}</label>
-                    <input type="number" value={bYear} onChange={e => setBYear(+e.target.value)} className="w-full p-2 rounded-xl bg-slate-800 border border-slate-600 text-gray-900 text-sm"/>
+                    <input type="number" value={bYear} onChange={e => setBYear(+e.target.value)} className="w-full p-2 rounded-xl bg-white border border-gray-300 text-gray-900 text-sm"/>
                   </div>
                   <div>
                     <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '月' : 'Month'}</label>
-                    <select value={bMonth} onChange={e => setBMonth(+e.target.value)} className="w-full p-2 rounded-xl bg-slate-800 border border-slate-600 text-gray-900 text-sm">
+                    <select value={bMonth} onChange={e => setBMonth(+e.target.value)} className="w-full p-2 rounded-xl bg-white border border-gray-300 text-gray-900 text-sm">
                       {Array.from({length: 12}, (_, i) => i + 1).map(m => <option key={m} value={m}>{m}</option>)}
                     </select>
                   </div>
                   <div>
                     <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '日' : 'Day'}</label>
-                    <select value={bDay} onChange={e => setBDay(+e.target.value)} className="w-full p-2 rounded-xl bg-slate-800 border border-slate-600 text-gray-900 text-sm">
+                    <select value={bDay} onChange={e => setBDay(+e.target.value)} className="w-full p-2 rounded-xl bg-white border border-gray-300 text-gray-900 text-sm">
                       {Array.from({length: 31}, (_, i) => i + 1).map(d => <option key={d} value={d}>{d}</option>)}
                     </select>
                   </div>
@@ -417,13 +417,13 @@ export default function TransitPage() {
                 <div className="grid grid-cols-2 gap-2">
                   <div>
                     <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '时' : 'Hour'}</label>
-                    <select value={bHour} onChange={e => setBHour(+e.target.value)} className="w-full p-2 rounded-xl bg-slate-800 border border-slate-600 text-gray-900 text-sm">
+                    <select value={bHour} onChange={e => setBHour(+e.target.value)} className="w-full p-2 rounded-xl bg-white border border-gray-300 text-gray-900 text-sm">
                       {Array.from({length: 24}, (_, i) => i).map(h => <option key={h} value={h}>{String(h).padStart(2,'0')}</option>)}
                     </select>
                   </div>
                   <div>
                     <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '分' : 'Min'}</label>
-                    <select value={bMinute} onChange={e => setBMinute(+e.target.value)} className="w-full p-2 rounded-xl bg-slate-800 border border-slate-600 text-gray-900 text-sm">
+                    <select value={bMinute} onChange={e => setBMinute(+e.target.value)} className="w-full p-2 rounded-xl bg-white border border-gray-300 text-gray-900 text-sm">
                       {Array.from({length: 12}, (_, i) => i * 5).map(m => <option key={m} value={m}>{String(m).padStart(2,'0')}</option>)}
                     </select>
                   </div>
@@ -440,17 +440,17 @@ export default function TransitPage() {
               <div className="grid grid-cols-3 gap-2">
                 <div>
                   <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '年' : 'Year'}</label>
-                  <input type="number" value={tYear} onChange={e => setTYear(+e.target.value)} className="w-full p-2 rounded-xl bg-slate-800 border border-slate-600 text-gray-900 text-sm"/>
+                  <input type="number" value={tYear} onChange={e => setTYear(+e.target.value)} className="w-full p-2 rounded-xl bg-white border border-gray-300 text-gray-900 text-sm"/>
                 </div>
                 <div>
                   <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '月' : 'Month'}</label>
-                  <select value={tMonth} onChange={e => setTMonth(+e.target.value)} className="w-full p-2 rounded-xl bg-slate-800 border border-slate-600 text-gray-900 text-sm">
+                  <select value={tMonth} onChange={e => setTMonth(+e.target.value)} className="w-full p-2 rounded-xl bg-white border border-gray-300 text-gray-900 text-sm">
                     {Array.from({length: 12}, (_, i) => i + 1).map(m => <option key={m} value={m}>{m}</option>)}
                   </select>
                 </div>
                 <div>
                   <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '日' : 'Day'}</label>
-                  <select value={tDay} onChange={e => setTDay(+e.target.value)} className="w-full p-2 rounded-xl bg-slate-800 border border-slate-600 text-gray-900 text-sm">
+                  <select value={tDay} onChange={e => setTDay(+e.target.value)} className="w-full p-2 rounded-xl bg-white border border-gray-300 text-gray-900 text-sm">
                     {Array.from({length: 31}, (_, i) => i + 1).map(d => <option key={d} value={d}>{d}</option>)}
                   </select>
                 </div>
@@ -469,7 +469,7 @@ export default function TransitPage() {
         {chart && (
           <div className="space-y-6">
             {/* View Mode / Tab Toggle */}
-            <div className="flex gap-2 p-1 rounded-xl bg-slate-800/50 max-w-lg mx-auto">
+            <div className="flex gap-2 p-1 rounded-xl bg-gray-100 max-w-lg mx-auto">
               <button onClick={() => setActiveTab('chart')} className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === 'chart' ? 'bg-purple-600 text-gray-900' : 'text-gray-500'}`}>
                 {language === 'zh' ? '星盘' : 'Chart'}
               </button>
@@ -482,7 +482,7 @@ export default function TransitPage() {
             {activeTab === 'chart' && (
               <>
                 {/* View Mode Toggle */}
-                <div className="flex gap-2 p-1 rounded-xl bg-slate-800/50 max-w-md mx-auto">
+                <div className="flex gap-2 p-1 rounded-xl bg-gray-100 max-w-md mx-auto">
                   <button onClick={() => setViewMode('overlay')} className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${viewMode === 'overlay' ? 'bg-purple-600 text-gray-900' : 'text-gray-500'}`}>
                     {language === 'zh' ? '叠加显示' : 'Overlay'}
                   </button>
@@ -492,7 +492,7 @@ export default function TransitPage() {
                 </div>
                 
                 {/* Chart Display */}
-                <div className="p-6 rounded-2xl bg-slate-900/80 border border-slate-700">
+                <div className="p-6 rounded-2xl bg-gray-50 border border-gray-300">
                   <div className="flex justify-center">
                     {viewMode === 'overlay' && chart.transit ? (
                       <TransitOverlay 
@@ -523,12 +523,12 @@ export default function TransitPage() {
 
             {/* Transit Aspects - Only show in chart tab */}
             {activeTab === 'chart' && chart.transit?.aspects && (
-              <div className="p-6 rounded-2xl bg-slate-900/80 border border-slate-700">
+              <div className="p-6 rounded-2xl bg-gray-50 border border-gray-300">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="font-bold text-gray-900">{language === 'zh' ? '推运相位' : 'Transit Aspects'}</h3>
                   <div className="flex gap-2">
                     {['all','major','exact'].map(f => (
-                      <button key={f} onClick={() => setAspectFilter(f)} className={`px-3 py-1 rounded-full text-xs ${aspectFilter === f ? 'bg-purple-600 text-gray-900' : 'bg-slate-800 text-gray-500'}`}>
+                      <button key={f} onClick={() => setAspectFilter(f)} className={`px-3 py-1 rounded-full text-xs ${aspectFilter === f ? 'bg-purple-600 text-gray-900' : 'bg-white text-gray-500'}`}>
                         {f === 'all' ? (language === 'zh' ? '全部' : 'All') : f === 'major' ? (language === 'zh' ? '主要' : 'Major') : (language === 'zh' ? '精确' : 'Exact')}
                       </button>
                     ))}
@@ -540,7 +540,7 @@ export default function TransitPage() {
                     const nCfg = PC.find((c: any) => c.id === asp.natalPlanet);
                     const colors: Record<string,string> = {Conjunction:'#FFD700',Sextile:'#00FF88',Square:'#FF4444',Trine:'#4488FF',Opposition:'#FF8800'};
                     return (
-                      <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-slate-800/50">
+                      <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-gray-100">
                         <div className="flex items-center gap-2">
                           <span style={{color:tCfg?.color}}>{tCfg?.sym}</span>
                           <span className="text-gray-500">→</span>
@@ -559,7 +559,7 @@ export default function TransitPage() {
             {activeTab === 'ai' && (
               <div className="space-y-6">
                 {/* Free Simple Reading */}
-                <div className="p-6 rounded-2xl bg-slate-900/80 border border-slate-700">
+                <div className="p-6 rounded-2xl bg-gray-50 border border-gray-300">
                   <h3 className="font-bold mb-4 flex items-center gap-2">
                     <Sparkles size={18} className="text-amber-400" />
                     {language === 'zh' ? '简要推运解读' : language === 'id' ? 'Bacaan Transit Ringkas' : 'Simple Transit Reading'}
@@ -589,9 +589,9 @@ export default function TransitPage() {
                 </div>
                 
                 {/* Deep Reading with Unlock */}
-                <div className="rounded-2xl overflow-hidden border border-slate-700">
+                <div className="rounded-2xl overflow-hidden border border-gray-300">
                   {/* Header */}
-                  <div className="p-5 bg-gradient-to-r from-purple-900/40 to-indigo-900/40 flex items-center justify-between">
+                  <div className="p-5 bg-gradient-to-r from-purple-50/40 to-indigo-50/40 flex items-center justify-between">
                     <h3 className="font-bold flex items-center gap-2">
                       {isUnlocked ? <Sparkles size={18} className="text-purple-400" /> : <Lock size={18} className="text-gray-500" />}
                       {language === 'zh' ? '深度推运解读' : language === 'id' ? 'Bacaan Transit Mendalam' : 'Deep Transit Reading'}
@@ -601,14 +601,14 @@ export default function TransitPage() {
                   
                   {/* Unlocked Content */}
                   {isUnlocked ? (
-                    <div className="p-5 space-y-4 bg-slate-900/60">
+                    <div className="p-5 space-y-4 bg-gray-50">
                       {filteredAspects.slice(3, 8).map((asp: any, i: number) => {
                         const reading = (TRANSIT_READINGS as any)[asp.transitPlanet]?.[language]?.[asp.type];
                         if (!reading) return null;
                         const tCfg = PC.find((c: any) => c.id === asp.transitPlanet);
                         const nCfg = PC.find((c: any) => c.id === asp.natalPlanet);
                         return (
-                          <div key={i} className="p-4 rounded-xl bg-purple-500/10 border border-purple-500/20">
+                          <div key={i} className="p-4 rounded-xl bg-purple-500/10 border border-purple-200">
                             <h4 className="font-bold mb-2 flex items-center gap-2 text-purple-400">
                               <span style={{color:tCfg?.color}}>{tCfg?.sym}</span>
                               {reading.title} → <span style={{color:nCfg?.color}}>{nCfg?.sym}</span>
@@ -624,12 +624,12 @@ export default function TransitPage() {
                     </div>
                   ) : (
                     /* Locked - Share to Unlock */
-                    <div className="p-6 space-y-5 bg-slate-900/60">
+                    <div className="p-6 space-y-5 bg-gray-50">
                       {/* Blurred Preview */}
                       <div className="relative">
                         <div className="space-y-3 blur-sm pointer-events-none select-none opacity-60">
-                          <div className="p-4 rounded-xl bg-slate-800"><div className="h-4 bg-slate-700 rounded w-3/4 mb-2" /><div className="h-3 bg-slate-700/50 rounded w-full" /></div>
-                          <div className="p-4 rounded-xl bg-slate-800"><div className="h-4 bg-slate-700 rounded w-2/3 mb-2" /><div className="h-3 bg-slate-700/50 rounded w-full" /></div>
+                          <div className="p-4 rounded-xl bg-white"><div className="h-4 bg-gray-100 rounded w-3/4 mb-2" /><div className="h-3 bg-gray-100 rounded w-full" /></div>
+                          <div className="p-4 rounded-xl bg-white"><div className="h-4 bg-gray-100 rounded w-2/3 mb-2" /><div className="h-3 bg-gray-100 rounded w-full" /></div>
                         </div>
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="text-center">
@@ -650,7 +650,7 @@ export default function TransitPage() {
                         {/* Progress */}
                         <div className="flex gap-2 mb-3">
                           {[1, 2, 3].map(n => (
-                            <div key={n} className={`flex-1 h-2 rounded-full transition-all ${shareCount >= n ? "bg-green-500" : "bg-slate-700"}`} />
+                            <div key={n} className={`flex-1 h-2 rounded-full transition-all ${shareCount >= n ? "bg-green-500" : "bg-gray-100"}`} />
                           ))}
                         </div>
                         <div className="text-xs text-gray-500 mb-3">{language === 'zh' ? '分享进度' : language === 'id' ? 'Progres' : 'Progress'}: {shareCount}/3</div>
@@ -659,7 +659,7 @@ export default function TransitPage() {
                           <div className="grid grid-cols-3 gap-2">
                             {[1, 2, 3].map(n => (
                               <button key={n} onClick={handleShare} disabled={shareCount >= n}
-                                className={`py-2 rounded-lg text-xs font-medium flex items-center justify-center gap-1 transition-all ${shareCount >= n ? "bg-green-500/20 text-green-400 border border-green-500/30" : "bg-slate-800 hover:bg-green-500/20 text-gray-600 hover:text-green-300 border border-slate-700"}`}>
+                                className={`py-2 rounded-lg text-xs font-medium flex items-center justify-center gap-1 transition-all ${shareCount >= n ? "bg-green-500/20 text-green-400 border border-green-500/30" : "bg-white hover:bg-green-500/20 text-gray-600 hover:text-green-300 border border-gray-300"}`}>
                                 {shareCount >= n ? <CheckCircle size={12} /> : <Share2 size={12} />}
                                 {language === 'zh' ? '好友' : language === 'id' ? 'Teman' : 'Friend'} {n}
                               </button>
@@ -701,7 +701,7 @@ export default function TransitPage() {
             <section className="max-w-4xl mx-auto mt-16 mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">常见问题</h2>
               <div className="space-y-3">
-                <div className="border border-purple-500/20 rounded-lg overflow-hidden">
+                <div className="border border-purple-200 rounded-lg overflow-hidden">
                   <button onClick={() => setFaq(1)} className="w-full flex items-center justify-between p-4 text-left hover:bg-purple-500/5 transition-colors">
                     <span className="text-gray-900 font-medium">什么是推运盘？</span>
                     <ChevronDown className={`w-5 h-5 text-purple-400 transition-transform ${faq===1?'rotate-180':''}`} />
@@ -714,7 +714,7 @@ export default function TransitPage() {
                     </div>
                   )}
                 </div>
-                <div className="border border-purple-500/20 rounded-lg overflow-hidden">
+                <div className="border border-purple-200 rounded-lg overflow-hidden">
                   <button onClick={() => setFaq(2)} className="w-full flex items-center justify-between p-4 text-left hover:bg-purple-500/5 transition-colors">
                     <span className="text-gray-900 font-medium">推运盘准确吗？</span>
                     <ChevronDown className={`w-5 h-5 text-purple-400 transition-transform ${faq===2?'rotate-180':''}`} />
@@ -727,7 +727,7 @@ export default function TransitPage() {
                     </div>
                   )}
                 </div>
-                <div className="border border-purple-500/20 rounded-lg overflow-hidden">
+                <div className="border border-purple-200 rounded-lg overflow-hidden">
                   <button onClick={() => setFaq(3)} className="w-full flex items-center justify-between p-4 text-left hover:bg-purple-500/5 transition-colors">
                     <span className="text-gray-900 font-medium">如何解读推运盘？</span>
                     <ChevronDown className={`w-5 h-5 text-purple-400 transition-transform ${faq===3?'rotate-180':''}`} />
@@ -740,7 +740,7 @@ export default function TransitPage() {
                     </div>
                   )}
                 </div>
-                <div className="border border-purple-500/20 rounded-lg overflow-hidden">
+                <div className="border border-purple-200 rounded-lg overflow-hidden">
                   <button onClick={() => setFaq(4)} className="w-full flex items-center justify-between p-4 text-left hover:bg-purple-500/5 transition-colors">
                     <span className="text-gray-900 font-medium">推运盘和本命盘有什么区别？</span>
                     <ChevronDown className={`w-5 h-5 text-purple-400 transition-transform ${faq===4?'rotate-180':''}`} />
@@ -753,7 +753,7 @@ export default function TransitPage() {
                     </div>
                   )}
                 </div>
-                <div className="border border-purple-500/20 rounded-lg overflow-hidden">
+                <div className="border border-purple-200 rounded-lg overflow-hidden">
                   <button onClick={() => setFaq(5)} className="w-full flex items-center justify-between p-4 text-left hover:bg-purple-500/5 transition-colors">
                     <span className="text-gray-900 font-medium">为什么要看推运盘？</span>
                     <ChevronDown className={`w-5 h-5 text-purple-400 transition-transform ${faq===5?'rotate-180':''}`} />

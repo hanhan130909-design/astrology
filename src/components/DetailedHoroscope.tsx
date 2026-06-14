@@ -241,7 +241,7 @@ export default function DetailedHoroscope({ language = "id" }: DetailedHoroscope
             className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
               period === p
                 ? "bg-gradient-to-r from-amber-500 to-purple-600 text-white"
-                : "bg-purple-900/50 text-purple-200 border border-purple-500/30 hover:border-amber-400/50"
+                : "bg-purple-900/50 text-purple-200 border border-purple-200 hover:border-amber-400/50"
             }`}
           >
             {t[p]}
@@ -258,7 +258,7 @@ export default function DetailedHoroscope({ language = "id" }: DetailedHoroscope
             className={`p-3 rounded-xl text-center transition-all ${
               selectedSign === sign.id
                 ? "bg-gradient-to-br from-amber-500/30 to-purple-600/30 border-2 border-amber-400"
-                : "bg-purple-900/30 border border-purple-500/20 hover:border-purple-400/50"
+                : "bg-purple-900/30 border border-purple-200 hover:border-purple-400/50"
             }`}
           >
             <div className="text-2xl">{sign.symbol}</div>
@@ -284,7 +284,7 @@ export default function DetailedHoroscope({ language = "id" }: DetailedHoroscope
               { key: "health", icon: "💪", value: currentData.health },
               { key: "finance", icon: "💰", value: currentData.finance },
             ].map((item) => (
-              <div key={item.key} className="text-center p-3 rounded-xl bg-purple-900/30 border border-purple-500/20">
+              <div key={item.key} className="text-center p-3 rounded-xl bg-purple-900/30 border border-purple-200">
                 <div className="text-2xl mb-1">{item.icon}</div>
                 <div className={`text-xl font-bold ${getScoreColor(item.value)}`}>{item.value}%</div>
                 <div className="text-xs text-purple-300">{t[item.key as keyof typeof t]}</div>
@@ -293,7 +293,7 @@ export default function DetailedHoroscope({ language = "id" }: DetailedHoroscope
           </div>
 
           {/* 详细解读 */}
-          <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-500/20">
+          <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200">
             <h3 className="font-semibold text-amber-100 mb-2">{t.detail}</h3>
             <p className="text-purple-200 leading-relaxed">{currentData.detail}</p>
           </div>
@@ -308,7 +308,7 @@ export default function DetailedHoroscope({ language = "id" }: DetailedHoroscope
               <div className="text-sm text-pink-300 mb-1">{t.color}</div>
               <div className="text-xl font-bold text-pink-400">{currentData.lucky.color}</div>
             </div>
-            <div className="text-center p-4 rounded-xl bg-gradient-to-br from-blue-900/30 to-indigo-900/30 border border-blue-500/30">
+            <div className="text-center p-4 rounded-xl bg-gradient-to-br from-blue-900/30 to-indigo-50/30 border border-blue-500/30">
               <div className="text-sm text-blue-300 mb-1">{t.time}</div>
               <div className="text-lg font-bold text-blue-400">{currentData.lucky.time}</div>
             </div>

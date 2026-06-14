@@ -95,7 +95,7 @@ export default function ChartOptions({
     <div className="space-y-4">
       {/* 星盘类型选择 */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-700 mb-2">
           {lang === "zh" ? "星盘类型" : "Chart Type"}
         </label>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -125,7 +125,7 @@ export default function ChartOptions({
 
       {/* 分宫制选择 */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-700 mb-2">
           {lang === "zh" ? "分宫制" : "House System"}
         </label>
         <div className="flex gap-2">
@@ -154,7 +154,7 @@ export default function ChartOptions({
       {showSynastryOptions && (
         <div className="grid grid-cols-2 gap-4 p-4 bg-pink-50 dark:bg-pink-900/20 rounded-lg">
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-700 mb-1">
               {lang === "zh" ? "第一人" : "Person 1"}
             </label>
             <input
@@ -166,7 +166,7 @@ export default function ChartOptions({
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-700 mb-1">
               {lang === "zh" ? "第二人" : "Person 2"}
             </label>
             <input

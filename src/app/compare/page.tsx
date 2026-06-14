@@ -413,7 +413,7 @@ export default function ComparePage() {
           <div className="flex justify-center mb-8">
             <button
               onClick={addPerson}
-              className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-gray-200 rounded-xl text-gray-300 hover:bg-white/10 hover:text-purple-700 transition-colors"
+              className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-gray-200 rounded-xl text-gray-700 hover:bg-white/10 hover:text-purple-700 transition-colors"
             >
               <Plus className="w-5 h-5" />
               {t.addPerson}
@@ -446,7 +446,7 @@ export default function ComparePage() {
         {result && (
           <div className="space-y-6">
             {/* Compatibility Score */}
-            <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 rounded-2xl p-8 border border-purple-500/20 text-center">
+            <div className="bg-gradient-to-br from-purple-50/30 to-pink-900/30 rounded-2xl p-8 border border-purple-200 text-center">
               <div className="text-gray-400 mb-2">{t.compatibility}</div>
               <div className="text-6xl font-bold gradient-text mb-4">{result.compatibility}%</div>
               <div className="flex justify-center gap-2">
@@ -502,7 +502,7 @@ export default function ComparePage() {
                       {aspect.aspect}
                     </span>
                     <span className="text-gray-400 text-sm">±{aspect.orb}°</span>
-                    <span className="text-gray-300 text-sm ml-auto">{aspect.meaning}</span>
+                    <span className="text-gray-700 text-sm ml-auto">{aspect.meaning}</span>
                   </div>
                 ))}
               </div>
@@ -514,7 +514,7 @@ export default function ComparePage() {
                 <h3 className="text-lg font-semibold text-green-400 mb-4">{t.strengths}</h3>
                 <ul className="space-y-2">
                   {result.strengths.map((strength, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-gray-300">
+                    <li key={idx} className="flex items-center gap-2 text-gray-700">
                       <span className="text-green-400">✓</span>
                       {strength}
                     </li>
@@ -525,7 +525,7 @@ export default function ComparePage() {
                 <h3 className="text-lg font-semibold text-amber-400 mb-4">{t.challenges}</h3>
                 <ul className="space-y-2">
                   {result.challenges.map((challenge, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-gray-300">
+                    <li key={idx} className="flex items-center gap-2 text-gray-700">
                       <span className="text-amber-400">!</span>
                       {challenge}
                     </li>
@@ -540,7 +540,7 @@ export default function ComparePage() {
                 <Info className="w-5 h-5" />
                 {t.advice}
               </h3>
-              <p className="text-gray-300">{result.advice}</p>
+              <p className="text-gray-700">{result.advice}</p>
             </div>
           </div>
         )}

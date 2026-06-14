@@ -205,8 +205,8 @@ export default function PlanetGuide() {
               onClick={() => setSelectedPlanet(p.id)}
               className={`p-3 rounded-xl text-center transition-all ${
                 selectedPlanet === p.id
-                  ? "bg-gradient-to-br from-purple-600/40 to-indigo-600/40 border-2 border-purple-400 shadow-lg shadow-purple-500/20"
-                  : "bg-slate-800/50 border border-slate-700 hover:border-slate-600"
+                  ? "bg-gradient-to-br from-purple-600/40 to-indigo-600/40 border-2 border-purple-400 shadow-lg shadow-purple-200/30"
+                  : "bg-gray-100 border border-gray-300 hover:border-gray-300"
               }`}
             >
               <span style={{ color: p.color }} className="text-2xl block">{p.symbol}</span>
@@ -218,7 +218,7 @@ export default function PlanetGuide() {
 
       {/* 行星信息卡 */}
       {planet && (
-        <div className="p-6 rounded-2xl bg-gradient-to-br from-purple-900/30 to-indigo-900/30 border border-purple-500/20">
+        <div className="p-6 rounded-2xl bg-gradient-to-br from-purple-50/30 to-indigo-50/30 border border-purple-200">
           <div className="flex items-center gap-4 mb-4">
             <span style={{ color: planet.color }} className="text-5xl">{planet.symbol}</span>
             <div>
@@ -230,7 +230,7 @@ export default function PlanetGuide() {
           </div>
           <div className="flex flex-wrap gap-2">
             {planet.keywords[language].map((kw: string, i: number) => (
-              <span key={i} className="px-3 py-1.5 bg-purple-500/20 rounded-full text-xs text-purple-300 border border-purple-500/20">
+              <span key={i} className="px-3 py-1.5 bg-purple-500/20 rounded-full text-xs text-purple-300 border border-purple-200">
                 {kw}
               </span>
             ))}
@@ -249,7 +249,7 @@ export default function PlanetGuide() {
               className={`p-2 rounded-xl text-center transition-all ${
                 selectedSign === s.id
                   ? "bg-gradient-to-br from-amber-500/30 to-purple-600/30 border-2 border-amber-400"
-                  : "bg-slate-800/50 border border-slate-700 hover:border-slate-600"
+                  : "bg-gray-100 border border-gray-300 hover:border-gray-300"
               }`}
             >
               <span className="text-xl block">{s.symbol}</span>
@@ -273,7 +273,7 @@ export default function PlanetGuide() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="p-4 rounded-xl bg-slate-900/50 border border-slate-800">
+            <div className="p-4 rounded-xl bg-gray-50 border border-slate-800">
               <div className="text-xs text-slate-500 mb-2">{t.traits}</div>
               <div className="flex flex-wrap gap-2">
                 {interpretation.traits.map((trait: string, i: number) => (
@@ -297,7 +297,7 @@ export default function PlanetGuide() {
 
       {/* 快速参考表 */}
       <div className="mt-8">
-        <button onClick={() => setShowAll(!showAll)} className="w-full py-3 bg-slate-800 hover:bg-slate-700 rounded-xl text-sm font-medium text-slate-300 transition-colors">
+        <button onClick={() => setShowAll(!showAll)} className="w-full py-3 bg-white hover:bg-gray-100 rounded-xl text-sm font-medium text-gray-600 transition-colors">
           {showAll ? "收起快速参考" : "显示快速参考表"}
         </button>
         
@@ -305,7 +305,7 @@ export default function PlanetGuide() {
           <div className="mt-4 overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-slate-700">
+                <tr className="border-b border-gray-300">
                   <th className="text-left p-2 text-slate-400">行星</th>
                   <th className="text-left p-2 text-slate-400">火象</th>
                   <th className="text-left p-2 text-slate-400">土象</th>
@@ -321,19 +321,19 @@ export default function PlanetGuide() {
                     </td>
                     {["aries", "leo", "sagittarius"].map(el => {
                       const interp = simpleInterpretations[p.id]?.[el];
-                      return <td key={el} className="p-2 text-slate-300">{interp?.strength || '-'}</td>;
+                      return <td key={el} className="p-2 text-gray-600">{interp?.strength || '-'}</td>;
                     })}
                     {["taurus", "virgo", "capricorn"].map(el => {
                       const interp = simpleInterpretations[p.id]?.[el];
-                      return <td key={el} className="p-2 text-slate-300">{interp?.strength || '-'}</td>;
+                      return <td key={el} className="p-2 text-gray-600">{interp?.strength || '-'}</td>;
                     })}
                     {["gemini", "libra", "aquarius"].map(el => {
                       const interp = simpleInterpretations[p.id]?.[el];
-                      return <td key={el} className="p-2 text-slate-300">{interp?.strength || '-'}</td>;
+                      return <td key={el} className="p-2 text-gray-600">{interp?.strength || '-'}</td>;
                     })}
                     {["cancer", "scorpio", "pisces"].map(el => {
                       const interp = simpleInterpretations[p.id]?.[el];
-                      return <td key={el} className="p-2 text-slate-300">{interp?.strength || '-'}</td>;
+                      return <td key={el} className="p-2 text-gray-600">{interp?.strength || '-'}</td>;
                     })}
                   </tr>
                 ))}

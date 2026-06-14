@@ -17,7 +17,7 @@ export function LoadingSpinner({ size = "md", text }: LoadingSpinnerProps) {
   return (
     <div className="flex flex-col items-center justify-center gap-3">
       <div
-        className={`${sizeClasses[size]} rounded-full border-purple-500/30 border-t-purple-500 animate-spin`}
+        className={`${sizeClasses[size]} rounded-full border-purple-200 border-t-purple-500 animate-spin`}
       />
       {text && <p className="text-sm text-slate-400 animate-pulse">{text}</p>}
     </div>
@@ -58,7 +58,7 @@ export function PageLoader() {
 
       {/* Logo */}
       <div className="relative mb-8">
-        <div className="w-20 h-20 bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-500/30">
+        <div className="w-20 h-20 bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-200/40">
           <svg
             className="w-10 h-10 text-white"
             fill="currentColor"
@@ -75,7 +75,7 @@ export function PageLoader() {
       <p className="text-sm text-slate-400 mb-6">正在加载星象数据...</p>
 
       {/* Progress bar */}
-      <div className="w-48 h-1 bg-slate-800 rounded-full overflow-hidden">
+      <div className="w-48 h-1 bg-white rounded-full overflow-hidden">
         <div
           className="h-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-300 ease-out"
           style={{ width: `${Math.min(progress, 100)}%` }}
@@ -92,18 +92,18 @@ export function PageLoader() {
 
 export function SkeletonCard() {
   return (
-    <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800 animate-pulse">
+    <div className="p-6 rounded-2xl bg-gray-50 border border-slate-800 animate-pulse">
       <div className="flex items-center gap-4 mb-4">
-        <div className="w-12 h-12 rounded-xl bg-slate-800" />
+        <div className="w-12 h-12 rounded-xl bg-white" />
         <div className="flex-1">
-          <div className="h-4 bg-slate-800 rounded w-3/4 mb-2" />
-          <div className="h-3 bg-slate-800 rounded w-1/2" />
+          <div className="h-4 bg-white rounded w-3/4 mb-2" />
+          <div className="h-3 bg-white rounded w-1/2" />
         </div>
       </div>
       <div className="space-y-2">
-        <div className="h-3 bg-slate-800 rounded w-full" />
-        <div className="h-3 bg-slate-800 rounded w-5/6" />
-        <div className="h-3 bg-slate-800 rounded w-4/6" />
+        <div className="h-3 bg-white rounded w-full" />
+        <div className="h-3 bg-white rounded w-5/6" />
+        <div className="h-3 bg-white rounded w-4/6" />
       </div>
     </div>
   );

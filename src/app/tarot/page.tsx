@@ -190,7 +190,7 @@ function TarotCardVisual({ card, isRevealed, index, spreadLength }: { card: type
       `}>
         {!isRevealed ? (
           // Card back design
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-slate-800 to-slate-900 flex items-center justify-center">
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-slate-800 to-slate-900 flex items-center justify-center">
             <div className="w-full h-full border-2 border-purple-500/50 m-2 rounded-lg flex items-center justify-center">
               <div className="grid grid-cols-3 gap-1 p-2">
                 {Array.from({ length: 9 }).map((_, i) => (
@@ -333,7 +333,7 @@ export default function TarotPage() {
         </div>
 
         {/* Controls */}
-        <div className="bg-slate-900/50 border border-slate-700 rounded-2xl p-5 mb-6 space-y-4">
+        <div className="bg-gray-50 border border-gray-300 rounded-2xl p-5 mb-6 space-y-4">
           {/* Question Input */}
           <div>
             <label className="block text-sm text-gray-500 mb-2">{t.question}</label>
@@ -342,7 +342,7 @@ export default function TarotPage() {
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
               placeholder={t.questionPlaceholder}
-              className="w-full bg-slate-800 border border-slate-600 rounded-xl px-4 py-3 text-gray-900 placeholder-slate-500 focus:outline-none focus:border-purple-500"
+              className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder-slate-500 focus:outline-none focus:border-purple-500"
             />
           </div>
 
@@ -358,7 +358,7 @@ export default function TarotPage() {
                     className={`flex-1 py-2 rounded-lg text-sm font-medium transition-all ${
                       category === c 
                         ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-gray-900' 
-                        : 'bg-slate-800 text-gray-500 hover:bg-slate-700'
+                        : 'bg-white text-gray-500 hover:bg-gray-100'
                     }`}
                   >
                     {t[c]}
@@ -371,7 +371,7 @@ export default function TarotPage() {
               <select
                 value={selectedSpread.id}
                 onChange={(e) => { setSelectedSpread(SPREADS.find(s => s.id === e.target.value) || SPREADS[0]); setDrawnCards([]); setRevealedCards([]); }}
-                className="w-full bg-slate-800 border border-slate-600 rounded-xl px-4 py-2.5 text-gray-900 focus:outline-none focus:border-purple-500"
+                className="w-full bg-white border border-gray-300 rounded-xl px-4 py-2.5 text-gray-900 focus:outline-none focus:border-purple-500"
               >
                 {SPREADS.map((s) => (
                   <option key={s.id} value={s.id}>
@@ -386,7 +386,7 @@ export default function TarotPage() {
           <button
             onClick={shuffleCards}
             disabled={isShuffling}
-            className="w-full py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 disabled:from-slate-600 disabled:to-slate-600 rounded-xl font-bold text-gray-900 transition-all flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30"
+            className="w-full py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 disabled:from-slate-600 disabled:to-slate-600 rounded-xl font-bold text-gray-900 transition-all flex items-center justify-center gap-2 shadow-lg shadow-purple-200/40"
           >
             {isShuffling ? <RefreshCw size={20} className="animate-spin" /> : <Shuffle size={20} />}
             {isShuffling ? t.shuffling : t.shuffle}
@@ -397,14 +397,14 @@ export default function TarotPage() {
         {drawnCards.length > 0 && (
           <div className="space-y-6">
             {/* Cards Grid */}
-            <div className="bg-slate-900/50 border border-slate-700 rounded-2xl p-6">
+            <div className="bg-gray-50 border border-gray-300 rounded-2xl p-6">
               <div className={`flex flex-wrap justify-center gap-4 ${drawnCards.length > 5 ? 'max-h-96 overflow-y-auto' : ''}`}>
                 {drawnCards.map((card, i) => {
                   const isRevealed = revealedCards.includes(i);
                   return (
                     <div key={i} className="flex flex-col items-center gap-2">
                       {/* Position label */}
-                      <div className="text-xs text-gray-500 text-center bg-slate-800/50 px-2 py-1 rounded-lg">
+                      <div className="text-xs text-gray-500 text-center bg-gray-100 px-2 py-1 rounded-lg">
                         {currentPositions[i] || `${t.position} ${i + 1}`}
                       </div>
                       {/* Card */}
@@ -434,7 +434,7 @@ export default function TarotPage() {
             {allRevealed && (
               <div className="space-y-4">
                 {/* Free Reading */}
-                <div className="bg-gradient-to-r from-purple-900/40 to-pink-900/40 border border-purple-500/30 rounded-2xl p-6">
+                <div className="bg-gradient-to-r from-purple-50/40 to-pink-900/40 border border-purple-200 rounded-2xl p-6">
                   <h3 className="font-bold mb-4 flex items-center gap-2">
                     <Sparkles size={18} className="text-amber-400" />
                     {t.reading}
@@ -463,18 +463,18 @@ export default function TarotPage() {
 
                 {/* Deep Reading - Unlock */}
                 {!isUnlocked && drawnCards.length > 1 && (
-                  <div className="rounded-2xl overflow-hidden border border-slate-700">
+                  <div className="rounded-2xl overflow-hidden border border-gray-300">
                     <div className="p-5 bg-gradient-to-r from-amber-900/40 to-orange-900/40 flex items-center justify-between">
                       <h3 className="font-bold flex items-center gap-2">
                         <Lock size={18} className="text-amber-400" />
                         {t.deepReading}
                       </h3>
                     </div>
-                    <div className="p-6 space-y-5 bg-slate-900/60">
+                    <div className="p-6 space-y-5 bg-gray-50">
                       {/* Blurred Preview */}
                       <div className="relative">
                         <div className="space-y-3 blur-sm pointer-events-none select-none opacity-60">
-                          <div className="p-4 rounded-xl bg-slate-800"><div className="h-4 bg-slate-700 rounded w-3/4 mb-2" /><div className="h-3 bg-slate-700/50 rounded w-full" /></div>
+                          <div className="p-4 rounded-xl bg-white"><div className="h-4 bg-gray-100 rounded w-3/4 mb-2" /><div className="h-3 bg-gray-100 rounded w-full" /></div>
                         </div>
                         <div className="absolute inset-0 flex items-center justify-center">
                           <Lock size={32} className="text-gray-500" />
@@ -489,7 +489,7 @@ export default function TarotPage() {
                         </div>
                         <div className="flex gap-2 mb-3">
                           {[1, 2, 3].map(n => (
-                            <div key={n} className={`flex-1 h-2 rounded-full transition-all ${shareCount >= n ? "bg-green-500" : "bg-slate-700"}`} />
+                            <div key={n} className={`flex-1 h-2 rounded-full transition-all ${shareCount >= n ? "bg-green-500" : "bg-gray-100"}`} />
                           ))}
                         </div>
                         <div className="text-xs text-gray-500 mb-3">{t.shareProgress}: {shareCount}/3</div>
@@ -498,7 +498,7 @@ export default function TarotPage() {
                           <div className="grid grid-cols-3 gap-2">
                             {[1, 2, 3].map(n => (
                               <button key={n} onClick={handleShare} disabled={shareCount >= n}
-                                className={`py-2 rounded-lg text-xs font-medium flex items-center justify-center gap-1 transition-all ${shareCount >= n ? "bg-green-500/20 text-green-400 border border-green-500/30" : "bg-slate-800 hover:bg-green-500/20 text-gray-600 hover:text-green-300 border border-slate-700"}`}>
+                                className={`py-2 rounded-lg text-xs font-medium flex items-center justify-center gap-1 transition-all ${shareCount >= n ? "bg-green-500/20 text-green-400 border border-green-500/30" : "bg-white hover:bg-green-500/20 text-gray-600 hover:text-green-300 border border-gray-300"}`}>
                                 {shareCount >= n ? <CheckCircle size={12} /> : <Share2 size={12} />}
                                 {language === 'zh' ? '好友' : language === 'id' ? 'Teman' : language === 'th' ? 'เพื่อน' : language === 'vi' ? 'Bạn' : 'Friend'} {n}
                               </button>

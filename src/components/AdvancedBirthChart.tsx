@@ -149,7 +149,7 @@ export default function AdvancedBirthChart({ language = "id" }: AdvancedBirthCha
   return (
     <div className="w-full space-y-6">
       {/* 高级设置 */}
-      <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-500/20 space-y-4">
+      <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200 space-y-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {/* 宫位系统选择 */}
           <div>
@@ -157,7 +157,7 @@ export default function AdvancedBirthChart({ language = "id" }: AdvancedBirthCha
             <select
               value={formData.houseSystem}
               onChange={(e) => setFormData({ ...formData, houseSystem: e.target.value })}
-              className="w-full p-2 bg-purple-900/50 border border-purple-500/30 rounded-lg text-white mt-1"
+              className="w-full p-2 bg-purple-900/50 border border-purple-200 rounded-lg text-white mt-1"
             >
               {HOUSE_SYSTEMS.map(h => (
                 <option key={h.id} value={h.id}>{h.name}</option>
@@ -205,7 +205,7 @@ export default function AdvancedBirthChart({ language = "id" }: AdvancedBirthCha
         </div>
 
         {/* 社会行星 */}
-        <div className="p-4 rounded-xl bg-gradient-to-r from-blue-900/20 to-indigo-900/20 border border-blue-500/30">
+        <div className="p-4 rounded-xl bg-gradient-to-r from-blue-900/20 to-indigo-50/20 border border-blue-500/30">
           <h4 className="text-blue-200 font-semibold mb-3">{t.socialPlanets}</h4>
           <div className="flex flex-wrap gap-3">
             {getPlanetsByCategory("social").map(planet => (
@@ -218,7 +218,7 @@ export default function AdvancedBirthChart({ language = "id" }: AdvancedBirthCha
         </div>
 
         {/* 世代行星 */}
-        <div className="p-4 rounded-xl bg-gradient-to-r from-purple-900/20 to-pink-900/20 border border-purple-500/30">
+        <div className="p-4 rounded-xl bg-gradient-to-r from-purple-50/20 to-pink-900/20 border border-purple-200">
           <h4 className="text-purple-200 font-semibold mb-3">{t.transpersonalPlanets}</h4>
           <div className="flex flex-wrap gap-3">
             {getPlanetsByCategory("transpersonal").map(planet => (
@@ -263,7 +263,7 @@ export default function AdvancedBirthChart({ language = "id" }: AdvancedBirthCha
 
       {/* 元素和模式分析 */}
       <div className="grid md:grid-cols-2 gap-4">
-        <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-500/20">
+        <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200">
           <h4 className="text-amber-200 font-semibold mb-3">{t.elements}</h4>
           <div className="space-y-2">
             {["fire", "earth", "air", "water"].map(element => {
@@ -294,7 +294,7 @@ export default function AdvancedBirthChart({ language = "id" }: AdvancedBirthCha
           </div>
         </div>
 
-        <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-500/20">
+        <div className="p-4 rounded-xl bg-purple-900/30 border border-purple-200">
           <h4 className="text-amber-200 font-semibold mb-3">{t.modes}</h4>
           <div className="space-y-2">
             {["cardinal", "fixed", "mutable"].map(mode => {

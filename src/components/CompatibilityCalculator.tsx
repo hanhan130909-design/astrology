@@ -181,7 +181,7 @@ export default function CompatibilityCalculator({ language = "id" }: Compatibili
           <select
             value={sign1}
             onChange={(e) => setSign1(e.target.value)}
-            className="w-full p-3 bg-purple-900/50 border border-purple-500/30 rounded-xl text-white"
+            className="w-full p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white"
           >
             {signs.map((s) => (
               <option key={s.id} value={s.id}>
@@ -197,7 +197,7 @@ export default function CompatibilityCalculator({ language = "id" }: Compatibili
           <select
             value={sign2}
             onChange={(e) => setSign2(e.target.value)}
-            className="w-full p-3 bg-purple-900/50 border border-purple-500/30 rounded-xl text-white"
+            className="w-full p-3 bg-purple-900/50 border border-purple-200 rounded-xl text-white"
           >
             {signs.map((s) => (
               <option key={s.id} value={s.id}>
@@ -209,7 +209,7 @@ export default function CompatibilityCalculator({ language = "id" }: Compatibili
       </div>
 
       {/* 配对结果 */}
-      <div className="p-6 rounded-2xl bg-gradient-to-br from-purple-900/40 to-purple-950/60 border border-purple-500/20 space-y-6">
+      <div className="p-6 rounded-2xl bg-gradient-to-br from-purple-50/40 to-purple-950/60 border border-purple-200 space-y-6">
         {/* 分数展示 */}
         <div className="text-center">
           <div className="flex items-center justify-center gap-4 mb-4">
@@ -240,7 +240,7 @@ export default function CompatibilityCalculator({ language = "id" }: Compatibili
         </div>
 
         {/* 详细解读 */}
-        <div className="p-4 rounded-xl bg-purple-800/30 border border-purple-500/20">
+        <div className="p-4 rounded-xl bg-purple-800/30 border border-purple-200">
           <h4 className="font-semibold text-amber-100 mb-2">{t.detail}</h4>
           <p className="text-purple-200 leading-relaxed">{result.detail}</p>
         </div>

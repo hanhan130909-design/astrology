@@ -444,13 +444,13 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
             <div>
               <label className="block text-xs text-slate-400 mb-1">{L.birthDate}</label>
               <div className="grid grid-cols-3 gap-1">
-                <select value={form.year} onChange={e => setForm({ ...form, year: +e.target.value })} className="p-2 rounded-lg bg-slate-800 border border-slate-700 text-white text-sm">
+                <select value={form.year} onChange={e => setForm({ ...form, year: +e.target.value })} className="p-2 rounded-lg bg-white border border-gray-300 text-white text-sm">
                   {Array.from({ length: 80 }, (_, i) => 2010 - i).map(y => <option key={y} value={y}>{y}</option>)}
                 </select>
-                <select value={form.month} onChange={e => setForm({ ...form, month: +e.target.value })} className="p-2 rounded-lg bg-slate-800 border border-slate-700 text-white text-sm">
+                <select value={form.month} onChange={e => setForm({ ...form, month: +e.target.value })} className="p-2 rounded-lg bg-white border border-gray-300 text-white text-sm">
                   {Array.from({ length: 12 }, (_, i) => i + 1).map(m => <option key={m} value={m}>{m}</option>)}
                 </select>
-                <select value={form.day} onChange={e => setForm({ ...form, day: +e.target.value })} className="p-2 rounded-lg bg-slate-800 border border-slate-700 text-white text-sm">
+                <select value={form.day} onChange={e => setForm({ ...form, day: +e.target.value })} className="p-2 rounded-lg bg-white border border-gray-300 text-white text-sm">
                   {Array.from({ length: 31 }, (_, i) => i + 1).map(d => <option key={d} value={d}>{d}</option>)}
                 </select>
               </div>
@@ -460,10 +460,10 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
             <div>
               <label className="block text-xs text-slate-400 mb-1">{L.birthTime}</label>
               <div className="grid grid-cols-2 gap-1">
-                <select value={form.hour} onChange={e => setForm({ ...form, hour: +e.target.value })} className="p-2 rounded-lg bg-slate-800 border border-slate-700 text-white text-sm">
+                <select value={form.hour} onChange={e => setForm({ ...form, hour: +e.target.value })} className="p-2 rounded-lg bg-white border border-gray-300 text-white text-sm">
                   {Array.from({ length: 24 }, (_, i) => <option key={i} value={i}>{String(i).padStart(2, "0")}</option>)}
                 </select>
-                <select value={form.minute} onChange={e => setForm({ ...form, minute: +e.target.value })} className="p-2 rounded-lg bg-slate-800 border border-slate-700 text-white text-sm">
+                <select value={form.minute} onChange={e => setForm({ ...form, minute: +e.target.value })} className="p-2 rounded-lg bg-white border border-gray-300 text-white text-sm">
                   {[0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55].map(m => <option key={m} value={m}>{String(m).padStart(2, "0")}</option>)}
                 </select>
               </div>
@@ -472,7 +472,7 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
             {/* 出生地点 */}
             <div>
               <label className="block text-xs text-slate-400 mb-1">{L.birthPlace}</label>
-              <select value={form.cityId} onChange={e => setForm({ ...form, cityId: e.target.value })} className="w-full p-2 rounded-lg bg-slate-800 border border-slate-700 text-white text-sm">
+              <select value={form.cityId} onChange={e => setForm({ ...form, cityId: e.target.value })} className="w-full p-2 rounded-lg bg-white border border-gray-300 text-white text-sm">
                 {CITIES.map(c => <option key={c.id} value={c.id}>{c.name[lang as keyof typeof c.name] || c.name.zh}</option>)}
               </select>
             </div>
@@ -500,7 +500,7 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
               <h4 className="font-bold mb-2 flex items-center gap-2" style={{ color: s.color }}>
                 <span className="text-xl">{s.icon}</span>{s.title}
               </h4>
-              <p className="text-slate-300 text-sm mb-3">{s.summary}</p>
+              <p className="text-gray-600 text-sm mb-3">{s.summary}</p>
               {s.traits.length > 0 && (
                 <div className="flex flex-wrap gap-2 mb-3">
                   {s.traits.map((t: string, i: number) => (
@@ -518,7 +518,7 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
       {sections.length > 0 && (
         <div className="rounded-2xl overflow-hidden border border-white/10">
           {/* 标题 */}
-          <div className="p-5 bg-gradient-to-r from-purple-900/40 to-indigo-900/40 flex items-center justify-between">
+          <div className="p-5 bg-gradient-to-r from-purple-50/40 to-indigo-50/40 flex items-center justify-between">
             <h3 className="font-bold text-lg flex items-center gap-2">
               {canViewDeep ? <Sparkles size={18} className="text-purple-400" /> : <Lock size={18} className="text-slate-400" />}
               {L.deepTitle}
@@ -534,7 +534,7 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
                   <h4 className="font-bold mb-2 flex items-center gap-2 text-sm" style={{ color: s.color }}>
                     <span>{s.icon}</span>{s.title}
                   </h4>
-                  {s.summary && <p className="text-slate-300 text-sm mb-2">{s.summary}</p>}
+                  {s.summary && <p className="text-gray-600 text-sm mb-2">{s.summary}</p>}
                   {s.traits.length > 0 && (
                     <div className="flex flex-wrap gap-2">
                       {s.traits.map((t: string, i: number) => (
@@ -565,13 +565,13 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
                     <Lock size={32} className="text-slate-400 mx-auto mb-2" />
-                    <p className="text-slate-300 font-medium">{L.loginRequired}</p>
+                    <p className="text-gray-600 font-medium">{L.loginRequired}</p>
                   </div>
                 </div>
               </div>
 
               {/* 解锁方式1：登录 */}
-              <div className="p-4 rounded-xl bg-purple-500/10 border border-purple-500/20">
+              <div className="p-4 rounded-xl bg-purple-500/10 border border-purple-200">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <User size={20} className="text-purple-400" />
@@ -616,7 +616,7 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
                   <div className="grid grid-cols-3 gap-2">
                     {[1, 2, 3].map(n => (
                       <button key={n} onClick={() => handleShare(n)} disabled={shareCount >= n}
-                        className={`py-2 rounded-lg text-xs font-medium flex items-center justify-center gap-1 transition-all ${shareCount >= n ? "bg-green-500/20 text-green-400 border border-green-500/30" : "bg-white/5 hover:bg-green-500/20 text-slate-300 hover:text-green-300 border border-white/10"}`}>
+                        className={`py-2 rounded-lg text-xs font-medium flex items-center justify-center gap-1 transition-all ${shareCount >= n ? "bg-green-500/20 text-green-400 border border-green-500/30" : "bg-white/5 hover:bg-green-500/20 text-gray-600 hover:text-green-300 border border-white/10"}`}>
                         {shareCount >= n ? <CheckCircle size={12} /> : <Share2 size={12} />}
                         {L.friend} {n}
                       </button>
@@ -636,7 +636,7 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
       {/* 登录弹窗 */}
       {showLoginModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-          <div className="w-full max-w-sm mx-4 p-6 rounded-2xl bg-slate-900 border border-white/10">
+          <div className="w-full max-w-sm mx-4 p-6 rounded-2xl bg-gray-50 border border-white/10">
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-bold text-lg">{L.loginTitle}</h3>
               <button onClick={() => setShowLoginModal(false)} className="text-slate-400 hover:text-white">
@@ -647,9 +647,9 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
 
             <div className="space-y-3 mb-4">
               <input type="text" placeholder={L.phone} value={loginForm.phone} onChange={e => setLoginForm({ ...loginForm, phone: e.target.value })}
-                className="w-full p-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder-slate-500 text-sm" />
+                className="w-full p-3 rounded-xl bg-white border border-gray-300 text-white placeholder-slate-500 text-sm" />
               <input type="password" placeholder={L.password} value={loginForm.password} onChange={e => setLoginForm({ ...loginForm, password: e.target.value })}
-                className="w-full p-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder-slate-500 text-sm" />
+                className="w-full p-3 rounded-xl bg-white border border-gray-300 text-white placeholder-slate-500 text-sm" />
             </div>
 
             <button onClick={handleLogin} disabled={loginLoading}

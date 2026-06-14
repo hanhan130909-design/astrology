@@ -311,14 +311,14 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
                 {label}
               </h3>
               <input name="name" value={person.name} onChange={e => handleInput(e, setter)}
-                placeholder={t.name} className="w-full bg-slate-900/50 border border-indigo-700/40 rounded-xl px-4 py-2 text-white placeholder-indigo-500 focus:outline-none focus:border-amber-500/60 transition text-sm" />
+                placeholder={t.name} className="w-full bg-gray-50 border border-indigo-700/40 rounded-xl px-4 py-2 text-white placeholder-indigo-500 focus:outline-none focus:border-amber-500/60 transition text-sm" />
               <div className="grid grid-cols-3 gap-2">
                 {[["year","年",1990,2030],["month","月",1,12],["day","日",1,31]].map(([n,l,min,max])=>(
                   <div key={n as string}>
                     <label className="block text-xs text-indigo-400 mb-1">{l}</label>
                     <input name={n as string} value={(person as any)[n as string]} onChange={e=>handleInput(e,setter)}
                       type="number" min={min} max={max}
-                      className="w-full bg-slate-900/50 border border-indigo-700/40 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-amber-500/60" />
+                      className="w-full bg-gray-50 border border-indigo-700/40 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-amber-500/60" />
                   </div>
                 ))}
               </div>
@@ -328,14 +328,14 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
                     <label className="block text-xs text-indigo-400 mb-1">{l}</label>
                     <input name={n as string} value={(person as any)[n as string]} onChange={e=>handleInput(e,setter)}
                       type="number" min={min} max={max}
-                      className="w-full bg-slate-900/50 border border-indigo-700/40 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-amber-500/60" />
+                      className="w-full bg-gray-50 border border-indigo-700/40 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-amber-500/60" />
                   </div>
                 ))}
               </div>
               <div>
                 <label className="block text-xs text-indigo-400 mb-1">{t.city}</label>
                 <select name="city" value={person.city} onChange={e=>handleInput(e,setter)}
-                  className="w-full bg-slate-900/50 border border-indigo-700/40 rounded-xl px-3 py-2.5 text-white text-sm focus:outline-none focus:border-amber-500/60">
+                  className="w-full bg-gray-50 border border-indigo-700/40 rounded-xl px-3 py-2.5 text-white text-sm focus:outline-none focus:border-amber-500/60">
                   {cities.map(c=><option key={c.value} value={c.value}>{g(c.label)}</option>)}
                 </select>
               </div>
@@ -359,7 +359,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
           <div className="bg-indigo-950/50 border border-indigo-800/30 rounded-2xl p-6 text-center">
             <div className="text-sm text-indigo-400 mb-2">{t.score}</div>
             <div className="text-6xl font-bold mb-2" style={{color:scoreColor}}>{score}</div>
-            <div className="w-full bg-slate-800 rounded-full h-3 overflow-hidden">
+            <div className="w-full bg-white rounded-full h-3 overflow-hidden">
               <div className="h-full rounded-full transition-all duration-1000" style={{width:`${score}%`, backgroundColor:scoreColor}} />
             </div>
             <div className="mt-3 text-sm text-indigo-300">
@@ -448,7 +448,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
             )}
 
             {/* 完整相位列表 */}
-            <details className="bg-slate-900/50 border border-indigo-800/30 rounded-xl">
+            <details className="bg-gray-50 border border-indigo-800/30 rounded-xl">
               <summary className="text-sm text-indigo-300 cursor-pointer px-4 py-3 hover:text-white transition">
                 📋 {t.aspects} ({aspects.length})
               </summary>
@@ -479,8 +479,8 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
                 const readingLevel = score >= 70 ? 'high' : score >= 50 ? 'medium' : 'low';
                 const reading = SYNASTRY_AI_READINGS[language]?.[readingLevel] || SYNASTRY_AI_READINGS.zh[readingLevel];
                 return (
-                  <div className="p-4 rounded-xl bg-purple-500/10 border border-purple-500/20">
-                    <p className="text-slate-300 text-sm mb-2">{reading.summary}</p>
+                  <div className="p-4 rounded-xl bg-purple-500/10 border border-purple-200">
+                    <p className="text-gray-600 text-sm mb-2">{reading.summary}</p>
                     <p className="text-xs text-slate-400 italic">💡 {reading.advice}</p>
                   </div>
                 );
@@ -490,7 +490,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
             {/* 深度解读 - 需解锁 */}
             <div className="rounded-2xl overflow-hidden border border-indigo-800/30">
               {/* Header */}
-              <div className="p-5 bg-gradient-to-r from-purple-900/40 to-pink-900/40 flex items-center justify-between">
+              <div className="p-5 bg-gradient-to-r from-purple-50/40 to-pink-900/40 flex items-center justify-between">
                 <h3 className="font-bold flex items-center gap-2">
                   {isUnlocked ? <Sparkles size={18} className="text-purple-400" /> : <Lock size={18} className="text-slate-400" />}
                   {t.aiReading} - {t.deepReading}
@@ -504,7 +504,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
                   {/* 爱情建议 */}
                   <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/20">
                     <h4 className="font-bold mb-2 text-rose-400">❤️ {t.love}</h4>
-                    <p className="text-slate-300 text-sm">
+                    <p className="text-gray-600 text-sm">
                       {score >= 70 
                         ? (language === 'zh' ? '你们的爱情充满激情和浪漫，彼此深深吸引。' : language === 'id' ? 'Cinta Anda penuh gairah dan romantis.' : 'Your love is full of passion and romance.')
                         : score >= 50 
@@ -515,7 +515,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
                   {/* 沟通建议 */}
                   <div className="p-4 rounded-xl bg-cyan-500/10 border border-cyan-500/20">
                     <h4 className="font-bold mb-2 text-cyan-400">💬 {t.communication}</h4>
-                    <p className="text-slate-300 text-sm">
+                    <p className="text-gray-600 text-sm">
                       {strongAspects.length > challengeAspects.length
                         ? (language === 'zh' ? '你们的沟通顺畅，能够很好地理解对方。' : 'Your communication is smooth.')
                         : (language === 'zh' ? '建议多倾听，避免误解和冲突。' : 'Listen more to avoid misunderstandings.')}
@@ -524,7 +524,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
                   {/* 事业建议 */}
                   <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20">
                     <h4 className="font-bold mb-2 text-amber-400">💼 {t.career}</h4>
-                    <p className="text-slate-300 text-sm">
+                    <p className="text-gray-600 text-sm">
                       {language === 'zh' ? '在事业上，你们可以互相支持和鼓励，共同成长。' : 'In career, you can support and encourage each other.'}
                     </p>
                   </div>
@@ -535,13 +535,13 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
                   {/* Blurred Preview */}
                   <div className="relative">
                     <div className="space-y-3 blur-sm pointer-events-none select-none opacity-60">
-                      <div className="p-4 rounded-xl bg-slate-800"><div className="h-4 bg-slate-700 rounded w-3/4 mb-2" /><div className="h-3 bg-slate-700/50 rounded w-full" /></div>
-                      <div className="p-4 rounded-xl bg-slate-800"><div className="h-4 bg-slate-700 rounded w-2/3 mb-2" /><div className="h-3 bg-slate-700/50 rounded w-full" /></div>
+                      <div className="p-4 rounded-xl bg-white"><div className="h-4 bg-gray-100 rounded w-3/4 mb-2" /><div className="h-3 bg-gray-100 rounded w-full" /></div>
+                      <div className="p-4 rounded-xl bg-white"><div className="h-4 bg-gray-100 rounded w-2/3 mb-2" /><div className="h-3 bg-gray-100 rounded w-full" /></div>
                     </div>
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="text-center">
                         <Lock size={32} className="text-slate-400 mx-auto mb-2" />
-                        <p className="text-slate-300 font-medium">{t.unlockDeep}</p>
+                        <p className="text-gray-600 font-medium">{t.unlockDeep}</p>
                       </div>
                     </div>
                   </div>
@@ -555,7 +555,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
                     {/* Progress */}
                     <div className="flex gap-2 mb-3">
                       {[1, 2, 3].map(n => (
-                        <div key={n} className={`flex-1 h-2 rounded-full transition-all ${shareCount >= n ? "bg-green-500" : "bg-slate-700"}`} />
+                        <div key={n} className={`flex-1 h-2 rounded-full transition-all ${shareCount >= n ? "bg-green-500" : "bg-gray-100"}`} />
                       ))}
                     </div>
                     <div className="text-xs text-slate-400 mb-3">{t.shareProgress}: {shareCount}/3</div>
@@ -564,7 +564,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
                       <div className="grid grid-cols-3 gap-2">
                         {[1, 2, 3].map(n => (
                           <button key={n} onClick={handleShare} disabled={shareCount >= n}
-                            className={`py-2 rounded-lg text-xs font-medium flex items-center justify-center gap-1 transition-all ${shareCount >= n ? "bg-green-500/20 text-green-400 border border-green-500/30" : "bg-slate-800 hover:bg-green-500/20 text-slate-300 hover:text-green-300 border border-slate-700"}`}>
+                            className={`py-2 rounded-lg text-xs font-medium flex items-center justify-center gap-1 transition-all ${shareCount >= n ? "bg-green-500/20 text-green-400 border border-green-500/30" : "bg-white hover:bg-green-500/20 text-gray-600 hover:text-green-300 border border-gray-300"}`}>
                             {shareCount >= n ? <CheckCircle size={12} /> : <Share2 size={12} />}
                             {t.friend} {n}
                           </button>

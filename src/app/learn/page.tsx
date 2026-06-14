@@ -109,7 +109,7 @@ export default function LearnPage() {
           </button>
 
           {showList && (
-            <div className="absolute top-full left-0 right-0 mt-2 p-3 rounded-2xl bg-slate-900/95 border border-gray-200 backdrop-blur-xl z-50 grid grid-cols-5 gap-2">
+            <div className="absolute top-full left-0 right-0 mt-2 p-3 rounded-2xl bg-white border border-gray-200 backdrop-blur-xl z-50 grid grid-cols-5 gap-2">
               {planets.map(p => {
                 const info = PLANET_DATA.zh[p as keyof typeof PLANET_DATA.zh];
                 const Icon = PLANET_ICONS[p] || Star;
@@ -136,7 +136,7 @@ export default function LearnPage() {
         {/* 行星详情 */}
         <div className="space-y-6">
           {/* 核心含义 */}
-          <div className="p-6 rounded-2xl bg-gradient-to-br from-purple-900/30 to-pink-900/20 border border-gray-200">
+          <div className="p-6 rounded-2xl bg-gradient-to-br from-purple-50/30 to-pink-900/20 border border-gray-200">
             <h3 className="text-sm font-bold text-amber-600 mb-3 flex items-center gap-2">
               <Star size={16} className="fill-amber-300" /> {labels.meaning}
             </h3>
@@ -150,7 +150,7 @@ export default function LearnPage() {
             <h3 className="text-sm font-bold text-purple-700 mb-3">{labels.traits}</h3>
             <div className="flex flex-wrap gap-2">
               {(planetInfo.traits as string[]).map((trait, i) => (
-                <span key={i} className="px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-600 text-sm">
+                <span key={i} className="px-4 py-2 rounded-full bg-purple-500/20 border border-purple-200 text-purple-600 text-sm">
                   {trait}
                 </span>
               ))}
