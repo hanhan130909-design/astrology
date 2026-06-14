@@ -137,12 +137,12 @@ export default function HomePage() {
           <p className="text-base text-gray-500 text-center mb-12">{t.testSub}</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
-              {zh:"AI解读太准了！完全命中了我最近的事业转折点。",name:"林小姐",role:"产品经理"},
-              {zh:"每日运势已经成为我每天必看的习惯。",name:"陈先生",role:"创业者"},
-              {zh:"作为专业人士，我也很认可这里的占星内容。",name:"王女士",role:"心理咨询师"},
+              {zh:"AI解读太准了！完全命中了我最近的事业转折点。",en:"The AI reading was spot on! It perfectly captured my career turning point.",id:"Pembacaan AI sangat akurat! Tepat mengenai titik balik karier saya.",th:"การอ่าน AI แม่นมาก! ตรงกับจุดเปลี่ยนในอาชีพของฉันเลย",vi:"AI đọc chính xác! Hoàn toàn trúng điểm ngoặt sự nghiệp của tôi.",ms:"Bacaan AI sangat tepat! Tepat mengenai titik perubahan kerjaya saya.",ja:"AI解读が的中！キャリアの転機を完璧に捉えていた。",ko:"AI 해석이 정확했어요! 제 경력 전환점을 완벽히 맞췄어요.",name:"林小姐",role:"产品经理"},
+              {zh:"每日运势已经成为我每天必看的习惯。",en:"Daily horoscope has become my daily must-read habit.",id:"Horoskop harian sudah jadi kebiasaan wajib saya setiap hari.",th:"ดูดวงรายวันกลายเป็นนิสัยที่ต้องอ่านทุกวันของฉัน",vi:"Tử vi hàng ngày đã trở thành thói quen không thể thiếu của tôi.",ms:"Horoskop harian sudah menjadi tabiat wajib saya setiap hari.",ja:"デイリー運勢は毎日の習慣になりました。",ko:"일일 운세는 매일 꼭 보는 습관이 되었어요.",name:"陈先生",role:"创业者"},
+              {zh:"作为专业人士，我也很认可这里的占星内容。",en:"As a professional, I also highly endorse the astrology content here.",id:"Sebagai profesional, saya juga sangat mengakui konten astrologi di sini.",th:"ในฐานะมืออาชีพ ฉันก็ยอมรับเนื้อหาโหราศาสตร์ที่นี่",vi:"Là chuyên gia, tôi cũng đánh giá cao nội dung chiêm tinh ở đây.",ms:"Sebagai profesional, saya juga sangat mengiktiraf kandungan astrologi di sini.",ja:"専門家としても、ここの占星コンテンツを高く評価しています。",ko:"전문가로서 여기 점성술 콘텐츠를 높이 평가합니다.",name:"王女士",role:"心理咨询师"},
             ].map((t, i) => (
               <div key={i} className="bg-gray-50 rounded-lg p-6">
-                <p className="text-sm text-gray-600 leading-relaxed mb-4">&ldquo;{t.zh}&rdquo;</p>
+                <p className="text-sm text-gray-600 leading-relaxed mb-4">&ldquo;{(t as any)[language] || t.zh}&rdquo;</p>
                 <div className="text-[13px] font-semibold">{t.name}</div>
                 <div className="text-xs text-gray-400">{t.role}</div>
               </div>
