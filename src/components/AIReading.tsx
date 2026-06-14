@@ -444,13 +444,13 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
             <div>
               <label className="block text-xs text-gray-500 mb-1">{L.birthDate}</label>
               <div className="grid grid-cols-3 gap-1">
-                <select value={form.year} onChange={e => setForm({ ...form, year: +e.target.value })} className="p-2 rounded-lg bg-white border border-gray-300 text-white text-sm">
+                <select value={form.year} onChange={e => setForm({ ...form, year: +e.target.value })} className="p-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm">
                   {Array.from({ length: 80 }, (_, i) => 2010 - i).map(y => <option key={y} value={y}>{y}</option>)}
                 </select>
-                <select value={form.month} onChange={e => setForm({ ...form, month: +e.target.value })} className="p-2 rounded-lg bg-white border border-gray-300 text-white text-sm">
+                <select value={form.month} onChange={e => setForm({ ...form, month: +e.target.value })} className="p-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm">
                   {Array.from({ length: 12 }, (_, i) => i + 1).map(m => <option key={m} value={m}>{m}</option>)}
                 </select>
-                <select value={form.day} onChange={e => setForm({ ...form, day: +e.target.value })} className="p-2 rounded-lg bg-white border border-gray-300 text-white text-sm">
+                <select value={form.day} onChange={e => setForm({ ...form, day: +e.target.value })} className="p-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm">
                   {Array.from({ length: 31 }, (_, i) => i + 1).map(d => <option key={d} value={d}>{d}</option>)}
                 </select>
               </div>
@@ -460,10 +460,10 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
             <div>
               <label className="block text-xs text-gray-500 mb-1">{L.birthTime}</label>
               <div className="grid grid-cols-2 gap-1">
-                <select value={form.hour} onChange={e => setForm({ ...form, hour: +e.target.value })} className="p-2 rounded-lg bg-white border border-gray-300 text-white text-sm">
+                <select value={form.hour} onChange={e => setForm({ ...form, hour: +e.target.value })} className="p-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm">
                   {Array.from({ length: 24 }, (_, i) => <option key={i} value={i}>{String(i).padStart(2, "0")}</option>)}
                 </select>
-                <select value={form.minute} onChange={e => setForm({ ...form, minute: +e.target.value })} className="p-2 rounded-lg bg-white border border-gray-300 text-white text-sm">
+                <select value={form.minute} onChange={e => setForm({ ...form, minute: +e.target.value })} className="p-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm">
                   {[0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55].map(m => <option key={m} value={m}>{String(m).padStart(2, "0")}</option>)}
                 </select>
               </div>
@@ -472,10 +472,27 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
             {/* 出生地点 */}
             <div>
               <label className="block text-xs text-gray-500 mb-1">{L.birthPlace}</label>
-              <select value={form.cityId} onChange={e => setForm({ ...form, cityId: e.target.value })} className="w-full p-2 rounded-lg bg-white border border-gray-300 text-white text-sm">
+              <select value={form.cityId} onChange={e => setForm({ ...form, cityId: e.target.value })} className="w-full p-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm">
                 {CITIES.map(c => <option key={c.id} value={c.id}>{c.name[lang as keyof typeof c.name] || c.name.zh}</option>)}
               </select>
             </div>
+          </div>
+
+          {/* Email capture for lead generation */}
+          <div className="mb-4">
+            <label className="block text-xs text-gray-500 mb-1">
+              {lang === 'zh' ? '邮箱（接收解读结果）' : lang === 'id' ? 'Email (menerima hasil)' : 'Email (receive results)'}
+            </label>
+            <input
+              type="email"
+              placeholder={lang === 'zh' ? 'your@email.com' : 'your@email.com'}
+              onChange={(e) => {
+                const email = e.target.value;
+                if (email) localStorage.setItem('lunaxstar_email', email);
+              }}
+              defaultValue={typeof window !== 'undefined' ? localStorage.getItem('lunaxstar_email') || '' : ''}
+              className="w-full p-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm"
+            />
           </div>
 
           <button onClick={handleCalculate} disabled={loading}

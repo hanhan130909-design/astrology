@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Clock, Tag, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Clock, Tag, ChevronRight } from 'lucide-react';
+import { seoArticles } from './seo-articles';
 
 // Translation data
 const t: Record<string, Record<string, string>> = {
@@ -68,6 +69,7 @@ interface BlogArticle {
 
 // Blog articles data
 const blogArticles: BlogArticle[] = [
+  ...seoArticles,
   {
     id: '1',
     slug: 'birth-chart-tutorial',
