@@ -94,7 +94,7 @@ export default function AIPage() {
 
         {/* AI Component */}
         <div className="max-w-3xl mx-auto">
-          <AIReading language={language} />
+          <AIReading />
         </div>
 
         {/* Tip */}
