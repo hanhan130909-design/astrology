@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Free Transit Chart Analysis - Planetary Transit Calculator",
-  description: "Generate a free professional transit chart tracking planetary transits affecting your natal chart. AI-powered analysis reveals fortune turning points.",
+  title: "行运追踪 - 行星过境",
+  description: "实时追踪行星换座与重要相位，了解天象变化对你的影响。",
   keywords: ["transit chart", "planetary transit", "transit analysis", "AI transit"],
   openGraph: {
-    title: "Free Transit Chart Analysis - Planetary Transit Calculator",
+    title: "行运追踪 - 行星过境",
     description: "Generate a free professional transit chart tracking planetary transits affecting your natal chart. AI-powered analysis reveals fortune turning points.",
     type: "website",
     siteName: "Starry Fate",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free Transit Chart Analysis - Planetary Transit Calculator",
+    title: "行运追踪 - 行星过境",
     description: "Generate a free professional transit chart tracking planetary transits affecting your natal chart. AI-powered analysis reveals fortune turning points.",
   },
 };

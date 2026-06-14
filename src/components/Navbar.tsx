@@ -78,6 +78,7 @@ export default function Navbar() {
               </button>
             ))}
           </div>
+          <Link href="/pricing" className="text-xs font-medium text-gray-400 hover:text-[#171717] no-underline mr-3 shrink-0">PRO</Link>
           <Link href="/login" className="text-xs font-medium text-gray-400 hover:text-[#171717] no-underline shrink-0">登录</Link>
         </div>
       </div>

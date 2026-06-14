@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Daily, Monthly & Yearly Horoscope - Free Zodiac Forecast",
-  description: "Free daily, monthly and yearly horoscope forecasts for all 12 zodiac signs. Accurate astrology predictions covering love, career, health and finance.",
+  title: "每日运势 - 12星座运程",
+  description: "查看所有12星座每日运势，涵盖爱情、事业、财运、健康四大维度。免费占星运势分析。",
   keywords: ["horoscope", "daily horoscope", "monthly horoscope", "yearly horoscope", "free horoscope"],
   openGraph: {
-    title: "Daily, Monthly & Yearly Horoscope - Free Zodiac Forecast",
+    title: "每日运势 - 12星座运程",
     description: "Free daily, monthly and yearly horoscope forecasts for all 12 zodiac signs. Accurate astrology predictions covering love, career, health and finance.",
     type: "website",
     siteName: "Starry Fate",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Daily, Monthly & Yearly Horoscope - Free Zodiac Forecast",
+    title: "每日运势 - 12星座运程",
     description: "Free daily, monthly and yearly horoscope forecasts for all 12 zodiac signs. Accurate astrology predictions covering love, career, health and finance.",
   },
 };

@@ -181,7 +181,61 @@ export default function LearnPage() {
           </div>
         </div>
 
-        {/* 底部导航 */}
+        {/* 12 Houses Section */}
+        <div className="mt-16 mb-12">
+          <h2 className="text-2xl font-semibold tracking-[-0.8px] mb-6 text-center">
+            {lang === 'zh' ? '十二宫位' : lang === 'id' ? '12 Rumah' : '12 Houses'}
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            {[
+              { num:1, zh:'命宫 / 自我', en:'Self / Identity', zhDesc:'外貌、性格、第一印象', enDesc:'Appearance, personality, first impressions' },
+              { num:2, zh:'财帛宫 / 价值', en:'Wealth / Values', zhDesc:'收入、物质资源、自我价值', enDesc:'Income, material resources, self-worth' },
+              { num:3, zh:'兄弟宫 / 沟通', en:'Communication', zhDesc:'兄弟姐妹、短途旅行、学习', enDesc:'Siblings, short trips, learning' },
+              { num:4, zh:'田宅宫 / 家庭', en:'Home / Family', zhDesc:'家庭、房产、根源', enDesc:'Home, property, roots' },
+              { num:5, zh:'子女宫 / 创造', en:'Creativity', zhDesc:'子女、恋爱、创意表达', enDesc:'Children, romance, creative expression' },
+              { num:6, zh:'奴仆宫 / 健康', en:'Health / Service', zhDesc:'日常工作、健康、服务', enDesc:'Daily work, health, service' },
+              { num:7, zh:'夫妻宫 / 伴侣', en:'Partnership', zhDesc:'婚姻、合作、公开敌人', enDesc:'Marriage, partnerships, open enemies' },
+              { num:8, zh:'疾厄宫 / 转化', en:'Transformation', zhDesc:'共享资源、深层心理、遗产', enDesc:'Shared resources, psychology, inheritance' },
+              { num:9, zh:'迁移宫 / 信仰', en:'Philosophy', zhDesc:'高等教育、长途旅行、信仰', enDesc:'Higher education, long journeys, beliefs' },
+              { num:10, zh:'官禄宫 / 事业', en:'Career', zhDesc:'事业、社会地位、人生方向', enDesc:'Career, social status, life direction' },
+              { num:11, zh:'福德宫 / 社交', en:'Community', zhDesc:'朋友、团体、理想', enDesc:'Friends, groups, aspirations' },
+              { num:12, zh:'玄秘宫 / 潜意识', en:'Subconscious', zhDesc:'潜意识、隐秘、灵性', enDesc:'Subconscious, secrets, spirituality' },
+            ].map(h => (
+              <div key={h.num} className="p-4 rounded-lg border border-gray-200 bg-gray-50">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-sm font-semibold text-gray-900">{h.num}宫</span>
+                  <span className="text-xs text-gray-500">{lang==='zh'?h.zh:h.en}</span>
+                </div>
+                <p className="text-xs text-gray-500">{lang==='zh'?h.zhDesc:h.enDesc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Aspects Section */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-semibold tracking-[-0.8px] mb-6 text-center">
+            {lang === 'zh' ? '主要相位' : lang === 'id' ? 'Aspek Utama' : 'Major Aspects'}
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+            {[
+              { sym:'☌', zh:'合相', en:'Conjunction', deg:'0°', zhDesc:'能量融合，强化', enDesc:'Energy fusion, intensification' },
+              { sym:'⚹', zh:'六合', en:'Sextile', deg:'60°', zhDesc:'和谐机会，轻松', enDesc:'Harmonious opportunity, ease' },
+              { sym:'□', zh:'四分', en:'Square', deg:'90°', zhDesc:'挑战张力，成长', enDesc:'Challenge, tension, growth' },
+              { sym:'△', zh:'三分', en:'Trine', deg:'120°', zhDesc:'自然流畅，天赋', enDesc:'Natural flow, talent' },
+              { sym:'☍', zh:'对分', en:'Opposition', deg:'180°', zhDesc:'对立平衡，关系', enDesc:'Polarity, balance, relationships' },
+            ].map(a => (
+              <div key={a.sym} className="p-4 rounded-lg border border-gray-200 text-center">
+                <div className="text-2xl mb-2">{a.sym}</div>
+                <div className="text-sm font-semibold mb-1">{lang==='zh'?a.zh:a.en}</div>
+                <div className="text-xs text-gray-400 mb-1">{a.deg}</div>
+                <p className="text-xs text-gray-500">{lang==='zh'?a.zhDesc:a.enDesc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA */}
         <div className="mt-12 text-center">
           <Link href="/horoscope" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 rounded-xl font-bold text-gray-900 transition-all">
             <Star size={18} className="fill-white" />

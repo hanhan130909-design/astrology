@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Zodiac Compatibility Analysis - Free Relationship Astrology",
-  description: "Free online zodiac compatibility analysis. Compare two birth charts, analyze relationship dynamics, love compatibility, friendship and partnership insights based on astrological synastry.",
+  title: "星座配对 - 合盘分析",
+  description: "基于出生信息的专业合盘配对分析，探索两人的灵魂契合度与关系互动模式。",
   keywords: ["compatibility", "synastry", "zodiac compatibility", "relationship astrology", "couple chart", "love match", "astrology compatibility", "free compatibility"],
   openGraph: {
-    title: "Zodiac Compatibility Analysis - Free Relationship Astrology",
+    title: "星座配对 - 合盘分析",
     description: "Free online zodiac compatibility analysis. Compare two birth charts and analyze relationship dynamics, love compatibility, and friendship insights.",
     type: "website",
     url: "https://lunaxstar.com/compatibility",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zodiac Compatibility Analysis - Free Relationship Astrology",
+    title: "星座配对 - 合盘分析",
     description: "Free online zodiac compatibility analysis. Compare two birth charts and analyze relationship dynamics.",
     images: ["/og-image.png"],
   },
