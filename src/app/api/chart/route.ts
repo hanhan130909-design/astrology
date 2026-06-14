@@ -157,17 +157,14 @@ function calcAllPlanets(time: Astronomy.AstroTime) {
     result[p.id] = calcPlanet(p, time);
   }
   
-  // 月交点
+  // 平均北交点（升交点）。不要用月亮经度推导；那会把南交点/错误点位当成北交点。
   try {
-    const moonEcl = Astronomy.EclipticGeoMoon(time);
-    const north = normalize(moonEcl.lon + 180);
-    const south = normalize(north + 180);
+    const t = time.tt / 36525;
+    const north = normalize(125.04452 - 1934.136261 * t + 0.0020708 * t * t + (t * t * t) / 450000);
     result['North_Node'] = { id: 'North_Node', name_cn: '北交点', longitude: north, latitude: 0, retrograde: true, ...signData(north), planetSymbol: '☊' };
-    result['South_Node'] = { id: 'South_Node', name_cn: '南交点', longitude: south, latitude: 0, retrograde: true, ...signData(south), planetSymbol: '☋' };
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : String(e);
     result['North_Node'] = { error: msg };
-    result['South_Node'] = { error: msg };
   }
   
   return result;

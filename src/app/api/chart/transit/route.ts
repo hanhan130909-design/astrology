@@ -67,10 +67,9 @@ function calcAllPlanets(time: Astronomy.AstroTime, lat: number, lng: number) {
   const result: Record<string, unknown> = {};
   for (const name of Object.keys(PLANET_BODIES)) result[name] = calcPlanet(name, time, lat, lng);
   try {
-    const ecl = Astronomy.EclipticGeoMoon(time);
-    const moonLon = normalizeAngle(ecl.lon);
-    result['North_Node'] = { longitude: normalizeAngle(moonLon + 180), latitude: 0, ...signFromLon(normalizeAngle(moonLon + 180)) };
-    result['South_Node'] = { longitude: normalizeAngle(moonLon), latitude: 0, ...signFromLon(normalizeAngle(moonLon)) };
+    const t = time.tt / 36525;
+    const north = normalizeAngle(125.04452 - 1934.136261 * t + 0.0020708 * t * t + (t * t * t) / 450000);
+    result['North_Node'] = { longitude: north, latitude: 0, ...signFromLon(north) };
   } catch {}
   return result;
 }
