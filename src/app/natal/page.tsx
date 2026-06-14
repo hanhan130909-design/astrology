@@ -3,6 +3,9 @@
 import { useEffect, useState, Fragment } from "react";
 import NatalChartWheel from "@/components/NatalChartWheel";
 import { AspectMatrix } from "@/components/AlmutenChartLayout";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { auth, logout } from "@/lib/firebase";
+import { sendPasswordResetEmail } from "firebase/auth";
 
 const MONTHS = ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];
 const SIGN_SYMBOLS = ["♈","♉","♊","♋","♌","♍","♎","♏","♐","♑","♒","♓"];
@@ -60,6 +63,7 @@ function buildFirdariaPeriods(chart:any,year:number,month:number,day:number){
 }
 
 export default function NatalPage(){
+  const { setLanguage } = useLanguage();
   const now = new Date();
   const [name,setName] = useState("Quick Chart");
   const [month,setMonth] = useState(now.getMonth()+1);
@@ -81,6 +85,10 @@ export default function NatalPage(){
   const [activeTab,setActiveTab] = useState("chart-tab");
   const [sidebarOpen,setSidebarOpen] = useState(true);
   const [openMenu,setOpenMenu] = useState<string|null>(null);
+  const [savedDialogOpen,setSavedDialogOpen] = useState(false);
+  const [savedCharts,setSavedCharts] = useState<any[]>([]);
+  const [languageDialogOpen,setLanguageDialogOpen] = useState(false);
+  const [rectificationOpen,setRectificationOpen] = useState(false);
 
   const lat = (glatDeg + glatMin / 60) * (glatDir === "S" ? -1 : 1);
   const lng = (glonDeg + glonMin / 60) * (glonDir === "W" ? -1 : 1);
@@ -114,6 +122,46 @@ export default function NatalPage(){
   const handleSave = ()=>{if(!chart)return;const s=JSON.parse(localStorage.getItem("natal_charts")||"[]");s.unshift({name,ts:Date.now(),birthData:{name,year,month,day,hour,minute,lat,lng,tz,hsys}});localStorage.setItem("natal_charts",JSON.stringify(s.slice(0,20)));alert("已储存");};
   const handleCopyLink = ()=>{navigator.clipboard.writeText(window.location.href).then(()=>alert("链接已复制"));};
   const handleExportImage = async()=>{const el=document.getElementById("chart");if(!el)return;try{const{default:h}=await import("html2canvas");const c=await h(el,{backgroundColor:"#0f0f1a",scale:2});const a=document.createElement("a");a.download=`chart-${year}-${month}-${day}.png`;a.href=c.toDataURL();a.click();}catch{}};
+  const openSavedCharts = ()=>{setSavedCharts(JSON.parse(localStorage.getItem("natal_charts")||"[]"));setSavedDialogOpen(true);setOpenMenu(null);};
+  const focusQuickChart = ()=>{setSidebarOpen(true);setOpenMenu(null);window.setTimeout(()=>document.getElementById("rightsidebar")?.scrollIntoView({behavior:"smooth",block:"start"}),0);};
+  const startNewChart = ()=>{const current=new Date();setName("Quick Chart");setYear(current.getFullYear());setMonth(current.getMonth()+1);setDay(current.getDate());setHour(current.getHours());setMinute(current.getMinutes());setCity("台北市");setGlonDeg(121);setGlonMin(30);setGlonDir("E");setGlatDeg(25);setGlatMin(3);setGlatDir("N");setTz(-current.getTimezoneOffset());setHsys(DEFAULT_HOUSE_SYSTEM);setChart(null);focusQuickChart();};
+  const loadSavedChart = (item:any)=>{
+    const b=item?.birthData||{};
+    const la=Number(b.lat ?? b.latitude ?? DEFAULT_LAT), lo=Number(b.lng ?? b.longitude ?? DEFAULT_LNG);
+    const lp=coordinateParts(la), lnp=coordinateParts(lo);
+    const savedTz=Number(b.tz ?? (b.timezone!=null?Number(b.timezone)*60:480));
+    const savedHsys=b.hsys||b.houseSystem||DEFAULT_HOUSE_SYSTEM;
+    setName(b.name||item.name||"Saved Chart");setYear(Number(b.year)||now.getFullYear());setMonth(Number(b.month)||1);setDay(Number(b.day)||1);setHour(Number(b.hour)||0);setMinute(Number(b.minute)||0);
+    setCity(b.city||item.name||"已保存地点");setGlatDeg(lp.degrees);setGlatMin(lp.minutes);setGlatDir(la>=0?"N":"S");setGlonDeg(lnp.degrees);setGlonMin(lnp.minutes);setGlonDir(lo>=0?"E":"W");setTz(savedTz);setHsys(savedHsys);
+    setSavedDialogOpen(false);setOpenMenu(null);
+    requestChart({year:Number(b.year)||now.getFullYear(),month:Number(b.month)||1,day:Number(b.day)||1,hour:Number(b.hour)||0,minute:Number(b.minute)||0,latitude:la,longitude:lo,timezone:savedTz/60,houseSystem:savedHsys});
+  };
+  const deleteSavedChart = (idx:number)=>{const list=[...savedCharts];list.splice(idx,1);setSavedCharts(list);localStorage.setItem("natal_charts",JSON.stringify(list));};
+  const handlePasswordReset = async()=>{
+    setOpenMenu(null);
+    const email=auth?.currentUser?.email || window.prompt("请输入要重置密码的邮箱");
+    if(!email)return;
+    if(!auth){alert("Firebase 未配置，暂时无法发送重置邮件");return;}
+    try{await sendPasswordResetEmail(auth,email);alert("密码重置邮件已发送");}catch(e:any){alert(e?.message||"发送失败");}
+  };
+  const handleLogout = async()=>{setOpenMenu(null);await logout();alert("已登出");window.location.href="/login";};
+  const chooseLanguage = (lang:string)=>{setLanguage(lang);localStorage.setItem("language",lang);setLanguageDialogOpen(false);window.location.reload();};
+  const adjustBirthTime = (delta:number)=>{
+    const d=new Date(year,month-1,day,Number(hour),Number(minute)+delta);
+    const ny=d.getFullYear(),nm=d.getMonth()+1,nd=d.getDate(),nh=d.getHours(),nmin=d.getMinutes();
+    setYear(ny);setMonth(nm);setDay(nd);setHour(nh);setMinute(nmin);
+    requestChart({year:ny,month:nm,day:nd,hour:nh,minute:nmin,latitude:lat,longitude:lng,timezone:tzHours,houseSystem:hsys});
+  };
+  const runMenuAction = (action:string)=>{
+    setOpenMenu(null);
+    if(action==="list")openSavedCharts();
+    if(action==="new")startNewChart();
+    if(action==="calendar")window.location.href="/transits";
+    if(action==="rectify")setRectificationOpen(true);
+    if(action==="password")handlePasswordReset();
+    if(action==="profile")window.location.href="/profile";
+    if(action==="language")setLanguageDialogOpen(true);
+  };
 
   const pData = chart?.planets;
   const hData = chart?.houses;
@@ -241,19 +289,60 @@ export default function NatalPage(){
 
       <div id="cssmenu" style={{background:"#333",fontSize:"14px",display:"flex",alignItems:"center",padding:"0 16px"}}>
         <span style={{color:"#ccc",padding:"4px 12px"}}>hanhan <i>已登入</i></span>
+        <span onClick={handleLogout} style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>登出</span>
         <span onClick={()=>window.location.href="/"} style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>返回首页</span>
-        {[{id:"file",l:"文件",items:["列表","新增"]},{id:"tools",l:"工具",items:["星象日历","出生时间反推"]},{id:"settings",l:"设定",items:["修改密码","个人资料","选择语系"]}].map(m=>(
+        {[
+          {id:"file",l:"文件",items:[{l:"列表",a:"list"},{l:"新增",a:"new"}]},
+          {id:"tools",l:"工具",items:[{l:"星象日历",a:"calendar"},{l:"出生时间反推",a:"rectify"}]},
+          {id:"settings",l:"设定",items:[{l:"修改密码",a:"password"},{l:"个人资料",a:"profile"},{l:"选择语系",a:"language"}]}
+        ].map(m=>(
           <span key={m.id} style={{position:"relative"}}>
             <span onClick={()=>setOpenMenu(openMenu===m.id?null:m.id)} style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>{m.l} ▾</span>
             {openMenu===m.id&&<div style={{position:"absolute",top:"100%",left:0,background:"#444",color:"#ccc",minWidth:120,zIndex:50,border:"1px solid #555"}}>
-              {m.items.map(item=><div key={item} style={{padding:"4px 12px",cursor:"pointer",fontSize:"13px"}} onMouseDown={()=>setOpenMenu(null)}>{item}</div>)}
+              {m.items.map(item=><div key={item.a} style={{padding:"4px 12px",cursor:"pointer",fontSize:"13px"}} onMouseDown={()=>runMenuAction(item.a)}>{item.l}</div>)}
             </div>}
           </span>
         ))}
-        <a href="/natal" style={{color:"#ccc",padding:"4px 12px",textDecoration:"none",cursor:"pointer"}}>快速制图</a>
+        <span onClick={focusQuickChart} style={{color:"#ccc",padding:"4px 12px",textDecoration:"none",cursor:"pointer"}}>快速制图</span>
         <span style={{flex:1}}/>
         <span style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>星缘</span>
       </div>
+
+      {savedDialogOpen&&<div style={{position:"fixed",inset:0,background:"rgba(0,0,0,.35)",zIndex:1000,display:"flex",alignItems:"center",justifyContent:"center"}}>
+        <div style={{width:520,maxWidth:"calc(100vw - 32px)",maxHeight:"80vh",overflow:"auto",background:"#fff",border:"1px solid #999",boxShadow:"0 8px 28px rgba(0,0,0,.3)",color:"#222"}}>
+          <div style={{padding:"8px 12px",background:"linear-gradient(#eee,#ccc)",borderBottom:"1px solid #aaa",display:"flex",alignItems:"center"}}><strong>已保存的星图</strong><span style={{flex:1}}/><button onClick={()=>setSavedDialogOpen(false)} style={{border:"1px solid #999",background:"#eee",cursor:"pointer"}}>关闭</button></div>
+          <div style={{padding:12}}>
+            {savedCharts.length===0?<div style={{padding:20,textAlign:"center",color:"#666"}}>暂无保存记录</div>:savedCharts.map((item,i)=><div key={`${item.ts||i}`} style={{display:"flex",alignItems:"center",gap:8,borderBottom:"1px solid #ddd",padding:"8px 0"}}>
+              <div style={{flex:1}}><strong>{item.name||item.birthData?.name||"未命名星图"}</strong><br/><span style={{fontSize:12,color:"#666"}}>{item.birthData?.year}-{item.birthData?.month}-{item.birthData?.day} {fmt2(item.birthData?.hour||0)}:{fmt2(item.birthData?.minute||0)}</span></div>
+              <button onClick={()=>loadSavedChart(item)} style={{border:"1px solid #999",background:"#eee",padding:"3px 10px",cursor:"pointer"}}>载入</button>
+              <button onClick={()=>deleteSavedChart(i)} style={{border:"1px solid #999",background:"#eee",padding:"3px 10px",cursor:"pointer"}}>删除</button>
+            </div>)}
+          </div>
+        </div>
+      </div>}
+
+      {languageDialogOpen&&<div style={{position:"fixed",inset:0,background:"rgba(0,0,0,.35)",zIndex:1000,display:"flex",alignItems:"center",justifyContent:"center"}}>
+        <div style={{width:360,background:"#fff",border:"1px solid #999",boxShadow:"0 8px 28px rgba(0,0,0,.3)",color:"#222"}}>
+          <div style={{padding:"8px 12px",background:"linear-gradient(#eee,#ccc)",borderBottom:"1px solid #aaa",display:"flex",alignItems:"center"}}><strong>选择语系</strong><span style={{flex:1}}/><button onClick={()=>setLanguageDialogOpen(false)} style={{border:"1px solid #999",background:"#eee",cursor:"pointer"}}>关闭</button></div>
+          <div style={{padding:14,display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
+            {[["zh","中文"],["en","English"],["id","Indonesia"],["th","ไทย"],["vi","Tiếng Việt"],["ms","Melayu"],["ja","日本語"],["ko","한국어"]].map(([code,label])=><button key={code} onClick={()=>chooseLanguage(code)} style={{border:"1px solid #999",background:"#eee",padding:"6px 10px",cursor:"pointer"}}>{label}</button>)}
+          </div>
+        </div>
+      </div>}
+
+      {rectificationOpen&&<div style={{position:"fixed",inset:0,background:"rgba(0,0,0,.35)",zIndex:1000,display:"flex",alignItems:"center",justifyContent:"center"}}>
+        <div style={{width:420,maxWidth:"calc(100vw - 32px)",background:"#fff",border:"1px solid #999",boxShadow:"0 8px 28px rgba(0,0,0,.3)",color:"#222"}}>
+          <div style={{padding:"8px 12px",background:"linear-gradient(#eee,#ccc)",borderBottom:"1px solid #aaa",display:"flex",alignItems:"center"}}><strong>出生时间反推</strong><span style={{flex:1}}/><button onClick={()=>setRectificationOpen(false)} style={{border:"1px solid #999",background:"#eee",cursor:"pointer"}}>关闭</button></div>
+          <div style={{padding:14,fontSize:13,lineHeight:1.6}}>
+            <div>当前时间：{year}-{month}-{day} {fmt2(Number(hour))}:{fmt2(Number(minute))}</div>
+            <div>当前上升：{chart?.ascendant?.sign_cn||"-"} {chart?.ascendant?.formatted||""}</div>
+            <div style={{marginTop:10,color:"#666"}}>用下方按钮微调出生时间，系统会立即重新计算星盘，方便对照上升、宫头和行星落宫变化。</div>
+            <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:8,marginTop:12}}>
+              {[-30,-10,-1,1,10,30].map(v=><button key={v} onClick={()=>adjustBirthTime(v)} style={{border:"1px solid #999",background:"#eee",padding:"5px 8px",cursor:"pointer"}}>{v>0?"+":""}{v} 分钟</button>)}
+            </div>
+          </div>
+        </div>
+      </div>}
 
       <div style={{position:"relative"}}>
         <div id="natalmain">
