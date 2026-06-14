@@ -5,7 +5,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import SynastryChart from "@/components/SynastryChart";
 import { HeartHandshake, ArrowRight, Star, CheckCircle } from "lucide-react";
 
-const T: Record<string, Record<string, string>> = {
+const T: Record<string, Record<string, any>> = {
   zh: {
     title: "星座配对分析",
     subtitle: "探索你与Ta的灵魂契合度",

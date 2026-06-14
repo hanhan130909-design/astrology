@@ -5,7 +5,7 @@ import AIReading from "@/components/AIReading";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Sparkles, Brain, Zap, MessageSquare, Shield, Globe } from "lucide-react";
 
-const T: Record<string, Record<string, string>> = {
+const T: Record<string, Record<string, any>> = {
   zh: {
     title: "AI 星盘解读",
     subtitle: "用人工智能深度解读你的星盘",
