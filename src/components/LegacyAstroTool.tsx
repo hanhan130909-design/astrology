@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { Solar } from "lunar-javascript";
 import NatalChartWheel from "@/components/NatalChartWheel";
 import { AspectMatrix } from "@/components/AlmutenChartLayout";
 
@@ -9,21 +10,18 @@ type ToolMode = "horary" | "vedic" | "bazi" | "solar-arc" | "tertiary" | "tertia
 const MODE_COPY: Record<ToolMode, { title: string; desc: string; button: string }> = {
   horary: { title: "卜卦盘", desc: "用提问当下的时间与地点起盘。默认取当前时间，可手动调整。", button: "起卦盘" },
   vedic: { title: "印度占星盘", desc: "基础恒星黄道盘，采用近似 Lahiri 岁差修正，并用整宫制显示。", button: "计算印度盘" },
-  bazi: { title: "八字盘", desc: "按出生年月日时生成基础四柱。当前为快速排盘版，适合做入口和初步查看。", button: "排八字" },
+  bazi: { title: "八字盘", desc: "按出生年月日时生成四柱，年柱和月柱按立春及节气精确切换。", button: "排八字" },
   "solar-arc": { title: "太阳弧", desc: "按目标年份计算太阳弧推进，显示推进后行星黄经。", button: "计算太阳弧" },
   tertiary: { title: "三限法", desc: "按三限法的近似速度推进行星，用于查看阶段性趋势。", button: "计算三限盘" },
   "tertiary-natal": { title: "三限对本命盘", desc: "计算三限推进盘，并用于和本命盘位置对照。", button: "计算三限对照" },
   "secondary-natal": { title: "次限对本命盘", desc: "计算次限推进盘，并用于和本命盘位置对照。", button: "计算次限对照" },
 };
 
-const STEMS = ["甲","乙","丙","丁","戊","己","庚","辛","壬","癸"];
-const BRANCHES = ["子","丑","寅","卯","辰","巳","午","未","申","酉","戌","亥"];
 const SIGNS_CN = ["白羊","金牛","双子","巨蟹","狮子","处女","天秤","天蝎","射手","摩羯","水瓶","双鱼"];
 const MONTHS = ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];
 
 function norm(v: number) { return ((v % 360) + 360) % 360; }
 function fmt2(v: number) { return String(Math.trunc(v)).padStart(2, "0"); }
-function sexagenary(index: number) { return `${STEMS[((index % 10) + 10) % 10]}${BRANCHES[((index % 12) + 12) % 12]}`; }
 function lonText(lon: number) {
   const n = norm(lon);
   const sign = Math.floor(n / 30);
@@ -55,20 +53,26 @@ function transformChart(chart: any, offset: number) {
   };
 }
 
-function baziPillars(year: number, month: number, day: number, hour: number) {
-  const yearIndex = year - 4;
-  const yearStem = ((yearIndex % 10) + 10) % 10;
-  const monthIndex = yearStem * 2 + month + 1;
-  const dayBase = Math.floor((Date.UTC(year, month - 1, day) - Date.UTC(1900, 0, 31)) / 86400000);
-  const dayIndex = dayBase + 40;
-  const hourBranch = Math.floor(((hour + 1) % 24) / 2);
-  const hourIndex = (((dayIndex % 10) + 10) % 10) * 2 + hourBranch;
-  return [
-    { label: "年柱", value: sexagenary(yearIndex) },
-    { label: "月柱", value: sexagenary(monthIndex) },
-    { label: "日柱", value: sexagenary(dayIndex) },
-    { label: "时柱", value: sexagenary(hourIndex) },
-  ];
+function baziPillars(year: number, month: number, day: number, hour: number, minute: number) {
+  const lunar = Solar.fromYmdHms(year, month, day, hour, minute, 0).getLunar();
+  const eightChar = lunar.getEightChar();
+  const prevJieQi = lunar.getPrevJieQi();
+  const nextJieQi = lunar.getNextJieQi();
+  return {
+    pillars: [
+      { label: "年柱", value: eightChar.getYear() },
+      { label: "月柱", value: eightChar.getMonth() },
+      { label: "日柱", value: eightChar.getDay() },
+      { label: "时柱", value: eightChar.getTime() },
+    ],
+    meta: {
+      lunarDate: lunar.toString(),
+      jieQi: lunar.getJieQi() || "-",
+      prevJieQi: `${prevJieQi.getName()} ${prevJieQi.getSolar().toYmdHms()}`,
+      nextJieQi: `${nextJieQi.getName()} ${nextJieQi.getSolar().toYmdHms()}`,
+      basis: "年柱、月柱使用精确节气边界；日期时间按表单输入的当地钟表时间计算。",
+    },
+  };
 }
 
 export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
@@ -90,7 +94,8 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [activeTab, setActiveTab] = useState("chart-tab");
 
-  const pillars = useMemo(() => baziPillars(year, month, day, hour), [year, month, day, hour]);
+  const bazi = useMemo(() => baziPillars(year, month, day, hour, minute), [year, month, day, hour, minute]);
+  const pillars = bazi.pillars;
   const isProgressed = ["solar-arc", "tertiary", "tertiary-natal", "secondary-natal"].includes(mode);
 
   const calculate = async () => {
@@ -220,18 +225,29 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
                 <tbody>{planetRows.map(r=><tr key={r.key}><td>{r.name}</td><td>{lonText(r.lon)}</td><td>{SIGNS_CN[r.sign]}</td></tr>)}</tbody>
               </table>}
               {activeTab==="chart-tab"&&mode==="bazi"&&<table className="alm-table">
-                <thead><tr><th>柱</th><th>干支</th></tr></thead>
-                <tbody>{pillars.map(p=><tr key={p.label}><td>{p.label}</td><td className="bazi-pill">{p.value}</td></tr>)}</tbody>
+                <thead><tr><th>柱</th><th>干支</th><th>计算依据</th></tr></thead>
+                <tbody>
+                  {pillars.map(p=><tr key={p.label}><td>{p.label}</td><td className="bazi-pill">{p.value}</td><td>{p.label === "年柱" || p.label === "月柱" ? "精确节气" : "当地时间"}</td></tr>)}
+                  <tr><td>农历</td><td colSpan={2}>{bazi.meta.lunarDate}</td></tr>
+                  <tr><td>当天节气</td><td colSpan={2}>{bazi.meta.jieQi}</td></tr>
+                  <tr><td>上一节气</td><td colSpan={2}>{bazi.meta.prevJieQi}</td></tr>
+                  <tr><td>下一节气</td><td colSpan={2}>{bazi.meta.nextJieQi}</td></tr>
+                </tbody>
               </table>}
               {activeTab==="table-tab"&&<table className="alm-table">
                 <tbody>
                   <tr><th>工具</th><td>{copy.title}</td></tr>
                   <tr><th>时间</th><td>{year}-{month}-{day} {fmt2(hour)}:{fmt2(minute)}</td></tr>
                   <tr><th>地点</th><td>{mode==="bazi"?"-":`${lat}, ${lng}`}</td></tr>
+                  {mode==="bazi"&&<>
+                    <tr><th>四柱</th><td>{pillars.map(p=>`${p.label}:${p.value}`).join("　")}</td></tr>
+                    <tr><th>上一节气</th><td>{bazi.meta.prevJieQi}</td></tr>
+                    <tr><th>下一节气</th><td>{bazi.meta.nextJieQi}</td></tr>
+                  </>}
                   <tr><th>说明</th><td className="left">{copy.desc}</td></tr>
                 </tbody>
               </table>}
-              {activeTab==="note-tab"&&<div style={{fontSize:13,lineHeight:1.7,color:"#333"}}>{copy.desc} 当前页面已统一为本命盘同款布局；可通过右侧快速制图表单重新计算。</div>}
+              {activeTab==="note-tab"&&<div style={{fontSize:13,lineHeight:1.7,color:"#333"}}>{mode==="bazi" ? bazi.meta.basis : `${copy.desc} 当前页面已统一为本命盘同款布局；可通过右侧快速制图表单重新计算。`}</div>}
             </div>
           </div>}
         </div>
