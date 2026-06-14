@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  serverExternalPackages: ["sweph", "node-gyp-build"],
+  
   // Image optimization
   images: {
     formats: ["image/webp", "image/avif"],

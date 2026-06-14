@@ -4,16 +4,19 @@
  * 支持多种分宫制，确保每个宫位显示正确度数
  * 
  * 支持的分宫制:
- * - P: Porphyry (三等分象限)
+ * - B: Alcabitius (阿卡比特)
+ * - P: Placidus (普拉西德)
+ * - O: Porphyry (三等分象限)
  * - E: Equal House (等宫制)
  * - W: Whole Sign (整宫制)
- * - K: Koch/Alcabitus (阿卡比特)
+ * - K: Koch
  * - R: Regiomontanus (雷吉奥蒙塔努斯)
  * - C: Campanus (坎帕努斯)
  */
 
 import { NextRequest, NextResponse } from 'next/server';
 import * as Astronomy from 'astronomy-engine';
+import * as Sweph from 'sweph';
 
 // ════════════════════════════════════════════════════════════════════════════
 // 常量定义
@@ -208,6 +211,23 @@ function calcMC(LSTdeg: number, obliquity: number = 23.4393): number {
   }
   
   return normalize(mcRad * 180 / Math.PI);
+}
+
+function calcSwissHouses(time: Astronomy.AstroTime, lat: number, lng: number, system: string) {
+  const hsys = (system || 'B').toUpperCase();
+  const jdUt = time.ut + 2451545.0;
+  const result = Sweph.houses_ex2(jdUt, 0, lat, lng, hsys);
+  
+  if (result.flag !== Sweph.constants.OK || !result.data?.houses?.length || !result.data?.points?.length) {
+    throw new Error(result.error || `Swiss Ephemeris house calculation failed for ${hsys}`);
+  }
+  
+  const cusps = Array.from(result.data.houses).slice(0, 12).map((lon) => normalize(lon));
+  return {
+    cusps,
+    ascLon: normalize(result.data.points[0]),
+    mcLon: normalize(result.data.points[1]),
+  };
 }
 
 // ════════════════════════════════════════════════════════════════════════════
@@ -498,56 +518,68 @@ function calcHouses(time: Astronomy.AstroTime, lat: number, lng: number, system:
   
   const houses = [];
   let cusps: number[];
+  let finalAscLon = ascLon;
+  let finalMcLon = mcLon;
   
-  switch (system) {
-    case 'K': // Koch/Alcabitus
-      cusps = calcKochHouses(ascLon, mcLon, lat, LST, obliquity);
-      break;
-    case 'R': // Regiomontanus
-      cusps = calcRegiomontanusHouses(ascLon, mcLon, lat, LST, obliquity);
-      break;
-    case 'C': // Campanus
-      cusps = calcCampanusHouses(ascLon, mcLon, lat, LST, obliquity);
-      break;
-    case 'P': // Porphyry
-      {
-        const desc = normalize(ascLon + 180);
-        const ic = normalize(mcLon + 180);
-        
-        const q1Size = normalize(ic - ascLon);
-        const q2Size = normalize(desc - ic);
-        const q3Size = normalize(mcLon - desc);
-        const q4Size = normalize(ascLon - mcLon);
-        
-        cusps = [
-          ascLon,
-          normalize(ascLon + q1Size / 3),
-          normalize(ascLon + 2 * q1Size / 3),
-          ic,
-          normalize(ic + q2Size / 3),
-          normalize(ic + 2 * q2Size / 3),
-          desc,
-          normalize(desc + q3Size / 3),
-          normalize(desc + 2 * q3Size / 3),
-          mcLon,
-          normalize(mcLon + q4Size / 3),
-          normalize(mcLon + 2 * q4Size / 3),
-        ];
-      }
-      break;
-    case 'W': // Whole Sign
-      cusps = [];
-      for (let i = 0; i < 12; i++) {
-        const ascSign = Math.floor(ascLon / 30);
-        cusps[i] = ((ascSign + i) % 12) * 30;
-      }
-      break;
-    case 'E': // Equal House
-    default:
-      cusps = [];
-      for (let i = 0; i < 12; i++) {
-        cusps[i] = normalize(ascLon + i * 30);
-      }
+  try {
+    const swiss = calcSwissHouses(time, lat, lng, system);
+    cusps = swiss.cusps;
+    finalAscLon = swiss.ascLon;
+    finalMcLon = swiss.mcLon;
+  } catch (error) {
+    console.warn('Swiss house calculation failed, using fallback:', error);
+  
+    switch (system) {
+      case 'B': // Alcabitius fallback: closest existing time-division implementation
+      case 'K': // Koch
+        cusps = calcKochHouses(ascLon, mcLon, lat, LST, obliquity);
+        break;
+      case 'R': // Regiomontanus
+        cusps = calcRegiomontanusHouses(ascLon, mcLon, lat, LST, obliquity);
+        break;
+      case 'C': // Campanus
+        cusps = calcCampanusHouses(ascLon, mcLon, lat, LST, obliquity);
+        break;
+      case 'O': // Porphyry
+        {
+          const desc = normalize(ascLon + 180);
+          const ic = normalize(mcLon + 180);
+          
+          const q1Size = normalize(ic - ascLon);
+          const q2Size = normalize(desc - ic);
+          const q3Size = normalize(mcLon - desc);
+          const q4Size = normalize(ascLon - mcLon);
+          
+          cusps = [
+            ascLon,
+            normalize(ascLon + q1Size / 3),
+            normalize(ascLon + 2 * q1Size / 3),
+            ic,
+            normalize(ic + q2Size / 3),
+            normalize(ic + 2 * q2Size / 3),
+            desc,
+            normalize(desc + q3Size / 3),
+            normalize(desc + 2 * q3Size / 3),
+            mcLon,
+            normalize(mcLon + q4Size / 3),
+            normalize(mcLon + 2 * q4Size / 3),
+          ];
+        }
+        break;
+      case 'W': // Whole Sign
+        cusps = [];
+        for (let i = 0; i < 12; i++) {
+          const ascSign = Math.floor(ascLon / 30);
+          cusps[i] = ((ascSign + i) % 12) * 30;
+        }
+        break;
+      case 'E': // Equal House
+      default:
+        cusps = [];
+        for (let i = 0; i < 12; i++) {
+          cusps[i] = normalize(ascLon + i * 30);
+        }
+    }
   }
   
   for (let i = 0; i < 12; i++) {
@@ -564,12 +596,12 @@ function calcHouses(time: Astronomy.AstroTime, lat: number, lng: number, system:
   return {
     houses,
     ascendant: {
-      longitude: Math.round(ascLon * 10000) / 10000,
-      ...signData(ascLon),
+      longitude: Math.round(finalAscLon * 10000) / 10000,
+      ...signData(finalAscLon),
     },
     midheaven: {
-      longitude: Math.round(mcLon * 10000) / 10000,
-      ...signData(mcLon),
+      longitude: Math.round(finalMcLon * 10000) / 10000,
+      ...signData(finalMcLon),
     },
   };
 }
@@ -705,10 +737,12 @@ export async function GET() {
       tz: data.tz,
     })),
     houseSystems: [
-      { code: 'P', name: '波菲里宫制', name_en: 'Porphyry' },
+      { code: 'B', name: '阿卡比特制', name_en: 'Alcabitius' },
+      { code: 'P', name: '普拉西德制', name_en: 'Placidus' },
+      { code: 'O', name: '波菲里宫制', name_en: 'Porphyry' },
       { code: 'E', name: '等宫制', name_en: 'Equal House' },
       { code: 'W', name: '整宫制', name_en: 'Whole Sign' },
-      { code: 'K', name: 'Koch (阿卡比特)', name_en: 'Koch' },
+      { code: 'K', name: 'Koch制', name_en: 'Koch' },
       { code: 'R', name: 'Regiomontanus', name_en: 'Regiomontanus' },
       { code: 'C', name: 'Campanus', name_en: 'Campanus' },
     ],

@@ -7,6 +7,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import * as Astronomy from 'astronomy-engine';
+import * as Sweph from 'sweph';
 
 const SIGNS = ['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'];
 const SIGNS_CN = ['白羊','金牛','双子','巨蟹','狮子','处女','天秤','天蝎','射手','摩羯','水瓶','双鱼'];
@@ -89,20 +90,47 @@ function calcAscendant(lat: number, lst: number): number {
 
 function calcMC(lst: number): number { return normalizeAngle(lst); }
 
+function calcSwissHouses(time: Astronomy.AstroTime, lat: number, lng: number, system: string) {
+  const hsys = (system || 'P').toUpperCase();
+  const jdUt = time.ut + 2451545.0;
+  const result = Sweph.houses_ex2(jdUt, 0, lat, lng, hsys);
+  
+  if (result.flag !== Sweph.constants.OK || !result.data?.houses?.length || !result.data?.points?.length) {
+    throw new Error(result.error || `Swiss Ephemeris house calculation failed for ${hsys}`);
+  }
+  
+  return {
+    cusps: Array.from(result.data.houses).slice(0, 12).map((lon) => normalizeAngle(lon)),
+    ascLon: normalizeAngle(result.data.points[0]),
+    mcLon: normalizeAngle(result.data.points[1]),
+  };
+}
+
 function calcHouses(time: Astronomy.AstroTime, lat: number, lng: number, system = 'P') {
-  const lst = calcLST(time, lng);
-  const ascLon = calcAscendant(lat, lst);
-  const mcLon = calcMC(lst);
+  let cusps: number[];
+  let ascLon: number;
+  let mcLon: number;
+  
+  try {
+    const swiss = calcSwissHouses(time, lat, lng, system);
+    cusps = swiss.cusps;
+    ascLon = swiss.ascLon;
+    mcLon = swiss.mcLon;
+  } catch (error) {
+    console.warn('Swiss transit house calculation failed, using fallback:', error);
+    const lst = calcLST(time, lng);
+    ascLon = calcAscendant(lat, lst);
+    mcLon = calcMC(lst);
+    cusps = [];
+    for (let i = 0; i < 12; i++) {
+      if (system === 'W') cusps[i] = normalizeAngle(Math.floor(ascLon / 30) * 30 + i * 30);
+      else cusps[i] = normalizeAngle(ascLon + i * 30);
+    }
+  }
+  
   const houses = [];
   for (let i = 0; i < 12; i++) {
-    let cuspLon: number;
-    if (system === 'W') cuspLon = normalizeAngle(ascLon + i * 30);
-    else if (system === 'E') cuspLon = normalizeAngle(ascLon + i * 30);
-    else if (system === 'K') {
-      const ra = Math.atan2(Math.sin(ascLon * Math.PI / 180) * Math.cos(lat * Math.PI / 180), Math.cos(ascLon * Math.PI / 180)) * 180 / Math.PI;
-      cuspLon = normalizeAngle(ra + i * 30);
-    }
-    else cuspLon = normalizeAngle(ascLon + i * 30);
+    const cuspLon = cusps[i];
     const sd = signFromLon(cuspLon);
     houses.push({ house: i + 1, house_cn: `${i + 1}宫`, longitude: cuspLon, ...sd });
   }
