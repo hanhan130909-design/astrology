@@ -707,3 +707,6 @@ export default function TransitPage() {
         </section>
 
       </main>
+    </div>
+  );
+}

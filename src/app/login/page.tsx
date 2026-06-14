@@ -191,7 +191,7 @@ export default function LoginPage() {
       <div className="relative w-full max-w-md">
         {/* 返回按钮 */}
         <Link href="/" className="absolute -top-16 left-0 flex items-center gap-2 text-gray-500 hover:text-white transition-colors">
-          < size={20} />
+          
           <span>{language === 'zh' ? '返回首页' : language === 'en' ? 'Back' : 'Kembali'}</span>
         </Link>
 

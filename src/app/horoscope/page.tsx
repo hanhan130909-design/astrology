@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Star, Sun ChevronDown, Heart, Briefcase, Wallet, Activity, Sparkles, TrendingUp, Users, Calendar, Lock, Share2, CheckCircle, MessageCircle, RefreshCw, Shuffle } from "lucide-react";
+import { Star, Sun, ChevronDown, Heart, Briefcase, Wallet, Activity, Sparkles, TrendingUp, Users, Calendar, Lock, Share2, CheckCircle, MessageCircle, RefreshCw, Shuffle } from "lucide-react";
 
 // Complete zodiac data with full details
 const ZODIAC_DATA: Record<string, { symbol: string; names: Record<string, string>; element: string; rulingPlanet: string; dates: string }> = {

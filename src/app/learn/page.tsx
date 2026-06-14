@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { BookOpen, Star, ChevronDown Circle } from "lucide-react";
+import { BookOpen, Star, ChevronDown, Circle } from "lucide-react";
 
 const PLANET_ICONS: Record<string, any> = {
   Sun: Circle, Moon: Circle, Mercury: Circle, Venus: Circle, Mars: Circle, 
