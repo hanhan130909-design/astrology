@@ -8,7 +8,7 @@ export default function AboutPage() {
   const t = (translations as Record<string, any>)[language] || translations.zh;
 
   return (
-    <div className="min-h-screen bg-white text-gray-800">
+    <div className="min-h-screen bg-white text-[#171717]">
       <main className="max-w-4xl mx-auto px-4 py-16">
         <h1 className="text-3xl font-bold text-center mb-4 text-gray-700">{t.about?.title || "关于星缘"}</h1>
         <p className="text-center text-gray-500 mb-16 max-w-xl mx-auto">

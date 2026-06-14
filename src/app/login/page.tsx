@@ -237,7 +237,7 @@ export default function LoginPage() {
 
           {/* 错误提示 */}
           {error && (
-            <div className="mb-4 p-3 bg-gray-500/20 border border-gray-500/30 rounded-xl text-gray-400 text-sm text-center">
+            <div className="mb-4 p-3 bg-white0/20 border border-gray-500/30 rounded-lg text-gray-400 text-sm text-center" style={{boxShadow:"0px 0px 0px 1px rgba(0,0,0,0.08), 0px 2px 4px rgba(0,0,0,0.04)"}}>
               {error}
             </div>
           )}

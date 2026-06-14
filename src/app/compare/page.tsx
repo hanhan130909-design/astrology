@@ -510,7 +510,7 @@ export default function ComparePage() {
 
             {/* Strengths & Challenges */}
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-gray-500/10 rounded-2xl p-6 border border-gray-500/20">
+              <div className="bg-white0/10 rounded-lg p-6 border border-gray-500/20" style={{boxShadow:"0px 0px 0px 1px rgba(0,0,0,0.08), 0px 2px 4px rgba(0,0,0,0.04)"}}>
                 <h3 className="text-lg font-semibold text-gray-400 mb-4">{t.strengths}</h3>
                 <ul className="space-y-2">
                   {result.strengths.map((strength, idx) => (
@@ -521,7 +521,7 @@ export default function ComparePage() {
                   ))}
                 </ul>
               </div>
-              <div className="bg-gray-500/10 rounded-2xl p-6 border border-gray-500/20">
+              <div className="bg-white0/10 rounded-lg p-6 border border-gray-500/20" style={{boxShadow:"0px 0px 0px 1px rgba(0,0,0,0.08), 0px 2px 4px rgba(0,0,0,0.04)"}}>
                 <h3 className="text-lg font-semibold text-gray-600 mb-4">{t.challenges}</h3>
                 <ul className="space-y-2">
                   {result.challenges.map((challenge, idx) => (
@@ -535,7 +535,7 @@ export default function ComparePage() {
             </div>
 
             {/* Advice */}
-            <div className="bg-gray-500/10 rounded-2xl p-6 border border-gray-500/20">
+            <div className="bg-white0/10 rounded-lg p-6 border border-gray-500/20" style={{boxShadow:"0px 0px 0px 1px rgba(0,0,0,0.08), 0px 2px 4px rgba(0,0,0,0.04)"}}>
               <h3 className="text-lg font-semibold text-gray-400 mb-2 flex items-center gap-2">
                 <Info className="w-5 h-5" />
                 {t.advice}

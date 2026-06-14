@@ -49,7 +49,7 @@ export default function CompatibilityPage() {
   const t = T[language] || T.zh;
 
   return (
-    <div className="min-h-screen bg-white text-gray-800">
+    <div className="min-h-screen bg-white text-[#171717]">
       {/* Hero */}
       <main className="max-w-7xl mx-auto px-6 py-12">
         <div className="text-center mb-12">
@@ -65,7 +65,7 @@ export default function CompatibilityPage() {
         {/* Feature cards */}
         <div className="grid md:grid-cols-4 gap-4 mb-12 max-w-3xl mx-auto">
           {t.features.map((f, i) => (
-            <div key={i} className="flex items-center gap-2 px-4 py-3 bg-gray-50 rounded-xl border border-gray-100">
+            <div key={i} className="flex items-center gap-2 px-4 py-3 bg-white rounded-lg border border-gray-100" style={{boxShadow:"0px 0px 0px 1px rgba(0,0,0,0.08), 0px 2px 4px rgba(0,0,0,0.04)"}}>
               <CheckCircle size={16} className="text-gray-400 shrink-0" />
               <span className="text-sm text-gray-600">{f}</span>
             </div>

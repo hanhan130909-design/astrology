@@ -319,7 +319,7 @@ export default function TarotPage() {
   const allRevealed = drawnCards.length > 0 && revealedCards.length === drawnCards.length;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#ffffff] via-white to-[#ffffff] text-gray-900">
+    <div className="min-h-screen bg-white text-[#171717]">
       {/* Navigation */}
       
 
@@ -333,7 +333,7 @@ export default function TarotPage() {
         </div>
 
         {/* Controls */}
-        <div className="bg-gray-50 border border-gray-300 rounded-2xl p-5 mb-6 space-y-4">
+        <div className="bg-white border border-gray-300 rounded-lg p-5 mb-6 space-y-4" style={{boxShadow:"0px 0px 0px 1px rgba(0,0,0,0.08), 0px 2px 4px rgba(0,0,0,0.04)"}}>
           {/* Question Input */}
           <div>
             <label className="block text-sm text-gray-500 mb-2">{t.question}</label>
@@ -397,7 +397,7 @@ export default function TarotPage() {
         {drawnCards.length > 0 && (
           <div className="space-y-6">
             {/* Cards Grid */}
-            <div className="bg-gray-50 border border-gray-300 rounded-2xl p-6">
+            <div className="bg-white border border-gray-300 rounded-lg p-6" style={{boxShadow:"0px 0px 0px 1px rgba(0,0,0,0.08), 0px 2px 4px rgba(0,0,0,0.04)"}}>
               <div className={`flex flex-wrap justify-center gap-4 ${drawnCards.length > 5 ? 'max-h-96 overflow-y-auto' : ''}`}>
                 {drawnCards.map((card, i) => {
                   const isRevealed = revealedCards.includes(i);

@@ -68,7 +68,7 @@ export default function AIPage() {
   const l = labels[language] || labels.zh;
 
   return (
-    <div className="min-h-screen bg-white text-gray-800">
+    <div className="min-h-screen bg-white text-[#171717]">
       <main className="max-w-7xl mx-auto px-6 py-12">
         {/* Hero */}
         <div className="text-center mb-16">
@@ -99,7 +99,7 @@ export default function AIPage() {
 
         {/* Tip */}
         <div className="text-center mt-12 pb-8">
-          <div className="inline-flex items-center gap-2 px-5 py-3 bg-gray-50 rounded-xl border border-gray-200 text-sm text-gray-700">
+          <div className="inline-flex items-center gap-2 px-5 py-3 bg-white rounded-lg border border-gray-200 text-sm text-gray-700" style={{boxShadow:"0px 0px 0px 1px rgba(0,0,0,0.08), 0px 2px 4px rgba(0,0,0,0.04)"}}>
             <Sparkles size={16} />
             {t.tip}
           </div>

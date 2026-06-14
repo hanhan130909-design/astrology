@@ -121,7 +121,7 @@ export default function ChartHubPage() {
   const t = T[language] || T.en;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-white to-[#ffffff] text-gray-900">
+    <div className="min-h-screen bg-white text-[#171717]">
       {/* Navigation */}
       
 

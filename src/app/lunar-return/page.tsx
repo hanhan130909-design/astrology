@@ -255,7 +255,7 @@ export default function LunarReturnPage() {
   const currentMoonSign = result?.lunarReturn?.planets?.Moon?.sign || 'Leo';
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 text-gray-900">
+    <div className="min-h-screen bg-white text-[#171717]">
       {/* Nav */}
       
 

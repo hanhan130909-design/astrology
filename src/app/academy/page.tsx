@@ -196,7 +196,7 @@ export default function AcademyPage() {
                     <div className="text-sm text-gray-500 flex items-center gap-1"><Play className="w-3 h-3" />{lesson.duration} {t.minutes}</div>
                   </div>
                   {!lesson.locked && !lesson.completed && (
-                    <button className="px-4 py-2 bg-gray-500/20 text-gray-700 rounded-lg text-sm hover:bg-gray-500/30">{t.continueLearning}</button>
+                    <button className="px-4 py-2 bg-white0/20 text-gray-700 rounded-lg text-sm hover:bg-gray-500/30" style={{boxShadow:"0px 0px 0px 1px rgba(0,0,0,0.08), 0px 2px 4px rgba(0,0,0,0.04)"}}>{t.continueLearning}</button>
                   )}
                 </div>
               ))}

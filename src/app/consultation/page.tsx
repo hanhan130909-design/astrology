@@ -600,7 +600,7 @@ export default function ConsultationPage() {
               ))}
             </div>
             {selectedSlot && (
-              <div className="mt-4 p-4 bg-gray-500/10 rounded-xl border border-gray-200">
+              <div className="mt-4 p-4 bg-white0/10 rounded-lg border border-gray-200" style={{boxShadow:"0px 0px 0px 1px rgba(0,0,0,0.08), 0px 2px 4px rgba(0,0,0,0.04)"}}>
                 <div className="flex items-center justify-between">
                   <span className="text-gray-700">
                     {language === "zh" ? "选择时间" : language === "id" ? "Waktu dipilih" : "Selected Time"}: 
@@ -774,7 +774,7 @@ export default function ConsultationPage() {
                 <div className="flex gap-2">
                   <button
                     onClick={() => setSelectedAstrologer(astrologer)}
-                    className="flex-1 py-2 bg-gray-500/20 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-500/30 transition-colors"
+                    className="flex-1 py-2 bg-white0/20 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-500/30 transition-colors" style={{boxShadow:"0px 0px 0px 1px rgba(0,0,0,0.08), 0px 2px 4px rgba(0,0,0,0.04)"}}
                   >
                     {t.bookSession}
                   </button>

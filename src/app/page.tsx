@@ -148,7 +148,7 @@ export default function HomePage() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {testimonials.map((t, i) => (
-              <div key={i} className="bg-gray-50 rounded-lg p-6">
+              <div key={i} className="bg-white rounded-lg p-6" style={{boxShadow:"0px 0px 0px 1px rgba(0,0,0,0.08), 0px 2px 4px rgba(0,0,0,0.04)"}}>
                 <p className="text-sm text-gray-600 leading-relaxed mb-4">&ldquo;{t.zh}&rdquo;</p>
                 <div className="text-[13px] font-semibold">{t.name}</div>
                 <div className="text-xs text-gray-400">{t.role}</div>
