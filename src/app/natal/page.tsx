@@ -161,6 +161,20 @@ export default function NatalPage(){
     if(action==="password")handlePasswordReset();
     if(action==="profile")window.location.href="/profile";
     if(action==="language")setLanguageDialogOpen(true);
+    if(action==="natal")window.location.href="/natal";
+    if(action==="horary")window.location.href="/horary";
+    if(action==="vedic")window.location.href="/vedic";
+    if(action==="bazi")window.location.href="/bazi";
+    if(action==="compare")window.location.href="/compare";
+    if(action==="composite")window.location.href="/composite";
+    if(action==="transits")window.location.href="/transits";
+    if(action==="solarArc")window.location.href="/solar-arc";
+    if(action==="progression")window.location.href="/progression";
+    if(action==="secondaryNatal")window.location.href="/secondary-to-natal";
+    if(action==="tertiary")window.location.href="/tertiary";
+    if(action==="tertiaryNatal")window.location.href="/tertiary-to-natal";
+    if(action==="solarReturn")window.location.href="/solar-return";
+    if(action==="lunarReturn")window.location.href="/lunar-return";
   };
 
   const pData = chart?.planets;
@@ -293,6 +307,22 @@ export default function NatalPage(){
         <span onClick={()=>window.location.href="/"} style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>返回首页</span>
         {[
           {id:"file",l:"文件",items:[{l:"列表",a:"list"},{l:"新增",a:"new"}]},
+          {id:"charts",l:"星盘",items:[
+            {l:"本命盘",a:"natal"},
+            {l:"卜卦盘",a:"horary"},
+            {l:"印度占星盘",a:"vedic"},
+            {l:"八字盘",a:"bazi"},
+            {l:"比较盘",a:"compare"},
+            {l:"组合盘",a:"composite"},
+            {l:"流年星",a:"transits"},
+            {l:"太阳弧",a:"solarArc"},
+            {l:"次限法",a:"progression"},
+            {l:"次限对本命盘",a:"secondaryNatal"},
+            {l:"三限法",a:"tertiary"},
+            {l:"三限对本命盘",a:"tertiaryNatal"},
+            {l:"太阳返照",a:"solarReturn"},
+            {l:"月亮返照",a:"lunarReturn"}
+          ]},
           {id:"tools",l:"工具",items:[{l:"星象日历",a:"calendar"},{l:"出生时间反推",a:"rectify"}]},
           {id:"settings",l:"设定",items:[{l:"修改密码",a:"password"},{l:"个人资料",a:"profile"},{l:"选择语系",a:"language"}]}
         ].map(m=>(
