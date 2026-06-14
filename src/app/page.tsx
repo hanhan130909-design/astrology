@@ -864,37 +864,7 @@ export default function HomePage() {
       </main>
 
       {/* Bottom Navigation for Mobile */}
-      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-t border-gray-200 md:hidden">
-        <div className="flex justify-around py-3">
-          <Link href="/" className="flex flex-col items-center gap-1 text-purple-400">
-            <Home size={20} />
-            <span className="text-[10px]">{t_nav.home}</span>
-          </Link>
-          <Link href="/natal" className="flex flex-col items-center gap-1 text-gray-500">
-            <Orbit size={20} />
-            <span className="text-[10px]">{lang === 'zh' ? '星盘' : lang === 'en' ? 'Chart' : lang === 'id' ? 'Bagan' : lang === 'th' ? 'แผนภูมิ' : lang === 'vi' ? 'Biểu đồ' : lang === 'ms' ? 'Carta' : lang === 'ja' ? 'チャート' : '차트'}</span>
-          </Link>
-          <Link href="/horoscope" className="flex flex-col items-center gap-1 text-gray-500">
-            <Sun size={20} />
-            <span className="text-[10px]">{lang === 'zh' ? '运势' : lang === 'en' ? 'Horoscope' : lang === 'id' ? 'Horoskop' : lang === 'th' ? 'ดวงชะตา' : lang === 'vi' ? 'Tử vi' : lang === 'ms' ? 'Horoskop' : lang === 'ja' ? '運勢' : '운세'}</span>
-          </Link>
-          <Link href="/ai-reading" className="flex flex-col items-center gap-1 text-gray-500">
-            <BrainCircuit size={20} />
-            <span className="text-[10px]">AI</span>
-          </Link>
-          {user ? (
-            <Link href="/user" className="flex flex-col items-center gap-1 text-gray-500">
-              <User size={20} />
-              <span className="text-[10px]">{lang === 'zh' ? '我的' : lang === 'en' ? 'Me' : lang === 'id' ? 'Saya' : lang === 'th' ? 'ของฉัน' : lang === 'vi' ? 'Tôi' : lang === 'ms' ? 'Saya' : lang === 'ja' ? 'マイ' : '나'}</span>
-            </Link>
-          ) : (
-            <Link href="/login" className="flex flex-col items-center gap-1 text-gray-500">
-              <User size={20} />
-              <span className="text-[10px]">{t_nav.login}</span>
-            </Link>
-          )}
-        </div>
-      </nav>
+      
     </div>
   );
 }

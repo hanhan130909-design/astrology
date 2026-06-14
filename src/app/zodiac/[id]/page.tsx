@@ -169,21 +169,7 @@ export default function ZodiacDetailPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#f8fafc] via-[#1a1a3a] to-[#f8fafc] text-white">
-      <nav className="sticky top-0 z-50 backdrop-blur-md bg-[#f8fafc]/90 border-b border-purple-900/30">
-        <div className="max-w-4xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <span className="text-2xl">✨</span>
-              <span className="text-xl font-bold text-amber-200">{t.siteName}</span>
-            </Link>
-            <div className="flex items-center gap-2">
-              <button onClick={() => setLanguage("id")} className={`px-2 py-1 rounded text-xs ${language === "id" ? "bg-amber-500/30 text-amber-200" : "text-purple-300"}`}>🇮🇩</button>
-              <button onClick={() => setLanguage("en")} className={`px-2 py-1 rounded text-xs ${language === "en" ? "bg-amber-500/30 text-amber-200" : "text-purple-300"}`}>🇺🇸</button>
-              <button onClick={() => setLanguage("zh")} className={`px-2 py-1 rounded text-xs ${language === "zh" ? "bg-amber-500/30 text-amber-200" : "text-purple-300"}`}>🇨🇳</button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      
 
       <div className="max-w-4xl mx-auto px-4 py-8 space-y-8">
         <div className="text-center">

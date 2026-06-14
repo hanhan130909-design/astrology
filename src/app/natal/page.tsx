@@ -155,7 +155,7 @@ export default function NatalPage(){
     const fal=FALL[k]===si?"1":"";
     const rulerScore=r?5:0,exScore=ex?4:0,triScore=tri?3:0,termScore=tP?2:0,faceScore=faceP?1:0;
     const totalScore=rulerScore+exScore+triScore+termScore+faceScore-(det?4:0)-(fal?5:0);
-    return{code:planetCodesFull[k]||k[0],name:k,deg:`${Math.floor(d)}°${signGlyph(si)} ${String(Math.round((d%1)*60)).padStart(2,"0")}′${retro?" R":""}`,house,guardianHouse:"-",exaltHouse:"-",ruler:r,exalt:ex,triplicity:tri,term:tP,face:faceP,detriment:det,fall:fal,score:totalScore>0?"+"+totalScore:String(totalScore),state:totalScore>=5?"强":totalScore>=0?"平均":"弱",speed:"平均",sect:["Sun","Jupiter","Saturn"].includes(k)?"得时":"-",orient:retro?"西入":"东出"};
+    return{code:planetCodesFull[k]||k[0],name:k,lon,retro,deg:`${Math.floor(d)}°${signGlyph(si)} ${String(Math.round((d%1)*60)).padStart(2,"0")}′${retro?" R":""}`,house,guardianHouse:"-",exaltHouse:"-",ruler:r,exalt:ex,triplicity:tri,term:tP,face:faceP,detriment:det,fall:fal,score:totalScore>0?"+"+totalScore:String(totalScore),state:totalScore>=5?"强":totalScore>=0?"平均":"弱",speed:"平均",sect:["Sun","Jupiter","Saturn"].includes(k)?"得时":"-",orient:retro?"西入":"东出"};
   }):[];
 
   const houseRows = (hData||[]).map((h:any)=>{
@@ -166,7 +166,8 @@ export default function NatalPage(){
   });
   const firdaria = chart ? buildFirdariaPeriods(chart, year, month, day) : {isDay:true, periods:[] as FirdariaPeriod[]};
   const glyph = (code?:string,size=16)=><em className="astro-glyph" style={{fontSize:size}}>{planetSymbols[code||""]||code||""}</em>;
-  const lonCells = (lon:number)=>{const p=lonParts(lon);return <><span>{p.deg}</span><span className="zodiac-cell">{signGlyph(p.sign)}</span><span>{fmt2(p.min)}</span></>;};
+  const lonCells = (lon:number,retro=false)=>{const p=lonParts(lon);return <><span>{p.deg}</span><span className="zodiac-cell">{signGlyph(p.sign)}</span><span>{fmt2(p.min)}</span>{retro&&<span>&nbsp;Rx</span>}</>;};
+  const zodiacMark = (value?:string)=>value?<span className="zodiac-mark">{value}</span>:"";
   const pointLon = (key:string)=>{
     if(key==="Ascendant")return typeof chart?.ascendant==="number"?chart.ascendant:chart?.ascendant?.longitude??hData?.[0]?.longitude??0;
     if(key==="Midheaven")return typeof chart?.midheaven==="number"?chart.midheaven:chart?.midheaven?.longitude??hData?.[9]?.longitude??0;
@@ -221,7 +222,7 @@ export default function NatalPage(){
 
   return(
     <div className="min-h-screen bg-white text-[#333]">
-      <style>{`.house_sym{font-size:16px;font-weight:bold}.house_deg{font-size:9px;fill:#666}.house_min{font-size:7px;fill:#999}.tiny{font-size:9px;fill:#666}.asp_grid_sym{font-family:'Apple Symbols','DejaVu Sans',serif}.asp_grid_digit{font-family:sans-serif}.obj_sym{font-size:14px;font-weight:bold}.obj_deg{font-size:10px}.middle_sym{font-size:14px;font-weight:bold}.obj_min{font-size:8px;fill:#666}.asp_sym{font-size:10px;font-weight:bold}#natalmain{padding:10px 260px 10px 20px}#chartwrap{display:flex;align-items:flex-start;gap:28px;flex-wrap:nowrap;margin-bottom:10px;overflow-x:auto}#chart svg{max-width:none}.alm-tabs{width:100%;margin-top:8px;border:1px solid #aaa;border-radius:4px 4px 0 0;background:linear-gradient(#eeeeee,#cfcfcf);padding:3px 3px 0;overflow-x:auto}.alm-tab-btn{height:32px;padding:0 16px;border:1px solid #bbb;border-bottom:0;border-radius:4px 4px 0 0;background:linear-gradient(#f7f7f7,#dfdfdf);font-size:14px;color:#333;white-space:nowrap}.alm-tab-btn.active{background:white;font-weight:600;position:relative;top:1px}.alm-panel{padding:18px 28px 22px;background:white;overflow-x:auto}.alm-table{width:100%;border-collapse:collapse;background:white;color:#222;font-size:13px;line-height:1.15;box-shadow:0 4px 14px rgba(0,0,0,.14)}.alm-table th,.alm-table td{border:1px solid #aaa;padding:3px 6px;text-align:center;vertical-align:middle;height:22px}.alm-table th{background:#eee;font-weight:700}.alm-table td.left{text-align:left}.alm-table .dash-left{border-left:1px dashed #777}.alm-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;align-items:start}.alm-stack{display:grid;gap:20px}.astro-glyph{font-family:'Apple Symbols','DejaVu Sans',serif;font-style:normal;line-height:1}.zodiac-cell{font-family:'Apple Symbols','DejaVu Sans',serif;font-size:17px;padding:0 12px}@media(max-width:1100px){.alm-grid-3{grid-template-columns:1fr}.alm-panel{padding:14px 10px}}@media(max-width:900px){#natalmain{padding:10px 20px}#rightsidebar{position:static!important;width:auto!important;margin:10px 20px}#chartwrap{flex-direction:column;overflow-x:visible}#chart{order:1}#aspgrid{order:2;max-width:100%;overflow-x:auto}#chart svg{width:min(520px,calc(100vw - 40px));height:auto}.alm-table{font-size:12px}}`}</style>
+      <style>{`.house_sym{font-size:16px;font-weight:bold}.house_deg{font-size:9px;fill:#666}.house_min{font-size:7px;fill:#999}.tiny{font-size:9px;fill:#666}.asp_grid_sym{font-family:'Apple Symbols','DejaVu Sans',serif}.asp_grid_digit{font-family:sans-serif}.obj_sym{font-size:14px;font-weight:bold}.obj_deg{font-size:10px}.middle_sym{font-size:14px;font-weight:bold}.obj_min{font-size:8px;fill:#666}.asp_sym{font-size:10px;font-weight:bold}#natalmain{padding:10px 260px 10px 20px}#chartwrap{display:flex;align-items:flex-start;gap:28px;flex-wrap:nowrap;margin-bottom:10px;overflow-x:auto}#chart svg{max-width:none}.alm-tabs{width:100%;margin-top:8px;border:1px solid #aaa;border-radius:4px 4px 0 0;background:linear-gradient(#eeeeee,#cfcfcf);padding:3px 3px 0;overflow-x:auto}.alm-tab-btn{height:32px;padding:0 16px;border:1px solid #bbb;border-bottom:0;border-radius:4px 4px 0 0;background:linear-gradient(#f7f7f7,#dfdfdf);font-size:14px;color:#333;white-space:nowrap}.alm-tab-btn.active{background:white;font-weight:600;position:relative;top:1px}.alm-panel{padding:18px 28px 22px;background:white;overflow-x:auto}.alm-table{width:100%;border-collapse:collapse;background:white;color:#222;font-size:13px;line-height:1.15;box-shadow:0 4px 14px rgba(0,0,0,.14)}.alm-table th,.alm-table td{border:1px solid #aaa;padding:3px 6px;text-align:center;vertical-align:middle;height:22px}.alm-table th{background:#eee;font-weight:700}.alm-table td.left{text-align:left}.alm-table .dash-left{border-left:1px dashed #777}.alm-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;align-items:start}.alm-stack{display:grid;gap:20px}.astro-glyph{font-family:'Apple Symbols','DejaVu Sans',serif;font-style:normal;line-height:1}.zodiac-cell,.zodiac-mark{font-family:'Times New Roman','Noto Sans Symbols 2','Apple Symbols',serif;font-variant-emoji:text;color:#222;background:transparent}.zodiac-cell{font-size:17px;padding:0 12px}.zodiac-mark{font-size:17px;line-height:1}@media(max-width:1100px){.alm-grid-3{grid-template-columns:1fr}.alm-panel{padding:14px 10px}}@media(max-width:900px){#natalmain{padding:10px 20px}#rightsidebar{position:static!important;width:auto!important;margin:10px 20px}#chartwrap{flex-direction:column;overflow-x:visible}#chart{order:1}#aspgrid{order:2;max-width:100%;overflow-x:auto}#chart svg{width:min(520px,calc(100vw - 40px));height:auto}.alm-table{font-size:12px}}`}</style>
 
       <div id="cssmenu" style={{background:"#333",fontSize:"14px",display:"flex",alignItems:"center",padding:"0 16px"}}>
         <span style={{color:"#ccc",padding:"4px 12px"}}>hanhan <i>已登入</i></span>
@@ -273,7 +274,7 @@ export default function NatalPage(){
                   </tr>
                 </thead>
                 <tbody>{dignityRows.map((r,i)=><tr key={i}>
-                  <td>{glyph(r.code,r.code==="Z"||r.code==="X"?12:17)}</td><td colSpan={3}>{r.deg}</td><td>{r.house}</td><td>{r.guardianHouse}</td><td>{r.exaltHouse}</td>
+                  <td>{glyph(r.code,r.code==="Z"||r.code==="X"?12:17)}</td><td colSpan={3}>{lonCells(r.lon,r.retro)}</td><td>{r.house}</td><td>{r.guardianHouse}</td><td>{r.exaltHouse}</td>
                   <td>{glyph(r.ruler,16)}{r.ruler?"+":""}</td><td>{glyph(r.exalt,16)}</td><td colSpan={3}>{glyph(r.triplicity,16)}</td><td>{glyph(r.term,16)}</td><td>{glyph(r.face,16)}</td>
                   <td>{r.detriment?"-":""}</td><td>{r.fall?"-":""}</td><td>{r.score}</td><td>{r.state}</td><td>-</td><td>{r.orient}</td><td>{r.sect}</td><td>-</td>
                 </tr>)}</tbody>
@@ -312,12 +313,12 @@ export default function NatalPage(){
 
               {activeTab==="fortune-tab"&&<table className="alm-table">
                 <thead><tr><th colSpan={18}>福点 Aphesis</th></tr><tr>{Array.from({length:6}).map((_,i)=><Fragment key={i}><th className={i?"dash-left":""}>主</th><th>次</th><th>起始日期</th></Fragment>)}</tr></thead>
-                <tbody>{fortuneGrid.map((row,ri)=><tr key={ri}>{row.map((item,gi)=><Fragment key={gi}><td className={gi?"dash-left":""}>{item?.main||""}</td><td>{item?.sub||""}</td><td>{item?.date||""}</td></Fragment>)}</tr>)}</tbody>
+                <tbody>{fortuneGrid.map((row,ri)=><tr key={ri}>{row.map((item,gi)=><Fragment key={gi}><td className={gi?"dash-left":""}>{zodiacMark(item?.main)}</td><td>{item?.sub==="- LB"?"- LB":zodiacMark(item?.sub)}</td><td>{item?.date||""}</td></Fragment>)}</tr>)}</tbody>
               </table>}
 
               {activeTab==="spirit-tab"&&<table className="alm-table">
                 <thead><tr><th colSpan={18}>精神点 Aphesis</th></tr><tr>{Array.from({length:6}).map((_,i)=><Fragment key={i}><th className={i?"dash-left":""}>主</th><th>次</th><th>起始日期</th></Fragment>)}</tr></thead>
-                <tbody>{spiritGrid.map((row,ri)=><tr key={ri}>{row.map((item,gi)=><Fragment key={gi}><td className={gi?"dash-left":""}>{item?.main||""}</td><td>{item?.sub||""}</td><td>{item?.date||""}</td></Fragment>)}</tr>)}</tbody>
+                <tbody>{spiritGrid.map((row,ri)=><tr key={ri}>{row.map((item,gi)=><Fragment key={gi}><td className={gi?"dash-left":""}>{zodiacMark(item?.main)}</td><td>{item?.sub==="- LB"?"- LB":zodiacMark(item?.sub)}</td><td>{item?.date||""}</td></Fragment>)}</tr>)}</tbody>
               </table>}
             </div>
           </div>}
