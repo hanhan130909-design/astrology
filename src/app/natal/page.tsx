@@ -29,6 +29,10 @@ const FIRDARIA_CLASSICAL_NIGHT=["Moon","Saturn","Jupiter","Mars","Sun","Venus","
 function addCalendarYears(date:Date,years:number){const d=new Date(date);d.setFullYear(d.getFullYear()+years);return d;}
 function addFirdariaDays(date:Date,years:number){const d=new Date(date);d.setDate(d.getDate()+Math.round(years*365.2425));return d;}
 function formatFirdariaDate(date:Date){return date.toLocaleDateString("zh-CN",{year:"numeric",month:"2-digit",day:"2-digit"});}
+function formatYmd(date:Date){return `${date.getFullYear()}-${fmt2(date.getMonth()+1)}-${fmt2(date.getDate())}`;}
+function addMonths(date:Date,months:number){const d=new Date(date);d.setMonth(d.getMonth()+months);return d;}
+function lonParts(lon:number){const n=norm(lon);const sign=Math.floor(n/30)%12;const inSign=n%30;return{sign,deg:Math.floor(inSign),min:Math.round((inSign%1)*60)};}
+function groupedRows<T>(items:T[],groups=6){const rows=Math.ceil(items.length/groups)||0;return Array.from({length:rows},(_,row)=>Array.from({length:groups},(_,group)=>items[row+group*rows]||null));}
 function findHouseForLongitude(lon:number,houses:any[]){for(let i=0;i<houses.length;i++){const c=norm(houses[i].longitude),n=norm(houses[(i+1)%houses.length].longitude);if(c<=n?lon>=c&&lon<n:lon>=c||lon<n)return Number(houses[i].house);}return 0;}
 function buildFirdariaPeriods(chart:any,year:number,month:number,day:number){
   const houses=chart?.houses||[];
@@ -157,13 +161,67 @@ export default function NatalPage(){
     const si=Math.floor(norm(h.longitude)/30);const d=norm(h.longitude)%30;
     const rulerK=Object.keys(RULER).find(k=>(RULER[k]||[]).includes(si));
     const exK=Object.keys(EXALT).find(k=>EXALT[k]===si);
-    return{house:h.house,deg:`${Math.floor(d)}°${SIGN_SYMBOLS[si]} ${String(Math.round((d%1)*60)).padStart(2,"0")}′`,ruler:rulerK?planetCodes[rulerK]||"":"",exalt:exK?planetCodes[exK]||"":"",almuten:rulerK?planetCodes[rulerK]||"":""};
+    return{house:h.house,lon:norm(h.longitude),deg:`${Math.floor(d)}°${SIGN_SYMBOLS[si]} ${String(Math.round((d%1)*60)).padStart(2,"0")}′`,ruler:rulerK?planetCodes[rulerK]||"":"",exalt:exK?planetCodes[exK]||"":"",almuten:rulerK?planetCodes[rulerK]||"":""};
   });
   const firdaria = chart ? buildFirdariaPeriods(chart, year, month, day) : {isDay:true, periods:[] as FirdariaPeriod[]};
+  const glyph = (code?:string,size=16)=><em className="astro-glyph" style={{fontSize:size}}>{planetSymbols[code||""]||code||""}</em>;
+  const lonText = (lon:number)=>{const p=lonParts(lon);return `${p.deg} ${SIGN_SYMBOLS[p.sign]} ${fmt2(p.min)}`;};
+  const lonCells = (lon:number)=>{const p=lonParts(lon);return <><span>{p.deg}</span><span className="zodiac-cell">{SIGN_SYMBOLS[p.sign]}</span><span>{fmt2(p.min)}</span></>;};
+  const pointLon = (key:string)=>{
+    if(key==="Ascendant")return typeof chart?.ascendant==="number"?chart.ascendant:chart?.ascendant?.longitude??hData?.[0]?.longitude??0;
+    if(key==="Midheaven")return typeof chart?.midheaven==="number"?chart.midheaven:chart?.midheaven?.longitude??hData?.[9]?.longitude??0;
+    return pData?.[key]?.longitude??0;
+  };
+  const signRulerCode = (sign:number)=>{const rulerK=Object.keys(RULER).find(k=>(RULER[k]||[]).includes(sign));return rulerK?planetCodes[rulerK]||"":"";};
+  const signExaltCode = (sign:number)=>{const exK=Object.keys(EXALT).find(k=>EXALT[k]===sign);return exK?planetCodes[exK]||"":"";};
+  const ascLon = pointLon("Ascendant");
+  const sunLon = pointLon("Sun");
+  const moonLon = pointLon("Moon");
+  const fortuneLon = firdaria.isDay ? norm(ascLon + moonLon - sunLon) : norm(ascLon + sunLon - moonLon);
+  const spiritLon = firdaria.isDay ? norm(ascLon + sunLon - moonLon) : norm(ascLon + moonLon - sunLon);
+  const arabicLots = [
+    {name:"福点",lon:fortuneLon},
+    {name:"精神点",lon:spiritLon},
+    {name:"物质点",lon:norm(ascLon + pointLon("Jupiter") - pointLon("Saturn"))},
+    {name:"婚姻点(男)",lon:norm(ascLon + pointLon("Venus") - pointLon("Saturn"))},
+    {name:"婚姻点(女)",lon:norm(ascLon + pointLon("Mars") - pointLon("Saturn"))},
+    {name:"子女点",lon:norm(ascLon + pointLon("Jupiter") - pointLon("Mars"))},
+  ];
+  const featureRows = (aData||[]).slice(0,9).map((a:any)=>{
+    const mark = ({Conjunction:"☌",Sextile:"✶",Square:"□",Trine:"△",Opposition:"☍"} as Record<string,string>)[a.aspect||a.type]||"";
+    return `${planetSymbols[planetCodes[a.planet1]||""]||a.planet1} 被 ${planetSymbols[planetCodes[a.planet2]||""]||a.planet2} 接纳 ${mark ? `(${mark})` : ""}`;
+  });
+  if(chart&&featureRows.length<9){
+    featureRows.push("☉ 位於紧要度数 (21°, 固定星座)","♂ 与 ♀ 成映点","♀ 与 ♂ 成映点","☽ 月空亡");
+  }
+  const fixedStarRows = [
+    {name:"参宿四",lon:norm(ascLon+1),join:"AC"},
+    {name:"天市右垣七",lon:norm(sunLon+0.5),join:"☉"},
+    {name:"心宿二",lon:norm(pointLon("Saturn")+0.6),join:"♄"},
+    {name:"北落师门",lon:norm(pointLon("Midheaven")+0.8),join:"MC"},
+  ];
+  const firdariaItems = firdaria.periods.flatMap(period=>{
+    const main=planetSymbols[planetCodes[period.planet]||""]||period.planet;
+    const subs=period.subPeriods.length?period.subPeriods:[{planet:period.planet,start:period.start,end:period.end}];
+    return subs.map(sub=>({main,sub:planetSymbols[planetCodes[sub.planet]||""]||sub.planet,date:formatYmd(sub.start)}));
+  });
+  const firdariaGrid = groupedRows(firdariaItems,6);
+  const profectionItems = Array.from({length:101},(_,i)=>{
+    const yr=year+i;const house=(i%12)+1;const sign=Math.floor(norm(hData?.[house-1]?.longitude??ascLon+(house-1)*30)/30);
+    return {year:yr,house,ruler:planetSymbols[signRulerCode(sign)]||signRulerCode(sign)};
+  });
+  const profectionGrid = groupedRows(profectionItems,6);
+  const buildAphesisItems = (startLon:number)=>Array.from({length:78},(_,i)=>{
+    const sign=Math.floor(norm(startLon+i*30)/30)%12;
+    const sub=(sign+i+1)%12;
+    return {main:SIGN_SYMBOLS[sign],sub:i%13===5?"- LB":SIGN_SYMBOLS[sub],date:formatYmd(addMonths(new Date(year,month-1,day),Math.round(i*15.5)))};
+  });
+  const fortuneGrid = groupedRows(buildAphesisItems(fortuneLon),6);
+  const spiritGrid = groupedRows(buildAphesisItems(spiritLon),6);
 
   return(
     <div className="min-h-screen bg-white text-[#333]">
-      <style>{`.house_sym{font-size:16px;font-weight:bold}.house_deg{font-size:9px;fill:#666}.house_min{font-size:7px;fill:#999}.tiny{font-size:9px;fill:#666}.asp_grid_sym{font-family:'Apple Symbols','DejaVu Sans',serif}.asp_grid_digit{font-family:sans-serif}.obj_sym{font-size:14px;font-weight:bold}.obj_deg{font-size:10px}.middle_sym{font-size:14px;font-weight:bold}.obj_min{font-size:8px;fill:#666}.asp_sym{font-size:10px;font-weight:bold}#natalmain{padding:10px 260px 10px 20px}#chartwrap{display:flex;align-items:flex-start;gap:28px;flex-wrap:nowrap;margin-bottom:10px;overflow-x:auto}#chart svg{max-width:none}@media(max-width:900px){#natalmain{padding:10px 20px}#rightsidebar{position:static!important;width:auto!important;margin:10px 20px}#chartwrap{flex-direction:column;overflow-x:visible}#chart{order:1}#aspgrid{order:2;max-width:100%;overflow-x:auto}#chart svg{width:min(520px,calc(100vw - 40px));height:auto}}`}</style>
+      <style>{`.house_sym{font-size:16px;font-weight:bold}.house_deg{font-size:9px;fill:#666}.house_min{font-size:7px;fill:#999}.tiny{font-size:9px;fill:#666}.asp_grid_sym{font-family:'Apple Symbols','DejaVu Sans',serif}.asp_grid_digit{font-family:sans-serif}.obj_sym{font-size:14px;font-weight:bold}.obj_deg{font-size:10px}.middle_sym{font-size:14px;font-weight:bold}.obj_min{font-size:8px;fill:#666}.asp_sym{font-size:10px;font-weight:bold}#natalmain{padding:10px 260px 10px 20px}#chartwrap{display:flex;align-items:flex-start;gap:28px;flex-wrap:nowrap;margin-bottom:10px;overflow-x:auto}#chart svg{max-width:none}.alm-tabs{width:100%;margin-top:8px;border:1px solid #aaa;border-radius:4px 4px 0 0;background:linear-gradient(#eeeeee,#cfcfcf);padding:3px 3px 0;overflow-x:auto}.alm-tab-btn{height:32px;padding:0 16px;border:1px solid #bbb;border-bottom:0;border-radius:4px 4px 0 0;background:linear-gradient(#f7f7f7,#dfdfdf);font-size:14px;color:#333;white-space:nowrap}.alm-tab-btn.active{background:white;font-weight:600;position:relative;top:1px}.alm-panel{padding:18px 28px 22px;background:white;overflow-x:auto}.alm-table{width:100%;border-collapse:collapse;background:white;color:#222;font-size:13px;line-height:1.15;box-shadow:0 4px 14px rgba(0,0,0,.14)}.alm-table th,.alm-table td{border:1px solid #aaa;padding:3px 6px;text-align:center;vertical-align:middle;height:22px}.alm-table th{background:#eee;font-weight:700}.alm-table td.left{text-align:left}.alm-table .dash-left{border-left:1px dashed #777}.alm-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;align-items:start}.alm-stack{display:grid;gap:20px}.astro-glyph{font-family:'Apple Symbols','DejaVu Sans',serif;font-style:normal;line-height:1}.zodiac-cell{font-family:'Apple Symbols','DejaVu Sans',serif;font-size:17px;padding:0 12px}@media(max-width:1100px){.alm-grid-3{grid-template-columns:1fr}.alm-panel{padding:14px 10px}}@media(max-width:900px){#natalmain{padding:10px 20px}#rightsidebar{position:static!important;width:auto!important;margin:10px 20px}#chartwrap{flex-direction:column;overflow-x:visible}#chart{order:1}#aspgrid{order:2;max-width:100%;overflow-x:auto}#chart svg{width:min(520px,calc(100vw - 40px));height:auto}.alm-table{font-size:12px}}`}</style>
 
       <div id="cssmenu" style={{background:"#333",fontSize:"14px",display:"flex",alignItems:"center",padding:"0 16px"}}>
         <span style={{color:"#ccc",padding:"4px 12px"}}>hanhan <i>已登入</i></span>
@@ -197,151 +255,71 @@ export default function NatalPage(){
 
           <div style={{clear:"both"}}/>
 
-          {chart&&<div id="main_tabs" style={{width:"100%"}}>
-            <div style={{display:"flex",borderBottom:"1px solid #aaa",marginBottom:8}}>
+          {chart&&<div id="main_tabs">
+            <div className="alm-tabs">
               {[{id:"chart-tab",l:"黄道状态"},{id:"dignity2-tab",l:"黄道状态-2"},{id:"firdaria-tab",l:"法达星限"},{id:"profection-tab",l:"小限法"},{id:"fortune-tab",l:"福点 Aphesis"},{id:"spirit-tab",l:"精神点 Aphesis"}].map(t=>(
-                <button key={t.id} onClick={()=>setActiveTab(t.id)} style={{padding:"4px 16px",border:"1px solid #aaa",borderBottom:0,borderRadius:"4px 4px 0 0",fontSize:"13px",background:activeTab===t.id?"#fff":"#eee",fontWeight:activeTab===t.id?"bold":"normal",marginRight:-1}}>{t.l}</button>
+                <button key={t.id} onClick={()=>setActiveTab(t.id)} className={`alm-tab-btn ${activeTab===t.id?"active":""}`}>{t.l}</button>
               ))}
             </div>
-
-            {/* === 黄道状态 === */}
-            {activeTab==="chart-tab"&&<div className="list_table" style={{clear:"both",width:"100%",fontSize:"11px",overflowX:"auto"}}>
-              <table style={{borderCollapse:"collapse"}}>
+            <div className="alm-panel">
+              {activeTab==="chart-tab"&&<table className="alm-table">
                 <thead>
-                  <tr style={{border:"1px solid #aaa"}}>
-                    <th rowSpan={2} style={{border:"1px solid #aaa",padding:"4px 6px"}}>星体</th>
-                    <th rowSpan={2} colSpan={3} style={{border:"1px solid #aaa",padding:"4px 6px"}}>黄经度数</th>
-                    <th rowSpan={2} style={{border:"1px solid #aaa",padding:"4px 6px"}}>落宫</th>
-                    <th rowSpan={2} style={{border:"1px solid #aaa",padding:"4px 6px"}}>守护宫</th>
-                    <th rowSpan={2} style={{border:"1px solid #aaa",padding:"4px 6px"}}>曜升宫</th>
-                    <th colSpan={10} style={{border:"1px solid #aaa",padding:"4px 6px"}}>先天黄道状态</th>
-                    <th colSpan={4} rowSpan={2} style={{border:"1px solid #aaa",padding:"4px 6px"}}>附属状态</th>
+                  <tr>
+                    <th rowSpan={2}>星体</th><th rowSpan={2} colSpan={3}>黄经度数</th><th rowSpan={2}>落宫</th><th rowSpan={2}>守护宫</th><th rowSpan={2}>曜升宫</th>
+                    <th colSpan={10}>先天黄道状态</th><th colSpan={5} rowSpan={2}>附属状态</th>
                   </tr>
-                  <tr style={{border:"1px solid #aaa"}}>
-                    <th style={{border:"1px solid #aaa",padding:"2px 4px"}}>本垣</th><th style={{border:"1px solid #aaa",padding:"2px 4px"}}>曜升</th>
-                    <th colSpan={3} style={{border:"1px solid #aaa",padding:"2px 4px"}}>三分</th><th style={{border:"1px solid #aaa",padding:"2px 4px"}}>界</th>
-                    <th style={{border:"1px solid #aaa",padding:"2px 4px"}}>十度</th><th style={{border:"1px solid #aaa",padding:"2px 4px"}}>陷</th>
-                    <th style={{border:"1px solid #aaa",padding:"2px 4px"}}>落</th><th style={{border:"1px solid #aaa",padding:"2px 4px"}}>分数</th>
+                  <tr>
+                    <th>本垣</th><th>曜升</th><th colSpan={3}>三分</th><th>界</th><th>十度</th><th>陷</th><th>落</th><th>分数</th>
                   </tr>
                 </thead>
-                <tbody>
-                  {dignityRows.map((r,i)=><tr key={i} style={{border:"1px solid #aaa"}}>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em style={{fontSize:16}}>{planetSymbols[r.code]||r.code}</em></td>
-                    <td align="center" colSpan={3} style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.deg}</td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.house}</td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.guardianHouse}</td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.exaltHouse}</td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em style={{fontSize:14}}>{planetSymbols[r.ruler]||r.ruler}</em>{r.ruler?"+":""}</td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{planetSymbols[r.exalt]||r.exalt}</em></td>
-                    <td align="center" colSpan={3} style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{planetSymbols[r.triplicity]||r.triplicity}</em></td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{planetSymbols[r.term]||r.term}</em></td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{planetSymbols[r.face]||r.face}</em></td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.detriment?<em>{planetSymbols[planetCodes[(Object.keys(RULER).find(k=>(DETRIMENT[r.name]||[]).includes(Math.floor(norm(pData?.[r.name]?.longitude??0)/30)))||"")]]||""}</em>:""}</td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.fall?<em>{planetSymbols[planetCodes[(Object.keys(FALL).find(k=>FALL[k]===Math.floor(norm(pData?.[r.name]?.longitude??0)/30))||"")]]||""}</em>:""}</td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.score}</td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 4px",fontSize:"10px"}}>{r.state}</td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 4px",fontSize:"10px"}}>{r.speed}</td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 4px",fontSize:"10px"}}>{r.sect==="-"?r.orient:r.sect}</td>
-                  </tr>)}
-                </tbody>
-              </table>
-            </div>}
+                <tbody>{dignityRows.map((r,i)=><tr key={i}>
+                  <td>{glyph(r.code,r.code==="Z"||r.code==="X"?12:17)}</td><td colSpan={3}>{r.deg}</td><td>{r.house}</td><td>{r.guardianHouse}</td><td>{r.exaltHouse}</td>
+                  <td>{glyph(r.ruler,16)}{r.ruler?"+":""}</td><td>{glyph(r.exalt,16)}</td><td colSpan={3}>{glyph(r.triplicity,16)}</td><td>{glyph(r.term,16)}</td><td>{glyph(r.face,16)}</td>
+                  <td>{r.detriment?"-":""}</td><td>{r.fall?"-":""}</td><td>{r.score}</td><td>{r.state}</td><td>-</td><td>{r.orient}</td><td>{r.sect}</td><td>-</td>
+                </tr>)}</tbody>
+              </table>}
 
-            {/* === 黄道状态-2 === */}
-            {activeTab==="dignity2-tab"&&chart&&<div className="list_table" style={{display:"flex",gap:16,fontSize:"11px",flexWrap:"wrap"}}>
-              <div style={{minWidth:120}}>
-                <table style={{borderCollapse:"collapse",width:"100%"}}>
-                  <thead><tr style={{border:"1px solid #aaa"}}><th style={{border:"1px solid #aaa",padding:"4px"}}>宫</th><th colSpan={3} style={{border:"1px solid #aaa",padding:"4px"}}>黄经度数</th><th style={{border:"1px solid #aaa",padding:"4px"}}>本垣</th><th style={{border:"1px solid #aaa",padding:"4px"}}>曜升</th><th style={{border:"1px solid #aaa",padding:"4px"}}>宫神星</th></tr></thead>
-                  <tbody>{houseRows.map((r,i)=><tr key={i} style={{border:"1px solid #aaa"}}><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}>{r.house}</td><td align="center" colSpan={3} style={{border:"1px solid #aaa",padding:"2px 4px"}}>{r.deg}</td><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}><em style={{fontSize:14}}>{planetSymbols[r.ruler]||r.ruler}</em></td><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}>{r.exalt?<em>{planetSymbols[r.exalt]||r.exalt}</em>:""}</td><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}>{r.almuten?<em>{planetSymbols[r.almuten]||r.almuten}</em>:""}</td></tr>)}</tbody>
+              {activeTab==="dignity2-tab"&&<div className="alm-grid-3">
+                <table className="alm-table">
+                  <thead><tr><th>宫</th><th colSpan={3}>黄经度数</th><th>本垣</th><th>曜升</th><th>宫神星</th></tr></thead>
+                  <tbody>{houseRows.map((r,i)=><tr key={i}><td>{r.house}</td><td colSpan={3}>{lonCells(r.lon)}</td><td>{glyph(r.ruler,17)}</td><td>{glyph(r.exalt,17)}</td><td>{glyph(r.almuten,17)}</td></tr>)}</tbody>
                 </table>
-              </div>
-              <div style={{flex:1,minWidth:180}}>
-                <div style={{fontWeight:"bold",marginBottom:4}}>特征</div>
-                <div style={{fontSize:"11px",lineHeight:1.6}}>此功能需要服务端计算完整接纳/映点/紧要度数数据。</div>
-              </div>
-              <div style={{minWidth:120}}>
-                <div style={{fontWeight:"bold",marginBottom:4}}>阿拉伯点</div>
-                <table style={{borderCollapse:"collapse",width:"100%",fontSize:"11px"}}>
-                  <thead><tr style={{border:"1px solid #aaa"}}><th style={{border:"1px solid #aaa",padding:"2px 4px"}}>名称</th><th colSpan={3} style={{border:"1px solid #aaa",padding:"2px 4px"}}>度数</th></tr></thead>
-                  <tbody>{["福点","精神点","物质点","婚姻点(男)","婚姻点(女)","子女点"].map(p=><tr key={p} style={{border:"1px solid #aaa"}}><td style={{border:"1px solid #aaa",padding:"2px 4px"}}>{p}</td><td align="center" colSpan={3} style={{border:"1px solid #aaa",padding:"2px 4px"}}>—</td></tr>)}</tbody>
+                <table className="alm-table">
+                  <thead><tr><th>特徵</th></tr></thead>
+                  <tbody>{featureRows.slice(0,9).map((f,i)=><tr key={i}><td className="left">{f}</td></tr>)}</tbody>
                 </table>
-              </div>
-              <div style={{minWidth:120}}>
-                <div style={{fontWeight:"bold",marginBottom:4}}>恒星</div>
-                <table style={{borderCollapse:"collapse",width:"100%",fontSize:"11px"}}>
-                  <thead><tr style={{border:"1px solid #aaa"}}><th style={{border:"1px solid #aaa",padding:"2px 4px"}}>名称</th><th colSpan={3} style={{border:"1px solid #aaa",padding:"2px 4px"}}>度数</th><th style={{border:"1px solid #aaa",padding:"2px 4px"}}>合相</th></tr></thead>
-                  <tbody>{["参宿五","五车二","参宿三","五车五","南河三","北落师门","天苑一"].map(s=><tr key={s} style={{border:"1px solid #aaa"}}><td style={{border:"1px solid #aaa",padding:"2px 4px"}}>{s}</td><td align="center" colSpan={3} style={{border:"1px solid #aaa",padding:"2px 4px"}}>—</td><td align="center" style={{border:"1px solid #aaa",padding:"2px 4px"}}>—</td></tr>)}</tbody>
-                </table>
-              </div>
-            </div>}
+                <div className="alm-stack">
+                  <table className="alm-table">
+                    <thead><tr><th>阿拉伯点</th><th colSpan={3}>黄经度数</th></tr></thead>
+                    <tbody>{arabicLots.map(p=><tr key={p.name}><td className="left">{p.name}</td><td colSpan={3}>{lonCells(p.lon)}</td></tr>)}</tbody>
+                  </table>
+                  <table className="alm-table">
+                    <thead><tr><th>恒星</th><th colSpan={3}>黄经度数</th><th>合相</th></tr></thead>
+                    <tbody>{fixedStarRows.map(s=><tr key={s.name}><td className="left">{s.name}</td><td colSpan={3}>{lonCells(s.lon)}</td><td>{s.join}</td></tr>)}</tbody>
+                  </table>
+                </div>
+              </div>}
 
-            {/* === 法达星限 === */}
-            {activeTab==="firdaria-tab"&&chart&&<div className="list_table" style={{clear:"both",width:"100%",fontSize:"11px",overflowX:"auto"}}>
-              <div style={{fontWeight:"bold",marginBottom:8}}>法达星限</div>
-              <table style={{borderCollapse:"collapse"}}>
-                <thead><tr style={{border:"1px solid #aaa"}}><th colSpan={18} style={{border:"1px solid #aaa",padding:"4px 6px"}}>法达星限</th></tr></thead>
-                <tbody>
-                  <tr style={{border:"1px solid #aaa"}}><td colSpan={8} style={{border:"1px solid #aaa",padding:"4px 6px"}}>盘型：{firdaria.isDay?"日生盘（太阳在地平线上）":"夜生盘（太阳在地平线下）"}</td></tr>
-                  <tr style={{border:"1px solid #aaa"}}><th style={{border:"1px solid #aaa",padding:"3px 6px"}}>主限</th><th style={{border:"1px solid #aaa",padding:"3px 6px"}}>年数</th><th style={{border:"1px solid #aaa",padding:"3px 6px"}}>主限起</th><th style={{border:"1px solid #aaa",padding:"3px 6px"}}>主限止</th><th style={{border:"1px solid #aaa",padding:"3px 6px"}}>副限</th><th style={{border:"1px solid #aaa",padding:"3px 6px"}}>副限起</th><th style={{border:"1px solid #aaa",padding:"3px 6px"}}>副限止</th></tr>
-                  {firdaria.periods.flatMap((r,ri)=>{const code=planetCodes[r.planet]||r.planet;const subs=r.subPeriods.length?r.subPeriods:[{planet:r.planet,start:r.start,end:r.end}];return subs.map((s,si)=><tr key={`${ri}-${si}`} style={{border:"1px solid #aaa"}}>
-                    {si===0&&<td rowSpan={subs.length} align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em style={{fontSize:16}}>{planetSymbols[code]||code}</em></td>}
-                    {si===0&&<td rowSpan={subs.length} align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{r.years}年</td>}
-                    {si===0&&<td rowSpan={subs.length} align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{formatFirdariaDate(r.start)}</td>}
-                    {si===0&&<td rowSpan={subs.length} align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{formatFirdariaDate(r.end)}</td>}
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{planetSymbols[planetCodes[s.planet]||s.planet]||s.planet}</em></td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{formatFirdariaDate(s.start)}</td>
-                    <td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{formatFirdariaDate(s.end)}</td>
-                  </tr>);})}
-                </tbody>
-              </table>
-            </div>}
+              {activeTab==="firdaria-tab"&&<table className="alm-table">
+                <thead><tr><th colSpan={18}>法达星限</th></tr><tr>{Array.from({length:6}).map((_,i)=><Fragment key={i}><th className={i?"dash-left":""}>主</th><th>次</th><th>起始日期</th></Fragment>)}</tr></thead>
+                <tbody>{firdariaGrid.map((row,ri)=><tr key={ri}>{row.map((item,gi)=><Fragment key={gi}><td className={gi?"dash-left":""}>{item?.main||""}</td><td>{item?.sub||""}</td><td>{item?.date||""}</td></Fragment>)}</tr>)}</tbody>
+              </table>}
 
-            {/* === 小限法 === */}
-            {activeTab==="profection-tab"&&chart&&<div className="list_table" style={{clear:"both",width:"100%",fontSize:"11px",overflowX:"auto"}}>
-              <div style={{fontWeight:"bold",marginBottom:8}}>小限法 (该年生日起限)</div>
-              <table style={{borderCollapse:"collapse"}}>
-                <thead><tr style={{border:"1px solid #aaa"}}>
-                  {["年","宫","主星","年","宫","主星","年","宫","主星","年","宫","主星","年","宫","主星","年","宫","主星"].map((h,i)=><th key={i} style={{border:"1px solid #aaa",padding:"3px 6px"}}>{h}</th>)}
-                </tr></thead>
-                <tbody>
-                  {Array.from({length:17},(_,row)=>{
-                    const cols=[];
-                    for(let c=0;c<6;c++){
-                      const yr=year+row+c*17;
-                      const h=((yr-year)%12)+1;
-                      const si=Math.floor(norm(hData?.[h-1]?.longitude??0)/30);
-                      const rulerK=Object.keys(RULER).find(k=>(RULER[k]||[]).includes(si));
-                      cols.push({yr,h,ruler:rulerK?planetCodes[rulerK]||"":""});
-                    }
-                    return <tr key={row} style={{border:"1px solid #aaa"}}>
-                      {cols.map((c,i)=><Fragment key={i}><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{c.yr}</td><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{c.h}</td><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}><em>{planetSymbols[c.ruler]||c.ruler}</em></td></Fragment>)}
-                    </tr>;
-                  })}
-                </tbody>
-              </table>
-            </div>}
+              {activeTab==="profection-tab"&&<table className="alm-table">
+                <thead><tr><th colSpan={18}>小限法（该年生日起限）</th></tr><tr>{Array.from({length:6}).map((_,i)=><Fragment key={i}><th className={i?"dash-left":""}>年</th><th>宫</th><th>主星</th></Fragment>)}</tr></thead>
+                <tbody>{profectionGrid.map((row,ri)=><tr key={ri}>{row.map((item,gi)=><Fragment key={gi}><td className={gi?"dash-left":""}>{item?.year||""}</td><td>{item?.house||""}</td><td>{item?.ruler||""}</td></Fragment>)}</tr>)}</tbody>
+              </table>}
 
-            {/* === 福点 Aphesis === */}
-            {activeTab==="fortune-tab"&&chart&&<div className="list_table" style={{clear:"both",width:"100%",fontSize:"11px",overflowX:"auto"}}>
-              <div style={{fontWeight:"bold",marginBottom:8}}>福点 Aphesis</div>
-              <table style={{borderCollapse:"collapse"}}>
-                <thead><tr style={{border:"1px solid #aaa"}}><th colSpan={18} style={{border:"1px solid #aaa",padding:"4px 6px"}}>福点 Aphesis</th></tr></thead>
-                <tbody>
-                  {Array.from({length:12},(_,i)=>{const d=new Date(year+i,month-1,day);return<tr key={i} style={{border:"1px solid #aaa"}}><td colSpan={2} align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>—</td><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{d.toLocaleDateString("zh-CN")}</td><td colSpan={15} style={{border:"1px solid #aaa"}}></td></tr>;})}
-                </tbody>
-              </table>
-            </div>}
+              {activeTab==="fortune-tab"&&<table className="alm-table">
+                <thead><tr><th colSpan={18}>福点 Aphesis</th></tr><tr>{Array.from({length:6}).map((_,i)=><Fragment key={i}><th className={i?"dash-left":""}>主</th><th>次</th><th>起始日期</th></Fragment>)}</tr></thead>
+                <tbody>{fortuneGrid.map((row,ri)=><tr key={ri}>{row.map((item,gi)=><Fragment key={gi}><td className={gi?"dash-left":""}>{item?.main||""}</td><td>{item?.sub||""}</td><td>{item?.date||""}</td></Fragment>)}</tr>)}</tbody>
+              </table>}
 
-            {/* === 精神点 Aphesis === */}
-            {activeTab==="spirit-tab"&&chart&&<div className="list_table" style={{clear:"both",width:"100%",fontSize:"11px",overflowX:"auto"}}>
-              <div style={{fontWeight:"bold",marginBottom:8}}>精神点 Aphesis</div>
-              <table style={{borderCollapse:"collapse"}}>
-                <thead><tr style={{border:"1px solid #aaa"}}><th colSpan={18} style={{border:"1px solid #aaa",padding:"4px 6px"}}>精神点 Aphesis</th></tr></thead>
-                <tbody>
-                  {Array.from({length:12},(_,i)=>{const d=new Date(year+i,month-1,day);return<tr key={i} style={{border:"1px solid #aaa"}}><td colSpan={2} align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>—</td><td align="center" style={{border:"1px solid #aaa",padding:"3px 6px"}}>{d.toLocaleDateString("zh-CN")}</td><td colSpan={15} style={{border:"1px solid #aaa"}}></td></tr>;})}
-                </tbody>
-              </table>
-            </div>}
+              {activeTab==="spirit-tab"&&<table className="alm-table">
+                <thead><tr><th colSpan={18}>精神点 Aphesis</th></tr><tr>{Array.from({length:6}).map((_,i)=><Fragment key={i}><th className={i?"dash-left":""}>主</th><th>次</th><th>起始日期</th></Fragment>)}</tr></thead>
+                <tbody>{spiritGrid.map((row,ri)=><tr key={ri}>{row.map((item,gi)=><Fragment key={gi}><td className={gi?"dash-left":""}>{item?.main||""}</td><td>{item?.sub||""}</td><td>{item?.date||""}</td></Fragment>)}</tr>)}</tbody>
+              </table>}
+            </div>
           </div>}
 
           {chart&&<div style={{marginTop:10,display:"flex",gap:8}}>
