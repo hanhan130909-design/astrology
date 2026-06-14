@@ -670,9 +670,9 @@ export default function TransitPage() {
         <section className="max-w-4xl mx-auto mt-12 mb-8 px-4">
           <div className="bg-gray-50 rounded-xl p-6 text-center">
             <p className="text-sm text-gray-500 leading-relaxed">
-              {lang === 'zh' 
+              {language === 'zh' 
                 ? '推运盘（Transit Chart）是占星预测的核心工具。通过将当前行星位置覆盖在本命盘上，了解当下能量影响和未来转折点。'
-                : lang === 'id'
+                : language === 'id'
                 ? 'Transit Chart adalah alat inti untuk peramalan astrologi. Dengan menumpangkan posisi planet saat ini ke chart natal Anda, Anda dapat memahami pengaruh energi dan titik balik.'
                 : 'The Transit Chart is a core tool for astrological forecasting. Overlay current planetary positions onto your natal chart to understand present energy influences and future turning points.'}
             </p>
@@ -682,23 +682,23 @@ export default function TransitPage() {
         {/* FAQ */}
         <section className="max-w-4xl mx-auto mt-16 mb-8">
           <h2 className="text-xl font-semibold text-center mb-6">
-            {lang === 'zh' ? '常见问题' : lang === 'id' ? 'Pertanyaan Umum' : 'FAQ'}
+            {language === 'zh' ? '常见问题' : language === 'id' ? 'Pertanyaan Umum' : 'FAQ'}
           </h2>
           <div className="space-y-3">
-            {[{ q: lang==='zh'?'什么是推运盘？':lang==='id'?'Apa itu transit chart?':'What is a transit chart?', a: lang==='zh'?'推运盘将当前行星位置覆盖在本命盘上，分析当下及未来的运势变化。':lang==='id'?'Transit chart menimpakan posisi planet saat ini ke chart natal Anda untuk menganalisis tren saat ini dan masa depan.':'A transit chart overlays current planetary positions onto your natal chart to analyze current and future trends.' },
-              { q: lang==='zh'?'推运盘准确吗？':lang==='id'?'Seberapa akurat?':'How accurate is it?', a: lang==='zh'?'准确度取决于出生时间精确度，15分钟内误差依然高度可靠。':lang==='id'?'Akurasi tergantung ketepatan waktu kelahiran. Dalam 15 menit masih sangat andal.':'Accuracy depends on birth time precision. Within 15 minutes it remains highly reliable.' },
-              { q: lang==='zh'?'如何解读推运盘？':lang==='id'?'Bagaimana menafsirkan?':'How to interpret transit charts?', a: lang==='zh'?'重点关注个人行星与流年行星的相位关系，吉相位带来机遇，凶相位带来成长挑战。':lang==='id'?'Fokus pada aspek antara planet personal dan planet transit. Aspek menguntungkan membawa peluang.':'Focus on aspects between personal and transiting planets. Beneficial aspects bring opportunities, challenging ones bring growth.' },
-              { q: lang==='zh'?'推运盘和本命盘有什么区别？':lang==='id'?'Beda dengan bagan natal?':'Difference from natal chart?', a: lang==='zh'?'本命盘是出生时的静态星图，推运盘是动态的，展示当下天象对你本命盘的影响。':lang==='id'?'Bagan natal adalah bagan statis saat lahir. Transit chart dinamis, menunjukkan pengaruh planet saat ini pada bagan natal Anda.':'Natal chart is your static birth chart. Transit chart is dynamic, showing current planetary influences on your natal chart.' },
-              { q: lang==='zh'?'为什么要看推运盘？':lang==='id'?'Mengapa periksa transit?':'Why check transit charts?', a: lang==='zh'?'推运盘帮助把握时机，在最佳时间采取行动，提前了解挑战做好准备。':lang==='id'?'Transit chart membantu Anda memanfaatkan waktu, bertindak di momen optimal, dan mempersiapkan tantangan.':'Transit charts help you seize timing, act at optimal moments, and prepare for challenges in advance.' }].map((faq, i) => (
+            {[{ q: language==='zh'?'什么是推运盘？':language==='id'?'Apa itu transit chart?':'What is a transit chart?', a: language==='zh'?'推运盘将当前行星位置覆盖在本命盘上，分析当下及未来的运势变化。':language==='id'?'Transit chart menimpakan posisi planet saat ini ke chart natal Anda untuk menganalisis tren saat ini dan masa depan.':'A transit chart overlays current planetary positions onto your natal chart to analyze current and future trends.' },
+              { q: language==='zh'?'推运盘准确吗？':language==='id'?'Seberapa akurat?':'How accurate is it?', a: language==='zh'?'准确度取决于出生时间精确度，15分钟内误差依然高度可靠。':language==='id'?'Akurasi tergantung ketepatan waktu kelahiran. Dalam 15 menit masih sangat andal.':'Accuracy depends on birth time precision. Within 15 minutes it remains highly reliable.' },
+              { q: language==='zh'?'如何解读推运盘？':language==='id'?'Bagaimana menafsirkan?':'How to interpret transit charts?', a: language==='zh'?'重点关注个人行星与流年行星的相位关系，吉相位带来机遇，凶相位带来成长挑战。':language==='id'?'Fokus pada aspek antara planet personal dan planet transit. Aspek menguntungkan membawa peluang.':'Focus on aspects between personal and transiting planets. Beneficial aspects bring opportunities, challenging ones bring growth.' },
+              { q: language==='zh'?'推运盘和本命盘有什么区别？':language==='id'?'Beda dengan bagan natal?':'Difference from natal chart?', a: language==='zh'?'本命盘是出生时的静态星图，推运盘是动态的，展示当下天象对你本命盘的影响。':language==='id'?'Bagan natal adalah bagan statis saat lahir. Transit chart dinamis, menunjukkan pengaruh planet saat ini pada bagan natal Anda.':'Natal chart is your static birth chart. Transit chart is dynamic, showing current planetary influences on your natal chart.' },
+              { q: language==='zh'?'为什么要看推运盘？':language==='id'?'Mengapa periksa transit?':'Why check transit charts?', a: language==='zh'?'推运盘帮助把握时机，在最佳时间采取行动，提前了解挑战做好准备。':language==='id'?'Transit chart membantu Anda memanfaatkan waktu, bertindak di momen optimal, dan mempersiapkan tantangan.':'Transit charts help you seize timing, act at optimal moments, and prepare for challenges in advance.' }].map((item, i) => (
               <div key={i} className="border border-gray-200 rounded-lg overflow-hidden">
                 <button onClick={() => setFaq(faq === i ? -1 : i)}
                   className="w-full flex items-center justify-between p-4 text-left bg-gray-50 hover:bg-gray-100 transition-colors">
-                  <span className="text-sm font-medium text-gray-900">{faq.q}</span>
+                  <span className="text-sm font-medium text-gray-900">{item.q}</span>
                   <ChevronDown className={`w-5 h-5 text-gray-400 transition-transform ${faq === i ? 'rotate-180' : ''}`} />
                 </button>
                 {faq === i && (
                   <div className="px-4 pb-4 pt-3 bg-white border-t border-gray-100">
-                    <p className="text-gray-600 text-sm">{faq.a}</p>
+                    <p className="text-gray-600 text-sm">{item.a}</p>
                   </div>
                 )}
               </div>
