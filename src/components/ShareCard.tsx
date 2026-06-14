@@ -218,15 +218,15 @@ export default function ShareCard({
 
                 {/* Three columns: ASC / Sun / Moon */}
                 <div className="grid grid-cols-3 gap-3 mb-4">
-                  <div className="text-center p-3 rounded-xl bg-white/10">
+                  <div className="text-center p-3 rounded-xl bg-gray-100">
                     <div className="text-xs text-gray-300 mb-1">ASC</div>
                     <div className="text-lg font-bold text-white">{ascSign}</div>
                   </div>
-                  <div className="text-center p-3 rounded-xl bg-white/10">
+                  <div className="text-center p-3 rounded-xl bg-gray-100">
                     <div className="text-xs text-gray-300 mb-1">Sun</div>
                     <div className="text-lg font-bold text-white">{sunSign}</div>
                   </div>
-                  <div className="text-center p-3 rounded-xl bg-white/10">
+                  <div className="text-center p-3 rounded-xl bg-gray-100">
                     <div className="text-xs text-gray-300 mb-1">Moon</div>
                     <div className="text-lg font-bold text-white">{moonSign}</div>
                   </div>
@@ -234,7 +234,7 @@ export default function ShareCard({
 
                 {/* Planet list */}
                 {planetEntries.length > 0 && (
-                  <div className="mb-4 p-3 rounded-xl bg-white/5">
+                  <div className="mb-4 p-3 rounded-xl bg-gray-50">
                     <div className="flex items-center gap-1 mb-2 text-gray-300 text-xs">
                       <Sparkles size={12} />
                       <span>Planets</span>
@@ -271,7 +271,7 @@ export default function ShareCard({
               </button>
               <button
                 onClick={handleCopy}
-                className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-sm font-medium transition-colors"
+                className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gray-100 hover:bg-white/20 text-white text-sm font-medium transition-colors"
               >
                 <Copy size={16} />
                 {copied ? "Copied!" : "Copy"}
@@ -279,7 +279,7 @@ export default function ShareCard({
               {typeof navigator !== "undefined" && "share" in navigator && (
                 <button
                   onClick={handleShare}
-                  className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-sm font-medium transition-colors"
+                  className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gray-100 hover:bg-white/20 text-white text-sm font-medium transition-colors"
                 >
                   <Share2 size={16} />
                   Share

@@ -3,8 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { 
-  ArrowLeft, Star, Calendar, Clock, Video, MessageSquare,
+import { Star, Calendar, Clock, Video, MessageSquare,
   Phone, ChevronRight, CheckCircle, Shield, Users, 
   Filter, Search, Play, Award, Heart
 } from "lucide-react";
@@ -66,8 +65,7 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     priceHigh: "价格最高",
     ratingHigh: "评分最高",
     featured: "推荐占星师",
-    allAstrologers: "全部占星师",
-  },
+    allAstrologers: "全部占星师"},
   en: {
     title: "Astrology Consultation",
     subtitle: "Book professional astrologer sessions",
@@ -102,8 +100,7 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     priceHigh: "Price: High",
     ratingHigh: "Top Rated",
     featured: "Featured Astrologers",
-    allAstrologers: "All Astrologers",
-  },
+    allAstrologers: "All Astrologers"},
   id: {
     title: "Konsultasi Astrologi",
     subtitle: "Pesan sesi dengan astrolog profesional",
@@ -138,8 +135,7 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     priceHigh: "Harga Tinggi",
     ratingHigh: "Rating Tertinggi",
     featured: "Astrolog Rekomendasi",
-    allAstrologers: "Semua Astrolog",
-  },
+    allAstrologers: "Semua Astrolog"},
   th: {
     title: "ปรึกษาดวง",
     subtitle: "นัดหมายกับนักดูดวงมืออาชีพ",
@@ -174,8 +170,7 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     priceHigh: "ราคาสูง",
     ratingHigh: "คะแนนสูง",
     featured: "นักดูดวงแนะนำ",
-    allAstrologers: "นักดูดวงทั้งหมด",
-  },
+    allAstrologers: "นักดูดวงทั้งหมด"},
   vi: {
     title: "Tư Vấn Chiêm Tinh",
     subtitle: "Đặt lịch với nhà chiêm tinh chuyên nghiệp",
@@ -210,8 +205,7 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     priceHigh: "Giá cao",
     ratingHigh: "Đánh giá cao",
     featured: "Nhà chiêm tinh đề xuất",
-    allAstrologers: "Tất cả nhà chiêm tinh",
-  },
+    allAstrologers: "Tất cả nhà chiêm tinh"},
   ms: {
     title: "Konsultasi Astrologi",
     subtitle: "Tempah sesi dengan ahli astrologi profesional",
@@ -246,8 +240,7 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     priceHigh: "Harga Tinggi",
     ratingHigh: "Penilaian Tinggi",
     featured: "Ahli Astrologi Disarankan",
-    allAstrologers: "Semua Ahli Astrologi",
-  },
+    allAstrologers: "Semua Ahli Astrologi"},
   ja: {
     title: "占星相談",
     subtitle: "専門占星師とセッションを予約",
@@ -282,8 +275,7 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     priceHigh: "価格：高",
     ratingHigh: "高評価",
     featured: "注目の占星師",
-    allAstrologers: "すべての占星師",
-  },
+    allAstrologers: "すべての占星師"},
   ko: {
     title: "점성 상담",
     subtitle: "전문 점성사와 상담 예약",
@@ -318,9 +310,7 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     priceHigh: "가격: 높음",
     ratingHigh: "높은 평점",
     featured: "추천 점성사",
-    allAstrologers: "모든 점성사",
-  },
-};
+    allAstrologers: "모든 점성사"}};
 
 const ASTROLOGERS: Astrologer[] = [
   {
@@ -337,8 +327,7 @@ const ASTROLOGERS: Astrologer[] = [
     availability: "周一至周五 10:00-20:00",
     responseTime: "< 1小时",
     isOnline: true,
-    featured: true,
-  },
+    featured: true},
   {
     id: "2",
     name: "星象学者 Marcus",
@@ -353,8 +342,7 @@ const ASTROLOGERS: Astrologer[] = [
     availability: "全天候",
     responseTime: "< 30分钟",
     isOnline: true,
-    featured: true,
-  },
+    featured: true},
   {
     id: "3",
     name: "灵性导师 Sofia",
@@ -368,8 +356,7 @@ const ASTROLOGERS: Astrologer[] = [
     specializations: ["灵性成长", "塔罗占卜", "能量疗愈", "前世今生"],
     availability: "周二至周日 14:00-22:00",
     responseTime: "< 2小时",
-    isOnline: false,
-  },
+    isOnline: false},
   {
     id: "4",
     name: "易经大师 Chen",
@@ -383,8 +370,7 @@ const ASTROLOGERS: Astrologer[] = [
     specializations: ["易经", "八字", "中西方占星融合", "事业财运"],
     availability: "周一至周六 09:00-18:00",
     responseTime: "< 3小时",
-    isOnline: true,
-  },
+    isOnline: true},
   {
     id: "5",
     name: "关系专家 Anita",
@@ -398,8 +384,7 @@ const ASTROLOGERS: Astrologer[] = [
     specializations: ["合盘分析", "婚姻预测", "单身指导", "分手挽回"],
     availability: "全周 10:00-23:00",
     responseTime: "< 1小时",
-    isOnline: false,
-  },
+    isOnline: false},
   {
     id: "6",
     name: "职业顾问 David",
@@ -413,8 +398,7 @@ const ASTROLOGERS: Astrologer[] = [
     specializations: ["职业规划", "学业指导", "创业分析", "事业转型"],
     availability: "周一至周五 08:00-17:00",
     responseTime: "< 4小时",
-    isOnline: true,
-  },
+    isOnline: true},
 ];
 
 const TIME_SLOTS: TimeSlot[] = [
@@ -519,7 +503,7 @@ export default function ConsultationPage() {
             <p className="text-gray-700 mb-4">{selectedAstrologer.bio}</p>
             <div className="flex flex-wrap gap-2">
               {selectedAstrologer.specializations.map((spec) => (
-                <span key={spec} className="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-400">
+                <span key={spec} className="px-3 py-1 bg-gray-50 rounded-full text-sm text-gray-400">
                   {spec}
                 </span>
               ))}
@@ -528,19 +512,19 @@ export default function ConsultationPage() {
 
           {/* Stats */}
           <div className="grid grid-cols-3 gap-4 mb-6">
-            <div className="bg-white/5 rounded-xl p-4 text-center border border-gray-200">
+            <div className="bg-gray-50 rounded-xl p-4 text-center border border-gray-200">
               <Clock className="w-5 h-5 text-gray-400 mx-auto mb-2" />
               <div className="text-gray-900 font-medium">{t.responseTime}</div>
               <div className="text-gray-400 text-sm">{selectedAstrologer.responseTime}</div>
             </div>
-            <div className="bg-white/5 rounded-xl p-4 text-center border border-gray-200">
+            <div className="bg-gray-50 rounded-xl p-4 text-center border border-gray-200">
               <Calendar className="w-5 h-5 text-gray-400 mx-auto mb-2" />
               <div className="text-gray-900 font-medium">
                 {language === "zh" ? "可预约" : language === "id" ? "Tersedia" : "Available"}
               </div>
               <div className="text-gray-400 text-sm">{selectedAstrologer.availability}</div>
             </div>
-            <div className="bg-white/5 rounded-xl p-4 text-center border border-gray-200">
+            <div className="bg-gray-50 rounded-xl p-4 text-center border border-gray-200">
               <MessageSquare className="w-5 h-5 text-gray-400 mx-auto mb-2" />
               <div className="text-gray-900 font-medium">{t.languages}</div>
               <div className="text-gray-400 text-sm">{selectedAstrologer.languages.join(", ")}</div>
@@ -548,7 +532,7 @@ export default function ConsultationPage() {
           </div>
 
           {/* Consultation Types */}
-          <div className="bg-white/5 rounded-xl p-6 border border-gray-200 mb-6">
+          <div className="bg-gray-50 rounded-xl p-6 border border-gray-200 mb-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">{t.consultationTypes}</h3>
             <div className="grid grid-cols-3 gap-4">
               {[
@@ -562,7 +546,7 @@ export default function ConsultationPage() {
                   className={`p-4 rounded-xl border transition-all ${
                     selectedType === type.id
                       ? "bg-gray-500/20 border-gray-500/50 text-gray-700"
-                      : "bg-white/5 border-gray-200 text-gray-400 hover:border-white/20"
+                      : "bg-gray-50 border-gray-200 text-gray-400 hover:border-white/20"
                   }`}
                 >
                   <type.icon className="w-6 h-6 mx-auto mb-2" />
@@ -578,7 +562,7 @@ export default function ConsultationPage() {
           </div>
 
           {/* Time Slots */}
-          <div className="bg-white/5 rounded-xl p-6 border border-gray-200 mb-6">
+          <div className="bg-gray-50 rounded-xl p-6 border border-gray-200 mb-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">{t.selectTime}</h3>
             <div className="grid grid-cols-4 gap-3">
               {TIME_SLOTS.map((slot) => (
@@ -590,8 +574,8 @@ export default function ConsultationPage() {
                     selectedSlot === slot.time
                       ? "bg-gray-500/20 border-gray-500/50 text-gray-700"
                       : slot.available
-                      ? "bg-white/5 border-gray-200 text-gray-700 hover:border-white/20"
-                      : "bg-white/5 border-gray-200 text-gray-600 cursor-not-allowed"
+                      ? "bg-gray-50 border-gray-200 text-gray-700 hover:border-white/20"
+                      : "bg-gray-50 border-gray-200 text-gray-600 cursor-not-allowed"
                   }`}
                 >
                   {slot.time}
@@ -646,7 +630,7 @@ export default function ConsultationPage() {
                 type="checkbox"
                 checked={filterOnline}
                 onChange={(e) => setFilterOnline(e.target.checked)}
-                className="w-4 h-4 rounded bg-white/5 border-white/20 text-gray-500 focus:ring-gray-500"
+                className="w-4 h-4 rounded bg-gray-50 border-white/20 text-gray-500 focus:ring-gray-500"
               />
               <span className="text-gray-700 text-sm">{t.filterOnline}</span>
             </label>
@@ -656,7 +640,7 @@ export default function ConsultationPage() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-              className="bg-white/5 border border-gray-200 rounded-lg px-3 py-1.5 text-sm text-gray-900 focus:border-gray-500/50 outline-none"
+              className="bg-gray-50 border border-gray-200 rounded-lg px-3 py-1.5 text-sm text-gray-900 focus:border-gray-500/50 outline-none"
             >
               <option value="popularity">{t.popularity}</option>
               <option value="priceLow">{t.priceLow}</option>
@@ -728,7 +712,7 @@ export default function ConsultationPage() {
             {filteredAstrologers.map((astrologer) => (
               <div
                 key={astrologer.id}
-                className="bg-white/5 rounded-2xl p-5 border border-gray-200 hover:border-gray-200 transition-all"
+                className="bg-gray-50 rounded-2xl p-5 border border-gray-200 hover:border-gray-200 transition-all"
               >
                 <div className="flex items-start gap-3 mb-3">
                   <div className="relative">
@@ -759,7 +743,7 @@ export default function ConsultationPage() {
 
                 <div className="flex flex-wrap gap-1 mb-3">
                   {astrologer.specializations.slice(0, 3).map((spec) => (
-                    <span key={spec} className="px-2 py-0.5 bg-white/5 rounded text-xs text-gray-400">
+                    <span key={spec} className="px-2 py-0.5 bg-gray-50 rounded text-xs text-gray-400">
                       {spec}
                     </span>
                   ))}

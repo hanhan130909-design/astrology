@@ -4,8 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { 
-  ArrowLeft, MessageSquare, Heart, MoreHorizontal,
+import { MessageSquare, Heart, MoreHorizontal,
   Plus, Search, Send, X, ChevronDown, LogIn, User
 } from 'lucide-react';
 import { 
@@ -27,8 +26,7 @@ const CATEGORY_COLORS: Record<Category, string> = {
   daily: 'bg-gray-100 text-gray-700',
   question: 'bg-gray-500/20 text-gray-700',
   experience: 'bg-gray-100 text-gray-700',
-  learning: 'bg-gray-100 text-gray-700',
-};
+  learning: 'bg-gray-100 text-gray-700'};
 
 const ZODIAC_SIGNS = [
   'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo',
@@ -67,8 +65,7 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     viewComments: '查看评论',
     hideComments: '隐藏评论',
     by: 'by',
-    unknown: '匿名',
-  },
+    unknown: '匿名'},
   en: {
     title: 'Astrology Community',
     subtitle: 'Connect with fellow astrology enthusiasts',
@@ -99,8 +96,7 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     viewComments: 'View Comments',
     hideComments: 'Hide Comments',
     by: 'by',
-    unknown: 'Anonymous',
-  },
+    unknown: 'Anonymous'},
   id: {
     title: 'Komunitas Astrologi',
     subtitle: 'Terhubung dengan penggemar astrologi',
@@ -131,9 +127,7 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     viewComments: 'Lihat Komentar',
     hideComments: 'Sembunyikan Komentar',
     by: 'oleh',
-    unknown: 'Anonim',
-  },
-};
+    unknown: 'Anonim'}};
 
 interface Post {
   id: string;
@@ -408,7 +402,7 @@ export default function CommunityPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={t.search}
-              className="w-full pl-12 pr-4 py-3 bg-white/5 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-500 focus:border-gray-500/50 focus:outline-none"
+              className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-500 focus:border-gray-500/50 focus:outline-none"
             />
           </div>
           <button
@@ -445,7 +439,7 @@ export default function CommunityPage() {
                       className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                         newPostCategory === cat
                           ? CATEGORY_COLORS[cat]
-                          : 'bg-white/5 text-gray-400 hover:bg-white/10'
+                          : 'bg-gray-50 text-gray-400 hover:bg-gray-100'
                       }`}
                     >
                       {t[cat]}
@@ -460,7 +454,7 @@ export default function CommunityPage() {
                 <select
                   value={newPostZodiac}
                   onChange={(e) => setNewPostZodiac(e.target.value)}
-                  className="w-full px-4 py-3 bg-white/5 border border-gray-200 rounded-xl text-gray-900 focus:border-gray-500/50 focus:outline-none appearance-none cursor-pointer"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 focus:border-gray-500/50 focus:outline-none appearance-none cursor-pointer"
                 >
                   <option value="">{t.zodiacTag}</option>
                   {ZODIAC_SIGNS.map(sign => (
@@ -474,7 +468,7 @@ export default function CommunityPage() {
                 value={newPostContent}
                 onChange={(e) => setNewPostContent(e.target.value)}
                 placeholder={t.writeSomething}
-                className="w-full h-32 p-4 bg-white/5 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-500 resize-none focus:border-gray-500/50 focus:outline-none mb-4"
+                className="w-full h-32 p-4 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-500 resize-none focus:border-gray-500/50 focus:outline-none mb-4"
               />
 
               <div className="flex items-center justify-end gap-2">
@@ -511,7 +505,7 @@ export default function CommunityPage() {
             {filteredPosts.map((post) => (
               <article
                 key={post.id}
-                className="bg-white/5 rounded-2xl p-6 border border-gray-200 hover:border-gray-200 transition-all"
+                className="bg-gray-50 rounded-2xl p-6 border border-gray-200 hover:border-gray-200 transition-all"
               >
                 {/* Author */}
                 <div className="flex items-center gap-3 mb-4">
@@ -597,7 +591,7 @@ export default function CommunityPage() {
                         value={newComments[post.id] || ''}
                         onChange={(e) => setNewComments(prev => ({ ...prev, [post.id]: e.target.value }))}
                         placeholder={t.comment}
-                        className="flex-1 px-4 py-2 bg-white/5 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 text-sm focus:border-gray-500/50 focus:outline-none"
+                        className="flex-1 px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 text-sm focus:border-gray-500/50 focus:outline-none"
                         onKeyDown={(e) => e.key === 'Enter' && handleAddComment(post.id)}
                       />
                       <button

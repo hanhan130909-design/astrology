@@ -13,8 +13,7 @@ const COLORS = {
   goldLight: "#e8c89e",
   text: "#f9fafb",
   textMuted: "#9ca3af",
-  success: "#10b981",
-};
+  success: "#10b981"};
 
 function PaymentSuccessContent() {
   const searchParams = useSearchParams();
@@ -103,8 +102,7 @@ function PaymentSuccessContent() {
         style={{
           backgroundColor: COLORS.card,
           border: `2px solid ${COLORS.success}`,
-          boxShadow: `0 0 60px ${COLORS.success}30`,
-        }}
+          boxShadow: `0 0 60px ${COLORS.success}30`}}
       >
         <div className="text-7xl mb-6">✅</div>
         <h1 className="text-2xl font-bold mb-3" style={{ color: COLORS.success }}>

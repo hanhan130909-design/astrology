@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Star, Mail, Lock, Eye, EyeOff, ArrowLeft } from 'lucide-react';
+import { Star, Mail, Lock, Eye, EyeOff } from 'lucide-react';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -153,8 +153,7 @@ export default function LoginPage() {
       welcome: '별점보기에 오신 것을 환영합니다',
       subtitle: '당신의 운명을 탐구하세요',
       googleLogin: 'Google로 로그인'
-    },
-  };
+    }};
 
   const text = texts[language] || texts.zh;
   const validLang = ['zh','en','id','th','vi','ms','ja','ko'].includes(language) ? language : 'zh';
@@ -192,7 +191,7 @@ export default function LoginPage() {
       <div className="relative w-full max-w-md">
         {/* 返回按钮 */}
         <Link href="/" className="absolute -top-16 left-0 flex items-center gap-2 text-gray-500 hover:text-white transition-colors">
-          <ArrowLeft size={20} />
+          < size={20} />
           <span>{language === 'zh' ? '返回首页' : language === 'en' ? 'Back' : 'Kembali'}</span>
         </Link>
 

@@ -3,25 +3,21 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "定价 - 解锁PRO功能 | 星缘",
-  description: "星缘PRO会员 — 解锁AI深度解读、年度运势报告、大师一对一咨询等高级功能。",
-};
+  description: "星缘PRO会员 — 解锁AI深度解读、年度运势报告、大师一对一咨询等高级功能。"};
 
 const plans = [
   {
     name: "基础版", enName: "Basic", price: "免费", enPrice: "Free", 
     features: ["本命星盘分析", "每日运势", "塔罗占卜", "星座配对", "行运追踪", "基础社区功能"],
-    cta: "开始使用", href: "/natal", primary: false,
-  },
+    cta: "开始使用", href: "/natal", primary: false},
   {
     name: "PRO 月度", enName: "PRO Monthly", price: "¥29/月", enPrice: "$5/mo",
     features: ["✅ 全部基础功能", "AI 深度解读（无限次）", "年度运势报告", "大师咨询（每月1次）", "高级合盘分析", "优先客服支持"],
-    cta: "订阅 PRO", href: "/login", primary: true,
-  },
+    cta: "订阅 PRO", href: "/login", primary: true},
   {
     name: "PRO 年度", enName: "PRO Yearly", price: "¥199/年", enPrice: "$35/yr",
     features: ["✅ 全部基础功能", "AI 深度解读（无限次）", "年度运势报告 ×4", "大师咨询（每月2次）", "高级合盘分析", "优先客服支持", "专属占星课程"],
-    cta: "订阅年度", href: "/login", primary: true, badge: "最超值",
-  },
+    cta: "订阅年度", href: "/login", primary: true, badge: "最超值"},
 ];
 
 const faqs = [

@@ -136,7 +136,7 @@ export function EmailSubscribe() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder={t.emailPlaceholder}
-            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-gray-500/50 transition-colors"
+            className="w-full px-4 py-3 bg-gray-50 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-gray-500/50 transition-colors"
             required
           />
         </div>
@@ -145,7 +145,7 @@ export function EmailSubscribe() {
           <select
             value={selectedZodiac}
             onChange={(e) => setSelectedZodiac(e.target.value)}
-            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-gray-500/50 transition-colors appearance-none cursor-pointer"
+            className="w-full px-4 py-3 bg-gray-50 border border-white/10 rounded-xl text-white focus:outline-none focus:border-gray-500/50 transition-colors appearance-none cursor-pointer"
             required
           >
             <option value="" className="bg-white">{t.selectZodiac}</option>

@@ -3,8 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import {
-  ArrowLeft, LogOut, Trash2, Upload, Calendar, MapPin,
+import { LogOut, Trash2, Upload, Calendar, MapPin,
   Loader2, User, Star, AlertCircle, ExternalLink
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
@@ -30,8 +29,7 @@ const T: Record<string, Record<string, string>> = {
     compositeCharts: "我的合盘", noCompositeCharts: "暂无保存的合盘",
     loadComposite: "加载合盘", deleteComposite: "删除合盘",
     person1: "第一人", person2: "第二人", composite: "合盘",
-    person1Short: "人1", person2Short: "人2",
-  },
+    person1Short: "人1", person2Short: "人2"},
   en: {
     back: "Back to Home", title: "Profile",
     welcome: "Welcome", myCharts: "My Charts",
@@ -49,8 +47,7 @@ const T: Record<string, Record<string, string>> = {
     compositeCharts: "My Composite Charts", noCompositeCharts: "No saved composite charts",
     loadComposite: "Load Chart", deleteComposite: "Delete Chart",
     person1: "Person 1", person2: "Person 2", composite: "Composite",
-    person1Short: "P1", person2Short: "P2",
-  },
+    person1Short: "P1", person2Short: "P2"},
   id: {
     back: "Kembali", title: "Profil",
     welcome: "Selamat datang", myCharts: "Bagan Saya",
@@ -68,8 +65,7 @@ const T: Record<string, Record<string, string>> = {
     compositeCharts: "Bagan Komposit Saya", noCompositeCharts: "Belum ada bagan komposit",
     loadComposite: "Muat Bagan", deleteComposite: "Hapus Bagan",
     person1: "Orang 1", person2: "Orang 2", composite: "Komposit",
-    person1Short: "O1", person2Short: "O2",
-  },
+    person1Short: "O1", person2Short: "O2"},
   th: {
     back: "กลับหน้าแรก", title: "โปรไฟล์",
     welcome: "ยินดีต้อนรับ", myCharts: "แผนภูมิของฉัน",
@@ -87,8 +83,7 @@ const T: Record<string, Record<string, string>> = {
     compositeCharts: "แผนภูมิคอมโพสิตของฉัน", noCompositeCharts: "ยังไม่มีแผนภูมิคอมโพสิต",
     loadComposite: "โหลดแผนภูมิ", deleteComposite: "ลบแผนภูมิ",
     person1: "คนที่ 1", person2: "คนที่ 2", composite: "คอมโพสิต",
-    person1Short: "ค1", person2Short: "ค2",
-  },
+    person1Short: "ค1", person2Short: "ค2"},
   vi: {
     back: "Về Trang Chủ", title: "Hồ Sơ",
     welcome: "Chào mừng", myCharts: "Biểu Đồ Của Tôi",
@@ -106,8 +101,7 @@ const T: Record<string, Record<string, string>> = {
     compositeCharts: "Biểu Đồ Kết Hợp Của Tôi", noCompositeCharts: "Chưa có biểu đồ kết hợp",
     loadComposite: "Tải Biểu Đồ", deleteComposite: "Xóa Biểu Đồ",
     person1: "Người 1", person2: "Người 2", composite: "Kết Hợp",
-    person1Short: "N1", person2Short: "N2",
-  },
+    person1Short: "N1", person2Short: "N2"},
   ms: {
     back: "Kembali", title: "Profil",
     welcome: "Selamat datang", myCharts: "Bagan Saya",
@@ -125,8 +119,7 @@ const T: Record<string, Record<string, string>> = {
     compositeCharts: "Bagan Komposit Saya", noCompositeCharts: "Belum ada bagan komposit",
     loadComposite: "Muat Bagan", deleteComposite: "Padam Bagan",
     person1: "Orang 1", person2: "Orang 2", composite: "Komposit",
-    person1Short: "O1", person2Short: "O2",
-  },
+    person1Short: "O1", person2Short: "O2"},
   ja: {
     back: "ホームに戻る", title: "プロフィール",
     welcome: "ようこそ", myCharts: "マイチャート",
@@ -144,8 +137,7 @@ const T: Record<string, Record<string, string>> = {
     compositeCharts: "マイ複合チャート", noCompositeCharts: "保存された複合チャートはありません",
     loadComposite: "チャートを読む", deleteComposite: "チャートを削除",
     person1: "一人目", person2: "二人目", composite: "複合",
-    person1Short: "人1", person2Short: "人2",
-  },
+    person1Short: "人1", person2Short: "人2"},
   ko: {
     back: "홈으로", title: "프로필",
     welcome: "환영합니다", myCharts: "내 차트",
@@ -163,9 +155,7 @@ const T: Record<string, Record<string, string>> = {
     compositeCharts: "내 합성 차트", noCompositeCharts: "저장된 합성 차트가 없습니다",
     loadComposite: "차트 불러오기", deleteComposite: "차트 삭제",
     person1: "첫 번째 사람", person2: "두 번째 사람", composite: "합성",
-    person1Short: "1P", person2Short: "2P",
-  },
-};
+    person1Short: "1P", person2Short: "2P"}};
 
 function tx(key: string, lang: string): string {
   return (T[lang]?.[key]) || (T.zh?.[key]) || key;
@@ -343,7 +333,7 @@ export default function ProfilePage() {
 
       <main className="max-w-3xl mx-auto px-4 sm:px-6 py-6 space-y-6">
         {/* User Info Card */}
-        <div className="p-6 rounded-2xl bg-white/5 border border-gray-200">
+        <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200">
           <div className="flex items-center gap-4">
             {user.photoURL ? (
               <img
@@ -363,7 +353,7 @@ export default function ProfilePage() {
             </div>
             <button
               onClick={handleLogout}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-gray-500/10 border border-gray-200 hover:border-gray-500/30 text-gray-600 hover:text-gray-400 text-sm transition-all flex-shrink-0"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-50 hover:bg-gray-500/10 border border-gray-200 hover:border-gray-500/30 text-gray-600 hover:text-gray-400 text-sm transition-all flex-shrink-0"
             >
               <LogOut size={16} />
               {tx("signOut", lang)}
@@ -372,7 +362,7 @@ export default function ProfilePage() {
         </div>
 
         {/* Charts Section */}
-        <div className="p-6 rounded-2xl bg-white/5 border border-gray-200">
+        <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200">
           <div className="flex items-center gap-2 mb-5">
             <Star size={18} className="text-gray-400" />
             <h3 className="font-bold text-gray-900">{tx("myCharts", lang)}</h3>
@@ -427,7 +417,7 @@ export default function ProfilePage() {
               {charts.map((chart) => (
                 <div
                   key={chart.id}
-                  className="p-4 rounded-xl bg-white/5 border border-gray-200 hover:border-gray-200 transition-all group"
+                  className="p-4 rounded-xl bg-gray-50 border border-gray-200 hover:border-gray-200 transition-all group"
                 >
                   <div className="flex items-start gap-3">
                     {/* Chart icon */}
@@ -477,7 +467,7 @@ export default function ProfilePage() {
                           </button>
                           <button
                             onClick={() => setShowConfirm(null)}
-                            className="px-2 py-1.5 rounded-lg bg-white/5 border border-gray-200 text-gray-500 text-xs hover:text-gray-700 transition-all"
+                            className="px-2 py-1.5 rounded-lg bg-gray-50 border border-gray-200 text-gray-500 text-xs hover:text-gray-700 transition-all"
                           >
                             {tx("cancel", lang)}
                           </button>
@@ -485,7 +475,7 @@ export default function ProfilePage() {
                       ) : (
                         <button
                           onClick={() => setShowConfirm(chart.id!)}
-                          className="p-1.5 rounded-lg bg-white/5 hover:bg-gray-500/10 border border-gray-200 hover:border-gray-500/30 text-gray-500 hover:text-gray-400 transition-all"
+                          className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-500/10 border border-gray-200 hover:border-gray-500/30 text-gray-500 hover:text-gray-400 transition-all"
                           title={tx("deleteChart", lang)}
                         >
                           <Trash2 size={14} />
@@ -500,7 +490,7 @@ export default function ProfilePage() {
         </div>
 
         {/* Composite Charts Section */}
-        <div className="p-6 rounded-2xl bg-white/5 border border-gray-200">
+        <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200">
           <div className="flex items-center gap-2 mb-5">
             <Star size={18} className="text-gray-400" />
             <h3 className="font-bold text-gray-900">{tx("compositeCharts", lang)}</h3>
@@ -549,7 +539,7 @@ export default function ProfilePage() {
               {compositeCharts.map((composite) => (
                 <div
                   key={composite.id}
-                  className="p-4 rounded-xl bg-white/5 border border-gray-200 hover:border-gray-500/30 transition-all group"
+                  className="p-4 rounded-xl bg-gray-50 border border-gray-200 hover:border-gray-500/30 transition-all group"
                 >
                   <div className="flex items-start gap-3">
                     {/* Composite icon */}
@@ -598,7 +588,7 @@ export default function ProfilePage() {
                           </button>
                           <button
                             onClick={() => setShowCompositeConfirm(null)}
-                            className="px-2 py-1.5 rounded-lg bg-white/5 border border-gray-200 text-gray-500 text-xs hover:text-gray-700 transition-all"
+                            className="px-2 py-1.5 rounded-lg bg-gray-50 border border-gray-200 text-gray-500 text-xs hover:text-gray-700 transition-all"
                           >
                             {tx("cancel", lang)}
                           </button>
@@ -606,7 +596,7 @@ export default function ProfilePage() {
                       ) : (
                         <button
                           onClick={() => setShowCompositeConfirm(composite.id!)}
-                          className="p-1.5 rounded-lg bg-white/5 hover:bg-gray-500/10 border border-gray-200 hover:border-gray-500/30 text-gray-500 hover:text-gray-400 transition-all"
+                          className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-500/10 border border-gray-200 hover:border-gray-500/30 text-gray-500 hover:text-gray-400 transition-all"
                           title={tx("deleteComposite", lang)}
                         >
                           <Trash2 size={14} />

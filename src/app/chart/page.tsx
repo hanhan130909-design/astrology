@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { ArrowLeft, Star, GitCompare, Sun, Moon, Rocket, TrendingUp, Calendar, Heart, Zap } from 'lucide-react';
+import { Star, GitCompare, Sun, Moon, Rocket, TrendingUp, Calendar, Heart, Zap } from 'lucide-react';
 
 const T: Record<string, Record<string, any>> = {
   zh: {
@@ -16,8 +16,7 @@ const T: Record<string, Record<string, any>> = {
     composite: { name: '组合盘', desc: '两人关系的合盘分析，揭示灵魂契合度', icon: '💑' },
     progression: { name: '法达星限', desc: '行星行运周期分析，重要人生阶段预测', icon: '📈' },
     compatibility: { name: '比较盘', desc: '双人行星相位对照，关系互动模式分析', icon: '🔮' },
-    seasonal: { name: '运势日历', desc: '每月行星换座与重要天象时间表', icon: '📅' },
-  },
+    seasonal: { name: '运势日历', desc: '每月行星换座与重要天象时间表', icon: '📅' }},
   en: {
     title: 'Astrology Analysis Center',
     subtitle: 'Professional astrology tools - Natal/Transit/Composite Charts',
@@ -28,8 +27,7 @@ const T: Record<string, Record<string, any>> = {
     composite: { name: 'Composite Chart', desc: 'Relationship composite chart analysis', icon: '💑' },
     progression: { name: 'Progression', desc: 'Secondary progression analysis', icon: '📈' },
     compatibility: { name: 'Compatibility', desc: 'Synastry - relationship interaction analysis', icon: '🔮' },
-    seasonal: { name: 'Seasonal Calendar', desc: 'Monthly planetary changes and events', icon: '📅' },
-  },
+    seasonal: { name: 'Seasonal Calendar', desc: 'Monthly planetary changes and events', icon: '📅' }},
   id: {
     title: 'Pusat Analisis Astrologi',
     subtitle: 'Alat astrologi profesional - Bagan Natal/Transit/Komposit',
@@ -40,8 +38,7 @@ const T: Record<string, Record<string, any>> = {
     composite: { name: 'Bagan Komposit', desc: 'Analisis bagan hubungan komposit', icon: '💑' },
     progression: { name: 'Progresi', desc: 'Analisis progresi planet sekunder', icon: '📈' },
     compatibility: { name: 'Kompatibilitas', desc: 'Sinastri - analisis interaksi hubungan', icon: '🔮' },
-    seasonal: { name: 'Kalender Musiman', desc: 'Perubahan planet bulanan dan peristiwa', icon: '📅' },
-  },
+    seasonal: { name: 'Kalender Musiman', desc: 'Perubahan planet bulanan dan peristiwa', icon: '📅' }},
   th: {
     title: 'ศูนย์วิเคราะห์ดวงดาว',
     subtitle: 'เครื่องมือดูดวงมืออาชีพ',
@@ -52,8 +49,7 @@ const T: Record<string, Record<string, any>> = {
     composite: { name: 'แผนภูมิคู่', desc: 'วิเคราะห์ความสัมพันธ์', icon: '💑' },
     progression: { name: 'การเคลื่อนที่', desc: 'การวิเคราะห์การเคลื่อนที่ของดาว', icon: '📈' },
     compatibility: { name: 'ความเข้ากัน', desc: 'การวิเคราะห์ความสัมพันธ์', icon: '🔮' },
-    seasonal: { name: 'ปฏิทินรายเดือน', desc: 'การเปลี่ยนแปลงของดาวเคราะห์รายเดือน', icon: '📅' },
-  },
+    seasonal: { name: 'ปฏิทินรายเดือน', desc: 'การเปลี่ยนแปลงของดาวเคราะห์รายเดือน', icon: '📅' }},
   vi: {
     title: 'Trung Tâm Phân Tích Chiêm Tinh',
     subtitle: 'Công cụ chiêm tinh chuyên nghiệp',
@@ -64,8 +60,7 @@ const T: Record<string, Record<string, any>> = {
     composite: { name: 'Bản Đồ Kết Hợp', desc: 'Phân tích mối quan hệ', icon: '💑' },
     progression: { name: 'Tiến Trình', desc: 'Phân tích tiến trình hành tinh', icon: '📈' },
     compatibility: { name: 'Tương Hợp', desc: 'Phân tích tương thích', icon: '🔮' },
-    seasonal: { name: 'Lịch Hàng Tháng', desc: 'Thay đổi hành tinh hàng tháng', icon: '📅' },
-  },
+    seasonal: { name: 'Lịch Hàng Tháng', desc: 'Thay đổi hành tinh hàng tháng', icon: '📅' }},
   ms: {
     title: 'Pusat Analisis Astrologi',
     subtitle: 'Alat astrologi profesional',
@@ -76,8 +71,7 @@ const T: Record<string, Record<string, any>> = {
     composite: { name: 'Carta Komposit', desc: 'Analisis hubungan', icon: '💑' },
     progression: { name: 'Progresi', desc: 'Analisis progresi planet', icon: '📈' },
     compatibility: { name: 'Keserasian', desc: 'Analisis keserasian', icon: '🔮' },
-    seasonal: { name: 'Kalendar Bulanan', desc: 'Perubahan planet bulanan', icon: '📅' },
-  },
+    seasonal: { name: 'Kalendar Bulanan', desc: 'Perubahan planet bulanan', icon: '📅' }},
   ja: {
     title: '占星分析センター',
     subtitle: 'プロフェッショナル占星術ツール',
@@ -88,8 +82,7 @@ const T: Record<string, Record<string, any>> = {
     composite: { name: '合成図', desc: '関係分析', icon: '💑' },
     progression: { name: '進行図', desc: '惑星進行分析', icon: '📈' },
     compatibility: { name: '相性診断', desc: '相性分析', icon: '🔮' },
-    seasonal: { name: '月間カレンダー', desc: '惑星の月度変化', icon: '📅' },
-  },
+    seasonal: { name: '月間カレンダー', desc: '惑星の月度変化', icon: '📅' }},
   ko: {
     title: '점성 분석 센터',
     subtitle: '전문 점성술 도구',
@@ -100,9 +93,7 @@ const T: Record<string, Record<string, any>> = {
     composite: { name: '합성 차트', desc: '관계 분석', icon: '💑' },
     progression: { name: '진행 차트', desc: '행성 진행 분석', icon: '📈' },
     compatibility: { name: '궁합', desc: '궁합 분석', icon: '🔮' },
-    seasonal: { name: '월간 캘린더', desc: '행성 월간 변화', icon: '📅' },
-  },
-};
+    seasonal: { name: '월간 캘린더', desc: '행성 월간 변화', icon: '📅' }}};
 
 const chartTypes = [
   { key: 'natal', href: '/natal', color: 'from-gray-500 to-gray-600', glow: 'purple' },

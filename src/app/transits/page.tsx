@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { ArrowLeft, Star, Search, MapPin, X, Sparkles, Lock, Share2, CheckCircle, MessageCircle, ChevronDown } from 'lucide-react';
+import { Star, Search, MapPin, X, Sparkles, Lock, Share2, CheckCircle, MessageCircle, ChevronDown } from 'lucide-react';
 import ProfessionalNatalChart from '@/components/ProfessionalNatalChart';
 import TransitOverlay from '@/components/TransitOverlay';
 import { useChartStorage } from '../natal/useChartStorage';
@@ -85,42 +85,33 @@ const TRANSIT_READINGS: Record<string, Record<string, Record<string, { title: st
       Conjunction: { title: "木星合相", desc: "扩张与成长的能量集中，是开启新项目的好时机。", advice: "把握机会，大胆尝试。" },
       Trine: { title: "木星三分相", desc: "好运与支持流动，事情进展顺利。", advice: "顺势而为，分享好运。" },
       Square: { title: "木星四分相", desc: "过度扩张可能带来挑战，需要节制。", advice: "保持谨慎，避免冒进。" },
-      Opposition: { title: "木星对分相", desc: "在自我与他人需求之间寻找平衡。", advice: "合作共赢，分享资源。" },
-    },
+      Opposition: { title: "木星对分相", desc: "在自我与他人需求之间寻找平衡。", advice: "合作共赢，分享资源。" }},
     en: {
       Conjunction: { title: "Jupiter Conjunction", desc: "Energy of expansion and growth is concentrated, good time to start new projects.", advice: "Seize opportunities, be bold." },
       Trine: { title: "Jupiter Trine", desc: "Good fortune and support flow smoothly.", advice: "Go with the flow, share your luck." },
       Square: { title: "Jupiter Square", desc: "Over-expansion may bring challenges, need moderation.", advice: "Stay cautious, avoid rushing." },
-      Opposition: { title: "Jupiter Opposition", desc: "Find balance between self and others' needs.", advice: "Cooperate and share resources." },
-    },
+      Opposition: { title: "Jupiter Opposition", desc: "Find balance between self and others' needs.", advice: "Cooperate and share resources." }},
     id: {
       Conjunction: { title: "Konjungsi Jupiter", desc: "Energi ekspansi dan pertumbuhan terkonsentrasi, waktu baik untuk memulai proyek baru.", advice: "Manfaatkan kesempatan, berani mencoba." },
       Trine: { title: "Trine Jupiter", desc: "Keberuntungan dan dukungan mengalir lancar.", advice: "Ikuti arus, bagikan keberuntungan Anda." },
       Square: { title: "Square Jupiter", desc: "Ekspansi berlebihan mungkin membawa tantangan, perlu moderasi.", advice: "Tetap hati-hati, hindari tergesa-gesa." },
-      Opposition: { title: "Oposisi Jupiter", desc: "Temukan keseimbangan antara diri sendiri dan kebutuhan orang lain.", advice: "Bekerja sama dan berbagi sumber daya." },
-    },
-  },
+      Opposition: { title: "Oposisi Jupiter", desc: "Temukan keseimbangan antara diri sendiri dan kebutuhan orang lain.", advice: "Bekerja sama dan berbagi sumber daya." }}},
   Saturn: {
     zh: {
       Conjunction: { title: "土星合相", desc: "责任与考验的时期，需要脚踏实地。", advice: "承担责任，稳步前进。" },
       Trine: { title: "土星三分相", desc: "努力得到认可，结构稳固。", advice: "巩固成果，长期规划。" },
       Square: { title: "土星四分相", desc: "面临阻碍与挑战，需要耐心克服。", advice: "坚持不懈，学习功课。" },
-      Opposition: { title: "土星对分相", desc: "在责任与自由之间寻找平衡。", advice: "面对现实，成熟应对。" },
-    },
+      Opposition: { title: "土星对分相", desc: "在责任与自由之间寻找平衡。", advice: "面对现实，成熟应对。" }},
     en: {
       Conjunction: { title: "Saturn Conjunction", desc: "Period of responsibility and testing, need to be grounded.", advice: "Take responsibility, move steadily." },
       Trine: { title: "Saturn Trine", desc: "Efforts recognized, structure is solid.", advice: "Consolidate gains, plan long-term." },
       Square: { title: "Saturn Square", desc: "Facing obstacles and challenges, need patience.", advice: "Persevere, learn the lesson." },
-      Opposition: { title: "Saturn Opposition", desc: "Find balance between responsibility and freedom.", advice: "Face reality, respond maturely." },
-    },
+      Opposition: { title: "Saturn Opposition", desc: "Find balance between responsibility and freedom.", advice: "Face reality, respond maturely." }},
     id: {
       Conjunction: { title: "Konjungsi Saturnus", desc: "Periode tanggung jawab dan pengujian, perlu berpijak pada kenyataan.", advice: "Ambil tanggung jawab, maju dengan mantap." },
       Trine: { title: "Trine Saturnus", desc: "Upaya diakui, struktur kokoh.", advice: "Konsolidasikan hasil, rencanakan jangka panjang." },
       Square: { title: "Square Saturnus", desc: "Menghadapi rintangan dan tantangan, perlu kesabaran.", advice: "Bertahan, pelajari pelajarannya." },
-      Opposition: { title: "Oposisi Saturnus", desc: "Temukan keseimbangan antara tanggung jawab dan kebebasan.", advice: "Hadapi kenyataan, tanggap dengan dewasa." },
-    },
-  },
-};
+      Opposition: { title: "Oposisi Saturnus", desc: "Temukan keseimbangan antara tanggung jawab dan kebebasan.", advice: "Hadapi kenyataan, tanggap dengan dewasa." }}}};
 
 export default function TransitPage() {
   const { language } = useLanguage();
@@ -221,8 +212,7 @@ export default function TransitPage() {
         name: item.name || item.display_name?.split(',')[0],
         lat: parseFloat(item.lat),
         lng: parseFloat(item.lon),
-        tz: Math.round(parseFloat(item.lon) / 15),
-      }));
+        tz: Math.round(parseFloat(item.lon) / 15)}));
       setCityResults(results);
     } catch {
       setCityResults(ALL_CITIES.filter(c => tx(c.name, language).toLowerCase().includes(query.toLowerCase())).slice(0, 8));
@@ -264,9 +254,7 @@ export default function TransitPage() {
           type: 'transit',
           birthData: { year: bYear, month: bMonth, day: bDay, hour: bHour, minute: bMinute, lat: bCity.lat, lng: bCity.lng, tz: bCity.tz },
           transitDate: { year: tYear, month: tMonth, day: tDay, hour: 12, minute: 0 },
-          houseSystem: 'E',
-        }),
-      });
+          houseSystem: 'E'})});
       const data = await res.json();
       if (data.error) throw new Error(data.error);
       setChart(data);
@@ -678,96 +666,44 @@ export default function TransitPage() {
           </div>
         )}
 
-        {/* SEO Description Section */}
+        {/* SEO Description */}
         <section className="max-w-4xl mx-auto mt-12 mb-8 px-4">
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-lg font-semibold text-gray-700 mb-2">中文</h3>
-              <p className="text-gray-600/80 text-sm leading-relaxed">推运盘（Transit Chart）是占星预测的核心工具。通过将当前行星位置覆盖在本命盘上，了解当下能量影响和未来转折点。AI 结合本命盘解读重要推运时间和影响领域。</p>
-            </div>
-            <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-lg font-semibold text-gray-700 mb-2">English</h3>
-              <p className="text-gray-600/80 text-sm leading-relaxed">The Transit Chart is a core tool for astrological forecasting. By overlaying current planetary positions onto your natal chart, you can understand present energy influences and future turning points. AI combines natal chart analysis to interpret key transit timings and affected life areas.</p>
-            </div>
-            <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-lg font-semibold text-gray-700 mb-2">Bahasa Indonesia</h3>
-              <p className="text-gray-600/80 text-sm leading-relaxed">Transit Chart adalah alat inti untuk peramalan astrologi. Dengan menumpangkan posisi planet saat ini ke chart natal Anda, Anda dapat memahami pengaruh energi saat ini dan titik balik di masa depan. AI menggabungkan analisis chart natal untuk menafsirkan waktu transit penting dan area kehidupan yang terpengaruh.</p>
-            </div>
+          <div className="bg-gray-50 rounded-xl p-6 text-center">
+            <p className="text-sm text-gray-500 leading-relaxed">
+              {lang === 'zh' 
+                ? '推运盘（Transit Chart）是占星预测的核心工具。通过将当前行星位置覆盖在本命盘上，了解当下能量影响和未来转折点。'
+                : lang === 'id'
+                ? 'Transit Chart adalah alat inti untuk peramalan astrologi. Dengan menumpangkan posisi planet saat ini ke chart natal Anda, Anda dapat memahami pengaruh energi dan titik balik.'
+                : 'The Transit Chart is a core tool for astrological forecasting. Overlay current planetary positions onto your natal chart to understand present energy influences and future turning points.'}
+            </p>
           </div>
         </section>
 
-                    {/* FAQ */}
-            <section className="max-w-4xl mx-auto mt-16 mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">常见问题</h2>
-              <div className="space-y-3">
-                <div className="border border-gray-200 rounded-lg overflow-hidden">
-                  <button onClick={() => setFaq(1)} className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-500/5 transition-colors">
-                    <span className="text-gray-900 font-medium">什么是推运盘？</span>
-                    <ChevronDown className={`w-5 h-5 text-gray-400 transition-transform ${faq===1?'rotate-180':''}`} />
-                  </button>
-                  {faq===1 && (
-                    <div className="px-4 pb-4">
-                      <p className="text-gray-600 text-sm mb-2">推运盘将当前行星位置覆盖在本命盘上，分析当下及未来的运势变化。</p>
-                      <p className="text-gray-700/70 text-xs mb-1">EN: A transit chart overlays current planetary positions onto your natal chart.</p>
-                      <p className="text-gray-700/70 text-xs">ID: Transit chart menimpakan posisi planet saat ini ke chart natal Anda.</p>
-                    </div>
-                  )}
-                </div>
-                <div className="border border-gray-200 rounded-lg overflow-hidden">
-                  <button onClick={() => setFaq(2)} className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-500/5 transition-colors">
-                    <span className="text-gray-900 font-medium">推运盘准确吗？</span>
-                    <ChevronDown className={`w-5 h-5 text-gray-400 transition-transform ${faq===2?'rotate-180':''}`} />
-                  </button>
-                  {faq===2 && (
-                    <div className="px-4 pb-4">
-                      <p className="text-gray-600 text-sm mb-2">准确度取决于出生时间精确度，15分钟内误差依然高度可靠。</p>
-                      <p className="text-gray-700/70 text-xs mb-1">EN: Accuracy depends on birth time precision. Within 15 min it remains highly reliable.</p>
-                      <p className="text-gray-700/70 text-xs">ID: Akurasi tergantung ketepatan waktu kelahiran. Dalam 15 menit masih sangat andal.</p>
-                    </div>
-                  )}
-                </div>
-                <div className="border border-gray-200 rounded-lg overflow-hidden">
-                  <button onClick={() => setFaq(3)} className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-500/5 transition-colors">
-                    <span className="text-gray-900 font-medium">如何解读推运盘？</span>
-                    <ChevronDown className={`w-5 h-5 text-gray-400 transition-transform ${faq===3?'rotate-180':''}`} />
-                  </button>
-                  {faq===3 && (
-                    <div className="px-4 pb-4">
-                      <p className="text-gray-600 text-sm mb-2">重点关注与个人行星形成合相、对分相、四分相的过境行星。</p>
-                      <p className="text-gray-700/70 text-xs mb-1">EN: Focus on transiting planets forming hard aspects to your personal planets.</p>
-                      <p className="text-gray-700/70 text-xs">ID: Fokus pada planet transiting yang membentuk aspek keras ke planet pribadi Anda.</p>
-                    </div>
-                  )}
-                </div>
-                <div className="border border-gray-200 rounded-lg overflow-hidden">
-                  <button onClick={() => setFaq(4)} className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-500/5 transition-colors">
-                    <span className="text-gray-900 font-medium">推运盘和本命盘有什么区别？</span>
-                    <ChevronDown className={`w-5 h-5 text-gray-400 transition-transform ${faq===4?'rotate-180':''}`} />
-                  </button>
-                  {faq===4 && (
-                    <div className="px-4 pb-4">
-                      <p className="text-gray-600 text-sm mb-2">本命盘固定不变，推运盘持续变化，用来预测运势。</p>
-                      <p className="text-gray-700/70 text-xs mb-1">EN: Natal chart never changes. Transit chart changes constantly for prediction.</p>
-                      <p className="text-gray-700/70 text-xs">ID: Chart natal tidak berubah. Transit chart terus berubah untuk prediksi.</p>
-                    </div>
-                  )}
-                </div>
-                <div className="border border-gray-200 rounded-lg overflow-hidden">
-                  <button onClick={() => setFaq(5)} className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-500/5 transition-colors">
-                    <span className="text-gray-900 font-medium">为什么要看推运盘？</span>
-                    <ChevronDown className={`w-5 h-5 text-gray-400 transition-transform ${faq===5?'rotate-180':''}`} />
-                  </button>
-                  {faq===5 && (
-                    <div className="px-4 pb-4">
-                      <p className="text-gray-600 text-sm mb-2">帮你把握重要时机，如换工作、搬家、恋爱等关键节点。</p>
-                      <p className="text-gray-700/70 text-xs mb-1">EN: Helps you seize key timing for career changes, moving, relationships.</p>
-                      <p className="text-gray-700/70 text-xs">ID: Membantu Anda memanfaatkan waktu penting untuk karier, pindah, hubungan.</p>
-                    </div>
-                  )}
-                </div>
+        {/* FAQ */}
+        <section className="max-w-4xl mx-auto mt-16 mb-8">
+          <h2 className="text-xl font-semibold text-center mb-6">
+            {lang === 'zh' ? '常见问题' : lang === 'id' ? 'Pertanyaan Umum' : 'FAQ'}
+          </h2>
+          <div className="space-y-3">
+            {[{ q: lang==='zh'?'什么是推运盘？':lang==='id'?'Apa itu transit chart?':'What is a transit chart?', a: lang==='zh'?'推运盘将当前行星位置覆盖在本命盘上，分析当下及未来的运势变化。':lang==='id'?'Transit chart menimpakan posisi planet saat ini ke chart natal Anda untuk menganalisis tren saat ini dan masa depan.':'A transit chart overlays current planetary positions onto your natal chart to analyze current and future trends.' },
+              { q: lang==='zh'?'推运盘准确吗？':lang==='id'?'Seberapa akurat?':'How accurate is it?', a: lang==='zh'?'准确度取决于出生时间精确度，15分钟内误差依然高度可靠。':lang==='id'?'Akurasi tergantung ketepatan waktu kelahiran. Dalam 15 menit masih sangat andal.':'Accuracy depends on birth time precision. Within 15 minutes it remains highly reliable.' },
+              { q: lang==='zh'?'如何解读推运盘？':lang==='id'?'Bagaimana menafsirkan?':'How to interpret transit charts?', a: lang==='zh'?'重点关注个人行星与流年行星的相位关系，吉相位带来机遇，凶相位带来成长挑战。':lang==='id'?'Fokus pada aspek antara planet personal dan planet transit. Aspek menguntungkan membawa peluang.':'Focus on aspects between personal and transiting planets. Beneficial aspects bring opportunities, challenging ones bring growth.' },
+              { q: lang==='zh'?'推运盘和本命盘有什么区别？':lang==='id'?'Beda dengan bagan natal?':'Difference from natal chart?', a: lang==='zh'?'本命盘是出生时的静态星图，推运盘是动态的，展示当下天象对你本命盘的影响。':lang==='id'?'Bagan natal adalah bagan statis saat lahir. Transit chart dinamis, menunjukkan pengaruh planet saat ini pada bagan natal Anda.':'Natal chart is your static birth chart. Transit chart is dynamic, showing current planetary influences on your natal chart.' },
+              { q: lang==='zh'?'为什么要看推运盘？':lang==='id'?'Mengapa periksa transit?':'Why check transit charts?', a: lang==='zh'?'推运盘帮助把握时机，在最佳时间采取行动，提前了解挑战做好准备。':lang==='id'?'Transit chart membantu Anda memanfaatkan waktu, bertindak di momen optimal, dan mempersiapkan tantangan.':'Transit charts help you seize timing, act at optimal moments, and prepare for challenges in advance.' }].map((faq, i) => (
+              <div key={i} className="border border-gray-200 rounded-lg overflow-hidden">
+                <button onClick={() => setFaq(faq === i ? -1 : i)}
+                  className="w-full flex items-center justify-between p-4 text-left bg-gray-50 hover:bg-gray-100 transition-colors">
+                  <span className="text-sm font-medium text-gray-900">{faq.q}</span>
+                  <ChevronDown className={`w-5 h-5 text-gray-400 transition-transform ${faq === i ? 'rotate-180' : ''}`} />
+                </button>
+                {faq === i && (
+                  <div className="px-4 pb-4 pt-3 bg-white border-t border-gray-100">
+                    <p className="text-gray-600 text-sm">{faq.a}</p>
+                  </div>
+                )}
               </div>
-            </section>
+            ))}
+          </div>
+        </section>
+
       </main>
-    </div>
-  );
-}

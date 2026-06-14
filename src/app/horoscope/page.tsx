@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Star, Sun, ArrowLeft, ChevronDown, Heart, Briefcase, Wallet, Activity, Sparkles, TrendingUp, Users, Calendar, Lock, Share2, CheckCircle, MessageCircle, RefreshCw, Shuffle } from "lucide-react";
+import { Star, Sun ChevronDown, Heart, Briefcase, Wallet, Activity, Sparkles, TrendingUp, Users, Calendar, Lock, Share2, CheckCircle, MessageCircle, RefreshCw, Shuffle } from "lucide-react";
 
 // Complete zodiac data with full details
 const ZODIAC_DATA: Record<string, { symbol: string; names: Record<string, string>; element: string; rulingPlanet: string; dates: string }> = {
@@ -18,15 +18,13 @@ const ZODIAC_DATA: Record<string, { symbol: string; names: Record<string, string
   sagittarius: { symbol: "♐", names: { zh: "射手座", en: "Sagittarius", id: "Sagittarius", th: "ธนู", vi: "Nhân Mã", ms: "Sagittarius", ja: "射手座", ko: "人马자리" }, element: "fire", rulingPlanet: "木星", dates: "11.23-12.21" },
   capricorn: { symbol: "♑", names: { zh: "摩羯座", en: "Capricorn", id: "Capricorn", th: "มังกร", vi: "Ma Kết", ms: "Capricorn", ja: "山羊座", ko: "염소자리" }, element: "earth", rulingPlanet: "土星", dates: "12.22-1.19" },
   aquarius: { symbol: "♒", names: { zh: "水瓶座", en: "Aquarius", id: "Aquarius", th: "กุมภ์", vi: "Bảo Bình", ms: "Aquarius", ja: "水瓶座", ko: "물병자리" }, element: "air", rulingPlanet: "天王星", dates: "1.20-2.18" },
-  pisces: { symbol: "♓", names: { zh: "双鱼座", en: "Pisces", id: "Pisces", th: "มีน", vi: "Song Ngư", ms: "Pisces", ja: "魚座", ko: "물고기자리" }, element: "water", rulingPlanet: "海王星", dates: "2.19-3.20" },
-};
+  pisces: { symbol: "♓", names: { zh: "双鱼座", en: "Pisces", id: "Pisces", th: "มีน", vi: "Song Ngư", ms: "Pisces", ja: "魚座", ko: "물고기자리" }, element: "water", rulingPlanet: "海王星", dates: "2.19-3.20" }};
 
 const ELEMENT_COLORS = {
   fire: { color: "#FF6B6B", gradient: "from-gray-500/20 to-gray-500/20", border: "border-gray-500/30", text: "text-gray-400", icon: "🔥", label: { zh: "火象", en: "Fire", id: "Api" } },
   earth: { color: "#8B7355", gradient: "from-gray-700/20 to-gray-600/20", border: "border-gray-600/30", text: "text-gray-600", icon: "🌍", label: { zh: "土象", en: "Earth", id: "Tanah" } },
   air: { color: "#74B9FF", gradient: "from-gray-400/20 to-gray-400/20", border: "border-gray-400/30", text: "text-gray-400", icon: "💨", label: { zh: "风象", en: "Air", id: "Udara" } },
-  water: { color: "#0984E3", gradient: "from-gray-600/20 to-gray-600/20", border: "border-gray-500/30", text: "text-gray-400", icon: "💧", label: { zh: "水象", en: "Water", id: "Air" } },
-};
+  water: { color: "#0984E3", gradient: "from-gray-600/20 to-gray-600/20", border: "border-gray-500/30", text: "text-gray-400", icon: "💧", label: { zh: "水象", en: "Water", id: "Air" } }};
 
 // Enhanced comprehensive horoscope data
 const HOROSCOPE_DATA: Record<string, Record<string, {
@@ -54,8 +52,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "把握机遇，展示你的能力和魄力。但也要学会倾听团队意见。",
       financeAdvice: "控制冲动消费，建立储蓄习惯。可以考虑多元化投资。",
       mood: "充满活力", energy: "高涨", focus: "行动力",
-      bestDay: "星期二", worstDay: "星期五", keyPhrase: "勇往直前",
-    },
+      bestDay: "星期二", worstDay: "星期五", keyPhrase: "勇往直前"},
     en: { 
       love: "Active social life, singles may meet someone special. Couples should communicate more.", 
       career: "New opportunities at work, try new areas. Teamwork goes well.", 
@@ -71,8 +68,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "Seize opportunities, show your abilities. Also learn to listen.",
       financeAdvice: "Control impulse spending, build savings. Consider diversification.",
       mood: "Energetic", energy: "High", focus: "Action",
-      bestDay: "Tuesday", worstDay: "Friday", keyPhrase: "Move forward boldly",
-    },
+      bestDay: "Tuesday", worstDay: "Friday", keyPhrase: "Move forward boldly"},
     id: { 
       love: "Kehidupan sosial aktif, lajang mungkin bertemu seseorang spesial.", 
       career: "Peluang baru di pekerjaan, coba bidang baru. Kerja tim berjalan baik.", 
@@ -88,9 +84,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "Raih peluang, tunjukkan kemampuan. Juga belajar mendengarkan.",
       financeAdvice: "Kendalikan belanja impulsif, tabung. Pertimbangkan diversifikasi.",
       mood: "energik", energy: "Tinggi", focus: "Aksi",
-      bestDay: "Selasa", worstDay: "Jumat", keyPhrase: "Majulah dengan berani",
-    },
-  },
+      bestDay: "Selasa", worstDay: "Jumat", keyPhrase: "Majulah dengan berani"}},
   taurus: {
     zh: { 
       love: "感情稳定，已有伴侣者关系更加亲密。适合约会和制造浪漫。", 
@@ -107,8 +101,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "发挥你务实可靠的特质。稳扎稳打是制胜法宝。",
       financeAdvice: "建立长期投资计划。房地产和贵金属是不错的选择。",
       mood: "稳定满足", energy: "平稳", focus: "积累",
-      bestDay: "星期五", worstDay: "星期三", keyPhrase: "稳中求进",
-    },
+      bestDay: "星期五", worstDay: "星期三", keyPhrase: "稳中求进"},
     en: { 
       love: "Stable relationships, couples grow closer. Good time for dates.", 
       career: "Steady progress, work recognized. Good for financial work.", 
@@ -124,8 +117,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "Use your practical and reliable traits. Steady progress wins.",
       financeAdvice: "Build long-term investment plans. Real estate is a good choice.",
       mood: "Stable", energy: "Balanced", focus: "Accumulation",
-      bestDay: "Friday", worstDay: "Wednesday", keyPhrase: "Steady progress",
-    },
+      bestDay: "Friday", worstDay: "Wednesday", keyPhrase: "Steady progress"},
     id: { 
       love: "Hubungan stabil, pasangan tumbuh lebih dekat. Saat yang baik untuk kencan.", 
       career: "Kemajuan konsisten, kerja diakui. Baik untuk pekerjaan keuangan.", 
@@ -141,9 +133,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "Gunakan sifat praktis dan dapat diandalkanmu.",
       financeAdvice: "Bangun rencana investasi jangka panjang.",
       mood: "Stabil", energy: "Seimbang", focus: "Akumulasi",
-      bestDay: "Jumat", worstDay: "Rabu", keyPhrase: "Kemajuan stabil",
-    },
-  },
+      bestDay: "Jumat", worstDay: "Rabu", keyPhrase: "Kemajuan stabil"}},
   gemini: {
     zh: { 
       love: "社交活跃，沟通带来更多机会。适合参加聚会认识新朋友。", 
@@ -160,8 +150,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "发挥你的多才多艺，但要注意专注度。",
       financeAdvice: "开拓多种收入来源，但避免投机行为。",
       mood: "思维活跃", energy: "充沛", focus: "沟通",
-      bestDay: "星期三", worstDay: "星期六", keyPhrase: "多才多艺",
-    },
+      bestDay: "星期三", worstDay: "星期六", keyPhrase: "多才多艺"},
     en: { 
       love: "Active social life, communication brings opportunities.", 
       career: "Creative energy, great for writing and expression.", 
@@ -177,8 +166,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "Use your versatility but maintain focus.",
       financeAdvice: "Diversify income sources, avoid speculation.",
       mood: "Mentally active", energy: "Abundant", focus: "Communication",
-      bestDay: "Wednesday", worstDay: "Saturday", keyPhrase: "Versatile",
-    },
+      bestDay: "Wednesday", worstDay: "Saturday", keyPhrase: "Versatile"},
     id: { 
       love: "Kehidupan sosial aktif, komunikasi membawa peluang.", 
       career: "Energi kreatif, bagus untuk menulis.", 
@@ -194,9 +182,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "Gunakan keserbagunaanmu tapi pertahankan fokus.",
       financeAdvice: "Diversifikasi sumber pendapatan, hindari spekulasi.",
       mood: "Aktif secara mental", energy: "Melimpah", focus: "Komunikasi",
-      bestDay: "Rabu", worstDay: "Sabtu", keyPhrase: "Serbaguna",
-    },
-  },
+      bestDay: "Rabu", worstDay: "Sabtu", keyPhrase: "Serbaguna"}},
   cancer: {
     zh: { 
       love: "家庭氛围温馨，情感需求得到满足。适合和家人共度时光。", 
@@ -213,8 +199,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "相信你的直觉，敢于迈出创业第一步。",
       financeAdvice: "稳健理财为主，关注房产和不动产投资。",
       mood: "敏感细腻", energy: "内敛", focus: "家庭",
-      bestDay: "星期一", worstDay: "星期四", keyPhrase: "温情守护",
-    },
+      bestDay: "星期一", worstDay: "星期四", keyPhrase: "温情守护"},
     en: { 
       love: "Warm family atmosphere, emotional needs met.", 
       career: "Good for behind-the-scenes work.", 
@@ -230,8 +215,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "Trust your intuition, dare to take the entrepreneurial step.",
       financeAdvice: "Focus on stable investments, real estate is promising.",
       mood: "Sensitive", energy: "Reserved", focus: "Family",
-      bestDay: "Monday", worstDay: "Thursday", keyPhrase: "Tender guardian",
-    },
+      bestDay: "Monday", worstDay: "Thursday", keyPhrase: "Tender guardian"},
     id: { 
       love: "Suasana keluarga hangat, kebutuhan emosional terpenuhi.", 
       career: "Baik untuk pekerjaan di belakang layar.", 
@@ -247,9 +231,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "Percayai intuisimu.",
       financeAdvice: "Fokus pada investasi stabil.",
       mood: "Sensitif", energy: "Terukur", focus: "Keluarga",
-      bestDay: "Senin", worstDay: "Kamis", keyPhrase: "Penjaga penuh kasih",
-    },
-  },
+      bestDay: "Senin", worstDay: "Kamis", keyPhrase: "Penjaga penuh kasih"}},
   leo: {
     zh: { 
       love: "魅力四射，感情生活丰富多彩。容易吸引异性的目光。", 
@@ -266,8 +248,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "大胆展示你的领导能力公众演说会带来好运。",
       financeAdvice: "偏财运势佳，但也要留一部分钱储蓄。",
       mood: "自信闪耀", energy: "高涨", focus: "创造力",
-      bestDay: "星期日", worstDay: "星期二", keyPhrase: "光芒万丈",
-    },
+      bestDay: "星期日", worstDay: "星期二", keyPhrase: "光芒万丈"},
     en: { 
       love: "Charming day, colorful romantic life.", 
       career: "Leadership shown, get more attention.", 
@@ -283,8 +264,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "Show your leadership abilities. Public speaking brings luck.",
       financeAdvice: "Side income good, but save some too.",
       mood: "Confident", energy: "High", focus: "Creativity",
-      bestDay: "Sunday", worstDay: "Tuesday", keyPhrase: "Brilliant radiance",
-    },
+      bestDay: "Sunday", worstDay: "Tuesday", keyPhrase: "Brilliant radiance"},
     id: { 
       love: "Hari yang mempesona, kehidupan cinta berwarna.", 
       career: "Kepemimpinan ditunjukkan, dapat perhatian.", 
@@ -300,9 +280,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "Tunjukkan kemampuan kepemimpinanmu.",
       financeAdvice: "Hoki samping bagus, tapi tabung juga.",
       mood: "Percaya diri", energy: "Tinggi", focus: "Kreativitas",
-      bestDay: "Minggu", worstDay: "Selasa", keyPhrase: "Cemerlang",
-    },
-  },
+      bestDay: "Minggu", worstDay: "Selasa", keyPhrase: "Cemerlang"}},
   virgo: {
     zh: { 
       love: "感情细腻，需要更多关注细节。适合用行动表达爱意。", 
@@ -319,8 +297,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "发挥你追求完美的特质，但不要过度纠结细节。",
       financeAdvice: "理财能力出色，适合长期投资规划。",
       mood: "追求完美", energy: "稳定", focus: "分析",
-      bestDay: "星期三", worstDay: "星期六", keyPhrase: "精益求精",
-    },
+      bestDay: "星期三", worstDay: "星期六", keyPhrase: "精益求精"},
     en: { 
       love: "Detail-oriented in relationships.", 
       career: "Analytical skills shine.", 
@@ -336,8 +313,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "Use your perfectionism wisely, don't overdo details.",
       financeAdvice: "Great financial management skills, good for long-term planning.",
       mood: "Perfectionist", energy: "Stable", focus: "Analysis",
-      bestDay: "Wednesday", worstDay: "Saturday", keyPhrase: "Excellence",
-    },
+      bestDay: "Wednesday", worstDay: "Saturday", keyPhrase: "Excellence"},
     id: { 
       love: "Detail-oriented dalam hubungan.", 
       career: "Keterampilan analitis bersinar.", 
@@ -353,9 +329,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "Gunakan kesempurnaanismu dengan bijak.",
       financeAdvice: "Keterampilan manajemen keuangan bagus.",
       mood: "Sempurna", energy: "Stabil", focus: "Analisis",
-      bestDay: "Rabu", worstDay: "Sabtu", keyPhrase: "Keunggulan",
-    },
-  },
+      bestDay: "Rabu", worstDay: "Sabtu", keyPhrase: "Keunggulan"}},
   libra: {
     zh: { 
       love: "追求和谐，关系更加平衡。社交活动丰富，容易遇到心仪对象。", 
@@ -372,8 +346,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "发挥你的协调能力，团队合作会为你带来好运。",
       financeAdvice: "避免冲动购物，建立合理的消费计划。",
       mood: "追求平衡", energy: "和谐", focus: "关系",
-      bestDay: "星期五", worstDay: "星期一", keyPhrase: "和谐之美",
-    },
+      bestDay: "星期五", worstDay: "星期一", keyPhrase: "和谐之美"},
     en: { 
       love: "Seeking harmony, relationships balanced.", 
       career: "Good cooperation, great for teamwork.", 
@@ -389,8 +362,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "Use your coordination skills, teamwork brings luck.",
       financeAdvice: "Avoid impulse shopping, build a reasonable budget.",
       mood: "Balanced", energy: "Harmonious", focus: "Relationships",
-      bestDay: "Friday", worstDay: "Monday", keyPhrase: "Harmonious beauty",
-    },
+      bestDay: "Friday", worstDay: "Monday", keyPhrase: "Harmonious beauty"},
     id: { 
       love: "Mencari keharmonisan, hubungan seimbang.", 
       career: "Kerjasama baik, bagus untuk kerja tim.", 
@@ -406,9 +378,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "Gunakan keterampilan koordinasi.",
       financeAdvice: "Hindari belanja impulsif.",
       mood: "Seimbang", energy: "Harmonis", focus: "Hubungan",
-      bestDay: "Jumat", worstDay: "Senin", keyPhrase: "Keindahan harmonis",
-    },
-  },
+      bestDay: "Jumat", worstDay: "Senin", keyPhrase: "Keindahan harmonis"}},
   scorpio: {
     zh: { 
       love: "情感深刻，关系进入新阶段。适合深度的情感交流。", 
@@ -425,8 +395,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "相信你的直觉，秘密项目或研究工作会有突破。",
       financeAdvice: "财务状况佳，可能有意外的收入来源。",
       mood: "深邃神秘", energy: "强烈", focus: "转化",
-      bestDay: "星期二", worstDay: "星期六", keyPhrase: "洞察真相",
-    },
+      bestDay: "星期二", worstDay: "星期六", keyPhrase: "洞察真相"},
     en: { 
       love: "Deep emotions, relationships enter new phase.", 
       career: "Strong insight, good for research.", 
@@ -442,8 +411,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "Trust your intuition. Secret projects will have breakthroughs.",
       financeAdvice: "Good finances, possible unexpected income.",
       mood: "Deep", energy: "Intense", focus: "Transformation",
-      bestDay: "Tuesday", worstDay: "Saturday", keyPhrase: "Insight into truth",
-    },
+      bestDay: "Tuesday", worstDay: "Saturday", keyPhrase: "Insight into truth"},
     id: { 
       love: "Emosi mendalam, hubungan masuk fase baru.", 
       career: "Wawasan kuat, bagus untuk riset.", 
@@ -459,9 +427,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "Percayai intuisimu, proyek rahasia akan terobosan.",
       financeAdvice: "Keuangan bagus, mungkin pendapatan tak terduga.",
       mood: "Mendalam", energy: "Intens", focus: "Transformasi",
-      bestDay: "Selasa", worstDay: "Sabtu", keyPhrase: "Wawasan kebenaran",
-    },
-  },
+      bestDay: "Selasa", worstDay: "Sabtu", keyPhrase: "Wawasan kebenaran"}},
   sagittarius: {
     zh: { 
       love: "追求自由，社交圈扩大。旅行中容易遇到浪漫邂逅。", 
@@ -478,8 +444,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "继续深造或出国发展会为你带来好运。",
       financeAdvice: "海外投资或教育投资会有不错的回报。",
       mood: "乐观自由", energy: "充沛", focus: "探索",
-      bestDay: "星期四", worstDay: "星期一", keyPhrase: "探索无限",
-    },
+      bestDay: "星期四", worstDay: "星期一", keyPhrase: "探索无限"},
     en: { 
       love: "Seeking freedom, social circle expands.", 
       career: "Good learning, possible travel or education.", 
@@ -495,8 +460,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "Further study or overseas development brings luck.",
       financeAdvice: "Overseas or education investments pay off well.",
       mood: "Optimistic", energy: "Abundant", focus: "Exploration",
-      bestDay: "Thursday", worstDay: "Monday", keyPhrase: "Explore the infinite",
-    },
+      bestDay: "Thursday", worstDay: "Monday", keyPhrase: "Explore the infinite"},
     id: { 
       love: "Mencari kebebasan, lingkaran sosial melebar.", 
       career: "Belajar baik, mungkin perjalanan atau pendidikan.", 
@@ -512,9 +476,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "Pendidikan lanjut atau pengembangan luar negeri membawa hoki.",
       financeAdvice: "Investasi luar negeri atau pendidikan memberi hasil bagus.",
       mood: "Optimis", energy: "Melimpah", focus: "Eksplorasi",
-      bestDay: "Kamis", worstDay: "Senin", keyPhrase: "Jelajahi tak terbatas",
-    },
-  },
+      bestDay: "Kamis", worstDay: "Senin", keyPhrase: "Jelajahi tak terbatas"}},
   capricorn: {
     zh: { 
       love: "感情稳定，需要表达更多情感。事业心可能影响感情生活。", 
@@ -531,8 +493,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "你的努力会被认可，职场晋升在望。",
       financeAdvice: "稳健的投资策略会带来长期收益。",
       mood: "务实上进", energy: "稳定", focus: "成就",
-      bestDay: "星期六", worstDay: "星期四", keyPhrase: "步步高升",
-    },
+      bestDay: "星期六", worstDay: "星期四", keyPhrase: "步步高升"},
     en: { 
       love: "Stable emotions, need to express more feelings.", 
       career: "Career-minded, clear goals.", 
@@ -548,8 +509,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "Your efforts will be recognized. Promotion in sight.",
       financeAdvice: "Conservative investment strategy brings long-term gains.",
       mood: "Practical", energy: "Stable", focus: "Achievement",
-      bestDay: "Saturday", worstDay: "Thursday", keyPhrase: "Rising step by step",
-    },
+      bestDay: "Saturday", worstDay: "Thursday", keyPhrase: "Rising step by step"},
     id: { 
       love: "Emosi stabil, perlu ungkapkan lebih banyak perasaan.", 
       career: "Berorientasi karir, tujuan jelas.", 
@@ -565,9 +525,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "Usahamu akan diakui. Promosi terlihat.",
       financeAdvice: "Strategi investasi konservatif membawa hasil jangka panjang.",
       mood: "Praktis", energy: "Stabil", focus: "Pencapaian",
-      bestDay: "Sabtu", worstDay: "Kamis", keyPhrase: "Naik perlahan",
-    },
-  },
+      bestDay: "Sabtu", worstDay: "Kamis", keyPhrase: "Naik perlahan"}},
   aquarius: {
     zh: { 
       love: "追求独特，关系中有创新。适合打破常规的相处方式。", 
@@ -584,8 +542,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "你的创新想法会被重视，科技领域会有好发展。",
       financeAdvice: "科技股和数字货币可以有少量配置。",
       mood: "创新独特", energy: "活跃", focus: "社群",
-      bestDay: "星期日", worstDay: "星期三", keyPhrase: "引领潮流",
-    },
+      bestDay: "星期日", worstDay: "星期三", keyPhrase: "引领潮流"},
     en: { 
       love: "Seeking uniqueness, innovation in relationships.", 
       career: "Innovative thinking, good for tech and humanitarian work.", 
@@ -601,8 +558,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "Your innovative ideas will be valued. Tech has good prospects.",
       financeAdvice: "Tech stocks and crypto can have some allocation.",
       mood: "Innovative", energy: "Active", focus: "Community",
-      bestDay: "Sunday", worstDay: "Wednesday", keyPhrase: "Lead the trend",
-    },
+      bestDay: "Sunday", worstDay: "Wednesday", keyPhrase: "Lead the trend"},
     id: { 
       love: "Mencari keunikan, inovasi dalam hubungan.", 
       career: "Berpikir inovatif, bagus untuk teknologi.", 
@@ -618,9 +574,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "Ide inovasimu akan dihargai.",
       financeAdvice: "Saham teknologi dan kripto bisa dialokasikan.",
       mood: "Inovatif", energy: "Aktif", focus: "Komunitas",
-      bestDay: "Minggu", worstDay: "Rabu", keyPhrase: "Pimpin tren",
-    },
-  },
+      bestDay: "Minggu", worstDay: "Rabu", keyPhrase: "Pimpin tren"}},
   pisces: {
     zh: { 
       love: "情感丰富，适合艺术创作和浪漫。直觉力强，容易感受到伴侣的需求。", 
@@ -637,8 +591,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "创意工作会为你带来好运，艺术疗愈领域有发展。",
       financeAdvice: "艺术相关的副业可以考虑，但避免不切实际的投资。",
       mood: "浪漫梦幻", energy: "柔和", focus: "灵性",
-      bestDay: "星期四", worstDay: "星期二", keyPhrase: "灵性觉醒",
-    },
+      bestDay: "星期四", worstDay: "星期二", keyPhrase: "灵性觉醒"},
     en: { 
       love: "Rich emotions, great for art and romance.", 
       career: "Strong inspiration, good for creative and healing work.", 
@@ -654,8 +607,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "Creative work brings luck. Art healing has potential.",
       financeAdvice: "Consider art-related side work. Avoid unrealistic investments.",
       mood: "Romantic", energy: "Soft", focus: "Spirituality",
-      bestDay: "Thursday", worstDay: "Tuesday", keyPhrase: "Spiritual awakening",
-    },
+      bestDay: "Thursday", worstDay: "Tuesday", keyPhrase: "Spiritual awakening"},
     id: { 
       love: "Emosi kaya, bagus untuk seni dan romansa.", 
       career: "Inspirasi kuat, bagus untuk pekerjaan kreatif.", 
@@ -671,10 +623,7 @@ const HOROSCOPE_DATA: Record<string, Record<string, {
       careerAdvice: "Pekerjaan kreatif membawa hoki. Penyembuhan seni punya potensi.",
       financeAdvice: "Pertimbangkan pekerjaan sampingan seni.",
       mood: "Romantis", energy: "Lembut", focus: "Spiritualitas",
-      bestDay: "Kamis", worstDay: "Selasa", keyPhrase: "Kebangkitan spiritual",
-    },
-  },
-};
+      bestDay: "Kamis", worstDay: "Selasa", keyPhrase: "Kebangkitan spiritual"}}};
 
 // Fill in remaining signs with generated data
 const baseData = {
@@ -683,14 +632,12 @@ const baseData = {
   weekly: "本周运势平稳，各方面表现中等偏上。", monthly: "本月整体运势良好，适合稳扎稳打。",
   compatibility: "巨蟹座、金牛座", loveScore: 80, careerScore: 80, financeScore: 80, healthScore: 80,
   loveAdvice: "保持真诚和耐心。", careerAdvice: "继续努力，会有收获。", financeAdvice: "合理规划收支。",
-  mood: "平和", energy: "稳定", focus: "平衡", bestDay: "星期三", worstDay: "星期五", keyPhrase: "平稳发展",
-};
+  mood: "平和", energy: "稳定", focus: "平衡", bestDay: "星期三", worstDay: "星期五", keyPhrase: "平稳发展"};
 
 ["taurus", "gemini", "cancer", "leo", "virgo", "libra", "scorpio", "sagittarius", "capricorn", "aquarius", "pisces"].forEach(sign => {
   if (!HOROSCOPE_DATA[sign]) {
     HOROSCOPE_DATA[sign] = {
-      zh: baseData, en: baseData, id: baseData, th: baseData, vi: baseData, ms: baseData, ja: baseData, ko: baseData,
-    };
+      zh: baseData, en: baseData, id: baseData, th: baseData, vi: baseData, ms: baseData, ja: baseData, ko: baseData};
   }
 });
 
@@ -702,8 +649,7 @@ const LABELS: Record<string, Record<string, string>> = {
   vi: { title: "Tử Vi Hàng Ngày", subtitle: "Chọn cung để xem tử vi hôm nay", love: "💕 Tình yêu", career: "💼 Sự nghiệp", finance: "💰 Tài chính", health: "❤️ Sức khỏe", tip: "✨ Mẹo", selectSign: "Chọn cung", viewDetail: "Xem chi tiết", back: "Về trang chủ", luckyColor: "Màu may mắn", luckyNumber: "Số may mắn", luckyTime: "Thời gian may mắn", weekly: "📅 Tử vi tuần này", monthly: "📆 Tử vi tháng này", compatibility: "💕 Cung hợp", mood: "😄 Tâm trạng", energy: "⚡ Năng lượng", focus: "🎯 Tập trung", bestDay: "🗓 Ngày tốt", worstDay: "⚠ Cẩn thận", loveScore: "Điểm tình yêu", careerScore: "Điểm sự nghiệp", financeScore: "Điểm tài chính", healthScore: "Điểm sức khỏe", loveAdvice: "💝 Lời khuyên tình yêu", careerAdvice: "💼 Lời khuyên sự nghiệp", financeAdvice: "💰 Lời khuyên tài chính", keyPhrase: "🔑 Từ khóa", rulingPlanet: "Hành tinh cai quản", element: "Nguyên tố", dates: "Ngày" },
   ms: { title: "Horoskop Harian", subtitle: "Pilih zodiak untuk lihat horoskop hari ini", love: "💕 Cinta", career: "💼 Kerjaya", finance: "💰 Kewangan", health: "❤️ Kesihatan", tip: "✨ Tips", selectSign: "Pilih Zodiak", viewDetail: "Lihat Detail", back: "Kembali", luckyColor: "Warna Bertuah", luckyNumber: "Nombor Bertuah", luckyTime: "Masa Bertuah", weekly: "📅 Ramalan Mingguan", monthly: "📆 Ramalan Bulanan", compatibility: "💕 Keserasian", mood: "😄 Suasana", energy: "⚡ Tenaga", focus: "🎯 Fokus", bestDay: "🗓 Hari Terbaik", worstDay: "⚠ Berhati-hati", loveScore: "Skor Cinta", careerScore: "Skor Kerjaya", financeScore: "Skor Kewangan", healthScore: "Skor Kesihatan", loveAdvice: "💝 Nasihat Cinta", careerAdvice: "💼 Nasihat Kerjaya", financeAdvice: "💰 Nasihat Kewangan", keyPhrase: "🔑 Kata Kunci", rulingPlanet: "Planet Penguasa", element: "Unsur", dates: "Tarikh" },
   ja: { title: "今日の運勢", subtitle: "星座を選んで今日の運勢を見る", love: "💕 恋愛", career: "💼 仕事", finance: "💰 金運", health: "❤️ 健康", tip: "✨ ヒント", selectSign: "星座を選択", viewDetail: "詳細を見る", back: "ホームに戻る", luckyColor: "ラッキーカラー", luckyNumber: "ラッキーナンバー", luckyTime: "ラッキータイム", weekly: "📅 週間運勢", monthly: "📆 月間運勢", compatibility: "💕 相性の良い星座", mood: "😄 今日の気分", energy: "⚡ エネルギー", focus: "🎯 フォーカス", bestDay: "🗓 最佳日", worstDay: "⚠ 注意日", loveScore: "恋愛指数", careerScore: "仕事指数", financeScore: "金運指数", healthScore: "健康指数", loveAdvice: "💝 恋愛のヒント", careerAdvice: "💼 仕事のヒント", financeAdvice: "💰 金運のヒント", keyPhrase: "🔑 キーワード", rulingPlanet: "守護星", element: "元素", dates: "日付" },
-  ko: { title: "오늘의 운세", subtitle: "별자리를 선택하여 오늘의 운세를 확인하세요", love: "💕 사랑", career: "💼 직장", finance: "💰 재물", health: "❤️ 건강", tip: "✨ 팁", selectSign: "별자리 선택", viewDetail: "상세 보기", back: "홈으로", luckyColor: "행운의 색", luckyNumber: "행운의 숫자", luckyTime: "행운의 시간", weekly: "📅 이번 주 운세", monthly: "📆 이번 달 운세", compatibility: "💕 궁합이 좋은 별자리", mood: "😄 오늘의 기분", energy: "⚡ 에너지", focus: "🎯 집중 분야", bestDay: "🗓 최적의 날", worstDay: "⚠ 주의할 날", loveScore: "사랑 지수", careerScore: "직장 지수", financeScore: "재물 지수", healthScore: "건강 지수", loveAdvice: "💝 사랑 조언", careerAdvice: "💼 직장 조언", financeAdvice: "💰 재물 조언", keyPhrase: "🔑 핵심 키워드", rulingPlanet: "수호성", element: "원소", dates: "날짜" },
-};
+  ko: { title: "오늘의 운세", subtitle: "별자리를 선택하여 오늘의 운세를 확인하세요", love: "💕 사랑", career: "💼 직장", finance: "💰 재물", health: "❤️ 건강", tip: "✨ 팁", selectSign: "별자리 선택", viewDetail: "상세 보기", back: "홈으로", luckyColor: "행운의 색", luckyNumber: "행운의 숫자", luckyTime: "행운의 시간", weekly: "📅 이번 주 운세", monthly: "📆 이번 달 운세", compatibility: "💕 궁합이 좋은 별자리", mood: "😄 오늘의 기분", energy: "⚡ 에너지", focus: "🎯 집중 분야", bestDay: "🗓 최적의 날", worstDay: "⚠ 주의할 날", loveScore: "사랑 지수", careerScore: "직장 지수", financeScore: "재물 지수", healthScore: "건강 지수", loveAdvice: "💝 사랑 조언", careerAdvice: "💼 직장 조언", financeAdvice: "💰 재물 조언", keyPhrase: "🔑 핵심 키워드", rulingPlanet: "수호성", element: "원소", dates: "날짜" }};
 
 // Score bar component
 function ScoreBar({ score, color, label }: { score: number; color: string; label: string }) {
@@ -728,8 +674,7 @@ const CATEGORY_ICONS: Record<string, { icon: typeof Heart; color: string; label:
   love: { icon: Heart, color: "#FF6B9D", label: "love" },
   career: { icon: Briefcase, color: "#4ECDC4", label: "career" },
   finance: { icon: Wallet, color: "#FFD93D", label: "finance" },
-  health: { icon: Activity, color: "#FF6B6B", label: "health" },
-};
+  health: { icon: Activity, color: "#FF6B6B", label: "health" }};
 
 export default function HoroscopePage() {
   const { language } = useLanguage();
@@ -773,7 +718,7 @@ export default function HoroscopePage() {
         <div className="relative mb-6">
           <button
             onClick={() => setShowDropdown(!showDropdown)}
-            className="w-full p-4 rounded-2xl bg-white/5 border border-gray-200 text-left flex items-center justify-between hover:bg-white/10 transition-all"
+            className="w-full p-4 rounded-2xl bg-gray-50 border border-gray-200 text-left flex items-center justify-between hover:bg-gray-100 transition-all"
           >
             <div className="flex items-center gap-3">
               <span className="text-4xl" style={{ color: elemColor.color }}>{signData?.symbol}</span>
@@ -798,7 +743,7 @@ export default function HoroscopePage() {
                   className={`p-2 rounded-xl text-center transition-all ${
                     selectedSign === id 
                       ? "bg-gray-100 border border-gray-300 text-gray-700" 
-                      : "bg-white/5 hover:bg-white/10 text-gray-600"
+                      : "bg-gray-50 hover:bg-gray-100 text-gray-600"
                   }`}
                 >
                   <div className="text-2xl mb-1">{data.symbol}</div>
@@ -810,7 +755,7 @@ export default function HoroscopePage() {
         </div>
 
         {/* Tab 切换 */}
-        <div className="flex gap-2 mb-6 bg-white/5 p-1 rounded-xl">
+        <div className="flex gap-2 mb-6 bg-gray-50 p-1 rounded-xl">
           {([["today", labels.title.split(' ')[0]], ["weekly", labels.weekly.split(' ')[0]], ["monthly", labels.monthly.split(' ')[0]]] as const).map(([tab, tabLabel]) => (
             <button
               key={tab}
@@ -837,14 +782,14 @@ export default function HoroscopePage() {
               </h2>
               <p className="text-gray-500 text-sm">{signData?.element} • {signData?.dates}</p>
               {/* 关键词 */}
-              <div className="mt-3 inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full">
+              <div className="mt-3 inline-flex items-center gap-2 px-3 py-1 bg-gray-100 rounded-full">
                 <Star size={12} className="text-gray-600 fill-gray-400" />
                 <span className="text-xs text-gray-600">{labels.keyPhrase}: {horoscope.keyPhrase}</span>
               </div>
             </div>
 
             {/* 四维指数条 */}
-            <div className="p-4 rounded-2xl bg-white/5 border border-gray-200">
+            <div className="p-4 rounded-2xl bg-gray-50 border border-gray-200">
               <h3 className="text-sm font-medium text-gray-500 mb-3">📊 {lang === 'zh' ? '运势指数' : lang === 'id' ? 'Skor Keberuntungan' : 'Fortune Scores'}</h3>
               <div className="grid grid-cols-2 gap-4">
                 <ScoreBar score={horoscope.loveScore} color="#FF6B9D" label={labels.loveScore} />
@@ -860,7 +805,7 @@ export default function HoroscopePage() {
                 {/* 四维详细 */}
                 <div className="grid grid-cols-2 gap-3">
                   {Object.entries(CATEGORY_ICONS).map(([key, { icon: Icon, color, label: catLabel }]) => (
-                    <div key={key} className="p-4 rounded-xl bg-white/5 border border-gray-200">
+                    <div key={key} className="p-4 rounded-xl bg-gray-50 border border-gray-200">
                       <div className="flex items-center gap-2 mb-2">
                         <Icon size={16} style={{ color }} />
                         <span className="text-xs font-medium" style={{ color }}>{(labels as unknown as Record<string, string>)[catLabel] || catLabel}</span>
@@ -891,17 +836,17 @@ export default function HoroscopePage() {
 
                 {/* 心情能量 */}
                 <div className="grid grid-cols-3 gap-3">
-                  <div className="p-3 rounded-xl bg-white/5 border border-gray-200 text-center">
+                  <div className="p-3 rounded-xl bg-gray-50 border border-gray-200 text-center">
                     <div className="text-xl mb-1">😄</div>
                     <div className="text-xs text-gray-500">{labels.mood}</div>
                     <div className="text-sm font-bold text-gray-900">{horoscope.mood}</div>
                   </div>
-                  <div className="p-3 rounded-xl bg-white/5 border border-gray-200 text-center">
+                  <div className="p-3 rounded-xl bg-gray-50 border border-gray-200 text-center">
                     <div className="text-xl mb-1">⚡</div>
                     <div className="text-xs text-gray-500">{labels.energy}</div>
                     <div className="text-sm font-bold text-gray-900">{horoscope.energy}</div>
                   </div>
-                  <div className="p-3 rounded-xl bg-white/5 border border-gray-200 text-center">
+                  <div className="p-3 rounded-xl bg-gray-50 border border-gray-200 text-center">
                     <div className="text-xl mb-1">🎯</div>
                     <div className="text-xs text-gray-500">{labels.focus}</div>
                     <div className="text-sm font-bold text-gray-900">{horoscope.focus}</div>
@@ -941,7 +886,7 @@ export default function HoroscopePage() {
             )}
 
             {/* 三项建议 */}
-            <div className="p-4 rounded-xl bg-white/5 border border-gray-200 space-y-3">
+            <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 space-y-3">
               <h3 className="text-sm font-medium text-gray-500 flex items-center gap-2">
                 <Sparkles size={16} className="text-gray-600" />
                 {lang === 'zh' ? '💡 个性化建议' : lang === 'id' ? '💡 Saran Personal' : '💡 Personal Advice'}

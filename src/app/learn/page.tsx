@@ -3,12 +3,11 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { BookOpen, Star, ChevronDown, ArrowLeft, Circle } from "lucide-react";
+import { BookOpen, Star, ChevronDown Circle } from "lucide-react";
 
 const PLANET_ICONS: Record<string, any> = {
   Sun: Circle, Moon: Circle, Mercury: Circle, Venus: Circle, Mars: Circle, 
-  Jupiter: Circle, Saturn: Circle, Uranus: Circle, Neptune: Circle, Pluto: Circle,
-};
+  Jupiter: Circle, Saturn: Circle, Uranus: Circle, Neptune: Circle, Pluto: Circle};
 
 const PLANET_DATA = {
   zh: {
@@ -21,8 +20,7 @@ const PLANET_DATA = {
     Saturn: { name: "土星", symbol: "♄", meaning: "土星代表限制、责任和成就。它影响你的纪律性、时间和组织能力。", traits: ["纪律", "责任", "耐心", "务实"], ruling: "摩羯座", day: "星期六", stone: "青金石", color: "深蓝", element: "土" },
     Uranus: { name: "天王星", symbol: "♅", meaning: "天王星代表突变、发明和自由。它影响你的原创性、对自由的渴望和突然改变的能力。", traits: ["独创性", "自由", "叛逆", "博爱"], ruling: "水瓶座", day: "星期二", stone: "苏纪石", color: "蓝绿色", element: "风" },
     Neptune: { name: "海王星", symbol: "♆", meaning: "海王星代表梦想、灵性和欺骗。它影响你的想象力、灵性追求和理想主义。", traits: ["梦想", "灵感", "直觉", "敏感"], ruling: "双鱼座", day: "星期一", stone: "海蓝宝石", color: "海蓝色", element: "水" },
-    Pluto: { name: "冥王星", symbol: "♇", meaning: "冥王星代表转化、死亡和重生。它影响你面对深刻变化的能力和心理深层。", traits: ["转化", "力量", "深层", "神秘"], ruling: "天蝎座", day: "星期二", stone: "苏打石", color: "深紫", element: "水" },
-  },
+    Pluto: { name: "冥王星", symbol: "♇", meaning: "冥王星代表转化、死亡和重生。它影响你面对深刻变化的能力和心理深层。", traits: ["转化", "力量", "深层", "神秘"], ruling: "天蝎座", day: "星期二", stone: "苏打石", color: "深紫", element: "水" }},
   en: {
     Sun: { name: "Sun", symbol: "☉", meaning: "The Sun represents vitality, willpower, and self-awareness. It is your core being and determines your fundamental character and life purpose.", traits: ["Leadership", "Creativity", "Confidence", "Vitality"], ruling: "Leo", day: "Sunday", stone: "Diamond", color: "Gold", element: "Fire" },
     Moon: { name: "Moon", symbol: "☽", meaning: "The Moon represents emotions, intuition, and the subconscious. It influences your emotional responses, inner needs, and instinctive reactions.", traits: ["Emotion", "Intuition", "Nurturing", "Sensitivity"], ruling: "Cancer", day: "Monday", stone: "Moonstone", color: "Silver", element: "Water" },
@@ -33,8 +31,7 @@ const PLANET_DATA = {
     Saturn: { name: "Saturn", symbol: "♄", meaning: "Saturn represents limitations, responsibility, and achievement. It influences your discipline, sense of time, and organizational abilities.", traits: ["Discipline", "Responsibility", "Patience", "Practicality"], ruling: "Capricorn", day: "Saturday", stone: "Lapis Lazuli", color: "Deep Blue", element: "Earth" },
     Uranus: { name: "Uranus", symbol: "♅", meaning: "Uranus represents sudden change, invention, and freedom. It influences your originality, desire for freedom, and ability to change suddenly.", traits: ["Originality", "Freedom", "Rebellion", "Humanitarian"], ruling: "Aquarius", day: "Tuesday", stone: "Sugilite", color: "Blue-green", element: "Air" },
     Neptune: { name: "Neptune", symbol: "♆", meaning: "Neptune represents dreams, spirituality, and illusion. It influences your imagination, spiritual pursuits, and idealism.", traits: ["Dreams", "Inspiration", "Intuition", "Sensitivity"], ruling: "Pisces", day: "Monday", stone: "Aquamarine", color: "Sea Blue", element: "Water" },
-    Pluto: { name: "Pluto", symbol: "♇", meaning: "Pluto represents transformation, death, and rebirth. It influences your ability to face profound changes and psychological depths.", traits: ["Transformation", "Power", "Depth", "Mystery"], ruling: "Scorpio", day: "Tuesday", stone: "Sodalite", color: "Deep Purple", element: "Water" },
-  },
+    Pluto: { name: "Pluto", symbol: "♇", meaning: "Pluto represents transformation, death, and rebirth. It influences your ability to face profound changes and psychological depths.", traits: ["Transformation", "Power", "Depth", "Mystery"], ruling: "Scorpio", day: "Tuesday", stone: "Sodalite", color: "Deep Purple", element: "Water" }},
   id: {
     Sun: { name: "Matahari", symbol: "☉", meaning: "Matahari mewakili vitalitas, kemauan, dan kesadaran diri. Ini adalah inti keberadaan Anda dan menentukan karakter mendasar dan tujuan hidup Anda.", traits: ["Kepemimpinan", "Kreativitas", "Kepercayaan diri", "Vitalitas"], ruling: "Leo", day: "Minggu", stone: "Berlian", color: "Emas", element: "Api" },
     Moon: { name: "Bulan", symbol: "☽", meaning: "Bulan mewakili emosi, intuisi, dan alam bawah sadar. Ini memengaruhi respons emosional, kebutuhan batin, dan reaksi naluriah Anda.", traits: ["Emosi", "Intuisi", "Pengasuhan", "Sensitivitas"], ruling: "Cancer", day: "Senin", stone: "Batu bulan", color: "Perak", element: "Air" },
@@ -45,9 +42,7 @@ const PLANET_DATA = {
     Saturn: { name: "Saturnus", symbol: "♄", meaning: "Saturnus mewakili keterbatasan, tanggung jawab, dan pencapaian. Ini memengaruhi disiplin Anda, rasa waktu, dan kemampuan organisasi.", traits: ["Disiplin", "Tanggung jawab", "Kesabaran", "Kepraktisan"], ruling: "Capricorn", day: "Sabtu", stone: "Lapis lazuli", color: "Biru tua", element: "Tanah" },
     Uranus: { name: "Uranus", symbol: "♅", meaning: "Uranus mewakili perubahan mendadak, penemuan, dan kebebasan. Ini memengaruhi orisinalitas Anda, keinginan akan kebebasan, dan kemampuan untuk berubah secara tiba-tiba.", traits: ["Orisinalitas", "Kebebasan", "Pemberontakan", "Kemanusiaan"], ruling: "Aquarius", day: "Selasa", stone: "Sugilit", color: "Biru-hijau", element: "Udara" },
     Neptune: { name: "Neptunus", symbol: "♆", meaning: "Neptunus mewakili mimpi, spiritualitas, dan ilusi. Ini memengaruhi imajinasi Anda, pencarian spiritual, dan idealisme.", traits: ["Mimpi", "Inspirasi", "Intuisi", "Sensitivitas"], ruling: "Pisces", day: "Senin", stone: "Akuamarin", color: "Biru laut", element: "Air" },
-    Pluto: { name: "Pluto", symbol: "♇", meaning: "Pluto mewakili transformasi, kematian, dan kelahiran kembali. Ini memengaruhi kemampuan Anda menghadapi perubahan mendalam dan kedalaman psikologis.", traits: ["Transformasi", "Kekuatan", "Kedalaman", "Misteri"], ruling: "Scorpio", day: "Selasa", stone: "Sodalit", color: "Ungu tua", element: "Air" },
-  },
-};
+    Pluto: { name: "Pluto", symbol: "♇", meaning: "Pluto mewakili transformasi, kematian, dan kelahiran kembali. Ini memengaruhi kemampuan Anda menghadapi perubahan mendalam dan kedalaman psikologis.", traits: ["Transformasi", "Kekuatan", "Kedalaman", "Misteri"], ruling: "Scorpio", day: "Selasa", stone: "Sodalit", color: "Ungu tua", element: "Air" }}};
 
 const LABELS: Record<string, Record<string, string>> = {
   zh: { title: "📚 占星学习", subtitle: "了解10大行星的奥秘", selectPlanet: "选择行星", meaning: "核心含义", traits: "核心特质", ruling: "守护星座", day: "对应星期", stone: "幸运宝石", color: "幸运颜色", element: "元素", back: "返回首页" },
@@ -57,8 +52,7 @@ const LABELS: Record<string, Record<string, string>> = {
   vi: { title: "📚 Học Chiêm Tinh", subtitle: "Khám phá bí mật 10 hành tinh", selectPlanet: "Chọn hành tinh", meaning: "Ý nghĩa", traits: "Đặc điểm", ruling: "Cung cai quản", day: "Ngày", stone: "Đá may mắn", color: "Màu may mắn", element: "Nguyên tố", back: "Về trang chủ" },
   ms: { title: "📚 Belajar Astrologi", subtitle: "Terokai rahsia 10 planet", selectPlanet: "Pilih Planet", meaning: "Makna", traits: "Sifat", ruling: "Zodiak Penguasa", day: "Hari", stone: "Batu Bertuah", color: "Warna Bertuah", element: "Elemen", back: "Kembali" },
   ja: { title: "📚 占星術を学ぶ", subtitle: "10惑星の秘密を発見", selectPlanet: "惑星を選択", meaning: "核心意味", traits: "特徴", ruling: "支配星座", day: "曜日", stone: "幸運の石", color: "幸運の色", element: "エレメント", back: "ホームに戻る" },
-  ko: { title: "📚 점성술 배우기", subtitle: "10행성의 비밀 발견", selectPlanet: "행성 선택", meaning: "핵심 의미", traits: "특성", ruling: "지배 별자리", day: "요일", stone: "행운의 돌", color: "행운의 색", element: "원소", back: "홈으로" },
-};
+  ko: { title: "📚 점성술 배우기", subtitle: "10행성의 비밀 발견", selectPlanet: "행성 선택", meaning: "핵심 의미", traits: "특성", ruling: "지배 별자리", day: "요일", stone: "행운의 돌", color: "행운의 색", element: "원소", back: "홈으로" }};
 
 export default function LearnPage() {
   const { language } = useLanguage();
@@ -93,7 +87,7 @@ export default function LearnPage() {
         <div className="relative mb-8">
           <button
             onClick={() => setShowList(!showList)}
-            className="w-full p-4 rounded-2xl bg-white/5 border border-gray-200 text-left flex items-center justify-between hover:bg-white/10 transition-all"
+            className="w-full p-4 rounded-2xl bg-gray-50 border border-gray-200 text-left flex items-center justify-between hover:bg-gray-100 transition-all"
           >
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gray-500/20 to-gray-500/20 flex items-center justify-center">
@@ -120,7 +114,7 @@ export default function LearnPage() {
                     className={`p-3 rounded-xl text-center transition-all ${
                       isActive 
                         ? "bg-gray-100 border border-gray-300 text-gray-700" 
-                        : "bg-white/5 hover:bg-white/10 text-gray-600"
+                        : "bg-gray-50 hover:bg-gray-100 text-gray-600"
                     }`}
                   >
                     <div className="text-2xl mb-1">{info.symbol}</div>
@@ -145,7 +139,7 @@ export default function LearnPage() {
           </div>
 
           {/* 特质标签 */}
-          <div className="p-6 rounded-2xl bg-white/5 border border-gray-200">
+          <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200">
             <h3 className="text-sm font-bold text-gray-700 mb-3">{labels.traits}</h3>
             <div className="flex flex-wrap gap-2">
               {(planetInfo.traits as string[]).map((trait, i) => (
@@ -158,23 +152,23 @@ export default function LearnPage() {
 
           {/* 基本信息 */}
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            <div className="p-4 rounded-xl bg-white/5 border border-gray-200 text-center">
+            <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 text-center">
               <div className="text-xs text-gray-500 mb-1">{labels.ruling}</div>
               <div className="font-bold text-gray-900">{planetInfo.ruling}</div>
             </div>
-            <div className="p-4 rounded-xl bg-white/5 border border-gray-200 text-center">
+            <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 text-center">
               <div className="text-xs text-gray-500 mb-1">{labels.day}</div>
               <div className="font-bold text-gray-900">{planetInfo.day}</div>
             </div>
-            <div className="p-4 rounded-xl bg-white/5 border border-gray-200 text-center">
+            <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 text-center">
               <div className="text-xs text-gray-500 mb-1">{labels.stone}</div>
               <div className="font-bold text-gray-900 text-sm">{planetInfo.stone}</div>
             </div>
-            <div className="p-4 rounded-xl bg-white/5 border border-gray-200 text-center">
+            <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 text-center">
               <div className="text-xs text-gray-500 mb-1">{labels.color}</div>
               <div className="font-bold text-gray-900">{planetInfo.color}</div>
             </div>
-            <div className="p-4 rounded-xl bg-white/5 border border-gray-200 text-center">
+            <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 text-center">
               <div className="text-xs text-gray-500 mb-1">{labels.element}</div>
               <div className="font-bold text-gray-900">{planetInfo.element}</div>
             </div>

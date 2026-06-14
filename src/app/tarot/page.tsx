@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { ArrowLeft, Sparkles, Shuffle, RefreshCw, Lock, Share2, CheckCircle, MessageCircle } from "lucide-react";
+import { Sparkles, Shuffle, RefreshCw, Lock, Share2, CheckCircle, MessageCircle } from "lucide-react";
 
 // Complete Tarot Card Data with full meanings
 const TAROT_CARDS = [
@@ -68,8 +68,7 @@ const TAROT_READINGS: Record<string, Record<string, Record<string, string>>> = {
       "The Moon": "今天要警惕欺骗和幻觉。不要轻信表象，多听听内心的声音。",
       "The Sun": "今天是最幸运的一天！充满快乐和成功。享受这美好的一天！",
       "Judgement": "今天是觉醒和重生的日子。过去的经历会给你带来新的理解。",
-      "The World": "一个阶段的完成！今天适合庆祝成果，规划新的目标。",
-    },
+      "The World": "一个阶段的完成！今天适合庆祝成果，规划新的目标。"},
     love: {
       "The Fool": "爱情中需要勇气和冒险精神。不要害怕表达你的感受。",
       "The Magician": "用创意和真心来经营感情。你们的爱情充满可能。",
@@ -87,17 +86,14 @@ const TAROT_READINGS: Record<string, Record<string, Record<string, string>>> = {
       "The Tower": "感情中可能会有突然的觉醒或结束。",
       "The Star": "充满希望的爱情！真愛就在不远处。",
       "The Moon": "感情中可能有误解或欺骗。要看清真相。",
-      "The Sun": "最美好的爱情时光！充满快乐和温暖。",
-    },
+      "The Sun": "最美好的爱情时光！充满快乐和温暖。"},
     career: {
       "The Fool": "职场中尝试新方法可能会有惊喜。",
       "The Magician": "展现你的能力！你有成功所需的一切。",
       "The Emperor": "今天适合处理工作事务。稳扎稳打。",
       "The Chariot": "工作运势强劲，适合推进项目。",
       "The Star": "灵感不断，适合创意工作。",
-      "The Sun": "职场最幸运的日子！可能有晋升或认可。",
-    },
-  },
+      "The Sun": "职场最幸运的日子！可能有晋升或认可。"}},
   en: {
     general: {
       "The Fool": "You're filled with adventure spirit today! Be brave and try new things. Just be mindful of safety.",
@@ -114,20 +110,16 @@ const TAROT_READINGS: Record<string, Record<string, Record<string, string>>> = {
       "Justice": "Act fairly today. You will receive what you deserve.",
       "Death": "Endings are new beginnings. This is for a better start.",
       "The Star": "A hopeful and inspiring day! Follow your heart.",
-      "The Sun": "The luckiest day! Full of joy and success.",
-    },
+      "The Sun": "The luckiest day! Full of joy and success."},
     love: {
       "The Fool": "Love requires courage and adventure. Don't fear expressing your feelings.",
       "The Magician": "Use creativity and sincerity in your relationship.",
       "The Lovers": "The strongest love day! A fateful meeting or relationship deepening.",
-      "The Star": "Hopeful love! True love is not far away.",
-    },
+      "The Star": "Hopeful love! True love is not far away."},
     career: {
       "The Fool": "Trying new approaches at work may bring surprises.",
       "The Magician": "Show your abilities! You have everything needed for success.",
-      "The Chariot": "Strong work fortune. Great for pushing projects forward.",
-    },
-  },
+      "The Chariot": "Strong work fortune. Great for pushing projects forward."}},
   id: {
     general: {
       "The Fool": "Hari ini penuh semangat petualang! Coba hal baru dengan berani.",
@@ -136,15 +128,11 @@ const TAROT_READINGS: Record<string, Record<string, Record<string, string>>> = {
       "The Empress": "Keberuntungan excellent hari ini! Bagus untuk kreativitas.",
       "The Lovers": "Keberuntungan cinta paling tinggi!",
       "The Star": "Hari penuh harapan dan inspirasi!",
-      "The Sun": "Hari paling beruntung! Penuh kegembiraan.",
-    },
+      "The Sun": "Hari paling beruntung! Penuh kegembiraan."},
     love: {
       "The Fool": "Cinta membutuhkan keberanian. Jangan takut ungkapkan perasaan.",
       "The Magician": "Gunakan kreativitas dan ketulusan dalam hubungan.",
-      "The Lovers": "Hari cinta terkuat! Mungkin pertemuan jodoh.",
-    },
-  },
-};
+      "The Lovers": "Hari cinta terkuat! Mungkin pertemuan jodoh."}}};
 
 // Tarot card visual component with actual card design
 function TarotCardVisual({ card, isRevealed, index, spreadLength }: { card: typeof TAROT_CARDS[0]; isRevealed: boolean; index: number; spreadLength: number }) {
@@ -226,8 +214,7 @@ const translations: Record<string, Record<string, string>> = {
   vi: { title: "🔮 Đọc Bài Tarot", subtitle: "Khám phá hướng dẫn bí ẩn", question: "Bạn muốn hỏi gì", category: "Danh mục", general: "Tổng quát", love: "Tình yêu", career: "Sự nghiệp", spread: "Chọn Bài", shuffle: "Xào & Rút", shuffling: "Đang xào...", reading: "Đọc Bói", shareUnlock: "Chia sẻ 3 bạn để mở khóa đọc sâu", shareProgress: "Đã chia sẻ", unlocked: "Đã mở", free: "Đọc Miễn phí", position: "Vị trí", elements: "Nguyên tố", keywords: "Từ khóa", questionPlaceholder: "Tập trung câu hỏi...", tapToReveal: "Chạm để mở", deepReading: "Đọc Sâu", shareText: "Tôi vừa đọc bài tarot ở Starry Fate, chính xác lắm! Thử xem" },
   ms: { title: "🔮 Bacaan Tarot", subtitle: "Terokai panduan mistik", question: "Apa yang anda ingin tanya", category: "Kategori", general: "Umum", love: "Cinta", career: "Kerjaya", spread: "Pilih Spread", shuffle: "Kocak & Tarik", shuffling: "Mengocok...", reading: "Bacaan Tarot", shareUnlock: "Kongsi 3 kawan untuk buka bacaan mendalam", shareProgress: "Dikongsi", unlocked: "Dibuka", free: "Bacaan Percuma", position: "Kedudukan", elements: "Unsur", keywords: "Kata Kunci", questionPlaceholder: "Fokus soalan anda...", tapToReveal: "Tekan untuk buka", deepReading: "Bacaan Mendalam", shareText: "Saya baru baca tarot di Starry Fate, tepat sekali! Cuba" },
   ja: { title: "🔮 タロットリーディング", subtitle: "神秘的なガイダンスを探索", question: "何が知りたいですか", category: "カテゴリー", general: "総合", love: "恋愛", career: "仕事", spread: "spreadを選択", shuffle: "シャッフル&ドロー", shuffling: "シャッフル中...", reading: "リーディング", shareUnlock: "3人にシェアしてディープリーディングをアンロック", shareProgress: "シェア済み", unlocked: "アンロック済み", free: "フリーリーディング", position: "位置", elements: "元素", keywords: "キーワード", questionPlaceholder: "心に問いかけて...", tapToReveal: "タップして開く", deepReading: "ディープリーディング", shareText: "星縁でタロット占いをしたら当たりだった！試して" },
-  ko: { title: "🔮 타로 리딩", subtitle: "신비로운 안내 탐구", question: "무엇을 알고 싶으신가요", category: "카테고리", general: "일반", love: "사랑", career: "커리어", spread: "스프레드 선택", shuffle: "셔플 & 드로우", shuffling: "셔플 중...", reading: "리딩", shareUnlock: "3명한테 공유して 딥 리딩 잠금 해제", shareProgress: "공유함", unlocked: "잠금 해제됨", free: "무료 리딩", position: "위치", elements: "원소", keywords: "핵심어", questionPlaceholder: "질문을 생각하세요...", tapToReveal: "탭하여 열기", deepReading: "딥 리딩", shareText: "星縁でタロット占いをしたら当たりだった！試して" },
-};
+  ko: { title: "🔮 타로 리딩", subtitle: "신비로운 안내 탐구", question: "무엇을 알고 싶으신가요", category: "카테고리", general: "일반", love: "사랑", career: "커리어", spread: "스프레드 선택", shuffle: "셔플 & 드로우", shuffling: "셔플 중...", reading: "리딩", shareUnlock: "3명한테 공유して 딥 리딩 잠금 해제", shareProgress: "공유함", unlocked: "잠금 해제됨", free: "무료 리딩", position: "위치", elements: "원소", keywords: "핵심어", questionPlaceholder: "질문을 생각하세요...", tapToReveal: "탭하여 열기", deepReading: "딥 리딩", shareText: "星縁でタロット占いをしたら当たりだった！試して" }};
 
 export default function TarotPage() {
   const { language } = useLanguage();
@@ -441,7 +428,7 @@ export default function TarotPage() {
                   </h3>
                   <div className="space-y-4">
                     {drawnCards.map((card, i) => (
-                      <div key={i} className="p-4 rounded-xl bg-white/5 border border-gray-200">
+                      <div key={i} className="p-4 rounded-xl bg-gray-50 border border-gray-200">
                         <div className="flex items-center gap-2 mb-3">
                           <span className="text-2xl font-bold text-gray-400">{card.image}</span>
                           <div>

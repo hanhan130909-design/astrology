@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { ArrowLeft, Moon, Star, Sun, Calendar, ChevronDown, Loader2, Info, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Moon, Star, Sun, Calendar, ChevronDown, Loader2, Info, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const CITIES: { id: string; name: Record<string, string>; lat: number; lng: number; tz: number }[] = [
   { id: 'jakarta', name: { zh: '雅加达', en: 'Jakarta', id: 'Jakarta', th: 'จาการ์ตา', vi: 'Jakarta', ms: 'Jakarta', ja: 'ジャカルタ', ko: '자카르타' }, lat: -6.2088, lng: 106.8456, tz: 7 },
@@ -46,8 +46,7 @@ const LABELS: Record<string, Record<string, string>> = {
     chart: '星盘',
     planets: '行星',
     aspects: '相位',
-    info: '什么是月返盘？',
-  },
+    info: '什么是月返盘？'},
   en: {
     title: 'Lunar Return Chart',
     subtitle: 'Moon Return - Monthly Energy Cycle Reading',
@@ -75,8 +74,7 @@ const LABELS: Record<string, Record<string, string>> = {
     chart: 'Chart',
     planets: 'Planets',
     aspects: 'Aspects',
-    info: 'What is Lunar Return?',
-  },
+    info: 'What is Lunar Return?'},
   id: {
     title: 'Bagan Lunar Return',
     subtitle: 'Kembali Bulan - Siklus Energi Bulanan',
@@ -104,9 +102,7 @@ const LABELS: Record<string, Record<string, string>> = {
     chart: 'Bagan',
     planets: 'Planet',
     aspects: 'Aspek',
-    info: 'Apa itu Lunar Return?',
-  },
-};
+    info: 'Apa itu Lunar Return?'}};
 
 const MOON_THEMES: Record<string, Record<string, { theme: string; emotional: string; reminder: string; tip: string }>> = {
   Aries: { zh: { theme: '行动与冲动', emotional: '容易急躁，需要耐心', reminder: '避免冲动决定', tip: '多进行体育锻炼，释放能量' }, en: { theme: 'Action & Impulse', emotional: 'Prone to impatience', reminder: 'Avoid hasty decisions', tip: 'Engage in physical activity' }, id: { theme: 'Aksi & Dorongan', emotional: 'Cenderung tidak sabar', reminder: 'Hindari keputusan terburu-buru', tip: 'Lakukan aktivitas fisik' }, th: { theme: 'การกระทำ', emotional: 'ใจร้อนง่าย', reminder: 'หลีกเลี่ยงการตัดสินใจเร่งรีบ', tip: 'ออกกำลังกาย' }, vi: { theme: 'Hành động', emotional: 'Dễ nóng vội', reminder: 'Tránh quyết định vội vàng', tip: 'Tập thể dục' }, ms: { theme: 'Tindakan', emotional: 'Cenderung tidak sabar', reminder: 'Elak keputusan tergesa-gesa', tip: 'Bersenam' }, ja: { theme: '行動', emotional: '短気になりがち', reminder: '焦燥な決断を避ける', tip: '運動する' }, ko: { theme: '행동', emotional: '성급해지기 쉬움', reminder: '성급한 결정 피하기', tip: '울동하기' } },
@@ -120,22 +116,18 @@ const MOON_THEMES: Record<string, Record<string, { theme: string; emotional: str
   Sagittarius: { zh: { theme: '探索与扩张', emotional: '渴望自由，热爱冒险', reminder: '避免过度乐观', tip: '学习新事物，旅行' }, en: { theme: 'Exploration & Expansion', emotional: 'Desire freedom', reminder: 'Avoid over-optimism', tip: 'Learn and travel' }, id: { theme: 'Eksplorasi & Ekspansi', emotional: 'Ingin kebebasan', reminder: 'Hindari terlalu optimistis', tip: 'Belajar dan bepergian' }, th: { theme: 'การสำรวจและการขยายตัว', emotional: 'ปรารถนาอิสรภาพ', reminder: 'หลีกเลี่ยงความคิดบวกมากเกินไป', tip: 'เรียนรู้และเดินทาง' }, vi: { theme: 'Khám phá và mở rộng', emotional: 'Khao khát tự do', reminder: 'Tránh lạc quan quá mức', tip: 'Học hỏi và du lịch' }, ms: { theme: 'Eksplorasi & Pengembangan', emotional: 'Mahukan kebebasan', reminder: 'Elak terlalu optimis', tip: 'Belajar dan melancong' }, ja: { theme: '探究と拡大', emotional: '自由を渇望', reminder: '過度の楽観を避ける', tip: '学びと旅行' }, ko: { theme: '탐구와 확장', emotional: '자유 갈망', reminder: '과도한 낙관 피하기', tip: '학습과 여행' } },
   Capricorn: { zh: { theme: '责任与成就', emotional: '务实进取，追求目标', reminder: '避免过度压力', tip: '制定计划，稳步前进' }, en: { theme: 'Responsibility & Achievement', emotional: 'Ambitious', reminder: 'Avoid over-stress', tip: 'Plan and progress' }, id: { theme: 'Tanggung Jawab & Pencapaian', emotional: 'Ambitius', reminder: 'Hindari tekanan berlebih', tip: 'Rencanakan dan maju' }, th: { theme: 'ความรับผิดชอบและความสำเร็จ', emotional: 'ทะเยอทะยาน', reminder: 'หลีกเลี่ยงความเครียดมากเกินไป', tip: 'วางแผนและก้าวหน้า' }, vi: { theme: 'Trách nhiệm và thành tựu', emotional: 'Tham vọng', reminder: 'Tránh căng thẳng quá mức', tip: 'Lập kế hoạch và tiến bộ' }, ms: { theme: 'Tanggungjawab & Pencapaian', emotional: 'Ambisius', reminder: 'Elak tekanan berlebihan', tip: 'Rancang dan maju' }, ja: { theme: '責任と達成', emotional: '野心的', reminder: '過度のストレスを避ける', tip: '計画して前進' }, ko: { theme: '책임과 성취', emotional: '야심적', reminder: '과도한 스트레스 피하기', tip: '계획하고 전진' } },
   Aquarius: { zh: { theme: '创新与人道', emotional: '追求独特，关注集体', reminder: '避免疏离', tip: '参与公益，创新思维' }, en: { theme: 'Innovation & Humanity', emotional: 'Seek uniqueness', reminder: 'Avoid detachment', tip: 'Social causes' }, id: { theme: 'Inovasi & Kemanusiaan', emotional: 'Cari keunikan', reminder: 'Hindari keterpisahan', tip: 'Kontribusi sosial' }, th: { theme: 'นวัตกรรมและมนุษยธรรม', emotional: 'แสวงหาความเป็นเอกลักษณ์', reminder: 'หลีกเลี่ยงความห่างเหิน', tip: 'กิจกรรมเพื่อสังคม' }, vi: { theme: 'Đổi mới và nhân đạo', emotional: 'Tìm kiếm sự độc đáo', reminder: 'Tránh xa cách', tip: 'Hoạt động xã hội' }, ms: { theme: 'Inovasi & Kemanusiaan', emotional: 'Cari keunikan', reminder: 'Elak keterpisahan', tip: 'Kontribusi sosial' }, ja: { theme: '革新と人道', emotional: '独自性を求める', reminder: '疎外感を避ける', tip: '社会貢献' }, ko: { theme: '혁신과 인도주의', emotional: '독특함 추구', reminder: '소외감 피하기', tip: '사회 공헌' } },
-  Pisces: { zh: { theme: '灵性与直觉', emotional: '敏感梦幻，富有同情心', reminder: '避免逃避现实', tip: '冥想，艺术创作' }, en: { theme: 'Spirituality & Intuition', emotional: 'Sensitive & dreamy', reminder: 'Avoid escapism', tip: 'Meditate and create' }, id: { theme: 'Spiritualitas & Intuisi', emotional: 'Sensitif & bermimpi', reminder: 'Hindari melarikan diri', tip: 'Meditasi dan cipta' }, th: { theme: 'จิตวิญญาณและสัญชาตญาณ', emotional: 'อ่อนไหวและฝัน', reminder: 'หลีกเลี่ยงการหนีความจริง', tip: 'ทำสมาธิและสร้างสรรค์' }, vi: { theme: 'Tinh thần và trực giác', emotional: 'Nhạy cảm và mơ mộng', reminder: 'Tránh trốn tránh', tip: 'Thiền và sáng tạo' }, ms: { theme: 'Kerohanian & Intuisi', emotional: 'Sensitif & berangan', reminder: 'Elak melarikan diri', tip: 'Meditasi dan cipta' }, ja: { theme: '霊性と直感', emotional: '敏感で夢見がち', reminder: '逃避を避ける', tip: '瞑想と創造' }, ko: { theme: '영성과 직관', emotional: '민감하고 몽상적', reminder: '도피 피하기', tip: '명상과 창조' } },
-};
+  Pisces: { zh: { theme: '灵性与直觉', emotional: '敏感梦幻，富有同情心', reminder: '避免逃避现实', tip: '冥想，艺术创作' }, en: { theme: 'Spirituality & Intuition', emotional: 'Sensitive & dreamy', reminder: 'Avoid escapism', tip: 'Meditate and create' }, id: { theme: 'Spiritualitas & Intuisi', emotional: 'Sensitif & bermimpi', reminder: 'Hindari melarikan diri', tip: 'Meditasi dan cipta' }, th: { theme: 'จิตวิญญาณและสัญชาตญาณ', emotional: 'อ่อนไหวและฝัน', reminder: 'หลีกเลี่ยงการหนีความจริง', tip: 'ทำสมาธิและสร้างสรรค์' }, vi: { theme: 'Tinh thần và trực giác', emotional: 'Nhạy cảm và mơ mộng', reminder: 'Tránh trốn tránh', tip: 'Thiền và sáng tạo' }, ms: { theme: 'Kerohanian & Intuisi', emotional: 'Sensitif & berangan', reminder: 'Elak melarikan diri', tip: 'Meditasi dan cipta' }, ja: { theme: '霊性と直感', emotional: '敏感で夢見がち', reminder: '逃避を避ける', tip: '瞑想と創造' }, ko: { theme: '영성과 직관', emotional: '민감하고 몽상적', reminder: '도피 피하기', tip: '명상과 창조' } }};
 
 const SIGN_SYMBOLS: Record<string, string> = {
   Aries: '♈', Taurus: '♉', Gemini: '♊', Cancer: '♋', Leo: '♌', Virgo: '♍',
-  Libra: '♎', Scorpio: '♏', Sagittarius: '♐', Capricorn: '♑', Aquarius: '♒', Pisces: '♓',
-};
+  Libra: '♎', Scorpio: '♏', Sagittarius: '♐', Capricorn: '♑', Aquarius: '♒', Pisces: '♓'};
 
 const PLANET_SYMBOLS: Record<string, string> = {
   Sun: '☉', Moon: '☽', Mercury: '☿', Venus: '♀', Mars: '♂',
-  Jupiter: '♃', Saturn: '♄', Uranus: '♅', Neptune: '♆', Pluto: '♇',
-};
+  Jupiter: '♃', Saturn: '♄', Uranus: '♅', Neptune: '♆', Pluto: '♇'};
 
 const ASPECT_COLORS: Record<string, string> = {
-  Conjunction: '#FFD700', Sextile: '#4CAF50', Square: '#F44336', Trine: '#2196F3', Opposition: '#9C27B0',
-};
+  Conjunction: '#FFD700', Sextile: '#4CAF50', Square: '#F44336', Trine: '#2196F3', Opposition: '#9C27B0'};
 
 export default function LunarReturnPage() {
   const { language } = useLanguage();
@@ -172,8 +164,7 @@ export default function LunarReturnPage() {
     
     return {
       date: `${targetYear}-${String(targetMonth).padStart(2, '0')}-${String(Math.min(lunarReturnDay, 28)).padStart(2, '0')}`,
-      hour: lunarReturnHour % 24,
-    };
+      hour: lunarReturnHour % 24};
   };
 
   const handleCalculate = async () => {
@@ -196,9 +187,7 @@ export default function LunarReturnPage() {
           latitude: city.lat,
           longitude: city.lng,
           timezone: city.tz,
-          houseSystem: 'E',
-        }),
-      });
+          houseSystem: 'E'})});
 
       const data = await response.json();
       if (data.error) throw new Error(data.error);
@@ -218,9 +207,7 @@ export default function LunarReturnPage() {
           latitude: city.lat,
           longitude: city.lng,
           timezone: city.tz,
-          houseSystem: 'E',
-        }),
-      });
+          houseSystem: 'E'})});
       
       const natalData = await natalResponse.json();
       const natalChart = natalData.data || natalData;
@@ -229,8 +216,7 @@ export default function LunarReturnPage() {
         lunarReturn: chartData,
         natal: natalChart,
         lunarReturnDate: lunarReturn.date,
-        lunarReturnHour: lunarReturn.hour,
-      });
+        lunarReturnHour: lunarReturn.hour});
       
       setTab('chart');
     } catch (e: any) {
@@ -270,7 +256,7 @@ export default function LunarReturnPage() {
         </div>
 
         {/* 输入表单 */}
-        <div className="p-6 rounded-2xl bg-white/5 border border-gray-200 mb-6">
+        <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 mb-6">
           <h3 className="font-bold mb-4 flex items-center gap-2">
             <Star size={18} className="text-gray-400" />
             {labels.birthInfo}
@@ -353,7 +339,7 @@ export default function LunarReturnPage() {
         {result && (
           <>
             {/* Tab切换 */}
-            <div className="flex gap-2 p-1 rounded-xl bg-white/5 mb-6">
+            <div className="flex gap-2 p-1 rounded-xl bg-gray-50 mb-6">
               {['info', 'chart', 'planets', 'aspects'].map(t => (
                 <button key={t} onClick={() => setTab(t)}
                   className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${tab === t ? 'bg-gray-600 text-gray-900' : 'text-gray-500'}`}>
@@ -378,12 +364,12 @@ export default function LunarReturnPage() {
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="p-4 rounded-xl bg-white/5">
+                    <div className="p-4 rounded-xl bg-gray-50">
                       <div className="text-xs text-gray-500 mb-1">{labels.natalMoon}</div>
                       <div className="text-2xl">{SIGN_SYMBOLS[natalMoonSign]}</div>
                       <div className="text-sm text-gray-600">{natalMoonSign}</div>
                     </div>
-                    <div className="p-4 rounded-xl bg-white/5">
+                    <div className="p-4 rounded-xl bg-gray-50">
                       <div className="text-xs text-gray-500 mb-1">{labels.currentMoon}</div>
                       <div className="text-2xl">{SIGN_SYMBOLS[currentMoonSign]}</div>
                       <div className="text-sm text-gray-600">{currentMoonSign}</div>
@@ -393,7 +379,7 @@ export default function LunarReturnPage() {
 
                 {/* 月亮主题 */}
                 {moonTheme && (
-                  <div className="p-6 rounded-2xl bg-white/5 border border-gray-200">
+                  <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200">
                     <h3 className="font-bold mb-4 flex items-center gap-2">
                       <Star size={18} className="text-gray-600 fill-gray-400" />
                       {labels.monthlyTheme}
@@ -421,7 +407,7 @@ export default function LunarReturnPage() {
                 )}
 
                 {/* 什么是月返盘 */}
-                <div className="p-6 rounded-2xl bg-white/5 border border-gray-200">
+                <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200">
                   <h3 className="font-bold mb-4 flex items-center gap-2">
                     <Info size={18} className="text-gray-400" />
                     {labels.info}
@@ -441,7 +427,7 @@ export default function LunarReturnPage() {
 
             {/* Chart Tab */}
             {tab === 'chart' && (
-              <div className="p-6 rounded-2xl bg-white/5 border border-gray-200 text-center">
+              <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 text-center">
                 <h3 className="font-bold mb-4">{labels.chart}</h3>
                 <svg viewBox="0 0 400 400" className="w-full max-w-md mx-auto">
                   <defs>
@@ -483,13 +469,13 @@ export default function LunarReturnPage() {
 
             {/* Planets Tab */}
             {tab === 'planets' && (
-              <div className="p-6 rounded-2xl bg-white/5 border border-gray-200">
+              <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200">
                 <h3 className="font-bold mb-4">{labels.planets}</h3>
                 <div className="space-y-2">
                   {result.lunarReturn?.planets && Object.entries(result.lunarReturn.planets).map(([key, p]: [string, any]) => {
                     if (!p?.sign) return null;
                     return (
-                      <div key={key} className="flex items-center justify-between p-3 rounded-lg bg-white/5">
+                      <div key={key} className="flex items-center justify-between p-3 rounded-lg bg-gray-50">
                         <div className="flex items-center gap-3">
                           <span className="text-xl">{PLANET_SYMBOLS[key] || key[0]}</span>
                           <span className="text-gray-600">{key === 'Sun' ? (lang === 'zh' ? '太阳' : lang === 'id' ? 'Matahari' : 'Sun') : key === 'Moon' ? (lang === 'zh' ? '月亮' : lang === 'id' ? 'Bulan' : 'Moon') : key}</span>
@@ -508,11 +494,11 @@ export default function LunarReturnPage() {
 
             {/* Aspects Tab */}
             {tab === 'aspects' && (
-              <div className="p-6 rounded-2xl bg-white/5 border border-gray-200">
+              <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200">
                 <h3 className="font-bold mb-4">{labels.aspects}</h3>
                 <div className="grid gap-2">
                   {result.lunarReturn?.aspects?.slice(0, 15).map((asp: any, i: number) => (
-                    <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-white/5">
+                    <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-gray-50">
                       <div className="flex items-center gap-2">
                         <span className="text-gray-600">{PLANET_SYMBOLS[asp.planet1] || asp.planet1}</span>
                         <span style={{ color: ASPECT_COLORS[asp.aspect] || '#888' }}>{asp.aspect}</span>

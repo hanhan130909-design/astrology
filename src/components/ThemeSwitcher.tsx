@@ -24,7 +24,7 @@ export function ThemeSwitcher({ variant = "buttons", showLabel = false }: ThemeS
     return (
       <button
         onClick={() => setTheme(nextTheme)}
-        className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
+        className="w-10 h-10 rounded-lg bg-gray-50 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-100 transition-colors"
         title={`Switch to ${nextTheme} mode`}
       >
         <CurrentIcon className="w-5 h-5" />
@@ -35,7 +35,7 @@ export function ThemeSwitcher({ variant = "buttons", showLabel = false }: ThemeS
   if (variant === "dropdown") {
     return (
       <div className="relative group">
-        <button className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-gray-700 hover:text-white hover:bg-white/10 transition-colors">
+        <button className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-50 border border-white/10 text-gray-700 hover:text-white hover:bg-gray-100 transition-colors">
           {resolvedTheme === "dark" ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
           <span className="text-sm capitalize">{theme}</span>
         </button>
@@ -48,7 +48,7 @@ export function ThemeSwitcher({ variant = "buttons", showLabel = false }: ThemeS
               className={`w-full flex items-center gap-3 px-4 py-3 text-sm transition-colors first:rounded-t-xl last:rounded-b-xl ${
                 theme === t.id
                   ? "bg-gray-500/20 text-gray-300"
-                  : "text-gray-700 hover:bg-white/5"
+                  : "text-gray-700 hover:bg-gray-50"
               }`}
             >
               <t.icon className="w-4 h-4" />
@@ -62,7 +62,7 @@ export function ThemeSwitcher({ variant = "buttons", showLabel = false }: ThemeS
 
   // Buttons variant (default)
   return (
-    <div className="flex items-center gap-1 p-1 bg-white/5 rounded-lg border border-white/10">
+    <div className="flex items-center gap-1 p-1 bg-gray-50 rounded-lg border border-white/10">
       {THEMES.map((t) => (
         <button
           key={t.id}
@@ -70,7 +70,7 @@ export function ThemeSwitcher({ variant = "buttons", showLabel = false }: ThemeS
           className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-sm transition-all ${
             theme === t.id
               ? "bg-gray-500/20 text-gray-300"
-              : "text-gray-400 hover:text-white hover:bg-white/5"
+              : "text-gray-400 hover:text-white hover:bg-gray-50"
           }`}
         >
           <t.icon className="w-4 h-4" />

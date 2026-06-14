@@ -16,8 +16,7 @@ const T: Record<string, Record<string, any>> = {
     fullTitle: "完整合盘分析",
     fullDesc: "输入双方出生时间地点，获得精确的行星相位对比、关系宫位分析和契合度评分",
     cta: "开始配对分析",
-    features: ["行星相位对比", "关系宫位分析", "契合度评分", "互动模式解读"],
-  },
+    features: ["行星相位对比", "关系宫位分析", "契合度评分", "互动模式解读"]},
   en: {
     title: "Compatibility Analysis",
     subtitle: "Discover your cosmic connection",
@@ -28,8 +27,7 @@ const T: Record<string, Record<string, any>> = {
     fullTitle: "Full Synastry Analysis",
     fullDesc: "Enter both birth times and locations for precise planetary aspect comparison, relationship house analysis, and compatibility scoring",
     cta: "Start Analysis",
-    features: ["Planetary Aspect Comparison", "House Analysis", "Compatibility Score", "Dynamic Reading"],
-  },
+    features: ["Planetary Aspect Comparison", "House Analysis", "Compatibility Score", "Dynamic Reading"]},
   id: {
     title: "Analisis Kecocokan",
     subtitle: "Temukan koneksi kosmik Anda",
@@ -40,9 +38,7 @@ const T: Record<string, Record<string, any>> = {
     fullTitle: "Analisis Sinastri Lengkap",
     fullDesc: "Masukkan waktu dan lokasi lahir untuk perbandingan aspek planet yang tepat",
     cta: "Mulai Analisis",
-    features: ["Perbandingan Aspek", "Analisis Rumah", "Skor Kecocokan", "Bacaan Dinamis"],
-  },
-};
+    features: ["Perbandingan Aspek", "Analisis Rumah", "Skor Kecocokan", "Bacaan Dinamis"]}};
 
 export default function CompatibilityPage() {
   const { language } = useLanguage();

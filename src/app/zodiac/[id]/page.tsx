@@ -27,8 +27,7 @@ const SIGN_DATA: Record<string, {
     weaknesses: { id: ["Tidak sabar", "Pendek kata", "Impulsif", "Egois"], zh: ["缺乏耐心", "脾气急躁", "冲动", "自我中心"], en: ["Impatient", "Short-tempered", "Impulsive", "Self-centered"] },
     compatibility: ["leo", "sagittarius", "gemini", "aquarius"],
     lucky: { numbers: [1, 9], colors: ["Red", "Orange"], days: ["Tuesday"] },
-    description: { id: "Aries adalah zodiak pertama, melambangkan awal baru dan kepemimpinan.", zh: "白羊座是第一个星座，象征着新的开始和领导力。", en: "Aries is the first zodiac sign, symbolizing new beginnings and leadership." },
-  },
+    description: { id: "Aries adalah zodiak pertama, melambangkan awal baru dan kepemimpinan.", zh: "白羊座是第一个星座，象征着新的开始和领导力。", en: "Aries is the first zodiac sign, symbolizing new beginnings and leadership." }},
   taurus: {
     name: { id: "Taurus", zh: "金牛座", en: "Taurus" },
     symbol: "♉", element: "earth", mode: "fixed", ruler: "Venus", dates: "Apr 20 - May 20",
@@ -37,8 +36,7 @@ const SIGN_DATA: Record<string, {
     weaknesses: { id: ["Keras kepala", "Posesif", "Materiilistik", "Suka menunda"], zh: ["固执", "占有欲强", "物质主义", "懒惰"], en: ["Stubborn", "Possessive", "Materialistic", "Lazy"] },
     compatibility: ["virgo", "capricorn", "cancer", "pisces"],
     lucky: { numbers: [2, 6], colors: ["Green", "Pink"], days: ["Friday"] },
-    description: { id: "Taurus dikuasai oleh Venus, planet cinta dan keindahan.", zh: "金牛座由金星掌管，象征爱与美。", en: "Taurus is ruled by Venus, planet of love and beauty." },
-  },
+    description: { id: "Taurus dikuasai oleh Venus, planet cinta dan keindahan.", zh: "金牛座由金星掌管，象征爱与美。", en: "Taurus is ruled by Venus, planet of love and beauty." }},
   gemini: {
     name: { id: "Gemini", zh: "双子座", en: "Gemini" },
     symbol: "♊", element: "air", mode: "mutable", ruler: "Mercury", dates: "May 21 - Jun 20",
@@ -47,8 +45,7 @@ const SIGN_DATA: Record<string, {
     weaknesses: { id: ["Tidak konsisten", "Superfisial", "Gelisah", "Tidak dapat memutuskan"], zh: ["三心二意", "肤浅", "浮躁", "优柔寡断"], en: ["Inconsistent", "Superficial", "Restless", "Indecisive"] },
     compatibility: ["libra", "aquarius", "aries", "leo"],
     lucky: { numbers: [5, 3], colors: ["Yellow", "Light Blue"], days: ["Wednesday"] },
-    description: { id: "Gemini dikuasai oleh Merkurius, planet komunikasi.", zh: "双子座由水星掌管，代表沟通。", en: "Gemini is ruled by Mercury, planet of communication." },
-  },
+    description: { id: "Gemini dikuasai oleh Merkurius, planet komunikasi.", zh: "双子座由水星掌管，代表沟通。", en: "Gemini is ruled by Mercury, planet of communication." }},
   cancer: {
     name: { id: "Cancer", zh: "巨蟹座", en: "Cancer" },
     symbol: "♋", element: "water", mode: "cardinal", ruler: "Moon", dates: "Jun 21 - Jul 22",
@@ -57,8 +54,7 @@ const SIGN_DATA: Record<string, {
     weaknesses: { id: ["Terlalu sensitif", "Mood swing", "Cengeng", "Tidak mau melepas"], zh: ["过于敏感", "情绪化", "爱哭", "不愿放手"], en: ["Overly sensitive", "Moody", "Clingy", "Unable to let go"] },
     compatibility: ["scorpio", "pisces", "taurus", "virgo"],
     lucky: { numbers: [2, 7], colors: ["White", "Silver"], days: ["Monday"] },
-    description: { id: "Cancer dikuasai oleh Bulan, melambangkan emosi dan naluri.", zh: "巨蟹座由月亮掌管，象征情感和直觉。", en: "Cancer is ruled by the Moon, representing emotions and instincts." },
-  },
+    description: { id: "Cancer dikuasai oleh Bulan, melambangkan emosi dan naluri.", zh: "巨蟹座由月亮掌管，象征情感和直觉。", en: "Cancer is ruled by the Moon, representing emotions and instincts." }},
   leo: {
     name: { id: "Leo", zh: "狮子座", en: "Leo" },
     symbol: "♌", element: "fire", mode: "fixed", ruler: "Sun", dates: "Jul 23 - Aug 22",
@@ -67,8 +63,7 @@ const SIGN_DATA: Record<string, {
     weaknesses: { id: ["Sombong", "Dominan", "Tidak sabar", "Mencari perhatian"], zh: ["傲慢", "强势", "不耐烦", "寻求关注"], en: ["Arrogant", "Dominating", "Impatient", "Attention-seeking"] },
     compatibility: ["aries", "sagittarius", "gemini", "libra"],
     lucky: { numbers: [1, 3], colors: ["Gold", "Orange"], days: ["Sunday"] },
-    description: { id: "Leo dikuasai oleh Matahari, sumber energi dan vitalitas.", zh: "狮子座由太阳掌管，是能量和活力的源泉。", en: "Leo is ruled by the Sun, source of energy and vitality." },
-  },
+    description: { id: "Leo dikuasai oleh Matahari, sumber energi dan vitalitas.", zh: "狮子座由太阳掌管，是能量和活力的源泉。", en: "Leo is ruled by the Sun, source of energy and vitality." }},
   virgo: {
     name: { id: "Virgo", zh: "处女座", en: "Virgo" },
     symbol: "♍", element: "earth", mode: "mutable", ruler: "Mercury", dates: "Aug 23 - Sep 22",
@@ -77,8 +72,7 @@ const SIGN_DATA: Record<string, {
     weaknesses: { id: ["Perfeksionis", "Kritis", "Khawatir berlebihan", "Pemalu"], zh: ["完美主义", "挑剔", "过度担忧", "害羞"], en: ["Perfectionist", "Critical", "Overthinking", "Shy"] },
     compatibility: ["taurus", "capricorn", "cancer", "scorpio"],
     lucky: { numbers: [5, 6], colors: ["Navy Blue", "Grey"], days: ["Wednesday"] },
-    description: { id: "Virgo dikuasai oleh Merkurius, planet pikiran.", zh: "处女座由水星掌管，代表思维。", en: "Virgo is ruled by Mercury, planet of mind." },
-  },
+    description: { id: "Virgo dikuasai oleh Merkurius, planet pikiran.", zh: "处女座由水星掌管，代表思维。", en: "Virgo is ruled by Mercury, planet of mind." }},
   libra: {
     name: { id: "Libra", zh: "天秤座", en: "Libra" },
     symbol: "♎", element: "air", mode: "cardinal", ruler: "Venus", dates: "Sep 23 - Oct 22",
@@ -87,8 +81,7 @@ const SIGN_DATA: Record<string, {
     weaknesses: { id: ["Tidak dapat memutuskan", "Menghindari konflik", "Mudah terpengaruh", "Plasitama"], zh: ["优柔寡断", "回避冲突", "容易受影响", "讨好型人格"], en: ["Indecisive", "Conflict-avoidant", "Easily influenced", "People-pleaser"] },
     compatibility: ["gemini", "aquarius", "leo", "sagittarius"],
     lucky: { numbers: [6, 9], colors: ["Pink", "Blue"], days: ["Friday"] },
-    description: { id: "Libra dikuasai oleh Venus, melambangkan cinta dan harmoni.", zh: "天秤座由金星掌管，象征爱与和谐。", en: "Libra is ruled by Venus, representing love and harmony." },
-  },
+    description: { id: "Libra dikuasai oleh Venus, melambangkan cinta dan harmoni.", zh: "天秤座由金星掌管，象征爱与和谐。", en: "Libra is ruled by Venus, representing love and harmony." }},
   scorpio: {
     name: { id: "Scorpio", zh: "天蝎座", en: "Scorpio" },
     symbol: "♏", element: "water", mode: "fixed", ruler: "Pluto", dates: "Oct 23 - Nov 21",
@@ -97,8 +90,7 @@ const SIGN_DATA: Record<string, {
     weaknesses: { id: ["Cemburu", "Rahasia", "Manipulatif", "Pendendam"], zh: ["嫉妒", "神秘", "控制欲强", "记仇"], en: ["Jealous", "Secretive", "Manipulative", "Vengeful"] },
     compatibility: ["cancer", "pisces", "virgo", "capricorn"],
     lucky: { numbers: [8, 11], colors: ["Black", "Maroon"], days: ["Tuesday"] },
-    description: { id: "Scorpio dikuasai oleh Pluto, planet transformasi.", zh: "天蝎座由冥王星掌管，代表转变。", en: "Scorpio is ruled by Pluto, planet of transformation." },
-  },
+    description: { id: "Scorpio dikuasai oleh Pluto, planet transformasi.", zh: "天蝎座由冥王星掌管，代表转变。", en: "Scorpio is ruled by Pluto, planet of transformation." }},
   sagittarius: {
     name: { id: "Sagittarius", zh: "射手座", en: "Sagittarius" },
     symbol: "♐", element: "fire", mode: "mutable", ruler: "Jupiter", dates: "Nov 22 - Dec 21",
@@ -107,8 +99,7 @@ const SIGN_DATA: Record<string, {
     weaknesses: { id: ["Tidak sabar", "Tidak konsisten", "Blak-blakan", "Kurang tanggung jawab"], zh: ["不耐烦", "三心二意", "直言不讳", "不够负责"], en: ["Impatient", "Inconsistent", "Tactless", "Irresponsible"] },
     compatibility: ["aries", "leo", "libra", "aquarius"],
     lucky: { numbers: [3, 9], colors: ["Purple", "Turquoise"], days: ["Thursday"] },
-    description: { id: "Sagittarius dikuasai oleh Jupiter, planet keberuntungan.", zh: "射手座由木星掌管，代表幸运和扩张。", en: "Sagittarius is ruled by Jupiter, planet of luck and expansion." },
-  },
+    description: { id: "Sagittarius dikuasai oleh Jupiter, planet keberuntungan.", zh: "射手座由木星掌管，代表幸运和扩张。", en: "Sagittarius is ruled by Jupiter, planet of luck and expansion." }},
   capricorn: {
     name: { id: "Capricorn", zh: "摩羯座", en: "Capricorn" },
     symbol: "♑", element: "earth", mode: "cardinal", ruler: "Saturn", dates: "Dec 22 - Jan 19",
@@ -117,8 +108,7 @@ const SIGN_DATA: Record<string, {
     weaknesses: { id: ["Kaku", "Pesimis", "Keras", "Terlalu serius"], zh: ["固执", "悲观", "严厉", "过于严肃"], en: ["Stubborn", "Pessimistic", "Harsh", "Too serious"] },
     compatibility: ["taurus", "virgo", "scorpio", "pisces"],
     lucky: { numbers: [4, 8], colors: ["Brown", "Black"], days: ["Saturday"] },
-    description: { id: "Capricorn dikuasai oleh Saturnus, planet struktur dan disiplin.", zh: "摩羯座由土星掌管，代表结构和纪律。", en: "Capricorn is ruled by Saturn, planet of structure and discipline." },
-  },
+    description: { id: "Capricorn dikuasai oleh Saturnus, planet struktur dan disiplin.", zh: "摩羯座由土星掌管，代表结构和纪律。", en: "Capricorn is ruled by Saturn, planet of structure and discipline." }},
   aquarius: {
     name: { id: "Aquarius", zh: "水瓶座", en: "Aquarius" },
     symbol: "♒", element: "air", mode: "fixed", ruler: "Uranus", dates: "Jan 20 - Feb 18",
@@ -127,8 +117,7 @@ const SIGN_DATA: Record<string, {
     weaknesses: { id: ["Tidak emosional", "Keras kepala", "Tidak dapat diprediksi", "Aloof"], zh: ["缺乏情感", "固执", "不可预测", "疏离"], en: ["Unemotional", "Stubborn", "Unpredictable", "Aloof"] },
     compatibility: ["gemini", "libra", "aries", "sagittarius"],
     lucky: { numbers: [4, 7], colors: ["Electric Blue", "Silver"], days: ["Saturday"] },
-    description: { id: "Aquarius dikuasai oleh Uranus, planet inovasi.", zh: "水瓶座由天王星掌管，代表创新。", en: "Aquarius is ruled by Uranus, planet of innovation." },
-  },
+    description: { id: "Aquarius dikuasai oleh Uranus, planet inovasi.", zh: "水瓶座由天王星掌管，代表创新。", en: "Aquarius is ruled by Uranus, planet of innovation." }},
   pisces: {
     name: { id: "Pisces", zh: "双鱼座", en: "Pisces" },
     symbol: "♓", element: "water", mode: "mutable", ruler: "Neptune", dates: "Feb 19 - Mar 20",
@@ -137,16 +126,13 @@ const SIGN_DATA: Record<string, {
     weaknesses: { id: ["Terlalu sensitif", "Menghindari realitas", "Mudah terpengaruh", "Lemah"], zh: ["过于敏感", "逃避现实", "易受影响", "意志薄弱"], en: ["Overly sensitive", "Escapist", "Easily influenced", "Weak-willed"] },
     compatibility: ["cancer", "scorpio", "taurus", "capricorn"],
     lucky: { numbers: [3, 7], colors: ["Sea Green", "Lavender"], days: ["Thursday"] },
-    description: { id: "Pisces dikuasai oleh Neptunus, planet mimpi dan intuisi.", zh: "双鱼座由海王星掌管，代表梦想和直觉。", en: "Pisces is ruled by Neptune, planet of dreams and intuition." },
-  },
-};
+    description: { id: "Pisces dikuasai oleh Neptunus, planet mimpi dan intuisi.", zh: "双鱼座由海王星掌管，代表梦想和直觉。", en: "Pisces is ruled by Neptune, planet of dreams and intuition." }}};
 
 const ELEMENT_COLORS: Record<string, string> = { fire: "#FF4500", earth: "#8B4513", air: "#87CEEB", water: "#4169E1" };
 const MODE_NAMES: Record<string, Record<string, string>> = {
   cardinal: { id: "Kardinal", zh: "基本宫", en: "Cardinal" },
   fixed: { id: "Tetap", zh: "固定宫", en: "Fixed" },
-  mutable: { id: "Berubah", zh: "变动宫", en: "Mutable" },
-};
+  mutable: { id: "Berubah", zh: "变动宫", en: "Mutable" }};
 
 export default function ZodiacDetailPage() {
   const params = useParams();
@@ -164,8 +150,7 @@ export default function ZodiacDetailPage() {
     numbers: language === "zh" ? "幸运数字" : language === "id" ? "Angka Beruntung" : "Lucky Numbers",
     colors: language === "zh" ? "幸运颜色" : language === "id" ? "Warna Beruntung" : "Lucky Colors",
     days: language === "zh" ? "幸运日" : language === "id" ? "Hari Beruntung" : "Lucky Days",
-    bestMatch: language === "zh" ? "最配星座" : language === "id" ? "Paling Cocok" : "Best Match",
-  };
+    bestMatch: language === "zh" ? "最配星座" : language === "id" ? "Paling Cocok" : "Best Match"};
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#f8fafc] via-[#1a1a3a] to-[#f8fafc] text-white">

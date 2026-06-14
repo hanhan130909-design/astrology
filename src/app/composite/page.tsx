@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useAuth } from '@/contexts/AuthContext';
-import { ArrowLeft, Users, Heart, Star, ChevronDown, Save, Share2, Download, Sparkles, Loader2 } from 'lucide-react';
+import { Users, Heart, Star, ChevronDown, Save, Share2, Download, Sparkles, Loader2 } from 'lucide-react';
 import { saveCompositeChart } from '@/lib/firebase';
 import html2canvas from 'html2canvas';
 import ProfessionalNatalChart from '@/components/ProfessionalNatalChart';
@@ -66,8 +66,7 @@ const LABELS: Record<string, Record<string, string>> = {
   copyLink: { zh: '复制链接', en: 'Copy Link', id: 'Salin Tautan' },
   linkCopied: { zh: '链接已复制！', en: 'Link copied!', id: 'Tautan disalin!' },
   download: { zh: '下载图片', en: 'Download', id: 'Unduh' },
-  badge: { zh: '合盘分析', en: 'Synastry & Composite', id: 'Sinastri & Komposit' },
-};
+  badge: { zh: '合盘分析', en: 'Synastry & Composite', id: 'Sinastri & Komposit' }};
 
 function t(key: string, lang: string): string {
   return LABELS[key]?.[lang] || LABELS[key]?.en || key;
@@ -477,7 +476,7 @@ export default function CompositePage() {
                       const colors: Record<string,string> = {Conjunction:'#FFD700',Trine:'#4488FF',Square:'#FF4444',Opposition:'#FF8800',Sextile:'#00FF88'};
                       const isGood = ['Trine','Sextile'].includes(a.type);
                       return (
-                        <div key={i} className={`p-3 rounded-lg ${isGood ? 'bg-gray-900/20 border border-gray-500/20' : 'bg-gray-100 border border-gray-200'}`}>
+                        <div key={i} className={`p-3 rounded-lg ${isGood ? 'bg-gray-50 border border-gray-500/20' : 'bg-gray-100 border border-gray-200'}`}>
                           <div className="flex items-center justify-between">
                             <span className="text-gray-900">
                               <span className="text-gray-300">{a.planet1}</span>
@@ -545,37 +544,32 @@ export default function CompositePage() {
         {/* Description Section */}
         <section className="max-w-4xl mx-auto mt-12 mb-8 px-4">
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white/5 rounded-xl p-5">
+            <div className="bg-gray-50 rounded-xl p-5">
               合盘分析通过比较两人出生星盘，揭示关系的深层动力与潜在挑战。组合盘展现共同能量，比较盘呈现相互影响。
             </div>
-            <div className="bg-white/5 rounded-xl p-5">
+            <div className="bg-gray-50 rounded-xl p-5">
               Composite chart analysis compares two natal charts to reveal deep dynamics and potential challenges. Composite shows shared energy, Synastry shows mutual influences.
             </div>
-            <div className="bg-white/5 rounded-xl p-5">
+            <div className="bg-gray-50 rounded-xl p-5">
               Analisis bagan komposit membandingkan dua bagan lahir untuk menunjukkan dinamika mendalam dan potensi tantangan. Komposit menunjukkan energi bersama, Sinastri menunjukkan pengaruh mutual.
             </div>
           </div>
         </section>
 
-        {/* SEO Description Section */}
+        {/* SEO Description */}
         <section className="max-w-4xl mx-auto mt-12 mb-8 px-4">
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-lg font-semibold text-gray-700 mb-2">中文</h3>
-              <p className="text-gray-600/80 text-sm leading-relaxed">合盘（Composite Chart）揭示两人关系的灵魂蓝图。计算两人星盘中点，生成代表「关系本身」的星盘。了解深层动力、潜在挑战，AI 提供实用建议。</p>
-            </div>
-            <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-lg font-semibold text-gray-700 mb-2">English</h3>
-              <p className="text-gray-600/80 text-sm leading-relaxed">The Composite Chart reveals the soul blueprint of a relationship. By calculating midpoints between two natal charts, it generates a chart representing the relationship itself. Understand deep dynamics, potential challenges, and get AI-powered practical advice.</p>
-            </div>
-            <div className="bg-white/5 rounded-xl p-5">
-              <h3 className="text-lg font-semibold text-gray-700 mb-2">Bahasa Indonesia</h3>
-              <p className="text-gray-600/80 text-sm leading-relaxed">Composite Chart mengungkap cetak biru jiwa sebuah hubungan. Dengan menghitung titik tengah antara dua chart natal, menghasilkan chart yang mewakili hubungan itu sendiri.</p>
-            </div>
+          <div className="bg-gray-50 rounded-xl p-6 text-center">
+            <p className="text-sm text-gray-500 leading-relaxed">
+              {language === 'zh' 
+                ? '合盘（Composite Chart）揭示两人关系的灵魂蓝图。计算两人星盘中点，生成代表「关系本身」的星盘，了解深层动力与潜在挑战。'
+                : language === 'id'
+                ? 'Composite Chart mengungkap cetak biru jiwa sebuah hubungan. Dengan menghitung titik tengah antara dua chart natal, menghasilkan chart yang mewakili hubungan itu sendiri.'
+                : 'The Composite Chart reveals the soul blueprint of a relationship by calculating midpoints between two natal charts.'}
+            </p>
           </div>
         </section>
 
-        {/* FAQ Section */}
+{/* FAQ Section */}
         <section className="max-w-4xl mx-auto mb-12 px-4">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">{t('faq', language)}</h2>
           <div className="space-y-3">
@@ -583,7 +577,7 @@ export default function CompositePage() {
               <div key={i} className="border border-gray-200 rounded-lg overflow-hidden">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? -1 : i)}
-                  className="w-full px-4 py-3 flex items-center justify-between bg-gray-900/20 hover:bg-gray-900/30 transition-colors text-left"
+                  className="w-full px-4 py-3 flex items-center justify-between bg-gray-50 hover:bg-gray-100 transition-colors text-left"
                 >
                   <span className="text-gray-900 text-sm">{language === 'zh' ? item.q : (language === 'en' ? item.q_en : item.q_id)}</span>
                   <ChevronDown size={18} className={`text-gray-700 transition-transform ${openFaq === i ? 'rotate-180' : ''}`}/>

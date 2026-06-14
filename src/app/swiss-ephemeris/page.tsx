@@ -15,8 +15,7 @@ export default function SwissEphemerisPage() {
     vi: { title: "Bảng Thiên Văn Thụy Sĩ", subtitle: "Công cụ tính thiên văn chuyên nghiệp" },
     ms: { title: "Jadual Swiss", subtitle: "Enjin pengiraan astronomi profesional" },
     ja: { title: "スイス・エフェメリス", subtitle: "プロフェッショナル天文学計算エンジン" },
-    ko: { title: "스위스 천문학력", subtitle: "전문 천문학 계산 엔진" },
-  };
+    ko: { title: "스위스 천문학력", subtitle: "전문 천문학 계산 엔진" }};
 
   const t = titles[language] || titles.zh;
 

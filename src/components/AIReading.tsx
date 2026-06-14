@@ -432,7 +432,7 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
     <div className="space-y-6">
       {/* 输入表单 */}
       {!preloadedChart && (
-        <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+        <div className="p-6 rounded-2xl bg-gray-50 border border-white/10">
           <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
             <Sparkles size={20} className="text-gray-400" />
             {L.title}
@@ -496,7 +496,7 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
           </h3>
 
           {sections.map(s => (
-            <div key={s.id} className="p-5 rounded-2xl bg-white/5 border border-white/10">
+            <div key={s.id} className="p-5 rounded-2xl bg-gray-50 border border-white/10">
               <h4 className="font-bold mb-2 flex items-center gap-2" style={{ color: s.color }}>
                 <span className="text-xl">{s.icon}</span>{s.title}
               </h4>
@@ -530,7 +530,7 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
           {canViewDeep && deepSections.length > 0 && (
             <div className="p-5 space-y-4">
               {deepSections.map(s => (
-                <div key={s.id} className="p-4 rounded-xl bg-white/5">
+                <div key={s.id} className="p-4 rounded-xl bg-gray-50">
                   <h4 className="font-bold mb-2 flex items-center gap-2 text-sm" style={{ color: s.color }}>
                     <span>{s.icon}</span>{s.title}
                   </h4>
@@ -538,7 +538,7 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
                   {s.traits.length > 0 && (
                     <div className="flex flex-wrap gap-2">
                       {s.traits.map((t: string, i: number) => (
-                        <span key={i} className="px-2 py-1 rounded-lg text-xs bg-white/5 text-gray-500">{t}</span>
+                        <span key={i} className="px-2 py-1 rounded-lg text-xs bg-gray-50 text-gray-500">{t}</span>
                       ))}
                     </div>
                   )}
@@ -555,10 +555,10 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
               <div className="relative">
                 <div className="space-y-3 blur-sm pointer-events-none select-none opacity-60">
                   {deepSections.slice(0, 2).map(s => (
-                    <div key={s.id} className="p-4 rounded-xl bg-white/5">
-                      <div className="h-4 bg-white/10 rounded mb-2 w-3/4" />
-                      <div className="h-3 bg-white/5 rounded mb-1 w-full" />
-                      <div className="h-3 bg-white/5 rounded w-2/3" />
+                    <div key={s.id} className="p-4 rounded-xl bg-gray-50">
+                      <div className="h-4 bg-gray-100 rounded mb-2 w-3/4" />
+                      <div className="h-3 bg-gray-50 rounded mb-1 w-full" />
+                      <div className="h-3 bg-gray-50 rounded w-2/3" />
                     </div>
                   ))}
                 </div>
@@ -589,9 +589,9 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
 
               {/* 分隔线 */}
               <div className="flex items-center gap-3">
-                <div className="flex-1 h-px bg-white/10" />
+                <div className="flex-1 h-px bg-gray-100" />
                 <span className="text-xs text-gray-400">OR</span>
-                <div className="flex-1 h-px bg-white/10" />
+                <div className="flex-1 h-px bg-gray-100" />
               </div>
 
               {/* 解锁方式2：WhatsApp 分享 */}
@@ -607,7 +607,7 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
                 {/* 进度条 */}
                 <div className="flex gap-2 mb-3">
                   {[1, 2, 3].map(n => (
-                    <div key={n} className={`flex-1 h-2 rounded-full transition-all ${shareCount >= n ? "bg-gray-500" : "bg-white/10"}`} />
+                    <div key={n} className={`flex-1 h-2 rounded-full transition-all ${shareCount >= n ? "bg-gray-500" : "bg-gray-100"}`} />
                   ))}
                 </div>
                 <div className="text-xs text-gray-500 mb-3">{L.shareProgress}: {shareCount}/3</div>
@@ -616,7 +616,7 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
                   <div className="grid grid-cols-3 gap-2">
                     {[1, 2, 3].map(n => (
                       <button key={n} onClick={() => handleShare(n)} disabled={shareCount >= n}
-                        className={`py-2 rounded-lg text-xs font-medium flex items-center justify-center gap-1 transition-all ${shareCount >= n ? "bg-gray-500/20 text-gray-400 border border-gray-500/30" : "bg-white/5 hover:bg-gray-500/20 text-gray-600 hover:text-gray-300 border border-white/10"}`}>
+                        className={`py-2 rounded-lg text-xs font-medium flex items-center justify-center gap-1 transition-all ${shareCount >= n ? "bg-gray-500/20 text-gray-400 border border-gray-500/30" : "bg-gray-50 hover:bg-gray-500/20 text-gray-600 hover:text-gray-300 border border-white/10"}`}>
                         {shareCount >= n ? <CheckCircle size={12} /> : <Share2 size={12} />}
                         {L.friend} {n}
                       </button>

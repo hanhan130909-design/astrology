@@ -3,8 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { 
-  ArrowLeft, Users, Plus, X, ChevronRight, Heart, 
+import { Users, Plus, X, ChevronRight, Heart, 
   Sparkles, GitCompare, Info
 } from "lucide-react";
 // ProfessionalNatalChart component available at /natal
@@ -66,8 +65,7 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     air: "风象",
     water: "水象",
     synastry: "合盘分析",
-    composite: "组合中点盘",
-  },
+    composite: "组合中点盘"},
   en: {
     title: "Chart Comparison",
     subtitle: "Compare two charts, explore relationship dynamics",
@@ -91,8 +89,7 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     air: "Air",
     water: "Water",
     synastry: "Synastry",
-    composite: "Composite",
-  },
+    composite: "Composite"},
   id: {
     title: "Perbandingan Chart",
     subtitle: "Bandingkan dua chart, jelajahi dinamika hubungan",
@@ -116,8 +113,7 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     air: "Udara",
     water: "Air",
     synastry: "Sinastri",
-    composite: "Komposit",
-  },
+    composite: "Komposit"},
   th: {
     title: "เปรียบเทียบดวง",
     subtitle: "เปรียบเทียบสองดวง สำรวจพลังความสัมพันธ์",
@@ -141,8 +137,7 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     air: "ลม",
     water: "น้ำ",
     synastry: "ความเข้ากัน",
-    composite: "แผนภูมิคู่",
-  },
+    composite: "แผนภูมิคู่"},
   vi: {
     title: "So Sánh Bản Đồ Sao",
     subtitle: "So sánh hai bản đồ, khám phá động lực quan hệ",
@@ -166,8 +161,7 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     air: "Khí",
     water: "Thủy",
     synastry: "Tương hợp",
-    composite: "Bản đồ kết hợp",
-  },
+    composite: "Bản đồ kết hợp"},
   ms: {
     title: "Perbandingan Carta",
     subtitle: "Bandingkan dua carta, terokai dinamik hubungan",
@@ -191,8 +185,7 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     air: "Udara",
     water: "Air",
     synastry: "Keserasian",
-    composite: "Carta Komposit",
-  },
+    composite: "Carta Komposit"},
   ja: {
     title: "星盤比較",
     subtitle: "二つの星盤を比較し、関係のダイナミクスを探る",
@@ -216,8 +209,7 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     air: "風",
     water: "水",
     synastry: "シナストリー",
-    composite: "コンポジット",
-  },
+    composite: "コンポジット"},
   ko: {
     title: "차트 비교",
     subtitle: "두 차트를 비교하여 관계 역학을 탐구하세요",
@@ -241,9 +233,7 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     air: "바람",
     water: "물",
     synastry: "시나스트리",
-    composite: "컴포짓",
-  },
-};
+    composite: "컴포짓"}};
 
 export default function ComparePage() {
   const { language } = useLanguage();
@@ -295,8 +285,7 @@ export default function ComparePage() {
       ],
       strengths: ["情感理解力强", "价值观相似", "沟通顺畅"],
       challenges: ["偶尔固执", "需要更多独处时间"],
-      advice: "尊重彼此的独立性，同时保持开放的沟通。",
-    });
+      advice: "尊重彼此的独立性，同时保持开放的沟通。"});
     setLoading(false);
   };
 
@@ -316,7 +305,7 @@ export default function ComparePage() {
 
         {/* Tab Switch */}
         <div className="flex justify-center mb-8">
-          <div className="flex bg-white/5 rounded-xl p-1">
+          <div className="flex bg-gray-50 rounded-xl p-1">
             <button
               onClick={() => setActiveTab("synastry")}
               className={`px-6 py-2 rounded-lg text-sm font-medium transition-all ${
@@ -343,7 +332,7 @@ export default function ComparePage() {
         {/* People Forms */}
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           {people.map((person, index) => (
-            <div key={person.id} className="bg-white/5 rounded-2xl p-6 border border-gray-200">
+            <div key={person.id} className="bg-gray-50 rounded-2xl p-6 border border-gray-200">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
                   <Users className="w-5 h-5 text-gray-400" />
@@ -368,7 +357,7 @@ export default function ComparePage() {
                     type="text"
                     value={person.name}
                     onChange={(e) => updatePerson(person.id, "name", e.target.value)}
-                    className="w-full px-4 py-2 bg-white/5 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-500 focus:border-gray-500/50 focus:outline-none"
+                    className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-500 focus:border-gray-500/50 focus:outline-none"
                     placeholder={language === "zh" ? "输入姓名" : language === "id" ? "Masukkan nama" : "Enter name"}
                   />
                 </div>
@@ -379,7 +368,7 @@ export default function ComparePage() {
                       type="date"
                       value={person.birthDate}
                       onChange={(e) => updatePerson(person.id, "birthDate", e.target.value)}
-                      className="w-full px-4 py-2 bg-white/5 border border-gray-200 rounded-xl text-gray-900 focus:border-gray-500/50 focus:outline-none"
+                      className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 focus:border-gray-500/50 focus:outline-none"
                     />
                   </div>
                   <div>
@@ -388,7 +377,7 @@ export default function ComparePage() {
                       type="time"
                       value={person.birthTime}
                       onChange={(e) => updatePerson(person.id, "birthTime", e.target.value)}
-                      className="w-full px-4 py-2 bg-white/5 border border-gray-200 rounded-xl text-gray-900 focus:border-gray-500/50 focus:outline-none"
+                      className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 focus:border-gray-500/50 focus:outline-none"
                     />
                   </div>
                 </div>
@@ -398,7 +387,7 @@ export default function ComparePage() {
                     type="text"
                     value={person.location}
                     onChange={(e) => updatePerson(person.id, "location", e.target.value)}
-                    className="w-full px-4 py-2 bg-white/5 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-500 focus:border-gray-500/50 focus:outline-none"
+                    className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-500 focus:border-gray-500/50 focus:outline-none"
                     placeholder={language === "zh" ? "城市名称" : language === "id" ? "Nama kota" : "City name"}
                   />
                 </div>
@@ -412,7 +401,7 @@ export default function ComparePage() {
           <div className="flex justify-center mb-8">
             <button
               onClick={addPerson}
-              className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-gray-200 rounded-xl text-gray-700 hover:bg-white/10 hover:text-gray-700 transition-colors"
+              className="flex items-center gap-2 px-6 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-700 hover:bg-gray-100 hover:text-gray-700 transition-colors"
             >
               <Plus className="w-5 h-5" />
               {t.addPerson}
@@ -463,7 +452,7 @@ export default function ComparePage() {
             </div>
 
             {/* Elements */}
-            <div className="bg-white/5 rounded-2xl p-6 border border-gray-200">
+            <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200">
               <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <Sparkles className="w-5 h-5 text-gray-400" />
                 {t.elements}
@@ -475,7 +464,7 @@ export default function ComparePage() {
                     <div className="text-sm text-gray-400">
                       {t[element as keyof typeof t]}
                     </div>
-                    <div className="h-2 bg-white/10 rounded-full mt-2 overflow-hidden">
+                    <div className="h-2 bg-gray-100 rounded-full mt-2 overflow-hidden">
                       <div
                         className="h-full bg-gradient-to-r from-gray-500 to-gray-500 rounded-full transition-all"
                         style={{ width: `${value}%` }}
@@ -487,11 +476,11 @@ export default function ComparePage() {
             </div>
 
             {/* Aspects */}
-            <div className="bg-white/5 rounded-2xl p-6 border border-gray-200">
+            <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">{t.aspects}</h3>
               <div className="space-y-3">
                 {result.aspects.map((aspect, idx) => (
-                  <div key={idx} className="flex items-center gap-4 p-4 bg-white/5 rounded-xl">
+                  <div key={idx} className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
                     <div className="flex items-center gap-2">
                       <span className="text-gray-400 font-medium">{aspect.planet1}</span>
                       <span className="text-gray-500">→</span>

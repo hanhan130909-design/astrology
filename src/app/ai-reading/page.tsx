@@ -20,8 +20,7 @@ const T: Record<string, Record<string, any>> = {
       { icon: "🌍", title: "多语言支持", desc: "中文、英文、印尼语等多种语言" },
     ],
     cta: "开始AI解读",
-    tip: "提示：建议先生成本命盘（/natal），获得完整的出生数据后再使用AI解读",
-  },
+    tip: "提示：建议先生成本命盘（/natal），获得完整的出生数据后再使用AI解读"},
   en: {
     title: "AI Chart Reading",
     subtitle: "Deep astrological insights powered by AI",
@@ -36,8 +35,7 @@ const T: Record<string, Record<string, any>> = {
       { icon: "🌍", title: "Multi-language", desc: "Chinese, English, Indonesian support" },
     ],
     cta: "Start AI Reading",
-    tip: "Tip: Generate your natal chart first (/natal) for complete birth data before AI reading",
-  },
+    tip: "Tip: Generate your natal chart first (/natal) for complete birth data before AI reading"},
   id: {
     title: "AI Pembacaan Bintang",
     subtitle: "Wawasan astrologi mendalam dengan AI",
@@ -52,15 +50,12 @@ const T: Record<string, Record<string, any>> = {
       { icon: "🌍", title: "Multi-bahasa", desc: "Dukungan Mandarin, Inggris, Indonesia" },
     ],
     cta: "Mulai AI Reading",
-    tip: "Tip: Buat bagan lahir dulu (/natal) untuk data lengkap sebelum AI reading",
-  },
-};
+    tip: "Tip: Buat bagan lahir dulu (/natal) untuk data lengkap sebelum AI reading"}};
 
 const labels: Record<string, { back: string }> = {
   id: { back: "← Beranda" },
   en: { back: "← Home" },
-  zh: { back: "← 返回首页" },
-};
+  zh: { back: "← 返回首页" }};
 
 export default function AIPage() {
   const { language } = useLanguage();
