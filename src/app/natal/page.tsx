@@ -131,6 +131,23 @@ export default function NatalPage(){
   const planetCodes:Record<string,string>={Sun:"Q",Moon:"W",Mercury:"E",Venus:"R",Mars:"T",Jupiter:"Y",Saturn:"U",Uranus:"I",Neptune:"O",Pluto:"P",North_Node:"<",South_Node:">"};
   const planetCodesFull:Record<string,string>={...planetCodes,Ascendant:"Z",Midheaven:"X"};
   const planetSymbols:Record<string,string>={Q:"☉",W:"☽",E:"☿",R:"♀",T:"♂",Y:"♃",U:"♄",I:"♅",O:"♆",P:"♇","<":"☊",">":"☋",Z:"AC",X:"MC"};
+  const firdaria = chart ? buildFirdariaPeriods(chart, year, month, day) : {isDay:true, periods:[] as FirdariaPeriod[]};
+  const classicalRulers = ["Mars","Venus","Mercury","Moon","Sun","Mercury","Venus","Mars","Jupiter","Saturn","Saturn","Jupiter"];
+  const exaltationBySign = ["Sun","Moon","", "Jupiter", "", "Mercury", "Saturn", "", "", "Mars", "", "Venus"];
+  const triplicityByElement = {
+    fire: {day:["Sun","Jupiter","Saturn"],night:["Jupiter","Sun","Saturn"]},
+    earth: {day:["Venus","Moon","Mars"],night:["Moon","Venus","Mars"]},
+    air: {day:["Saturn","Mercury","Jupiter"],night:["Mercury","Saturn","Jupiter"]},
+    water: {day:["Venus","Mars","Moon"],night:["Mars","Venus","Moon"]},
+  } as const;
+  const elementForSign = (sign:number)=>["fire","earth","air","water"][sign%4] as keyof typeof triplicityByElement;
+  const codeForPlanet = (planet?:string)=>planet ? planetCodes[planet] || "" : "";
+  const glyphString = (planets:string[])=>planets.map(p=>planetSymbols[codeForPlanet(p)]||"").filter(Boolean).join(" ");
+  const housesForCondition = (planet:string, mode:"ruler"|"exalt") => (hData||[]).filter((h:any)=>{
+    const sign = Math.floor(norm(h.longitude)/30);
+    const owner = mode === "ruler" ? classicalRulers[sign] : exaltationBySign[sign];
+    return owner === planet;
+  }).map((h:any)=>h.house).join(" ") || "-";
 
   const dignityRows = chart ? ["Sun","Moon","Mercury","Venus","Mars","Jupiter","Saturn","Uranus","Neptune","Pluto","North_Node","Ascendant","Midheaven"].filter(k=>{
     if(k==="Ascendant")return chart?.ascendant;
@@ -143,19 +160,18 @@ export default function NatalPage(){
     else{const p=pData[k];lon=norm(p.longitude??0);retro=p.retrograde??false;}
     const si=Math.floor(lon/30);const d=lon%30;
     let house="-";if(hData)for(let i=0;i<hData.length;i++){const c=norm(hData[i].longitude),n=norm(hData[(i+1)%hData.length].longitude);if(c<=n?lon>=c&&lon<n:lon>=c||lon<n){house=String(hData[i].house);break;}}
-    const r=(RULER[k]||[]).includes(si)?planetCodes[Object.keys(RULER).find(rk=>(RULER[rk]||[]).includes(si))||k]||"":"";
-    const ex=EXALT[k]===si?planetCodes[Object.keys(EXALT).find(ek=>EXALT[ek]===si)||""]||"":"";
-    const tri=(TRIPLICITY[k]||[]).includes(si)?planetCodes[k]||"":"";
+    const domicilePlanet=classicalRulers[si];
+    const exaltPlanet=exaltationBySign[si];
+    const triplicityPlanets:string[]=[...triplicityByElement[elementForSign(si)][firdaria.isDay?"day":"night"]];
+    const detrimentPlanet=classicalRulers[(si+6)%12];
+    const fallPlanet=exaltationBySign[(si+6)%12];
     const term=TERMS[si]?.find(t=>d<t.e);
-    const tP=term?planetCodes[term.p]||"":"";
+    const termPlanet=term?.p||"";
     const faceIdx=Math.floor(d/10);
-    const face=FACES[si]?.[faceIdx]||"";
-    const faceP=face?planetCodes[face]||"":"";
-    const det=(DETRIMENT[k]||[]).includes(si)?"1":"";
-    const fal=FALL[k]===si?"1":"";
-    const rulerScore=r?5:0,exScore=ex?4:0,triScore=tri?3:0,termScore=tP?2:0,faceScore=faceP?1:0;
-    const totalScore=rulerScore+exScore+triScore+termScore+faceScore-(det?4:0)-(fal?5:0);
-    return{code:planetCodesFull[k]||k[0],name:k,lon,retro,deg:`${Math.floor(d)}°${signGlyph(si)} ${String(Math.round((d%1)*60)).padStart(2,"0")}′${retro?" R":""}`,house,guardianHouse:"-",exaltHouse:"-",ruler:r,exalt:ex,triplicity:tri,term:tP,face:faceP,detriment:det,fall:fal,score:totalScore>0?"+"+totalScore:String(totalScore),state:totalScore>=5?"强":totalScore>=0?"平均":"弱",speed:"平均",sect:["Sun","Jupiter","Saturn"].includes(k)?"得时":"-",orient:retro?"西入":"东出"};
+    const facePlanet=FACES[si]?.[faceIdx]||"";
+    const rulerScore=k===domicilePlanet?5:0,exScore=k===exaltPlanet?4:0,triScore=triplicityPlanets.includes(k)?3:0,termScore=k===termPlanet?2:0,faceScore=k===facePlanet?1:0;
+    const totalScore=rulerScore+exScore+triScore+termScore+faceScore-(k===detrimentPlanet?5:0)-(k===fallPlanet?4:0);
+    return{code:planetCodesFull[k]||k[0],name:k,lon,retro,deg:`${Math.floor(d)}°${signGlyph(si)} ${String(Math.round((d%1)*60)).padStart(2,"0")}′${retro?" R":""}`,house,guardianHouse:housesForCondition(k,"ruler"),exaltHouse:housesForCondition(k,"exalt"),ruler:codeForPlanet(domicilePlanet),exalt:codeForPlanet(exaltPlanet),triplicity:glyphString([...triplicityPlanets]),term:codeForPlanet(termPlanet),face:codeForPlanet(facePlanet),detriment:codeForPlanet(detrimentPlanet),fall:codeForPlanet(fallPlanet),score:totalScore>0?"+"+totalScore:String(totalScore),state:totalScore>=5?"强":totalScore>=0?"平均":"弱",speed:"平均",sect:["Sun","Jupiter","Saturn"].includes(k)?"得时":"-",orient:retro?"西入":"东出"};
   }):[];
 
   const houseRows = (hData||[]).map((h:any)=>{
@@ -164,7 +180,6 @@ export default function NatalPage(){
     const exK=Object.keys(EXALT).find(k=>EXALT[k]===si);
     return{house:h.house,lon:norm(h.longitude),deg:`${Math.floor(d)}°${signGlyph(si)} ${String(Math.round((d%1)*60)).padStart(2,"0")}′`,ruler:rulerK?planetCodes[rulerK]||"":"",exalt:exK?planetCodes[exK]||"":"",almuten:rulerK?planetCodes[rulerK]||"":""};
   });
-  const firdaria = chart ? buildFirdariaPeriods(chart, year, month, day) : {isDay:true, periods:[] as FirdariaPeriod[]};
   const glyph = (code?:string,size=16)=><em className="astro-glyph" style={{fontSize:size}}>{planetSymbols[code||""]||code||""}</em>;
   const lonCells = (lon:number,retro=false)=>{const p=lonParts(lon);return <><span>{p.deg}</span><span className="zodiac-cell">{signGlyph(p.sign)}</span><span>{fmt2(p.min)}</span>{retro&&<span>&nbsp;Rx</span>}</>;};
   const zodiacMark = (value?:string)=>value?<span className="zodiac-mark">{value}</span>:"";
@@ -275,8 +290,8 @@ export default function NatalPage(){
                 </thead>
                 <tbody>{dignityRows.map((r,i)=><tr key={i}>
                   <td>{glyph(r.code,r.code==="Z"||r.code==="X"?12:17)}</td><td colSpan={3}>{lonCells(r.lon,r.retro)}</td><td>{r.house}</td><td>{r.guardianHouse}</td><td>{r.exaltHouse}</td>
-                  <td>{glyph(r.ruler,16)}{r.ruler?"+":""}</td><td>{glyph(r.exalt,16)}</td><td colSpan={3}>{glyph(r.triplicity,16)}</td><td>{glyph(r.term,16)}</td><td>{glyph(r.face,16)}</td>
-                  <td>{r.detriment?"-":""}</td><td>{r.fall?"-":""}</td><td>{r.score}</td><td>{r.state}</td><td>-</td><td>{r.orient}</td><td>{r.sect}</td><td>-</td>
+                  <td>{glyph(r.ruler,16)}</td><td>{glyph(r.exalt,16)}</td><td colSpan={3}>{glyph(r.triplicity,16)}</td><td>{glyph(r.term,16)}</td><td>{glyph(r.face,16)}</td>
+                  <td>{glyph(r.detriment,16)}</td><td>{glyph(r.fall,16)}</td><td>{r.score}</td><td>{r.state}</td><td>-</td><td>{r.orient}</td><td>{r.sect}</td><td>-</td>
                 </tr>)}</tbody>
               </table>}
 
