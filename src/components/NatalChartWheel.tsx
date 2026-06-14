@@ -232,9 +232,10 @@ export default function NatalChartWheel({ chart }: { chart?: ChartData }) {
         {houses.map((house: any) => {
           const lon = longitudeOf(house);
           const parts = signParts(lon);
-          const glyphPoint = pointFromLongitude(lon, ascLon, rings.outer - 8);
-          const degreePoint = pointBesideLongitude(lon, ascLon, rings.outer - 8, -17);
-          const minutePoint = pointBesideLongitude(lon, ascLon, rings.outer - 8, 17);
+          const cuspLabelRadius = (rings.outer + rings.zodiac) / 2;
+          const glyphPoint = pointFromLongitude(lon, ascLon, cuspLabelRadius);
+          const degreePoint = pointBesideLongitude(lon, ascLon, cuspLabelRadius, -17);
+          const minutePoint = pointBesideLongitude(lon, ascLon, cuspLabelRadius, 17);
 
           return (
             <g key={`house-cusp-${house.house}`}>
