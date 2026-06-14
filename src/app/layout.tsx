@@ -4,6 +4,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
+import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: {
@@ -69,14 +70,12 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#030014" },
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
   ],
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
   userScalable: true,
-  colorScheme: "dark",
 };
 
 export default function RootLayout({
@@ -102,7 +101,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="zh" className="dark" suppressHydrationWarning>
+    <html lang="zh" suppressHydrationWarning>
       <head>
         {/* Performance: Preconnect to critical origins */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -115,11 +114,12 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-[#030014] text-white antialiased min-h-screen dark">
+      <body className="bg-white text-gray-900 antialiased min-h-screen">
         <ServiceWorkerRegister />
         <ThemeProvider>
           <LanguageProvider>
             <AuthProvider>
+              <Navbar />
               {children}
             </AuthProvider>
           </LanguageProvider>
