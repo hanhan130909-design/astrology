@@ -3,20 +3,30 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   serverExternalPackages: ["sweph", "node-gyp-build"],
   
+  // Image optimization
   images: {
     formats: ["image/webp", "image/avif"],
-    remotePatterns: [{ protocol: "https", hostname: "**" }],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
+    // Performance: Enable device sizes for faster image generation
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
   },
   
+  // Compression (gzip/brotli via Vercel)
   compress: true,
+  
+  // Performance optimizations
   poweredByHeader: false,
   generateEtags: true,
   
+  // Experimental features
   experimental: {
     optimizePackageImports: ["lucide-react"],
-    optimizeCss: true,
     reactCompiler: false,
   },
 };
