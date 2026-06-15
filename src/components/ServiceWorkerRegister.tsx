@@ -11,46 +11,35 @@ export function ServiceWorkerRegister() {
   useEffect(() => {
     if (typeof window === "undefined" || !("serviceWorker" in navigator)) return;
 
-    // Force clean old SW versions, then register latest
-    async function initSW() {
-      const registrations = await navigator.serviceWorker.getRegistrations();
-      
-      // Unregister any SW that isn't our current version
-      for (const reg of registrations) {
-        const sw = reg.active || reg.waiting || reg.installing;
-        if (sw) {
-          try {
-            // Check if it's the old version by fetching its script URL
-            await reg.unregister();
-            console.log("Unregistered old SW");
-          } catch {}
+    // Defer SW registration to avoid blocking main thread during page load
+    const registerSW = () => {
+      async function initSW() {
+        const registrations = await navigator.serviceWorker.getRegistrations();
+        for (const reg of registrations) {
+          try { await reg.unregister(); } catch {}
         }
-      }
-      
-      // Clear all caches
-      if ("caches" in window) {
-        const keys = await caches.keys();
-        for (const key of keys) {
-          if (key !== `lunaxstar-v${SW_VERSION}`) {
-            await caches.delete(key);
+        if ("caches" in window) {
+          const keys = await caches.keys();
+          for (const key of keys) {
+            if (key !== "lunaxstar-v3") await caches.delete(key);
           }
         }
+        setTimeout(async () => {
+          try {
+            const reg = await navigator.serviceWorker.register("/sw.js?v=3");
+            await reg.update();
+          } catch (err) { console.log("SW deferred register:", err); }
+        }, 1000);
       }
-      
-      // Wait a beat then register fresh
-      setTimeout(async () => {
-        try {
-          const reg = await navigator.serviceWorker.register(`/sw.js?v=${SW_VERSION}`);
-          console.log("SW registered v" + SW_VERSION, reg.scope);
-          // Force update check
-          await reg.update();
-        } catch (err) {
-          console.log("SW registration failed:", err);
-        }
-      }, 500);
+      initSW();
+    };
+
+    // Use requestIdleCallback for non-critical init
+    if ("requestIdleCallback" in window) {
+      (window as any).requestIdleCallback(registerSW, { timeout: 3000 });
+    } else {
+      setTimeout(registerSW, 2000);
     }
-    
-    initSW();
 
     const handler = (e: Event) => {
       e.preventDefault();
