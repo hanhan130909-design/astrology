@@ -481,7 +481,7 @@ export default function NatalPage(){
             <label style={{fontWeight:"bold",fontSize:"12px"}}>出生时间:</label><br/>
             <select value={month} onChange={e=>setMonth(Number(e.target.value))} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px"}}>{MONTHS.map((m,i)=><option key={i} value={i+1}>{m}</option>)}</select>
             <select value={day} onChange={e=>setDay(Number(e.target.value))} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px"}}>{Array.from({length:31},(_,i)=>i+1).map(d=><option key={d} value={d}>{d}</option>)}</select>
-            <input type="text" value={year} onChange={e=>setYear(parseInt(e.target.value)||now.getFullYear())} size={4} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px",width:45}}/>
+            <select value={year} onChange={e=>setYear(Number(e.target.value))} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px"}}>{Array.from({length:127},(_,i)=>now.getFullYear()-i).map(y=><option key={y} value={y}>{y}</option>)}</select>
             &nbsp;
             <select value={hour} onChange={e=>setHour(Number(e.target.value))} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px"}}>
               {Array.from({length:24},(_,i)=>i).map(h=><option key={h} value={h}>{h===0?"12 AM":h<12?`${h} AM`:h===12?"12 PM":`${h-12} PM`}</option>)}

@@ -109,12 +109,12 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="星缘" />
         <meta name="theme-color" content="#171717" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        {/* Performance: Preconnect to critical origins */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* Performance: Async font loading with preload hint */}
-        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" as="style" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" />
+        {/* System fonts — no Google Fonts CDN (blocked in China) */}
+        <style>{`
+          @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; src: local('Inter'), local('PingFang SC'), local('Microsoft YaHei'); }
+          @font-face { font-family: 'Noto Sans SC'; font-style: normal; font-weight: 400; src: local('Noto Sans SC'), local('PingFang SC'), local('Microsoft YaHei'), local('SimHei'); }
+          body { font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', system-ui, -apple-system, sans-serif; }
+        `}</style>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
