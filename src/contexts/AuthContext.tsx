@@ -1,7 +1,20 @@
-// Auth Context — Firebase lazy-loaded for performance
+// Auth Context — static Firebase import for reliability
 "use client";
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import {
+  auth,
+  db,
+  isFirebaseConfigured,
+  loginWithEmail,
+  loginWithGoogle,
+  registerWithEmail,
+  logout as firebaseLogout,
+  onAuthChange,
+  getUserProfile,
+  updateUserProfile,
+  UserProfile as FirebaseUserProfile,
+} from "@/lib/firebase";
 
 export interface UserProfile {
   uid: string;
@@ -30,71 +43,47 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 const STORAGE_KEY = "astrology_user";
 
-// Lazy load Firebase only when needed
-let firebaseModule: any = null;
-async function getFirebase() {
-  if (firebaseModule) return firebaseModule;
-  try {
-    firebaseModule = await import("@/lib/firebase");
-  } catch {
-    firebaseModule = null;
-  }
-  return firebaseModule;
+function toLocalProfile(fp: FirebaseUserProfile): UserProfile {
+  return {
+    uid: fp.uid, email: fp.email, displayName: fp.displayName,
+    photoURL: fp.photoURL, language: (fp.language as UserProfile["language"]) || "zh",
+  };
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<UserProfile | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [isConfigured, setIsConfigured] = useState(false);
 
-  // Lightweight init: check localStorage only, defer Firebase
   useEffect(() => {
-    const init = async () => {
-      const fb = await getFirebase();
-      if (fb?.isFirebaseConfigured) {
-        setIsConfigured(true);
-        fb.onAuthChange(async (firebaseUser: any) => {
-          if (firebaseUser) {
-            try {
-              const fp = await fb.getUserProfile(firebaseUser.uid);
-              if (fp) {
-                const local: UserProfile = { uid: fp.uid, email: fp.email, displayName: fp.displayName, photoURL: fp.photoURL, language: fp.language || "zh" };
-                setUser(local); setProfile(local);
-              } else {
-                const local: UserProfile = { uid: firebaseUser.uid, email: firebaseUser.email || "", displayName: firebaseUser.displayName || firebaseUser.email?.split("@")[0] || "User", photoURL: firebaseUser.photoURL, language: "zh" };
-                setUser(local); setProfile(local);
-              }
-            } catch (err) { console.error("Get profile error:", err); }
-          } else {
-            setUser(null); setProfile(null);
-          }
-          setIsLoading(false);
-        });
-      } else {
-        // Fallback: localStorage only
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) {
-          try { const u = JSON.parse(saved); setUser(u); setProfile(u); } catch { localStorage.removeItem(STORAGE_KEY); }
-        }
+    if (isFirebaseConfigured && auth) {
+      const unsubscribe = onAuthChange(async (firebaseUser) => {
+        if (firebaseUser) {
+          try {
+            const fp = await getUserProfile(firebaseUser.uid);
+            if (fp) { const local = toLocalProfile(fp as FirebaseUserProfile); setUser(local); setProfile(local); }
+            else { const local: UserProfile = { uid: firebaseUser.uid, email: firebaseUser.email || "", displayName: firebaseUser.displayName || firebaseUser.email?.split("@")[0] || "User", photoURL: firebaseUser.photoURL, language: "zh" }; setUser(local); setProfile(local); }
+          } catch (err) { console.error("Get profile error:", err); }
+        } else { setUser(null); setProfile(null); }
         setIsLoading(false);
-      }
-    };
-    init();
+      });
+      return unsubscribe;
+    }
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) { try { const u = JSON.parse(saved); setUser(u); setProfile(u); } catch { localStorage.removeItem(STORAGE_KEY); } }
+    setIsLoading(false);
   }, []);
 
   const login = async (email: string, password: string, name?: string) => {
     if (!email || !password) return { success: false, error: "Email and password required" };
-    try {
-      const fb = await getFirebase();
-      if (fb?.isFirebaseConfigured) {
-        const fbUser = await fb.loginWithEmail(email, password);
-        const fp = await fb.getUserProfile(fbUser.uid);
-        const local: UserProfile = { uid: fbUser.uid, email: fbUser.email || "", displayName: fbUser.displayName || email.split("@")[0], language: "zh" };
-        if (fp) { local.displayName = fp.displayName; local.language = fp.language || "zh"; }
+    if (isFirebaseConfigured) {
+      try {
+        const fbUser = await loginWithEmail(email, password);
+        const fp = await getUserProfile(fbUser.uid);
+        const local = toLocalProfile((fp || { uid: fbUser.uid, email: fbUser.email || "", displayName: fbUser.displayName || email.split("@")[0], language: "zh" }) as FirebaseUserProfile);
         setUser(local); setProfile(local); return { success: true };
-      }
-    } catch (err: any) { return { success: false, error: err.message || "Login failed" }; }
+      } catch (err: any) { return { success: false, error: err.message || "Login failed" }; }
+    }
     const newUser: UserProfile = { uid: `local_${Date.now()}`, email, displayName: name || email.split("@")[0], language: "zh" };
     setUser(newUser); setProfile(newUser); localStorage.setItem(STORAGE_KEY, JSON.stringify(newUser));
     return { success: true };
@@ -102,14 +91,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const register = async (email: string, password: string, name: string) => {
     if (!email || !password || !name) return { success: false, error: "All fields required" };
-    try {
-      const fb = await getFirebase();
-      if (fb?.isFirebaseConfigured) {
-        const fbUser = await fb.registerWithEmail(email, password, name);
-        const local: UserProfile = { uid: fbUser.uid, email: fbUser.email || email, displayName: name, language: "zh" };
+    if (isFirebaseConfigured) {
+      try {
+        const fbUser = await registerWithEmail(email, password, name);
+        const local = toLocalProfile(fbUser as FirebaseUserProfile);
         setUser(local); setProfile(local); return { success: true };
-      }
-    } catch (err: any) { return { success: false, error: err.message || "Registration failed" }; }
+      } catch (err: any) { return { success: false, error: err.message || "Registration failed" }; }
+    }
     const newUser: UserProfile = { uid: `local_${Date.now()}`, email, displayName: name, language: "zh" };
     setUser(newUser); setProfile(newUser); localStorage.setItem(STORAGE_KEY, JSON.stringify(newUser));
     return { success: true };
@@ -119,24 +107,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const signUp = async (email: string, password: string, name: string) => register(email, password, name);
 
   const loginWithGoogleFn = async (language: string = "zh") => {
-    try {
-      const fb = await getFirebase();
-      if (fb?.isFirebaseConfigured) {
-        const fp = await fb.loginWithGoogle(language as "id" | "en" | "zh");
-        const local: UserProfile = { uid: fp.uid, email: fp.email, displayName: fp.displayName, photoURL: fp.photoURL, language: fp.language || "zh" };
+    if (isFirebaseConfigured) {
+      try {
+        const fp = await loginWithGoogle(language as "id" | "en" | "zh");
+        const local = toLocalProfile(fp as FirebaseUserProfile);
         setUser(local); setProfile(local); return { success: true };
-      }
-    } catch (err: any) { return { success: false, error: err.message || "Google login failed" }; }
+      } catch (err: any) { return { success: false, error: err.message || "Google login failed" }; }
+    }
     const newUser: UserProfile = { uid: `local_google_${Date.now()}`, email: "google.user@gmail.com", displayName: "Google User", language: language as UserProfile["language"] };
     setUser(newUser); setProfile(newUser); localStorage.setItem(STORAGE_KEY, JSON.stringify(newUser));
     return { success: true };
   };
 
-  const logout = async () => {
-    try {
-      const fb = await getFirebase();
-      if (fb?.isFirebaseConfigured) fb.logout().catch(console.error);
-    } catch {}
+  const logout = () => {
+    if (isFirebaseConfigured) firebaseLogout().catch(console.error);
     setUser(null); setProfile(null); localStorage.removeItem(STORAGE_KEY);
   };
 
@@ -144,16 +128,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (user) {
       const updated = { ...user, ...data };
       setUser(updated); setProfile(updated);
-      try {
-        const fb = await getFirebase();
-        if (fb?.isFirebaseConfigured && fb.db) await fb.updateUserProfile(user.uid, updated);
-        else localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
-      } catch (err) { console.error("Update error:", err); }
+      if (isFirebaseConfigured && db) {
+        try { await updateUserProfile(user.uid, updated); } catch (err) { console.error("Update error:", err); }
+      } else { localStorage.setItem(STORAGE_KEY, JSON.stringify(updated)); }
     }
   };
 
   return (
-    <AuthContext.Provider value={{ user, profile, isLoading, isConfigured: true, isFirebaseReady: isConfigured, login, register, signIn, signUp, loginWithGoogle: loginWithGoogleFn, logout, signOut: logout, updateUser }}>
+    <AuthContext.Provider value={{ user, profile, isLoading, isConfigured: true, isFirebaseReady: isFirebaseConfigured, login, register, signIn, signUp, loginWithGoogle: loginWithGoogleFn, logout, signOut: logout, updateUser }}>
       {children}
     </AuthContext.Provider>
   );
