@@ -426,7 +426,7 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
               {chatLoading && (
                 <div style={{textAlign:'left',marginBottom:10}}>
                   <span style={{display:'inline-block',padding:'8px 14px',borderRadius:12,background:'#fff',border:'1px solid #e0e0e0',fontSize:13,color:'#999'}}>
-                    Thinking<span className="animate-pulse">...</span>
+                    Thinking...</span>
                   </span>
                 </div>
               )}

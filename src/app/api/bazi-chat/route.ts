@@ -44,14 +44,17 @@ export async function POST(request: NextRequest) {
     }
 
     // Build context from chart
+    const pillars = chartData.pillars || [];
+    const naYinList = pillars.map((p: any) => `${p.label}: ${p.naYin || '-'}`).join(', ') || 'N/A';
+    const hiddenList = pillars.map((p: any) => `${p.label}: ${(p.hidden || []).join(' ')}`).join(', ') || 'N/A';
     const chartContext = `
 BAZI CHART DATA:
-- Four Pillars: ${JSON.stringify(chartData.pillars)}
-- Day Master: ${chartData.dayMaster?.stem} ${chartData.dayMaster?.element || ''} ${chartData.dayMaster?.shiShen ? `(${chartData.dayMaster.shiShen})` : ''}
+- Four Pillars: ${JSON.stringify(pillars)}
+- Day Master: ${chartData.dayMaster?.stem || ''} ${chartData.dayMaster?.element || ''} ${chartData.dayMaster?.shiShen ? `(${chartData.dayMaster.shiShen})` : ''}
 - Lunar Date: ${chartData.meta?.lunarDate || 'N/A'}
 - Current JieQi: ${chartData.meta?.jieQi || 'N/A'}
-- NaYin: ${chartData.pillars?.map((p: any) => `${p.label}: ${p.naYin || '-'}`).join(', ') || 'N/A'}
-- Hidden Stems: ${chartData.pillars?.map((p: any) => `${p.label}: ${(p.hidden || []).join(' ')}`).join(', ') || 'N/A'}
+- NaYin: ${naYinList}
+- Hidden Stems: ${hiddenList}
 `;
 
     const messages = [
