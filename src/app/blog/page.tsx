@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ArrowLeft, Clock, Tag, ChevronRight } from 'lucide-react';
 import { seoArticles } from './seo-articles';
+import { destinyArticles } from '@/content/destiny-blog-articles';
 
 // Translation data
 const t: Record<string, Record<string, string>> = {
@@ -70,6 +71,24 @@ interface BlogArticle {
 // Blog articles data
 const blogArticles: BlogArticle[] = [
   ...seoArticles,
+  // Add Destiny Code BaZi deep-dive articles
+  ...destinyArticles.map((a, i) => ({
+    id: `destiny-${i}`,
+    slug: a.slug,
+    category: a.category,
+    categoryZh: a.categoryLabel.zh,
+    categoryEn: a.categoryLabel.en,
+    categoryId: a.categoryLabel.id,
+    title: a.title,
+    excerpt: a.description,
+    content: { en: a.sections, zh: a.sections, id: a.sections } as Record<string, string>,
+    author: '星缘团队',
+    authorEn: 'Lunaxstar Team',
+    authorId: 'Tim Lunaxstar',
+    date: '2026-06-15',
+    readTime: Math.ceil(a.wordCount / 200),
+    tags: [a.categoryLabel.en, 'BaZi', 'Chinese Astrology'],
+  })),
   {
     id: '1',
     slug: 'birth-chart-tutorial',
@@ -331,13 +350,17 @@ export default function BlogPage() {
                     <div className="text-sm text-gray-500">
                       {currentT.by} {language === 'zh' ? article.author : language === 'id' ? article.authorId : article.authorEn}
                     </div>
-                    <Link
-                      href={`/blog/${article.slug}`}
-                      className="flex items-center gap-1 text-gray-400 hover:text-gray-700 text-sm font-medium transition-colors"
-                    >
-                      {currentT.readMore}
-                      <ChevronRight className="w-4 h-4" />
-                    </Link>
+                    {article.id.startsWith('destiny-') ? (
+                      <Link
+                        href={`/blog/${article.slug}`}
+                        className="flex items-center gap-1 text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300 text-sm font-medium transition-colors"
+                      >
+                        {currentT.readMore}
+                        <ChevronRight className="w-4 h-4" />
+                      </Link>
+                    ) : (
+                      <span className="text-xs text-gray-400 italic">Snippet</span>
+                    )}
                   </div>
                 </div>
               </article>
