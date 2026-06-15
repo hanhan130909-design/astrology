@@ -51,7 +51,7 @@ export default function HomePage() {
       {/* Hero */}
       <section className="relative text-center py-12 md:py-20 px-6 max-w-[800px] mx-auto overflow-hidden">
         {/* Subtle zodiac wheel background */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.04]">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.04] aria-hidden="true"">
           <svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="250" cy="250" r="240" stroke="black" strokeWidth="0.5"/>
             <circle cx="250" cy="250" r="200" stroke="black" strokeWidth="0.5"/>
@@ -105,7 +105,7 @@ export default function HomePage() {
                 <div className="text-[22px] mb-3">{f.icon}</div>
                 <h3 className="text-[17px] font-semibold tracking-[-0.4px] mb-2">{(f as any)[language] || f.zh}</h3>
                 <p className="text-sm text-gray-500 leading-relaxed mb-4">{(f as any)[language+"Desc"] || f.zhDesc}</p>
-                <span className="text-xs text-gray-400 group-hover:text-[#171717] transition-colors">{t.try} →</span>
+                <span className="text-xs text-gray-500 group-hover:text-[#171717] transition-colors">{t.try} →</span>
               </Link>
             ))}
           </div>

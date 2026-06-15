@@ -101,7 +101,7 @@ export default function Navbar() {
           <Link href="/login" className="text-xs font-medium text-gray-400 hover:text-[#171717] no-underline shrink-0">登录</Link>
 
           {/* Mobile hamburger */}
-          <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden p-1.5 rounded-md hover:bg-gray-100 ml-1">
+          <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden p-1.5 rounded-md hover:bg-gray-100 ml-1" aria-label={menuOpen ? "关闭菜单" : "打开菜单"}>
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-gray-600">
               {menuOpen
                 ? <path d="M4 4l10 10M14 4L4 14" />
