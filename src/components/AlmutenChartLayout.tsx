@@ -47,10 +47,12 @@ const planetsGlyphs: Record<string, string> = {
   North_Node:"☊",Ascendant:"AC",Midheaven:"MC",
 };
 
-const aspectGlyphs: Record<string, { mark: string; className: string }> = {
-  Conjunction:{mark:"☌",className:"text-[#8b4513]"}, Sextile:{mark:"✶",className:"text-gray-700"},
-  Square:{mark:"□",className:"text-gray-600"}, Trine:{mark:"△",className:"text-gray-700"},
-  Opposition:{mark:"☍",className:"text-gray-600"},
+const aspectGlyphs: Record<string, { mark: string; color: string }> = {
+  Conjunction:{mark:"☌",color:"#e00000"},
+  Sextile:{mark:"✶",color:"#174cff"},
+  Square:{mark:"□",color:"#ff1f1f"},
+  Trine:{mark:"△",color:"#238225"},
+  Opposition:{mark:"☍",color:"#e00000"},
 };
 
 const houseLabel: Record<string, string> = {
@@ -160,7 +162,7 @@ function ChartInfoCard({form, cityName}:{form:BirthForm;cityName?:string}){
 }
 
 export function AspectMatrix({chart}:{chart:ChartData}){
-  const map = new Map<string,{mark:string;value:string;className:string}>();
+  const map = new Map<string,{mark:string;value:string;color:string}>();
   (chart.aspects||[]).forEach(a=>{
     const s=aspectGlyphs[a.aspect||a.type];if(!s||!a.planet1||!a.planet2)return;
     const orb=Math.abs(a.orb??0);const deg=Math.floor(orb);const min=Math.round((orb-deg)*60);
@@ -179,7 +181,7 @@ export function AspectMatrix({chart}:{chart:ChartData}){
               if(ci>ri)return<td key={`${b.key}-${cb.key}`} className="box-border h-[31px] w-[31px] p-0"/>;
               const a=map.get(`${b.key}-${cb.key}`);
               return <td key={`${b.key}-${cb.key}`} className="relative box-border h-[31px] w-[31px] overflow-hidden border border-[#999] bg-[#fbfbfb] p-0 text-center align-middle leading-none">
-                {a?<div className="absolute inset-[1px] flex flex-col items-center justify-center overflow-hidden"><span className={`block h-[15px] max-w-full text-[15px] font-bold leading-[15px] ${a.className}`}>{a.mark}</span><span className={`block max-w-full whitespace-nowrap text-[7px] leading-[8px] ${a.className}`}>{a.value}</span></div>:ci===ri?<span className="absolute inset-0 flex items-center justify-center overflow-hidden text-[17px] leading-none text-black">{b.label==='pluto'?<PlutoGlyph className="h-[19px] w-[14px]"/>:isAngle(b)?<span style={{fontSize:13,lineHeight:1}}>{b.label}</span>:b.label}</span>:""}
+                {a?<div className="absolute inset-[1px] flex flex-col items-center justify-center overflow-hidden" style={{color:a.color}}><span className="block h-[15px] max-w-full text-[15px] font-bold leading-[15px]">{a.mark}</span><span className="block max-w-full whitespace-nowrap text-[7px] leading-[8px]">{a.value}</span></div>:ci===ri?<span className="absolute inset-0 flex items-center justify-center overflow-hidden text-[17px] leading-none text-black">{b.label==='pluto'?<PlutoGlyph className="h-[19px] w-[14px]"/>:isAngle(b)?<span style={{fontSize:13,lineHeight:1}}>{b.label}</span>:b.label}</span>:""}
               </td>;
             })}
           </tr>)}
