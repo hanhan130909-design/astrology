@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { BookOpen, Star, ChevronDown, Circle } from "lucide-react";
+import { beginnerLessons } from "./course-data";
 
 const PLANET_ICONS: Record<string, any> = {
   Sun: Circle, Moon: Circle, Mercury: Circle, Venus: Circle, Mars: Circle, 
@@ -224,6 +225,40 @@ export default function LearnPage() {
                 <div className="text-sm font-semibold mb-1">{lang==='zh'?a.zh:a.en}</div>
                 <div className="text-xs text-gray-400 mb-1">{a.deg}</div>
                 <p className="text-xs text-gray-500">{lang==='zh'?a.zhDesc:a.enDesc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Course Curriculum */}
+        <div className="mt-16 mb-12">
+          <h2 className="text-2xl font-semibold tracking-[-0.8px] mb-2 text-center">
+            {lang === 'zh' ? '占星初阶课程' : lang === 'id' ? 'Kursus Astrologi Dasar' : 'Beginner Astrology Course'}
+          </h2>
+          <p className="text-gray-500 text-center mb-8 text-sm">
+            {lang === 'zh' ? '14节课 · 从零基础到独立解盘' : lang === 'id' ? '14 pelajaran · Dari nol hingga bisa membaca bagan' : '14 lessons · From zero to independent chart reading'}
+          </p>
+          <div className="grid md:grid-cols-2 gap-4">
+            {beginnerLessons.map((lesson) => (
+              <div key={lesson.id} className="p-5 rounded-xl border border-gray-200 bg-white hover:shadow-md transition-shadow">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-[#171717] text-white flex items-center justify-center text-sm font-bold shrink-0">
+                    {lesson.id}
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="font-semibold text-gray-900 mb-1">
+                      {lang === 'zh' ? lesson.zh : lang === 'id' ? lesson.id : lesson.en}
+                    </h3>
+                    <p className="text-xs text-gray-500 mb-3 leading-relaxed">
+                      {lang === 'zh' ? lesson.desc.zh : lang === 'id' ? lesson.desc.id : lesson.desc.en}
+                    </p>
+                    <div className="flex flex-wrap gap-1">
+                      {lesson.topics.map((t, j) => (
+                        <span key={j} className="text-[10px] px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">{t}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
