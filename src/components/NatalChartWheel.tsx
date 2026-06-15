@@ -38,11 +38,11 @@ const PLANET_SYMBOLS: Record<string, string> = {
   North_Node: "☊",
 };
 const ASPECT_COLORS: Record<string, string> = {
-  Conjunction: "#ff5c6c",
-  Square: "#ff5c6c",
-  Opposition: "#ff5c6c",
-  Trine: "#3ba349",
-  Sextile: "#1e43ff",
+  Conjunction: "#FFD700",
+  Opposition: "#9C27B0",
+  Square: "#F44336",
+  Trine: "#2196F3",
+  Sextile: "#4CAF50",
 };
 
 function normalize(value: number) {

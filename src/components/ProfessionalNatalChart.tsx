@@ -36,11 +36,11 @@ const PLANET_KEYS = ['Sun', 'Moon', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Satu
 
 // 相位颜色（参考 almuten.net）
 const ASPECT_COLORS: Record<string, string> = {
-  Conjunction: '#FFD700',  // 金色
-  Sextile: '#4169E1',      // 蓝色
-  Square: '#FF4500',       // 红色
-  Trine: '#32CD32',       // 绿色
-  Opposition: '#9370DB',   // 紫色
+  Conjunction: '#FFD700',
+  Sextile: '#4CAF50',
+  Square: '#F44336',
+  Trine: '#2196F3',
+  Opposition: '#9C27B0',
 };
 
 const ASPECT_WIDTH: Record<string, number> = {
