@@ -255,7 +255,9 @@ export default function NatalChartWheel({ chart }: { chart?: ChartData }) {
         {(chart?.aspects || []).slice(0, 36).map((aspect: any, index: number) => {
           const start = planetPoints[aspect.planet1];
           const end = planetPoints[aspect.planet2];
-          const color = ASPECT_COLORS[aspect.aspect || aspect.type];
+          const aspType = aspect.aspect || aspect.type;
+          if (aspType === 'Conjunction') return null; // 合相不画线
+          const color = ASPECT_COLORS[aspType];
           if (!start || !end || !color) return null;
 
           return <line key={`${aspect.planet1}-${aspect.planet2}-${index}`} x1={start.x} y1={start.y} x2={end.x} y2={end.y} stroke={color} strokeWidth="1" opacity="0.78" />;
