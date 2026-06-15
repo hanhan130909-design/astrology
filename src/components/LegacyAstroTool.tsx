@@ -160,7 +160,7 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
 
   return (
     <main className="min-h-screen bg-white text-[#333]">
-      <style>{`#legacy-main{padding:10px 260px 10px 20px}#legacy-wrap{display:flex;align-items:flex-start;gap:28px;flex-wrap:nowrap;margin-bottom:10px;overflow-x:auto}#legacy-wrap svg{max-width:none}.alm-tabs{width:100%;margin-top:8px;border:1px solid #aaa;border-radius:4px 4px 0 0;background:linear-gradient(#eeeeee,#cfcfcf);padding:3px 3px 0;overflow-x:auto}.alm-tab-btn{height:32px;padding:0 16px;border:1px solid #bbb;border-bottom:0;border-radius:4px 4px 0 0;background:linear-gradient(#f7f7f7,#dfdfdf);font-size:14px;color:#333;white-space:nowrap}.alm-tab-btn.active{background:white;font-weight:600;position:relative;top:1px}.alm-panel{padding:18px 28px 22px;background:white;overflow-x:auto}.alm-table{width:100%;border-collapse:collapse;background:white;color:#222;font-size:13px;line-height:1.15;box-shadow:0 4px 14px rgba(0,0,0,.14)}.alm-table th,.alm-table td{border:1px solid #aaa;padding:3px 6px;text-align:center;vertical-align:middle;height:22px}.alm-table th{background:#eee;font-weight:700}.alm-table td.left{text-align:left}.bazi-pill{font-size:30px;font-family:serif;font-weight:700}@media(max-width:900px){#legacy-main{padding:10px 20px}#legacy-sidebar{position:static!important;width:auto!important;margin:10px 20px}#legacy-wrap{flex-direction:column;overflow-x:visible}#legacy-wrap svg{width:min(520px,calc(100vw - 40px));height:auto}.alm-table{font-size:12px}}`}</style>
+      <style>{`#legacy-main{padding:10px 260px 10px 20px}#legacy-wrap{display:flex;align-items:flex-start;gap:28px;flex-wrap:nowrap;margin-bottom:10px;overflow-x:auto}#legacy-wrap svg{max-width:none}.alm-tabs{width:100%;margin-top:8px;border:1px solid #aaa;border-radius:4px 4px 0 0;background:linear-gradient(#eeeeee,#cfcfcf);padding:3px 3px 0;overflow-x:auto}.alm-tab-btn{height:32px;padding:0 16px;border:1px solid #bbb;border-bottom:0;border-radius:4px 4px 0 0;background:linear-gradient(#f7f7f7,#dfdfdf);font-size:14px;color:#333;white-space:nowrap}.alm-tab-btn.active{background:white;font-weight:600;position:relative;top:1px}.alm-panel{padding:18px 28px 22px;background:white;overflow-x:auto}.alm-table{width:100%;border-collapse:collapse;background:white;color:#222;font-size:13px;line-height:1.15;box-shadow:0 4px 14px rgba(0,0,0,.14)}.alm-table th,.alm-table td{border:1px solid #aaa;padding:3px 6px;text-align:center;vertical-align:middle;height:22px}.alm-table th{background:#eee;font-weight:700}.alm-table td.left{text-align:left}.bazi-pill{font-size:30px;font-family:serif;font-weight:700}.bazi-mobile-grid{display:none}.legacy-form-row{display:inline}.legacy-form-control{border:1px solid #888;background:#555;color:white;padding:1px 2px}@media(max-width:900px){main{overflow-x:hidden}#cssmenu{display:flex!important;align-items:center!important;gap:0;overflow-x:auto!important;overflow-y:visible!important;white-space:nowrap!important;padding:6px 8px!important;-webkit-overflow-scrolling:touch;position:sticky;top:0;z-index:80}#cssmenu>span{flex:0 0 auto}#cssmenu>span>span,#cssmenu>span[style]{padding:8px 10px!important}#cssmenu div[style*="absolute"]{position:fixed!important;top:42px!important;left:8px!important;right:8px!important;max-height:70vh;overflow:auto;min-width:0!important;width:auto!important;box-shadow:0 6px 16px rgba(0,0,0,.3)}#legacy-main{padding:12px 12px 18px;display:flex;flex-direction:column}#legacy-sidebar{position:static!important;width:auto!important;margin:10px 12px 0!important;order:-1;box-sizing:border-box;border-radius:4px}#legacy-wrap{flex-direction:column;overflow-x:visible;gap:14px}#legacy-wrap>div{width:100%;overflow-x:auto}#legacy-wrap svg{width:min(520px,calc(100vw - 24px));height:auto}.alm-tabs{margin-top:12px;display:flex;gap:0;scrollbar-width:thin}.alm-tab-btn{height:38px;padding:0 14px;font-size:13px}.alm-panel{padding:12px 0 16px;overflow-x:auto}.alm-table{font-size:12px;min-width:520px}.alm-table th,.alm-table td{padding:5px 6px;height:28px}.bazi-summary-table{display:none}.bazi-mobile-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.bazi-mobile-card{border:1px solid #aaa;background:linear-gradient(#fff,#f2f2f2);box-shadow:0 2px 8px rgba(0,0,0,.12);padding:10px 8px;text-align:center}.bazi-mobile-label{font-size:12px;color:#555;margin-bottom:4px}.bazi-mobile-value{font-size:28px;font-family:serif;font-weight:700;line-height:1.15}.bazi-pill{font-size:24px}.legacy-form-row{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}.legacy-form-row.time{grid-template-columns:1fr auto 1fr}.legacy-form-control{min-height:34px;font-size:16px;padding:4px 6px;box-sizing:border-box;width:100%!important}#legacy-sidebar button{width:100%;min-height:36px;font-size:15px}.legacy-intro-card{margin:10px 0!important;padding:14px!important;max-width:none!important}}@media(max-width:420px){#legacy-main{padding-left:10px;padding-right:10px}.bazi-mobile-value{font-size:25px}.alm-table{min-width:470px}#legacy-wrap svg{width:calc(100vw - 20px)}}`}</style>
 
       <div id="cssmenu" style={{background:"#333",fontSize:"14px",display:"flex",alignItems:"center",padding:"0 16px"}}>
         <span style={{color:"#ccc",padding:"4px 12px"}}>hanhan <i>已登入</i></span>
@@ -196,7 +196,7 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
             {mode === "vedic" ? "恒星黄道 整宫制" : mode === "bazi" ? "干支四柱" : "回归黄道 阿卡比特制"}
           </div>
 
-          {!chart&&<div style={{border:"1px solid #d0d0d0",background:"#f7f7f7",padding:16,margin:"12px 0",maxWidth:760}}>
+          {!chart&&<div className="legacy-intro-card" style={{border:"1px solid #d0d0d0",background:"#f7f7f7",padding:16,margin:"12px 0",maxWidth:760}}>
             <strong>{copy.title}</strong>
             <div style={{fontSize:13,color:"#555",marginTop:6}}>{copy.desc}</div>
             <button onClick={calculate} disabled={loading} style={{border:"1px solid #888",background:"#eee",padding:"4px 16px",marginTop:12,cursor:"pointer"}}>{loading ? "计算中..." : copy.button}</button>
@@ -208,10 +208,15 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
             <div><NatalChartWheel chart={chart}/></div>
           </div>}
 
-          {chart&&mode==="bazi"&&<table className="alm-table" style={{maxWidth:760,marginTop:16}}>
-            <thead><tr>{pillars.map(p => <th key={p.label}>{p.label}</th>)}</tr></thead>
-            <tbody><tr>{pillars.map(p => <td key={p.label} className="bazi-pill">{p.value}</td>)}</tr></tbody>
-          </table>}
+          {chart&&mode==="bazi"&&<>
+            <div className="bazi-mobile-grid">
+              {pillars.map(p => <div key={p.label} className="bazi-mobile-card"><div className="bazi-mobile-label">{p.label}</div><div className="bazi-mobile-value">{p.value}</div></div>)}
+            </div>
+            <table className="alm-table bazi-summary-table" style={{maxWidth:760,marginTop:16}}>
+              <thead><tr>{pillars.map(p => <th key={p.label}>{p.label}</th>)}</tr></thead>
+              <tbody><tr>{pillars.map(p => <td key={p.label} className="bazi-pill">{p.value}</td>)}</tr></tbody>
+            </table>
+          </>}
 
           {chart&&<div id="main_tabs">
             <div className="alm-tabs">
@@ -259,21 +264,26 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
           </div>
           {sidebarOpen&&<div><hr/>
             <label style={{fontWeight:"bold",fontSize:"12px"}}>出生时间:</label><br/>
-            <select value={month} onChange={e=>setMonth(Number(e.target.value))} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px"}}>{MONTHS.map((m,i)=><option key={i} value={i+1}>{m}</option>)}</select>
-            <select value={day} onChange={e=>setDay(Number(e.target.value))} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px"}}>{Array.from({length:31},(_,i)=>i+1).map(d=><option key={d} value={d}>{d}</option>)}</select>
-            <input value={year} onChange={e=>setYear(parseInt(e.target.value)||now.getFullYear())} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px",width:45}}/>
+            <span className="legacy-form-row">
+              <select className="legacy-form-control" value={month} onChange={e=>setMonth(Number(e.target.value))}>{MONTHS.map((m,i)=><option key={i} value={i+1}>{m}</option>)}</select>
+              <select className="legacy-form-control" value={day} onChange={e=>setDay(Number(e.target.value))}>{Array.from({length:31},(_,i)=>i+1).map(d=><option key={d} value={d}>{d}</option>)}</select>
+              <input className="legacy-form-control" value={year} onChange={e=>setYear(parseInt(e.target.value)||now.getFullYear())} style={{width:45}}/>
+            </span>
             <br/>
-            <select value={hour} onChange={e=>setHour(Number(e.target.value))} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px",marginTop:4}}>{Array.from({length:24},(_,i)=>i).map(h=><option key={h} value={h}>{fmt2(h)}</option>)}</select>
-            :<select value={minute} onChange={e=>setMinute(Number(e.target.value))} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px"}}>{Array.from({length:60},(_,i)=>i).map(m=><option key={m} value={m}>{fmt2(m)}</option>)}</select>
+            <span className="legacy-form-row time">
+              <select className="legacy-form-control" value={hour} onChange={e=>setHour(Number(e.target.value))}>{Array.from({length:24},(_,i)=>i).map(h=><option key={h} value={h}>{fmt2(h)}</option>)}</select>
+              <span style={{alignSelf:"center"}}>:</span>
+              <select className="legacy-form-control" value={minute} onChange={e=>setMinute(Number(e.target.value))}>{Array.from({length:60},(_,i)=>i).map(m=><option key={m} value={m}>{fmt2(m)}</option>)}</select>
+            </span>
             {mode!=="bazi"&&<>
               <br/><label style={{fontWeight:"bold",fontSize:"12px"}}>纬度:</label>
-              <input value={lat} onChange={e=>setLat(Number(e.target.value)||0)} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px",width:70}}/>
+              <input className="legacy-form-control" value={lat} onChange={e=>setLat(Number(e.target.value)||0)} style={{width:70}}/>
               <br/><label style={{fontWeight:"bold",fontSize:"12px"}}>经度:</label>
-              <input value={lng} onChange={e=>setLng(Number(e.target.value)||0)} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px",width:70}}/>
+              <input className="legacy-form-control" value={lng} onChange={e=>setLng(Number(e.target.value)||0)} style={{width:70}}/>
             </>}
             <br/><label style={{fontWeight:"bold",fontSize:"12px"}}>时区:</label>
-            <input value={tz} onChange={e=>setTz(Number(e.target.value)||0)} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px",width:45}}/>
-            {isProgressed&&<><br/><label style={{fontWeight:"bold",fontSize:"12px"}}>目标年:</label><input value={targetYear} onChange={e=>setTargetYear(Number(e.target.value)||targetYear)} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px",width:58}}/></>}
+            <input className="legacy-form-control" value={tz} onChange={e=>setTz(Number(e.target.value)||0)} style={{width:45}}/>
+            {isProgressed&&<><br/><label style={{fontWeight:"bold",fontSize:"12px"}}>目标年:</label><input className="legacy-form-control" value={targetYear} onChange={e=>setTargetYear(Number(e.target.value)||targetYear)} style={{width:58}}/></>}
             <div style={{textAlign:"center",marginTop:8}}>
               <button onClick={calculate} disabled={loading} style={{border:"1px solid #888",background:"#666",color:"white",padding:"2px 12px",cursor:"pointer"}}>{loading?"计算中...":copy.button}</button>
             </div>
