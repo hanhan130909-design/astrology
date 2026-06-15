@@ -23,7 +23,6 @@ const nextConfig: NextConfig = {
   // Performance optimizations
   poweredByHeader: false,
   generateEtags: true,
-  eslint: { ignoreDuringBuilds: true },
   
   // Experimental features
   experimental: {
