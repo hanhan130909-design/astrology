@@ -118,6 +118,11 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [activeTab, setActiveTab] = useState("chart-tab");
 
+  // BaZi AI Chat state
+  const [chatMessages, setChatMessages] = useState<{role: string; content: string}[]>([]);
+  const [chatInput, setChatInput] = useState("");
+  const [chatLoading, setChatLoading] = useState(false);
+
   const bazi = useMemo(() => baziPillars(year, month, day, hour, minute), [year, month, day, hour, minute]);
   const pillars = bazi.pillars;
   const isProgressed = ["solar-arc", "tertiary", "tertiary-natal", "secondary-natal"].includes(mode);
@@ -179,6 +184,29 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
       setLoading(false);
     }
   };
+
+  // BaZi AI Chat: send question
+  const sendChat = async () => {
+    if (!chatInput.trim() || chatLoading) return;
+    const question = chatInput.trim();
+    setChatInput("");
+    setChatMessages(prev => [...prev, { role: 'user', content: question }]);
+    setChatLoading(true);
+    try {
+      const res = await fetch('/api/bazi-chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chartData: bazi, question }),
+      });
+      const data = await res.json();
+      setChatMessages(prev => [...prev, { role: 'assistant', content: data.answer || 'Sorry, I could not answer that.' }]);
+    } catch {
+      setChatMessages(prev => [...prev, { role: 'assistant', content: 'Connection error. Please try again.' }]);
+    } finally {
+      setChatLoading(false);
+    }
+  };
+
   const runMenuAction = (action: string) => {
     setOpenMenu(null);
     const routes: Record<string, string> = {
@@ -368,6 +396,53 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
                 style={{display:'inline-block',padding:'8px 20px',background:'#f59e0b',color:'white',borderRadius:6,fontWeight:700,textDecoration:'none',fontSize:14,whiteSpace:'nowrap'}}>
                 Get Destiny Code Report →
               </a>
+            </div>
+          </div>
+        )}
+
+        {/* BaZi AI Chat */}
+        {mode === "bazi" && chart && (
+          <div style={{maxWidth:760,margin:'16px 0',border:'1px solid #d0d0d0',borderRadius:8,background:'#fafafa'}}>
+            <div style={{padding:'10px 16px',background:'#333',color:'white',borderRadius:'8px 8px 0 0',fontSize:14,fontWeight:600}}>
+              🤖 AI BaZi Chat · Ask anything about your chart
+            </div>
+            <div style={{maxHeight:300,overflowY:'auto',padding:12}}>
+              {chatMessages.length === 0 && (
+                <div style={{color:'#999',fontSize:13,textAlign:'center',padding:20}}>
+                  Try: "What does my Day Master say about my personality?" · "When will my wealth luck improve?" · "What career suits me?"
+                </div>
+              )}
+              {chatMessages.map((msg, i) => (
+                <div key={i} style={{marginBottom:10,textAlign:msg.role==='user'?'right':'left'}}>
+                  <div style={{
+                    display:'inline-block',maxWidth:'85%',padding:'8px 14px',borderRadius:12,
+                    background:msg.role==='user'?'#333':msg.role==='assistant'?'#fff':'#eee',
+                    color:msg.role==='user'?'#fff':'#333',
+                    border:msg.role==='assistant'?'1px solid #e0e0e0':'none',
+                    fontSize:13,lineHeight:1.6,textAlign:'left',whiteSpace:'pre-wrap'
+                  }}>{msg.content}</div>
+                </div>
+              ))}
+              {chatLoading && (
+                <div style={{textAlign:'left',marginBottom:10}}>
+                  <span style={{display:'inline-block',padding:'8px 14px',borderRadius:12,background:'#fff',border:'1px solid #e0e0e0',fontSize:13,color:'#999'}}>
+                    Thinking<span className="animate-pulse">...</span>
+                  </span>
+                </div>
+              )}
+            </div>
+            <div style={{display:'flex',gap:8,padding:'8px 12px',borderTop:'1px solid #e0e0e0'}}>
+              <input
+                value={chatInput}
+                onChange={e => setChatInput(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && sendChat()}
+                placeholder="Ask about your BaZi chart..."
+                style={{flex:1,padding:'8px 12px',border:'1px solid #d0d0d0',borderRadius:6,fontSize:13,outline:'none'}}
+              />
+              <button onClick={sendChat} disabled={chatLoading}
+                style={{padding:'8px 16px',background:'#333',color:'white',border:'none',borderRadius:6,fontSize:13,cursor:'pointer',fontWeight:600}}>
+                Send
+              </button>
             </div>
           </div>
         )}
