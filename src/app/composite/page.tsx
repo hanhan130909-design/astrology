@@ -74,6 +74,7 @@ function t(key: string, lang: string): string {
 
 export default function CompositePage() {
   const { language } = useLanguage();
+  const lang = language || "zh";
   const { user } = useAuth();
 
   // Person 1
@@ -505,20 +506,20 @@ export default function CompositePage() {
             {user && (
               <button onClick={handleSave} className="px-6 py-3 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 rounded-xl font-bold text-gray-900 transition-all inline-flex items-center gap-2">
                 <Save size={18} />
-                {language === 'zh' ? '保存合盘' : 'Save Chart'}
+                {language === 'zh' ? '保存合盘':lang==='zh'?'保存合盘':lang==='en'?'Save Chart':lang==='id'?'Simpan Bagan':lang==='th'?'บันทึกแผนภูมิ':lang==='vi'?'Lưu bản đồ':lang==='ms'?'Simpan Carta':lang==='ja'?'チャート保存':lang==='ko'?'차트 저장':'Save Chart'}
               </button>
             )}
             <button onClick={handleAIInterpretation} disabled={loadingAI} className="px-6 py-3 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 disabled:opacity-50 rounded-xl font-bold text-gray-900 transition-all inline-flex items-center gap-2">
               <Sparkles size={18} />
-              {loadingAI ? (language === 'zh' ? 'AI解读中...' : 'AI Reading...') : (language === 'zh' ? 'AI 解读' : 'AI Reading')}
+              {loadingAI ? (language === 'zh' ? 'AI解读中...':lang==='zh'?'AI解读中...':lang==='en'?'AI Reading...':lang==='id'?'AI Membaca...':lang==='th'?'กำลังอ่าน...':lang==='vi'?'Đang đọc...':lang==='ms'?'AI Membaca...':lang==='ja'?'AIリーディング中...':lang==='ko'?'AI 읽는 중...':'AI Reading...') : (language === 'zh' ? 'AI 解读':lang==='zh'?'AI 解读':lang==='en'?'AI Reading':lang==='id'?'AI Reading':lang==='th'?'AI อ่าน':lang==='vi'?'AI Đọc':lang==='ms'?'AI Bacaan':lang==='ja'?'AIリーディング':lang==='ko'?'AI 리딩':'AI Reading')}
             </button>
             <button onClick={handleDownload} className="px-6 py-3 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 rounded-xl font-bold text-gray-900 transition-all inline-flex items-center gap-2">
               <Download size={18} />
-              {language === 'zh' ? '下载图片' : 'Download'}
+              {language === 'zh' ? '下载图片':lang==='zh'?'下载图片':lang==='en'?'Download':lang==='id'?'Unduh':lang==='th'?'ดาวน์โหลด':lang==='vi'?'Tải xuống':lang==='ms'?'Muat turun':lang==='ja'?'ダウンロード':lang==='ko'?'다운로드':'Download'}
             </button>
             <button onClick={handleShare} className="px-6 py-3 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 rounded-xl font-bold text-gray-900 transition-all inline-flex items-center gap-2">
               <Share2 size={18} />
-              {language === 'zh' ? '分享链接' : 'Share Link'}
+              {language === 'zh' ? '分享链接':lang==='zh'?'分享链接':lang==='en'?'Share Link':lang==='id'?'Bagikan Tautan':lang==='th'?'แชร์ลิงก์':lang==='vi'?'Chia sẻ':lang==='ms'?'Kongsi Pautan':lang==='ja'?'リンクを共有':lang==='ko'?'링크 공유':'Share Link'}
             </button>
           </div>
         )}

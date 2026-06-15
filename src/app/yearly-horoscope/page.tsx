@@ -217,7 +217,7 @@ export default function YearlyHoroscopePage() {
                   }`}
                 >
                   <div className={`font-bold text-base mb-0.5 ${isNow ? "text-gray-600" : "text-gray-600"}`}>
-                    {month}{lang === 'zh' ? '月' : ''}
+                    {month}{lang==='zh'?'月':lang==='ja'?'月':lang==='ko'?'월':''}
                   </div>
                   <div className="truncate">{theme}</div>
                   {isNow && <div className="text-[8px] text-gray-600 mt-0.5">NOW</div>}
