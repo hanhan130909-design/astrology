@@ -6,6 +6,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { destinyArticles, BlogArticle } from '@/content/destiny-blog-articles';
+import { seoArticles } from '../seo-articles';
 import { ArrowLeft, Clock, Tag } from 'lucide-react';
 
 interface Props {
@@ -14,7 +15,9 @@ interface Props {
 
 // Generate static params for all articles
 export function generateStaticParams() {
-  return destinyArticles.map((a: BlogArticle) => ({ slug: a.slug }));
+  const destiny = destinyArticles.map((a: BlogArticle) => ({ slug: a.slug }));
+  const seo = seoArticles.map((a: any) => ({ slug: a.slug }));
+  return [...destiny, ...seo];
 }
 
 // Dynamic metadata
@@ -22,15 +25,16 @@ export async function generateMetadata(
   { params }: Props
 ): Promise<Metadata> {
   const { slug } = await params;
-  const article = destinyArticles.find((a: BlogArticle) => a.slug === slug);
-  if (!article) return { title: 'Article Not Found' };
+  const article = destinyArticles.find((a: BlogArticle) => a.slug === slug) 
+    || seoArticles.find((a: any) => a.slug === slug);
+  if (!article) { notFound(); }
 
   return {
-    title: `${article.title.en} | 星缘 Blog`,
-    description: article.description.en,
+    title: `${article.title?.en || article.title || 'Article'} | 星缘 Blog`,
+    description: article.excerpt?.en || article.description?.en || article.description,
     openGraph: {
-      title: article.title.en,
-      description: article.description.en,
+      title: article.title?.en || article.title,
+      description: article.excerpt?.en || article.description?.en || article.description,
       type: 'article',
     },
     alternates: {
@@ -151,7 +155,8 @@ export default async function BlogArticlePage({ params }: Props) {
   
   if (!article) notFound();
 
-  const readTime = Math.ceil(article.wordCount / 200);
+  const readTime = article.readTime || Math.ceil((article.wordCount || 1) / 200);
+  const categoryLabel = article.categoryLabel?.en || article.categoryEn || article.category;
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950">
@@ -170,7 +175,7 @@ export default async function BlogArticlePage({ params }: Props) {
           <div className="flex items-center gap-3 mb-4">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300">
               <Tag size={12} />
-              {article.categoryLabel.en}
+              {categoryLabel}
             </span>
             <span className="inline-flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400">
               <Clock size={12} />
@@ -178,11 +183,11 @@ export default async function BlogArticlePage({ params }: Props) {
             </span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight">
-            {article.title.en}
+            {article.title?.en || article.title?.zh || article.title}
           </h1>
-          {article.description.en && (
+          {(article.excerpt?.en || article.description?.en) && (
             <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">
-              {article.description.en}
+              {article.excerpt?.en || article.description?.en}
             </p>
           )}
         </header>
@@ -194,7 +199,7 @@ export default async function BlogArticlePage({ params }: Props) {
           prose-a:text-blue-600 dark:prose-a:text-blue-400
           prose-strong:text-gray-900 dark:prose-strong:text-gray-100
         ">
-          {renderContent(article.sections)}
+          {renderContent(article.sections || article.content?.en || article.content?.zh || '')}
         </div>
 
         {/* CTA Footer */}
