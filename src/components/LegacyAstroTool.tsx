@@ -356,6 +356,22 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
           </div>}
         </div>
 
+        {/* Destiny Code Cross-Promotion — BaZi mode only */}
+        {mode === "bazi" && chart && (
+          <div style={{maxWidth:760,margin:'16px 0',padding:16,background:'linear-gradient(135deg,#fef9e7,#fff7ed)',border:'1px solid #f59e0b33',borderRadius:8,textAlign:'center'}}>
+            <div style={{display:'flex',alignItems:'center',justifyContent:'center',gap:16,flexWrap:'wrap'}}>
+              <div>
+                <div style={{fontWeight:700,fontSize:15,color:'#333',marginBottom:4}}>✨ Want the full AI report?</div>
+                <div style={{fontSize:12,color:'#666'}}>DeepSeek-powered deep analysis · True solar time · 10-page PDF</div>
+              </div>
+              <a href="https://metaphysics-landing.vercel.app/calculator" target="_blank" rel="noopener"
+                style={{display:'inline-block',padding:'8px 20px',background:'#f59e0b',color:'white',borderRadius:6,fontWeight:700,textDecoration:'none',fontSize:14,whiteSpace:'nowrap'}}>
+                Get Destiny Code Report →
+              </a>
+            </div>
+          </div>
+        )}
+
         <div id="legacy-sidebar" style={{position:"absolute",right:10,top:10,padding:5,width:240,textAlign:"left",border:"1px solid #D0D0D0",background:"#4a4a4a",color:"white",boxShadow:"0 0 8px #D0D0D0",fontSize:"13px",opacity:0.9}}>
           <div style={{textAlign:"center",cursor:"pointer"}} onClick={()=>setSidebarOpen(!sidebarOpen)}>
             <strong>快速制图</strong>

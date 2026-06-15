@@ -197,20 +197,41 @@ export default async function BlogArticlePage({ params }: Props) {
           {renderContent(article.sections)}
         </div>
 
-        {/* CTA Footer */}
-        <div className="mt-16 p-8 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20 rounded-2xl border border-purple-100 dark:border-purple-800/30 text-center">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-            Discover Your Cosmic Blueprint
-          </h3>
-          <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-md mx-auto">
-            Generate your free BaZi chart on lunaxstar.com to see what the stars reveal about your destiny.
-          </p>
-          <Link
-            href="/bazi"
-            className="inline-flex items-center px-6 py-3 bg-purple-600 text-white rounded-xl font-semibold hover:bg-purple-700 transition-colors shadow-lg shadow-purple-500/25"
-          >
-            Free BaZi Calculator →
-          </Link>
+        {/* CTA Footer — Dual promotion */}
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* lunaxstar BaZi */}
+          <div className="p-6 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20 rounded-2xl border border-purple-100 dark:border-purple-800/30 text-center">
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+              🪐 Free BaZi Chart
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+              Generate your Four Pillars chart with Day Master and Five Elements.
+            </p>
+            <Link
+              href="/bazi"
+              className="inline-flex items-center px-5 py-2.5 bg-purple-600 text-white rounded-xl text-sm font-semibold hover:bg-purple-700 transition-colors shadow-lg shadow-purple-500/25"
+            >
+              Try on Lunaxstar →
+            </Link>
+          </div>
+
+          {/* Destiny Code */}
+          <div className="p-6 bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 rounded-2xl border border-amber-100 dark:border-amber-800/30 text-center">
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+              ✨ Destiny Code Report
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+              AI-powered deep analysis with true solar time correction. Get your full BaZi blueprint.
+            </p>
+            <a
+              href="https://metaphysics-landing.vercel.app/calculator"
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center px-5 py-2.5 bg-amber-500 text-white rounded-xl text-sm font-semibold hover:bg-amber-600 transition-colors shadow-lg shadow-amber-500/25"
+            >
+              Get Full Report →
+            </a>
+          </div>
         </div>
       </article>
     </div>

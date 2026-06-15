@@ -162,6 +162,7 @@ export default function HomePage() {
         <Link href="/about" className="text-xs text-gray-400 no-underline mx-3 hover:text-[#171717]">{t.privacy}</Link>
         <Link href="/about" className="text-xs text-gray-400 no-underline mx-3 hover:text-[#171717]">{t.terms}</Link>
         <Link href="/about" className="text-xs text-gray-400 no-underline mx-3 hover:text-[#171717]">{t.contact}</Link>
+        <a href="https://metaphysics-landing.vercel.app" target="_blank" rel="noopener" className="text-xs text-amber-600 no-underline mx-3 hover:text-amber-700 font-medium">✨ Destiny Code</a>
       </footer>
     </div>
   );
