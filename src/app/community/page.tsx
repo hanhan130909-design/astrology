@@ -373,7 +373,7 @@ export default function CommunityPage() {
                     <span>💬 {i===0?5:i===1?15:9}</span>
                   </div>
                 </div>
-              ))}
+              )})}
             </div>
           </div>
 
