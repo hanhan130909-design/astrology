@@ -37,14 +37,13 @@ function cleanEnv(val: string | undefined): string {
 
 // Detect environment - use actual hostname for authDomain to avoid domain mismatch
 function getAuthDomain(): string {
-  if (typeof window === 'undefined') {
-    return cleanEnv(process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN) || 'localhost';
-  }
+  // Always use configured auth domain from env var
+  const configured = cleanEnv(process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN);
+  if (configured) return configured;
+  if (typeof window === 'undefined') return 'localhost';
   const host = window.location.hostname;
-  // Use the actual hostname. This works for localhost, .web.app, and custom domains.
-  // If it's localhost, use 'localhost' (Firebase Auth requires this exact value).
   if (host === 'localhost' || host === '127.0.0.1') return 'localhost';
-  return host; // e.g. 'astrology-f32f2.web.app' or 'lunaxstar.com'
+  return host;
 }
 
 // Firebase config (from env vars)
