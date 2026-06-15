@@ -59,13 +59,36 @@ function baziPillars(year: number, month: number, day: number, hour: number, min
   const eightChar = lunar.getEightChar();
   const prevJieQi = lunar.getPrevJieQi();
   const nextJieQi = lunar.getNextJieQi();
+  
+  // Enhanced: Day Master + Five Elements + Hidden Stems
+  const dayGan = eightChar.getDayGan();
+  const dayZhi = eightChar.getDayZhi();
+  const dayWuXing = eightChar.getDayWuXing();
+  const dayShiShen = eightChar.getDayShiShenGan?.() || '';
+  
+  // Hidden stems (藏干)
+  let hiddenStems: Record<string, string[]> = {};
+  try { hiddenStems.year = eightChar.getYearHideGan?.() || []; } catch(e) {}
+  try { hiddenStems.month = eightChar.getMonthHideGan?.() || []; } catch(e) {}
+  try { hiddenStems.day = eightChar.getDayHideGan?.() || []; } catch(e) {}
+  try { hiddenStems.time = eightChar.getTimeHideGan?.() || []; } catch(e) {}
+  
+  // NaYin (纳音) for each pillar
+  const naYin = {
+    year: eightChar.getYearNaYin?.() || '',
+    month: eightChar.getMonthNaYin?.() || '',
+    day: eightChar.getDayNaYin?.() || '',
+    time: eightChar.getTimeNaYin?.() || '',
+  };
+  
   return {
     pillars: [
-      { label: "年柱", value: eightChar.getYear() },
-      { label: "月柱", value: eightChar.getMonth() },
-      { label: "日柱", value: eightChar.getDay() },
-      { label: "时柱", value: eightChar.getTime() },
+      { label: "年柱", value: eightChar.getYear(), naYin: naYin.year, hidden: hiddenStems.year || [] },
+      { label: "月柱", value: eightChar.getMonth(), naYin: naYin.month, hidden: hiddenStems.month || [] },
+      { label: "日柱", value: eightChar.getDay(), naYin: naYin.day, hidden: hiddenStems.day || [] },
+      { label: "时柱", value: eightChar.getTime(), naYin: naYin.time, hidden: hiddenStems.time || [] },
     ],
+    dayMaster: { stem: dayGan, element: dayWuXing, shiShen: dayShiShen },
     meta: {
       lunarDate: lunar.toString(),
       jieQi: lunar.getJieQi() || "-",
@@ -231,7 +254,11 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
             <div className="bazi-mobile-grid">
               {pillars.map(p => <div key={p.label} className="bazi-mobile-card"><div className="bazi-mobile-label">{p.label}</div><div className="bazi-mobile-value">{p.value}</div></div>)}
             </div>
-            <table className="alm-table bazi-summary-table" style={{maxWidth:760,marginTop:16}}>
+            <div style={{marginTop:12,padding:'8px 12px',background:'#fef9e7',borderRadius:4,maxWidth:760}}>
+              ☀️ <strong>日主 Day Master:</strong> {bazi.dayMaster.stem} ({bazi.dayMaster.element})
+              {bazi.dayMaster.shiShen && <span> · 十神: {bazi.dayMaster.shiShen}</span>}
+            </div>
+            <table className="alm-table bazi-summary-table" style={{maxWidth:760,marginTop:8}}>
               <thead><tr>{pillars.map(p => <th key={p.label}>{p.label}</th>)}</tr></thead>
               <tbody><tr>{pillars.map(p => <td key={p.label} className="bazi-pill">{p.value}</td>)}</tr></tbody>
             </table>
@@ -249,13 +276,25 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
                 <tbody>{planetRows.map(r=><tr key={r.key}><td>{r.name}</td><td>{lonText(r.lon)}</td><td>{SIGNS_CN[r.sign]}</td></tr>)}</tbody>
               </table>}
               {activeTab==="chart-tab"&&mode==="bazi"&&<table className="alm-table">
-                <thead><tr><th>柱</th><th>干支</th><th>计算依据</th></tr></thead>
+                <thead><tr><th>柱</th><th>干支</th><th>纳音</th><th>藏干</th><th>计算依据</th></tr></thead>
                 <tbody>
-                  {pillars.map(p=><tr key={p.label}><td>{p.label}</td><td className="bazi-pill">{p.value}</td><td>{p.label === "年柱" || p.label === "月柱" ? "精确节气" : "当地时间"}</td></tr>)}
-                  <tr><td>农历</td><td colSpan={2}>{bazi.meta.lunarDate}</td></tr>
-                  <tr><td>当天节气</td><td colSpan={2}>{bazi.meta.jieQi}</td></tr>
-                  <tr><td>上一节气</td><td colSpan={2}>{bazi.meta.prevJieQi}</td></tr>
-                  <tr><td>下一节气</td><td colSpan={2}>{bazi.meta.nextJieQi}</td></tr>
+                  {pillars.map(p=><tr key={p.label}>
+                    <td>{p.label}</td>
+                    <td className="bazi-pill">{p.value}</td>
+                    <td style={{fontSize:13,color:'#666'}}>{p.naYin || '-'}</td>
+                    <td style={{fontSize:13}}>{(p.hidden || []).join(' ') || '-'}</td>
+                    <td>{p.label === "年柱" || p.label === "月柱" ? "精确节气" : "当地时间"}</td>
+                  </tr>)}
+                  <tr style={{background:'#fef9e7'}}>
+                    <td colSpan={5}>
+                      <strong>☀️ 日主 · Day Master:</strong> {bazi.dayMaster.stem} ({bazi.dayMaster.element}) 
+                      {bazi.dayMaster.shiShen && <span> · 十神: {bazi.dayMaster.shiShen}</span>}
+                    </td>
+                  </tr>
+                  <tr><td>农历</td><td colSpan={4}>{bazi.meta.lunarDate}</td></tr>
+                  <tr><td>当天节气</td><td colSpan={4}>{bazi.meta.jieQi}</td></tr>
+                  <tr><td>上一节气</td><td colSpan={4}>{bazi.meta.prevJieQi}</td></tr>
+                  <tr><td>下一节气</td><td colSpan={4}>{bazi.meta.nextJieQi}</td></tr>
                 </tbody>
               </table>}
               {activeTab==="table-tab"&&<table className="alm-table">
@@ -265,6 +304,9 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
                   <tr><th>地点</th><td>{mode==="bazi"?"-":`${lat}, ${lng}`}</td></tr>
                   {mode==="bazi"&&<>
                     <tr><th>四柱</th><td>{pillars.map(p=>`${p.label}:${p.value}`).join("　")}</td></tr>
+                    <tr><th>日主</th><td>{bazi.dayMaster.stem} ({bazi.dayMaster.element}) {bazi.dayMaster.shiShen && `· ${bazi.dayMaster.shiShen}`}</td></tr>
+                    <tr><th>纳音</th><td>{pillars.map(p=>`${p.label}:${p.naYin||'-'}`).join("　")}</td></tr>
+                    <tr><th>藏干</th><td>{pillars.map(p=>`${p.label}:${(p.hidden||[]).join(' ')}`).join("　")}</td></tr>
                     <tr><th>上一节气</th><td>{bazi.meta.prevJieQi}</td></tr>
                     <tr><th>下一节气</th><td>{bazi.meta.nextJieQi}</td></tr>
                   </>}
