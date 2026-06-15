@@ -289,7 +289,7 @@ export default function LunarReturnPage() {
                   {Array.from({ length: 24 }, (_, i) => <option key={i} value={i}>{String(i).padStart(2, '0')}</option>)}
                 </select>
                 <select value={form.minute} onChange={e => setForm({ ...form, minute: +e.target.value })} className="p-2 rounded-xl bg-gray-100 border border-gray-300 text-gray-900 text-sm">
-                  {Array.from({ length: 60 }, (_, i) => i % 5 === 0 && <option key={i} value={i}>{String(i).padStart(2, '0')}</option>)}
+                  {Array.from({ length: 60 }, (_, i) => <option key={i} value={i}>{String(i).padStart(2, '0')}</option>)}
                 </select>
               </div>
             </div>

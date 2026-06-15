@@ -1,6 +1,6 @@
 // 占星初阶课程数据 — 14课
 export interface CourseLesson {
-  no: number;
+  id: number;
   zh: string;
   en: string;
   idn: string;

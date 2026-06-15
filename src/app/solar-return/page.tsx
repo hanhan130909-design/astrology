@@ -198,7 +198,7 @@ export default function SolarReturnPage() {
               <div>
                 <label className="text-xs text-gray-500 block mb-1">{language === 'zh' ? '分' : 'Min'}</label>
                 <select value={bMinute} onChange={e => setBMinute(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm">
-                  {Array.from({length:12},(_,i)=><option key={i*5} value={i*5}>{i*5}</option>)}
+                  {Array.from({length:60},(_,i)=><option key={i} value={i}>{String(i).padStart(2,'0')}</option>)}
                 </select>
               </div>
             </div>

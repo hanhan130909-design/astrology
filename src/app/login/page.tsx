@@ -189,38 +189,6 @@ export default function LoginPage() {
       </div>
 
       <div className="relative w-full max-w-md">
-        {/* 返回按钮 */}
-        <Link href="/" className="absolute -top-16 left-0 flex items-center gap-2 text-gray-500 hover:text-white transition-colors">
-          
-          <span>{language === 'zh' ? '返回首页' : language === 'en' ? 'Back' : 'Kembali'}</span>
-        </Link>
-
-        {/* 语言切换 */}
-        <div className="absolute -top-16 right-0 flex gap-2">
-          {[
-          { code: 'zh', label: '中文' },
-          { code: 'en', label: 'EN' },
-          { code: 'id', label: 'ID' },
-          { code: 'th', label: 'ไทย' },
-          { code: 'vi', label: 'VN' },
-          { code: 'ms', label: 'MS' },
-          { code: 'ja', label: '日本語' },
-          { code: 'ko', label: '한국' },
-        ].map((l) => (
-          <button
-            key={l.code}
-            onClick={() => setLanguage(l.code as any)}
-            className={`px-2 py-1 rounded-full text-xs font-medium transition-all ${
-              language === l.code
-                ? 'bg-gray-600 text-white'
-                : 'bg-white text-gray-500 hover:bg-gray-100'
-            }`}
-          >
-            {l.label}
-          </button>
-        ))}
-        </div>
-
         {/* 主卡片 */}
         <div className="bg-gray-50 backdrop-blur-xl border border-gray-200 rounded-3xl p-8">
           {/* Logo */}
