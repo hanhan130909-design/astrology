@@ -6,6 +6,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Sun, Search, MapPin, X, Calendar, Star } from 'lucide-react';
 import ClassicReturnChart from '@/components/ClassicReturnChart';
 import { useChartStorage } from '../natal/useChartStorage';
+import { loadLatestBirthProfile, profileToBirthData } from '@/lib/latestBirthProfile';
 
 const ALL_CITIES = [
   {id:"jakarta",name:{zh:"雅加达",en:"Jakarta",id:"Jakarta"},lat:-6.2088,lng:106.8456,tz:7},
@@ -19,6 +20,7 @@ const ALL_CITIES = [
 ];
 
 const HOUSE_SYSTEMS = [
+  {id:'B',name:{zh:'阿卡比特制',en:'Alcabitius',id:'Alcabitius'}},
   {id:'P',name:{zh:'普拉西德制',en:'Placidus',id:'Placidus'}},
   {id:'W',name:{zh:'整宫制',en:'Whole Sign',id:'Whole Sign'}},
   {id:'E',name:{zh:'等宫制',en:'Equal',id:'Equal'}},
@@ -41,6 +43,9 @@ export default function SolarReturnPage() {
   const [bMinute, setBMinute] = useState(0);
   const [bCityId, setBCityId] = useState('jakarta');
   const [cityName, setCityName] = useState('');
+  const [birthLat, setBirthLat] = useState(ALL_CITIES[0].lat);
+  const [birthLng, setBirthLng] = useState(ALL_CITIES[0].lng);
+  const [birthTz, setBirthTz] = useState(ALL_CITIES[0].tz);
   const [houseSystem, setHouseSystem] = useState('P');
   
   const [srYear, setSrYear] = useState(new Date().getFullYear());
@@ -51,7 +56,9 @@ export default function SolarReturnPage() {
   
   const bCity = ALL_CITIES.find((c: any) => c.id === bCityId) || ALL_CITIES[0];
 
-  const calculateSolarReturn = async () => {
+  const calculateSolarReturn = async (profileOverride: any = null, returnYearOverride: number | null = null, houseSystemOverride: string | null = null) => {
+    const savedBirth = profileOverride ? profileToBirthData(profileOverride) : null;
+    const birthData = savedBirth || { year: bYear, month: bMonth, day: bDay, hour: bHour, minute: bMinute, lat: birthLat, lng: birthLng, tz: birthTz };
     setLoading(true);
     setError(null);
     try {
@@ -60,9 +67,9 @@ export default function SolarReturnPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           type: 'solar_return',
-          birthData: { year: bYear, month: bMonth, day: bDay, hour: bHour, minute: bMinute, lat: bCity.lat, lng: bCity.lng, tz: bCity.tz },
-          transitDate: { year: srYear },
-          houseSystem
+          birthData,
+          transitDate: { year: returnYearOverride || srYear },
+          houseSystem: houseSystemOverride || houseSystem
         })
       });
       const data = await res.json();
@@ -75,6 +82,33 @@ export default function SolarReturnPage() {
     }
   };
 
+  useEffect(() => {
+    const latest = loadLatestBirthProfile();
+    if (!latest) return;
+    setBYear(latest.year);
+    setBMonth(latest.month);
+    setBDay(latest.day);
+    setBHour(latest.hour);
+    setBMinute(latest.minute);
+    setBirthLat(latest.lat);
+    setBirthLng(latest.lng);
+    setBirthTz(latest.tz);
+    setCityName(latest.city || latest.name || '已保存地点');
+    setBCityId('latest-profile');
+    setHouseSystem(latest.houseSystem || 'B');
+    calculateSolarReturn(latest, new Date().getFullYear(), latest.houseSystem || 'B');
+  }, []);
+
+  const handleCityChange = (id: string) => {
+    setBCityId(id);
+    const c = ALL_CITIES.find(x => x.id === id);
+    if (!c) return;
+    setCityName(tx(c.name, language));
+    setBirthLat(c.lat);
+    setBirthLng(c.lng);
+    setBirthTz(c.tz);
+  };
+
   const loadSavedChart = (c: any) => {
     setBYear(c.birthDate.year);
     setBMonth(c.birthDate.month);
@@ -83,6 +117,12 @@ export default function SolarReturnPage() {
     setBMinute(c.birthDate.minute);
     setBCityId(c.cityId);
     setCityName(c.cityName);
+    const city = ALL_CITIES.find((item: any) => item.id === c.cityId);
+    if (city) {
+      setBirthLat(city.lat);
+      setBirthLng(city.lng);
+      setBirthTz(city.tz);
+    }
     setShowSaved(false);
   };
 
@@ -165,7 +205,8 @@ export default function SolarReturnPage() {
 
             <div className="mb-4">
               <label className="text-xs text-gray-500 block mb-1">{language === 'zh' ? '出生地' : 'Birth Location'}</label>
-              <select value={bCityId} onChange={e => { setBCityId(e.target.value); const c = ALL_CITIES.find(x=>x.id===e.target.value); if(c) setCityName(tx(c.name,language)); }} className="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm">
+              <select value={bCityId} onChange={e => handleCityChange(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm">
+                {bCityId === 'latest-profile' && <option value="latest-profile">{cityName || '已保存地点'}</option>}
                 {ALL_CITIES.map(c => <option key={c.id} value={c.id}>{tx(c.name,language)}</option>)}
               </select>
             </div>

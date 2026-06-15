@@ -1,9 +1,10 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Solar } from "lunar-javascript";
 import NatalChartWheel from "@/components/NatalChartWheel";
 import { AspectMatrix } from "@/components/AlmutenChartLayout";
+import { loadLatestBirthProfile, saveLatestBirthProfile } from "@/lib/latestBirthProfile";
 
 type ToolMode = "horary" | "vedic" | "bazi" | "solar-arc" | "tertiary" | "tertiary-natal" | "secondary-natal";
 
@@ -98,10 +99,28 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
   const pillars = bazi.pillars;
   const isProgressed = ["solar-arc", "tertiary", "tertiary-natal", "secondary-natal"].includes(mode);
 
+  useEffect(() => {
+    if (mode === "horary") return;
+    const latest = loadLatestBirthProfile();
+    if (!latest) return;
+    setYear(latest.year);
+    setMonth(latest.month);
+    setDay(latest.day);
+    setHour(latest.hour);
+    setMinute(latest.minute);
+    setLat(latest.lat);
+    setLng(latest.lng);
+    setTz(latest.tz);
+    if (mode === "bazi") setChart({ bazi: true });
+  }, [mode]);
+
   const calculate = async () => {
     setLoading(true);
     setError("");
     try {
+      if (mode !== "horary") {
+        saveLatestBirthProfile({ year, month, day, hour, minute, lat, lng, tz, houseSystem: mode === "vedic" ? "W" : "B" });
+      }
       if (mode === "bazi") {
         setChart({ bazi: true });
         return;

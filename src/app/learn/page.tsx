@@ -243,14 +243,14 @@ export default function LearnPage() {
               <div key={lesson.id} className="p-5 rounded-xl border border-gray-200 bg-white hover:shadow-md transition-shadow">
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 rounded-lg bg-[#171717] text-white flex items-center justify-center text-sm font-bold shrink-0">
-                    {lesson.id}
+                    {lesson.no}
                   </div>
                   <div className="min-w-0">
                     <h3 className="font-semibold text-gray-900 mb-1">
-                      {lang === 'zh' ? lesson.zh : lang === 'id' ? lesson.id : lesson.en}
+                      {lang === 'zh' ? lesson.zh : lang === 'id' ? lesson.idn : lesson.en}
                     </h3>
                     <p className="text-xs text-gray-500 mb-3 leading-relaxed">
-                      {lang === 'zh' ? lesson.desc.zh : lang === 'id' ? lesson.desc.id : lesson.desc.en}
+                      {lang === 'zh' ? lesson.desc.zh : lang === 'id' ? lesson.desc.idn : lesson.desc.en}
                     </p>
                     <div className="flex flex-wrap gap-1">
                       {lesson.topics.map((t, j) => (

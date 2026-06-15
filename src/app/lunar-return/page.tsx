@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Moon, Star, Sun, Calendar, ChevronDown, Loader2, Info, ChevronLeft, ChevronRight } from 'lucide-react';
 import ClassicReturnChart from '@/components/ClassicReturnChart';
+import { loadLatestBirthProfile, profileToBirthData } from '@/lib/latestBirthProfile';
 
 const CITIES: { id: string; name: Record<string, string>; lat: number; lng: number; tz: number }[] = [
   { id: 'jakarta', name: { zh: '雅加达', en: 'Jakarta', id: 'Jakarta', th: 'จาการ์ตา', vi: 'Jakarta', ms: 'Jakarta', ja: 'ジャカルタ', ko: '자카르타' }, lat: -6.2088, lng: 106.8456, tz: 7 },
@@ -136,6 +137,7 @@ export default function LunarReturnPage() {
   const labels = LABELS[lang] || LABELS.zh;
 
   const [form, setForm] = useState({ cityId: 'jakarta', year: 1990, month: 6, day: 15, hour: 12, minute: 0 });
+  const [birthLocation, setBirthLocation] = useState({ lat: CITIES[0].lat, lng: CITIES[0].lng, tz: CITIES[0].tz, name: '' });
   const [targetYear, setTargetYear] = useState(new Date().getFullYear());
   const [targetMonth, setTargetMonth] = useState(new Date().getMonth() + 1);
   const [loading, setLoading] = useState(false);
@@ -147,7 +149,17 @@ export default function LunarReturnPage() {
   const years = Array.from({ length: 60 }, (_, i) => new Date().getFullYear() - 30 + i);
   const months = Array.from({ length: 12 }, (_, i) => i + 1);
 
-  const handleCalculate = async () => {
+  const handleCalculate = async (profileOverride: any = null, targetOverride: { year: number; month: number } | null = null) => {
+    const savedBirth = profileOverride ? profileToBirthData(profileOverride) : null;
+    const birthData = savedBirth || {
+      year: form.year,
+      month: form.month,
+      day: form.day,
+      hour: form.hour,
+      minute: form.minute,
+      lat: birthLocation.lat,
+      lng: birthLocation.lng,
+      tz: birthLocation.tz};
     setLoading(true);
     setError(null);
 
@@ -157,16 +169,8 @@ export default function LunarReturnPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           type: 'lunar_return',
-          birthData: {
-            year: form.year,
-            month: form.month,
-            day: form.day,
-            hour: form.hour,
-            minute: form.minute,
-            lat: city.lat,
-            lng: city.lng,
-            tz: city.tz},
-          transitDate: { year: targetYear, month: targetMonth },
+          birthData,
+          transitDate: targetOverride || { year: targetYear, month: targetMonth },
           houseSystem: 'E'})});
 
       const data = await response.json();
@@ -186,6 +190,27 @@ export default function LunarReturnPage() {
     } finally {
       setLoading(false);
     }
+  };
+
+  useEffect(() => {
+    const latest = loadLatestBirthProfile();
+    if (!latest) return;
+    setForm({
+      cityId: 'latest-profile',
+      year: latest.year,
+      month: latest.month,
+      day: latest.day,
+      hour: latest.hour,
+      minute: latest.minute});
+    setBirthLocation({ lat: latest.lat, lng: latest.lng, tz: latest.tz, name: latest.city || latest.name || '已保存地点' });
+    handleCalculate(latest, { year: new Date().getFullYear(), month: new Date().getMonth() + 1 });
+  }, []);
+
+  const handleCityChange = (cityId: string) => {
+    setForm({ ...form, cityId });
+    const next = CITIES.find(c => c.id === cityId);
+    if (!next) return;
+    setBirthLocation({ lat: next.lat, lng: next.lng, tz: next.tz, name: next.name[lang] || next.name.zh });
   };
 
   // 获取月返时月亮所在的星座主题
@@ -230,9 +255,10 @@ export default function LunarReturnPage() {
               <label className="block text-xs text-gray-500 mb-1">{labels.city}</label>
               <select
                 value={form.cityId}
-                onChange={e => setForm({ ...form, cityId: e.target.value })}
+                onChange={e => handleCityChange(e.target.value)}
                 className="w-full p-3 rounded-xl bg-gray-100 border border-gray-300 text-gray-900"
               >
+                {form.cityId === 'latest-profile' && <option value="latest-profile">{birthLocation.name || '已保存地点'}</option>}
                 {CITIES.map(c => (
                   <option key={c.id} value={c.id}>{c.name[lang as keyof typeof c.name] || c.name.zh}</option>
                 ))}

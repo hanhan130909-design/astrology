@@ -5,6 +5,7 @@ import NatalChartWheel from "@/components/NatalChartWheel";
 import { AspectMatrix } from "@/components/AlmutenChartLayout";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { auth, logout } from "@/lib/firebase";
+import { saveLatestBirthProfile } from "@/lib/latestBirthProfile";
 import { sendPasswordResetEmail } from "firebase/auth";
 
 const MONTHS = ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];
@@ -93,6 +94,7 @@ export default function NatalPage(){
   const lat = (glatDeg + glatMin / 60) * (glatDir === "S" ? -1 : 1);
   const lng = (glonDeg + glonMin / 60) * (glonDir === "W" ? -1 : 1);
   const tzHours = tz / 60;
+  const currentBirthProfile = () => ({name,year,month,day,hour:Number(hour),minute:Number(minute),lat,lng,tz:tzHours,houseSystem:hsys,city});
 
   const requestChart = async(body:any)=>{
     setLoading(true);
@@ -103,7 +105,10 @@ export default function NatalPage(){
       setChart(d.data || d);
     }catch{}finally{setLoading(false);}
   };
-  const drawChart = async()=>{await requestChart({year,month,day,hour:Number(hour),minute:Number(minute),latitude:lat,longitude:lng,timezone:tzHours,houseSystem:hsys});};
+  const drawChart = async()=>{
+    saveLatestBirthProfile(currentBirthProfile());
+    await requestChart({year,month,day,hour:Number(hour),minute:Number(minute),latitude:lat,longitude:lng,timezone:tzHours,houseSystem:hsys});
+  };
 
   useEffect(()=>{
     const current = new Date();const currentTz = -current.getTimezoneOffset();
@@ -119,7 +124,7 @@ export default function NatalPage(){
   const codeAddress = async()=>{
     try{const r=await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(city)}&limit=1`);const d=await r.json();if(d?.[0]){const la=parseFloat(d[0].lat),lo=parseFloat(d[0].lon);setGlatDeg(Math.trunc(Math.abs(la)));setGlatMin(Math.round((Math.abs(la)%1)*60));setGlatDir(la>=0?"N":"S");setGlonDeg(Math.trunc(Math.abs(lo)));setGlonMin(Math.round((Math.abs(lo)%1)*60));setGlonDir(lo>=0?"E":"W");setTz(Math.round(lo/15)*60);}}catch{}
   };
-  const handleSave = ()=>{if(!chart)return;const s=JSON.parse(localStorage.getItem("natal_charts")||"[]");s.unshift({name,ts:Date.now(),birthData:{name,year,month,day,hour,minute,lat,lng,tz,hsys}});localStorage.setItem("natal_charts",JSON.stringify(s.slice(0,20)));alert("已储存");};
+  const handleSave = ()=>{if(!chart)return;saveLatestBirthProfile(currentBirthProfile());const s=JSON.parse(localStorage.getItem("natal_charts")||"[]");s.unshift({name,ts:Date.now(),birthData:{name,year,month,day,hour,minute,lat,lng,tz,hsys}});localStorage.setItem("natal_charts",JSON.stringify(s.slice(0,20)));alert("已储存");};
   const handleCopyLink = ()=>{navigator.clipboard.writeText(window.location.href).then(()=>alert("链接已复制"));};
   const handleExportImage = async()=>{const el=document.getElementById("chart");if(!el)return;try{const{default:h}=await import("html2canvas");const c=await h(el,{backgroundColor:"#0f0f1a",scale:2});const a=document.createElement("a");a.download=`chart-${year}-${month}-${day}.png`;a.href=c.toDataURL();a.click();}catch{}};
   const openSavedCharts = ()=>{setSavedCharts(JSON.parse(localStorage.getItem("natal_charts")||"[]"));setSavedDialogOpen(true);setOpenMenu(null);};
@@ -134,6 +139,7 @@ export default function NatalPage(){
     setName(b.name||item.name||"Saved Chart");setYear(Number(b.year)||now.getFullYear());setMonth(Number(b.month)||1);setDay(Number(b.day)||1);setHour(Number(b.hour)||0);setMinute(Number(b.minute)||0);
     setCity(b.city||item.name||"已保存地点");setGlatDeg(lp.degrees);setGlatMin(lp.minutes);setGlatDir(la>=0?"N":"S");setGlonDeg(lnp.degrees);setGlonMin(lnp.minutes);setGlonDir(lo>=0?"E":"W");setTz(savedTz);setHsys(savedHsys);
     setSavedDialogOpen(false);setOpenMenu(null);
+    saveLatestBirthProfile({name:b.name||item.name||"Saved Chart",year:Number(b.year)||now.getFullYear(),month:Number(b.month)||1,day:Number(b.day)||1,hour:Number(b.hour)||0,minute:Number(b.minute)||0,lat:la,lng:lo,tz:savedTz,houseSystem:savedHsys,city:b.city||item.name||"已保存地点"});
     requestChart({year:Number(b.year)||now.getFullYear(),month:Number(b.month)||1,day:Number(b.day)||1,hour:Number(b.hour)||0,minute:Number(b.minute)||0,latitude:la,longitude:lo,timezone:savedTz/60,houseSystem:savedHsys});
   };
   const deleteSavedChart = (idx:number)=>{const list=[...savedCharts];list.splice(idx,1);setSavedCharts(list);localStorage.setItem("natal_charts",JSON.stringify(list));};
