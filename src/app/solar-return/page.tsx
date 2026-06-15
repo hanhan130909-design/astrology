@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Sun, Search, MapPin, X, Calendar, Star } from 'lucide-react';
-import NatalChart from '@/components/NatalChart';
+import ClassicReturnChart from '@/components/ClassicReturnChart';
 import { useChartStorage } from '../natal/useChartStorage';
 
 const ALL_CITIES = [
@@ -209,15 +209,6 @@ export default function SolarReturnPage() {
                   </div>
                 </div>
 
-                <div className="flex justify-center">
-                  <NatalChart 
-                    planets={chart.solarReturn.planets} 
-                    houses={chart.solarReturn.houses} 
-                    aspects={chart.solarReturn.aspects}
-                    size={400}
-                  />
-                </div>
-
                 {/* Planet Positions */}
                 <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
                   <h3 className="font-bold text-gray-900 mb-3">{language === 'zh' ? '行星位置' : 'Planet Positions'}</h3>
@@ -251,6 +242,10 @@ export default function SolarReturnPage() {
             )}
           </div>
         </div>
+
+        {chart?.solarReturn && (
+          <ClassicReturnChart chart={chart.solarReturn} className="mt-8" />
+        )}
       </main>
     </div>
   );

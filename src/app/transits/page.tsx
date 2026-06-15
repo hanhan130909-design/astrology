@@ -115,6 +115,7 @@ const TRANSIT_READINGS: Record<string, Record<string, Record<string, { title: st
 
 export default function TransitPage() {
   const { language } = useLanguage();
+  const lang = language || 'zh';
   const { charts, loaded } = useChartStorage();
   
   const [bYear, setBYear] = useState(1990);
@@ -328,13 +329,13 @@ export default function TransitPage() {
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-500/20 rounded-full text-sm text-gray-300 mb-4">
             <Search size={16} />
-            {language === 'zh' ? '推运分析':lang==='en'?'Transit Analysis':lang==='id'?'Analisis Transit':lang==='th'?'วิเคราะห์การโคจร':lang==='vi'?'Phân tích quá cảnh':lang==='ms'?'Analisis Transit':lang==='ja'?'トランジット分析':lang==='ko'?'트랜짓 분석':'Transit Analysis'}
+            {language === 'zh' ? '推运分析':language==='en'?'Transit Analysis':language==='id'?'Analisis Transit':language==='th'?'วิเคราะห์การโคจร':language==='vi'?'Phân tích quá cảnh':language==='ms'?'Analisis Transit':language==='ja'?'トランジット分析':language==='ko'?'트랜짓 분석':'Transit Analysis'}
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            {language === 'zh' ? '🔮 行星推运分析':lang==='en'?'🔮 Planetary Transit':lang==='id'?'🔮 Transit Planet':lang==='th'?'🔮 การโคจรของดาว':lang==='vi'?'🔮 Quá cảnh hành tinh':lang==='ms'?'🔮 Transit Planet':lang==='ja'?'🔮 プラネタリートランジット':lang==='ko'?'🔮 행성 트랜짓':'🔮 Planetary Transit'}
+            {language === 'zh' ? '🔮 行星推运分析':language==='en'?'🔮 Planetary Transit':language==='id'?'🔮 Transit Planet':language==='th'?'🔮 การโคจรของดาว':language==='vi'?'🔮 Quá cảnh hành tinh':language==='ms'?'🔮 Transit Planet':language==='ja'?'🔮 プラネタリートランジット':language==='ko'?'🔮 행성 트랜짓':'🔮 Planetary Transit'}
           </h1>
           <p className="text-gray-500">
-            {language === 'zh' ? '查看推运行星与本命盘的相位关系':lang==='en'?'View transit planets and aspects to your natal chart':lang==='id'?'Lihat transit planet dan aspek ke bagan lahir Anda':lang==='th'?'ดูการโคจรของดาวและมุมกับแผนภูมิเกิด':lang==='vi'?'Xem hành tinh quá cảnh và góc chiếu':lang==='ms'?'Lihat transit planet dan aspek ke carta lahir':lang==='ja'?'惑星トランジットと出生図のアスペクト':lang==='ko'?'행성 트랜짓과 출생 차트 각도':'View transit aspects'}
+            {language === 'zh' ? '查看推运行星与本命盘的相位关系':language==='en'?'View transit planets and aspects to your natal chart':language==='id'?'Lihat transit planet dan aspek ke bagan lahir Anda':language==='th'?'ดูการโคจรของดาวและมุมกับแผนภูมิเกิด':language==='vi'?'Xem hành tinh quá cảnh và góc chiếu':language==='ms'?'Lihat transit planet dan aspek ke carta lahir':language==='ja'?'惑星トランジットと出生図のアスペクト':language==='ko'?'행성 트랜짓과 출생 차트 각도':'View transit aspects'}
           </p>
         </div>
 
@@ -360,15 +361,15 @@ export default function TransitPage() {
             <div>
               <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
                 <Star size={16} className="text-gray-400"/>
-                {language === 'zh' ? '出生信息':lang==='en'?'Birth Data':lang==='id'?'Info Kelahiran':lang==='th'?'ข้อมูลเกิด':lang==='vi'?'Thông tin sinh':lang==='ms'?'Info Kelahiran':lang==='ja'?'出生情報':lang==='ko'?'출생 정보':'Birth Data'}
+                {language === 'zh' ? '出生信息':language==='en'?'Birth Data':language==='id'?'Info Kelahiran':language==='th'?'ข้อมูลเกิด':language==='vi'?'Thông tin sinh':language==='ms'?'Info Kelahiran':language==='ja'?'出生情報':language==='ko'?'출생 정보':'Birth Data'}
               </h3>
               <div className="space-y-3">
                 <div ref={cityRef}>
-                  <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '出生城市':lang==='en'?'Birth City':lang==='id'?'Kota Kelahiran':lang==='th'?'เมืองเกิด':lang==='vi'?'Thành phố sinh':lang==='ms'?'Bandar Lahir':lang==='ja'?'出生都市':lang==='ko'?'출생 도시':'Birth City'}</label>
+                  <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '出生城市':language==='en'?'Birth City':language==='id'?'Kota Kelahiran':language==='th'?'เมืองเกิด':language==='vi'?'Thành phố sinh':language==='ms'?'Bandar Lahir':language==='ja'?'出生都市':language==='ko'?'출생 도시':'Birth City'}</label>
                   <div className="relative">
                     <MapPin size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"/>
                     <input type="text" value={cityQuery} onChange={e => { setCityQuery(e.target.value); setShowCityDropdown(true); }}
-                      onFocus={() => setShowCityDropdown(true)} placeholder={language === 'zh' ? '搜索城市...':lang==='en'?'Search city...':lang==='id'?'Cari kota...':lang==='th'?'ค้นหาเมือง...':lang==='vi'?'Tìm thành phố...':lang==='ms'?'Cari bandar...':lang==='ja'?'都市を検索...':lang==='ko'?'도시 검색...':'Search city...'}
+                      onFocus={() => setShowCityDropdown(true)} placeholder={language === 'zh' ? '搜索城市...':language==='en'?'Search city...':language==='id'?'Cari kota...':language==='th'?'ค้นหาเมือง...':language==='vi'?'Tìm thành phố...':language==='ms'?'Cari bandar...':language==='ja'?'都市を検索...':language==='ko'?'도시 검색...':'Search city...'}
                       className="w-full pl-9 pr-8 py-2.5 rounded-xl bg-white border border-gray-300 text-gray-900 text-sm"/>
                     {cityQuery && <button onClick={() => { setCityQuery(''); setShowCityDropdown(false); }} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"><X size={14}/></button>}
                   </div>
@@ -422,7 +423,7 @@ export default function TransitPage() {
             <div>
               <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
                 <Search size={16} className="text-gray-400"/>
-                {language === 'zh' ? '推运日期':lang==='en'?'Transit Date':lang==='id'?'Tanggal Transit':lang==='th'?'วันที่โคจร':lang==='vi'?'Ngày quá cảnh':lang==='ms'?'Tarikh Transit':lang==='ja'?'トランジット日付':lang==='ko'?'트랜짓 날짜':'Transit Date'}
+                {language === 'zh' ? '推运日期':language==='en'?'Transit Date':language==='id'?'Tanggal Transit':language==='th'?'วันที่โคจร':language==='vi'?'Ngày quá cảnh':language==='ms'?'Tarikh Transit':language==='ja'?'トランジット日付':language==='ko'?'트랜짓 날짜':'Transit Date'}
               </h3>
               <div className="grid grid-cols-3 gap-2">
                 <div>
@@ -447,7 +448,7 @@ export default function TransitPage() {
 
           <button onClick={handleCalculate} disabled={loading}
             className="w-full mt-6 py-4 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 disabled:opacity-50 rounded-xl font-bold text-gray-900 transition-all flex items-center justify-center gap-2">
-            {loading ? (language === 'zh' ? '计算中...':lang==='en'?'Calculating...':lang==='id'?'Menghitung...':lang==='th'?'กำลังคำนวณ...':lang==='vi'?'Đang tính...':lang==='ms'?'Mengira...':lang==='ja'?'計算中...':lang==='ko'?'계산 중...':'Calculating...') : (language === 'zh' ? '查询推运相位':lang==='en'?'Calculate Transit':lang==='id'?'Hitung Transit':lang==='th'?'คำนวณการโคจร':lang==='vi'?'Tính quá cảnh':lang==='ms'?'Kira Transit':lang==='ja'?'トランジット計算':lang==='ko'?'트랜짓 계산':'Calculate Transit')}
+            {loading ? (language === 'zh' ? '计算中...':language==='en'?'Calculating...':language==='id'?'Menghitung...':language==='th'?'กำลังคำนวณ...':language==='vi'?'Đang tính...':language==='ms'?'Mengira...':language==='ja'?'計算中...':language==='ko'?'계산 중...':'Calculating...') : (language === 'zh' ? '查询推运相位':language==='en'?'Calculate Transit':language==='id'?'Hitung Transit':language==='th'?'คำนวณการโคจร':language==='vi'?'Tính quá cảnh':language==='ms'?'Kira Transit':language==='ja'?'トランジット計算':language==='ko'?'트랜짓 계산':'Calculate Transit')}
           </button>
           {error && <div className="mt-3 p-3 rounded-xl bg-gray-500/10 text-gray-400 text-sm">{error}</div>}
         </div>
@@ -682,7 +683,7 @@ export default function TransitPage() {
         {/* FAQ */}
         <section className="max-w-4xl mx-auto mt-16 mb-8">
           <h2 className="text-xl font-semibold text-center mb-6">
-            {language === 'zh' ? '常见问题':lang==='en'?'FAQ':lang==='id'?'Pertanyaan Umum':lang==='th'?'คำถามที่พบบ่อย':lang==='vi'?'Câu hỏi thường gặp':lang==='ms'?'Soalan Lazim':lang==='ja'?'よくある質問':lang==='ko'?'자주 묻는 질문':'常见问题'}
+            {language === 'zh' ? '常见问题':language==='en'?'FAQ':language==='id'?'Pertanyaan Umum':language==='th'?'คำถามที่พบบ่อย':language==='vi'?'Câu hỏi thường gặp':language==='ms'?'Soalan Lazim':language==='ja'?'よくある質問':language==='ko'?'자주 묻는 질문':'常见问题'}
           </h2>
           <div className="space-y-3">
             {[{ q: language==='zh'?'什么是推运盘？':language==='id'?'Apa itu transit chart?':'What is a transit chart?', a: language==='zh'?'推运盘将当前行星位置覆盖在本命盘上，分析当下及未来的运势变化。':language==='id'?'Transit chart menimpakan posisi planet saat ini ke chart natal Anda untuk menganalisis tren saat ini dan masa depan.':'A transit chart overlays current planetary positions onto your natal chart to analyze current and future trends.' },

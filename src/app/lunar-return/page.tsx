@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Moon, Star, Sun, Calendar, ChevronDown, Loader2, Info, ChevronLeft, ChevronRight } from 'lucide-react';
+import ClassicReturnChart from '@/components/ClassicReturnChart';
 
 const CITIES: { id: string; name: Record<string, string>; lat: number; lng: number; tz: number }[] = [
   { id: 'jakarta', name: { zh: '雅加达', en: 'Jakarta', id: 'Jakarta', th: 'จาการ์ตา', vi: 'Jakarta', ms: 'Jakarta', ja: 'ジャカルタ', ko: '자카르타' }, lat: -6.2088, lng: 106.8456, tz: 7 },
@@ -146,77 +147,38 @@ export default function LunarReturnPage() {
   const years = Array.from({ length: 60 }, (_, i) => new Date().getFullYear() - 30 + i);
   const months = Array.from({ length: 12 }, (_, i) => i + 1);
 
-  // 简化月返计算 - 估算月返日期
-  const calculateLunarReturn = () => {
-    // 出生日期的月亮黄经
-    const birthDate = new Date(form.year, form.month - 1, form.day, form.hour, form.minute);
-    const targetDate = new Date(targetYear, targetMonth - 1, 1);
-    
-    // 简单估算：月亮周期约27.3天
-    // 找到目标月份内月亮回到natal位置的日期
-    const daysSinceBirth = Math.floor((targetDate.getTime() - birthDate.getTime()) / (1000 * 60 * 60 * 24));
-    const lunarCycles = daysSinceBirth / 27.3;
-    const fractionalCycle = lunarCycles % 1;
-    
-    // 月返日期大约在这个月的这个时间
-    const lunarReturnDay = Math.floor(fractionalCycle * 30) + 1;
-    const lunarReturnHour = Math.floor((fractionalCycle * 30 - lunarReturnDay + 1) * 24);
-    
-    return {
-      date: `${targetYear}-${String(targetMonth).padStart(2, '0')}-${String(Math.min(lunarReturnDay, 28)).padStart(2, '0')}`,
-      hour: lunarReturnHour % 24};
-  };
-
   const handleCalculate = async () => {
     setLoading(true);
     setError(null);
 
     try {
-      const lunarReturn = calculateLunarReturn();
-      
-      // 调用API计算月返盘
-      const response = await fetch('/api/chart', {
+      const response = await fetch('/api/chart/transit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          year: parseInt(lunarReturn.date.split('-')[0]),
-          month: parseInt(lunarReturn.date.split('-')[1]),
-          day: parseInt(lunarReturn.date.split('-')[2]),
-          hour: lunarReturn.hour,
-          minute: 0,
-          latitude: city.lat,
-          longitude: city.lng,
-          timezone: city.tz,
+          type: 'lunar_return',
+          birthData: {
+            year: form.year,
+            month: form.month,
+            day: form.day,
+            hour: form.hour,
+            minute: form.minute,
+            lat: city.lat,
+            lng: city.lng,
+            tz: city.tz},
+          transitDate: { year: targetYear, month: targetMonth },
           houseSystem: 'E'})});
 
       const data = await response.json();
       if (data.error) throw new Error(data.error);
-
-      const chartData = data.data || data;
-      
-      // 同时获取本命盘用于对比
-      const natalResponse = await fetch('/api/chart', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          year: form.year,
-          month: form.month,
-          day: form.day,
-          hour: form.hour,
-          minute: form.minute,
-          latitude: city.lat,
-          longitude: city.lng,
-          timezone: city.tz,
-          houseSystem: 'E'})});
-      
-      const natalData = await natalResponse.json();
-      const natalChart = natalData.data || natalData;
+      if (!data.lunarReturn) throw new Error('No lunar return data');
+      const lrDate = data.lunarReturn.date || {};
 
       setResult({
-        lunarReturn: chartData,
-        natal: natalChart,
-        lunarReturnDate: lunarReturn.date,
-        lunarReturnHour: lunarReturn.hour});
+        lunarReturn: data.lunarReturn,
+        natal: data.natal,
+        lunarReturnDate: `${lrDate.year}-${String(lrDate.month).padStart(2, '0')}-${String(lrDate.day).padStart(2, '0')}`,
+        lunarReturnHour: lrDate.hour});
       
       setTab('chart');
     } catch (e: any) {
@@ -427,44 +389,7 @@ export default function LunarReturnPage() {
 
             {/* Chart Tab */}
             {tab === 'chart' && (
-              <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 text-center">
-                <h3 className="font-bold mb-4">{labels.chart}</h3>
-                <svg viewBox="0 0 400 400" className="w-full max-w-md mx-auto">
-                  <defs>
-                    <linearGradient id="lunarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#64748b" />
-                      <stop offset="100%" stopColor="#475569" />
-                    </linearGradient>
-                  </defs>
-                  <circle cx="200" cy="200" r="180" fill="none" stroke="url(#lunarGrad)" strokeWidth="2" opacity="0.4" />
-                  <circle cx="200" cy="200" r="160" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5" strokeDasharray="4 4" />
-                  <circle cx="200" cy="200" r="80" fill="#0f172a" stroke="rgba(100,116,139,0.5)" strokeWidth="1" />
-                  
-                  {/* 星座符号 */}
-                  {Object.entries(SIGN_SYMBOLS).map(([sign, sym], i) => {
-                    const angle = (i * 30 - 90) * Math.PI / 180;
-                    const x = 200 + 170 * Math.cos(angle);
-                    const y = 200 + 170 * Math.sin(angle);
-                    return <text key={sign} x={x} y={y + 5} textAnchor="middle" fontSize="16" fill="rgba(255,255,255,0.5)">{sym}</text>;
-                  })}
-                  
-                  {/* 行星位置 */}
-                  {result.lunarReturn?.planets && Object.entries(result.lunarReturn.planets).map(([key, p]: [string, any]) => {
-                    if (!p?.longitude) return null;
-                    const angle = (p.longitude - 90) * Math.PI / 180;
-                    const x = 200 + 130 * Math.cos(angle);
-                    const y = 200 + 130 * Math.sin(angle);
-                    return (
-                      <g key={key}>
-                        <circle cx={x} cy={y} r="10" fill="#0f172a" stroke="#fbbf24" strokeWidth="1.5" />
-                        <text x={x} y={y + 4} textAnchor="middle" fontSize="10" fill="#fbbf24">{PLANET_SYMBOLS[key] || key[0]}</text>
-                      </g>
-                    );
-                  })}
-                  
-                  <text x="200" y="205" textAnchor="middle" fontSize="20" fill="#94a3b8">☽</text>
-                </svg>
-              </div>
+              <ClassicReturnChart chart={result.lunarReturn} />
             )}
 
             {/* Planets Tab */}
@@ -501,7 +426,7 @@ export default function LunarReturnPage() {
                     <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-gray-50">
                       <div className="flex items-center gap-2">
                         <span className="text-gray-600">{PLANET_SYMBOLS[asp.planet1] || asp.planet1}</span>
-                        <span style={{ color: ASPECT_COLORS[asp.aspect] || '#888' }}>{asp.aspect}</span>
+                        <span style={{ color: ASPECT_COLORS[asp.aspect || asp.type] || '#888' }}>{asp.aspect || asp.type}</span>
                         <span className="text-gray-600">{PLANET_SYMBOLS[asp.planet2] || asp.planet2}</span>
                       </div>
                       <span className="text-gray-500 text-sm">{Math.abs(asp.orb).toFixed(1)}°</span>
