@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ArrowLeft, Clock, Tag, ChevronRight } from 'lucide-react';
-import { seoArticles } from './seo-articles';
+import { seoArticles } from './seo-articles'; import { moreSeoArticles } from './more-seo-articles';
 import { destinyArticles } from '@/content/destiny-blog-articles';
 
 // Translation data
@@ -70,7 +70,7 @@ interface BlogArticle {
 
 // Blog articles data
 const blogArticles: BlogArticle[] = [
-  ...seoArticles,
+  ...seoArticles, ...moreSeoArticles,
   // Add Destiny Code BaZi deep-dive articles
   ...destinyArticles.map((a, i) => ({
     id: `destiny-${i}`,
