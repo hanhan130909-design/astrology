@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useAuth } from "@/contexts/AuthContext";
 
 const T: Record<string, Record<string, string>> = {
   zh: { horoscope:"运势", natal:"星盘", compatibility:"配对", ai:"AI解读", learn:"学习", transits:"天象", community:"社区", tarot:"塔罗" },
@@ -28,6 +29,7 @@ const LANGUAGES = [
 
 export default function Navbar() {
   const { language, setLanguage } = useLanguage();
+  const { user, logout } = useAuth();
   const t = T[language] || T.zh;
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
@@ -98,7 +100,14 @@ export default function Navbar() {
           </div>
 
           <Link href="/pricing" className="text-xs font-medium text-gray-400 hover:text-[#171717] no-underline shrink-0 hidden sm:inline">PRO</Link>
-          <Link href="/login" className="text-xs font-medium text-gray-400 hover:text-[#171717] no-underline shrink-0">登录</Link>
+          {user ? (
+            <div className="flex items-center gap-2 shrink-0">
+              <Link href="/profile" className="text-xs font-medium text-gray-600 hover:text-[#171717] no-underline">{user.displayName || user.email}</Link>
+              <button onClick={logout} className="text-xs text-gray-400 hover:text-[#171717]">退出</button>
+            </div>
+          ) : (
+            <Link href="/login" className="text-xs font-medium text-gray-400 hover:text-[#171717] no-underline shrink-0">登录</Link>
+          )}
 
           {/* Mobile hamburger */}
           <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden p-1.5 rounded-md hover:bg-gray-100 ml-1" aria-label={menuOpen ? "关闭菜单" : "打开菜单"}>
