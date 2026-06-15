@@ -337,28 +337,40 @@ export default function CommunityPage() {
           {/* Preview content behind semi-transparent overlay */}
           <div className="relative mb-12 opacity-30 pointer-events-none select-none">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-semibold">占星社区</h2>
+              <h2 className="text-xl font-semibold">{t.title}</h2>
               <div className="flex gap-2">
-                {['日常','提问','经验','学习'].map(c => (
-                  <span key={c} className="px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-700">{c}</span>
+                {CATEGORIES.map(c => (
+                  <span key={c} className="px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-700">{(t as any)[c] || c}</span>
                 ))}
               </div>
             </div>
             <div className="space-y-4">
               {[
-                { author:'星友小王', cat:'日常', content:'今天看了日返盘，发现明年木星进第一宫，太期待了！有同样配置的朋友吗？', likes:12, comments:5 },
-                { author:'占星学习者', cat:'提问', content:'请问各位大神，月亮空亡（VoC Moon）期间适合做什么？不适合做什么？', likes:8, comments:15 },
-                { author:'星座达人', cat:'经验', content:'分享一个看事业宫的小技巧：重点看10宫主星和MC的相位关系，比单纯看10宫内行星更准。', likes:24, comments:9 },
-              ].map((post, i) => (
+                { author: language==='zh'?'星友小王':language==='id'?'Teman Bintang':language==='th'?'เพื่อนดวงดาว':language==='vi'?'Bạn Sao':language==='ms'?'Rakan Bintang':language==='ja'?'星友・王':'Star Friend', catKey:'daily', contentKey:'post1' },
+                { author: language==='zh'?'占星学习者':language==='id'?'Pelajar Astrologi':language==='th'?'นักเรียนโหราศาสตร์':language==='vi'?'Người Học':language==='ms'?'Pelajar':language==='ja'?'占星学習者':'Astro Learner', catKey:'question', contentKey:'post2' },
+                { author: language==='zh'?'星座达人':language==='id'?'Ahli Zodiak':language==='th'?'เซียนราศี':language==='vi'?'Chuyên Gia':language==='ms'?'Pakar':language==='ja'?'星座マスター':'Zodiac Expert', catKey:'experience', contentKey:'post3' },
+              ].map((post, i) => {
+                const posts: Record<string, Record<string, string>> = {
+                  post1: { zh:'今天看了日返盘，发现明年木星进第一宫，太期待了！有同样配置的朋友吗？', en:'Just checked my solar return — Jupiter entering 1st house next year! Anyone else have this placement?', id:'Baru cek solar return, Jupiter masuk rumah pertama tahun depan! Ada yang sama?', th:'เพิ่งดู solar return ดาวพฤหัสเข้าบ้านแรกปีหน้า! มีใครเหมือนกันไหม?', vi:'Vừa xem solar return, sao Mộc vào nhà 1 năm sau! Có ai giống không?', ms:'Baru lihat solar return, Jupiter masuk rumah pertama tahun depan! Ada yang sama?', ja:'ソーラーリターンをチェックしたら来年木星が第一ハウスに！同じ配置の人いますか？', ko:'솔라 리턴 봤는데 내년에 목성이 1하우스에 들어와요! 같은 배치 있나요?' },
+                  post2: { zh:'请问各位大神，月亮空亡（VoC Moon）期间适合做什么？不适合做什么？', en:'What should I do during VoC Moon? What should I avoid?', id:'Apa yang harus dilakukan saat VoC Moon? Apa yang harus dihindari?', th:'ช่วง VoC Moon ควรทำอะไร? ควรหลีกเลี่ยงอะไร?', vi:'Nên làm gì khi Mặt Trăng trống? Nên tránh gì?', ms:'Apa yang patut dibuat semasa VoC Moon? Apa yang perlu dielak?', ja:'VoCムーンの間、何をすべき？何を避けるべき？', ko:'보이드 문 기간에 뭘 해야 하고 뭘 피해야 하나요?' },
+                  post3: { zh:'分享一个看事业宫的小技巧：重点看10宫主星和MC的相位关系，比单纯看10宫内行星更准。', en:'Career tip: focus on the aspects between 10H ruler and MC — way more accurate than just looking at planets in the 10th.', id:'Tip karir: fokus pada aspek antara penguasa rumah 10 dan MC — lebih akurat daripada hanya lihat planet di rumah 10.', th:'เคล็ดลับอาชีพ: ดูมุมระหว่างเจ้าเรือน 10 กับ MC — แม่นกว่าดูแต่ดาวในเรือน 10', vi:'Mẹo sự nghiệp: tập trung vào góc chiếu giữa chủ tinh nhà 10 và MC — chính xác hơn là chỉ nhìn hành tinh trong nhà 10.', ms:'Tip kerjaya: fokus pada aspek antara penguasa rumah 10 dan MC — lebih tepat daripada hanya lihat planet di rumah 10.', ja:'キャリアのコツ：10ハウスルーラーとMCのアスペクトに注目すれば、10ハウスの惑星だけ見るよりずっと正確です。', ko:'커리어 팁: 10하우스 주인과 MC의 각도를 보세요 — 10하우스 행성만 보는 것보다 훨씬 정확해요.' },
+                };
+                const catNames: Record<string, Record<string, string>> = {
+                  daily: { zh:'日常', en:'Daily', id:'Harian', th:'ทั่วไป', vi:'Hàng ngày', ms:'Harian', ja:'日常', ko:'일상' },
+                  question: { zh:'提问', en:'Question', id:'Pertanyaan', th:'คำถาม', vi:'Câu hỏi', ms:'Soalan', ja:'質問', ko:'질문' },
+                  experience: { zh:'经验', en:'Experience', id:'Pengalaman', th:'ประสบการณ์', vi:'Kinh nghiệm', ms:'Pengalaman', ja:'経験', ko:'경험' },
+                  learning: { zh:'学习', en:'Learning', id:'Belajar', th:'เรียนรู้', vi:'Học tập', ms:'Pembelajaran', ja:'学習', ko:'학습' },
+                };
+                return (
                 <div key={i} className="p-4 bg-gray-50 rounded-lg border border-gray-100">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-sm font-medium">{post.author}</span>
-                    <span className="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">{post.cat}</span>
+                    <span className="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">{(catNames as any)[post.catKey]?.[language] || post.catKey}</span>
                   </div>
-                  <p className="text-sm mb-2">{post.content}</p>
+                  <p className="text-sm mb-2">{(posts as any)[post.contentKey]?.[language] || ''}</p>
                   <div className="flex gap-4 text-xs text-gray-400">
-                    <span>❤ {post.likes}</span>
-                    <span>💬 {post.comments}</span>
+                    <span>❤ {i===0?12:i===1?8:24}</span>
+                    <span>💬 {i===0?5:i===1?15:9}</span>
                   </div>
                 </div>
               ))}
