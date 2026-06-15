@@ -271,13 +271,76 @@ export default function NatalPage(){
     {name:"婚姻点(女)",lon:norm(ascLon + pointLon("Mars") - pointLon("Saturn"))},
     {name:"子女点",lon:norm(ascLon + pointLon("Jupiter") - pointLon("Mars"))},
   ];
-  const featureRows = (aData||[]).slice(0,9).map((a:any)=>{
-    const mark = ({Conjunction:"☌",Sextile:"✶",Square:"□",Trine:"△",Opposition:"☍"} as Record<string,string>)[a.aspect||a.type]||"";
-    return `${planetSymbols[planetCodes[a.planet1]||""]||a.planet1} 被 ${planetSymbols[planetCodes[a.planet2]||""]||a.planet2} 接纳 ${mark ? `(${mark})` : ""}`;
-  });
-  if(chart&&featureRows.length<9){
-    featureRows.push("☉ 位於紧要度数 (21°, 固定星座)","♂ 与 ♀ 成映点","♀ 与 ♂ 成映点","☽ 月空亡");
-  }
+  const featureRows = (()=>{
+    const rows: string[] = [];
+    const sym = (p:string)=>planetSymbols[planetCodes[p]||""]||p;
+    const signOf = (lon:number)=>Math.floor(lon/30);
+    const degInSign = (lon:number)=>lon % 30;
+    
+    // 1. Receptions: aspect + planet A in sign ruled by planet B
+    (chart?.aspects||[]).forEach((a:any)=>{
+      const p1=a.planet1, p2=a.planet2;
+      const p1Lon = pointLon(p1), p2Lon = pointLon(p2);
+      if(!p1Lon||!p2Lon) return;
+      const p1Sign = signOf(p1Lon);
+      const p2Sign = signOf(p2Lon);
+      const p1Ruler = Object.keys(RULER).find(k=>(RULER[k]||[]).includes(p1Sign));
+      const p2Ruler = Object.keys(RULER).find(k=>(RULER[k]||[]).includes(p2Sign));
+      // Mutual reception
+      if(p1Ruler===p2 && p2Ruler===p1){
+        const mark = ({Conjunction:"☌",Sextile:"✶",Square:"□",Trine:"△",Opposition:"☍"} as any)[a.aspect||a.type]||"";
+        rows.push(`${sym(p1)} 与 ${sym(p2)} 互容 ${mark}`);
+      } else if(p1Ruler===p2){
+        const mark = ({Conjunction:"☌",Sextile:"✶",Square:"□",Trine:"△",Opposition:"☍"} as any)[a.aspect||a.type]||"";
+        rows.push(`${sym(p1)} 被 ${sym(p2)} 接纳 ${mark}`);
+      }
+    });
+    
+    // 2. Critical degrees
+    const criticalPlanets = Object.entries(pData||{}).filter(([k,v]:[string,any])=>{
+      const lon = v?.longitude; if(typeof lon!=="number") return false;
+      const d = degInSign(lon); const s = signOf(lon);
+      const isCardinal = [0,3,6,9].includes(s);
+      const isFixed = [1,4,7,10].includes(s);
+      const isMutable = [2,5,8,11].includes(s);
+      return (isCardinal && (d<1||Math.abs(d-13)<1||Math.abs(d-26)<1)) ||
+             (isFixed && (Math.abs(d-9)<1||Math.abs(d-21)<1)) ||
+             (isMutable && (Math.abs(d-4)<1||Math.abs(d-17)<1));
+    });
+    criticalPlanets.forEach(([k])=>rows.push(`${sym(k)} 位於紧要度数`));
+    
+    // 3. Antiscia pairs
+    const planetLons = Object.entries(pData||{}).filter(([_,v]:[string,any])=>typeof v?.longitude==="number").map(([k,v]:[string,any])=>({key:k,lon:v.longitude}));
+    for(let i=0;i<planetLons.length;i++){
+      for(let j=i+1;j<planetLons.length;j++){
+        if(Math.abs(planetLons[i].lon + planetLons[j].lon - 360)<1.5){
+          rows.push(`${sym(planetLons[i].key)} 与 ${sym(planetLons[j].key)} 成映点`);
+        }
+      }
+    }
+    
+    // 4. VoC Moon
+    const moonData = pData?.Moon; const moonLonVal = moonData?.longitude;
+    if(typeof moonLonVal==="number"){
+      const moonSign = signOf(moonLonVal);
+      const moonSignEnd = (moonSign+1)*30;
+      const remainingDeg = moonSignEnd - moonLonVal;
+      const majorAspects = [0,60,90,120,180]; // conjunction, sextile, square, trine, opposition
+      let hasApplying = false;
+      Object.entries(pData||{}).forEach(([k,v]:[string,any])=>{
+        if(k==="Moon"||typeof v?.longitude!=="number") return;
+        const otherLon = v.longitude;
+        for(const ang of majorAspects){
+          const targetLon = norm(otherLon - ang);
+          const diff = norm(targetLon - moonLonVal);
+          if(diff < remainingDeg && diff > 0) { hasApplying = true; }
+        }
+      });
+      if(!hasApplying) rows.push("☽ 月空亡");
+    }
+    
+    return rows.slice(0,14); // Max 14 features
+  })();
   const fixedStarRows = [
     {name:"参宿四",lon:norm(ascLon+1),join:"AC"},
     {name:"天市右垣七",lon:norm(sunLon+0.5),join:"☉"},

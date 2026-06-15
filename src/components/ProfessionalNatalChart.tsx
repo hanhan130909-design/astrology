@@ -379,6 +379,7 @@ export default function ProfessionalNatalChart({
             if (!p1Pos || !p2Pos) return null;
             
             const aspType = asp.aspect || asp.type;
+            if (aspType === 'Conjunction') return null; // 合相不画线
             const color = ASPECT_COLORS[aspType];
             const width = ASPECT_WIDTH[aspType] || 1.2;
             if (!color) return null;
