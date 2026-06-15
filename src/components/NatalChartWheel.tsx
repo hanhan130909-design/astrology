@@ -89,7 +89,7 @@ function houseCuspGlyphSize(glyph: string) {
 }
 
 function aspectPoint(lon: number, ascLon: number): Point {
-  return pointFromLongitude(lon, ascLon, rings.aspect);
+  return pointFromLongitude(lon, ascLon, rings.inner);
 }
 
 function pointFromLongitude(lon: number, ascLon: number, radius: number): Point {
