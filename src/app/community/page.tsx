@@ -153,7 +153,7 @@ interface Comment {
 }
 
 export default function CommunityPage() {
-  const { user, loginWithGoogle: authLoginWithGoogle, logout: authLogout } = useAuth();
+  const { user, loginWithGoogle: authLoginWithGoogle, logout: authLogout, isLoading } = useAuth();
   const { language } = useLanguage();
   const t = TRANSLATIONS[language] || TRANSLATIONS.en;
   
@@ -328,6 +328,15 @@ export default function CommunityPage() {
         (p.zodiacTag && p.zodiacTag.toLowerCase().includes(searchQuery.toLowerCase()))
       )
     : posts;
+
+  // If loading auth state, show spinner (not login prompt)
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-gray-400 text-sm">加载中...</div>
+      </div>
+    );
+  }
 
   // If not logged in, show login prompt with preview
   if (!user) {
