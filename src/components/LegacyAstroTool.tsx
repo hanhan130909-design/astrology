@@ -137,6 +137,20 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
     if (mode === "bazi") setChart({ bazi: true });
   }, [mode]);
 
+  // Referral tracking: check for ?ref= code in URL
+  useEffect(() => {
+    if (mode !== "bazi") return;
+    const params = new URLSearchParams(window.location.search);
+    const refCode = params.get('ref');
+    if (refCode) {
+      fetch('/api/referral', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: `click_${refCode}@ref`, action: 'click', code: refCode }),
+      }).catch(() => {});
+    }
+  }, [mode]);
+
   const calculate = async () => {
     setLoading(true);
     setError("");
@@ -258,6 +272,30 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
               ☀️ <strong>日主 Day Master:</strong> {bazi.dayMaster.stem} ({bazi.dayMaster.element})
               {bazi.dayMaster.shiShen && <span> · 十神: {bazi.dayMaster.shiShen}</span>}
             </div>
+
+            {/* Viral Share Buttons */}
+            {mode === "bazi" && chart && <div style={{maxWidth:760,marginTop:12,display:'flex',gap:8,alignItems:'center',flexWrap:'wrap'}}>
+              <span style={{fontSize:13,color:'#666',marginRight:4}}>📤 Share:</span>
+              {[
+                { label: '𝕏', color: '#000', url: (t: string) => `https://x.com/intent/tweet?text=${encodeURIComponent(t)}` },
+                { label: 'WhatsApp', color: '#25D366', url: (t: string) => `https://wa.me/?text=${encodeURIComponent(t)}` },
+                { label: 'Facebook', color: '#1877F2', url: (t: string) => `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://lunaxstar.com/bazi')}&quote=${encodeURIComponent(t)}` },
+              ].map(btn => {
+                const shareText = `My BaZi Day Master is ${bazi.dayMaster.stem} (${bazi.dayMaster.element})! Discover your cosmic blueprint for free at https://lunaxstar.com/bazi`;
+                return (
+                  <a key={btn.label} href={btn.url(shareText)} target="_blank" rel="noopener"
+                    style={{padding:'4px 12px',background:btn.color,color:'white',borderRadius:4,fontSize:12,textDecoration:'none',fontWeight:600}}
+                  >{btn.label}</a>
+                );
+              })}
+              <button onClick={() => {
+                navigator.clipboard.writeText(`https://lunaxstar.com/bazi`);
+                alert('Link copied!');
+              }} style={{padding:'4px 12px',background:'#666',color:'white',border:'none',borderRadius:4,fontSize:12,cursor:'pointer',fontWeight:600}}>
+                📋 Copy Link
+              </button>
+            </div>}
+
             <table className="alm-table bazi-summary-table" style={{maxWidth:760,marginTop:8}}>
               <thead><tr>{pillars.map(p => <th key={p.label}>{p.label}</th>)}</tr></thead>
               <tbody><tr>{pillars.map(p => <td key={p.label} className="bazi-pill">{p.value}</td>)}</tr></tbody>
