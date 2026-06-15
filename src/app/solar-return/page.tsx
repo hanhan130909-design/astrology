@@ -93,7 +93,7 @@ export default function SolarReturnPage() {
       {showSaved && charts.length > 0 && (
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
-            <h3 className="font-bold text-gray-900 mb-3">{language === 'zh' ? '已保存的星盘' : 'Saved Charts'}</h3>
+            <h3 className="font-bold text-gray-900 mb-3">{language === 'zh' ? '已保存的星盘':language==='zh'?'已保存的星盘':language==='en'?'Saved Charts':language==='id'?'Bagan Tersimpan':language==='th'?'แผนภูมิที่บันทึก':language==='vi'?'Bản đồ đã lưu':language==='ms'?'Carta Disimpan':language==='ja'?'保存済みチャート':language==='ko'?'저장된 차트':'Saved Charts'}</h3>
             <div className="flex flex-wrap gap-2">
               {charts.map((c: any, i: number) => (
                 <button key={i} onClick={() => loadSavedChart(c)} className="px-3 py-1.5 rounded-lg bg-gray-500/20 hover:bg-gray-500/30 text-sm">
@@ -109,10 +109,10 @@ export default function SolarReturnPage() {
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-500/20 rounded-full text-sm text-gray-600 mb-4">
             <Sun size={16} className="fill-gray-300"/>
-            {language === 'zh' ? '太阳回归盘' : language === 'id' ? 'Solar Return' : 'Solar Return'}
+            {language === 'zh' ? '太阳回归盘':language==='zh'?'太阳回归盘':language==='en'?'Solar Return':language==='id'?'Solar Return':language==='th'?'สุริยคติ':language==='vi'?'Solar Return':language==='ms'?'Solar Return':language==='ja'?'太陽回帰図':language==='ko'?'솔라 리턴':'Solar Return'}
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            {language === 'zh' ? '☀️ 日返盘分析' : '☀️ Solar Return Analysis'}
+            {language === 'zh' ? '☀️ 日返盘分析':language==='zh'?'☀️ 日返盘分析':language==='en'?'☀️ Solar Return':language==='id'?'☀️ Solar Return':language==='th'?'☀️ สุริยคติ':language==='vi'?'☀️ Solar Return':language==='ms'?'☀️ Solar Return':language==='ja'?'☀️ 太陽回帰図':language==='ko'?'☀️ 솔라 리턴':'☀️ Solar Return'}
           </h1>
           <p className="text-gray-500 max-w-xl mx-auto text-sm">
             {language === 'zh' 
@@ -126,7 +126,7 @@ export default function SolarReturnPage() {
           <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200">
             <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
               <Calendar size={18} className="text-gray-600"/>
-              {language === 'zh' ? '出生信息' : 'Birth Information'}
+              {language === 'zh' ? '出生信息':language==='zh'?'出生信息':language==='en'?'Birth Info':language==='id'?'Info Kelahiran':language==='th'?'ข้อมูลเกิด':language==='vi'?'Thông tin sinh':language==='ms'?'Info Kelahiran':language==='ja'?'出生情報':language==='ko'?'출생 정보':'Birth Info'}
             </h2>
             
             <div className="grid grid-cols-3 gap-3 mb-4">

@@ -276,7 +276,7 @@ export default function LunarReturnPage() {
                   {years.map(y => <option key={y} value={y}>{y}</option>)}
                 </select>
                 <select value={targetMonth} onChange={e => setTargetMonth(+e.target.value)} className="p-2 rounded-xl bg-gray-100 border border-gray-300 text-gray-900 text-sm">
-                  {months.map(m => <option key={m} value={m}>{m}{lang === 'zh' ? '月' : lang === 'id' ? 'Bulan' : 'Month'}</option>)}
+                  {months.map(m => <option key={m} value={m}>{m}{lang==='zh'?'月':lang==='en'?'Month':lang==='id'?'Bulan':lang==='th'?'เดือน':lang==='vi'?'Tháng':lang==='ms'?'Bulan':lang==='ja'?'月':lang==='ko'?'월':'Month'}</option>)}
                 </select>
               </div>
             </div>

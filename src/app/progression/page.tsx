@@ -92,10 +92,10 @@ export default function ProgressionPage() {
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-500/20 rounded-full text-sm text-gray-700 mb-4">
             <TrendingUp size={16} />
-            {language === 'zh' ? '次限推运 & 法达' : 'Progression & Firdaria'}
+            {language === 'zh' ? '次限推运 & 法达':language==='zh'?'次限推运 & 法达':language==='en'?'Progression & Firdaria':language==='id'?'Progresi & Firdaria':language==='th'?'โปรเกรสชัน':language==='vi'?'Tiến trình':language==='ms'?'Progresi':language==='ja'?'プログレッション':language==='ko'?'프로그레션':'Progression'}
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            {language === 'zh' ? '📈 大运周期分析' : '📈 Life Progression Analysis'}
+            {language === 'zh' ? '📈 大运周期分析':language==='zh'?'📈 大运周期分析':language==='en'?'📈 Life Progression':language==='id'?'📈 Analisis Progresi':language==='th'?'📈 วิเคราะห์ช่วงชีวิต':language==='vi'?'📈 Phân tích tiến trình':language==='ms'?'📈 Analisis Progresi':language==='ja'?'📈 ライフプログレッション':language==='ko'?'📈 라이프 프로그레션':'📈 Life Progression'}
           </h1>
           <p className="text-gray-500 max-w-xl mx-auto text-sm">
             {language === 'zh' 
@@ -109,12 +109,12 @@ export default function ProgressionPage() {
           <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200">
             <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
               <Calendar size={18} className="text-gray-400"/>
-              {language === 'zh' ? '出生信息' : 'Birth Information'}
+              {language === 'zh' ? '出生信息':language==='zh'?'出生信息':language==='en'?'Birth Info':language==='id'?'Info Kelahiran':language==='th'?'ข้อมูลเกิด':language==='vi'?'Thông tin sinh':language==='ms'?'Info Kelahiran':language==='ja'?'出生情報':language==='ko'?'출생 정보':'Birth Info'}
             </h2>
             
             <div className="grid grid-cols-3 gap-3 mb-4">
               <div>
-                <label className="text-xs text-gray-500 block mb-1">{language === 'zh' ? '年' : 'Year'}</label>
+                <label className="text-xs text-gray-500 block mb-1">{language === 'zh' ? '年':language==='zh'?'年':language==='en'?'Year':language==='id'?'Tahun':language==='th'?'ปี':language==='vi'?'Năm':language==='ms'?'Tahun':language==='ja'?'年':language==='ko'?'년':'Year'}</label>
                 <input type="number" value={bYear} onChange={e => setBYear(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm"/>
               </div>
               <div>
