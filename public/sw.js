@@ -1,28 +1,11 @@
-// Starry Fate PWA Service Worker — Cache-first with network update
-const CACHE_NAME = 'lunaxstar-v2';
+// Starry Fate PWA Service Worker — network-first, stale cache fallback
+const CACHE_NAME = 'lunaxstar-v3';
 const OFFLINE_URL = '/';
 
-// Assets to pre-cache on install
-const PRECACHE_ASSETS = [
-  '/',
-  '/natal',
-  '/horoscope',
-  '/manifest.json',
-  '/icon-192.png',
-  '/icon-512.png',
-  '/apple-touch-icon.png',
-];
-
-// Install: pre-cache core assets
 self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(PRECACHE_ASSETS);
-    }).then(() => self.skipWaiting())
-  );
+  event.waitUntil(self.skipWaiting());
 });
 
-// Activate: clean old caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) => {
@@ -33,29 +16,25 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch: stale-while-revalidate for pages, cache-first for static assets
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
-
-  // Skip non-GET requests and browser extensions
   if (request.method !== 'GET') return;
   if (url.origin !== self.location.origin) return;
-  if (url.pathname.startsWith('/api/')) return; // Don't cache API calls
+  if (url.pathname.startsWith('/api/')) return;
 
-  // Static assets: cache-first
-  if (
-    url.pathname.match(/\.(js|css|png|jpg|svg|ico|woff2?|ttf)$/) ||
-    url.pathname.startsWith('/_next/')
-  ) {
+  // Stale-while-revalidate: serve from cache, update in background
+  const isAsset = url.pathname.match(/\.(js|css|png|jpg|svg|ico|woff2?|ttf)$/) || url.pathname.startsWith('/_next/');
+
+  if (isAsset) {
     event.respondWith(
-      caches.match(request).then((cached) => {
-        return cached || fetch(request).then((response) => {
-          if (response.ok) {
-            const clone = response.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
-          }
-          return response;
+      caches.open(CACHE_NAME).then((cache) => {
+        return cache.match(request).then((cached) => {
+          const fetchPromise = fetch(request).then((response) => {
+            if (response.ok) cache.put(request, response.clone());
+            return response;
+          });
+          return cached || fetchPromise;
         });
       })
     );
@@ -72,10 +51,6 @@ self.addEventListener('fetch', (event) => {
         }
         return response;
       })
-      .catch(() => {
-        return caches.match(request).then((cached) => {
-          return cached || caches.match(OFFLINE_URL);
-        });
-      })
+      .catch(() => caches.match(request).then((cached) => cached || caches.match(OFFLINE_URL)))
   );
 });
