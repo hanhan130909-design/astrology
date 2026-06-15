@@ -109,6 +109,8 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="星缘" />
         <meta name="theme-color" content="#171717" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        {/* Non-blocking CSS loader — prevents render-blocking chain */}
+        <script dangerouslySetInnerHTML={{__html:`(function(){var l=document.querySelectorAll('link[rel="stylesheet"]');for(var i=0;i<l.length;i++){var s=l[i];s.media='print';s.onload=function(){this.media='all';this.onload=null}}})()`}} />
         {/* System fonts — no Google Fonts CDN (blocked in China) */}
         <style>{`
           @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; src: local('Inter'), local('PingFang SC'), local('Microsoft YaHei'); }
