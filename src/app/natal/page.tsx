@@ -528,15 +528,6 @@ export default function NatalPage(){
             <button onClick={handleSave} style={{border:"1px solid #aaa",padding:"4px 12px",fontSize:"12px",background:"#eee",cursor:"pointer"}}>储存星图</button>
             <button onClick={handleCopyLink} style={{border:"1px solid #aaa",padding:"4px 12px",fontSize:"12px",background:"#eee",cursor:"pointer"}}>复制链接</button>
             <button onClick={handleExportImage} style={{border:"1px solid #aaa",padding:"4px 12px",fontSize:"12px",background:"#eee",cursor:"pointer"}}>导出图片</button>
-            <button onClick={handleShareCard} style={{border:"1px solid #e8a030",padding:"4px 12px",fontSize:"12px",background:"#fff8e1",color:"#b8600f",cursor:"pointer",fontWeight:"bold"}}>📤 分享卡片</button>
-          </div>}
-          {chart&&<div id="share-card" style={{position:"fixed",top:0,left:0,zIndex:9999,width:600,height:800,background:"linear-gradient(135deg,#1a0a2e,#2d1b69,#1a0a2e)",color:"#fff",fontFamily:"Arial,sans-serif",textAlign:"center",padding:40,display:"none"}}>
-            <div style={{fontSize:48,fontWeight:"bold",marginBottom:8}}>✨ 星缘</div>
-            <div style={{fontSize:18,color:"#aab",marginBottom:30}}>lunaxstar.com</div>
-            <div style={{fontSize:22,marginBottom:20}}>{sunSym} {sunHouse}宫 · {moonSym} {moonHouse}宫 · ASC {ascHouse}宫</div>
-            <div style={{fontSize:14,color:"#ccc",lineHeight:1.6,marginBottom:30}}>{(dignityRows||[]).slice(0,4).map((r:any,i:number)=><div key={i}>{r.sym} {r.deg} — 宫{r.house}</div>)}</div>
-            <div style={{fontSize:22,fontWeight:"bold",color:"#ffd700",marginTop:40}}>你的星盘长什么样？</div>
-            <div style={{fontSize:16,color:"#ff6b9d",marginTop:10}}>免费生成 → lunaxstar.com</div>
           </div>}
         </div>
 
