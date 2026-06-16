@@ -948,37 +948,39 @@ export default function HoroscopePage() {
         {/* FAQ */}
         <section className="max-w-4xl mx-auto mb-12 px-4">
           <h2 className="text-xl font-semibold text-center mb-6">
-            {lang==='zh'?'常见问题':lang==='en'?'FAQ':lang==='id'?'Pertanyaan Umum':lang==='th'?'คำถามที่พบบ่อย':lang==='vi'?'Câu hỏi thường gặp':lang==='ms'?'Soalan Lazim':lang==='ja'?'よくある質問':lang==='ko'?'자주 묻는 질문':'FAQ'}
+            {(() => { const t: Record<string,string> = {zh:'常见问题',en:'FAQ',id:'Pertanyaan Umum',th:'คำถามที่พบบ่อย',vi:'Câu hỏi thường gặp',ms:'Soalan Lazim',ja:'よくある質問',ko:'자주 묻는 질문'}; return t[lang] || 'FAQ'; })()}
           </h2>
           <div className="space-y-3">
-            {[
-              { q: lang==='zh'?'每日运势的准确度如何？':lang==='en'?'How accurate is the daily horoscope?':lang==='id'?'Seberapa akurat horoskop harian?':lang==='th'?'ดวงรายวันแม่นยำแค่ไหน?':lang==='vi'?'Tử vi hàng ngày chính xác đến đâu?':lang==='ms'?'Seberapa tepat horoskop harian?':lang==='ja'?'デイリー運勢の正確さは？':lang==='ko'?'일일 운세의 정확도는?':'How accurate is the daily horoscope?',
-                a: lang==='zh'?'基于传统占星学理论，结合行星运行轨迹与星座特质分析，提供有价值的参考和指引。':lang==='en'?'Based on traditional astrology, combining planetary movements with zodiac traits for valuable guidance.':lang==='id'?'Berdasarkan astrologi tradisional, memberikan referensi dan panduan berharga.':lang==='th'?'ตามหลักโหราศาสตร์ดั้งเดิม ผสมผสานการเคลื่อนที่ของดาวกับลักษณะราศีเพื่อให้คำแนะนำที่มีคุณค่า':lang==='vi'?'Dựa trên chiêm tinh học truyền thống, kết hợp chuyển động hành tinh với đặc điểm hoàng đạo.':lang==='ms'?'Berdasarkan astrologi tradisional, menggabungkan pergerakan planet dengan sifat zodiak untuk panduan berharga.':lang==='ja'?'伝統的な占星学に基づき、惑星の動きと星座の特質を組み合わせた貴重なガイダンス。':lang==='ko'?'전통 점성술에 기반하여 행성 움직임과 별자리 특성을 결합한 귀중한 지침.' },
-              { q: lang==='zh'?'如何根据运势规划一天？':lang==='en'?'How to plan your day?':lang==='id'?'Bagaimana merencanakan hari?':lang==='th'?'วางแผนวันตามดวงอย่างไร?':lang==='vi'?'Làm sao để lên kế hoạch theo tử vi?':lang==='ms'?'Bagaimana merancang hari mengikut horoskop?':lang==='ja'?'運勢に基づいて一日を計画するには？':lang==='ko'?'운세에 따라 하루를 계획하는 방법?':'How to plan your day?',
-                a: lang==='zh'?'早晨查看运势，了解今日能量趋势，合理安排重要事务的时间节点。':lang==='en'?'Check your horoscope in the morning to understand energy trends.':lang==='id'?'Periksa horoskop di pagi hari untuk memahami tren energi.':lang==='th'?'ตอนเช้าดูดวงเพื่อเข้าใจแนวโน้มพลังงาน':lang==='vi'?'Xem tử vi buổi sáng để hiểu xu hướng năng lượng':lang==='ms'?'Periksa horoskop pagi untuk memahami tren tenaga':lang==='ja'?'朝に運勢をチェックしてエネルギーの流れを理解':lang==='ko'?'아침에 운세를 확인하여 에너지 흐름을 이해':'Check your horoscope in the morning to understand energy trends.' },
-              { q: lang==='zh'?'不同星座之间有什么关联？':lang==='en'?'How are zodiac signs related?':lang==='id'?'Apa hubungan antar zodiak?':lang==='th'?'ราศีต่างๆเกี่ยวข้องกันอย่างไร?':lang==='vi'?'Các cung hoàng đạo liên quan với nhau thế nào?':lang==='ms'?'Bagaimana hubungan antara zodiak?':lang==='ja'?'星座同士の関係は？':lang==='ko'?'별자리 간의 관계는?':'How are zodiac signs related?',
-                a: lang==='zh'?'星座按元素分为火土风水四象，同元素星座性格相近，对宫星座互补。':lang==='en'?'Signs are grouped by four elements: fire, earth, air, water. Same element signs share traits; opposite signs are complementary.':lang==='id'?'Zodiak dibagi menjadi empat elemen: api, tanah, udara, air. Zodiak elemen sama berbagi sifat; zodiak berlawanan saling melengkapi.':lang==='th'?'ราศีแบ่งเป็น 4 ธาตุ: ไฟ ดิน ลม น้ำ ราศีธาตุเดียวกันมีลักษณะคล้ายกัน':lang==='vi'?'Cung hoàng đạo chia 4 nguyên tố: lửa, đất, khí, nước. Cùng nguyên tố có tính cách tương đồng.':lang==='ms'?'Zodiak dibahagi kepada 4 elemen: api, tanah, udara, air. Zodiak elemen sama berkongsi sifat.':lang==='ja'?'星座は火・土・風・水の4元素に分かれ、同元素の星座は似た性質を持つ':lang==='ko'?'별자리는 불, 흙, 공기, 물 4원소로 나뉘며 같은 원소는 비슷한 성격을 공유':'Signs are grouped by four elements: fire, earth, air, water.' },
-              { q: lang==='zh'?'运势指数如何计算？':lang==='en'?'How are scores calculated?':lang==='id'?'Bagaimana skor dihitung?':lang==='th'?'คะแนนดวงคำนวณอย่างไร?':lang==='vi'?'Điểm tử vi được tính thế nào?':lang==='ms'?'Bagaimana skor dikira?':lang==='ja'?'運勢スコアの計算方法は？':lang==='ko'?'운세 점수는 어떻게 계산되나요?':'How are scores calculated?',
-                a: lang==='zh'?'综合行星相位、宫位能量和星座特质，通过占星学模型综合评估得出。':lang==='en'?'Combining planetary aspects and house energies for assessment.':lang==='id'?'Menggabungkan aspek planet dan energi rumah untuk penilaian.':lang==='th'?'รวมมุมดาว พลังงานบ้าน และลักษณะราศีผ่านแบบจำลองโหราศาสตร์':lang==='vi'?'Kết hợp góc chiếu hành tinh, năng lượng nhà và đặc điểm cung':lang==='ms'?'Menggabungkan aspek planet, tenaga rumah dan sifat zodiak':lang==='ja'?'惑星アスペクト、ハウスエネルギー、星座特質を占星学モデルで評価':lang==='ko'?'행성 각도, 하우스 에너지, 별자리 특성을 점성술 모델로 평가':'Combining planetary aspects and house energies for assessment.' },
-              { q: lang==='zh'?'可以同时参考多个时间维度吗？':lang==='en'?'Can I check multiple periods?':lang==='id'?'Bisa lihat beberapa periode?':lang==='th'?'ดูได้หลายช่วงเวลาไหม?':lang==='vi'?'Có thể xem nhiều khoảng thời gian không?':lang==='ms'?'Boleh lihat beberapa tempoh masa?':lang==='ja'?'複数の期間を同時に参考にできますか？':lang==='ko'?'여러 기간을 동시에 참고할 수 있나요?':'Can I check multiple periods?',
-                a: lang==='zh'?'建议结合日运、周运、月运综合判断，短期看执行，长期看规划。':lang==='en'?'Combine daily, weekly, and monthly for better insights.':lang==='id'?'Kami sarankan menggabungkan harian, mingguan, dan bulanan.':lang==='th'?'แนะนำให้รวมรายวัน รายสัปดาห์ รายเดือน ระยะสั้นดูการปฏิบัติ ระยะยาวดูการวางแผน':lang==='vi'?'Kết hợp hàng ngày, hàng tuần, hàng tháng. Ngắn hạn xem thực thi, dài hạn xem kế hoạch.':lang==='ms'?'Gabungkan harian, mingguan, bulanan. Jangka pendek lihat pelaksanaan, jangka panjang lihat perancangan.':lang==='ja'?'デイリー・ウィークリー・マンスリーを組み合わせて判断。短期は実行を、長期は計画を。':lang==='ko'?'일간, 주간, 월간을 결합하여 판단. 단기는 실행을, 장기는 계획을.':'Combine daily, weekly, and monthly for better insights.' },
-            ].map((faq, i) => (
-              <div key={i} className="border border-gray-200 rounded-lg overflow-hidden">
-                <button onClick={() => setFaqOpen(faqOpen === i ? -1 : i)}
-                  className="w-full p-4 flex items-center justify-between bg-gray-50 hover:bg-gray-100 transition-colors text-left">
-                  <span className="text-sm font-medium text-gray-900">{faq.q}</span>
-                  <ChevronDown size={18} className={`text-gray-400 transition-transform ${faqOpen === i ? 'rotate-180' : ''}`} />
-                </button>
-                {faqOpen === i && (
-                  <div className="p-4 bg-white border-t border-gray-100">
-                    <p className="text-sm text-gray-600">{faq.a}</p>
-                  </div>
-                )}
-              </div>
-            ))}
+            {(() => {
+              const faqs = [
+                { q: {zh:'每日运势的准确度如何？',en:'How accurate is the daily horoscope?',id:'Seberapa akurat horoskop harian?',th:'ดวงรายวันแม่นยำแค่ไหน?',vi:'Tử vi hàng ngày chính xác đến đâu?',ms:'Seberapa tepat horoskop harian?',ja:'デイリー運勢の正確さは？',ko:'일일 운세의 정확도는?'},
+                  a: {zh:'基于传统占星学理论，结合行星运行轨迹与星座特质分析，提供有价值的参考和指引。',en:'Based on traditional astrology, combining planetary movements with zodiac traits for valuable guidance.',id:'Berdasarkan astrologi tradisional, memberikan referensi dan panduan berharga.',th:'ตามหลักโหราศาสตร์ดั้งเดิม ผสมผสานการเคลื่อนที่ของดาวกับลักษณะราศีเพื่อให้คำแนะนำที่มีคุณค่า',vi:'Dựa trên chiêm tinh học truyền thống, kết hợp chuyển động hành tinh với đặc điểm hoàng đạo.',ms:'Berdasarkan astrologi tradisional, menggabungkan pergerakan planet dengan sifat zodiak untuk panduan berharga.',ja:'伝統的な占星学に基づき、惑星の動きと星座の特質を組み合わせた貴重なガイダンス。',ko:'전통 점성술에 기반하여 행성 움직임과 별자리 특성을 결합한 귀중한 지침.'} },
+                { q: {zh:'如何根据运势规划一天？',en:'How to plan your day?',id:'Bagaimana merencanakan hari?',th:'วางแผนวันตามดวงอย่างไร?',vi:'Làm sao để lên kế hoạch theo tử vi?',ms:'Bagaimana merancang hari mengikut horoskop?',ja:'運勢に基づいて一日を計画するには？',ko:'운세에 따라 하루를 계획하는 방법?'},
+                  a: {zh:'早晨查看运势，了解今日能量趋势，合理安排重要事务的时间节点。',en:'Check your horoscope in the morning to understand energy trends.',id:'Periksa horoskop di pagi hari untuk memahami tren energi.',th:'ตอนเช้าดูดวงเพื่อเข้าใจแนวโน้มพลังงาน',vi:'Xem tử vi buổi sáng để hiểu xu hướng năng lượng',ms:'Periksa horoskop pagi untuk memahami tren tenaga',ja:'朝に運勢をチェックしてエネルギーの流れを理解',ko:'아침에 운세를 확인하여 에너지 흐름을 이해'} },
+                { q: {zh:'不同星座之间有什么关联？',en:'How are zodiac signs related?',id:'Apa hubungan antar zodiak?',th:'ราศีต่างๆเกี่ยวข้องกันอย่างไร?',vi:'Các cung hoàng đạo liên quan với nhau thế nào?',ms:'Bagaimana hubungan antara zodiak?',ja:'星座同士の関係は？',ko:'별자리 간의 관계는?'},
+                  a: {zh:'星座按元素分为火土风水四象，同元素星座性格相近，对宫星座互补。',en:'Signs are grouped by four elements: fire, earth, air, water.',id:'Zodiak dibagi menjadi empat elemen: api, tanah, udara, air.',th:'ราศีแบ่งเป็น 4 ธาตุ: ไฟ ดิน ลม น้ำ',vi:'Cung hoàng đạo chia 4 nguyên tố: lửa, đất, khí, nước.',ms:'Zodiak dibahagi kepada 4 elemen: api, tanah, udara, air.',ja:'星座は火・土・風・水の4元素に分かれる',ko:'별자리는 불, 흙, 공기, 물 4원소로 나뉜다'} },
+                { q: {zh:'运势指数如何计算？',en:'How are scores calculated?',id:'Bagaimana skor dihitung?',th:'คะแนนดวงคำนวณอย่างไร?',vi:'Điểm tử vi được tính thế nào?',ms:'Bagaimana skor dikira?',ja:'運勢スコアの計算方法は？',ko:'운세 점수는 어떻게 계산되나요?'},
+                  a: {zh:'综合行星相位、宫位能量和星座特质，通过占星学模型综合评估得出。',en:'Combining planetary aspects and house energies for assessment.',id:'Menggabungkan aspek planet dan energi rumah untuk penilaian.',th:'รวมมุมดาว พลังงานบ้าน และลักษณะราศีผ่านแบบจำลองโหราศาสตร์',vi:'Kết hợp góc chiếu hành tinh, năng lượng nhà và đặc điểm cung',ms:'Menggabungkan aspek planet, tenaga rumah dan sifat zodiak',ja:'惑星アスペクト、ハウスエネルギー、星座特質を占星学モデルで評価',ko:'행성 각도, 하우스 에너지, 별자리 특성을 점성술 모델로 평가'} },
+                { q: {zh:'可以同时参考多个时间维度吗？',en:'Can I check multiple periods?',id:'Bisa lihat beberapa periode?',th:'ดูได้หลายช่วงเวลาไหม?',vi:'Có thể xem nhiều khoảng thời gian không?',ms:'Boleh lihat beberapa tempoh masa?',ja:'複数の期間を同時に参考にできますか？',ko:'여러 기간을 동시에 참고할 수 있나요?'},
+                  a: {zh:'建议结合日运、周运、月运综合判断，短期看执行，长期看规划。',en:'Combine daily, weekly, and monthly for better insights.',id:'Kami sarankan menggabungkan harian, mingguan, dan bulanan.',th:'แนะนำให้รวมรายวัน รายสัปดาห์ รายเดือน',vi:'Kết hợp hàng ngày, hàng tuần, hàng tháng.',ms:'Gabungkan harian, mingguan, bulanan.',ja:'デイリー・ウィークリー・マンスリーを組み合わせて判断',ko:'일간, 주간, 월간을 결합하여 판단'} },
+              ];
+              return faqs.map((faq, i) => (
+                <div key={i} className="border border-gray-200 rounded-lg overflow-hidden">
+                  <button onClick={() => setFaqOpen(faqOpen === i ? -1 : i)}
+                    className="w-full p-4 flex items-center justify-between bg-gray-50 hover:bg-gray-100 transition-colors text-left">
+                    <span className="text-sm font-medium text-gray-900">{faq.q[lang as keyof typeof faq.q] || faq.q.en}</span>
+                    <ChevronDown size={18} className={`text-gray-400 transition-transform ${faqOpen === i ? 'rotate-180' : ''}`} />
+                  </button>
+                  {faqOpen === i && (
+                    <div className="p-4 bg-white border-t border-gray-100">
+                      <p className="text-sm text-gray-600">{faq.a[lang as keyof typeof faq.a] || faq.a.en}</p>
+                    </div>
+                  )}
+                </div>
+              ));
+            })()}
           </div>
         </section>
-
       </main>
     </div>
   );
