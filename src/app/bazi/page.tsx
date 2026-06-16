@@ -91,10 +91,11 @@ export default function BaziPage() {
   const bazi = useMemo(() => {
     try {
       return buildBaziViewData({ year, month, day, hour, minute, gender, name: "" });
-    } catch {
+    } catch (e) {
+      console.error("bazi build error:", e);
       return null;
     }
-  }, [computed ? `${year}-${month}-${day}-${hour}-${minute}-${gender}` : "", year, month, day, hour, minute, gender]);
+  }, [year, month, day, hour, minute, gender]);
 
   const p = bazi?.pillars;
   const dayMaster = bazi?.dayMaster;
