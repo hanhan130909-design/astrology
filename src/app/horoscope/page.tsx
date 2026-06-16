@@ -7,18 +7,18 @@ import { Star, Sun, ChevronDown, Heart, Briefcase, Wallet, Activity, Sparkles, T
 
 // Complete zodiac data with full details
 const ZODIAC_DATA: Record<string, { symbol: string; names: Record<string, string>; element: string; rulingPlanet: string; dates: string }> = {
-  aries: { symbol: "♈", names: { zh: "白羊座", en: "Aries", id: "Aries", th: "แกะ", vi: "Bạch Dương", ms: "Aries", ja: "牡羊座", ko: "양자리" }, element: "fire", rulingPlanet: "火星", dates: "3.21-4.19" },
-  taurus: { symbol: "♉", names: { zh: "金牛座", en: "Taurus", id: "Taurus", th: "พฤกษกร", vi: "Kim Ngưu", ms: "Taurus", ja: "牡牛座", ko: "황소자리" }, element: "earth", rulingPlanet: "金星", dates: "4.20-5.20" },
-  gemini: { symbol: "♊", names: { zh: "双子座", en: "Gemini", id: "Gemini", th: "มิถุน", vi: "Song Tử", ms: "Gemini", ja: "双子座", ko: "쌍둥이자리" }, element: "air", rulingPlanet: "水星", dates: "5.21-6.21" },
-  cancer: { symbol: "♋", names: { zh: "巨蟹座", en: "Cancer", id: "Cancer", th: "กรกฎ", vi: "Cự Giải", ms: "Cancer", ja: "蟹座", ko: "게자리" }, element: "water", rulingPlanet: "月亮", dates: "6.22-7.22" },
-  leo: { symbol: "♌", names: { zh: "狮子座", en: "Leo", id: "Leo", th: "สิงห์", vi: "Sư Tử", ms: "Leo", ja: "獅子座", ko: "사자자리" }, element: "fire", rulingPlanet: "太阳", dates: "7.23-8.22" },
-  virgo: { symbol: "♍", names: { zh: "处女座", en: "Virgo", id: "Virgo", th: "กันย์", vi: "Xử Nữ", ms: "Virgo", ja: "乙女座", ko: "처녀자리" }, element: "earth", rulingPlanet: "水星", dates: "8.23-9.22" },
-  libra: { symbol: "♎", names: { zh: "天秤座", en: "Libra", id: "Libra", th: "ตุลย์", vi: "Thiên Bình", ms: "Libra", ja: "天秤座", ko: "천칭자리" }, element: "air", rulingPlanet: "金星", dates: "9.23-10.23" },
-  scorpio: { symbol: "♏", names: { zh: "天蝎座", en: "Scorpio", id: "Scorpio", th: "พิจิก", vi: "Bọ Cạp", ms: "Scorpio", ja: "蠍座", ko: "전갈자리" }, element: "water", rulingPlanet: "冥王星", dates: "10.24-11.22" },
-  sagittarius: { symbol: "♐", names: { zh: "射手座", en: "Sagittarius", id: "Sagittarius", th: "ธนู", vi: "Nhân Mã", ms: "Sagittarius", ja: "射手座", ko: "人马자리" }, element: "fire", rulingPlanet: "木星", dates: "11.23-12.21" },
-  capricorn: { symbol: "♑", names: { zh: "摩羯座", en: "Capricorn", id: "Capricorn", th: "มังกร", vi: "Ma Kết", ms: "Capricorn", ja: "山羊座", ko: "염소자리" }, element: "earth", rulingPlanet: "土星", dates: "12.22-1.19" },
-  aquarius: { symbol: "♒", names: { zh: "水瓶座", en: "Aquarius", id: "Aquarius", th: "กุมภ์", vi: "Bảo Bình", ms: "Aquarius", ja: "水瓶座", ko: "물병자리" }, element: "air", rulingPlanet: "天王星", dates: "1.20-2.18" },
-  pisces: { symbol: "♓", names: { zh: "双鱼座", en: "Pisces", id: "Pisces", th: "มีน", vi: "Song Ngư", ms: "Pisces", ja: "魚座", ko: "물고기자리" }, element: "water", rulingPlanet: "海王星", dates: "2.19-3.20" }};
+  aries: { symbol: "♈", names: { zh: "白羊座", en: "Aries", id: "Aries", th: "แกะ", vi: "Bạch Dương", ms: "Aries", ja: "牡羊座", ko: "양자리" }, element: "fire", rulingPlanet: {'zh': '火星', 'en': 'Mars', 'id': 'Mars', 'th': 'อังคาร', 'vi': 'Sao Hỏa', 'ms': 'Marikh', 'ja': '火星', 'ko': '화성'}, dates: "3.21-4.19" },
+  taurus: { symbol: "♉", names: { zh: "金牛座", en: "Taurus", id: "Taurus", th: "พฤกษกร", vi: "Kim Ngưu", ms: "Taurus", ja: "牡牛座", ko: "황소자리" }, element: "earth", rulingPlanet: {'zh': '金星', 'en': 'Venus', 'id': 'Venus', 'th': 'ศุกร์', 'vi': 'Sao Kim', 'ms': 'Zuhrah', 'ja': '金星', 'ko': '금성'}, dates: "4.20-5.20" },
+  gemini: { symbol: "♊", names: { zh: "双子座", en: "Gemini", id: "Gemini", th: "มิถุน", vi: "Song Tử", ms: "Gemini", ja: "双子座", ko: "쌍둥이자리" }, element: "air", rulingPlanet: {'zh': '水星', 'en': 'Mercury', 'id': 'Merkurius', 'th': 'พุธ', 'vi': 'Sao Thủy', 'ms': 'Utarid', 'ja': '水星', 'ko': '수성'}, dates: "5.21-6.21" },
+  cancer: { symbol: "♋", names: { zh: "巨蟹座", en: "Cancer", id: "Cancer", th: "กรกฎ", vi: "Cự Giải", ms: "Cancer", ja: "蟹座", ko: "게자리" }, element: "water", rulingPlanet: {'zh': '月亮', 'en': 'Moon', 'id': 'Bulan', 'th': 'จันทร์', 'vi': 'Mặt Trăng', 'ms': 'Bulan', 'ja': '月', 'ko': '달'}, dates: "6.22-7.22" },
+  leo: { symbol: "♌", names: { zh: "狮子座", en: "Leo", id: "Leo", th: "สิงห์", vi: "Sư Tử", ms: "Leo", ja: "獅子座", ko: "사자자리" }, element: "fire", rulingPlanet: {'zh': '太阳', 'en': 'Sun', 'id': 'Matahari', 'th': 'อาทิตย์', 'vi': 'Mặt Trời', 'ms': 'Matahari', 'ja': '太陽', 'ko': '태양'}, dates: "7.23-8.22" },
+  virgo: { symbol: "♍", names: { zh: "处女座", en: "Virgo", id: "Virgo", th: "กันย์", vi: "Xử Nữ", ms: "Virgo", ja: "乙女座", ko: "처녀자리" }, element: "earth", rulingPlanet: {'zh': '水星', 'en': 'Mercury', 'id': 'Merkurius', 'th': 'พุธ', 'vi': 'Sao Thủy', 'ms': 'Utarid', 'ja': '水星', 'ko': '수성'}, dates: "8.23-9.22" },
+  libra: { symbol: "♎", names: { zh: "天秤座", en: "Libra", id: "Libra", th: "ตุลย์", vi: "Thiên Bình", ms: "Libra", ja: "天秤座", ko: "천칭자리" }, element: "air", rulingPlanet: {'zh': '金星', 'en': 'Venus', 'id': 'Venus', 'th': 'ศุกร์', 'vi': 'Sao Kim', 'ms': 'Zuhrah', 'ja': '金星', 'ko': '금성'}, dates: "9.23-10.23" },
+  scorpio: { symbol: "♏", names: { zh: "天蝎座", en: "Scorpio", id: "Scorpio", th: "พิจิก", vi: "Bọ Cạp", ms: "Scorpio", ja: "蠍座", ko: "전갈자리" }, element: "water", rulingPlanet: {'zh': '冥王星', 'en': 'Pluto', 'id': 'Pluto', 'th': 'ยม', 'vi': 'Sao Diêm Vương', 'ms': 'Pluto', 'ja': '冥王星', 'ko': '명왕성'}, dates: "10.24-11.22" },
+  sagittarius: { symbol: "♐", names: { zh: "射手座", en: "Sagittarius", id: "Sagittarius", th: "ธนู", vi: "Nhân Mã", ms: "Sagittarius", ja: "射手座", ko: "人马자리" }, element: "fire", rulingPlanet: {'zh': '木星', 'en': 'Jupiter', 'id': 'Jupiter', 'th': 'พฤหัส', 'vi': 'Sao Mộc', 'ms': 'Musytari', 'ja': '木星', 'ko': '목성'}, dates: "11.23-12.21" },
+  capricorn: { symbol: "♑", names: { zh: "摩羯座", en: "Capricorn", id: "Capricorn", th: "มังกร", vi: "Ma Kết", ms: "Capricorn", ja: "山羊座", ko: "염소자리" }, element: "earth", rulingPlanet: {'zh': '土星', 'en': 'Saturn', 'id': 'Saturnus', 'th': 'เสาร์', 'vi': 'Sao Thổ', 'ms': 'Zuhal', 'ja': '土星', 'ko': '토성'}, dates: "12.22-1.19" },
+  aquarius: { symbol: "♒", names: { zh: "水瓶座", en: "Aquarius", id: "Aquarius", th: "กุมภ์", vi: "Bảo Bình", ms: "Aquarius", ja: "水瓶座", ko: "물병자리" }, element: "air", rulingPlanet: {'zh': '天王星', 'en': 'Uranus', 'id': 'Uranus', 'th': 'มฤตยู', 'vi': 'Sao Thiên Vương', 'ms': 'Uranus', 'ja': '天王星', 'ko': '천왕성'}, dates: "1.20-2.18" },
+  pisces: { symbol: "♓", names: { zh: "双鱼座", en: "Pisces", id: "Pisces", th: "มีน", vi: "Song Ngư", ms: "Pisces", ja: "魚座", ko: "물고기자리" }, element: "water", rulingPlanet: {'zh': '海王星', 'en': 'Neptune', 'id': 'Neptunus', 'th': 'สมุทร', 'vi': 'Sao Hải Vương', 'ms': 'Neptun', 'ja': '海王星', 'ko': '해왕성'}, dates: "2.19-3.20" }};
 
 const ELEMENT_COLORS = {
   fire: { color: "#FF6B6B", gradient: "from-gray-500/20 to-gray-500/20", border: "border-gray-500/30", text: "text-gray-400", icon: "🔥", label: { zh: "火象", en: "Fire", id: "Api" } },
@@ -689,7 +689,7 @@ export default function HoroscopePage() {
   const [faqOpen, setFaqOpen] = useState<number>(-1);
 
   const signData = ZODIAC_DATA[selectedSign as keyof typeof ZODIAC_DATA];
-  const horoscope = HOROSCOPE_DATA[selectedSign]?.[lang as keyof typeof HOROSCOPE_DATA[typeof selectedSign]] || HOROSCOPE_DATA[selectedSign]?.zh;
+  const horoscope = HOROSCOPE_DATA[selectedSign]?.[lang as keyof typeof HOROSCOPE_DATA[typeof selectedSign]] || HOROSCOPE_DATA[selectedSign]?.en || HOROSCOPE_DATA[selectedSign]?.zh;
   const elemColor = ELEMENT_COLORS[signData?.element as keyof typeof ELEMENT_COLORS] || ELEMENT_COLORS.fire;
 
   const getLocalizedText = (obj: Record<string, string> | string | undefined): string => {
@@ -727,7 +727,7 @@ export default function HoroscopePage() {
                 <div className="text-xs text-gray-500 flex gap-2">
                   <span>{labels.dates}: {signData?.dates}</span>
                   <span>•</span>
-                  <span>{labels.rulingPlanet}: {signData?.rulingPlanet}</span>
+                  <span>{labels.rulingPlanet}: {signData?.rulingPlanet?.[lang as keyof typeof signData.rulingPlanet] || (typeof signData?.rulingPlanet === 'string' ? signData.rulingPlanet : signData?.rulingPlanet?.zh)}</span>
                 </div>
               </div>
             </div>
