@@ -3,7 +3,7 @@
 import { useState, useMemo, useCallback } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { buildBaziViewData } from "@/lib/baziViewData";
-import { Sun, Moon, Calendar, Clock, MapPin, ChevronDown, Send, Loader2, Sparkles, Compass } from "lucide-react";
+import { Sun, Moon, Calendar, Clock, MapPin, ChevronDown, Send, Loader2, Sparkles, Compass, ArrowLeft, Save, X, Trash2 } from "lucide-react";
 
 // ──────────────────────── 翻译 ────────────────────────
 const T: Record<string, Record<string, string>> = {
@@ -43,6 +43,11 @@ const T: Record<string, Record<string, string>> = {
   aiChat: { zh: "AI 八字解读", en: "AI BaZi Reading", id: "AI Bacaan BaZi", th: "AI วิเคราะห์ปาจื่อ", vi: "AI Đọc Bát Tự", ms: "AI Bacaan BaZi", ja: "AI八字解読", ko: "AI 팔자 해석" },
   aiPlaceholder: { zh: "输入你的问题，比如：我的财运如何？", en: "Ask a question, e.g. How is my career luck?", id: "Tanya, misal: Bagaimana karier saya?", th: "ถาม เช่น: การงานของฉันเป็นอย่างไร?", vi: "Hỏi, VD: Sự nghiệp của tôi thế nào?", ms: "Tanya, cth: Bagaimana kerjaya saya?", ja: "質問：私の仕事運は？", ko: "질문: 제 직장운은 어떤가요?" },
   aiSend: { zh: "发送", en: "Send", id: "Kirim", th: "ส่ง", vi: "Gửi", ms: "Hantar", ja: "送信", ko: "전송" },
+  backHome: { zh: "返回首页", en: "Back to Home", id: "Kembali", th: "กลับหน้าแรก", vi: "Về Trang Chủ", ms: "Kembali", ja: "ホームに戻る", ko: "홈으로" },
+  savedCharts: { zh: "已保存命盘", en: "Saved Charts", id: "Bagan Tersimpan", th: "ดวงที่บันทึก", vi: "Lá Số Đã Lưu", ms: "Carta Disimpan", ja: "保存した命盤", ko: "저장된 사주" },
+  noSaved: { zh: "暂无保存的命盘", en: "No saved charts yet", id: "Belum ada bagan tersimpan", th: "ยังไม่มีดวงที่บันทึก", vi: "Chưa có lá số nào", ms: "Tiada carta disimpan", ja: "保存された命盤はありません", ko: "저장된 사주가 없습니다" },
+  saveChart: { zh: "保存命盘", en: "Save Chart", id: "Simpan", th: "บันทึกดวง", vi: "Lưu Lá Số", ms: "Simpan Carta", ja: "命盤を保存", ko: "사주 저장" },
+  saveName: { zh: "命盘名称", en: "Chart Name", id: "Nama Bagan", th: "ชื่อดวง", vi: "Tên Lá Số", ms: "Nama Carta", ja: "命盤名", ko: "사주명" },
   noData: { zh: "请输入出生信息并点击「排八字」查看命盘", en: "Enter birth data and click Calculate to view chart", id: "Masukkan data lahir dan klik Hitung", th: "กรอกข้อมูลเกิดแล้วกดคำนวณ", vi: "Nhập dữ liệu sinh và nhấn Tính", ms: "Masukkan data lahir dan klik Kira", ja: "出生情報を入力して計算をクリック", ko: "출생 정보를 입력하고 계산을 클릭하세요" },
 };
 
@@ -72,7 +77,7 @@ export default function BaziPage() {
   const [hour, setHour] = useState(12);
   const [minute, setMinute] = useState(0);
   const [gender, setGender] = useState(1);
-  const [computed, setComputed] = useState(false);
+  const [chartName, setChartName] = useState("");
 
   // 大运/流年 选中
   const [daYunIdx, setDaYunIdx] = useState(-1);
@@ -86,6 +91,36 @@ export default function BaziPage() {
 
   // 展开/收起
   const [showForm, setShowForm] = useState(true);
+  const [showSaved, setShowSaved] = useState(false);
+
+  // 保存的命盘
+  const [savedCharts, setSavedCharts] = useState<SavedChart[]>(() => {
+    if (typeof window === "undefined") return [];
+    try { return JSON.parse(localStorage.getItem("bazi_saved") || "[]"); } catch { return []; }
+  });
+
+  type SavedChart = { name: string; year: number; month: number; day: number; hour: number; minute: number; gender: number; savedAt: string };
+
+  const saveChart = () => {
+    const name = chartName.trim() || `${year}-${month}-${day}`;
+    const chart: SavedChart = { name, year, month, day, hour, minute, gender, savedAt: new Date().toISOString() };
+    const updated = [chart, ...savedCharts.filter(c => c.name !== name)].slice(0, 20);
+    setSavedCharts(updated);
+    localStorage.setItem("bazi_saved", JSON.stringify(updated));
+    setChartName("");
+  };
+
+  const loadChart = (c: SavedChart) => {
+    setYear(c.year); setMonth(c.month); setDay(c.day);
+    setHour(c.hour); setMinute(c.minute); setGender(c.gender);
+    setShowSaved(false);
+  };
+
+  const deleteChart = (name: string) => {
+    const updated = savedCharts.filter(c => c.name !== name);
+    setSavedCharts(updated);
+    localStorage.setItem("bazi_saved", JSON.stringify(updated));
+  };
 
   // 计算八字
   const bazi = useMemo(() => {
@@ -103,11 +138,6 @@ export default function BaziPage() {
   const activeDaYun = luck?.daYun?.[daYunIdx >= 0 ? daYunIdx : luck.daYun?.findIndex((d: any) => d.active) ?? 0];
   const activeLiuNian = activeDaYun?.liuNian?.[liuNianIdx >= 0 ? liuNianIdx : activeDaYun?.liuNian?.findIndex((n: any) => n.active) ?? 0];
   const activeLiuYue = activeLiuNian?.liuYue?.[liuYueIdx >= 0 ? liuYueIdx : activeLiuNian?.liuYue?.findIndex((m: any) => m.active) ?? 0];
-
-  const handleCalculate = () => {
-    // Just re-render — bazi auto-computes from form values
-    setComputed(c => !c);
-  };
 
   const sendChat = async () => {
     if (!chatInput.trim() || chatLoading || !bazi) return;
@@ -146,6 +176,53 @@ export default function BaziPage() {
   return (
     <div className="min-h-screen bg-white">
       <main className="max-w-4xl mx-auto px-4 py-8">
+        {/* 顶部导航 */}
+        <div className="flex items-center justify-between mb-6">
+          <a href="/" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 transition-colors">
+            <ArrowLeft size={16} /> {t("backHome", lang)}
+          </a>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setShowSaved(!showSaved)}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs text-gray-500 bg-gray-50 border border-gray-200 rounded-lg hover:bg-gray-100 transition-all"
+            >
+              <Save size={14} />
+              {savedCharts.length > 0 ? `${savedCharts.length}` : ""}
+            </button>
+          </div>
+        </div>
+
+        {/* 已保存命盘弹窗 */}
+        {showSaved && (
+          <div className="mb-6 p-4 bg-gray-50 rounded-2xl border border-gray-200">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-sm font-semibold text-gray-900">{t("savedCharts", lang)}</h3>
+              <button onClick={() => setShowSaved(false)} className="text-gray-400 hover:text-gray-600">
+                <X size={16} />
+              </button>
+            </div>
+            {savedCharts.length === 0 ? (
+              <p className="text-sm text-gray-400 text-center py-4">{t("noSaved", lang)}</p>
+            ) : (
+              <div className="space-y-2 max-h-[300px] overflow-y-auto">
+                {savedCharts.map((c, i) => (
+                  <div key={i} className="flex items-center justify-between bg-white p-3 rounded-xl border border-gray-200">
+                    <button onClick={() => loadChart(c)} className="flex-1 text-left">
+                      <div className="text-sm font-medium text-gray-900">{c.name}</div>
+                      <div className="text-xs text-gray-500">
+                        {c.year}-{String(c.month).padStart(2,"0")}-{String(c.day).padStart(2,"0")} {String(c.hour).padStart(2,"0")}:{String(c.minute).padStart(2,"0")} {c.gender === 1 ? t("male", lang) : t("female", lang)}
+                      </div>
+                    </button>
+                    <button onClick={(e) => { e.stopPropagation(); deleteChart(c.name); }} className="text-gray-400 hover:text-red-500 p-1">
+                      <Trash2 size={14} />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
         {/* 标题 */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-500 mb-3">
@@ -233,12 +310,21 @@ export default function BaziPage() {
                   </select>
                 </div>
               </div>
-              <button
-                onClick={handleCalculate}
-                className="w-full py-3 bg-gray-900 text-white rounded-xl font-semibold hover:bg-gray-800 transition-all text-sm"
-              >
-                {t("calculate", lang)}
-              </button>
+              <div className="flex gap-2 mt-4">
+                <input
+                  value={chartName}
+                  onChange={e => setChartName(e.target.value)}
+                  placeholder={t("saveName", lang)}
+                  className="flex-1 p-2.5 rounded-lg border border-gray-200 bg-white text-sm"
+                />
+                <button
+                  onClick={saveChart}
+                  className="px-4 py-2.5 bg-gray-900 text-white rounded-xl font-semibold hover:bg-gray-800 transition-all text-sm whitespace-nowrap"
+                >
+                  <Save size={14} className="inline mr-1" />
+                  {t("saveChart", lang)}
+                </button>
+              </div>
             </div>
           )}
         </div>
