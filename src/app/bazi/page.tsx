@@ -120,7 +120,20 @@ export default function BaziPage() {
       const res = await fetch("/api/bazi-chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ chartData: bazi, question: q, language: lang }),
+        body: JSON.stringify({
+          chartData: {
+            pillars: Object.values(bazi.pillars || {}).map((p: any) => ({
+              label: p.label, gan: p.gan, zhi: p.zhi, tenGod: p.tenGod,
+              hidden: p.hidden, naYin: p.naYin, element: p.element,
+            })),
+            dayMaster: bazi.dayMaster,
+            meta: bazi.meta,
+            interactions: bazi.interactions,
+            shenSha: bazi.shenSha,
+          },
+          question: q,
+          language: lang,
+        }),
       });
       const data = await res.json();
       setChatMsgs(prev => [...prev, { role: "assistant", content: data.answer || "抱歉，暂无回复" }]);
