@@ -535,14 +535,15 @@ export default function NatalPage(){
 
         
         {/* Share Card (hidden, used for social sharing) */}
+        {chart && (
         <div id="share-card" style={{display:"none",position:"fixed",top:0,left:0,zIndex:9999,width:600,height:800,background:"linear-gradient(135deg,#1a0a2e 0%,#2d1b69 50%,#1a0a2e 100%)",color:"white",fontFamily:"Arial,sans-serif",textAlign:"center",padding:40}}>
           <div style={{fontSize:48,fontWeight:"bold",marginBottom:8}}>✨ 星缘</div>
           <div style={{fontSize:18,color:"#aab",marginBottom:30}}>lunaxstar.com</div>
           <div style={{fontSize:24,marginBottom:20}}>
-            {chart&&<>{sunSym} {sunHouse}宫 · {moonSym} {moonHouse}宫 · ASC {ascHouse}宫</>}
+            {sunSym} {sunHouse}宫 · {moonSym} {moonHouse}宫 · ASC {ascHouse}宫
           </div>
           <div style={{fontSize:14,color:"#ccc",lineHeight:1.6,marginBottom:30}}>
-            {dignityRows.slice(0,4).map((r,i)=><div key={i}>{r.sym} {r.deg} — 宫{r.house}</div>)}
+            {(dignityRows||[]).slice(0,4).map((r,i)=><div key={i}>{r.sym} {r.deg} — 宫{r.house}</div>)}
           </div>
           <div style={{fontSize:22,fontWeight:"bold",color:"#ffd700",marginTop:40}}>
             你的星盘长什么样？
@@ -551,6 +552,7 @@ export default function NatalPage(){
             免费生成 → lunaxstar.com
           </div>
         </div>
+        )}
 
         <div id="rightsidebar" style={{position:"absolute",right:10,top:10,padding:5,width:240,textAlign:"left",border:"1px solid #D0D0D0",background:"#4a4a4a",color:"white",boxShadow:"0 0 8px #D0D0D0",fontSize:"13px",opacity:0.9}}>
           <div style={{textAlign:"center",cursor:"pointer"}} onClick={()=>setSidebarOpen(!sidebarOpen)}>
