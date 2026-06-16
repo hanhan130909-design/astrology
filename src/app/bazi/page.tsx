@@ -110,7 +110,6 @@ export default function BaziPage() {
   };
 
   const sendChat = async () => {
-    console.log("sendChat called, bazi:", !!bazi, "chatInput:", chatInput, "chatLoading:", chatLoading);
     if (!chatInput.trim() || chatLoading || !bazi) return;
     const q = chatInput.trim();
     setChatMsgs(prev => [...prev, { role: "user", content: q }]);
