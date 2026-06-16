@@ -129,6 +129,26 @@ function buildShenShaRows(pillars, activeZhi = "") {
   });
 }
 
+function buildLiuRi(year, month, activeDay = 0) {
+  const daysInMonth = new Date(year, month, 0).getDate();
+  return Array.from({ length: daysInMonth }, (_, index) => {
+    const day = index + 1;
+    const lunar = Solar.fromYmdHms(year, month, day, 12, 0, 0).getLunar();
+    const ganZhi = call(lunar, "getDayInGanZhi");
+    const split = splitGanZhi(ganZhi);
+    return {
+      day,
+      label: `${day}日`,
+      lunarDay: call(lunar, "getDayInChinese"),
+      ganZhi,
+      gan: split.gan,
+      zhi: split.zhi,
+      xunKong: call(lunar, "getDayXunKong"),
+      active: day === activeDay,
+    };
+  });
+}
+
 function safeDaYun(yun, currentYear) {
   const list = call(yun, "getDaYun", []);
   if (!Array.isArray(list)) return [];
@@ -160,10 +180,16 @@ function safeDaYun(yun, currentYear) {
           xunKong: call(yearItem, "getXunKong", ""),
           active: call(yearItem, "getYear", 0) === currentYear,
           liuYue: Array.isArray(call(yearItem, "getLiuYue", [])) ? call(yearItem, "getLiuYue", []).map((monthItem) => {
+            const monthIndex = Number(call(monthItem, "getIndex", 0));
+            const month = monthIndex + 1;
             const mGanZhi = call(monthItem, "getGanZhi");
             return {
+              index: monthIndex,
               month: call(monthItem, "getMonthInChinese", ""),
               ganZhi: mGanZhi,
+              xunKong: call(monthItem, "getXunKong", ""),
+              active: call(yearItem, "getYear", 0) === currentYear && month === new Date().getMonth() + 1,
+              liuRi: buildLiuRi(call(yearItem, "getYear", currentYear), month, call(yearItem, "getYear", 0) === currentYear ? new Date().getDate() : 0),
               ...splitGanZhi(mGanZhi),
             };
           }) : [],
@@ -181,6 +207,7 @@ export function buildBaziViewData(input) {
   const minute = Number(input.minute);
   const gender = Number(input.gender ?? 1);
   const currentYear = Number(input.currentYear || new Date().getFullYear());
+  const currentMonth = Number(input.currentMonth || new Date().getMonth() + 1);
   const solar = Solar.fromYmdHms(year, month, day, hour, minute, 0);
   const lunar = solar.getLunar();
   const eightChar = lunar.getEightChar();
@@ -224,7 +251,8 @@ export function buildBaziViewData(input) {
       daYun,
       current,
       currentYear: currentYearItem,
-      currentMonths: currentYearItem?.liuYue?.slice(0, 10) || [],
+      currentMonths: currentYearItem?.liuYue || [],
+      currentDays: currentYearItem?.liuYue?.[currentMonth - 1]?.liuRi || [],
     },
     interactions: {
       natal: buildInteractions(PILLAR_KEYS.map(key => pillars[key])),

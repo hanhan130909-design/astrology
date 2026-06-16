@@ -25,6 +25,12 @@ assert.equal(chart.luck.daYun[4].startAge, 39);
 assert.equal(chart.luck.current?.ganZhi, "癸卯");
 assert.equal(chart.luck.currentYear?.year, 2026);
 assert.equal(chart.luck.currentYear?.ganZhi, "丙午");
+assert.equal(chart.luck.currentMonths.length, 12);
+assert.equal(chart.luck.currentDays.length, 30);
+assert.equal(chart.luck.currentDays[0].ganZhi, "丙午");
+assert.equal(chart.luck.currentDays[0].day, 1);
+assert.equal(chart.luck.currentDays[15].ganZhi, "辛酉");
+assert.equal(chart.luck.currentDays[15].day, 16);
 assert.equal(chart.detailRows.day.some((item) => item.label === "纳音" && item.value === "大海水"), true);
 
 console.log("bazi view data tests passed");

@@ -74,6 +74,9 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
   const [activeTab, setActiveTab] = useState("chart-tab");
   const [baziTab, setBaziTab] = useState("chart");
   const [baziNote, setBaziNote] = useState("");
+  const [selectedDaYunIndex, setSelectedDaYunIndex] = useState<number | null>(null);
+  const [selectedLiuNianIndex, setSelectedLiuNianIndex] = useState<number | null>(null);
+  const [selectedLiuYueIndex, setSelectedLiuYueIndex] = useState<number | null>(null);
 
   // BaZi AI Chat state
   const [chatMessages, setChatMessages] = useState<{role: string; content: string}[]>([]);
@@ -102,6 +105,9 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
   // Referral tracking: check for ?ref= code in URL
   useEffect(() => {
     if (mode !== "bazi") return;
+    setSelectedDaYunIndex(null);
+    setSelectedLiuNianIndex(null);
+    setSelectedLiuYueIndex(null);
     const params = new URLSearchParams(window.location.search);
     const refCode = params.get('ref');
     if (refCode) {
@@ -200,8 +206,18 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
   }));
 
   if (mode === "bazi") {
-    const activeLuck = bazi.luck.current;
-    const activeYear = bazi.luck.currentYear;
+    const defaultDaYunIndex = Math.max(0, bazi.luck.daYun.findIndex((item: any) => item.active));
+    const activeDaYunIndex = selectedDaYunIndex ?? defaultDaYunIndex;
+    const activeLuck = bazi.luck.daYun[activeDaYunIndex] || bazi.luck.current;
+    const liuNianList = activeLuck?.liuNian || [];
+    const defaultLiuNianIndex = Math.max(0, liuNianList.findIndex((item: any) => item.active));
+    const activeLiuNianIndex = selectedLiuNianIndex ?? defaultLiuNianIndex;
+    const activeYear = liuNianList[activeLiuNianIndex] || bazi.luck.currentYear;
+    const liuYueList = activeYear?.liuYue || bazi.luck.currentMonths || [];
+    const defaultLiuYueIndex = Math.max(0, liuYueList.findIndex((item: any) => item.active));
+    const activeLiuYueIndex = selectedLiuYueIndex ?? defaultLiuYueIndex;
+    const activeMonth = liuYueList[activeLiuYueIndex] || liuYueList[new Date().getMonth()] || liuYueList[0];
+    const liuRiList = activeMonth?.liuRi || bazi.luck.currentDays || [];
     const tabItems = [
       { id: "info", label: "基本信息" },
       { id: "chart", label: "基本排盘" },
@@ -209,6 +225,14 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
       { id: "note", label: "断事笔记" },
     ];
     const relationLine = (items: string[]) => items.length ? items.join(" | ") : "-";
+    const openDetailSection = (id: string) => {
+      setBaziTab("detail");
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        el?.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (id === "bazi-ai-section") document.getElementById("bazi-chat-input")?.focus();
+      }, 80);
+    };
     const ShenShaList = ({ title, rows }: { title: string; rows: any[] }) => (
       <section className="bazi-section">
         <h3>{title}</h3>
@@ -246,7 +270,7 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
           .bazi-god{font-size:22px;color:#444}.bazi-ganzhi{font-size:48px;font-weight:700;line-height:1.18;display:flex;flex-direction:column}.bazi-hidden{font-size:20px;line-height:1.45;color:#555}.bazi-muted{color:#9c9c9c}
           .bazi-luck-note{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:20px 38px;background:#f7f7f5;color:#333;font-size:20px;line-height:1.55;border-top:10px solid #f2f2f0}
           .bazi-scroll-strip{display:flex;overflow-x:auto;background:#fff;border-top:1px solid #eee;border-bottom:1px solid #eee}.bazi-strip-label{flex:0 0 70px;padding:16px 10px;color:#999;font-size:30px;font-weight:700;text-align:center;background:#fafafa}
-          .bazi-strip-item{flex:0 0 92px;padding:16px 8px;text-align:center;border-left:1px solid #eee;font-size:21px;line-height:1.4}.bazi-strip-item.active{background:#efefef}.bazi-strip-item strong{display:block;font-size:23px}.bazi-strip-item .red{color:#b72d2d}.bazi-strip-item .small{font-size:16px;color:#666}
+          .bazi-strip-item{flex:0 0 92px;padding:16px 8px;text-align:center;border:0;border-left:1px solid #eee;background:#fff;color:#242424;font:inherit;font-size:21px;line-height:1.4;cursor:pointer}.bazi-strip-item.active{background:#efefef}.bazi-strip-item strong{display:block;font-size:23px}.bazi-strip-item .red{color:#b72d2d}.bazi-strip-item .small{font-size:16px;color:#666}
           .bazi-element-bar{display:grid;grid-template-columns:repeat(5,1fr);background:#b8a068;color:white;font-size:22px;text-align:center;padding:10px 0;margin-top:10px}.bazi-element-bar span{border-left:1px solid rgba(255,255,255,.35)}.bazi-element-bar span:first-child{border-left:0}
           .bazi-action-row{display:grid;grid-template-columns:1fr 160px;gap:16px;padding:24px 38px;background:#fff}.bazi-action-row button{height:56px;border:0;border-radius:28px;background:#f5f5f4;font-size:24px;font-weight:700;color:#202020}
           .bazi-section{background:#fff;padding:24px 38px;border-top:10px solid #f5f5f3}.bazi-section h3{font-size:28px;line-height:1.2;margin:0 0 22px;font-weight:800;color:#161616}.bazi-section h4{font-size:21px;margin:18px 0 10px;color:#b09a5b}
@@ -258,7 +282,7 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
         <div className="bazi-phone">
           <div className="bazi-top">
             <button className="bazi-back" onClick={() => window.location.href = "/"}>‹</button>
-            <div className="bazi-title">问真八字</div>
+            <div className="bazi-title">八字</div>
             <button className="bazi-more" onClick={() => setSidebarOpen(!sidebarOpen)}>•••</button>
           </div>
           <nav className="bazi-tabs">
@@ -323,37 +347,56 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
 
               <section className="bazi-scroll-strip">
                 <div className="bazi-strip-label">大运</div>
-                {bazi.luck.daYun.slice(0, 10).map((item: any) => (
-                  <div className={`bazi-strip-item ${item.active ? "active" : ""}`} key={`dayun-${item.startYear}`}>
+                {bazi.luck.daYun.slice(0, 10).map((item: any, i: number) => (
+                  <button className={`bazi-strip-item ${i === activeDaYunIndex ? "active" : ""}`} key={`dayun-${item.startYear}`} onClick={() => {
+                    const firstYearIndex = item.liuNian?.findIndex((yearItem: any) => yearItem.active) ?? 0;
+                    setSelectedDaYunIndex(i);
+                    setSelectedLiuNianIndex(Math.max(0, firstYearIndex));
+                    setSelectedLiuYueIndex(null);
+                  }}>
                     <div>{item.startYear}</div>
                     <div className="small">{item.startAge}岁</div>
                     <strong>{item.gan}<span className="red">{item.zhi}</span></strong>
-                  </div>
+                  </button>
                 ))}
               </section>
               <section className="bazi-scroll-strip">
                 <div className="bazi-strip-label">流年</div>
-                {(activeLuck?.liuNian || []).slice(0, 10).map((item: any) => (
-                  <div className={`bazi-strip-item ${item.active ? "active" : ""}`} key={`liunian-${item.year}`}>
+                {liuNianList.slice(0, 10).map((item: any, i: number) => (
+                  <button className={`bazi-strip-item ${i === activeLiuNianIndex ? "active" : ""}`} key={`liunian-${item.year}`} onClick={() => {
+                    setSelectedLiuNianIndex(i);
+                    setSelectedLiuYueIndex(null);
+                  }}>
                     <div>{item.year}</div>
                     <strong>{item.gan}<span className="red">{item.zhi}</span></strong>
                     <div className="small">{item.xunKong}</div>
-                  </div>
+                  </button>
                 ))}
               </section>
               <section className="bazi-scroll-strip">
                 <div className="bazi-strip-label">流月</div>
-                {bazi.luck.currentMonths.map((item: any, i: number) => (
-                  <div className={`bazi-strip-item ${i === new Date().getMonth() ? "active" : ""}`} key={`liuyue-${i}`}>
+                {liuYueList.map((item: any, i: number) => (
+                  <button className={`bazi-strip-item ${i === activeLiuYueIndex ? "active" : ""}`} key={`liuyue-${i}`} onClick={() => setSelectedLiuYueIndex(i)}>
                     <div>{item.month || `${i + 1}月`}</div>
                     <strong>{item.gan}<span className="red">{item.zhi}</span></strong>
-                  </div>
+                    <div className="small">{item.xunKong}</div>
+                  </button>
+                ))}
+              </section>
+              <section className="bazi-scroll-strip">
+                <div className="bazi-strip-label">流日</div>
+                {liuRiList.map((item: any) => (
+                  <button className={`bazi-strip-item ${item.active ? "active" : ""}`} key={`liuri-${activeYear?.year}-${activeLiuYueIndex}-${item.day}`}>
+                    <div>{item.label}</div>
+                    <strong>{item.gan}<span className="red">{item.zhi}</span></strong>
+                    <div className="small">{item.xunKong}</div>
+                  </button>
                 ))}
               </section>
               <div className="bazi-element-bar"><span>水旺</span><span>木相</span><span>金休</span><span>土囚</span><span>火死</span></div>
               <div className="bazi-action-row">
-                <button onClick={() => setBaziTab("detail")}>智能干支图示 ›</button>
-                <button onClick={() => setBaziTab("detail")}>AI指令 ›</button>
+                <button onClick={() => openDetailSection("bazi-ganzhi-section")}>智能干支图示 ›</button>
+                <button onClick={() => openDetailSection("bazi-ai-section")}>AI指令 ›</button>
               </div>
             </>
           )}
@@ -373,7 +416,7 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
 
           {baziTab === "detail" && (
             <>
-              <section className="bazi-section">
+              <section className="bazi-section" id="bazi-ganzhi-section">
                 <h3>智能干支图示</h3>
                 <div className="bazi-lines">
                   <div><b>岁运天干：</b>{relationLine(bazi.interactions.transit.stems)}</div>
@@ -400,7 +443,7 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
                   ))}
                 </div>
               </section>
-              <section className="bazi-section">
+              <section className="bazi-section" id="bazi-ai-section">
                 <h3>AI八字问答</h3>
                 <div className="bazi-ai-chat">
                   <div className="bazi-ai-title">问你的八字盘</div>
@@ -412,7 +455,7 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
                     {chatLoading && <div className="bazi-muted">分析中...</div>}
                   </div>
                   <div className="bazi-chat-input">
-                    <input value={chatInput} onChange={e => setChatInput(e.target.value)} onKeyDown={e => e.key === "Enter" && sendChat()} placeholder="输入问题..." />
+                    <input id="bazi-chat-input" value={chatInput} onChange={e => setChatInput(e.target.value)} onKeyDown={e => e.key === "Enter" && sendChat()} placeholder="输入问题..." />
                     <button onClick={sendChat} disabled={chatLoading}>发送</button>
                   </div>
                 </div>
