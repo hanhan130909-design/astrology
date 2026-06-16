@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Solar } from "lunar-javascript";
 import NatalChartWheel from "@/components/NatalChartWheel";
 import { AspectMatrix } from "@/components/AlmutenChartLayout";
+import { buildBaziViewData } from "@/lib/baziViewData";
 import { loadLatestBirthProfile, saveLatestBirthProfile } from "@/lib/latestBirthProfile";
 
 type ToolMode = "horary" | "vedic" | "bazi" | "solar-arc" | "tertiary" | "tertiary-natal" | "secondary-natal";
@@ -54,51 +54,6 @@ function transformChart(chart: any, offset: number) {
   };
 }
 
-function baziPillars(year: number, month: number, day: number, hour: number, minute: number) {
-  const lunar = Solar.fromYmdHms(year, month, day, hour, minute, 0).getLunar();
-  const eightChar = lunar.getEightChar();
-  const prevJieQi = lunar.getPrevJieQi();
-  const nextJieQi = lunar.getNextJieQi();
-  
-  // Enhanced: Day Master + Five Elements + Hidden Stems
-  const dayGan = eightChar.getDayGan();
-  const dayZhi = eightChar.getDayZhi();
-  const dayWuXing = eightChar.getDayWuXing();
-  const dayShiShen = eightChar.getDayShiShenGan?.() || '';
-  
-  // Hidden stems (藏干)
-  let hiddenStems: Record<string, string[]> = {};
-  try { hiddenStems.year = eightChar.getYearHideGan?.() || []; } catch(e) {}
-  try { hiddenStems.month = eightChar.getMonthHideGan?.() || []; } catch(e) {}
-  try { hiddenStems.day = eightChar.getDayHideGan?.() || []; } catch(e) {}
-  try { hiddenStems.time = eightChar.getTimeHideGan?.() || []; } catch(e) {}
-  
-  // NaYin (纳音) for each pillar
-  const naYin = {
-    year: eightChar.getYearNaYin?.() || '',
-    month: eightChar.getMonthNaYin?.() || '',
-    day: eightChar.getDayNaYin?.() || '',
-    time: eightChar.getTimeNaYin?.() || '',
-  };
-  
-  return {
-    pillars: [
-      { label: "年柱", value: eightChar.getYear(), naYin: naYin.year, hidden: hiddenStems.year || [] },
-      { label: "月柱", value: eightChar.getMonth(), naYin: naYin.month, hidden: hiddenStems.month || [] },
-      { label: "日柱", value: eightChar.getDay(), naYin: naYin.day, hidden: hiddenStems.day || [] },
-      { label: "时柱", value: eightChar.getTime(), naYin: naYin.time, hidden: hiddenStems.time || [] },
-    ],
-    dayMaster: { stem: dayGan, element: dayWuXing, shiShen: dayShiShen },
-    meta: {
-      lunarDate: lunar.toString(),
-      jieQi: lunar.getJieQi() || "-",
-      prevJieQi: `${prevJieQi.getName()} ${prevJieQi.getSolar().toYmdHms()}`,
-      nextJieQi: `${nextJieQi.getName()} ${nextJieQi.getSolar().toYmdHms()}`,
-      basis: "年柱、月柱使用精确节气边界；日期时间按表单输入的当地钟表时间计算。",
-    },
-  };
-}
-
 export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
   const copy = MODE_COPY[mode];
   const now = useMemo(() => new Date(), []);
@@ -117,14 +72,16 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [activeTab, setActiveTab] = useState("chart-tab");
+  const [baziTab, setBaziTab] = useState("chart");
+  const [baziNote, setBaziNote] = useState("");
 
   // BaZi AI Chat state
   const [chatMessages, setChatMessages] = useState<{role: string; content: string}[]>([]);
   const [chatInput, setChatInput] = useState("");
   const [chatLoading, setChatLoading] = useState(false);
 
-  const bazi = useMemo(() => baziPillars(year, month, day, hour, minute), [year, month, day, hour, minute]);
-  const pillars = bazi.pillars;
+  const bazi = useMemo(() => buildBaziViewData({ year, month, day, hour, minute, gender: 1, name: "韩韩" }), [year, month, day, hour, minute]);
+  const pillars = bazi.pillarList;
   const isProgressed = ["solar-arc", "tertiary", "tertiary-natal", "secondary-natal"].includes(mode);
 
   useEffect(() => {

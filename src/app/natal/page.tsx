@@ -127,7 +127,6 @@ export default function NatalPage(){
   const handleSave = ()=>{if(!chart)return;saveLatestBirthProfile(currentBirthProfile());const s=JSON.parse(localStorage.getItem("natal_charts")||"[]");s.unshift({name,ts:Date.now(),birthData:{name,year,month,day,hour,minute,lat,lng,tz,hsys}});localStorage.setItem("natal_charts",JSON.stringify(s.slice(0,20)));alert("已储存");};
   const handleCopyLink = ()=>{navigator.clipboard.writeText(window.location.href).then(()=>alert("链接已复制"));};
   const handleExportImage = async()=>{const el=document.getElementById("chart");if(!el)return;try{const{default:h}=await import("html2canvas");const c=await h(el,{backgroundColor:"#0f0f1a",scale:2});const a=document.createElement("a");a.download=`chart-${year}-${month}-${day}.png`;a.href=c.toDataURL();a.click();}catch{}};
-  const handleShareCard = async()=>{if(!chart)return;const el=document.getElementById("share-card");if(!el)return;el.style.display="block";try{const{default:h}=await import("html2canvas");const c=await h(el,{backgroundColor:null,scale:2});const a=document.createElement("a");a.download=`astrology-share-${year}-${month}-${day}.png`;a.href=c.toDataURL();a.click();}catch{}finally{el.style.display="none";}};
   const openSavedCharts = ()=>{setSavedCharts(JSON.parse(localStorage.getItem("natal_charts")||"[]"));setSavedDialogOpen(true);setOpenMenu(null);};
   const focusQuickChart = ()=>{setSidebarOpen(true);setOpenMenu(null);window.setTimeout(()=>document.getElementById("rightsidebar")?.scrollIntoView({behavior:"smooth",block:"start"}),0);};
   const startNewChart = ()=>{const current=new Date();setName("Quick Chart");setYear(current.getFullYear());setMonth(current.getMonth()+1);setDay(current.getDate());setHour(current.getHours());setMinute(current.getMinutes());setCity("台北市");setGlonDeg(121);setGlonMin(30);setGlonDir("E");setGlatDeg(25);setGlatMin(3);setGlatDir("N");setTz(-current.getTimezoneOffset());setHsys(DEFAULT_HOUSE_SYSTEM);setChart(null);focusQuickChart();};
@@ -529,30 +528,8 @@ export default function NatalPage(){
             <button onClick={handleSave} style={{border:"1px solid #aaa",padding:"4px 12px",fontSize:"12px",background:"#eee",cursor:"pointer"}}>储存星图</button>
             <button onClick={handleCopyLink} style={{border:"1px solid #aaa",padding:"4px 12px",fontSize:"12px",background:"#eee",cursor:"pointer"}}>复制链接</button>
             <button onClick={handleExportImage} style={{border:"1px solid #aaa",padding:"4px 12px",fontSize:"12px",background:"#eee",cursor:"pointer"}}>导出图片</button>
-            <button onClick={handleShareCard} style={{border:"1px solid #f0a030",padding:"4px 12px",fontSize:"12px",background:"#fff8e1",color:"#b8600f",cursor:"pointer",fontWeight:"bold"}}>📤 分享卡片</button>
           </div>}
         </div>
-
-        
-        {/* Share Card (hidden, used for social sharing) */}
-        {chart && (
-        <div id="share-card" style={{display:"none",position:"fixed",top:0,left:0,zIndex:9999,width:600,height:800,background:"linear-gradient(135deg,#1a0a2e 0%,#2d1b69 50%,#1a0a2e 100%)",color:"white",fontFamily:"Arial,sans-serif",textAlign:"center",padding:40}}>
-          <div style={{fontSize:48,fontWeight:"bold",marginBottom:8}}>✨ 星缘</div>
-          <div style={{fontSize:18,color:"#aab",marginBottom:30}}>lunaxstar.com</div>
-          <div style={{fontSize:24,marginBottom:20}}>
-            {sunSym} {sunHouse}宫 · {moonSym} {moonHouse}宫 · ASC {ascHouse}宫
-          </div>
-          <div style={{fontSize:14,color:"#ccc",lineHeight:1.6,marginBottom:30}}>
-            {(dignityRows||[]).slice(0,4).map((r,i)=><div key={i}>{r.sym} {r.deg} — 宫{r.house}</div>)}
-          </div>
-          <div style={{fontSize:22,fontWeight:"bold",color:"#ffd700",marginTop:40}}>
-            你的星盘长什么样？
-          </div>
-          <div style={{fontSize:16,color:"#ff6b9d",marginTop:10}}>
-            免费生成 → lunaxstar.com
-          </div>
-        </div>
-        )}
 
         <div id="rightsidebar" style={{position:"absolute",right:10,top:10,padding:5,width:240,textAlign:"left",border:"1px solid #D0D0D0",background:"#4a4a4a",color:"white",boxShadow:"0 0 8px #D0D0D0",fontSize:"13px",opacity:0.9}}>
           <div style={{textAlign:"center",cursor:"pointer"}} onClick={()=>setSidebarOpen(!sidebarOpen)}>
