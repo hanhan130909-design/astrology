@@ -58,8 +58,13 @@ export default function Navbar() {
         {/* Left: Logo + Desktop links */}
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center gap-1.5 text-lg font-semibold tracking-tight text-[#171717] no-underline shrink-0">
-            ✨ 星缘
-          </Link>
+            <svg width="20" height="20" viewBox="0 0 40 40" className="shrink-0">
+              <circle cx="20" cy="20" r="19" fill="none" stroke="currentColor" strokeWidth="1.5"/>
+              <path d="M20 1a19 19 0 0 1 0 38A19 19 0 0 1 1 20" fill="currentColor"/>
+              <circle cx="20" cy="10.5" r="4" fill="#fff"/>
+              <circle cx="20" cy="29.5" r="4" fill="currentColor"/>
+            </svg>
+            星缘
           <div className="hidden lg:flex items-center gap-5">
             {links.map((item) => (
               <Link key={item.href} href={item.href}

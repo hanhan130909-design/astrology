@@ -50,24 +50,45 @@ export default function HomePage() {
     <div className="bg-white text-[#171717]">
       {/* Hero */}
       <section className="relative text-center py-12 md:py-20 px-6 max-w-[800px] mx-auto overflow-hidden">
-        {/* Subtle zodiac wheel background */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.04]" aria-hidden="true">
-          <svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="250" cy="250" r="240" stroke="black" strokeWidth="0.5"/>
-            <circle cx="250" cy="250" r="200" stroke="black" strokeWidth="0.5"/>
-            <circle cx="250" cy="250" r="160" stroke="black" strokeWidth="0.5"/>
-            <circle cx="250" cy="250" r="120" stroke="black" strokeWidth="0.3"/>
-            <circle cx="250" cy="250" r="80" stroke="black" strokeWidth="0.3"/>
-            <line x1="250" y1="10" x2="250" y2="490" stroke="black" strokeWidth="0.3"/>
-            <line x1="10" y1="250" x2="490" y2="250" stroke="black" strokeWidth="0.3"/>
-            <line x1="80" y1="80" x2="420" y2="420" stroke="black" strokeWidth="0.3"/>
-            <line x1="420" y1="80" x2="80" y2="420" stroke="black" strokeWidth="0.3"/>
-            <line x1="250" y1="50" x2="250" y2="120" stroke="black" strokeWidth="0.8"/>
-            <line x1="370" y1="130" x2="330" y2="170" stroke="black" strokeWidth="0.5"/>
-            <text x="250" y="40" textAnchor="middle" fontSize="10" fontWeight="600" fill="black" opacity="0.3">MC</text>
-            <text x="250" y="478" textAnchor="middle" fontSize="8" fill="black" opacity="0.3">IC</text>
-            <text x="480" y="254" fontSize="8" fill="black" opacity="0.3">ASC</text>
-            <text x="8" y="254" textAnchor="end" fontSize="8" fill="black" opacity="0.3">DSC</text>
+        {/* Subtle TaiChi + zodiac wheel background */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.05]" aria-hidden="true">
+          <svg width="600" height="600" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* Outer rings */}
+            <circle cx="300" cy="300" r="290" stroke="black" strokeWidth="0.5"/>
+            <circle cx="300" cy="300" r="250" stroke="black" strokeWidth="0.5"/>
+            <circle cx="300" cy="300" r="210" stroke="black" strokeWidth="0.5"/>
+            {/* Cross lines */}
+            <line x1="300" y1="10" x2="300" y2="590" stroke="black" strokeWidth="0.3"/>
+            <line x1="10" y1="300" x2="590" y2="300" stroke="black" strokeWidth="0.3"/>
+            <line x1="90" y1="90" x2="510" y2="510" stroke="black" strokeWidth="0.3"/>
+            <line x1="510" y1="90" x2="90" y2="510" stroke="black" strokeWidth="0.3"/>
+            {/* TaiChi in center */}
+            <circle cx="300" cy="300" r="80" fill="#111" opacity="0.3"/>
+            <path d="M300 220a80 80 0 0 1 0 160A80 80 0 0 1 220 300" fill="#fff"/>
+            <circle cx="300" cy="260" r="14" fill="#111" opacity="0.3"/>
+            <circle cx="300" cy="340" r="14" fill="#fff"/>
+            {/* Bagua trigrams around */}
+            <g opacity="0.4">
+              {/* ☰ 乾 — top */}
+              <line x1="284" y1="45" x2="316" y2="45" stroke="black" strokeWidth="1.5"/>
+              <line x1="284" y1="50" x2="316" y2="50" stroke="black" strokeWidth="1.5"/>
+              <line x1="284" y1="55" x2="316" y2="55" stroke="black" strokeWidth="1.5"/>
+              {/* ☷ 坤 — bottom */}
+              <line x1="280" y1="542" x2="292" y2="542" stroke="black" strokeWidth="1.5"/>
+              <line x1="308" y1="542" x2="320" y2="542" stroke="black" strokeWidth="1.5"/>
+              <line x1="280" y1="547" x2="292" y2="547" stroke="black" strokeWidth="1.5"/>
+              <line x1="308" y1="547" x2="320" y2="547" stroke="black" strokeWidth="1.5"/>
+              <line x1="280" y1="552" x2="292" y2="552" stroke="black" strokeWidth="1.5"/>
+              <line x1="308" y1="552" x2="320" y2="552" stroke="black" strokeWidth="1.5"/>
+              {/* ☲ 离 — left */}
+              <line x1="42" y1="284" x2="42" y2="296" stroke="black" strokeWidth="1.5" transform="rotate(-90 42 300)"/>
+              <line x1="47" y1="284" x2="47" y2="296" stroke="black" strokeWidth="1.5" transform="rotate(-90 47 300)"/>
+              <line x1="52" y1="304" x2="52" y2="316" stroke="black" strokeWidth="1.5" transform="rotate(-90 52 300)"/>
+              {/* ☵ 坎 — right */}
+              <line x1="548" y1="284" x2="548" y2="296" stroke="black" strokeWidth="1.5" transform="rotate(90 548 300)"/>
+              <line x1="553" y1="304" x2="553" y2="316" stroke="black" strokeWidth="1.5" transform="rotate(90 553 300)"/>
+              <line x1="558" y1="284" x2="558" y2="296" stroke="black" strokeWidth="1.5" transform="rotate(90 558 300)"/>
+            </g>
           </svg>
         </div>
         <span className="relative inline-block text-[11px] font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full mb-6 tracking-wide uppercase">

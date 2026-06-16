@@ -231,6 +231,15 @@ export default function BaziPage() {
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">{t("title", lang)}</h1>
           <p className="text-gray-500">{t("subtitle", lang)}</p>
+          {/* 五行装饰条 */}
+          <div className="flex justify-center gap-1 mt-4">
+            {["木","火","土","金","水"].map((el, i) => (
+              <span key={i} className="text-[10px] tracking-widest px-2 py-0.5 rounded-full font-medium"
+                style={{background: {木:"#e8f5e9",火:"#ffebee",土:"#fff3e0",金:"#fff8e1",水:"#e3f2fd"}[el], color: {木:"#2e7d32",火:"#c62828",土:"#e65100",金:"#f57f17",水:"#1565c0"}[el]}}>
+                {el}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* 表单 */}
