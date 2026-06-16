@@ -104,9 +104,13 @@ export default function BaziPage() {
   const activeLiuNian = activeDaYun?.liuNian?.[liuNianIdx >= 0 ? liuNianIdx : activeDaYun?.liuNian?.findIndex((n: any) => n.active) ?? 0];
   const activeLiuYue = activeLiuNian?.liuYue?.[liuYueIdx >= 0 ? liuYueIdx : activeLiuNian?.liuYue?.findIndex((m: any) => m.active) ?? 0];
 
-  const handleCalculate = () => setComputed(c => !c);
+  const handleCalculate = () => {
+    // Just re-render — bazi auto-computes from form values
+    setComputed(c => !c);
+  };
 
   const sendChat = async () => {
+    console.log("sendChat called, bazi:", !!bazi, "chatInput:", chatInput, "chatLoading:", chatLoading);
     if (!chatInput.trim() || chatLoading || !bazi) return;
     const q = chatInput.trim();
     setChatMsgs(prev => [...prev, { role: "user", content: q }]);
