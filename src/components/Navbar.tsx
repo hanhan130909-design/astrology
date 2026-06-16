@@ -65,6 +65,7 @@ export default function Navbar() {
               <circle cx="20" cy="29.5" r="4" fill="currentColor"/>
             </svg>
             星缘
+          </Link>
           <div className="hidden lg:flex items-center gap-5">
             {links.map((item) => (
               <Link key={item.href} href={item.href}
