@@ -66,27 +66,29 @@ BAZI CHART DATA:
 
     // Try Groq first (free, fast)
     try {
+      const apiKey = process.env.GROQ_API_KEY;
+      if (!apiKey || apiKey.startsWith('gsk_dummy')) throw new Error('No Groq API key');
       const groq = new OpenAI({
-        apiKey: process.env.GROQ_API_KEY || 'gsk_dummy',
+        apiKey,
         baseURL: 'https://api.groq.com/openai/v1',
       });
       const completion = await groq.chat.completions.create({
-        model: 'llama-3.1-70b-versatile',
+        model: 'llama-3.3-70b-versatile',
         messages: messages as any,
         max_tokens: 800,
         temperature: 0.7,
       });
       response = completion.choices[0]?.message?.content?.trim() || null;
-    } catch {
-      console.log('Groq failed, trying OpenAI fallback...');
+    } catch (e: any) {
+      console.log('Groq failed:', e?.message || e);
     }
 
     // Fallback to OpenAI
     if (!response) {
       try {
-        const openai = new OpenAI({
-          apiKey: process.env.OPENAI_API_KEY || 'sk-dummy',
-        });
+        const apiKey = process.env.OPENAI_API_KEY;
+        if (!apiKey || apiKey === 'sk-dummy') throw new Error('No OpenAI key');
+        const openai = new OpenAI({ apiKey });
         const completion = await openai.chat.completions.create({
           model: 'gpt-4o-mini',
           messages: messages as any,
@@ -94,7 +96,29 @@ BAZI CHART DATA:
           temperature: 0.7,
         });
         response = completion.choices[0]?.message?.content?.trim() || null;
-      } catch {
+      } catch (e: any) {
+        console.log('OpenAI fallback failed:', e?.message || e);
+      }
+    }
+
+    // Fallback to DeepSeek
+    if (!response) {
+      try {
+        const apiKey = process.env.DEEPSEEK_API_KEY;
+        if (!apiKey) throw new Error('No DeepSeek key');
+        const deepseek = new OpenAI({
+          apiKey,
+          baseURL: 'https://api.deepseek.com',
+        });
+        const completion = await deepseek.chat.completions.create({
+          model: 'deepseek-chat',
+          messages: messages as any,
+          max_tokens: 800,
+          temperature: 0.7,
+        });
+        response = completion.choices[0]?.message?.content?.trim() || null;
+      } catch (e: any) {
+        console.log('DeepSeek fallback failed:', e?.message || e);
         response = 'I apologize — the AI service is temporarily unavailable. Please try again in a moment.';
       }
     }
