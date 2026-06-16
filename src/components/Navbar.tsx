@@ -37,6 +37,7 @@ export default function Navbar() {
   const links = [
     { name: t.horoscope, href: "/horoscope" },
     { name: t.natal, href: "/natal" },
+    { name: "八字", href: "/bazi" },
     { name: t.compatibility, href: "/compatibility" },
     { name: t.ai, href: "/ai-reading" },
     { name: t.tarot, href: "/tarot" },
