@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useAuth } from "@/contexts/AuthContext";
 
@@ -28,11 +29,14 @@ const LANGUAGES = [
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
   const { language, setLanguage } = useLanguage();
   const { user, logout } = useAuth();
   const t = T[language] || T.zh;
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+
+  if (pathname === "/bazi") return null;
 
   const links = [
     { name: t.horoscope, href: "/horoscope" },

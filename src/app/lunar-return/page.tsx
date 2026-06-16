@@ -401,12 +401,12 @@ export default function LunarReturnPage() {
                     {labels.info}
                   </h3>
                   <div className="text-sm text-gray-500 leading-relaxed space-y-3">
-                    <p>{lang === 'zh' ? '月返盘（Lunar Return）是你出生时月亮黄道位置在宇宙中再次对齐的时刻。这个周期大约每27.3天发生一次。' : lang === 'id' ? 'Lunar Return terjadi saat posisi Bulan kembali ke posisi saat lahir. Siklus ini terjadi setiap ~27.3 hari.' : 'A Lunar Return chart is drawn for when the Moon returns to its natal zodiac position, occurring roughly every 27.3 days.'}</p>
-                    <p>{lang === 'zh' ? '月返盘可以帮助你：' : lang === 'id' ? 'Bagan Lunar Return membantu Anda:' : 'A Lunar Return chart helps you:'}</p>
+                    <p>{lang === 'zh' ? '月返盘（Lunar Return）是你出生时月亮黄道位置在宇宙中再次对齐的时刻。这个周期大约每27.3天发生一次。':lang==='id'?'Lunar Return terjadi saat posisi Bulan kembali ke posisi saat lahir. Siklus ini terjadi setiap ~27.3 hari.':lang==='th'?'Lunar Return คือแผนภูมิเมื่อดวงจันทร์กลับสู่ตำแหน่งเกิด ทุก ~27.3 วัน':lang==='vi'?'Lunar Return là biểu đồ khi Mặt Trăng trở về vị trí sinh, khoảng 27.3 ngày/lần':lang==='ms'?'Lunar Return ialah carta apabila Bulan kembali ke posisi lahir, setiap ~27.3 hari':lang==='ja'?'ルナーリターンは月が出生位置に戻る時のチャートで、約27.3日ごとに発生':lang==='ko'?'루나 리턴은 달이 출생 위치로 돌아올 때의 차트로, 약 27.3일마다 발생':'A Lunar Return chart is drawn for when the Moon returns to its natal zodiac position, occurring roughly every 27.3 days.'}</p>
+                    <p>{lang === 'zh' ? '月返盘可以帮助你：':lang==='id'?'Bagan Lunar Return membantu Anda:':lang==='th'?'แผนภูมิ Lunar Return ช่วยให้คุณ:':lang==='vi'?'Biểu đồ Lunar Return giúp bạn:':lang==='ms'?'Carta Lunar Return membantu anda:':lang==='ja'?'ルナーリターンチャートの活用法:':lang==='ko'?'루나 리턴 차트의 도움:':'A Lunar Return chart helps you:'}</p>
                     <ul className="list-disc list-inside space-y-1 ml-2">
-                      <li>{lang === 'zh' ? '了解本月的情感能量主题' : lang === 'id' ? 'Memahami tema energi emosi bulanan' : 'Understand monthly emotional energy themes'}</li>
-                      <li>{lang === 'zh' ? '预判何时可能遇到情感高峰' : lang === 'id' ? 'Memprediksi kapan puncak emosi' : 'Predict when emotional peaks may occur'}</li>
-                      <li>{lang === 'zh' ? '更好地把握每月能量周期' : lang === 'id' ? 'Memahami siklus energi bulanan' : 'Better navigate monthly energy cycles'}</li>
+                      <li>{lang === 'zh' ? '了解本月的情感能量主题':lang==='id'?'Memahami tema energi emosi bulanan':lang==='th'?'เข้าใจธีมพลังงานอารมณ์รายเดือน':lang==='vi'?'Hiểu chủ đề năng lượng cảm xúc hàng tháng':lang==='ms'?'Memahami tema tenaga emosi bulanan':lang==='ja'?'月ごとの感情エネルギーテーマを理解':lang==='ko'?'월별 감정 에너지 테마 이해':'Understand monthly emotional energy themes'}</li>
+                      <li>{lang === 'zh' ? '预判何时可能遇到情感高峰':lang==='id'?'Memprediksi kapan puncak emosi':lang==='th'?'คาดการณ์ช่วงอารมณ์สูงสุด':lang==='vi'?'Dự đoán khi nào đỉnh cảm xúc xảy ra':lang==='ms'?'Meramal bila kemuncak emosi mungkin berlaku':lang==='ja'?'感情のピーク時期を予測':lang==='ko'?'감정 피크 시기 예측':'Predict when emotional peaks may occur'}</li>
+                      <li>{lang === 'zh' ? '更好地把握每月能量周期':lang==='id'?'Memahami siklus energi bulanan':lang==='th'?'เข้าใจวัฏจักรพลังงานรายเดือนได้ดีขึ้น':lang==='vi'?'Điều hướng chu kỳ năng lượng hàng tháng tốt hơn':lang==='ms'?'Mengemudi kitaran tenaga bulanan dengan lebih baik':lang==='ja'?'月ごとのエネルギーサイクルをより良く把握':lang==='ko'?'월별 에너지 사이클을 더 잘 파악':'Better navigate monthly energy cycles'}</li>
                     </ul>
                   </div>
                 </div>
