@@ -120,6 +120,25 @@ export default function BaziPage() {
   const liuYue = liuNian?.liuYue?.[liuYueIdx>=0?liuYueIdx:liuNian?.liuYue?.findIndex((m:any)=>m.active)??0];
   const liuRi = liuYue?.liuRi?.[liuRiIdx>=0?liuRiIdx:liuYue?.liuRi?.findIndex((d:any)=>d.active)??0];
 
+  // Compute shensha for selected luck items
+  const getShensha = (zhi: string) => {
+    if (!dm?.stem||!dm?.branch||!zhi) return [];
+    const dg=dm.stem, dz=dm.branch;
+    const rules: {name:string,check:(g:string,z:string,dz:string)=>boolean}[] = [
+      {name:"天乙贵人",check:(g,z)=>["丑未","子申","亥酉","亥酉","丑未","子申","寅午","卯巳","卯巳","寅午"][{甲:0,乙:1,丙:2,丁:3,戊:4,己:5,庚:6,辛:7,壬:8,癸:9}[g]||0].includes(z)},
+      {name:"文昌贵人",check:(g,z)=>(({甲:"巳",乙:"午",丙:"申",丁:"酉",戊:"申",己:"酉",庚:"亥",辛:"子",壬:"寅",癸:"卯"})[g]||"")===z},
+      {name:"桃花",check:(_,z,dz)=>({"申子辰":"酉","寅午戌":"卯","亥卯未":"子","巳酉丑":"午"})[Object.entries({申子辰:0,寅午戌:0,亥卯未:0,巳酉丑:0}).find(([g])=>g.includes(dz))?.[0]||""]===z},
+      {name:"驿马",check:(_,z,dz)=>({"申子辰":"寅","寅午戌":"申","亥卯未":"巳","巳酉丑":"亥"})[Object.entries({申子辰:0,寅午戌:0,亥卯未:0,巳酉丑:0}).find(([g])=>g.includes(dz))?.[0]||""]===z},
+      {name:"华盖",check:(_,z,dz)=>({"申子辰":"辰","寅午戌":"戌","亥卯未":"未","巳酉丑":"丑"})[Object.entries({申子辰:0,寅午戌:0,亥卯未:0,巳酉丑:0}).find(([g])=>g.includes(dz))?.[0]||""]===z},
+      {name:"将星",check:(_,z,dz)=>({"申子辰":"子","寅午戌":"午","亥卯未":"卯","巳酉丑":"酉"})[Object.entries({申子辰:0,寅午戌:0,亥卯未:0,巳酉丑:0}).find(([g])=>g.includes(dz))?.[0]||""]===z},
+    ];
+    return rules.filter(r=>r.check(dg,zhi,dz)).map(r=>r.name);
+  };
+  const dySS = useMemo(()=>getShensha(daYun?.zhi),[daYun?.zhi,dm?.stem,dm?.branch]);
+  const lnSS = useMemo(()=>getShensha(liuNian?.zhi),[liuNian?.zhi,dm?.stem,dm?.branch]);
+  const lySS = useMemo(()=>getShensha(liuYue?.zhi),[liuYue?.zhi,dm?.stem,dm?.branch]);
+  const lrSS = useMemo(()=>getShensha(liuRi?.zhi),[liuRi?.zhi,dm?.stem,dm?.branch]);
+
   // Transit interactions
   const transitInt = useMemo(() => {
     if (!bazi||!daYun||!liuNian) return null;
@@ -292,6 +311,7 @@ export default function BaziPage() {
                   <div><span className="text-gray-400">年龄</span> {daYun.startAge}-{daYun.endAge}{t("age",lang)}</div>
                   <div><span className="text-gray-400">起止</span> {daYun.startYear}-{daYun.endYear}</div>
                   <div><span className="text-gray-400">空亡</span> {daYun.xunKong||"-"}</div>
+                  <div><span className="text-gray-400">神煞</span> {dySS.length?dySS.join(" · "):"-"}</div>
                 </div>}
               </div>
 
@@ -308,6 +328,7 @@ export default function BaziPage() {
                   <div><span className="text-gray-400">地支</span> {liuNian.zhi}</div>
                   <div><span className="text-gray-400">年份</span> {liuNian.year}年 · {liuNian.age}{t("age",lang)}</div>
                   <div><span className="text-gray-400">空亡</span> {liuNian.xunKong||"-"}</div>
+                  <div><span className="text-gray-400">神煞</span> {lnSS.length?lnSS.join(" · "):"-"}</div>
                 </div>}
               </div>}
 
@@ -322,6 +343,7 @@ export default function BaziPage() {
                   <div><span className="text-gray-400">干支</span> <b>{liuYue.ganZhi}</b></div>
                   <div><span className="text-gray-400">月份</span> {liuYue.month}</div>
                   <div><span className="text-gray-400">空亡</span> {liuYue.xunKong||"-"}</div>
+                  <div><span className="text-gray-400">神煞</span> {lySS.length?lySS.join(" · "):"-"}</div>
                 </div>}
               </div>}
 
@@ -338,6 +360,7 @@ export default function BaziPage() {
                   <div><span className="text-gray-400">地支</span> {liuRi.zhi}</div>
                   <div><span className="text-gray-400">日期</span> {liuRi.day}日 · {liuRi.lunarDay}</div>
                   <div><span className="text-gray-400">空亡</span> {liuRi.xunKong||"-"}</div>
+                  <div><span className="text-gray-400">神煞</span> {lrSS.length?lrSS.join(" · "):"-"}</div>
                 </div>}
               </div>}
             </>
