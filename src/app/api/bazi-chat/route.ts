@@ -37,7 +37,7 @@ The current year is 2026 — Year of the Yang Fire Horse (丙午).`;
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { chartData, question, language = 'en' } = body;
+    const { chartData, question, language = 'en', history = [] } = body;
 
     if (!chartData || !question) {
       return NextResponse.json({ success: false, error: 'chartData and question required' }, { status: 400 });
@@ -57,10 +57,16 @@ BAZI CHART DATA:
 - Hidden Stems: ${hiddenList}
 `;
 
-    const messages = [
+    const messages: any[] = [
       { role: 'system', content: SYSTEM_PROMPT },
-      { role: 'user', content: `${chartContext}\n\nUSER QUESTION: ${question}\n\nPlease answer in ${language === 'zh' ? 'Chinese (中文)' : language === 'id' ? 'Indonesian' : 'English'}.` },
     ];
+    // Append conversation history
+    for (const msg of history) {
+      if (msg.role === 'user' || msg.role === 'assistant') {
+        messages.push({ role: msg.role, content: msg.content });
+      }
+    }
+    messages.push({ role: 'user', content: `${chartContext}\n\nUSER QUESTION: ${question}\n\nPlease answer in ${language === 'zh' ? 'Chinese (中文)' : language === 'id' ? 'Indonesian' : 'English'}.` });
 
     let response: string | null = null;
 

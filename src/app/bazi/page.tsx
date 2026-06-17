@@ -162,6 +162,7 @@ export default function BaziPage() {
           },
           question: q,
           language: lang,
+          history: chatMsgs.slice(-10).map(m => ({ role: m.role, content: m.content })),
         }),
       });
       const data = await res.json();
