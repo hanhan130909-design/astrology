@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const SW_VERSION = "3"; // Bump this to force SW refresh
+const SW_VERSION = "4"; // Bump this to force SW refresh
 
 export function ServiceWorkerRegister() {
   const [installPrompt, setInstallPrompt] = useState<any>(null);
@@ -21,12 +21,12 @@ export function ServiceWorkerRegister() {
         if ("caches" in window) {
           const keys = await caches.keys();
           for (const key of keys) {
-            if (key !== "lunaxstar-v3") await caches.delete(key);
+            if (key !== "lunaxstar-v4") await caches.delete(key);
           }
         }
         setTimeout(async () => {
           try {
-            const reg = await navigator.serviceWorker.register("/sw.js?v=3");
+            const reg = await navigator.serviceWorker.register("/sw.js?v=4");
             await reg.update();
           } catch (err) { console.log("SW deferred register:", err); }
         }, 1000);

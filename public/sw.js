@@ -1,5 +1,5 @@
 // Starry Fate PWA Service Worker — network-first, stale cache fallback
-const CACHE_NAME = 'lunaxstar-v3';
+const CACHE_NAME = 'lunaxstar-v4';
 const OFFLINE_URL = '/';
 
 self.addEventListener('install', (event) => {
