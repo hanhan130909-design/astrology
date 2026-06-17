@@ -79,10 +79,8 @@ export default function BaziPage() {
   const [showForm, setShowForm] = useState(true);
   const [showSaved, setShowSaved] = useState(false);
 
-  // Tabs
-  const [tab, setTab] = useState<"pillars"|"luck"|"shensha"|"ai">("pillars");
-
-  // Selections
+  // Shensha tab
+  const [shenshaTab, setShenshaTab] = useState<"pillar"|"luck"|"year">("pillar");
   const [daYunIdx, setDaYunIdx] = useState(-1);
   const [liuNianIdx, setLiuNianIdx] = useState(-1);
   const [liuYueIdx, setLiuYueIdx] = useState(-1);
@@ -214,17 +212,9 @@ export default function BaziPage() {
               <div className="text-right"><div className="text-3xl">{ZODIAC[dm?.branch||""]}</div><div className="text-[10px]" style={{color:dm?.color}}>{dm?.element}</div></div>
             </div>
 
-            {/* Tab Bar */}
-            <div className="flex border-b mb-4 overflow-x-auto">
-              {["pillars","luck","shensha","ai"].map(k=>(
-                <button key={k} onClick={()=>setTab(k as any)} className={`px-4 py-2 text-xs font-medium border-b-2 transition-colors whitespace-nowrap ${tab===k?"border-gray-900 text-gray-900":"border-transparent text-gray-400 hover:text-gray-600"}`}>
-                  {{pillars:"四柱详情",luck:"大运流年",shensha:"神煞",ai:"AI解读"}[k]}
-                </button>
-              ))}
-            </div>
-
-            {/* TAB: Pillars */}
-            {tab==="pillars"&&(<>
+            {/* 四柱详情 */}
+            <div className="text-xs font-semibold bg-gray-900 text-white px-3 py-1 rounded inline-block mb-3">四柱详情</div>
+            <>
               <div className="overflow-x-auto mb-3">
                 <table className="w-full text-xs border-collapse">
                   <thead><tr className="bg-gray-50">
@@ -273,8 +263,9 @@ export default function BaziPage() {
               </div>
             </>)}
 
-            {/* TAB: Luck Cycles — full vertical list */}
-            {tab==="luck"&&(<>
+            {/* 大运流年 */}
+            <div className="text-xs font-semibold bg-gray-900 text-white px-3 py-1 rounded inline-block mb-3 mt-6">大运流年</div>
+            <>
               <div className="text-xs text-gray-500 mb-4">{t("startLuck",lang)}：{luck?.startText}</div>
 
               {/* 大运 — vertical grid */}
@@ -341,8 +332,9 @@ export default function BaziPage() {
               </div>}
             </>)}
 
-            {/* TAB: ShenSha */}
-            {tab==="shensha"&&(<>
+            {/* 神煞 */}
+            <div className="text-xs font-semibold bg-gray-900 text-white px-3 py-1 rounded inline-block mb-3 mt-6">神煞</div>
+            <>
               <div className="flex gap-1 mb-3 text-xs">
                 {["pillar","luck","year"].map(k=>(<button key={k} onClick={()=>setShenshaTab(k as any)} className={`px-3 py-1.5 rounded-lg ${shenshaTab===k?"bg-gray-900 text-white":"bg-gray-100 text-gray-600"}`}>{{pillar:t("shenshaPillar",lang),luck:t("shenshaLuck",lang),year:t("shenshaYear",lang)}[k]}</button>))}
               </div>
@@ -353,8 +345,9 @@ export default function BaziPage() {
               )}
             </>)}
 
-            {/* TAB: AI Chat */}
-            {tab==="ai"&&(
+            {/* AI解读 */}
+            <div className="text-xs font-semibold bg-gray-900 text-white px-3 py-1 rounded inline-block mb-3 mt-6">AI解读</div>
+            <>
               <div className="border rounded-xl overflow-hidden">
                 <div className="bg-gray-900 text-white px-4 py-2.5 flex items-center gap-2 text-xs"><Sparkles size={14}/>{t("aiChat",lang)}</div>
                 <div className="max-h-[350px] overflow-y-auto p-3 space-y-2 bg-gray-50">
