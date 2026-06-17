@@ -89,6 +89,8 @@ function pillarFromEightChar(eightChar, key) {
     hiddenTenGods: Array.isArray(hiddenTenGods) ? hiddenTenGods : String(hiddenTenGods || "").split(",").filter(Boolean),
     diShi: call(eightChar, `get${cap}DiShi`),
     naYin: call(eightChar, `get${cap}NaYin`),
+    xunKong: call(eightChar, `get${cap}XunKong`),
+    ganZhi: value,
   };
 }
 
