@@ -297,7 +297,7 @@ export default function BaziPage() {
             </>
 
             {/* 专业细盘 — 流年/流月时间轴 + 五行旺衰 */}
-            <div className="text-xs font-semibold bg-gray-700 text-white px-3 py-1 rounded inline-block mb-3 mt-6">专业细盘</div>
+            <div id="pro-section" className="text-xs font-semibold bg-gray-700 text-white px-3 py-1 rounded inline-block mb-3 mt-6">专业细盘</div>
             <div className="space-y-3 mb-6">
               {(()=>{if(!daYun?.liuNian||!daYun.liuNian.length)return null;const years=daYun.liuNian;const jieqi=["立春","惊蛰","清明","立夏","芒种","小暑","立秋","白露","寒露","立冬","大雪","小寒"];const months=liuNian?.liuYue||[];const elemCnt=Object.fromEntries(["木","火","土","金","水"].map(el=>[el,Object.values(pl).reduce((s,p)=>s+(p.element===el?1:0),0)]));const elemMx=Math.max(...Object.values(elemCnt),1);return<>
               {/* 流年时间轴 */}
@@ -417,8 +417,18 @@ export default function BaziPage() {
               )}
             </>
 
+            {/* 快捷操作按钮 */}
+            <div className="flex gap-2 mt-6 mb-2">
+              <button onClick={()=>document.getElementById("pro-section")?.scrollIntoView({behavior:"smooth"})} className="flex-1 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-xs font-medium text-gray-700 hover:bg-gray-100 transition-colors">
+                智能干支图示 ›
+              </button>
+              <button onClick={()=>document.getElementById("chat-input")?.focus()} className="flex-1 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-xs font-medium text-gray-700 hover:bg-gray-100 transition-colors">
+                AI指令 ›
+              </button>
+            </div>
+
             {/* AI解读 */}
-            <div className="text-xs font-semibold bg-gray-900 text-white px-3 py-1 rounded inline-block mb-3 mt-6">AI解读</div>
+            <div className="text-xs font-semibold bg-gray-900 text-white px-3 py-1 rounded inline-block mb-3 mt-4">AI解读</div>
             
               <div className="border rounded-xl overflow-hidden">
                 <div className="bg-gray-900 text-white px-4 py-2.5 flex items-center gap-2 text-xs"><Sparkles size={14}/>{t("aiChat",lang)}</div>
@@ -428,7 +438,7 @@ export default function BaziPage() {
                   {chatLoading&&<div className="flex justify-start"><div className="bg-white border px-3 py-2 rounded-xl"><Loader2 size={14} className="animate-spin text-gray-400"/></div></div>}
                 </div>
                 <div className="flex gap-2 p-2 bg-white border-t">
-                  <input value={chatInput} onChange={e=>setChatInput(e.target.value)} onKeyDown={e=>e.key==="Enter"&&sendChat()} placeholder={t("aiPlaceholder",lang)} className="flex-1 p-2 bg-gray-50 border rounded-lg text-xs"/>
+                  <input id="chat-input" value={chatInput} onChange={e=>setChatInput(e.target.value)} onKeyDown={e=>e.key==="Enter"&&sendChat()} placeholder={t("aiPlaceholder",lang)} className="flex-1 p-2 bg-gray-50 border rounded-lg text-xs"/>
                   <button onClick={sendChat} disabled={chatLoading} className="px-3 py-2 bg-gray-900 text-white rounded-lg text-xs"><Send size={14}/></button>
                 </div>
               </div>
