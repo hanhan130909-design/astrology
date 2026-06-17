@@ -25,16 +25,23 @@ export async function generateMetadata(
   { params }: Props
 ): Promise<Metadata> {
   const { slug } = await params;
-  const article = destinyArticles.find((a: BlogArticle) => a.slug === slug) 
+  const article: any = destinyArticles.find((a: BlogArticle) => a.slug === slug) 
     || seoArticles.find((a: any) => a.slug === slug) || moreSeoArticles.find((a: any) => a.slug === slug);
   if (!article) { notFound(); }
 
+  const metaTitle = typeof article.title === 'string'
+    ? article.title
+    : (article.title?.en || article.title?.zh || 'Article');
+  const metaDesc = article.excerpt?.en || article.description?.en
+    || (typeof article.excerpt === 'string' ? article.excerpt : '')
+    || (typeof article.description === 'string' ? article.description : '');
+
   return {
-    title: `${article.title?.en || article.title || 'Article'} | 星缘 Blog`,
-    description: article.excerpt?.en || article.description?.en || article.description,
+    title: `${metaTitle} | 星缘 Blog`,
+    description: metaDesc,
     openGraph: {
-      title: article.title?.en || article.title,
-      description: article.excerpt?.en || article.description?.en || article.description,
+      title: metaTitle,
+      description: metaDesc,
       type: 'article',
     },
     alternates: {
@@ -151,12 +158,35 @@ function renderInline(text: string): React.ReactNode {
 
 export default async function BlogArticlePage({ params }: Props) {
   const { slug } = await params;
-  const article = destinyArticles.find((a: BlogArticle) => a.slug === slug);
+  const article: any = destinyArticles.find((a: BlogArticle) => a.slug === slug)
+    || seoArticles.find((a: any) => a.slug === slug)
+    || moreSeoArticles.find((a: any) => a.slug === slug);
   
   if (!article) notFound();
 
   const readTime = article.readTime || Math.ceil((article.wordCount || 1) / 200);
-  const categoryLabel = article.categoryLabel?.en || article.categoryEn || article.category;
+  const categoryLabel = article.categoryLabel?.en || article.category?.en || article.categoryEn || article.category;
+
+  // Resolve content from different article shapes
+  let articleContent = '';
+  if (typeof article.content === 'string') {
+    articleContent = article.content;
+  } else if (article.content?.en) {
+    // SEO articles have content as {zh, en, id, ...}
+    articleContent = article.content.en;
+  } else if (article.sections) {
+    articleContent = article.sections;
+  }
+
+  // Resolve title
+  const articleTitle = typeof article.title === 'string'
+    ? article.title
+    : (article.title?.en || article.title?.zh || 'Article');
+
+  // Resolve excerpt
+  const articleExcerpt = article.excerpt?.en || article.description?.en
+    || (typeof article.excerpt === 'string' ? article.excerpt : '')
+    || (typeof article.description === 'string' ? article.description : '');
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950">
@@ -183,11 +213,11 @@ export default async function BlogArticlePage({ params }: Props) {
             </span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight">
-            {article.title?.en || article.title?.zh || article.title}
+            {articleTitle}
           </h1>
-          {(article.excerpt?.en || article.description?.en) && (
+          {articleExcerpt && (
             <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">
-              {article.excerpt?.en || article.description?.en}
+              {articleExcerpt}
             </p>
           )}
         </header>
@@ -199,7 +229,7 @@ export default async function BlogArticlePage({ params }: Props) {
           prose-a:text-blue-600 dark:prose-a:text-blue-400
           prose-strong:text-gray-900 dark:prose-strong:text-gray-100
         ">
-          {renderContent(article.sections || article.content?.en || article.content?.zh || '')}
+          {renderContent(articleContent)}
         </div>
 
         {/* CTA Footer */}
