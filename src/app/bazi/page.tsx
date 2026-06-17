@@ -62,6 +62,7 @@ const T: Record<string, Record<string, string>> = {
 const t = (key: string, lang: string) => T[key]?.[lang] || T[key]?.en || key;
 
 const ELEMENT_COLORS: Record<string, string> = { 木: "#4CAF50", 火: "#F44336", 土: "#795548", 金: "#FF9800", 水: "#2196F3" };
+const GAN_WX: Record<string, string> = { 甲:"木",乙:"木",丙:"火",丁:"火",戊:"土",己:"土",庚:"金",辛:"金",壬:"水",癸:"水" };
 const ZODIAC: Record<string, string> = { 子:"鼠",丑:"牛",寅:"虎",卯:"兔",辰:"龙",巳:"蛇",午:"马",未:"羊",申:"猴",酉:"鸡",戌:"狗",亥:"猪" };
 
 // ──────────────────────── 主组件 ────────────────────────
@@ -222,10 +223,19 @@ export default function BaziPage() {
                     {PILLAR_KEYS.map(k=><th key={k} className="p-1.5 border text-gray-500 font-medium">{t(k+"Pillar",lang)}</th>)}
                   </tr></thead>
                   <tbody>
-                    {[{label:t("gan",lang),field:"gan",style:(v:any)=>pl.find((p:any)=>p.key===v)?.color},{label:t("zhi",lang),field:"zhi"},{label:t("tenGod",lang),field:"tenGod"},{label:t("hiddenStem",lang),field:"hidden",format:(v:any)=>Array.isArray(v)?v.join(" "):v},{label:t("diShi",lang),field:"diShi"},{label:t("xunKong",lang),field:"xunKong"},{label:t("nayin",lang),field:"naYin"}].map((row,i)=>(
+                    {[
+                      {label:"主星",render:(p:any)=>p.tenGod||"-"},
+                      {label:t("gan",lang),render:(p:any)=><span style={{color:p.color}}>{p.gan}</span>},
+                      {label:t("zhi",lang),render:(p:any)=>p.zhi},
+                      {label:t("hiddenStem",lang),render:(p:any)=>(p.hidden||[]).map((h:string,j:number)=>(<span key={j}>{h}{GAN_WX[h]||""}{j<(p.hidden||[]).length-1?" ":" "}</span>))},
+                      {label:"副星",render:(p:any)=>(p.hiddenTenGods||[]).join(", ")||"-"},
+                      {label:t("diShi",lang),render:(p:any)=>p.diShi||"-"},
+                      {label:t("xunKong",lang),render:(p:any)=>p.xunKong||"-"},
+                      {label:t("nayin",lang),render:(p:any)=>p.naYin||"-"},
+                    ].map((row,i)=>(
                       <tr key={i} className={i%2===0?"bg-white":"bg-gray-50/50"}>
                         <td className="p-1.5 border text-gray-500 font-medium">{row.label}</td>
-                        {PILLAR_KEYS.map(k=>{const val=pl.find((p:any)=>p.key===k)?.[row.field]; return <PCell key={k} color={row.style?.(k)}>{row.format?row.format(val):(val||"-")}</PCell>;})}
+                        {PILLAR_KEYS.map(k=>{const p=pl.find((p:any)=>p.key===k); return <PCell key={k}>{row.render(p)}</PCell>;})}
                       </tr>
                     ))}
                   </tbody>
