@@ -79,8 +79,8 @@ export default function BaziPage() {
   const [showForm, setShowForm] = useState(true);
   const [showSaved, setShowSaved] = useState(false);
 
-  // Shensha tab
-  const [shenshaTab, setShenshaTab] = useState<"pillar"|"luck"|"year">("pillar");
+  // Tabs
+  // Selections
   const [daYunIdx, setDaYunIdx] = useState(-1);
   const [liuNianIdx, setLiuNianIdx] = useState(-1);
   const [liuYueIdx, setLiuYueIdx] = useState(-1);
@@ -261,7 +261,7 @@ export default function BaziPage() {
                   </div>
                 )}
               </div>
-            </>)}
+            </>
 
             {/* 大运流年 */}
             <div className="text-xs font-semibold bg-gray-900 text-white px-3 py-1 rounded inline-block mb-3 mt-6">大运流年</div>
@@ -330,7 +330,7 @@ export default function BaziPage() {
                   <div><span className="text-gray-400">空亡</span> {liuRi.xunKong||"-"}</div>
                 </div>}
               </div>}
-            </>)}
+            </>
 
             {/* 神煞 */}
             <div className="text-xs font-semibold bg-gray-900 text-white px-3 py-1 rounded inline-block mb-3 mt-6">神煞</div>
@@ -343,11 +343,11 @@ export default function BaziPage() {
                   {(shenshaTab==="pillar"?bazi.shenSha.natal:shenshaTab==="luck"?bazi.shenSha.luck:bazi.shenSha.year).map((row:any,i:number)=>(<div key={i} className="bg-gray-50 rounded-lg p-2 border"><div className="text-[10px] text-gray-500">{row.label} {row.active?'●':''}</div><div className="text-xs font-medium text-gray-800 mt-0.5">{row.names.length?row.names.join(" · "):"-"}</div></div>))}
                 </div>
               )}
-            </>)}
+            </>
 
             {/* AI解读 */}
             <div className="text-xs font-semibold bg-gray-900 text-white px-3 py-1 rounded inline-block mb-3 mt-6">AI解读</div>
-            <>
+            
               <div className="border rounded-xl overflow-hidden">
                 <div className="bg-gray-900 text-white px-4 py-2.5 flex items-center gap-2 text-xs"><Sparkles size={14}/>{t("aiChat",lang)}</div>
                 <div className="max-h-[350px] overflow-y-auto p-3 space-y-2 bg-gray-50">
@@ -360,7 +360,6 @@ export default function BaziPage() {
                   <button onClick={sendChat} disabled={chatLoading} className="px-3 py-2 bg-gray-900 text-white rounded-lg text-xs"><Send size={14}/></button>
                 </div>
               </div>
-            )}
           </>
         )}
       </main>
