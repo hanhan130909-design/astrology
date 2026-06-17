@@ -542,6 +542,18 @@ export default function NatalPage(){
             <button onClick={handleSave} style={{border:"1px solid #aaa",padding:"4px 12px",fontSize:"12px",background:"#eee",cursor:"pointer"}}>储存星图</button>
             <button onClick={handleCopyLink} style={{border:"1px solid #aaa",padding:"4px 12px",fontSize:"12px",background:"#eee",cursor:"pointer"}}>复制链接</button>
             <button onClick={handleExportImage} style={{border:"1px solid #aaa",padding:"4px 12px",fontSize:"12px",background:"#eee",cursor:"pointer"}}>导出图片</button>
+            <button onClick={()=>setChatOpen(!chatOpen)} style={{border:"1px solid #aaa",padding:"4px 12px",fontSize:"12px",background:chatOpen?"#333":"#eee",color:chatOpen?"white":"#333",cursor:"pointer"}}>💬 AI解读 {chatOpen?"▲":"▼"}</button>
+          </div>}
+          {chart&&chatOpen&&<div style={{marginTop:8,padding:12,background:"#f5f5f5",border:"1px solid #ddd",borderRadius:4,maxWidth:600}}>
+            <div style={{maxHeight:240,overflow:"auto",marginBottom:8,fontSize:13}}>
+              {chatMsgs.length===0&&<p style={{color:"#999",textAlign:"center",padding:"20px 0"}}>问问AI关于你星盘的问题…</p>}
+              {chatMsgs.map((msg,i)=><div key={i} style={{marginBottom:6,textAlign:msg.role==="user"?"right":"left"}}><span style={{display:"inline-block",padding:"4px 10px",borderRadius:8,fontSize:12,background:msg.role==="user"?"#333":"white",color:msg.role==="user"?"white":"#333",border:msg.role==="user"?"none":"1px solid #ddd",maxWidth:"85%"}}>{msg.content}</span></div>)}
+              {chatLoading&&<div style={{textAlign:"left"}}><span style={{display:"inline-block",padding:"4px 10px",background:"white",border:"1px solid #ddd",borderRadius:8,fontSize:12}}>思考中…</span></div>}
+            </div>
+            <div style={{display:"flex",gap:6}}>
+              <input value={chatInput} onChange={e=>setChatInput(e.target.value)} onKeyDown={e=>e.key==="Enter"&&sendNatalChat()} placeholder="问星盘问题…" style={{flex:1,padding:"4px 8px",border:"1px solid #ccc",borderRadius:4,fontSize:12}}/>
+              <button onClick={sendNatalChat} disabled={chatLoading} style={{padding:"4px 12px",background:"#333",color:"white",border:"none",borderRadius:4,fontSize:12,cursor:"pointer"}}>发送</button>
+            </div>
           </div>}
         </div>
 
@@ -591,26 +603,6 @@ export default function NatalPage(){
             </div>
           </div>}
         </div>
-
-        {/* Floating AI Chat */}
-        {!chatOpen&&<button onClick={()=>setChatOpen(true)} className="fixed bottom-5 right-5 z-50 w-12 h-12 bg-gray-900 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-800 transition-all">
-          <MessageCircle size={20}/>
-        </button>}
-        {chatOpen&&<div className="fixed bottom-5 right-5 z-50 w-[340px] h-[420px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden">
-          <div className="bg-gray-900 text-white px-4 py-2.5 flex items-center justify-between text-xs">
-            <span className="flex items-center gap-1.5"><Sparkles size={14}/>AI 星盘解读</span>
-            <button onClick={()=>setChatOpen(false)}><X size={16}/></button>
-          </div>
-          <div className="flex-1 overflow-y-auto p-3 space-y-2 bg-gray-50">
-            {chatMsgs.length===0&&<p className="text-xs text-gray-400 text-center py-8">问任何关于你星盘的问题…</p>}
-            {chatMsgs.map((msg,i)=>(<div key={i} className={`flex ${msg.role==="user"?"justify-end":"justify-start"}`}><div className={`max-w-[85%] px-3 py-2 rounded-xl text-xs ${msg.role==="user"?"bg-gray-900 text-white":"bg-white text-gray-700 border"}`}>{msg.content}</div></div>))}
-            {chatLoading&&<div className="flex justify-start"><div className="bg-white border px-3 py-2 rounded-xl"><Loader2 size={14} className="animate-spin text-gray-400"/></div></div>}
-          </div>
-          <div className="flex gap-2 p-2 bg-white border-t">
-            <input value={chatInput} onChange={e=>setChatInput(e.target.value)} onKeyDown={e=>e.key==="Enter"&&sendNatalChat()} placeholder="问星盘问题…" className="flex-1 p-2 bg-gray-50 border rounded-lg text-xs"/>
-            <button onClick={sendNatalChat} disabled={chatLoading} className="px-3 py-2 bg-gray-900 text-white rounded-lg text-xs"><Send size={14}/></button>
-          </div>
-        </div>}
       </div>
     </div>
   );
