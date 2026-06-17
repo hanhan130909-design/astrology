@@ -273,23 +273,18 @@ export default function BaziPage() {
               </div>
             </>)}
 
-            {/* TAB: Luck Cycles — vertical layout */}
+            {/* TAB: Luck Cycles — full vertical list */}
             {tab==="luck"&&(<>
-              <div className="text-xs text-gray-500 mb-3">{t("startLuck",lang)}：{luck?.startText}</div>
+              <div className="text-xs text-gray-500 mb-4">{t("startLuck",lang)}：{luck?.startText}</div>
 
-              {/* 大运 Row */}
-              <div className="mb-5">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-xs font-semibold bg-gray-900 text-white px-2 py-0.5 rounded">{t("luckCycles",lang)}</span>
-                  <span className="text-[10px] text-gray-400">十年一换 · 共{luck?.daYun?.length||0}步大运</span>
-                </div>
-                {luck?.daYun&&<div className="flex overflow-x-auto gap-1 pb-2 mb-2">
-                  {luck.daYun.map((d:any,i:number)=>(<button key={i} onClick={()=>{setDaYunIdx(i);setLiuNianIdx(-1);setLiuYueIdx(-1);setLiuRiIdx(-1);}} className={`shrink-0 px-2.5 py-2 rounded-lg text-center border text-xs ${(daYunIdx>=0?i===daYunIdx:d.active)?"bg-gray-900 text-white border-gray-900":"bg-white text-gray-600 border-gray-200 hover:bg-gray-50"}`}>
-                    <div className="font-bold text-sm">{d.ganZhi||"起运前"}</div>
-                    <div className="text-[10px] opacity-70">{d.startAge}-{d.endAge}{t("age",lang)}</div>
-                  </button>))}
+              {/* 大运 — vertical grid */}
+              <div className="mb-6">
+                <span className="text-xs font-semibold bg-gray-900 text-white px-2 py-0.5 rounded">{t("luckCycles",lang)}</span>
+                <span className="text-[10px] text-gray-400 ml-2">十年一换 · 共{luck?.daYun?.length||0}步</span>
+                {luck?.daYun&&<div className="grid grid-cols-5 md:grid-cols-10 gap-1 mt-2">
+                  {luck.daYun.map((d:any,i:number)=>(<button key={i} onClick={()=>{setDaYunIdx(i);setLiuNianIdx(-1);setLiuYueIdx(-1);setLiuRiIdx(-1);}} className={`py-2 rounded text-center border text-xs ${(daYunIdx>=0?i===daYunIdx:d.active)?"bg-gray-900 text-white border-gray-900":"bg-white text-gray-600 border-gray-200"}`}><div className="font-bold">{d.ganZhi||"-"}</div><div className="text-[10px] opacity-70">{d.startAge}-{d.endAge}{t("age",lang)}</div></button>))}
                 </div>}
-                {daYun&&<div className="bg-gray-50 rounded-lg p-2.5 border text-xs grid grid-cols-3 md:grid-cols-6 gap-x-4 gap-y-1">
+                {daYun&&<div className="mt-2 bg-gray-50 rounded-lg p-2.5 border text-xs grid grid-cols-3 md:grid-cols-6 gap-x-3 gap-y-1">
                   <div><span className="text-gray-400">干支</span> <b>{daYun.ganZhi}</b></div>
                   <div><span className="text-gray-400">天干</span> {daYun.gan}</div>
                   <div><span className="text-gray-400">地支</span> {daYun.zhi}</div>
@@ -299,18 +294,14 @@ export default function BaziPage() {
                 </div>}
               </div>
 
-              {/* 流年 Row */}
-              {daYun?.liuNian&&daYun.liuNian.length>0&&<div className="mb-5">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-xs font-semibold bg-gray-800 text-white px-2 py-0.5 rounded">{t("yearlyLuck",lang)}</span>
-                  <span className="text-[10px] text-gray-400">{daYun.ganZhi}大运 · 共{daYun.liuNian.length}年</span>
+              {/* 流年 — vertical grid */}
+              {daYun?.liuNian&&daYun.liuNian.length>0&&<div className="mb-6">
+                <span className="text-xs font-semibold bg-gray-800 text-white px-2 py-0.5 rounded">{t("yearlyLuck",lang)}</span>
+                <span className="text-[10px] text-gray-400 ml-2">{daYun.ganZhi}大运 · {daYun.liuNian.length}年</span>
+                <div className="grid grid-cols-5 md:grid-cols-10 gap-1 mt-2">
+                  {daYun.liuNian.map((ln:any,i:number)=>(<button key={i} onClick={()=>{setLiuNianIdx(i);setLiuYueIdx(-1);setLiuRiIdx(-1);}} className={`py-1.5 rounded text-center border text-xs ${(liuNianIdx>=0?i===liuNianIdx:ln.active)?"bg-gray-800 text-white border-gray-800":"bg-white text-gray-600 border-gray-200"}`}><div className="font-bold">{ln.ganZhi}</div><div className="text-[10px]">{ln.year}</div></button>))}
                 </div>
-                <div className="flex overflow-x-auto gap-1 pb-2 mb-2">
-                  {daYun.liuNian.map((ln:any,i:number)=>(<button key={i} onClick={()=>{setLiuNianIdx(i);setLiuYueIdx(-1);setLiuRiIdx(-1);}} className={`shrink-0 px-2 py-1.5 rounded-lg text-center border text-xs ${(liuNianIdx>=0?i===liuNianIdx:ln.active)?"bg-gray-800 text-white border-gray-800":"bg-white text-gray-600 border-gray-200 hover:bg-gray-50"}`}>
-                    <div className="font-bold text-sm">{ln.ganZhi}</div><div className="text-[10px]">{ln.year}</div>
-                  </button>))}
-                </div>
-                {liuNian&&<div className="bg-gray-50 rounded-lg p-2.5 border text-xs grid grid-cols-3 md:grid-cols-5 gap-x-4 gap-y-1">
+                {liuNian&&<div className="mt-2 bg-gray-50 rounded-lg p-2.5 border text-xs grid grid-cols-3 md:grid-cols-5 gap-x-3 gap-y-1">
                   <div><span className="text-gray-400">干支</span> <b>{liuNian.ganZhi}</b></div>
                   <div><span className="text-gray-400">天干</span> {liuNian.gan}</div>
                   <div><span className="text-gray-400">地支</span> {liuNian.zhi}</div>
@@ -319,36 +310,28 @@ export default function BaziPage() {
                 </div>}
               </div>}
 
-              {/* 流月 Row */}
-              {liuNian?.liuYue&&liuNian.liuYue.length>0&&<div className="mb-5">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-xs font-semibold bg-gray-700 text-white px-2 py-0.5 rounded">{t("monthlyLuck",lang)}</span>
-                  <span className="text-[10px] text-gray-400">{liuNian.ganZhi}年 · 共12个月</span>
+              {/* 流月 — vertical grid */}
+              {liuNian?.liuYue&&liuNian.liuYue.length>0&&<div className="mb-6">
+                <span className="text-xs font-semibold bg-gray-700 text-white px-2 py-0.5 rounded">{t("monthlyLuck",lang)}</span>
+                <span className="text-[10px] text-gray-400 ml-2">{liuNian.ganZhi}年 · {liuNian.liuYue.length}个月</span>
+                <div className="grid grid-cols-4 md:grid-cols-6 gap-1 mt-2">
+                  {liuNian.liuYue.map((lm:any,i:number)=>(<button key={i} onClick={()=>{setLiuYueIdx(i);setLiuRiIdx(-1);}} className={`py-1.5 rounded text-center border text-xs ${(liuYueIdx>=0?i===liuYueIdx:lm.active)?"bg-gray-700 text-white border-gray-700":"bg-white text-gray-500 border-gray-200"}`}><div className="font-bold">{lm.ganZhi}</div><div className="text-[10px]">{lm.month}</div></button>))}
                 </div>
-                <div className="flex overflow-x-auto gap-1 pb-2 mb-2">
-                  {liuNian.liuYue.map((lm:any,i:number)=>(<button key={i} onClick={()=>{setLiuYueIdx(i);setLiuRiIdx(-1);}} className={`shrink-0 px-2 py-1.5 rounded-lg text-center border text-xs ${(liuYueIdx>=0?i===liuYueIdx:lm.active)?"bg-gray-700 text-white border-gray-700":"bg-white text-gray-500 border-gray-200 hover:bg-gray-50"}`}>
-                    <div className="font-bold text-sm">{lm.ganZhi}</div><div className="text-[10px]">{lm.month}</div>
-                  </button>))}
-                </div>
-                {liuYue&&<div className="bg-gray-50 rounded-lg p-2.5 border text-xs grid grid-cols-3 gap-x-4 gap-y-1">
+                {liuYue&&<div className="mt-2 bg-gray-50 rounded-lg p-2.5 border text-xs grid grid-cols-3 gap-x-3 gap-y-1">
                   <div><span className="text-gray-400">干支</span> <b>{liuYue.ganZhi}</b></div>
-                  <div><span className="text-gray-400">月份</span> {liuYue.month} ({liuYue.index!=null?liuYue.index+1:"-"}{t("month",lang)})</div>
+                  <div><span className="text-gray-400">月份</span> {liuYue.month}</div>
                   <div><span className="text-gray-400">空亡</span> {liuYue.xunKong||"-"}</div>
                 </div>}
               </div>}
 
-              {/* 流日 Row */}
-              {liuYue?.liuRi&&liuYue.liuRi.length>0&&<div className="mb-5">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-xs font-semibold bg-gray-600 text-white px-2 py-0.5 rounded">{t("dailyLuck",lang)}</span>
-                  <span className="text-[10px] text-gray-400">{liuYue.ganZhi}月 · 共{liuYue.liuRi.length}天</span>
+              {/* 流日 — vertical grid */}
+              {liuYue?.liuRi&&liuYue.liuRi.length>0&&<div className="mb-6">
+                <span className="text-xs font-semibold bg-gray-600 text-white px-2 py-0.5 rounded">{t("dailyLuck",lang)}</span>
+                <span className="text-[10px] text-gray-400 ml-2">{liuYue.ganZhi}月 · {liuYue.liuRi.length}天</span>
+                <div className="grid grid-cols-5 md:grid-cols-10 gap-1 mt-2">
+                  {liuYue.liuRi.map((lr:any,i:number)=>(<button key={i} onClick={()=>setLiuRiIdx(i)} className={`py-1 rounded text-center border text-xs ${(liuRiIdx>=0?i===liuRiIdx:lr.active)?"bg-gray-600 text-white border-gray-600":"bg-white text-gray-500 border-gray-200"}`}><div className="font-bold">{lr.ganZhi}</div><div className="text-[10px]">{lr.day}日</div></button>))}
                 </div>
-                <div className="flex overflow-x-auto gap-1 pb-2 mb-2 flex-wrap">
-                  {liuYue.liuRi.map((lr:any,i:number)=>(<button key={i} onClick={()=>setLiuRiIdx(i)} className={`shrink-0 px-2 py-1 rounded-lg text-center border text-xs ${(liuRiIdx>=0?i===liuRiIdx:lr.active)?"bg-gray-600 text-white border-gray-600":"bg-white text-gray-500 border-gray-200 hover:bg-gray-50"}`}>
-                    <div className="font-bold">{lr.ganZhi}</div><div className="text-[10px]">{lr.day}日</div>
-                  </button>))}
-                </div>
-                {liuRi&&<div className="bg-gray-50 rounded-lg p-2.5 border text-xs grid grid-cols-3 md:grid-cols-4 gap-x-4 gap-y-1">
+                {liuRi&&<div className="mt-2 bg-gray-50 rounded-lg p-2.5 border text-xs grid grid-cols-3 md:grid-cols-5 gap-x-3 gap-y-1">
                   <div><span className="text-gray-400">干支</span> <b>{liuRi.ganZhi}</b></div>
                   <div><span className="text-gray-400">天干</span> {liuRi.gan}</div>
                   <div><span className="text-gray-400">地支</span> {liuRi.zhi}</div>
