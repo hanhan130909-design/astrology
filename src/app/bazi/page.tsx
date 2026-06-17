@@ -296,6 +296,41 @@ export default function BaziPage() {
               </div>
             </>
 
+            {/* 专业细盘 — 流年/流月时间轴 + 五行旺衰 */}
+            <div className="text-xs font-semibold bg-gray-700 text-white px-3 py-1 rounded inline-block mb-3 mt-6">专业细盘</div>
+            <div className="space-y-3 mb-6">
+              {(()=>{if(!daYun?.liuNian||!daYun.liuNian.length)return null;const years=daYun.liuNian;const jieqi=["立春","惊蛰","清明","立夏","芒种","小暑","立秋","白露","寒露","立冬","大雪","小寒"];const months=liuNian?.liuYue||[];const elemCnt=Object.fromEntries(["木","火","土","金","水"].map(el=>[el,Object.values(pl).reduce((s,p)=>s+(p.element===el?1:0),0)]));const elemMx=Math.max(...Object.values(elemCnt),1);return<>
+              {/* 流年时间轴 */}
+              <div className="bg-gray-50 rounded-xl p-3 border">
+                <div className="text-[10px] text-gray-500 mb-2">流年 {daYun.ganZhi}大运</div>
+                <div className="overflow-x-auto"><table className="text-[10px] border-collapse w-full min-w-[600px]"><tbody>
+                <tr>{years.map((ln,i)=><td key={i} className={"p-1 text-center"+ (ln.active?" bg-gray-900 text-white rounded font-bold":"")}>{ln.year}</td>)}</tr>
+                <tr>{years.map((ln,i)=><td key={i} className={"p-1 text-center"+ (ln.active?" bg-gray-100":"")}>{ln.gan}</td>)}</tr>
+                <tr>{years.map((ln,i)=><td key={i} className={"p-1 text-center font-bold"+ (ln.active?" bg-gray-100":"")}>{ln.ganZhi}</td>)}</tr>
+                <tr>{years.map((ln,i)=><td key={i} className={"p-1 text-center"+ (ln.active?" bg-gray-100":"")}>{ln.zhi}</td>)}</tr>
+                </tbody></table></div>
+              </div>
+              {/* 流月时间轴 */}
+              {months.length>0&&<div className="bg-gray-50 rounded-xl p-3 border">
+                <div className="text-[10px] text-gray-500 mb-2">流月 {liuNian?.ganZhi}年</div>
+                <div className="overflow-x-auto"><table className="text-[10px] border-collapse w-full min-w-[700px]"><tbody>
+                <tr>{months.map((lm,i)=><td key={i} className={"p-1 text-center"+ (lm.active?" bg-gray-800 text-white rounded font-bold":"")}>{lm.month}</td>)}</tr>
+                <tr>{months.map((lm,i)=><td key={i} className={"p-1 text-center"+ (lm.active?" bg-gray-100":"")}>{lm.gan}</td>)}</tr>
+                <tr>{months.map((lm,i)=><td key={i} className={"p-1 text-center font-bold"+ (lm.active?" bg-gray-100":"")}>{lm.ganZhi}</td>)}</tr>
+                <tr>{months.map((lm,i)=><td key={i} className={"p-1 text-center"+ (lm.active?" bg-gray-100":"")}>{lm.zhi}</td>)}</tr>
+                <tr className="text-[9px] text-gray-400">{months.map((_,i)=><td key={i} className="p-0.5 text-center">{jieqi[i]||""}</td>)}</tr>
+                </tbody></table></div>
+              </div>}
+              {/* 五行旺衰 */}
+              <div className="bg-gray-50 rounded-xl p-3 border">
+                <div className="text-[10px] text-gray-500 mb-2">五行旺衰</div>
+                <div className="grid grid-cols-5 gap-1 text-[10px]">
+                {["木","火","土","金","水"].map(el=>(<div key={el} className="text-center"><div className="text-gray-500">{el}</div><div className="font-bold" style={{color:ELEMENT_COLORS[el]}}>{elemCnt[el]>=elemMx?"旺":elemCnt[el]>=elemMx-1?"相":"休"}</div></div>))}
+                </div>
+              </div>
+              </>;})()}
+            </div>
+
             {/* 大运流年 */}
             <div className="text-xs font-semibold bg-gray-900 text-white px-3 py-1 rounded inline-block mb-3 mt-6">大运流年</div>
             <>
