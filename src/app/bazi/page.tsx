@@ -236,25 +236,29 @@ export default function BaziPage() {
             <div className="text-xs font-semibold bg-gray-900 text-white px-3 py-1 rounded inline-block mb-3">四柱详情</div>
             <>
               <div className="overflow-x-auto mb-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-[11px] border-collapse">
                   <thead><tr className="bg-gray-50">
-                    <th className="p-1.5 border text-gray-500 font-medium w-16"></th>
+                    <th className="p-1.5 border text-gray-500 font-medium w-14"></th>
+                    <th className="p-1.5 border text-gray-500 font-medium">大运</th>
+                    <th className="p-1.5 border text-gray-500 font-medium">流年</th>
                     {PILLAR_KEYS.map(k=><th key={k} className="p-1.5 border text-gray-500 font-medium">{t(k+"Pillar",lang)}</th>)}
                   </tr></thead>
                   <tbody>
                     {[
-                      {label:"主星",render:(p:any)=>p.tenGod||"-"},
-                      {label:t("gan",lang),render:(p:any)=><span style={{color:p.color}}>{p.gan}</span>},
-                      {label:t("zhi",lang),render:(p:any)=>p.zhi},
-                      {label:t("hiddenStem",lang),render:(p:any)=>(p.hidden||[]).map((h:string,j:number)=>(<span key={j}>{h}{GAN_WX[h]||""}{j<(p.hidden||[]).length-1?" ":" "}</span>))},
-                      {label:"副星",render:(p:any)=>(p.hiddenTenGods||[]).join(", ")||"-"},
-                      {label:t("diShi",lang),render:(p:any)=>p.diShi||"-"},
-                      {label:t("xunKong",lang),render:(p:any)=>p.xunKong||"-"},
-                      {label:t("nayin",lang),render:(p:any)=>p.naYin||"-"},
+                      {label:"主星",render:(col:any)=>col==="dy"?daYun?.gan:col==="ln"?liuNian?.gan:pl.find((p:any)=>p.key===col)?.tenGod||"-"},
+                      {label:t("gan",lang),render:(col:any)=>col==="dy"?<span className="font-bold">{daYun?.gan||"-"}</span>:col==="ln"?<span className="font-bold">{liuNian?.gan||"-"}</span>:<span style={{color:pl.find((p:any)=>p.key===col)?.color}}>{pl.find((p:any)=>p.key===col)?.gan}</span>},
+                      {label:t("zhi",lang),render:(col:any)=>col==="dy"?daYun?.zhi:col==="ln"?liuNian?.zhi:pl.find((p:any)=>p.key===col)?.zhi},
+                      {label:t("hiddenStem",lang),render:(col:any)=>{if(col==="dy")return (daYun?.zhi?(({子:"癸",丑:"己癸辛",寅:"甲丙戊",卯:"乙",辰:"戊乙癸",巳:"丙戊庚",午:"丁己",未:"己丁乙",申:"庚壬戊",酉:"辛",戌:"戊辛丁",亥:"壬甲"})[daYun.zhi]||"").split("").map((c:string)=>(GAN_WX[c]?<span key={c}>{c}{GAN_WX[c]} </span>:null)):null);if(col==="ln")return (liuNian?.zhi?(({子:"癸",丑:"己癸辛",寅:"甲丙戊",卯:"乙",辰:"戊乙癸",巳:"丙戊庚",午:"丁己",未:"己丁乙",申:"庚壬戊",酉:"辛",戌:"戊辛丁",亥:"壬甲"})[liuNian.zhi]||"").split("").map((c:string)=>(GAN_WX[c]?<span key={c}>{c}{GAN_WX[c]} </span>:null)):null);const p=pl.find((p:any)=>p.key===col);return (p?.hidden||[]).map((h:string,j:number)=>(<span key={j}>{h}{GAN_WX[h]||""}{j<(p?.hidden||[]).length-1?" ":" "}</span>))}},
+                      {label:"副星",render:(col:any)=>{if(col==="dy"||col==="ln")return"-";const p=pl.find((p:any)=>p.key===col);return (p?.hiddenTenGods||[]).join(", ")||"-"}},
+                      {label:t("diShi",lang),render:(col:any)=>col==="dy"?"-":col==="ln"?"-":pl.find((p:any)=>p.key===col)?.diShi||"-"},
+                      {label:"自坐",render:(col:any)=>col==="dy"?"-":col==="ln"?"-":pl.find((p:any)=>p.key===col)?.zhi||"-"},
+                      {label:t("xunKong",lang),render:(col:any)=>col==="dy"?daYun?.xunKong||"-":col==="ln"?liuNian?.xunKong||"-":pl.find((p:any)=>p.key===col)?.xunKong||"-"},
+                      {label:t("nayin",lang),render:(col:any)=>col==="dy"?"-":col==="ln"?"-":pl.find((p:any)=>p.key===col)?.naYin||"-"},
+                      {label:"神煞",render:(col:any)=>{const ss=col==="dy"?dySS:col==="ln"?lnSS:bazi?.shenSha?.natal?.find((r:any)=>r.key===col)?.names;return (ss&&ss.length?ss.join(" · "):"-")}},
                     ].map((row,i)=>(
                       <tr key={i} className={i%2===0?"bg-white":"bg-gray-50/50"}>
                         <td className="p-1.5 border text-gray-500 font-medium">{row.label}</td>
-                        {PILLAR_KEYS.map(k=>{const p=pl.find((p:any)=>p.key===k); return <PCell key={k}>{row.render(p)}</PCell>;})}
+                        {["dy","ln",...PILLAR_KEYS].map(col=><td key={col} className="p-1.5 text-center border border-gray-100">{row.render(col)}</td>)}
                       </tr>
                     ))}
                   </tbody>
