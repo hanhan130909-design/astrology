@@ -87,9 +87,7 @@ export default function BaziPage() {
   const [liuNianIdx, setLiuNianIdx] = useState(-1);
   const [liuYueIdx, setLiuYueIdx] = useState(-1);
   const [liuRiIdx, setLiuRiIdx] = useState(-1);
-  const [luckTab, setLuckTab] = useState<"daYun"|"liuNian"|"liuYue"|"liuRi">("daYun");
   const [shenshaTab, setShenshaTab] = useState<"pillar"|"luck"|"year">("pillar");
-
   // Chat
   const [chatMsgs, setChatMsgs] = useState<{role:string;content:string}[]>([]);
   const [chatInput, setChatInput] = useState("");
@@ -275,31 +273,88 @@ export default function BaziPage() {
               </div>
             </>)}
 
-            {/* TAB: Luck Cycles */}
+            {/* TAB: Luck Cycles — vertical layout */}
             {tab==="luck"&&(<>
-              <div className="text-xs text-gray-500 mb-2">{t("startLuck",lang)}：{luck?.startText}</div>
-              <div className="flex gap-1 mb-2 text-xs">
-                {["daYun","liuNian","liuYue","liuRi"].map(k=>(<button key={k} onClick={()=>setLuckTab(k as any)} className={`px-2 py-1 rounded ${luckTab===k?"bg-gray-900 text-white":"bg-gray-100 text-gray-600"}`}>{{daYun:t("luckCycles",lang),liuNian:t("yearlyLuck",lang),liuYue:t("monthlyLuck",lang),liuRi:t("dailyLuck",lang)}[k]}</button>))}
+              <div className="text-xs text-gray-500 mb-3">{t("startLuck",lang)}：{luck?.startText}</div>
+
+              {/* 大运 Row */}
+              <div className="mb-5">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xs font-semibold bg-gray-900 text-white px-2 py-0.5 rounded">{t("luckCycles",lang)}</span>
+                  <span className="text-[10px] text-gray-400">十年一换 · 共{luck?.daYun?.length||0}步大运</span>
+                </div>
+                {luck?.daYun&&<div className="flex overflow-x-auto gap-1 pb-2 mb-2">
+                  {luck.daYun.map((d:any,i:number)=>(<button key={i} onClick={()=>{setDaYunIdx(i);setLiuNianIdx(-1);setLiuYueIdx(-1);setLiuRiIdx(-1);}} className={`shrink-0 px-2.5 py-2 rounded-lg text-center border text-xs ${(daYunIdx>=0?i===daYunIdx:d.active)?"bg-gray-900 text-white border-gray-900":"bg-white text-gray-600 border-gray-200 hover:bg-gray-50"}`}>
+                    <div className="font-bold text-sm">{d.ganZhi||"起运前"}</div>
+                    <div className="text-[10px] opacity-70">{d.startAge}-{d.endAge}{t("age",lang)}</div>
+                  </button>))}
+                </div>}
+                {daYun&&<div className="bg-gray-50 rounded-lg p-2.5 border text-xs grid grid-cols-3 md:grid-cols-6 gap-x-4 gap-y-1">
+                  <div><span className="text-gray-400">干支</span> <b>{daYun.ganZhi}</b></div>
+                  <div><span className="text-gray-400">天干</span> {daYun.gan}</div>
+                  <div><span className="text-gray-400">地支</span> {daYun.zhi}</div>
+                  <div><span className="text-gray-400">年龄</span> {daYun.startAge}-{daYun.endAge}{t("age",lang)}</div>
+                  <div><span className="text-gray-400">起止</span> {daYun.startYear}-{daYun.endYear}</div>
+                  <div><span className="text-gray-400">空亡</span> {daYun.xunKong||"-"}</div>
+                </div>}
               </div>
 
-              {/* 大运 */}
-              {luckTab==="daYun"&&luck?.daYun&&<div className="flex overflow-x-auto gap-1 pb-2 mb-3">{luck.daYun.map((d:any,i:number)=>(<button key={i} onClick={()=>{setDaYunIdx(i);setLiuNianIdx(-1);setLiuYueIdx(-1);setLiuRiIdx(-1);}} className={`shrink-0 px-3 py-2 rounded-lg text-center border text-xs min-w-[80px] ${(daYunIdx>=0?i===daYunIdx:d.active)?"bg-gray-900 text-white border-gray-900":"bg-white text-gray-600 border-gray-200"}`}><div className="font-bold text-sm">{d.ganZhi||"起运前"}</div><div className="text-[10px] opacity-70">{d.startAge}-{d.endAge}{t("age",lang)}</div><div className="text-[9px] opacity-50">{d.gan} {d.zhi} {d.xunKong||""}</div></button>))}</div>}
+              {/* 流年 Row */}
+              {daYun?.liuNian&&daYun.liuNian.length>0&&<div className="mb-5">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xs font-semibold bg-gray-800 text-white px-2 py-0.5 rounded">{t("yearlyLuck",lang)}</span>
+                  <span className="text-[10px] text-gray-400">{daYun.ganZhi}大运 · 共{daYun.liuNian.length}年</span>
+                </div>
+                <div className="flex overflow-x-auto gap-1 pb-2 mb-2">
+                  {daYun.liuNian.map((ln:any,i:number)=>(<button key={i} onClick={()=>{setLiuNianIdx(i);setLiuYueIdx(-1);setLiuRiIdx(-1);}} className={`shrink-0 px-2 py-1.5 rounded-lg text-center border text-xs ${(liuNianIdx>=0?i===liuNianIdx:ln.active)?"bg-gray-800 text-white border-gray-800":"bg-white text-gray-600 border-gray-200 hover:bg-gray-50"}`}>
+                    <div className="font-bold text-sm">{ln.ganZhi}</div><div className="text-[10px]">{ln.year}</div>
+                  </button>))}
+                </div>
+                {liuNian&&<div className="bg-gray-50 rounded-lg p-2.5 border text-xs grid grid-cols-3 md:grid-cols-5 gap-x-4 gap-y-1">
+                  <div><span className="text-gray-400">干支</span> <b>{liuNian.ganZhi}</b></div>
+                  <div><span className="text-gray-400">天干</span> {liuNian.gan}</div>
+                  <div><span className="text-gray-400">地支</span> {liuNian.zhi}</div>
+                  <div><span className="text-gray-400">年份</span> {liuNian.year}年 · {liuNian.age}{t("age",lang)}</div>
+                  <div><span className="text-gray-400">空亡</span> {liuNian.xunKong||"-"}</div>
+                </div>}
+              </div>}
 
-              {/* 流年 */}
-              {luckTab==="liuNian"&&daYun?.liuNian&&<div className="flex overflow-x-auto gap-1 pb-2 mb-3">{daYun.liuNian.map((ln:any,i:number)=>(<button key={i} onClick={()=>{setLiuNianIdx(i);setLiuYueIdx(-1);setLiuRiIdx(-1);}} className={`shrink-0 px-2 py-1.5 rounded-lg text-center border text-xs min-w-[65px] ${(liuNianIdx>=0?i===liuNianIdx:ln.active)?"bg-gray-800 text-white border-gray-800":"bg-white text-gray-600 border-gray-200"}`}><div className="font-bold text-sm">{ln.ganZhi}</div><div className="text-[10px]">{ln.year}</div><div className="text-[9px] opacity-50">{ln.xunKong||""}</div></button>))}</div>}
+              {/* 流月 Row */}
+              {liuNian?.liuYue&&liuNian.liuYue.length>0&&<div className="mb-5">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xs font-semibold bg-gray-700 text-white px-2 py-0.5 rounded">{t("monthlyLuck",lang)}</span>
+                  <span className="text-[10px] text-gray-400">{liuNian.ganZhi}年 · 共12个月</span>
+                </div>
+                <div className="flex overflow-x-auto gap-1 pb-2 mb-2">
+                  {liuNian.liuYue.map((lm:any,i:number)=>(<button key={i} onClick={()=>{setLiuYueIdx(i);setLiuRiIdx(-1);}} className={`shrink-0 px-2 py-1.5 rounded-lg text-center border text-xs ${(liuYueIdx>=0?i===liuYueIdx:lm.active)?"bg-gray-700 text-white border-gray-700":"bg-white text-gray-500 border-gray-200 hover:bg-gray-50"}`}>
+                    <div className="font-bold text-sm">{lm.ganZhi}</div><div className="text-[10px]">{lm.month}</div>
+                  </button>))}
+                </div>
+                {liuYue&&<div className="bg-gray-50 rounded-lg p-2.5 border text-xs grid grid-cols-3 gap-x-4 gap-y-1">
+                  <div><span className="text-gray-400">干支</span> <b>{liuYue.ganZhi}</b></div>
+                  <div><span className="text-gray-400">月份</span> {liuYue.month} ({liuYue.index!=null?liuYue.index+1:"-"}{t("month",lang)})</div>
+                  <div><span className="text-gray-400">空亡</span> {liuYue.xunKong||"-"}</div>
+                </div>}
+              </div>}
 
-              {/* 流月 */}
-              {luckTab==="liuYue"&&liuNian?.liuYue&&<div className="flex overflow-x-auto gap-1 pb-2 mb-3">{liuNian.liuYue.map((lm:any,i:number)=>(<button key={i} onClick={()=>{setLiuYueIdx(i);setLiuRiIdx(-1);}} className={`shrink-0 px-2 py-1.5 rounded-lg text-center border text-xs min-w-[55px] ${(liuYueIdx>=0?i===liuYueIdx:lm.active)?"bg-gray-700 text-white border-gray-700":"bg-white text-gray-500 border-gray-200"}`}><div className="font-bold text-sm">{lm.ganZhi}</div><div className="text-[10px]">{lm.month}</div><div className="text-[9px] opacity-50">{lm.xunKong||""}</div></button>))}</div>}
-
-              {/* 流日 */}
-              {luckTab==="liuRi"&&liuYue?.liuRi&&<div className="flex overflow-x-auto gap-1 pb-2 mb-3 flex-wrap">{liuYue.liuRi.map((lr:any,i:number)=>(<button key={i} onClick={()=>setLiuRiIdx(i)} className={`shrink-0 px-2 py-1 rounded-lg text-center border text-xs min-w-[55px] ${(liuRiIdx>=0?i===liuRiIdx:lr.active)?"bg-gray-600 text-white border-gray-600":"bg-white text-gray-500 border-gray-200"}`}><div className="font-bold">{lr.ganZhi}</div><div className="text-[10px]">{lr.day}日</div><div className="text-[9px] opacity-50">{lr.xunKong||""}</div></button>))}</div>}
-
-              {/* Selected Luck Detail */}
-              {(daYun||liuNian||liuYue||liuRi)&&<div className="text-xs bg-gray-50 rounded-lg p-3 border space-y-1">
-                {daYun&&<div>大运：<b>{daYun.ganZhi}</b>（{daYun.startAge}-{daYun.endAge}岁） {daYun.xunKong?`空亡:${daYun.xunKong}`:""}</div>}
-                {liuNian&&<div>流年：<b>{liuNian.ganZhi}</b>（{liuNian.year}年 · {liuNian.age}岁） {liuNian.xunKong?`空亡:${liuNian.xunKong}`:""}</div>}
-                {liuYue&&<div>流月：<b>{liuYue.ganZhi}</b>（{liuYue.month}） {liuYue.xunKong?`空亡:${liuYue.xunKong}`:""}</div>}
-                {liuRi&&<div>流日：<b>{liuRi.ganZhi}</b>（{liuRi.day}日 · {liuRi.lunarDay}） {liuRi.xunKong?`空亡:${liuRi.xunKong}`:""}</div>}
+              {/* 流日 Row */}
+              {liuYue?.liuRi&&liuYue.liuRi.length>0&&<div className="mb-5">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xs font-semibold bg-gray-600 text-white px-2 py-0.5 rounded">{t("dailyLuck",lang)}</span>
+                  <span className="text-[10px] text-gray-400">{liuYue.ganZhi}月 · 共{liuYue.liuRi.length}天</span>
+                </div>
+                <div className="flex overflow-x-auto gap-1 pb-2 mb-2 flex-wrap">
+                  {liuYue.liuRi.map((lr:any,i:number)=>(<button key={i} onClick={()=>setLiuRiIdx(i)} className={`shrink-0 px-2 py-1 rounded-lg text-center border text-xs ${(liuRiIdx>=0?i===liuRiIdx:lr.active)?"bg-gray-600 text-white border-gray-600":"bg-white text-gray-500 border-gray-200 hover:bg-gray-50"}`}>
+                    <div className="font-bold">{lr.ganZhi}</div><div className="text-[10px]">{lr.day}日</div>
+                  </button>))}
+                </div>
+                {liuRi&&<div className="bg-gray-50 rounded-lg p-2.5 border text-xs grid grid-cols-3 md:grid-cols-4 gap-x-4 gap-y-1">
+                  <div><span className="text-gray-400">干支</span> <b>{liuRi.ganZhi}</b></div>
+                  <div><span className="text-gray-400">天干</span> {liuRi.gan}</div>
+                  <div><span className="text-gray-400">地支</span> {liuRi.zhi}</div>
+                  <div><span className="text-gray-400">日期</span> {liuRi.day}日 · {liuRi.lunarDay}</div>
+                  <div><span className="text-gray-400">空亡</span> {liuRi.xunKong||"-"}</div>
+                </div>}
               </div>}
             </>)}
 
