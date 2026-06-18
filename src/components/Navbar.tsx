@@ -7,14 +7,14 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useAuth } from "@/contexts/AuthContext";
 
 const T: Record<string, Record<string, string>> = {
-  zh: { horoscope:"运势", natal:"星盘", compatibility:"配对", ai:"AI解读", learn:"学习", transits:"天象", community:"社区", tarot:"塔罗", strategy:"方法论" },
-  en: { horoscope:"Horoscope", natal:"Chart", compatibility:"Match", ai:"AI", learn:"Learn", transits:"Transits", community:"Community", tarot:"Tarot", strategy:"Strategy" },
-  id: { horoscope:"Horoskop", natal:"Bagan", compatibility:"Cocok", ai:"AI", learn:"Belajar", transits:"Transit", community:"Komunitas", tarot:"Tarot", strategy:"Strategi" },
-  th: { horoscope:"ดูดวง", natal:"ดวง", compatibility:"คู่", ai:"AI", learn:"เรียน", transits:"ดาว", community:"ชุมชน", tarot:"ไพ่", strategy:"กลยุทธ์" },
-  vi: { horoscope:"Tử vi", natal:"Bản đồ", compatibility:"Hợp", ai:"AI", learn:"Học", transits:"Quá cảnh", community:"Cộng đồng", tarot:"Tarot", strategy:"Chiến lược" },
-  ms: { horoscope:"Horoskop", natal:"Carta", compatibility:"Serasi", ai:"AI", learn:"Belajar", transits:"Transit", community:"Komuniti", tarot:"Tarot", strategy:"Strategi" },
-  ja: { horoscope:"運勢", natal:"星図", compatibility:"相性", ai:"AI", learn:"学習", transits:"トランジット", community:"掲示板", tarot:"タロット", strategy:"戦略" },
-  ko: { horoscope:"운세", natal:"차트", compatibility:"궁합", ai:"AI", learn:"배우기", transits:"행성", community:"커뮤니티", tarot:"타로", strategy:"전략" },
+  zh: { horoscope:"运势", natal:"星盘", bazi:"八字", compatibility:"配对", ai:"AI解读", learn:"学习", transits:"天象", community:"社区", tarot:"塔罗", strategy:"方法论" },
+  en: { horoscope:"Horoscope", natal:"Chart", bazi:"BaZi", compatibility:"Match", ai:"AI", learn:"Learn", transits:"Transits", community:"Community", tarot:"Tarot", strategy:"Strategy" },
+  id: { horoscope:"Horoskop", natal:"Bagan", bazi:"BaZi", compatibility:"Cocok", ai:"AI", learn:"Belajar", transits:"Transit", community:"Komunitas", tarot:"Tarot", strategy:"Strategi" },
+  th: { horoscope:"ดูดวง", natal:"ดวง", bazi:"ปาจื่อ", compatibility:"คู่", ai:"AI", learn:"เรียน", transits:"ดาว", community:"ชุมชน", tarot:"ไพ่", strategy:"กลยุทธ์" },
+  vi: { horoscope:"Tử vi", natal:"Bản đồ", bazi:"Bát Tự", compatibility:"Hợp", ai:"AI", learn:"Học", transits:"Quá cảnh", community:"Cộng đồng", tarot:"Tarot", strategy:"Chiến lược" },
+  ms: { horoscope:"Horoskop", natal:"Carta", bazi:"BaZi", compatibility:"Serasi", ai:"AI", learn:"Belajar", transits:"Transit", community:"Komuniti", tarot:"Tarot", strategy:"Strategi" },
+  ja: { horoscope:"運勢", natal:"星図", bazi:"八字", compatibility:"相性", ai:"AI", learn:"学習", transits:"トランジット", community:"掲示板", tarot:"タロット", strategy:"戦略" },
+  ko: { horoscope:"운세", natal:"차트", bazi:"팔자", compatibility:"궁합", ai:"AI", learn:"배우기", transits:"행성", community:"커뮤니티", tarot:"타로", strategy:"전략" },
 };
 
 const LANGUAGES = [
@@ -41,7 +41,7 @@ export default function Navbar() {
   const links = [
     { name: t.horoscope, href: "/horoscope" },
     { name: t.natal, href: "/natal" },
-    { name: "八字", href: "/bazi" },
+    { name: t.bazi, href: "/bazi" },
     { name: t.strategy, href: "/methodology" },
     { name: t.compatibility, href: "/compatibility" },
     { name: t.ai, href: "/ai-reading" },
