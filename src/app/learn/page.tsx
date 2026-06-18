@@ -55,6 +55,18 @@ const LABELS: Record<string, Record<string, string>> = {
   ja: { title: "📚 占星術を学ぶ", subtitle: "10惑星の秘密を発見", selectPlanet: "惑星を選択", meaning: "核心意味", traits: "特徴", ruling: "支配星座", day: "曜日", stone: "幸運の石", color: "幸運の色", element: "エレメント", back: "ホームに戻る" },
   ko: { title: "📚 점성술 배우기", subtitle: "10행성의 비밀 발견", selectPlanet: "행성 선택", meaning: "핵심 의미", traits: "특성", ruling: "지배 별자리", day: "요일", stone: "행운의 돌", color: "행운의 색", element: "원소", back: "홈으로" }};
 
+const UI: Record<string, Record<string, string>> = {
+  zh: { knowledge:"知识库", houses:"十二宫位", aspects:"主要相位", course:"占星初阶课程", courseSub:"14节课 · 从零基础到独立解盘", viewHoroscope:"查看星座运势", back:"返回首页" },
+  en: { knowledge:"Knowledge Base", houses:"12 Houses", aspects:"Major Aspects", course:"Beginner Astrology Course", courseSub:"14 lessons · From zero to independent chart reading", viewHoroscope:"View Horoscopes", back:"Back to Home" },
+  id: { knowledge:"Pustaka", houses:"12 Rumah", aspects:"Aspek Utama", course:"Kursus Astrologi Dasar", courseSub:"14 pelajaran · Dari nol hingga bisa membaca bagan", viewHoroscope:"Lihat Horoskop", back:"Kembali" },
+  th: { knowledge:"คลังความรู้", houses:"12 เรือน", aspects:"มุมหลัก", course:"คอร์สโหราศาสตร์", courseSub:"14 บทเรียน · จากศูนย์สู่อ่านดวง", viewHoroscope:"ดูดวง", back:"กลับ" },
+  vi: { knowledge:"Thư Viện", houses:"12 Nhà", aspects:"Góc Chính", course:"Khóa Chiêm Tinh", courseSub:"14 bài · Từ cơ bản đến đọc bản đồ", viewHoroscope:"Xem Tử Vi", back:"Về" },
+  ms: { knowledge:"Pustaka", houses:"12 Rumah", aspects:"Aspek Utama", course:"Kursus Astrologi", courseSub:"14 pelajaran · Dari asas ke mahir", viewHoroscope:"Lihat Horoskop", back:"Kembali" },
+  ja: { knowledge:"知識ベース", houses:"12ハウス", aspects:"主要アスペクト", course:"占星初級講座", courseSub:"14回 · 基礎から読解まで", viewHoroscope:"運勢を見る", back:"戻る" },
+  ko: { knowledge:"지식 베이스", houses:"12하우스", aspects:"주요 각도", course:"점성술 입문", courseSub:"14강 · 기초부터 차트 읽기까지", viewHoroscope:"운세 보기", back:"홈으로" },
+};
+const u=(k:string)=>UI[lang]?.[k]||UI.en[k]||k;
+
 export default function LearnPage() {
   const { language } = useLanguage();
   const lang = language || "zh";
@@ -78,7 +90,7 @@ export default function LearnPage() {
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-500/20 rounded-full text-sm text-gray-700 mb-4">
             <BookOpen size={16} />
-            <span>{lang === 'zh' ? '知识库' : lang === 'id' ? 'Pustaka' : 'Knowledge Base'}</span>
+            <span>{u('knowledge')}</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">{labels.title}</h1>
           <p className="text-gray-500">{labels.subtitle}</p>
@@ -179,7 +191,7 @@ export default function LearnPage() {
         {/* 12 Houses Section */}
         <div className="mt-16 mb-12">
           <h2 className="text-2xl font-semibold tracking-[-0.8px] mb-6 text-center">
-            {lang === 'zh' ? '十二宫位' : lang === 'id' ? '12 Rumah' : '12 Houses'}
+            {u('houses')}
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {[
@@ -210,7 +222,7 @@ export default function LearnPage() {
         {/* Aspects Section */}
         <div className="mb-12">
           <h2 className="text-2xl font-semibold tracking-[-0.8px] mb-6 text-center">
-            {lang === 'zh' ? '主要相位' : lang === 'id' ? 'Aspek Utama' : 'Major Aspects'}
+            {u('aspects')}
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
             {[
@@ -233,10 +245,10 @@ export default function LearnPage() {
         {/* Course Curriculum */}
         <div className="mt-16 mb-12">
           <h2 className="text-2xl font-semibold tracking-[-0.8px] mb-2 text-center">
-            {lang === 'zh' ? '占星初阶课程' : lang === 'id' ? 'Kursus Astrologi Dasar' : 'Beginner Astrology Course'}
+            {u('course')}
           </h2>
           <p className="text-gray-500 text-center mb-8 text-sm">
-            {lang === 'zh' ? '14节课 · 从零基础到独立解盘' : lang === 'id' ? '14 pelajaran · Dari nol hingga bisa membaca bagan' : '14 lessons · From zero to independent chart reading'}
+            {u('courseSub')}
           </p>
           <div className="grid md:grid-cols-2 gap-4">
             {beginnerLessons.map((lesson) => (
@@ -247,13 +259,13 @@ export default function LearnPage() {
                   </div>
                   <div className="min-w-0">
                     <h3 className="font-semibold text-gray-900 mb-1">
-                      {lang === 'zh' ? lesson.zh : lang === 'id' ? lesson.idn : lesson.en}
+                      {lesson[lang] || lesson.en}
                     </h3>
                     <p className="text-xs text-gray-500 mb-3 leading-relaxed">
-                      {lang === 'zh' ? lesson.desc.zh : lang === 'id' ? lesson.desc.idn : lesson.desc.en}
+                      {(lesson.desc[lang] || lesson.desc.en)}
                     </p>
                     <div className="flex flex-wrap gap-1">
-                      {lesson.topics.map((t, j) => (
+                      {lesson.topics[lang] || lesson.topics.en.map((t, j) => (
                         <span key={j} className="text-[10px] px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">{t}</span>
                       ))}
                     </div>
@@ -268,7 +280,7 @@ export default function LearnPage() {
         <div className="mt-12 text-center">
           <Link href="/horoscope" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 rounded-xl font-bold text-gray-900 transition-all">
             <Star size={18} className="fill-white" />
-            {lang === 'zh' ? '查看星座运势' : lang === 'id' ? 'Lihat Horoskop' : 'View Horoscopes'}
+            {u('viewHoroscope')}
           </Link>
         </div>
       </main>
