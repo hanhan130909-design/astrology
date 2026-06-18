@@ -312,37 +312,37 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
           const setter = idx === 0 ? setP1 : setP2;
           const label = idx === 0 ? t.person1 : t.person2;
           return (
-            <div key={idx} className="bg-gray-950/50 border border-gray-800/30 rounded-2xl p-5 space-y-3">
-              <h3 className="text-sm font-bold text-gray-600 flex items-center gap-2">
-                <span className="w-6 h-6 rounded-full bg-gray-600 text-white text-xs flex items-center justify-center font-bold">{idx+1}</span>
+            <div key={idx} className="bg-white border border-gray-200 rounded-2xl p-5 space-y-3">
+              <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2">
+                <span className="w-6 h-6 rounded-full bg-gray-900 text-white text-xs flex items-center justify-center font-bold">{idx+1}</span>
                 {label}
               </h3>
               <input name="name" value={person.name} onChange={e => handleInput(e, setter)}
-                placeholder={t.name} className="w-full bg-gray-50 border border-gray-700/40 rounded-xl px-4 py-2 text-white placeholder-gray-500 focus:outline-none focus:border-gray-500/60 transition text-sm" />
+                placeholder={t.name} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-500/60 transition text-sm" />
               <div className="grid grid-cols-3 gap-2">
                 {[["year",t.year,1990,2030],["month",t.month,1,12],["day",t.day,1,31]].map(([n,l,min,max])=>(
                   <div key={n as string}>
-                    <label className="block text-xs text-gray-400 mb-1">{l}</label>
+                    <label className="block text-xs text-gray-500 mb-1">{l}</label>
                     <input name={n as string} value={(person as any)[n as string]} onChange={e=>handleInput(e,setter)}
                       type="number" min={min} max={max}
-                      className="w-full bg-gray-50 border border-gray-700/40 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-gray-500/60" />
+                      className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-gray-900 text-sm focus:outline-none focus:border-gray-500/60" />
                   </div>
                 ))}
               </div>
               <div className="grid grid-cols-2 gap-2">
                 {[["hour",t.hour,0,23],["minute",t.minute,0,59]].map(([n,l,min,max])=>(
                   <div key={n as string}>
-                    <label className="block text-xs text-gray-400 mb-1">{l}</label>
+                    <label className="block text-xs text-gray-500 mb-1">{l}</label>
                     <input name={n as string} value={(person as any)[n as string]} onChange={e=>handleInput(e,setter)}
                       type="number" min={min} max={max}
-                      className="w-full bg-gray-50 border border-gray-700/40 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-gray-500/60" />
+                      className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-gray-900 text-sm focus:outline-none focus:border-gray-500/60" />
                   </div>
                 ))}
               </div>
               <div>
-                <label className="block text-xs text-gray-400 mb-1">{t.city}</label>
+                <label className="block text-xs text-gray-500 mb-1">{t.city}</label>
                 <select name="city" value={person.city} onChange={e=>handleInput(e,setter)}
-                  className="w-full bg-gray-50 border border-gray-700/40 rounded-xl px-3 py-2.5 text-white text-sm focus:outline-none focus:border-gray-500/60">
+                  className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 text-gray-900 text-sm focus:outline-none focus:border-gray-500/60">
                   {cities.map(c=><option key={c.value} value={c.value}>{g(c.label)}</option>)}
                 </select>
               </div>
@@ -353,23 +353,23 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
 
       {/* 分析按钮 */}
       <button onClick={handleAnalyze} disabled={isLoading}
-        className="w-full bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 disabled:from-gray-600 disabled:to-gray-600 text-white font-bold py-4 rounded-2xl transition-all shadow-lg shadow-gray-900/30 text-lg">
+        className="w-full bg-gray-900 hover:bg-gray-800 disabled:bg-gray-400 text-white font-bold py-4 rounded-2xl transition-all text-lg">
         {isLoading ? t.analyzing : t.analyze}
       </button>
 
-      {error && <p className="text-gray-400 text-sm text-center bg-gray-950/30 rounded-xl px-4 py-3">{error}</p>}
+      {error && <p className="text-red-500 text-sm text-center bg-red-50 rounded-xl px-4 py-3">{error}</p>}
 
       {/* 合盘结果 */}
       {aspects.length > 0 && (
         <>
           {/* 契合度分数 */}
-          <div className="bg-gray-950/50 border border-gray-800/30 rounded-2xl p-6 text-center">
-            <div className="text-sm text-gray-400 mb-2">{t.score}</div>
+          <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 text-center">
+            <div className="text-sm text-gray-500 mb-2">{t.score}</div>
             <div className="text-6xl font-bold mb-2" style={{color:scoreColor}}>{score}</div>
-            <div className="w-full bg-white rounded-full h-3 overflow-hidden">
+            <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
               <div className="h-full rounded-full transition-all duration-1000" style={{width:`${score}%`, backgroundColor:scoreColor}} />
             </div>
-            <div className="mt-3 text-sm text-gray-300">
+            <div className="mt-3 text-sm text-gray-600">
               {score >= 70 ? t.scoreHigh : score >= 50 ? t.scoreMid : t.scoreLow}
             </div>
           </div>
@@ -377,19 +377,19 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
           {/* 双人星盘并排 */}
           {data1 && data2 && (
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-gray-950/40 border border-gray-800/30 rounded-2xl p-4">
+              <div className="bg-white border border-gray-200 rounded-2xl p-4">
                 <div className="text-center mb-3">
-                  <div className="text-gray-600 font-bold">{p1.name || t.person1}</div>
-                  <div className="text-xs text-gray-400">{data1.ascendant} {t.ascRising} · {data1.midheaven} {t.mcZenith}</div>
+                  <div className="text-gray-900 font-bold">{p1.name || t.person1}</div>
+                  <div className="text-xs text-gray-500">{data1.ascendant} {t.ascRising} · {data1.midheaven} {t.mcZenith}</div>
                 </div>
                 <div className="flex justify-center">
                   <NatalChart planets={data1.planets} houses={data1.houses} aspects={[]} size={240} />
                 </div>
               </div>
-              <div className="bg-gray-950/40 border border-gray-800/30 rounded-2xl p-4">
+              <div className="bg-white border border-gray-200 rounded-2xl p-4">
                 <div className="text-center mb-3">
-                  <div className="text-gray-200 font-bold">{p2.name || t.person2}</div>
-                  <div className="text-xs text-gray-400">{data2.ascendant} {t.ascRising} · {data2.midheaven} {t.mcZenith}</div>
+                  <div className="text-gray-900 font-bold">{p2.name || t.person2}</div>
+                  <div className="text-xs text-gray-500">{data2.ascendant} {t.ascRising} · {data2.midheaven} {t.mcZenith}</div>
                 </div>
                 <div className="flex justify-center">
                   <NatalChart planets={data2.planets} houses={data2.houses} aspects={[]} size={240} />
@@ -400,26 +400,26 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
 
           {/* 行星相位分析 */}
           <div className="space-y-3">
-            <h3 className="text-base font-bold text-gray-600">{t.synastry} ({aspects.length})</h3>
+            <h3 className="text-base font-bold text-gray-900">{t.synastry} ({aspects.length})</h3>
 
             {/* 强连接 */}
             {strongAspects.length > 0 && (
-              <div className="bg-gray-950/30 border border-gray-800/30 rounded-xl p-4">
-                <div className="text-sm font-bold text-gray-300 mb-2">🌟 {t.strong}</div>
+              <div className="bg-white border border-gray-200 rounded-xl p-4">
+                <div className="text-sm font-bold text-gray-700 mb-2">🌟 {t.strong}</div>
                 <div className="space-y-2">
                   {strongAspects.map((a, i) => {
                     const m = getAspectMeaning(a.type, language);
                     return (
-                      <div key={i} className="flex items-start gap-3 bg-gray-950/30 rounded-lg px-3 py-2">
+                      <div key={i} className="flex items-start gap-3 bg-gray-50 rounded-lg px-3 py-2">
                         <span className="text-xl" style={{color:a.color}}>{a.symbol}</span>
                         <div className="flex-1">
-                          <div className="text-sm font-semibold text-white">
+                          <div className="text-sm font-semibold text-gray-900">
                             <span style={{color:a.color}}>{g(SNAME[a.p1]||{id:a.p1,zh:a.p1,en:a.p1})}</span>
                             <span className="text-gray-400 mx-1">-</span>
                             <span style={{color:a.color}}>{g(SNAME[a.p2]||{id:a.p2,zh:a.p2,en:a.p2})}</span>
-                            <span className="ml-2 text-xs text-gray-400">orb {a.orb}°</span>
+                            <span className="ml-2 text-xs text-gray-500">orb {a.orb}°</span>
                           </div>
-                          <div className="text-xs text-gray-300 mt-0.5">{m.love}</div>
+                          <div className="text-xs text-gray-500 mt-0.5">{m.love}</div>
                         </div>
                       </div>
                     );
@@ -430,22 +430,22 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
 
             {/* 挑战 */}
             {challengeAspects.length > 0 && (
-              <div className="bg-gray-950/30 border border-gray-800/30 rounded-xl p-4">
-                <div className="text-sm font-bold text-gray-600 mb-2">⚡ {t.challenges}</div>
+              <div className="bg-white border border-gray-200 rounded-xl p-4">
+                <div className="text-sm font-bold text-gray-900 mb-2">⚡ {t.challenges}</div>
                 <div className="space-y-2">
                   {challengeAspects.map((a, i) => {
                     const m = getAspectMeaning(a.type, language);
                     return (
-                      <div key={i} className="flex items-start gap-3 bg-gray-950/30 rounded-lg px-3 py-2">
+                      <div key={i} className="flex items-start gap-3 bg-gray-50 rounded-lg px-3 py-2">
                         <span className="text-xl" style={{color:a.color}}>{a.symbol}</span>
                         <div className="flex-1">
-                          <div className="text-sm font-semibold text-white">
+                          <div className="text-sm font-semibold text-gray-900">
                             <span style={{color:a.color}}>{g(SNAME[a.p1]||{id:a.p1,zh:a.p1,en:a.p1})}</span>
                             <span className="text-gray-400 mx-1">-</span>
                             <span style={{color:a.color}}>{g(SNAME[a.p2]||{id:a.p2,zh:a.p2,en:a.p2})}</span>
-                            <span className="ml-2 text-xs text-gray-400">orb {a.orb}°</span>
+                            <span className="ml-2 text-xs text-gray-500">orb {a.orb}°</span>
                           </div>
-                          <div className="text-xs text-gray-300 mt-0.5">{m.love}</div>
+                          <div className="text-xs text-gray-500 mt-0.5">{m.love}</div>
                         </div>
                       </div>
                     );
@@ -456,17 +456,17 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
 
             {/* 完整相位列表 */}
             <details className="bg-gray-50 border border-gray-800/30 rounded-xl">
-              <summary className="text-sm text-gray-300 cursor-pointer px-4 py-3 hover:text-white transition">
+              <summary className="text-sm text-gray-500 cursor-pointer px-4 py-3 hover:text-white transition">
                 📋 {t.aspects} ({aspects.length})
               </summary>
               <div className="px-4 pb-3 space-y-1.5 max-h-72 overflow-y-auto">
                 {aspects.map((a, i) => (
-                  <div key={i} className="flex items-center gap-2 text-xs py-1 border-b border-gray-900/20 last:border-0">
+                  <div key={i} className="flex items-center gap-2 text-xs py-1 border-b border-gray-100 last:border-0">
                     <span className="font-bold" style={{color:a.color}}>{a.symbol}</span>
-                    <span className="text-gray-300">{g(SNAME[a.p1]||{id:a.p1,zh:a.p1,en:a.p1})}</span>
+                    <span className="text-gray-700">{g(SNAME[a.p1]||{id:a.p1,zh:a.p1,en:a.p1})}</span>
                     <span className="text-gray-500">vs</span>
-                    <span className="text-gray-300">{g(SNAME[a.p2]||{id:a.p2,zh:a.p2,en:a.p2})}</span>
-                    <span className="ml-auto text-gray-500">{a.type} · orb {a.orb}°</span>
+                    <span className="text-gray-700">{g(SNAME[a.p2]||{id:a.p2,zh:a.p2,en:a.p2})}</span>
+                    <span className="ml-auto text-gray-400">{a.type} · orb {a.orb}°</span>
                   </div>
                 ))}
               </div>
@@ -476,18 +476,18 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
           {/* AI 解读 */}
           <div className="space-y-4 mt-6">
             {/* 简要解读 - 免费 */}
-            <div className="bg-gray-950/50 border border-gray-800/30 rounded-2xl p-6">
+            <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6">
               <h3 className="font-bold mb-4 flex items-center gap-2">
                 <Sparkles size={18} className="text-gray-600" />
                 {t.aiReading} - {t.simpleReading}
-                <span className="ml-2 px-2 py-0.5 rounded-full bg-gray-500/20 text-gray-400 text-xs">{t.free}</span>
+                <span className="ml-2 px-2 py-0.5 rounded-full bg-gray-200 text-gray-600 text-xs">{t.free}</span>
               </h3>
               {(() => {
                 const readingLevel = score >= 70 ? 'high' : score >= 50 ? 'medium' : 'low';
                 const reading = SYNASTRY_AI_READINGS[language]?.[readingLevel] || SYNASTRY_AI_READINGS.zh[readingLevel];
                 return (
-                  <div className="p-4 rounded-xl bg-gray-500/10 border border-gray-200">
-                    <p className="text-gray-600 text-sm mb-2">{reading.summary}</p>
+                  <div className="p-4 rounded-xl bg-white border border-gray-100">
+                    <p className="text-gray-700 text-sm mb-2">{reading.summary}</p>
                     <p className="text-xs text-gray-500 italic">💡 {reading.advice}</p>
                   </div>
                 );
@@ -497,7 +497,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
             {/* 深度解读 - 需解锁 */}
             <div className="rounded-2xl overflow-hidden border border-gray-800/30">
               {/* Header */}
-              <div className="p-5 bg-gradient-to-r from-gray-50/40 to-gray-900/40 flex items-center justify-between">
+              <div className="p-5 bg-gray-100 flex items-center justify-between">
                 <h3 className="font-bold flex items-center gap-2">
                   {isUnlocked ? <Sparkles size={18} className="text-gray-400" /> : <Lock size={18} className="text-gray-500" />}
                   {t.aiReading} - {t.deepReading}
@@ -571,7 +571,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
                       <div className="grid grid-cols-3 gap-2">
                         {[1, 2, 3].map(n => (
                           <button key={n} onClick={handleShare} disabled={shareCount >= n}
-                            className={`py-2 rounded-lg text-xs font-medium flex items-center justify-center gap-1 transition-all ${shareCount >= n ? "bg-gray-500/20 text-gray-400 border border-gray-500/30" : "bg-white hover:bg-gray-500/20 text-gray-600 hover:text-gray-300 border border-gray-300"}`}>
+                            className={`py-2 rounded-lg text-xs font-medium flex items-center justify-center gap-1 transition-all ${shareCount >= n ? "bg-gray-200 text-gray-600 border border-gray-500/30" : "bg-white hover:bg-gray-500/20 text-gray-600 hover:text-gray-300 border border-gray-300"}`}>
                             {shareCount >= n ? <CheckCircle size={12} /> : <Share2 size={12} />}
                             {t.friend} {n}
                           </button>
