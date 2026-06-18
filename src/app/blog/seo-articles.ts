@@ -37,7 +37,14 @@ export const seoArticles = [
 
 Birth Dates: 3.21-4.19
 
-Aries is characterized by: Brave, confident, impulsive, leader. Use lunaxstar.com's natal chart feature with your birth data for personalized daily guidance.`,
+Aries is characterized by: Brave, confident, impulsive, leader. Use lunaxstar.com's natal chart feature with your birth data for personalized daily guidance.
+
+---
+
+**Related:**
+[♈♉♊♋ Free Natal Chart — See All Your Planets & Houses](/natal)
+[Aries-Leo Compatibility — Full Match Analysis](/blog/aries-leo-compatibility-41)
+[All 12 Zodiac Daily Horoscopes](/horoscope)`,
       id: `♈ Aries Panduan Lengkap
 
 Tanggal Lahir: 3.21-4.19
@@ -113,7 +120,14 @@ Aries dicirikan oleh: Berani, yakin, impulsif, pemimpin. Guna ciri carta natal l
 
 Birth Dates: 4.20-5.20
 
-Taurus is characterized by: Stable, practical, stubborn, patient. Use lunaxstar.com's natal chart feature with your birth data for personalized daily guidance.`,
+Taurus is characterized by: Stable, practical, stubborn, patient. Use lunaxstar.com's natal chart feature with your birth data for personalized daily guidance.
+
+---
+
+**Related:**
+[♈♉♊♋ Free Natal Chart — See All Your Planets & Houses](/natal)
+[Taurus-Virgo Compatibility — Full Match Analysis](/blog/taurus-virgo-compatibility-42)
+[All 12 Zodiac Daily Horoscopes](/horoscope)`,
       id: `♉ Taurus Panduan Lengkap
 
 Tanggal Lahir: 4.20-5.20
@@ -189,7 +203,14 @@ Taurus dicirikan oleh: Stabil, praktikal, degil, sabar. Guna ciri carta natal lu
 
 Birth Dates: 5.21-6.21
 
-Gemini is characterized by: Clever, curious, versatile, communicative. Use lunaxstar.com's natal chart feature with your birth data for personalized daily guidance.`,
+Gemini is characterized by: Clever, curious, versatile, communicative. Use lunaxstar.com's natal chart feature with your birth data for personalized daily guidance.
+
+---
+
+**Related:**
+[♈♉♊♋ Free Natal Chart — See All Your Planets & Houses](/natal)
+[Gemini-Libra Compatibility — Full Match Analysis](/blog/gemini-libra-compatibility-43)
+[All 12 Zodiac Daily Horoscopes](/horoscope)`,
       id: `♊ Gemini Panduan Lengkap
 
 Tanggal Lahir: 5.21-6.21
@@ -265,7 +286,14 @@ Gemini dicirikan oleh: Pintar, ingin tahu, serbaguna, komunikatif. Guna ciri car
 
 Birth Dates: 6.22-7.22
 
-Cancer is characterized by: Sensitive, nurturing, emotional, protective. Use lunaxstar.com's natal chart feature with your birth data for personalized daily guidance.`,
+Cancer is characterized by: Sensitive, nurturing, emotional, protective. Use lunaxstar.com's natal chart feature with your birth data for personalized daily guidance.
+
+---
+
+**Related:**
+[♈♉♊♋ Free Natal Chart — See All Your Planets & Houses](/natal)
+[Cancer-Scorpio Compatibility — Full Match Analysis](/blog/cancer-scorpio-compatibility-44)
+[All 12 Zodiac Daily Horoscopes](/horoscope)`,
       id: `♋ Cancer Panduan Lengkap
 
 Tanggal Lahir: 6.22-7.22
@@ -341,7 +369,14 @@ Cancer dicirikan oleh: Sensitif, penyayang, emosional, pelindung. Guna ciri cart
 
 Birth Dates: 7.23-8.22
 
-Leo is characterized by: Confident, generous, dramatic, leader. Use lunaxstar.com's natal chart feature with your birth data for personalized daily guidance.`,
+Leo is characterized by: Confident, generous, dramatic, leader. Use lunaxstar.com's natal chart feature with your birth data for personalized daily guidance.
+
+---
+
+**Related:**
+[♈♉♊♋ Free Natal Chart — See All Your Planets & Houses](/natal)
+[Leo-Aries Compatibility — Full Match Analysis](/blog/leo-aries-compatibility-57)
+[All 12 Zodiac Daily Horoscopes](/horoscope)`,
       id: `♌ Leo Panduan Lengkap
 
 Tanggal Lahir: 7.23-8.22
@@ -417,7 +452,14 @@ Leo dicirikan oleh: Yakin, pemurah, dramatik, pemimpin. Guna ciri carta natal lu
 
 Birth Dates: 8.23-9.22
 
-Virgo is characterized by: Analytical, perfectionist, practical, helpful. Use lunaxstar.com's natal chart feature with your birth data for personalized daily guidance.`,
+Virgo is characterized by: Analytical, perfectionist, practical, helpful. Use lunaxstar.com's natal chart feature with your birth data for personalized daily guidance.
+
+---
+
+**Related:**
+[♈♉♊♋ Free Natal Chart — See All Your Planets & Houses](/natal)
+[Virgo-Taurus Compatibility — Full Match Analysis](/blog/virgo-taurus-compatibility-58)
+[All 12 Zodiac Daily Horoscopes](/horoscope)`,
       id: `♍ Virgo Panduan Lengkap
 
 Tanggal Lahir: 8.23-9.22
@@ -493,7 +535,14 @@ Virgo dicirikan oleh: Analitis, perfeksionis, praktikal, membantu. Guna ciri car
 
 Birth Dates: 9.23-10.23
 
-Libra is characterized by: Graceful, fair, social, diplomatic. Use lunaxstar.com's natal chart feature with your birth data for personalized daily guidance.`,
+Libra is characterized by: Graceful, fair, social, diplomatic. Use lunaxstar.com's natal chart feature with your birth data for personalized daily guidance.
+
+---
+
+**Related:**
+[♈♉♊♋ Free Natal Chart — See All Your Planets & Houses](/natal)
+[Libra-Gemini Compatibility — Full Match Analysis](/blog/libra-gemini-compatibility-59)
+[All 12 Zodiac Daily Horoscopes](/horoscope)`,
       id: `♎ Libra Panduan Lengkap
 
 Tanggal Lahir: 9.23-10.23
@@ -569,7 +618,14 @@ Libra dicirikan oleh: Anggun, adil, sosial, diplomatik. Guna ciri carta natal lu
 
 Birth Dates: 10.24-11.22
 
-Scorpio is characterized by: Deep, passionate, perceptive, mysterious. Use lunaxstar.com's natal chart feature with your birth data for personalized daily guidance.`,
+Scorpio is characterized by: Deep, passionate, perceptive, mysterious. Use lunaxstar.com's natal chart feature with your birth data for personalized daily guidance.
+
+---
+
+**Related:**
+[♈♉♊♋ Free Natal Chart — See All Your Planets & Houses](/natal)
+[Scorpio-Cancer Compatibility — Full Match Analysis](/blog/scorpio-cancer-compatibility-60)
+[All 12 Zodiac Daily Horoscopes](/horoscope)`,
       id: `♏ Scorpio Panduan Lengkap
 
 Tanggal Lahir: 10.24-11.22
@@ -645,7 +701,14 @@ Scorpio dicirikan oleh: Mendalam, bersemangat, perseptif, misteri. Guna ciri car
 
 Birth Dates: 11.23-12.21
 
-Sagittarius is characterized by: Optimistic, free-spirited, adventurous, philosophical. Use lunaxstar.com's natal chart feature with your birth data for personalized daily guidance.`,
+Sagittarius is characterized by: Optimistic, free-spirited, adventurous, philosophical. Use lunaxstar.com's natal chart feature with your birth data for personalized daily guidance.
+
+---
+
+**Related:**
+[♈♉♊♋ Free Natal Chart — See All Your Planets & Houses](/natal)
+[Sagittarius-Aries Compatibility — Full Match Analysis](/blog/sagittarius-aries-compatibility-49)
+[All 12 Zodiac Daily Horoscopes](/horoscope)`,
       id: `♐ Sagittarius Panduan Lengkap
 
 Tanggal Lahir: 11.23-12.21
@@ -721,7 +784,14 @@ Sagittarius dicirikan oleh: Optimis, bebas, pengembara, falsafah. Guna ciri cart
 
 Birth Dates: 12.22-1.19
 
-Capricorn is characterized by: Disciplined, ambitious, practical, patient. Use lunaxstar.com's natal chart feature with your birth data for personalized daily guidance.`,
+Capricorn is characterized by: Disciplined, ambitious, practical, patient. Use lunaxstar.com's natal chart feature with your birth data for personalized daily guidance.
+
+---
+
+**Related:**
+[♈♉♊♋ Free Natal Chart — See All Your Planets & Houses](/natal)
+[Capricorn-Taurus Compatibility — Full Match Analysis](/blog/capricorn-taurus-compatibility-50)
+[All 12 Zodiac Daily Horoscopes](/horoscope)`,
       id: `♑ Capricorn Panduan Lengkap
 
 Tanggal Lahir: 12.22-1.19
@@ -797,7 +867,14 @@ Capricorn dicirikan oleh: Berdisiplin, bercita-cita, praktikal, sabar. Guna ciri
 
 Birth Dates: 1.20-2.18
 
-Aquarius is characterized by: Independent, innovative, humanitarian, unique. Use lunaxstar.com's natal chart feature with your birth data for personalized daily guidance.`,
+Aquarius is characterized by: Independent, innovative, humanitarian, unique. Use lunaxstar.com's natal chart feature with your birth data for personalized daily guidance.
+
+---
+
+**Related:**
+[♈♉♊♋ Free Natal Chart — See All Your Planets & Houses](/natal)
+[Aquarius-Gemini Compatibility — Full Match Analysis](/blog/aquarius-gemini-compatibility-51)
+[All 12 Zodiac Daily Horoscopes](/horoscope)`,
       id: `♒ Aquarius Panduan Lengkap
 
 Tanggal Lahir: 1.20-2.18
@@ -873,7 +950,14 @@ Aquarius dicirikan oleh: Berdikari, inovatif, kemanusiaan, unik. Guna ciri carta
 
 Birth Dates: 2.19-3.20
 
-Pisces is characterized by: Dreamy, intuitive, compassionate, artistic. Use lunaxstar.com's natal chart feature with your birth data for personalized daily guidance.`,
+Pisces is characterized by: Dreamy, intuitive, compassionate, artistic. Use lunaxstar.com's natal chart feature with your birth data for personalized daily guidance.
+
+---
+
+**Related:**
+[♈♉♊♋ Free Natal Chart — See All Your Planets & Houses](/natal)
+[Pisces-Cancer Compatibility — Full Match Analysis](/blog/pisces-cancer-compatibility-52)
+[All 12 Zodiac Daily Horoscopes](/horoscope)`,
       id: `♓ Pisces Panduan Lengkap
 
 Tanggal Lahir: 2.19-3.20

@@ -25,7 +25,14 @@ export const moreSeoArticles = [
 Aries: 3.21-4.19 | 火 | Ruler Mars
 Leo: 7.23-8.22 | 火 | Ruler Sun
 
-85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.`,
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Aries Complete Zodiac Guide & Horoscope](/blog/aries-daily-horoscope-20)
+[Leo Complete Zodiac Guide & Horoscope](/blog/leo-daily-horoscope-24)`,
       id: `♈ Aries & ♌ Leo Cocok
 
 Aries: 3.21-4.19 | 火 | Mars
@@ -61,7 +68,14 @@ Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
 Taurus: 4.20-5.20 | 土 | Ruler Venus
 Virgo: 8.23-9.22 | 土 | Ruler Mercury
 
-85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.`,
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Taurus Complete Zodiac Guide & Horoscope](/blog/taurus-daily-horoscope-21)
+[Virgo Complete Zodiac Guide & Horoscope](/blog/virgo-daily-horoscope-25)`,
       id: `♉ Taurus & ♍ Virgo Cocok
 
 Taurus: 4.20-5.20 | 土 | Venus
@@ -97,7 +111,14 @@ Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
 Gemini: 5.21-6.21 | 风 | Ruler Mercury
 Libra: 9.23-10.23 | 风 | Ruler Venus
 
-85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.`,
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Gemini Complete Zodiac Guide & Horoscope](/blog/gemini-daily-horoscope-22)
+[Libra Complete Zodiac Guide & Horoscope](/blog/libra-daily-horoscope-26)`,
       id: `♊ Gemini & ♎ Libra Cocok
 
 Gemini: 5.21-6.21 | 风 | Mercury
@@ -133,7 +154,14 @@ Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
 Cancer: 6.22-7.22 | 水 | Ruler Moon
 Scorpio: 10.24-11.22 | 水 | Ruler Pluto
 
-85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.`,
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Cancer Complete Zodiac Guide & Horoscope](/blog/cancer-daily-horoscope-23)
+[Scorpio Complete Zodiac Guide & Horoscope](/blog/scorpio-daily-horoscope-27)`,
       id: `♋ Cancer & ♏ Scorpio Cocok
 
 Cancer: 6.22-7.22 | 水 | Moon
@@ -169,7 +197,14 @@ Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
 Leo: 7.23-8.22 | 火 | Ruler Sun
 Sagittarius: 11.23-12.21 | 火 | Ruler Jupiter
 
-85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.`,
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Leo Complete Zodiac Guide & Horoscope](/blog/leo-daily-horoscope-24)
+[Sagittarius Complete Zodiac Guide & Horoscope](/blog/sagittarius-daily-horoscope-28)`,
       id: `♌ Leo & ♐ Sagittarius Cocok
 
 Leo: 7.23-8.22 | 火 | Sun
@@ -205,7 +240,14 @@ Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
 Virgo: 8.23-9.22 | 土 | Ruler Mercury
 Capricorn: 12.22-1.19 | 土 | Ruler Saturn
 
-85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.`,
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Virgo Complete Zodiac Guide & Horoscope](/blog/virgo-daily-horoscope-25)
+[Capricorn Complete Zodiac Guide & Horoscope](/blog/capricorn-daily-horoscope-29)`,
       id: `♍ Virgo & ♑ Capricorn Cocok
 
 Virgo: 8.23-9.22 | 土 | Mercury
@@ -241,7 +283,14 @@ Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
 Libra: 9.23-10.23 | 风 | Ruler Venus
 Aquarius: 1.20-2.18 | 风 | Ruler Uranus
 
-85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.`,
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Libra Complete Zodiac Guide & Horoscope](/blog/libra-daily-horoscope-26)
+[Aquarius Complete Zodiac Guide & Horoscope](/blog/aquarius-daily-horoscope-30)`,
       id: `♎ Libra & ♒ Aquarius Cocok
 
 Libra: 9.23-10.23 | 风 | Venus
@@ -277,7 +326,14 @@ Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
 Scorpio: 10.24-11.22 | 水 | Ruler Pluto
 Pisces: 2.19-3.20 | 水 | Ruler Neptune
 
-85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.`,
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Scorpio Complete Zodiac Guide & Horoscope](/blog/scorpio-daily-horoscope-27)
+[Pisces Complete Zodiac Guide & Horoscope](/blog/pisces-daily-horoscope-31)`,
       id: `♏ Scorpio & ♓ Pisces Cocok
 
 Scorpio: 10.24-11.22 | 水 | Pluto
@@ -313,7 +369,14 @@ Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
 Sagittarius: 11.23-12.21 | 火 | Ruler Jupiter
 Aries: 3.21-4.19 | 火 | Ruler Mars
 
-85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.`,
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Sagittarius Complete Zodiac Guide & Horoscope](/blog/sagittarius-daily-horoscope-28)
+[Aries Complete Zodiac Guide & Horoscope](/blog/aries-daily-horoscope-20)`,
       id: `♐ Sagittarius & ♈ Aries Cocok
 
 Sagittarius: 11.23-12.21 | 火 | Jupiter
@@ -349,7 +412,14 @@ Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
 Capricorn: 12.22-1.19 | 土 | Ruler Saturn
 Taurus: 4.20-5.20 | 土 | Ruler Venus
 
-85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.`,
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Capricorn Complete Zodiac Guide & Horoscope](/blog/capricorn-daily-horoscope-29)
+[Taurus Complete Zodiac Guide & Horoscope](/blog/taurus-daily-horoscope-21)`,
       id: `♑ Capricorn & ♉ Taurus Cocok
 
 Capricorn: 12.22-1.19 | 土 | Saturn
@@ -385,7 +455,14 @@ Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
 Aquarius: 1.20-2.18 | 风 | Ruler Uranus
 Gemini: 5.21-6.21 | 风 | Ruler Mercury
 
-85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.`,
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Aquarius Complete Zodiac Guide & Horoscope](/blog/aquarius-daily-horoscope-30)
+[Gemini Complete Zodiac Guide & Horoscope](/blog/gemini-daily-horoscope-22)`,
       id: `♒ Aquarius & ♊ Gemini Cocok
 
 Aquarius: 1.20-2.18 | 风 | Uranus
@@ -421,7 +498,14 @@ Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
 Pisces: 2.19-3.20 | 水 | Ruler Neptune
 Cancer: 6.22-7.22 | 水 | Ruler Moon
 
-85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.`,
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Pisces Complete Zodiac Guide & Horoscope](/blog/pisces-daily-horoscope-31)
+[Cancer Complete Zodiac Guide & Horoscope](/blog/cancer-daily-horoscope-23)`,
       id: `♓ Pisces & ♋ Cancer Cocok
 
 Pisces: 2.19-3.20 | 水 | Neptune
@@ -457,7 +541,14 @@ Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
 Aries: 3.21-4.19 | 火 | Ruler Mars
 Sagittarius: 11.23-12.21 | 火 | Ruler Jupiter
 
-85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.`,
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Aries Complete Zodiac Guide & Horoscope](/blog/aries-daily-horoscope-20)
+[Sagittarius Complete Zodiac Guide & Horoscope](/blog/sagittarius-daily-horoscope-28)`,
       id: `♈ Aries & ♐ Sagittarius Cocok
 
 Aries: 3.21-4.19 | 火 | Mars
@@ -493,7 +584,14 @@ Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
 Taurus: 4.20-5.20 | 土 | Ruler Venus
 Capricorn: 12.22-1.19 | 土 | Ruler Saturn
 
-85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.`,
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Taurus Complete Zodiac Guide & Horoscope](/blog/taurus-daily-horoscope-21)
+[Capricorn Complete Zodiac Guide & Horoscope](/blog/capricorn-daily-horoscope-29)`,
       id: `♉ Taurus & ♑ Capricorn Cocok
 
 Taurus: 4.20-5.20 | 土 | Venus
@@ -529,7 +627,14 @@ Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
 Gemini: 5.21-6.21 | 风 | Ruler Mercury
 Aquarius: 1.20-2.18 | 风 | Ruler Uranus
 
-85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.`,
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Gemini Complete Zodiac Guide & Horoscope](/blog/gemini-daily-horoscope-22)
+[Aquarius Complete Zodiac Guide & Horoscope](/blog/aquarius-daily-horoscope-30)`,
       id: `♊ Gemini & ♒ Aquarius Cocok
 
 Gemini: 5.21-6.21 | 风 | Mercury
@@ -565,7 +670,14 @@ Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
 Cancer: 6.22-7.22 | 水 | Ruler Moon
 Pisces: 2.19-3.20 | 水 | Ruler Neptune
 
-85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.`,
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Cancer Complete Zodiac Guide & Horoscope](/blog/cancer-daily-horoscope-23)
+[Pisces Complete Zodiac Guide & Horoscope](/blog/pisces-daily-horoscope-31)`,
       id: `♋ Cancer & ♓ Pisces Cocok
 
 Cancer: 6.22-7.22 | 水 | Moon
@@ -601,7 +713,14 @@ Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
 Leo: 7.23-8.22 | 火 | Ruler Sun
 Aries: 3.21-4.19 | 火 | Ruler Mars
 
-85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.`,
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Leo Complete Zodiac Guide & Horoscope](/blog/leo-daily-horoscope-24)
+[Aries Complete Zodiac Guide & Horoscope](/blog/aries-daily-horoscope-20)`,
       id: `♌ Leo & ♈ Aries Cocok
 
 Leo: 7.23-8.22 | 火 | Sun
@@ -637,7 +756,14 @@ Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
 Virgo: 8.23-9.22 | 土 | Ruler Mercury
 Taurus: 4.20-5.20 | 土 | Ruler Venus
 
-85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.`,
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Virgo Complete Zodiac Guide & Horoscope](/blog/virgo-daily-horoscope-25)
+[Taurus Complete Zodiac Guide & Horoscope](/blog/taurus-daily-horoscope-21)`,
       id: `♍ Virgo & ♉ Taurus Cocok
 
 Virgo: 8.23-9.22 | 土 | Mercury
@@ -673,7 +799,14 @@ Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
 Libra: 9.23-10.23 | 风 | Ruler Venus
 Gemini: 5.21-6.21 | 风 | Ruler Mercury
 
-85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.`,
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Libra Complete Zodiac Guide & Horoscope](/blog/libra-daily-horoscope-26)
+[Gemini Complete Zodiac Guide & Horoscope](/blog/gemini-daily-horoscope-22)`,
       id: `♎ Libra & ♊ Gemini Cocok
 
 Libra: 9.23-10.23 | 风 | Venus
@@ -709,7 +842,14 @@ Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
 Scorpio: 10.24-11.22 | 水 | Ruler Pluto
 Cancer: 6.22-7.22 | 水 | Ruler Moon
 
-85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.`,
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Scorpio Complete Zodiac Guide & Horoscope](/blog/scorpio-daily-horoscope-27)
+[Cancer Complete Zodiac Guide & Horoscope](/blog/cancer-daily-horoscope-23)`,
       id: `♏ Scorpio & ♋ Cancer Cocok
 
 Scorpio: 10.24-11.22 | 水 | Pluto
@@ -745,7 +885,14 @@ Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
 Sagittarius: 11.23-12.21 | 火 | Ruler Jupiter
 Leo: 7.23-8.22 | 火 | Ruler Sun
 
-85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.`,
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Sagittarius Complete Zodiac Guide & Horoscope](/blog/sagittarius-daily-horoscope-28)
+[Leo Complete Zodiac Guide & Horoscope](/blog/leo-daily-horoscope-24)`,
       id: `♐ Sagittarius & ♌ Leo Cocok
 
 Sagittarius: 11.23-12.21 | 火 | Jupiter
@@ -781,7 +928,14 @@ Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
 Capricorn: 12.22-1.19 | 土 | Ruler Saturn
 Virgo: 8.23-9.22 | 土 | Ruler Mercury
 
-85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.`,
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Capricorn Complete Zodiac Guide & Horoscope](/blog/capricorn-daily-horoscope-29)
+[Virgo Complete Zodiac Guide & Horoscope](/blog/virgo-daily-horoscope-25)`,
       id: `♑ Capricorn & ♍ Virgo Cocok
 
 Capricorn: 12.22-1.19 | 土 | Saturn
@@ -817,7 +971,14 @@ Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
 Aquarius: 1.20-2.18 | 风 | Ruler Uranus
 Libra: 9.23-10.23 | 风 | Ruler Venus
 
-85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.`,
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Aquarius Complete Zodiac Guide & Horoscope](/blog/aquarius-daily-horoscope-30)
+[Libra Complete Zodiac Guide & Horoscope](/blog/libra-daily-horoscope-26)`,
       id: `♒ Aquarius & ♎ Libra Cocok
 
 Aquarius: 1.20-2.18 | 风 | Uranus
@@ -853,7 +1014,14 @@ Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
 Pisces: 2.19-3.20 | 水 | Ruler Neptune
 Scorpio: 10.24-11.22 | 水 | Ruler Pluto
 
-85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.`,
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Pisces Complete Zodiac Guide & Horoscope](/blog/pisces-daily-horoscope-31)
+[Scorpio Complete Zodiac Guide & Horoscope](/blog/scorpio-daily-horoscope-27)`,
       id: `♓ Pisces & ♏ Scorpio Cocok
 
 Pisces: 2.19-3.20 | 水 | Neptune
@@ -883,7 +1051,14 @@ Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
 月亮代表情感与直觉。月亮在白羊座意味着情绪模式受火元素影响，守护星Mars塑造内在安全感。使用 lunaxstar.com 本命盘功能查看完整月亮配置。`,
       en: `♈ Moon in Aries
 
-The Moon represents emotions. Moon in Aries means patterns shaped by 火 element, with Mars ruling inner security. Use lunaxstar.com for your complete Moon placement.`,
+The Moon represents emotions. Moon in Aries means patterns shaped by 火 element, with Mars ruling inner security. Use lunaxstar.com for your complete Moon placement.
+
+---
+
+**Related:**
+[Free Natal Chart — Get Your Moon, Rising & All Planets](/natal)
+[Aries Daily Horoscope & Complete Guide](/blog/aries-daily-horoscope-20)
+[Relationship Compatibility Checker](/compatibility)`,
       id: `♈ Bulan di Aries
 
 Bulan mewakili emosi. Bulan di Aries berarti pola dibentuk elemen 火, dengan Mars menguasai keamanan batin. Gunakan lunaxstar.com untuk penempatan Bulan lengkap.`,
@@ -910,7 +1085,14 @@ Bulan mewakili emosi. Bulan di Aries berarti pola dibentuk elemen 火, dengan Ma
 月亮代表情感与直觉。月亮在金牛座意味着情绪模式受土元素影响，守护星Venus塑造内在安全感。使用 lunaxstar.com 本命盘功能查看完整月亮配置。`,
       en: `♉ Moon in Taurus
 
-The Moon represents emotions. Moon in Taurus means patterns shaped by 土 element, with Venus ruling inner security. Use lunaxstar.com for your complete Moon placement.`,
+The Moon represents emotions. Moon in Taurus means patterns shaped by 土 element, with Venus ruling inner security. Use lunaxstar.com for your complete Moon placement.
+
+---
+
+**Related:**
+[Free Natal Chart — Get Your Moon, Rising & All Planets](/natal)
+[Taurus Daily Horoscope & Complete Guide](/blog/taurus-daily-horoscope-21)
+[Relationship Compatibility Checker](/compatibility)`,
       id: `♉ Bulan di Taurus
 
 Bulan mewakili emosi. Bulan di Taurus berarti pola dibentuk elemen 土, dengan Venus menguasai keamanan batin. Gunakan lunaxstar.com untuk penempatan Bulan lengkap.`,
@@ -937,7 +1119,14 @@ Bulan mewakili emosi. Bulan di Taurus berarti pola dibentuk elemen 土, dengan V
 月亮代表情感与直觉。月亮在双子座意味着情绪模式受风元素影响，守护星Mercury塑造内在安全感。使用 lunaxstar.com 本命盘功能查看完整月亮配置。`,
       en: `♊ Moon in Gemini
 
-The Moon represents emotions. Moon in Gemini means patterns shaped by 风 element, with Mercury ruling inner security. Use lunaxstar.com for your complete Moon placement.`,
+The Moon represents emotions. Moon in Gemini means patterns shaped by 风 element, with Mercury ruling inner security. Use lunaxstar.com for your complete Moon placement.
+
+---
+
+**Related:**
+[Free Natal Chart — Get Your Moon, Rising & All Planets](/natal)
+[Gemini Daily Horoscope & Complete Guide](/blog/gemini-daily-horoscope-22)
+[Relationship Compatibility Checker](/compatibility)`,
       id: `♊ Bulan di Gemini
 
 Bulan mewakili emosi. Bulan di Gemini berarti pola dibentuk elemen 风, dengan Mercury menguasai keamanan batin. Gunakan lunaxstar.com untuk penempatan Bulan lengkap.`,
@@ -964,7 +1153,14 @@ Bulan mewakili emosi. Bulan di Gemini berarti pola dibentuk elemen 风, dengan M
 月亮代表情感与直觉。月亮在巨蟹座意味着情绪模式受水元素影响，守护星Moon塑造内在安全感。使用 lunaxstar.com 本命盘功能查看完整月亮配置。`,
       en: `♋ Moon in Cancer
 
-The Moon represents emotions. Moon in Cancer means patterns shaped by 水 element, with Moon ruling inner security. Use lunaxstar.com for your complete Moon placement.`,
+The Moon represents emotions. Moon in Cancer means patterns shaped by 水 element, with Moon ruling inner security. Use lunaxstar.com for your complete Moon placement.
+
+---
+
+**Related:**
+[Free Natal Chart — Get Your Moon, Rising & All Planets](/natal)
+[Cancer Daily Horoscope & Complete Guide](/blog/cancer-daily-horoscope-23)
+[Relationship Compatibility Checker](/compatibility)`,
       id: `♋ Bulan di Cancer
 
 Bulan mewakili emosi. Bulan di Cancer berarti pola dibentuk elemen 水, dengan Moon menguasai keamanan batin. Gunakan lunaxstar.com untuk penempatan Bulan lengkap.`,
@@ -991,7 +1187,14 @@ Bulan mewakili emosi. Bulan di Cancer berarti pola dibentuk elemen 水, dengan M
 月亮代表情感与直觉。月亮在狮子座意味着情绪模式受火元素影响，守护星Sun塑造内在安全感。使用 lunaxstar.com 本命盘功能查看完整月亮配置。`,
       en: `♌ Moon in Leo
 
-The Moon represents emotions. Moon in Leo means patterns shaped by 火 element, with Sun ruling inner security. Use lunaxstar.com for your complete Moon placement.`,
+The Moon represents emotions. Moon in Leo means patterns shaped by 火 element, with Sun ruling inner security. Use lunaxstar.com for your complete Moon placement.
+
+---
+
+**Related:**
+[Free Natal Chart — Get Your Moon, Rising & All Planets](/natal)
+[Leo Daily Horoscope & Complete Guide](/blog/leo-daily-horoscope-24)
+[Relationship Compatibility Checker](/compatibility)`,
       id: `♌ Bulan di Leo
 
 Bulan mewakili emosi. Bulan di Leo berarti pola dibentuk elemen 火, dengan Sun menguasai keamanan batin. Gunakan lunaxstar.com untuk penempatan Bulan lengkap.`,
@@ -1018,7 +1221,14 @@ Bulan mewakili emosi. Bulan di Leo berarti pola dibentuk elemen 火, dengan Sun 
 月亮代表情感与直觉。月亮在处女座意味着情绪模式受土元素影响，守护星Mercury塑造内在安全感。使用 lunaxstar.com 本命盘功能查看完整月亮配置。`,
       en: `♍ Moon in Virgo
 
-The Moon represents emotions. Moon in Virgo means patterns shaped by 土 element, with Mercury ruling inner security. Use lunaxstar.com for your complete Moon placement.`,
+The Moon represents emotions. Moon in Virgo means patterns shaped by 土 element, with Mercury ruling inner security. Use lunaxstar.com for your complete Moon placement.
+
+---
+
+**Related:**
+[Free Natal Chart — Get Your Moon, Rising & All Planets](/natal)
+[Virgo Daily Horoscope & Complete Guide](/blog/virgo-daily-horoscope-25)
+[Relationship Compatibility Checker](/compatibility)`,
       id: `♍ Bulan di Virgo
 
 Bulan mewakili emosi. Bulan di Virgo berarti pola dibentuk elemen 土, dengan Mercury menguasai keamanan batin. Gunakan lunaxstar.com untuk penempatan Bulan lengkap.`,
@@ -1045,7 +1255,14 @@ Bulan mewakili emosi. Bulan di Virgo berarti pola dibentuk elemen 土, dengan Me
 月亮代表情感与直觉。月亮在天秤座意味着情绪模式受风元素影响，守护星Venus塑造内在安全感。使用 lunaxstar.com 本命盘功能查看完整月亮配置。`,
       en: `♎ Moon in Libra
 
-The Moon represents emotions. Moon in Libra means patterns shaped by 风 element, with Venus ruling inner security. Use lunaxstar.com for your complete Moon placement.`,
+The Moon represents emotions. Moon in Libra means patterns shaped by 风 element, with Venus ruling inner security. Use lunaxstar.com for your complete Moon placement.
+
+---
+
+**Related:**
+[Free Natal Chart — Get Your Moon, Rising & All Planets](/natal)
+[Libra Daily Horoscope & Complete Guide](/blog/libra-daily-horoscope-26)
+[Relationship Compatibility Checker](/compatibility)`,
       id: `♎ Bulan di Libra
 
 Bulan mewakili emosi. Bulan di Libra berarti pola dibentuk elemen 风, dengan Venus menguasai keamanan batin. Gunakan lunaxstar.com untuk penempatan Bulan lengkap.`,
@@ -1072,7 +1289,14 @@ Bulan mewakili emosi. Bulan di Libra berarti pola dibentuk elemen 风, dengan Ve
 月亮代表情感与直觉。月亮在天蝎座意味着情绪模式受水元素影响，守护星Pluto塑造内在安全感。使用 lunaxstar.com 本命盘功能查看完整月亮配置。`,
       en: `♏ Moon in Scorpio
 
-The Moon represents emotions. Moon in Scorpio means patterns shaped by 水 element, with Pluto ruling inner security. Use lunaxstar.com for your complete Moon placement.`,
+The Moon represents emotions. Moon in Scorpio means patterns shaped by 水 element, with Pluto ruling inner security. Use lunaxstar.com for your complete Moon placement.
+
+---
+
+**Related:**
+[Free Natal Chart — Get Your Moon, Rising & All Planets](/natal)
+[Scorpio Daily Horoscope & Complete Guide](/blog/scorpio-daily-horoscope-27)
+[Relationship Compatibility Checker](/compatibility)`,
       id: `♏ Bulan di Scorpio
 
 Bulan mewakili emosi. Bulan di Scorpio berarti pola dibentuk elemen 水, dengan Pluto menguasai keamanan batin. Gunakan lunaxstar.com untuk penempatan Bulan lengkap.`,
@@ -1099,7 +1323,14 @@ Bulan mewakili emosi. Bulan di Scorpio berarti pola dibentuk elemen 水, dengan 
 月亮代表情感与直觉。月亮在射手座意味着情绪模式受火元素影响，守护星Jupiter塑造内在安全感。使用 lunaxstar.com 本命盘功能查看完整月亮配置。`,
       en: `♐ Moon in Sagittarius
 
-The Moon represents emotions. Moon in Sagittarius means patterns shaped by 火 element, with Jupiter ruling inner security. Use lunaxstar.com for your complete Moon placement.`,
+The Moon represents emotions. Moon in Sagittarius means patterns shaped by 火 element, with Jupiter ruling inner security. Use lunaxstar.com for your complete Moon placement.
+
+---
+
+**Related:**
+[Free Natal Chart — Get Your Moon, Rising & All Planets](/natal)
+[Sagittarius Daily Horoscope & Complete Guide](/blog/sagittarius-daily-horoscope-28)
+[Relationship Compatibility Checker](/compatibility)`,
       id: `♐ Bulan di Sagittarius
 
 Bulan mewakili emosi. Bulan di Sagittarius berarti pola dibentuk elemen 火, dengan Jupiter menguasai keamanan batin. Gunakan lunaxstar.com untuk penempatan Bulan lengkap.`,
@@ -1126,7 +1357,14 @@ Bulan mewakili emosi. Bulan di Sagittarius berarti pola dibentuk elemen 火, den
 月亮代表情感与直觉。月亮在摩羯座意味着情绪模式受土元素影响，守护星Saturn塑造内在安全感。使用 lunaxstar.com 本命盘功能查看完整月亮配置。`,
       en: `♑ Moon in Capricorn
 
-The Moon represents emotions. Moon in Capricorn means patterns shaped by 土 element, with Saturn ruling inner security. Use lunaxstar.com for your complete Moon placement.`,
+The Moon represents emotions. Moon in Capricorn means patterns shaped by 土 element, with Saturn ruling inner security. Use lunaxstar.com for your complete Moon placement.
+
+---
+
+**Related:**
+[Free Natal Chart — Get Your Moon, Rising & All Planets](/natal)
+[Capricorn Daily Horoscope & Complete Guide](/blog/capricorn-daily-horoscope-29)
+[Relationship Compatibility Checker](/compatibility)`,
       id: `♑ Bulan di Capricorn
 
 Bulan mewakili emosi. Bulan di Capricorn berarti pola dibentuk elemen 土, dengan Saturn menguasai keamanan batin. Gunakan lunaxstar.com untuk penempatan Bulan lengkap.`,
@@ -1153,7 +1391,14 @@ Bulan mewakili emosi. Bulan di Capricorn berarti pola dibentuk elemen 土, denga
 月亮代表情感与直觉。月亮在水瓶座意味着情绪模式受风元素影响，守护星Uranus塑造内在安全感。使用 lunaxstar.com 本命盘功能查看完整月亮配置。`,
       en: `♒ Moon in Aquarius
 
-The Moon represents emotions. Moon in Aquarius means patterns shaped by 风 element, with Uranus ruling inner security. Use lunaxstar.com for your complete Moon placement.`,
+The Moon represents emotions. Moon in Aquarius means patterns shaped by 风 element, with Uranus ruling inner security. Use lunaxstar.com for your complete Moon placement.
+
+---
+
+**Related:**
+[Free Natal Chart — Get Your Moon, Rising & All Planets](/natal)
+[Aquarius Daily Horoscope & Complete Guide](/blog/aquarius-daily-horoscope-30)
+[Relationship Compatibility Checker](/compatibility)`,
       id: `♒ Bulan di Aquarius
 
 Bulan mewakili emosi. Bulan di Aquarius berarti pola dibentuk elemen 风, dengan Uranus menguasai keamanan batin. Gunakan lunaxstar.com untuk penempatan Bulan lengkap.`,
@@ -1180,7 +1425,14 @@ Bulan mewakili emosi. Bulan di Aquarius berarti pola dibentuk elemen 风, dengan
 月亮代表情感与直觉。月亮在双鱼座意味着情绪模式受水元素影响，守护星Neptune塑造内在安全感。使用 lunaxstar.com 本命盘功能查看完整月亮配置。`,
       en: `♓ Moon in Pisces
 
-The Moon represents emotions. Moon in Pisces means patterns shaped by 水 element, with Neptune ruling inner security. Use lunaxstar.com for your complete Moon placement.`,
+The Moon represents emotions. Moon in Pisces means patterns shaped by 水 element, with Neptune ruling inner security. Use lunaxstar.com for your complete Moon placement.
+
+---
+
+**Related:**
+[Free Natal Chart — Get Your Moon, Rising & All Planets](/natal)
+[Pisces Daily Horoscope & Complete Guide](/blog/pisces-daily-horoscope-31)
+[Relationship Compatibility Checker](/compatibility)`,
       id: `♓ Bulan di Pisces
 
 Bulan mewakili emosi. Bulan di Pisces berarti pola dibentuk elemen 水, dengan Neptune menguasai keamanan batin. Gunakan lunaxstar.com untuk penempatan Bulan lengkap.`,
@@ -1207,7 +1459,14 @@ Bulan mewakili emosi. Bulan di Pisces berarti pola dibentuk elemen 水, dengan N
 上升星座代表外在形象和第一印象。上升白羊座的人通常表现出勇敢、自信、冲动的特质，守护星Mars进一步影响社交风格。使用 lunaxstar.com 输入精确出生时间获取上升星座。`,
       en: `♈ Aries Rising
 
-The Ascendant represents appearance. Aries Rising shows 勇敢、自信、冲动 traits, with Mars influencing social style. Use lunaxstar.com with exact birth time to find your Rising sign.`,
+The Ascendant represents appearance. Aries Rising shows 勇敢、自信、冲动 traits, with Mars influencing social style. Use lunaxstar.com with exact birth time to find your Rising sign.
+
+---
+
+**Related:**
+[Get Your Exact Rising Sign — Free Natal Chart](/natal)
+[Aries Daily Horoscope & Personality Guide](/blog/aries-daily-horoscope-20)
+[All 12 Zodiac Signs — Daily Horoscope](/horoscope)`,
       id: `♈ Aries Rising
 
 Ascendant mewakili penampilan. Aries Rising menunjukkan sifat 勇敢、自信、冲动, dengan Mars memengaruhi gaya sosial. Gunakan lunaxstar.com dengan waktu lahir tepat.`,
@@ -1234,7 +1493,14 @@ Ascendant mewakili penampilan. Aries Rising menunjukkan sifat 勇敢、自信、
 上升星座代表外在形象和第一印象。上升金牛座的人通常表现出稳定、务实、固执的特质，守护星Venus进一步影响社交风格。使用 lunaxstar.com 输入精确出生时间获取上升星座。`,
       en: `♉ Taurus Rising
 
-The Ascendant represents appearance. Taurus Rising shows 稳定、务实、固执 traits, with Venus influencing social style. Use lunaxstar.com with exact birth time to find your Rising sign.`,
+The Ascendant represents appearance. Taurus Rising shows 稳定、务实、固执 traits, with Venus influencing social style. Use lunaxstar.com with exact birth time to find your Rising sign.
+
+---
+
+**Related:**
+[Get Your Exact Rising Sign — Free Natal Chart](/natal)
+[Taurus Daily Horoscope & Personality Guide](/blog/taurus-daily-horoscope-21)
+[All 12 Zodiac Signs — Daily Horoscope](/horoscope)`,
       id: `♉ Taurus Rising
 
 Ascendant mewakili penampilan. Taurus Rising menunjukkan sifat 稳定、务实、固执, dengan Venus memengaruhi gaya sosial. Gunakan lunaxstar.com dengan waktu lahir tepat.`,
@@ -1261,7 +1527,14 @@ Ascendant mewakili penampilan. Taurus Rising menunjukkan sifat 稳定、务实�
 上升星座代表外在形象和第一印象。上升双子座的人通常表现出聪明、好奇、多变的特质，守护星Mercury进一步影响社交风格。使用 lunaxstar.com 输入精确出生时间获取上升星座。`,
       en: `♊ Gemini Rising
 
-The Ascendant represents appearance. Gemini Rising shows 聪明、好奇、多变 traits, with Mercury influencing social style. Use lunaxstar.com with exact birth time to find your Rising sign.`,
+The Ascendant represents appearance. Gemini Rising shows 聪明、好奇、多变 traits, with Mercury influencing social style. Use lunaxstar.com with exact birth time to find your Rising sign.
+
+---
+
+**Related:**
+[Get Your Exact Rising Sign — Free Natal Chart](/natal)
+[Gemini Daily Horoscope & Personality Guide](/blog/gemini-daily-horoscope-22)
+[All 12 Zodiac Signs — Daily Horoscope](/horoscope)`,
       id: `♊ Gemini Rising
 
 Ascendant mewakili penampilan. Gemini Rising menunjukkan sifat 聪明、好奇、多变, dengan Mercury memengaruhi gaya sosial. Gunakan lunaxstar.com dengan waktu lahir tepat.`,
@@ -1288,7 +1561,14 @@ Ascendant mewakili penampilan. Gemini Rising menunjukkan sifat 聪明、好奇�
 上升星座代表外在形象和第一印象。上升巨蟹座的人通常表现出敏感、顾家、情感的特质，守护星Moon进一步影响社交风格。使用 lunaxstar.com 输入精确出生时间获取上升星座。`,
       en: `♋ Cancer Rising
 
-The Ascendant represents appearance. Cancer Rising shows 敏感、顾家、情感 traits, with Moon influencing social style. Use lunaxstar.com with exact birth time to find your Rising sign.`,
+The Ascendant represents appearance. Cancer Rising shows 敏感、顾家、情感 traits, with Moon influencing social style. Use lunaxstar.com with exact birth time to find your Rising sign.
+
+---
+
+**Related:**
+[Get Your Exact Rising Sign — Free Natal Chart](/natal)
+[Cancer Daily Horoscope & Personality Guide](/blog/cancer-daily-horoscope-23)
+[All 12 Zodiac Signs — Daily Horoscope](/horoscope)`,
       id: `♋ Cancer Rising
 
 Ascendant mewakili penampilan. Cancer Rising menunjukkan sifat 敏感、顾家、情感, dengan Moon memengaruhi gaya sosial. Gunakan lunaxstar.com dengan waktu lahir tepat.`,
@@ -1315,7 +1595,14 @@ Ascendant mewakili penampilan. Cancer Rising menunjukkan sifat 敏感、顾家�
 上升星座代表外在形象和第一印象。上升狮子座的人通常表现出自信、慷慨、戏剧化的特质，守护星Sun进一步影响社交风格。使用 lunaxstar.com 输入精确出生时间获取上升星座。`,
       en: `♌ Leo Rising
 
-The Ascendant represents appearance. Leo Rising shows 自信、慷慨、戏剧化 traits, with Sun influencing social style. Use lunaxstar.com with exact birth time to find your Rising sign.`,
+The Ascendant represents appearance. Leo Rising shows 自信、慷慨、戏剧化 traits, with Sun influencing social style. Use lunaxstar.com with exact birth time to find your Rising sign.
+
+---
+
+**Related:**
+[Get Your Exact Rising Sign — Free Natal Chart](/natal)
+[Leo Daily Horoscope & Personality Guide](/blog/leo-daily-horoscope-24)
+[All 12 Zodiac Signs — Daily Horoscope](/horoscope)`,
       id: `♌ Leo Rising
 
 Ascendant mewakili penampilan. Leo Rising menunjukkan sifat 自信、慷慨、戏剧化, dengan Sun memengaruhi gaya sosial. Gunakan lunaxstar.com dengan waktu lahir tepat.`,
@@ -1342,7 +1629,14 @@ Ascendant mewakili penampilan. Leo Rising menunjukkan sifat 自信、慷慨、�
 上升星座代表外在形象和第一印象。上升处女座的人通常表现出分析、完美主义、务实的特质，守护星Mercury进一步影响社交风格。使用 lunaxstar.com 输入精确出生时间获取上升星座。`,
       en: `♍ Virgo Rising
 
-The Ascendant represents appearance. Virgo Rising shows 分析、完美主义、务实 traits, with Mercury influencing social style. Use lunaxstar.com with exact birth time to find your Rising sign.`,
+The Ascendant represents appearance. Virgo Rising shows 分析、完美主义、务实 traits, with Mercury influencing social style. Use lunaxstar.com with exact birth time to find your Rising sign.
+
+---
+
+**Related:**
+[Get Your Exact Rising Sign — Free Natal Chart](/natal)
+[Virgo Daily Horoscope & Personality Guide](/blog/virgo-daily-horoscope-25)
+[All 12 Zodiac Signs — Daily Horoscope](/horoscope)`,
       id: `♍ Virgo Rising
 
 Ascendant mewakili penampilan. Virgo Rising menunjukkan sifat 分析、完美主义、务实, dengan Mercury memengaruhi gaya sosial. Gunakan lunaxstar.com dengan waktu lahir tepat.`,
@@ -1369,7 +1663,14 @@ Ascendant mewakili penampilan. Virgo Rising menunjukkan sifat 分析、完美主
 上升星座代表外在形象和第一印象。上升天秤座的人通常表现出优雅、公正、社交的特质，守护星Venus进一步影响社交风格。使用 lunaxstar.com 输入精确出生时间获取上升星座。`,
       en: `♎ Libra Rising
 
-The Ascendant represents appearance. Libra Rising shows 优雅、公正、社交 traits, with Venus influencing social style. Use lunaxstar.com with exact birth time to find your Rising sign.`,
+The Ascendant represents appearance. Libra Rising shows 优雅、公正、社交 traits, with Venus influencing social style. Use lunaxstar.com with exact birth time to find your Rising sign.
+
+---
+
+**Related:**
+[Get Your Exact Rising Sign — Free Natal Chart](/natal)
+[Libra Daily Horoscope & Personality Guide](/blog/libra-daily-horoscope-26)
+[All 12 Zodiac Signs — Daily Horoscope](/horoscope)`,
       id: `♎ Libra Rising
 
 Ascendant mewakili penampilan. Libra Rising menunjukkan sifat 优雅、公正、社交, dengan Venus memengaruhi gaya sosial. Gunakan lunaxstar.com dengan waktu lahir tepat.`,
@@ -1396,7 +1697,14 @@ Ascendant mewakili penampilan. Libra Rising menunjukkan sifat 优雅、公正、
 上升星座代表外在形象和第一印象。上升天蝎座的人通常表现出深沉、激情、洞察力的特质，守护星Pluto进一步影响社交风格。使用 lunaxstar.com 输入精确出生时间获取上升星座。`,
       en: `♏ Scorpio Rising
 
-The Ascendant represents appearance. Scorpio Rising shows 深沉、激情、洞察力 traits, with Pluto influencing social style. Use lunaxstar.com with exact birth time to find your Rising sign.`,
+The Ascendant represents appearance. Scorpio Rising shows 深沉、激情、洞察力 traits, with Pluto influencing social style. Use lunaxstar.com with exact birth time to find your Rising sign.
+
+---
+
+**Related:**
+[Get Your Exact Rising Sign — Free Natal Chart](/natal)
+[Scorpio Daily Horoscope & Personality Guide](/blog/scorpio-daily-horoscope-27)
+[All 12 Zodiac Signs — Daily Horoscope](/horoscope)`,
       id: `♏ Scorpio Rising
 
 Ascendant mewakili penampilan. Scorpio Rising menunjukkan sifat 深沉、激情、洞察力, dengan Pluto memengaruhi gaya sosial. Gunakan lunaxstar.com dengan waktu lahir tepat.`,
@@ -1423,7 +1731,14 @@ Ascendant mewakili penampilan. Scorpio Rising menunjukkan sifat 深沉、激情�
 上升星座代表外在形象和第一印象。上升射手座的人通常表现出乐观、自由、冒险的特质，守护星Jupiter进一步影响社交风格。使用 lunaxstar.com 输入精确出生时间获取上升星座。`,
       en: `♐ Sagittarius Rising
 
-The Ascendant represents appearance. Sagittarius Rising shows 乐观、自由、冒险 traits, with Jupiter influencing social style. Use lunaxstar.com with exact birth time to find your Rising sign.`,
+The Ascendant represents appearance. Sagittarius Rising shows 乐观、自由、冒险 traits, with Jupiter influencing social style. Use lunaxstar.com with exact birth time to find your Rising sign.
+
+---
+
+**Related:**
+[Get Your Exact Rising Sign — Free Natal Chart](/natal)
+[Sagittarius Daily Horoscope & Personality Guide](/blog/sagittarius-daily-horoscope-28)
+[All 12 Zodiac Signs — Daily Horoscope](/horoscope)`,
       id: `♐ Sagittarius Rising
 
 Ascendant mewakili penampilan. Sagittarius Rising menunjukkan sifat 乐观、自由、冒险, dengan Jupiter memengaruhi gaya sosial. Gunakan lunaxstar.com dengan waktu lahir tepat.`,
@@ -1450,7 +1765,14 @@ Ascendant mewakili penampilan. Sagittarius Rising menunjukkan sifat 乐观、自
 上升星座代表外在形象和第一印象。上升摩羯座的人通常表现出自律、野心、务实的特质，守护星Saturn进一步影响社交风格。使用 lunaxstar.com 输入精确出生时间获取上升星座。`,
       en: `♑ Capricorn Rising
 
-The Ascendant represents appearance. Capricorn Rising shows 自律、野心、务实 traits, with Saturn influencing social style. Use lunaxstar.com with exact birth time to find your Rising sign.`,
+The Ascendant represents appearance. Capricorn Rising shows 自律、野心、务实 traits, with Saturn influencing social style. Use lunaxstar.com with exact birth time to find your Rising sign.
+
+---
+
+**Related:**
+[Get Your Exact Rising Sign — Free Natal Chart](/natal)
+[Capricorn Daily Horoscope & Personality Guide](/blog/capricorn-daily-horoscope-29)
+[All 12 Zodiac Signs — Daily Horoscope](/horoscope)`,
       id: `♑ Capricorn Rising
 
 Ascendant mewakili penampilan. Capricorn Rising menunjukkan sifat 自律、野心、务实, dengan Saturn memengaruhi gaya sosial. Gunakan lunaxstar.com dengan waktu lahir tepat.`,
@@ -1477,7 +1799,14 @@ Ascendant mewakili penampilan. Capricorn Rising menunjukkan sifat 自律、野�
 上升星座代表外在形象和第一印象。上升水瓶座的人通常表现出独立、创新、博爱的特质，守护星Uranus进一步影响社交风格。使用 lunaxstar.com 输入精确出生时间获取上升星座。`,
       en: `♒ Aquarius Rising
 
-The Ascendant represents appearance. Aquarius Rising shows 独立、创新、博爱 traits, with Uranus influencing social style. Use lunaxstar.com with exact birth time to find your Rising sign.`,
+The Ascendant represents appearance. Aquarius Rising shows 独立、创新、博爱 traits, with Uranus influencing social style. Use lunaxstar.com with exact birth time to find your Rising sign.
+
+---
+
+**Related:**
+[Get Your Exact Rising Sign — Free Natal Chart](/natal)
+[Aquarius Daily Horoscope & Personality Guide](/blog/aquarius-daily-horoscope-30)
+[All 12 Zodiac Signs — Daily Horoscope](/horoscope)`,
       id: `♒ Aquarius Rising
 
 Ascendant mewakili penampilan. Aquarius Rising menunjukkan sifat 独立、创新、博爱, dengan Uranus memengaruhi gaya sosial. Gunakan lunaxstar.com dengan waktu lahir tepat.`,
@@ -1504,7 +1833,14 @@ Ascendant mewakili penampilan. Aquarius Rising menunjukkan sifat 独立、创新
 上升星座代表外在形象和第一印象。上升双鱼座的人通常表现出梦幻、直觉、慈悲的特质，守护星Neptune进一步影响社交风格。使用 lunaxstar.com 输入精确出生时间获取上升星座。`,
       en: `♓ Pisces Rising
 
-The Ascendant represents appearance. Pisces Rising shows 梦幻、直觉、慈悲 traits, with Neptune influencing social style. Use lunaxstar.com with exact birth time to find your Rising sign.`,
+The Ascendant represents appearance. Pisces Rising shows 梦幻、直觉、慈悲 traits, with Neptune influencing social style. Use lunaxstar.com with exact birth time to find your Rising sign.
+
+---
+
+**Related:**
+[Get Your Exact Rising Sign — Free Natal Chart](/natal)
+[Pisces Daily Horoscope & Personality Guide](/blog/pisces-daily-horoscope-31)
+[All 12 Zodiac Signs — Daily Horoscope](/horoscope)`,
       id: `♓ Pisces Rising
 
 Ascendant mewakili penampilan. Pisces Rising menunjukkan sifat 梦幻、直觉、慈悲, dengan Neptune memengaruhi gaya sosial. Gunakan lunaxstar.com dengan waktu lahir tepat.`,
