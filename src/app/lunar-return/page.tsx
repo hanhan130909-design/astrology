@@ -429,7 +429,7 @@ export default function LunarReturnPage() {
                       <div key={key} className="flex items-center justify-between p-3 rounded-lg bg-gray-50">
                         <div className="flex items-center gap-3">
                           <span className="text-xl">{PLANET_SYMBOLS[key] || key[0]}</span>
-                          <span className="text-gray-600">{key === 'Sun' ? (lang === 'zh' ? '太阳' : lang === 'id' ? 'Matahari' : 'Sun') : key === 'Moon' ? (lang === 'zh' ? '月亮' : lang === 'id' ? 'Bulan' : 'Moon') : key}</span>
+                          <span className="text-gray-600">{(()=>{const names: Record<string,Record<string,string>>={Sun:{zh:"太阳",en:"Sun",id:"Matahari",th:"อาทิตย์",vi:"Mặt Trời",ms:"Matahari",ja:"太陽",ko:"태양"},Moon:{zh:"月亮",en:"Moon",id:"Bulan",th:"จันทร์",vi:"Mặt Trăng",ms:"Bulan",ja:"月",ko:"달"}};return names[key]?.[lang]||names[key]?.en||key;})()}</span>
                         </div>
                         <div className="text-right">
                           <span className="mr-2">{SIGN_SYMBOLS[p.sign]}</span>
