@@ -40,6 +40,7 @@ export const translations: Record<string, any> = {
     modal: { enterQuestion: '请输入您想咨询的问题', enterBirth: '请输入您的出生信息', selectQuestion: '选择问题类型', generateReading: '生成解读' },
     about: { 
       title: '关于星缘',
+      subtitle: '基于真实天文计算的专业占星平台',
       intro: '星缘是一款基于真实天文计算与先进AI技术的专业占星平台。我们致力于为用户提供精准、深入的占星解读，帮助每个人更好地了解自己、规划人生。',
       what: '这是什么',
       whatDesc: '星缘是一款专业占星工具，基于真实的天文数据和先进的AI技术，帮助用户探索自我、了解命运。',
@@ -54,6 +55,14 @@ export const translations: Record<string, any> = {
         compat: '星座配对 - 深入分析两人之间的契合度与互动模式',
         daily: '每日运势 - 提供爱情、事业、财运等多维度的运势指引'
       },
+      featureCards: [
+        { emoji: '🪐', title: '本命盘分析', desc: '完整行星落位、宫位、相位深度解读' },
+        { emoji: '🔮', title: '推运盘', desc: '行运追踪、日返盘、月返盘' },
+        { emoji: '💫', title: '合盘分析', desc: '组合盘、比较盘、关系相位' },
+        { emoji: '🤖', title: 'AI解读', desc: '基于大模型的智能星盘解读' },
+        { emoji: '📅', title: '运势日历', desc: '每日运势、每月运势、年度报告' },
+        { emoji: '🃏', title: '塔罗占卜', desc: '78张经典塔罗牌阵' },
+      ],
       mission: '我们的使命是用科技让古老的占星智慧焕发新生，让每个人都能便捷地获得专业的占星服务。'
     }
   },
@@ -69,6 +78,7 @@ export const translations: Record<string, any> = {
     modal: { enterQuestion: 'Enter your question', enterBirth: 'Enter your birth info', selectQuestion: 'Select question type', generateReading: 'Generate Reading' },
     about: { 
       title: 'About Starry Fate',
+      subtitle: 'A professional astrology platform based on real astronomical calculations',
       intro: 'Starry Fate is a professional astrology platform powered by real astronomical calculations and advanced AI technology. We are committed to providing accurate, in-depth astrology readings to help everyone better understand themselves and plan their lives.',
       what: 'What Is This',
       whatDesc: 'Starry Fate is a professional astrology tool based on real astronomical data and advanced AI technology, helping users explore themselves and understand their destiny.',
@@ -83,6 +93,14 @@ export const translations: Record<string, any> = {
         compat: 'Zodiac Matching - In-depth analysis of compatibility and interaction patterns between two people',
         daily: 'Daily Horoscope - Provide guidance on love, career, finance and other dimensions'
       },
+      featureCards: [
+        { emoji: '🪐', title: 'Natal Chart', desc: 'Complete planetary positions, houses, and aspects in-depth analysis' },
+        { emoji: '🔮', title: 'Transit Chart', desc: 'Transit tracking, solar return, lunar return' },
+        { emoji: '💫', title: 'Compatibility', desc: 'Composite chart, synastry, relationship aspects' },
+        { emoji: '🤖', title: 'AI Reading', desc: 'LLM-powered intelligent chart interpretation' },
+        { emoji: '📅', title: 'Fortune Calendar', desc: 'Daily, monthly, and yearly horoscope reports' },
+        { emoji: '🃏', title: 'Tarot Reading', desc: '78 classic tarot card spreads' },
+      ],
       mission: 'Our mission is to revitalize ancient astrological wisdom with technology, making professional astrology services accessible to everyone.'
     }
   },
@@ -98,6 +116,7 @@ export const translations: Record<string, any> = {
     modal: { enterQuestion: 'Masukkan pertanyaan Anda', enterBirth: 'Masukkan data lahir', selectQuestion: 'Pilih jenis pertanyaan', generateReading: 'Buat Bacaan' },
     about: { 
       title: 'Tentang Starry Fate',
+      subtitle: 'Platform astrologi profesional berdasarkan perhitungan astronomi nyata',
       intro: 'Starry Fate adalah platform astrologi profesional yang didukung oleh perhitungan astronomi nyata dan teknologi AI canggih. Kami berkomitmen untuk menyediakan pembacaan astrologi yang akurat dan mendalam untuk membantu semua orang memahami diri mereka dengan lebih baik.',
       what: 'Apa Ini',
       whatDesc: 'Starry Fate adalah alat astrologi profesional berdasarkan data astronomi nyata dan teknologi AI canggih, membantu pengguna menjelajahi diri dan memahami takdir mereka.',
@@ -112,6 +131,14 @@ export const translations: Record<string, any> = {
         compat: 'Kecocokan Zodiak - Analisis mendalam tentang kecocokan dan pola interaksi antara dua orang',
         daily: 'Horoskop Harian - Menyediakan panduan cinta, karir, keuangan dan dimensi lainnya'
       },
+      featureCards: [
+        { emoji: '🪐', title: 'Bagan Lahir', desc: 'Analisis mendalam posisi planet, rumah, dan aspek lengkap' },
+        { emoji: '🔮', title: 'Transit', desc: 'Pelacakan transit, solar return, lunar return' },
+        { emoji: '💫', title: 'Kecocokan', desc: 'Bagan komposit, sinastri, aspek hubungan' },
+        { emoji: '🤖', title: 'Bacaan AI', desc: 'Interpretasi bagan cerdas berbasis AI' },
+        { emoji: '📅', title: 'Kalender Nasib', desc: 'Laporan horoskop harian, bulanan, dan tahunan' },
+        { emoji: '🃏', title: 'Tarot', desc: '78 kartu tarot klasik' },
+      ],
       mission: 'Misi kami adalah menghidupkan kembali kebijaksanaan astrologi kuno dengan teknologi, membuat layanan astrologi profesional dapat diakses oleh semua orang.'
     }
   },
@@ -128,6 +155,7 @@ export const translations: Record<string, any> = {
     modal: { enterQuestion: 'กรุณาใส่คำถามของคุณ', enterBirth: 'กรุณาใส่ข้อมูลวันเกิด', selectQuestion: 'เลือกประเภทคำถาม', generateReading: 'สร้างคำทำนาย' },
     about: { 
       title: 'เกี่ยวกับดูดวง',
+      subtitle: 'A professional astrology platform based on real astronomical calculations',
       intro: 'ดูดวงเป็นแพลตฟอร์มดูดวงออนไลน์ที่ใช้การคำนวณทางดาราศาสตร์จริงและ AI ขั้นสูง เรามุ่งมั่นที่จะให้คำทำนายที่แม่นยำและลึกซึ้งเพื่อช่วยให้ทุกคนเข้าใจตัวเองได้ดีขึ้น',
       what: 'นี่คืออะไร',
       whatDesc: 'ดูดวงเป็นเครื่องมือดูดวงมืออาชีพที่ใช้ข้อมูลดาราศาสตร์จริงและ AI ช่วยให้ผู้ใช้สำรวจตัวเองและเข้าใจโชคชะตา',
@@ -142,6 +170,14 @@ export const translations: Record<string, any> = {
         compat: 'ดูความเข้ากัน - วิเคราะห์ความเข้ากันได้ระหว่าง 2 คน',
         daily: 'ดวงประจำวัน - คำทำนายด้านความรัก การงาน การเงิน'
       },
+      featureCards: [
+        { emoji: '🪐', title: 'Natal Chart', desc: 'Complete planetary positions, houses, and aspects in-depth analysis' },
+        { emoji: '🔮', title: 'Transit Chart', desc: 'Transit tracking, solar return, lunar return' },
+        { emoji: '💫', title: 'Compatibility', desc: 'Composite chart, synastry, relationship aspects' },
+        { emoji: '🤖', title: 'AI Reading', desc: 'LLM-powered intelligent chart interpretation' },
+        { emoji: '📅', title: 'Fortune Calendar', desc: 'Daily, monthly, and yearly horoscope reports' },
+        { emoji: '🃏', title: 'Tarot Reading', desc: '78 classic tarot card spreads' },
+      ],
       mission: 'พันธกิจของเราคือการนำภูมิปัญญาดวงดาวโบราณมาสู่ยุคดิจิทัล'
     }
   },
@@ -158,6 +194,7 @@ export const translations: Record<string, any> = {
     modal: { enterQuestion: 'Nhập câu hỏi của bạn', enterBirth: 'Nhập thông tin sinh', selectQuestion: 'Chọn loại câu hỏi', generateReading: 'Tạo bói' },
     about: { 
       title: 'Về Xem Tử Vi',
+      subtitle: 'A professional astrology platform based on real astronomical calculations',
       intro: 'Xem Tử Vi là nền tảng chiêm tinh học chuyên nghiệp sử dụng tính toán thiên văn thực và AI tiên tiến. Chúng tôi cam kết cung cấp các bói toán chính xác, sâu sắc giúp mọi người hiểu rõ bản thân hơn.',
       what: 'Đây là gì',
       whatDesc: 'Xem Tử Vi là công cụ chiêm tinh chuyên nghiệp dựa trên dữ liệu thiên văn thực và AI tiên tiến, giúp người dùng khám phá bản thân và hiểu vận mệnh.',
@@ -172,6 +209,14 @@ export const translations: Record<string, any> = {
         compat: 'Tương hợp - Phân tích sự tương hợp giữa 2 người',
         daily: 'Tử vi hàng ngày - Bói về tình yêu, sự nghiệp, tài chính'
       },
+      featureCards: [
+        { emoji: '🪐', title: 'Natal Chart', desc: 'Complete planetary positions, houses, and aspects in-depth analysis' },
+        { emoji: '🔮', title: 'Transit Chart', desc: 'Transit tracking, solar return, lunar return' },
+        { emoji: '💫', title: 'Compatibility', desc: 'Composite chart, synastry, relationship aspects' },
+        { emoji: '🤖', title: 'AI Reading', desc: 'LLM-powered intelligent chart interpretation' },
+        { emoji: '📅', title: 'Fortune Calendar', desc: 'Daily, monthly, and yearly horoscope reports' },
+        { emoji: '🃏', title: 'Tarot Reading', desc: '78 classic tarot card spreads' },
+      ],
       mission: 'Sứ mệnh của chúng tôi là đưa trí tuệ chiêm tinh cổ xưa vào thời đại số'
     }
   },
@@ -188,6 +233,7 @@ export const translations: Record<string, any> = {
     modal: { enterQuestion: 'Masukkan soalan anda', enterBirth: 'Masukkan maklumat lahir', selectQuestion: 'Pilih jenis soalan', generateReading: 'Buat Bacaan' },
     about: { 
       title: 'Mengenai Xingyuan',
+      subtitle: 'A professional astrology platform based on real astronomical calculations',
       intro: 'Xingyuan ialah platform astrologi profesional yang dikuasakan oleh pengiraan astronomi sebenar dan teknologi AI canggih. Kami komited untuk menyediakan bacaan astrologi yang tepat dan mendalam.',
       what: 'Apa Ini',
       whatDesc: 'Xingyuan adalah alat astrologi profesional berdasarkan data astronomi sebenar dan AI canggih, membantu pengguna menjelajahi diri dan memahami takdir.',
@@ -202,6 +248,14 @@ export const translations: Record<string, any> = {
         compat: 'Ketepatan Zodiak - Analisis mendalam tentang keserasian antara dua orang',
         daily: 'Horoskop Harian - Panduan cinta, kerjaya, kewangan dan dimensi lain'
       },
+      featureCards: [
+        { emoji: '🪐', title: 'Natal Chart', desc: 'Complete planetary positions, houses, and aspects in-depth analysis' },
+        { emoji: '🔮', title: 'Transit Chart', desc: 'Transit tracking, solar return, lunar return' },
+        { emoji: '💫', title: 'Compatibility', desc: 'Composite chart, synastry, relationship aspects' },
+        { emoji: '🤖', title: 'AI Reading', desc: 'LLM-powered intelligent chart interpretation' },
+        { emoji: '📅', title: 'Fortune Calendar', desc: 'Daily, monthly, and yearly horoscope reports' },
+        { emoji: '🃏', title: 'Tarot Reading', desc: '78 classic tarot card spreads' },
+      ],
       mission: 'Misi kami adalah menghidupkan semula kebijaksanaan astrologi kuno dengan teknologi'
     }
   },
@@ -218,6 +272,7 @@ export const translations: Record<string, any> = {
     modal: { enterQuestion: '質問を入力してください', enterBirth: '生年月日を入力してください', selectQuestion: '質問タイプを選択', generateReading: '占う' },
     about: { 
       title: '星読みについて',
+      subtitle: 'A professional astrology platform based on real astronomical calculations',
       intro: '星読みは、実際の天文計算と高度なAI技術に基づいた本格的な占星術プラットフォームです。すべての人々が自分自身を理解し、人生を规划设计するための精密で深い占星術の提供に取り組んでいます。',
       what: 'これは何ですか',
       whatDesc: '星読みは実際の天文データと高度なAI技術に基づいたプロの占星術ツールで、ユーザーが自分自身を探求し、運命を理解するのに役立ちます。',
@@ -232,6 +287,14 @@ export const translations: Record<string, any> = {
         compat: '相性診断 - 2人の相性と相互作用パターンの詳細な分析',
         daily: '今日の運勢 - 恋愛、仕事、金運などの多方面の運勢ガイド'
       },
+      featureCards: [
+        { emoji: '🪐', title: 'Natal Chart', desc: 'Complete planetary positions, houses, and aspects in-depth analysis' },
+        { emoji: '🔮', title: 'Transit Chart', desc: 'Transit tracking, solar return, lunar return' },
+        { emoji: '💫', title: 'Compatibility', desc: 'Composite chart, synastry, relationship aspects' },
+        { emoji: '🤖', title: 'AI Reading', desc: 'LLM-powered intelligent chart interpretation' },
+        { emoji: '📅', title: 'Fortune Calendar', desc: 'Daily, monthly, and yearly horoscope reports' },
+        { emoji: '🃏', title: 'Tarot Reading', desc: '78 classic tarot card spreads' },
+      ],
       mission: '私たちの使命は、テクノロジーで古代の占星術の知恵を蘇らせること'
     }
   },
@@ -248,6 +311,7 @@ export const translations: Record<string, any> = {
     modal: { enterQuestion: '질문을 입력하세요', enterBirth: '생년월일을 입력하세요', selectQuestion: '질문 유형 선택', generateReading: '점괘 보기' },
     about: { 
       title: '별점보기에 대하여',
+      subtitle: 'A professional astrology platform based on real astronomical calculations',
       intro: '별점보기는 실제 천문학적 계산과 첨단 AI 기술에 기반한 전문 점성술 플랫폼입니다. 정확하고 깊은 점성술 해석을 제공하여 모든 사람이 자신을 더 잘 이해하고 인생을 설계할 수 있도록 노력합니다.',
       what: '이것은 무엇인가',
       whatDesc: '별점보기는 실제 천문학 데이터와 첨단 AI 기술을 기반으로 한 전문 점성술 도구로, 사용자가 자신을 탐색하고 운세를 이해하는 데 도움을 줍니다.',
@@ -262,6 +326,14 @@ export const translations: Record<string, any> = {
         compat: '궁합 분석 - 두 사람 사이의 궁합과 상호작용 패턴 상세 분석',
         daily: '오늘의 운세 - 사랑, 직장, 재물 등 다방면의 운세 안내'
       },
+      featureCards: [
+        { emoji: '🪐', title: 'Natal Chart', desc: 'Complete planetary positions, houses, and aspects in-depth analysis' },
+        { emoji: '🔮', title: 'Transit Chart', desc: 'Transit tracking, solar return, lunar return' },
+        { emoji: '💫', title: 'Compatibility', desc: 'Composite chart, synastry, relationship aspects' },
+        { emoji: '🤖', title: 'AI Reading', desc: 'LLM-powered intelligent chart interpretation' },
+        { emoji: '📅', title: 'Fortune Calendar', desc: 'Daily, monthly, and yearly horoscope reports' },
+        { emoji: '🃏', title: 'Tarot Reading', desc: '78 classic tarot card spreads' },
+      ],
       mission: '우리의 사명은 기술로 고대 점성술 지혜를 되살리는 것입니다'
     }
   },
@@ -296,8 +368,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       if (value && typeof value === 'object' && k in value) {
         value = value[k];
       } else {
-        // Fallback to Chinese
-        value = translations.zh;
+        // Fallback to English
+        value = translations.en;
         for (const k2 of keys) {
           if (value && typeof value === 'object' && k2 in value) {
             value = value[k2];

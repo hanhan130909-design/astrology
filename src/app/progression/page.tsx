@@ -37,7 +37,7 @@ const PLANET_COLORS: Record<string, string> = {
 
 function tx(obj: any, lang: string): string {
   if (typeof obj === 'string') return obj;
-  return obj?.[lang] || obj?.zh || obj?.en || obj?.id || '';
+  return obj?.[lang] || obj?.en || obj?.zh || obj?.id || '';
 }
 
 export default function ProgressionPage() {

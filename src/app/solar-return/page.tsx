@@ -29,7 +29,7 @@ const HOUSE_SYSTEMS = [
 
 function tx(obj: any, lang: string): string {
   if (typeof obj === 'string') return obj;
-  return obj?.[lang] || obj?.zh || obj?.en || obj?.id || '';
+  return obj?.[lang] || obj?.en || obj?.zh || obj?.id || '';
 }
 
 export default function SolarReturnPage() {
@@ -93,7 +93,7 @@ export default function SolarReturnPage() {
     setBirthLat(latest.lat);
     setBirthLng(latest.lng);
     setBirthTz(latest.tz);
-    setCityName(latest.city || latest.name || '已保存地点');
+    setCityName(latest.city || latest.name || 'Saved Location');
     setBCityId('latest-profile');
     setHouseSystem(latest.houseSystem || 'B');
     calculateSolarReturn(latest, new Date().getFullYear(), latest.houseSystem || 'B');
@@ -206,7 +206,7 @@ export default function SolarReturnPage() {
             <div className="mb-4">
               <label className="text-xs text-gray-500 block mb-1">{language === 'zh' ? '出生地' : 'Birth Location'}</label>
               <select value={bCityId} onChange={e => handleCityChange(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm">
-                {bCityId === 'latest-profile' && <option value="latest-profile">{cityName || '已保存地点'}</option>}
+                {bCityId === 'latest-profile' && <option value="latest-profile">{cityName || 'Saved Location'}</option>}
                 {ALL_CITIES.map(c => <option key={c.id} value={c.id}>{tx(c.name,language)}</option>)}
               </select>
             </div>

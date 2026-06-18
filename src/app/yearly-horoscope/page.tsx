@@ -98,8 +98,8 @@ const LABELS: Record<string, Record<string, string>> = {
 
 export default function YearlyHoroscopePage() {
   const { language } = useLanguage();
-  const lang = language || "zh";
-  const labels = LABELS[lang] || LABELS.zh;
+  const lang = language || "en";
+  const labels = LABELS[lang] || LABELS.en || LABELS.zh;
 
   const [selectedSign, setSelectedSign] = useState<string>("aries");
   const [mounted, setMounted] = useState(false);
@@ -114,7 +114,7 @@ export default function YearlyHoroscopePage() {
   }, []);
 
   const signData = SIGNS.find(s => s.id === selectedSign)!;
-  const yearlyData = YEARLY_DATA[selectedSign]?.[lang] || YEARLY_DATA[selectedSign]?.zh || YEARLY_DATA.aries.zh;
+  const yearlyData = YEARLY_DATA[selectedSign]?.[lang] || YEARLY_DATA[selectedSign]?.en || YEARLY_DATA[selectedSign]?.zh || YEARLY_DATA.aries.en;
   const elemColor = ELEMENT_COLORS[signData?.element] || "#a855f7";
   const currentMonth = new Date().getMonth() + 1;
 
@@ -153,7 +153,7 @@ export default function YearlyHoroscopePage() {
                   }`}
                 >
                   <div className="text-2xl mb-1">{sign.symbol}</div>
-                  <div className="text-xs truncate">{sign.names[lang as keyof typeof sign.names] || sign.names.zh}</div>
+                  <div className="text-xs truncate">{sign.names[lang as keyof typeof sign.names] || sign.names.en || sign.names.zh}</div>
                   {isActive && (
                     <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: ELEMENT_COLORS[sign.element] }} />
                   )}
@@ -167,7 +167,7 @@ export default function YearlyHoroscopePage() {
         <div className="text-center mb-6">
           <div className="text-5xl mb-2" style={{ color: elemColor }}>{signData.symbol}</div>
           <h2 className="text-2xl font-bold" style={{ color: elemColor }}>
-            {signData.names[lang as keyof typeof signData.names] || signData.names.zh}
+            {signData.names[lang as keyof typeof signData.names] || signData.names.en || signData.names.zh}
           </h2>
           <p className="text-gray-500 text-sm mt-1">2026 {labels.highlight}</p>
         </div>

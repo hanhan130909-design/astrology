@@ -75,7 +75,7 @@ const PC: { id: string; sym: string; color: string; name: Record<string, string>
 
 function tx(obj: any, lang: string): string {
   if (typeof obj === 'string') return obj;
-  return obj?.[lang] || obj?.zh || obj?.en || obj?.id || '';
+  return obj?.[lang] || obj?.en || obj?.zh || obj?.id || '';
 }
 
 // Transit AI Reading Data
@@ -115,7 +115,7 @@ const TRANSIT_READINGS: Record<string, Record<string, Record<string, { title: st
 
 export default function TransitPage() {
   const { language } = useLanguage();
-  const lang = language || 'zh';
+  const lang = language || 'en';
   const { charts, loaded } = useChartStorage();
   
   const [bYear, setBYear] = useState(1990);
@@ -224,8 +224,8 @@ export default function TransitPage() {
 
   const selectCity = (city: any) => {
     setBCityId(city.id || 'custom');
-    setCityName(typeof city.name === 'object' ? (city.name[language] || city.name.zh || city.name.en) : city.name);
-    setCityQuery(typeof city.name === 'object' ? (city.name[language] || city.name.zh || city.name.en) : city.name);
+    setCityName(typeof city.name === 'object' ? (city.name[language] || city.name.en || city.name.zh) : city.name);
+    setCityQuery(typeof city.name === 'object' ? (city.name[language] || city.name.en || city.name.zh) : city.name);
     setShowCityDropdown(false);
   };
 
@@ -342,7 +342,7 @@ export default function TransitPage() {
         {/* Saved Charts */}
         {loaded && charts.length > 0 && (
           <div className="rounded-2xl bg-gray-50 border border-gray-200 p-4 mb-6">
-            <h3 className="text-sm font-bold text-gray-700 mb-3">{language === 'zh' ? '加载已保存的星盘' : 'Load Saved Chart'}</h3>
+            <h3 className="text-sm font-bold text-gray-700 mb-3">{language === 'zh' ? '加载已保存的星盘' : language === 'id' ? 'Muat Bagan Tersimpan' : 'Load Saved Chart'}</h3>
             <div className="flex gap-2 overflow-x-auto pb-2">
               {charts.map((sc: any) => (
                 <button key={sc.id} onClick={() => loadSavedChart(sc)} className="flex-shrink-0 p-3 rounded-xl bg-white/80 border border-gray-200 hover:border-gray-500/50 text-left min-w-[140px]">
@@ -378,7 +378,7 @@ export default function TransitPage() {
                       {isSearching && <div className="px-4 py-3 text-gray-500 text-sm">Searching...</div>}
                       {!isSearching && cityResults.map((city, i) => (
                         <button key={i} onClick={() => selectCity(city)} className="w-full px-4 py-2.5 text-left hover:bg-gray-100 border-b border-gray-200 last:border-0">
-                          <div className="text-sm text-gray-900">{typeof city.name === 'object' ? (city.name[language] || city.name.zh || city.name.en) : city.name}</div>
+                          <div className="text-sm text-gray-900">{typeof city.name === 'object' ? (city.name[language] || city.name.en || city.name.zh) : city.name}</div>
                         </button>
                       ))}
                     </div>
@@ -386,17 +386,17 @@ export default function TransitPage() {
                 </div>
                 <div className="grid grid-cols-3 gap-2">
                   <div>
-                    <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '年' : 'Year'}</label>
+                    <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '年' : language === 'id' ? 'Tahun' : 'Year'}</label>
                     <input type="number" value={bYear} onChange={e => setBYear(+e.target.value)} className="w-full p-2 rounded-xl bg-white border border-gray-300 text-gray-900 text-sm"/>
                   </div>
                   <div>
-                    <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '月' : 'Month'}</label>
+                    <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '月' : language === 'id' ? 'Bulan' : 'Month'}</label>
                     <select value={bMonth} onChange={e => setBMonth(+e.target.value)} className="w-full p-2 rounded-xl bg-white border border-gray-300 text-gray-900 text-sm">
                       {Array.from({length: 12}, (_, i) => i + 1).map(m => <option key={m} value={m}>{m}</option>)}
                     </select>
                   </div>
                   <div>
-                    <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '日' : 'Day'}</label>
+                    <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '日' : language === 'id' ? 'Hari' : 'Day'}</label>
                     <select value={bDay} onChange={e => setBDay(+e.target.value)} className="w-full p-2 rounded-xl bg-white border border-gray-300 text-gray-900 text-sm">
                       {Array.from({length: 31}, (_, i) => i + 1).map(d => <option key={d} value={d}>{d}</option>)}
                     </select>
@@ -404,13 +404,13 @@ export default function TransitPage() {
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '时' : 'Hour'}</label>
+                    <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '时' : language === 'id' ? 'Jam' : 'Hour'}</label>
                     <select value={bHour} onChange={e => setBHour(+e.target.value)} className="w-full p-2 rounded-xl bg-white border border-gray-300 text-gray-900 text-sm">
                       {Array.from({length: 24}, (_, i) => i).map(h => <option key={h} value={h}>{String(h).padStart(2,'0')}</option>)}
                     </select>
                   </div>
                   <div>
-                    <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '分' : 'Min'}</label>
+                    <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '分' : language === 'id' ? 'Menit' : 'Min'}</label>
                     <select value={bMinute} onChange={e => setBMinute(+e.target.value)} className="w-full p-2 rounded-xl bg-white border border-gray-300 text-gray-900 text-sm">
                       {Array.from({length: 12}, (_, i) => i * 5).map(m => <option key={m} value={m}>{String(m).padStart(2,'0')}</option>)}
                     </select>
@@ -427,17 +427,17 @@ export default function TransitPage() {
               </h3>
               <div className="grid grid-cols-3 gap-2">
                 <div>
-                  <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '年' : 'Year'}</label>
+                  <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '年' : language === 'id' ? 'Tahun' : 'Year'}</label>
                   <input type="number" value={tYear} onChange={e => setTYear(+e.target.value)} className="w-full p-2 rounded-xl bg-white border border-gray-300 text-gray-900 text-sm"/>
                 </div>
                 <div>
-                  <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '月' : 'Month'}</label>
+                  <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '月' : language === 'id' ? 'Bulan' : 'Month'}</label>
                   <select value={tMonth} onChange={e => setTMonth(+e.target.value)} className="w-full p-2 rounded-xl bg-white border border-gray-300 text-gray-900 text-sm">
                     {Array.from({length: 12}, (_, i) => i + 1).map(m => <option key={m} value={m}>{m}</option>)}
                   </select>
                 </div>
                 <div>
-                  <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '日' : 'Day'}</label>
+                  <label className="text-xs text-gray-500 mb-1 block">{language === 'zh' ? '日' : language === 'id' ? 'Hari' : 'Day'}</label>
                   <select value={tDay} onChange={e => setTDay(+e.target.value)} className="w-full p-2 rounded-xl bg-white border border-gray-300 text-gray-900 text-sm">
                     {Array.from({length: 31}, (_, i) => i + 1).map(d => <option key={d} value={d}>{d}</option>)}
                   </select>
@@ -459,7 +459,7 @@ export default function TransitPage() {
             {/* View Mode / Tab Toggle */}
             <div className="flex gap-2 p-1 rounded-xl bg-gray-100 max-w-lg mx-auto">
               <button onClick={() => setActiveTab('chart')} className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === 'chart' ? 'bg-gray-600 text-gray-900' : 'text-gray-500'}`}>
-                {language === 'zh' ? '星盘' : 'Chart'}
+                {language === 'zh' ? '星盘' : language === 'id' ? 'Bagan' : 'Chart'}
               </button>
               <button onClick={() => setActiveTab('ai')} className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === 'ai' ? 'bg-gray-600 text-gray-900' : 'text-gray-500'}`}>
                 AI {language === 'zh' ? '解读' : language === 'id' ? 'Bacaan' : 'Reading'}
@@ -472,10 +472,10 @@ export default function TransitPage() {
                 {/* View Mode Toggle */}
                 <div className="flex gap-2 p-1 rounded-xl bg-gray-100 max-w-md mx-auto">
                   <button onClick={() => setViewMode('overlay')} className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${viewMode === 'overlay' ? 'bg-gray-600 text-gray-900' : 'text-gray-500'}`}>
-                    {language === 'zh' ? '叠加显示' : 'Overlay'}
+                    {language === 'zh' ? '叠加显示' : language === 'id' ? 'Tampilan Overlay' : 'Overlay'}
                   </button>
                   <button onClick={() => setViewMode('separate')} className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${viewMode === 'separate' ? 'bg-gray-600 text-gray-900' : 'text-gray-500'}`}>
-                    {language === 'zh' ? '分开显示' : 'Separate'}
+                    {language === 'zh' ? '分开显示' : language === 'id' ? 'Tampilan Terpisah' : 'Separate'}
                   </button>
                 </div>
                 
@@ -493,12 +493,12 @@ export default function TransitPage() {
                     ) : (
                       <div className="grid md:grid-cols-2 gap-8">
                         <div>
-                          <h4 className="text-center text-sm text-gray-500 mb-4">{language === 'zh' ? '本命盘' : 'Natal Chart'}</h4>
+                          <h4 className="text-center text-sm text-gray-500 mb-4">{language === 'zh' ? '本命盘' : language === 'id' ? 'Bagan Natal' : 'Natal Chart'}</h4>
                           <ProfessionalNatalChart planets={chart.natal.planets} houses={chart.natal.houses} aspects={chart.natal.aspects} size={350}/>
                         </div>
                         {chart.transit && (
                           <div>
-                            <h4 className="text-center text-sm text-gray-500 mb-4">{language === 'zh' ? '推运盘' : 'Transit'} ({tYear}-{tMonth}-{tDay})</h4>
+                            <h4 className="text-center text-sm text-gray-500 mb-4">{language === 'zh' ? '推运盘' : language === 'id' ? 'Bagan Transit' : 'Transit'} ({tYear}-{tMonth}-{tDay})</h4>
                             <ProfessionalNatalChart planets={chart.transit.planets} houses={chart.natal.houses} aspects={[]} size={350}/>
                           </div>
                         )}
@@ -513,11 +513,11 @@ export default function TransitPage() {
             {activeTab === 'chart' && chart.transit?.aspects && (
               <div className="p-6 rounded-2xl bg-gray-50 border border-gray-300">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-bold text-gray-900">{language === 'zh' ? '推运相位' : 'Transit Aspects'}</h3>
+                  <h3 className="font-bold text-gray-900">{language === 'zh' ? '推运相位' : language === 'id' ? 'Aspek Transit' : 'Transit Aspects'}</h3>
                   <div className="flex gap-2">
                     {['all','major','exact'].map(f => (
                       <button key={f} onClick={() => setAspectFilter(f)} className={`px-3 py-1 rounded-full text-xs ${aspectFilter === f ? 'bg-gray-600 text-gray-900' : 'bg-white text-gray-500'}`}>
-                        {f === 'all' ? (language === 'zh' ? '全部' : 'All') : f === 'major' ? (language === 'zh' ? '主要' : 'Major') : (language === 'zh' ? '精确' : 'Exact')}
+                        {f === 'all' ? (language === 'zh' ? '全部' : language === 'id' ? 'Semua' : 'All') : f === 'major' ? (language === 'zh' ? '主要' : language === 'id' ? 'Utama' : 'Major') : (language === 'zh' ? '精确' : language === 'id' ? 'Tepat' : 'Exact')}
                       </button>
                     ))}
                   </div>

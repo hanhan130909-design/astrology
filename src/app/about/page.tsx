@@ -5,14 +5,14 @@ import { useLanguage, translations } from "@/contexts/LanguageContext";
 
 export default function AboutPage() {
   const { language } = useLanguage();
-  const t = (translations as Record<string, any>)[language] || translations.zh;
+  const t = (translations as Record<string, any>)[language] || translations.en;
 
   return (
     <div className="min-h-screen bg-white text-[#171717]">
       <main className="max-w-4xl mx-auto px-4 py-16">
         <h1 className="text-3xl font-bold text-center mb-4 text-gray-700">{t.about?.title || "关于星缘"}</h1>
         <p className="text-center text-gray-500 mb-16 max-w-xl mx-auto">
-          基于真实天文计算的专业占星平台
+          {t.about?.subtitle || "A professional astrology platform based on real astronomical calculations"}
         </p>
 
         {/* 品牌故事 */}
@@ -56,16 +56,16 @@ export default function AboutPage() {
 
         {/* 功能概览 */}
         <section className="mb-16">
-          <h2 className="text-2xl font-bold text-center mb-8 text-gray-800">核心功能</h2>
+          <h2 className="text-2xl font-bold text-center mb-8 text-gray-800">{t.about?.features?.title || "Core Features"}</h2>
           <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { emoji:"🪐", title:"本命盘分析", desc:"完整行星落位、宫位、相位深度解读" },
-              { emoji:"🔮", title:"推运盘", desc:"行运追踪、日返盘、月返盘" },
-              { emoji:"💫", title:"合盘分析", desc:"组合盘、比较盘、关系相位" },
-              { emoji:"🤖", title:"AI解读", desc:"基于大模型的智能星盘解读" },
-              { emoji:"📅", title:"运势日历", desc:"每日运势、每月运势、年度报告" },
-              { emoji:"🃏", title:"塔罗占卜", desc:"78张经典塔罗牌阵" },
-            ].map((f, i) => (
+            {(t.about?.featureCards || [
+              { emoji:"🪐", title:"Natal Chart", desc:"Complete planetary positions, houses, and aspects in-depth analysis" },
+              { emoji:"🔮", title:"Transit Chart", desc:"Transit tracking, solar return, lunar return" },
+              { emoji:"💫", title:"Compatibility", desc:"Composite chart, synastry, relationship aspects" },
+              { emoji:"🤖", title:"AI Reading", desc:"LLM-powered intelligent chart interpretation" },
+              { emoji:"📅", title:"Fortune Calendar", desc:"Daily, monthly, and yearly horoscope reports" },
+              { emoji:"🃏", title:"Tarot Reading", desc:"78 classic tarot card spreads" },
+            ] as Array<{emoji:string;title:string;desc:string}>).map((f, i) => (
               <div key={i} className="p-6 rounded-xl bg-gray-50 border border-gray-100 hover:shadow-md transition-shadow">
                 <div className="text-2xl mb-3">{f.emoji}</div>
                 <h3 className="font-bold text-gray-800 mb-1">{f.title}</h3>
@@ -109,7 +109,7 @@ export default function AboutPage() {
       </main>
 
       <footer className="py-8 px-4 text-center border-t border-gray-100 bg-gray-50">
-        <p className="text-sm text-gray-400">© 2026 星缘. All rights reserved.</p>
+        <p className="text-sm text-gray-400">© 2026 {t.siteName || "Starry Fate"}. All rights reserved.</p>
       </footer>
     </div>
   );

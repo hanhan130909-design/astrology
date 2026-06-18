@@ -21,10 +21,10 @@ const ZODIAC_DATA: Record<string, { symbol: string; names: Record<string, string
   pisces: { symbol: "♓", names: { zh: "双鱼座", en: "Pisces", id: "Pisces", th: "มีน", vi: "Song Ngư", ms: "Pisces", ja: "魚座", ko: "물고기자리" }, element: "water", rulingPlanet: {'zh': '海王星', 'en': 'Neptune', 'id': 'Neptunus', 'th': 'สมุทร', 'vi': 'Sao Hải Vương', 'ms': 'Neptun', 'ja': '海王星', 'ko': '해왕성'}, dates: "2.19-3.20" }};
 
 const ELEMENT_COLORS = {
-  fire: { color: "#FF6B6B", gradient: "from-gray-500/20 to-gray-500/20", border: "border-gray-500/30", text: "text-gray-400", icon: "🔥", label: { zh: "火象", en: "Fire", id: "Api" } },
-  earth: { color: "#8B7355", gradient: "from-gray-700/20 to-gray-600/20", border: "border-gray-600/30", text: "text-gray-600", icon: "🌍", label: { zh: "土象", en: "Earth", id: "Tanah" } },
-  air: { color: "#74B9FF", gradient: "from-gray-400/20 to-gray-400/20", border: "border-gray-400/30", text: "text-gray-400", icon: "💨", label: { zh: "风象", en: "Air", id: "Udara" } },
-  water: { color: "#0984E3", gradient: "from-gray-600/20 to-gray-600/20", border: "border-gray-500/30", text: "text-gray-400", icon: "💧", label: { zh: "水象", en: "Water", id: "Air" } }};
+  fire: { color: "#FF6B6B", gradient: "from-gray-500/20 to-gray-500/20", border: "border-gray-500/30", text: "text-gray-400", icon: "🔥", label: { zh: "火象", en: "Fire", id: "Api", th: "Fire", vi: "Fire", ms: "Fire", ja: "Fire", ko: "Fire" } },
+  earth: { color: "#8B7355", gradient: "from-gray-700/20 to-gray-600/20", border: "border-gray-600/30", text: "text-gray-600", icon: "🌍", label: { zh: "土象", en: "Earth", id: "Tanah", th: "Earth", vi: "Earth", ms: "Earth", ja: "Earth", ko: "Earth" } },
+  air: { color: "#74B9FF", gradient: "from-gray-400/20 to-gray-400/20", border: "border-gray-400/30", text: "text-gray-400", icon: "💨", label: { zh: "风象", en: "Air", id: "Udara", th: "Air", vi: "Air", ms: "Air", ja: "Air", ko: "Air" } },
+  water: { color: "#0984E3", gradient: "from-gray-600/20 to-gray-600/20", border: "border-gray-500/30", text: "text-gray-400", icon: "💧", label: { zh: "水象", en: "Water", id: "Air", th: "Water", vi: "Water", ms: "Water", ja: "Water", ko: "Water" } }};
 
 // Enhanced comprehensive horoscope data
 const HOROSCOPE_DATA: Record<string, Record<string, {
@@ -633,11 +633,18 @@ const baseData = {
   compatibility: "巨蟹座、金牛座", loveScore: 80, careerScore: 80, financeScore: 80, healthScore: 80,
   loveAdvice: "保持真诚和耐心。", careerAdvice: "继续努力，会有收获。", financeAdvice: "合理规划收支。",
   mood: "平和", energy: "稳定", focus: "平衡", bestDay: "星期三", worstDay: "星期五", keyPhrase: "平稳发展"};
+const baseDataEn = {
+  love: "Stable fortune, good for steady development.", career: "Work progresses smoothly.", finance: "Financial situation is good.",
+  health: "Health is stable.", tip: "Keep a positive mindset.", luckyColor: "Blue", luckyNumber: 7, luckyTime: "Afternoon",
+  weekly: "Stable fortune this week, above average in all aspects.", monthly: "Good overall fortune this month, steady progress.",
+  compatibility: "Cancer, Taurus", loveScore: 80, careerScore: 80, financeScore: 80, healthScore: 80,
+  loveAdvice: "Stay sincere and patient.", careerAdvice: "Keep working hard, it will pay off.", financeAdvice: "Plan your budget wisely.",
+  mood: "Calm", energy: "Steady", focus: "Balance", bestDay: "Wednesday", worstDay: "Friday", keyPhrase: "Steady progress"};
 
 ["taurus", "gemini", "cancer", "leo", "virgo", "libra", "scorpio", "sagittarius", "capricorn", "aquarius", "pisces"].forEach(sign => {
   if (!HOROSCOPE_DATA[sign]) {
     HOROSCOPE_DATA[sign] = {
-      zh: baseData, en: baseData, id: baseData, th: baseData, vi: baseData, ms: baseData, ja: baseData, ko: baseData};
+      zh: baseData, en: baseDataEn, id: baseData, th: baseData, vi: baseData, ms: baseData, ja: baseData, ko: baseData};
   }
 });
 
@@ -679,7 +686,7 @@ const CATEGORY_ICONS: Record<string, { icon: typeof Heart; color: string; label:
 export default function HoroscopePage() {
   const { language } = useLanguage();
   const lang = language || "zh";
-  const labels = LABELS[lang] || LABELS.zh;
+  const labels = LABELS[lang] || LABELS.en;
   const today = new Date().toLocaleDateString(lang === 'zh' ? 'zh-CN' : lang === 'id' ? 'id-ID' : 'en-US', { weekday: "long", month: "long", day: "numeric" });
 
   const [selectedSign, setSelectedSign] = useState<string>("aries");
@@ -695,7 +702,7 @@ export default function HoroscopePage() {
   const getLocalizedText = (obj: Record<string, string> | string | undefined): string => {
     if (!obj) return "";
     if (typeof obj === "string") return obj;
-    return obj[lang] || obj.zh || obj.en || "";
+    return obj[lang] || obj.en || obj.zh || "";
   };
 
   return (
@@ -723,11 +730,11 @@ export default function HoroscopePage() {
             <div className="flex items-center gap-3">
               <span className="text-4xl" style={{ color: elemColor.color }}>{signData?.symbol}</span>
               <div>
-                <div className="font-bold text-gray-900 text-lg">{signData?.names[lang as keyof typeof signData.names] || signData?.names.zh}</div>
+                <div className="font-bold text-gray-900 text-lg">{signData?.names[lang as keyof typeof signData.names] || signData?.names.en || signData?.names.zh}</div>
                 <div className="text-xs text-gray-500 flex gap-2">
                   <span>{labels.dates}: {signData?.dates}</span>
                   <span>•</span>
-                  <span>{labels.rulingPlanet}: {signData?.rulingPlanet?.[lang as keyof typeof signData.rulingPlanet] || (typeof signData?.rulingPlanet === 'string' ? signData.rulingPlanet : signData?.rulingPlanet?.zh)}</span>
+                  <span>{labels.rulingPlanet}: {signData?.rulingPlanet?.[lang as keyof typeof signData.rulingPlanet] || (typeof signData?.rulingPlanet === 'string' ? signData.rulingPlanet : signData?.rulingPlanet?.en || signData?.rulingPlanet?.zh)}</span>
                 </div>
               </div>
             </div>
@@ -747,7 +754,7 @@ export default function HoroscopePage() {
                   }`}
                 >
                   <div className="text-2xl mb-1">{data.symbol}</div>
-                  <div className="text-xs truncate">{data.names[lang as keyof typeof data.names] || data.names.zh}</div>
+                  <div className="text-xs truncate">{data.names[lang as keyof typeof data.names] || data.names.en || data.names.zh}</div>
                 </button>
               ))}
             </div>
@@ -778,7 +785,7 @@ export default function HoroscopePage() {
             <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-gray-50/30 to-gray-900/20 border border-gray-200">
               <div className="text-5xl mb-2" style={{ color: elemColor.color }}>{signData?.symbol}</div>
               <h2 className="text-2xl font-bold mb-1" style={{ color: elemColor.color }}>
-                {signData?.names[lang as keyof typeof signData.names] || signData?.names.zh}
+                {signData?.names[lang as keyof typeof signData.names] || signData?.names.en || signData?.names.zh}
               </h2>
               <p className="text-gray-500 text-sm">{signData?.element} • {signData?.dates}</p>
               {/* 关键词 */}
