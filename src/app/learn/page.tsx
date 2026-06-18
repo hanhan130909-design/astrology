@@ -74,7 +74,8 @@ export default function LearnPage() {
   const [selectedPlanet, setSelectedPlanet] = useState<string>("Sun");
   const [showList, setShowList] = useState(false);
 
-  const planetInfo = PLANET_DATA[lang as keyof typeof PLANET_DATA]?.[selectedPlanet as keyof typeof PLANET_DATA.zh] || PLANET_DATA.zh[selectedPlanet as keyof typeof PLANET_DATA.zh];
+  const lookup = PLANET_DATA[lang as keyof typeof PLANET_DATA] || PLANET_DATA.en || PLANET_DATA.zh;
+  const planetInfo = lookup[selectedPlanet as keyof typeof lookup] || PLANET_DATA.zh[selectedPlanet as keyof typeof PLANET_DATA.zh];
   const PlanetIcon = PLANET_ICONS[selectedPlanet] || Star;
 
   const planets = Object.keys(PLANET_DATA.zh);
@@ -116,7 +117,7 @@ export default function LearnPage() {
           {showList && (
             <div className="absolute top-full left-0 right-0 mt-2 p-3 rounded-2xl bg-white border border-gray-200 backdrop-blur-xl z-50 grid grid-cols-5 gap-2">
               {planets.map(p => {
-                const info = PLANET_DATA[lang]?.[p as keyof typeof PLANET_DATA.en] || PLANET_DATA.zh[p as keyof typeof PLANET_DATA.zh];
+                const info = lookup[p as keyof typeof lookup] || PLANET_DATA.zh[p as keyof typeof PLANET_DATA.zh];
                 const Icon = PLANET_ICONS[p] || Star;
                 const isActive = selectedPlanet === p;
                 return (
