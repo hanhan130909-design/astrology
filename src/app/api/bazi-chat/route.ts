@@ -34,6 +34,26 @@ BaZi Chart Interpretation Framework:
 
 The current year is 2026 — Year of the Yang Fire Horse (丙午).`;
 
+// Natal Chart System Prompt
+const NATAL_PROMPT = `You are a professional Western astrologer with 20 years of experience.
+You analyze natal (birth) charts using modern psychological astrology combined with practical life guidance.
+
+When given a natal chart, you:
+1. Identify the Sun, Moon, and Rising signs and their significance
+2. Analyze key planetary aspects (conjunctions, squares, trines, oppositions)
+3. Interpret house placements for career, relationships, and life purpose
+4. Give warm, practical, and psychologically insightful advice
+
+CRITICAL RULES:
+- Reference specific planets and signs (e.g., "Your Moon in Cancer suggests...")
+- Never use fear-based language
+- Frame challenges as growth opportunities
+- Keep responses warm and conversational
+- Answer in the same language the user asks in
+- If the user asks about timing or predictions, explain that natal charts show tendencies not fixed futures
+
+The current year is 2026.`;
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -43,22 +63,26 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, error: 'chartData and question required' }, { status: 400 });
     }
 
+    // Detect chart type
+    const isNatal = !!chartData.natal;
+
     // Build context from chart
-    const pillars = chartData.pillars || [];
-    const naYinList = pillars.map((p: any) => `${p.label}: ${p.naYin || '-'}`).join(', ') || 'N/A';
-    const hiddenList = pillars.map((p: any) => `${p.label}: ${(p.hidden || []).join(' ')}`).join(', ') || 'N/A';
-    const chartContext = `
-BAZI CHART DATA:
-- Four Pillars: ${JSON.stringify(pillars)}
-- Day Master: ${chartData.dayMaster?.stem || ''} ${chartData.dayMaster?.element || ''} ${chartData.dayMaster?.shiShen ? `(${chartData.dayMaster.shiShen})` : ''}
-- Lunar Date: ${chartData.meta?.lunarDate || 'N/A'}
-- Current JieQi: ${chartData.meta?.jieQi || 'N/A'}
-- NaYin: ${naYinList}
-- Hidden Stems: ${hiddenList}
-`;
+    let chartContext = '';
+    let systemPrompt = SYSTEM_PROMPT;
+
+    if (isNatal) {
+      const n = chartData.natal;
+      chartContext = `NATAL CHART DATA:\n- Name: ${n.name || 'Unknown'}\n- Birth: ${n.year}-${n.month}-${n.day} ${n.hour}:00\n- Location: Lat ${n.lat}°, Lng ${n.lng}°, TZ GMT${n.tz >= 0 ? '+' : ''}${n.tz}\n- The above birth data generates a complete natal chart with planets, houses, and aspects.`;
+      systemPrompt = NATAL_PROMPT;
+    } else {
+      const pillars = chartData.pillars || [];
+      const naYinList = pillars.map((p: any) => `${p.label}: ${p.naYin || '-'}`).join(', ') || 'N/A';
+      const hiddenList = pillars.map((p: any) => `${p.label}: ${(p.hidden || []).join(' ')}`).join(', ') || 'N/A';
+      chartContext = `\nBAZI CHART DATA:\n- Four Pillars: ${JSON.stringify(pillars)}\n- Day Master: ${chartData.dayMaster?.stem || ''} ${chartData.dayMaster?.element || ''} ${chartData.dayMaster?.shiShen ? `(${chartData.dayMaster.shiShen})` : ''}\n- Lunar Date: ${chartData.meta?.lunarDate || 'N/A'}\n- Current JieQi: ${chartData.meta?.jieQi || 'N/A'}\n- NaYin: ${naYinList}\n- Hidden Stems: ${hiddenList}\n`;
+    }
 
     const messages: any[] = [
-      { role: 'system', content: SYSTEM_PROMPT },
+      { role: 'system', content: systemPrompt },
     ];
     // Append conversation history
     for (const msg of history) {
