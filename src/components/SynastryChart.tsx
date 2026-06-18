@@ -59,52 +59,15 @@ const cities = [
   {value:"singapore",   label:{id:"新加坡",zh:"新加坡",en:"Singapore"}},
 ];
 
-const translations = {
-  id: {
-    title:"星盘合盘分析", subtitle:"深入解读两人的行星相位",
-    person1:"第一人", person2:"第二人",
-    name:"姓名", year:"年", month:"月", day:"日", hour:"时", minute:"分", city:"城市",
-    analyze:"分析合盘", analyzing:"分析中...",
-    synastry:"合盘相位", score:"契合度",
-    strong:"强连接", challenges:"挑战", opportunities:"机会",
-    noAspect:"暂无相位数据", loading:"加载星盘...", error:"分析失败",
-    planets:"行星", aspects:"相位",
-    love:"爱情", career:"事业", communication:"沟通",
-    aiReading:"AI解读", simpleReading:"简要解读", deepReading:"深度解读",
-    free:"免费", unlockDeep:"解锁深度解读", shareToUnlock:"分享给3位好友解锁",
-    shareProgress:"分享进度", shareComplete:"分享完成！已解锁",
-    friend:"好友", relationshipAdvice:"关系建议",
-  },
-  zh: {
-    title:"星盘合盘分析", subtitle:"深入解读两人的行星相位",
-    person1:"第一人", person2:"第二人",
-    name:"姓名", year:"年", month:"月", day:"日", hour:"时", minute:"分", city:"城市",
-    analyze:"分析合盘", analyzing:"分析中...",
-    synastry:"合盘相位", score:"契合度",
-    strong:"强连接", challenges:"挑战", opportunities:"机会",
-    noAspect:"暂无相位数据", loading:"加载星盘...", error:"分析失败",
-    planets:"行星", aspects:"相位",
-    love:"爱情", career:"事业", communication:"沟通",
-    aiReading:"AI解读", simpleReading:"简要解读", deepReading:"深度解读",
-    free:"免费", unlockDeep:"解锁深度解读", shareToUnlock:"分享给3位好友解锁",
-    shareProgress:"分享进度", shareComplete:"分享完成！已解锁",
-    friend:"好友", relationshipAdvice:"关系建议",
-  },
-  en: {
-    title:"Synastry Analysis", subtitle:"Deep planetary aspect reading",
-    person1:"Person 1", person2:"Person 2",
-    name:"Name", year:"Year", month:"Month", day:"Day", hour:"Hour", minute:"Min", city:"City",
-    analyze:"Analyze", analyzing:"Analyzing...",
-    synastry:"Synastry Aspects", score:"Compatibility",
-    strong:"Strong Links", challenges:"Challenges", opportunities:"Opportunities",
-    noAspect:"No aspects", loading:"Loading...", error:"Analysis failed",
-    planets:"Planets", aspects:"Aspects",
-    love:"Love", career:"Career", communication:"Communication",
-    aiReading:"AI Reading", simpleReading:"Summary", deepReading:"Deep Reading",
-    free:"Free", unlockDeep:"Unlock Deep Reading", shareToUnlock:"Share with 3 friends to unlock",
-    shareProgress:"Share Progress", shareComplete:"Sharing complete! Unlocked",
-    friend:"Friend", relationshipAdvice:"Relationship Advice",
-  },
+const translations: Record<string, Record<string, string>> = {
+  zh: { title:"星盘合盘分析",subtitle:"深入解读两人的行星相位",person1:"第一人",person2:"第二人",name:"姓名",year:"年",month:"月",day:"日",hour:"时",minute:"分",city:"城市",analyze:"分析合盘",analyzing:"分析中...",synastry:"合盘相位",score:"契合度",strong:"强连接",challenges:"挑战",opportunities:"机会",noAspect:"暂无相位数据",loading:"加载星盘...",error:"分析失败",planets:"行星",aspects:"相位",love:"爱情",career:"事业",communication:"沟通",aiReading:"AI解读",simpleReading:"简要解读",deepReading:"深度解读",free:"免费",unlockDeep:"解锁深度解读",shareToUnlock:"分享给3位好友解锁",shareProgress:"分享进度",shareComplete:"分享完成！已解锁",friend:"好友",relationshipAdvice:"关系建议",scoreHigh:"🌟 高度契合",scoreMid:"⚡ 中等契合",scoreLow:"🌊 需要努力",ascRising:"上升",mcZenith:"天顶" },
+  en: { title:"Synastry Analysis",subtitle:"Deep planetary aspect reading",person1:"Person 1",person2:"Person 2",name:"Name",year:"Year",month:"Month",day:"Day",hour:"Hour",minute:"Min",city:"City",analyze:"Analyze",analyzing:"Analyzing...",synastry:"Synastry Aspects",score:"Compatibility",strong:"Strong Links",challenges:"Challenges",opportunities:"Opportunities",noAspect:"No aspects",loading:"Loading...",error:"Analysis failed",planets:"Planets",aspects:"Aspects",love:"Love",career:"Career",communication:"Communication",aiReading:"AI Reading",simpleReading:"Summary",deepReading:"Deep Reading",free:"Free",unlockDeep:"Unlock Deep Reading",shareToUnlock:"Share with 3 friends to unlock",shareProgress:"Share Progress",shareComplete:"Unlocked!",friend:"Friend",relationshipAdvice:"Relationship Advice",scoreHigh:"🌟 Great Match",scoreMid:"⚡ Moderate Match",scoreLow:"🌊 Needs Work",ascRising:"Asc",mcZenith:"MC" },
+  id: { title:"Analisis Sinastri",subtitle:"Pembacaan aspek planet mendalam",person1:"Orang 1",person2:"Orang 2",name:"Nama",year:"Tahun",month:"Bulan",day:"Hari",hour:"Jam",minute:"Mnt",city:"Kota",analyze:"Analisis",analyzing:"Menganalisis...",synastry:"Aspek Sinastri",score:"Kecocokan",strong:"Koneksi Kuat",challenges:"Tantangan",opportunities:"Peluang",noAspect:"Tidak ada aspek",loading:"Memuat...",error:"Analisis gagal",planets:"Planet",aspects:"Aspek",love:"Cinta",career:"Karier",communication:"Komunikasi",aiReading:"AI Reading",simpleReading:"Ringkasan",deepReading:"Mendalam",free:"Gratis",unlockDeep:"Buka Deep Reading",shareToUnlock:"Bagikan ke 3 teman untuk membuka",shareProgress:"Progres Berbagi",shareComplete:"Terbuka!",friend:"Teman",relationshipAdvice:"Saran Hubungan",scoreHigh:"🌟 Sangat Cocok",scoreMid:"⚡ Cukup Cocok",scoreLow:"🌊 Perlu Usaha",ascRising:"Asc",mcZenith:"MC" },
+  th: { title:"วิเคราะห์ซินแอสทรี",subtitle:"การอ่านมุมดาวเชิงลึก",person1:"คนที่ 1",person2:"คนที่ 2",name:"ชื่อ",year:"ปี",month:"เดือน",day:"วัน",hour:"ชม",minute:"นาที",city:"เมือง",analyze:"วิเคราะห์",analyzing:"กำลังวิเคราะห์...",synastry:"มุมดาวซินแอสทรี",score:"ความเข้ากัน",strong:"ความเชื่อมโยง",challenges:"ความท้าทาย",opportunities:"โอกาส",noAspect:"ไม่มีมุมดาว",loading:"กำลังโหลด...",error:"การวิเคราะห์ล้มเหลว",planets:"ดาวเคราะห์",aspects:"มุมดาว",love:"ความรัก",career:"การงาน",communication:"การสื่อสาร",aiReading:"AI อ่านดวง",simpleReading:"สรุป",deepReading:"เชิงลึก",free:"ฟรี",unlockDeep:"ปลดล็อกการอ่านเชิงลึก",shareToUnlock:"แชร์ให้เพื่อน 3 คนเพื่อปลดล็อก",shareProgress:"ความคืบหน้า",shareComplete:"ปลดล็อกแล้ว!",friend:"เพื่อน",relationshipAdvice:"คำแนะนำความสัมพันธ์",scoreHigh:"🌟 เข้ากันดีมาก",scoreMid:"⚡ เข้ากันได้ปานกลาง",scoreLow:"🌊 ต้องพยายาม",ascRising:"ลัคนา",mcZenith:"MC" },
+  vi: { title:"Phân Tích Synastry",subtitle:"Đọc góc chiếu hành tinh sâu",person1:"Người 1",person2:"Người 2",name:"Tên",year:"Năm",month:"Tháng",day:"Ngày",hour:"Giờ",minute:"Phút",city:"Thành phố",analyze:"Phân tích",analyzing:"Đang phân tích...",synastry:"Góc Chiếu Synastry",score:"Tương hợp",strong:"Kết nối mạnh",challenges:"Thách thức",opportunities:"Cơ hội",noAspect:"Không có góc chiếu",loading:"Đang tải...",error:"Phân tích thất bại",planets:"Hành tinh",aspects:"Góc chiếu",love:"Tình yêu",career:"Sự nghiệp",communication:"Giao tiếp",aiReading:"AI Giải mã",simpleReading:"Tóm tắt",deepReading:"Chuyên sâu",free:"Miễn phí",unlockDeep:"Mở khóa Deep Reading",shareToUnlock:"Chia sẻ với 3 người bạn để mở khóa",shareProgress:"Tiến độ",shareComplete:"Đã mở khóa!",friend:"Bạn",relationshipAdvice:"Lời khuyên",scoreHigh:"🌟 Rất hợp",scoreMid:"⚡ Hợp vừa",scoreLow:"🌊 Cần cố gắng",ascRising:"Asc",mcZenith:"MC" },
+  ms: { title:"Analisis Sinastri",subtitle:"Pembacaan aspek planet mendalam",person1:"Orang 1",person2:"Orang 2",name:"Nama",year:"Tahun",month:"Bulan",day:"Hari",hour:"Jam",minute:"Minit",city:"Bandar",analyze:"Analisis",analyzing:"Menganalisis...",synastry:"Aspek Sinastri",score:"Keserasian",strong:"Hubungan Kuat",challenges:"Cabaran",opportunities:"Peluang",noAspect:"Tiada aspek",loading:"Memuat...",error:"Analisis gagal",planets:"Planet",aspects:"Aspek",love:"Cinta",career:"Kerjaya",communication:"Komunikasi",aiReading:"AI Bacaan",simpleReading:"Ringkasan",deepReading:"Mendalam",free:"Percuma",unlockDeep:"Buka Bacaan Mendalam",shareToUnlock:"Kongsi ke 3 rakan untuk buka",shareProgress:"Kemajuan",shareComplete:"Terbuka!",friend:"Rakan",relationshipAdvice:"Nasihat Hubungan",scoreHigh:"🌟 Sangat Serasi",scoreMid:"⚡ Sederhana",scoreLow:"🌊 Perlu Usaha",ascRising:"Asc",mcZenith:"MC" },
+  ja: { title:"シナストリー分析",subtitle:"惑星アスペクトの深い読み解き",person1:"本人",person2:"相手",name:"名前",year:"年",month:"月",day:"日",hour:"時",minute:"分",city:"都市",analyze:"分析",analyzing:"分析中...",synastry:"シナストリー",score:"相性",strong:"強い繋がり",challenges:"課題",opportunities:"機会",noAspect:"アスペクトなし",loading:"読み込み中...",error:"分析失敗",planets:"惑星",aspects:"アスペクト",love:"愛",career:"仕事",communication:"コミュニケーション",aiReading:"AIリーディング",simpleReading:"概要",deepReading:"詳細",free:"無料",unlockDeep:"詳細を解除",shareToUnlock:"3人の友達にシェアして解除",shareProgress:"進捗",shareComplete:"解除完了!",friend:"友達",relationshipAdvice:"関係のアドバイス",scoreHigh:"🌟 非常に良好",scoreMid:"⚡ まあまあ",scoreLow:"🌊 努力が必要",ascRising:"Asc",mcZenith:"MC" },
+  ko: { title:"시나스트리 분석",subtitle:"행성 각도 깊이 읽기",person1:"본인",person2:"상대",name:"이름",year:"년",month:"월",day:"일",hour:"시",minute:"분",city:"도시",analyze:"분석",analyzing:"분석 중...",synastry:"시나스트리",score:"궁합",strong:"강한 연결",challenges:"과제",opportunities:"기회",noAspect:"각도 없음",loading:"로딩 중...",error:"분석 실패",planets:"행성",aspects:"각도",love:"사랑",career:"직업",communication:"소통",aiReading:"AI 리딩",simpleReading:"요약",deepReading:"심층",free:"무료",unlockDeep:"심층 해제",shareToUnlock:"친구 3명에게 공유하여 해제",shareProgress:"진행",shareComplete:"해제 완료!",friend:"친구",relationshipAdvice:"관계 조언",scoreHigh:"🌟 매우 좋음",scoreMid:"⚡ 보통",scoreLow:"🌊 노력 필요",ascRising:"Asc",mcZenith:"MC" },
 };
 
 // AI Reading Data for Synastry
@@ -183,15 +146,59 @@ function calcScore(aspects: ReturnType<typeof calcAspects>) {
   return Math.max(10, Math.min(98, Math.round(score)));
 }
 
-function getAspectMeaning(type: string): { love: string; career: string; comm: string } {
-  const meanings: Record<string, { love: string; career: string; comm: string }> = {
-    Conjunction:  { love:"两人个性强烈融合，吸引力强", career:"事业上能同心协力", comm:"想法一致，默契十足" },
-    Sextile:      { love:"轻松愉快的互动，相处融洽", career:"合作关系顺利", comm:"沟通顺畅，能互补" },
-    Square:       { love:"关系中有摩擦和挑战", career:"竞争中成长", comm:"沟通有障碍，需耐心" },
-    Trine:        { love:"感情自然流动，和谐美好", career:"互相支持成就", comm:"心有灵犀一点通" },
-    Opposition:   { love:"互相吸引也互相拉扯", career:"需学会平衡", comm:"容易误解，需多沟通" },
-  };
-  return meanings[type] || { love:"相位影响", career:"事业相关", comm:"沟通相关" };
+function getAspectMeaning(type: string, lang: string): { love: string; career: string; comm: string } {
+  return ({
+    Conjunction: {
+      zh:{love:"两人个性强烈融合，吸引力强",career:"事业上能同心协力",comm:"想法一致，默契十足"},
+      en:{love:"Strong fusion of personalities",career:"Great teamwork energy",comm:"Natural understanding"},
+      id:{love:"Perpaduan kepribadian yang kuat",career:"Kerja sama tim yang hebat",comm:"Saling pengertian alami"},
+      th:{love:"การผสมผสานที่แข็งแกร่ง",career:"พลังการทำงานเป็นทีม",comm:"ความเข้าใจที่เป็นธรรมชาติ"},
+      vi:{love:"Sự hòa quyện mạnh mẽ",career:"Năng lượng làm việc nhóm",comm:"Hiểu nhau tự nhiên"},
+      ms:{love:"Gabungan personaliti kuat",career:"Kerja berpasukan hebat",comm:"Saling memahami semula jadi"},
+      ja:{love:"個性の強い融合",career:"優れたチームワーク",comm:"自然な理解"},
+      ko:{love:"강한 성격 융합",career:"훌륭한 팀워크",comm:"자연스러운 이해"},
+    },
+    Sextile: {
+      zh:{love:"轻松愉快的互动，相处融洽",career:"合作关系顺利",comm:"沟通顺畅，能互补"},
+      en:{love:"Easy and pleasant interaction",career:"Smooth cooperation",comm:"Complementary communication"},
+      id:{love:"Interaksi yang mudah dan menyenangkan",career:"Kerja sama lancar",comm:"Komunikasi saling melengkapi"},
+      th:{love:"ปฏิสัมพันธ์ที่ง่ายและน่าพอใจ",career:"ความร่วมมือที่ราบรื่น",comm:"การสื่อสารที่เสริมกัน"},
+      vi:{love:"Tương tác dễ dàng và dễ chịu",career:"Hợp tác suôn sẻ",comm:"Giao tiếp bổ sung"},
+      ms:{love:"Interaksi mudah dan menyenangkan",career:"Kerjasama lancar",comm:"Komunikasi saling melengkapi"},
+      ja:{love:"気楽で楽しい交流",career:"スムーズな協力",comm:"補完的なコミュニケーション"},
+      ko:{love:"쉽고 즐거운 상호작용",career:"원활한 협력",comm:"보완적 소통"},
+    },
+    Square: {
+      zh:{love:"关系中有摩擦和挑战",career:"竞争中成长",comm:"沟通有障碍，需耐心"},
+      en:{love:"Friction and challenges exist",career:"Growth through competition",comm:"Communication barriers need patience"},
+      id:{love:"Ada gesekan dan tantangan",career:"Tumbuh melalui kompetisi",comm:"Hambatan komunikasi butuh kesabaran"},
+      th:{love:"มีความขัดแย้งและความท้าทาย",career:"เติบโตผ่านการแข่งขัน",comm:"อุปสรรคการสื่อสารต้องอดทน"},
+      vi:{love:"Có xung đột và thách thức",career:"Phát triển qua cạnh tranh",comm:"Rào cản giao tiếp cần kiên nhẫn"},
+      ms:{love:"Ada geseran dan cabaran",career:"Berkembang melalui persaingan",comm:"Halangan komunikasi perlu sabar"},
+      ja:{love:"摩擦と課題がある",career:"競争を通じて成長",comm:"コミュニケーション障壁に忍耐が必要"},
+      ko:{love:"마찰과 도전이 있음",career:"경쟁을 통한 성장",comm:"소통 장애에 인내 필요"},
+    },
+    Trine: {
+      zh:{love:"感情自然流动，和谐美好",career:"互相支持成就",comm:"心有灵犀一点通"},
+      en:{love:"Natural flow of emotions",career:"Mutual support",comm:"Telepathic understanding"},
+      id:{love:"Aliran emosi yang alami",career:"Saling mendukung",comm:"Pemahaman telepati"},
+      th:{love:"การไหลของอารมณ์ตามธรรมชาติ",career:"การสนับสนุนซึ่งกันและกัน",comm:"ความเข้าใจแบบโทรจิต"},
+      vi:{love:"Dòng chảy cảm xúc tự nhiên",career:"Hỗ trợ lẫn nhau",comm:"Hiểu nhau không cần lời"},
+      ms:{love:"Aliran emosi semula jadi",career:"Saling menyokong",comm:"Pemahaman telepati"},
+      ja:{love:"感情の自然な流れ",career:"相互支援",comm:"以心伝心"},
+      ko:{love:"자연스러운 감정 흐름",career:"상호 지원",comm:"텔레파시 이해"},
+    },
+    Opposition: {
+      zh:{love:"互相吸引也互相拉扯",career:"需学会平衡",comm:"容易误解，需多沟通"},
+      en:{love:"Attraction and tension coexist",career:"Need to find balance",comm:"Risk of misunderstanding"},
+      id:{love:"Daya tarik dan ketegangan bersamaan",career:"Perlu keseimbangan",comm:"Risiko kesalahpahaman"},
+      th:{love:"แรงดึงดูดและความตึงเครียด",career:"ต้องหาสมดุล",comm:"เสี่ยงความเข้าใจผิด"},
+      vi:{love:"Hấp dẫn và căng thẳng cùng tồn tại",career:"Cần tìm cân bằng",comm:"Nguy cơ hiểu lầm"},
+      ms:{love:"Tarikan dan ketegangan wujud bersama",career:"Perlu keseimbangan",comm:"Risiko salah faham"},
+      ja:{love:"引力と緊張が共存",career:"バランスが必要",comm:"誤解のリスク"},
+      ko:{love:"끌림과 긴장이 공존",career:"균형 필요",comm:"오해 위험"},
+    },
+  })[type]?.[lang] || (({zh:{love:"相位影响",career:"事业相关",comm:"沟通相关"},en:{love:"Aspect influence",career:"Career related",comm:"Communication related"}})[lang] || {love:"Aspect",career:"Career",comm:"Communication"});
 }
 
 export default function SynastryChart({ language = "zh" }: SynastryProps) {
@@ -313,7 +320,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
               <input name="name" value={person.name} onChange={e => handleInput(e, setter)}
                 placeholder={t.name} className="w-full bg-gray-50 border border-gray-700/40 rounded-xl px-4 py-2 text-white placeholder-gray-500 focus:outline-none focus:border-gray-500/60 transition text-sm" />
               <div className="grid grid-cols-3 gap-2">
-                {[["year","年",1990,2030],["month","月",1,12],["day","日",1,31]].map(([n,l,min,max])=>(
+                {[["year",t.year,1990,2030],["month",t.month,1,12],["day",t.day,1,31]].map(([n,l,min,max])=>(
                   <div key={n as string}>
                     <label className="block text-xs text-gray-400 mb-1">{l}</label>
                     <input name={n as string} value={(person as any)[n as string]} onChange={e=>handleInput(e,setter)}
@@ -323,7 +330,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
                 ))}
               </div>
               <div className="grid grid-cols-2 gap-2">
-                {[["hour","时",0,23],["minute","分",0,59]].map(([n,l,min,max])=>(
+                {[["hour",t.hour,0,23],["minute",t.minute,0,59]].map(([n,l,min,max])=>(
                   <div key={n as string}>
                     <label className="block text-xs text-gray-400 mb-1">{l}</label>
                     <input name={n as string} value={(person as any)[n as string]} onChange={e=>handleInput(e,setter)}
@@ -363,7 +370,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
               <div className="h-full rounded-full transition-all duration-1000" style={{width:`${score}%`, backgroundColor:scoreColor}} />
             </div>
             <div className="mt-3 text-sm text-gray-300">
-              {score >= 70 ? "🌟 高度契合" : score >= 50 ? "⚡ 中等契合" : "🌊 需要努力"}
+              {score >= 70 ? t.scoreHigh : score >= 50 ? t.scoreMid : t.scoreLow}
             </div>
           </div>
 
@@ -372,8 +379,8 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-gray-950/40 border border-gray-800/30 rounded-2xl p-4">
                 <div className="text-center mb-3">
-                  <div className="text-gray-600 font-bold">{p1.name || "第一人"}</div>
-                  <div className="text-xs text-gray-400">{data1.ascendant} 上升 · {data1.midheaven} 天顶</div>
+                  <div className="text-gray-600 font-bold">{p1.name || t.person1}</div>
+                  <div className="text-xs text-gray-400">{data1.ascendant} {t.ascRising} · {data1.midheaven} {t.mcZenith}</div>
                 </div>
                 <div className="flex justify-center">
                   <NatalChart planets={data1.planets} houses={data1.houses} aspects={[]} size={240} />
@@ -381,8 +388,8 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
               </div>
               <div className="bg-gray-950/40 border border-gray-800/30 rounded-2xl p-4">
                 <div className="text-center mb-3">
-                  <div className="text-gray-200 font-bold">{p2.name || "第二人"}</div>
-                  <div className="text-xs text-gray-400">{data2.ascendant} 上升 · {data2.midheaven} 天顶</div>
+                  <div className="text-gray-200 font-bold">{p2.name || t.person2}</div>
+                  <div className="text-xs text-gray-400">{data2.ascendant} {t.ascRising} · {data2.midheaven} {t.mcZenith}</div>
                 </div>
                 <div className="flex justify-center">
                   <NatalChart planets={data2.planets} houses={data2.houses} aspects={[]} size={240} />
@@ -401,7 +408,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
                 <div className="text-sm font-bold text-gray-300 mb-2">🌟 {t.strong}</div>
                 <div className="space-y-2">
                   {strongAspects.map((a, i) => {
-                    const m = getAspectMeaning(a.type);
+                    const m = getAspectMeaning(a.type, language);
                     return (
                       <div key={i} className="flex items-start gap-3 bg-gray-950/30 rounded-lg px-3 py-2">
                         <span className="text-xl" style={{color:a.color}}>{a.symbol}</span>
@@ -427,7 +434,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
                 <div className="text-sm font-bold text-gray-600 mb-2">⚡ {t.challenges}</div>
                 <div className="space-y-2">
                   {challengeAspects.map((a, i) => {
-                    const m = getAspectMeaning(a.type);
+                    const m = getAspectMeaning(a.type, language);
                     return (
                       <div key={i} className="flex items-start gap-3 bg-gray-950/30 rounded-lg px-3 py-2">
                         <span className="text-xl" style={{color:a.color}}>{a.symbol}</span>
