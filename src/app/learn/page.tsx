@@ -210,7 +210,7 @@ export default function LearnPage() {
             ].map(h => (
               <div key={h.num} className="p-4 rounded-lg border border-gray-200 bg-gray-50">
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="text-sm font-semibold text-gray-900">{h.num}宫</span>
+                  <span className="text-sm font-semibold text-gray-900">{lang === "zh" ? `${h.num}宫 · ${h.zh}` : `${h.num} · ${h.en}`}</span>
                   <span className="text-xs text-gray-500">{lang==='zh'?h.zh:h.en}</span>
                 </div>
                 <p className="text-xs text-gray-500">{lang==='zh'?h.zhDesc:h.enDesc}</p>
