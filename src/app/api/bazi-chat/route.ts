@@ -72,7 +72,19 @@ export async function POST(request: NextRequest) {
 
     if (isNatal) {
       const n = chartData.natal;
-      chartContext = `NATAL CHART DATA:\n- Name: ${n.name || 'Unknown'}\n- Birth: ${n.year}-${n.month}-${n.day} ${n.hour}:00\n- Location: Lat ${n.lat}°, Lng ${n.lng}°, TZ GMT${n.tz >= 0 ? '+' : ''}${n.tz}\n- The above birth data generates a complete natal chart with planets, houses, and aspects.`;
+      const planetList = (n.planets || []).map((p: any) => 
+        `${p.name}: ${p.sign} ${p.longitude}${p.retrograde ? ' (R)' : ''} in House ${p.house || '?'}`
+      ).join('\n- ');
+      chartContext = `NATAL CHART DATA:
+- Name: ${n.name || 'Unknown'}
+- Birth: ${n.year}-${n.month}-${n.day} ${n.hour}:00, Lat ${n.lat}°, Lng ${n.lng}°
+- Ascendant (Rising): ${n.ascendant || 'Unknown'}
+- Midheaven (MC): ${n.midheaven || 'Unknown'}
+- Planets:
+- ${planetList}
+- Houses: ${JSON.stringify(n.houses || [])}
+
+Analyze this natal chart using the planetary positions, signs, houses, and aspects shown above. Reference specific planets and placements.`;
       systemPrompt = NATAL_PROMPT;
     } else {
       const pillars = chartData.pillars || [];

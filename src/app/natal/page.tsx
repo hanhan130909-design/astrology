@@ -105,7 +105,21 @@ export default function NatalPage(){
     if(!chatInput.trim()||chatLoading)return;
     const q=chatInput.trim();setChatMsgs(p=>[...p,{role:"user",content:q}]);setChatInput("");setChatLoading(true);
     try{
-      const res=await fetch("/api/bazi-chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chartData:{natal:{name,year,month,day,hour,lat,lng,tz:tzHours}},question:q,language:"zh",history:chatMsgs.slice(-6).map(m=>({role:m.role,content:m.content}))})});
+      // Extract actual chart data
+      const planets = chart?.planets ? Object.entries(chart.planets).map(([k,v]:[string,any]) => ({
+        name: k, sign: v.sign_cn || '', longitude: v.formatted || '', house: v.house || '', retrograde: v.retrograde || false
+      })) : [];
+      const asc = chart?.ascendant;
+      const mc = chart?.midheaven;
+      const houses = (chart?.houses || []).map((h:any) => ({house: h.house, sign: h.sign_cn || '', longitude: h.formatted || ''}));
+      const res=await fetch("/api/bazi-chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
+        chartData:{natal:{
+          name,year,month,day,hour,lat,lng,tz:tzHours,
+          ascendant: asc ? `${asc.sign_cn||''} ${asc.formatted||''}` : '',
+          midheaven: mc ? `${mc.sign_cn||''} ${mc.formatted||''}` : '',
+          planets, houses
+        }},question:q,language:"zh",history:chatMsgs.slice(-6).map(m=>({role:m.role,content:m.content}))
+      })});
       const d=await res.json();setChatMsgs(p=>[...p,{role:"assistant",content:d.answer||"..."}]);
     }catch{setChatMsgs(p=>[...p,{role:"assistant",content:"AI暂不可用"}]);}finally{setChatLoading(false);}
   };
