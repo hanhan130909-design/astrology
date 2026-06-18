@@ -65,11 +65,10 @@ const UI: Record<string, Record<string, string>> = {
   ja: { knowledge:"知識ベース", houses:"12ハウス", aspects:"主要アスペクト", course:"占星初級講座", courseSub:"14回 · 基礎から読解まで", viewHoroscope:"運勢を見る", back:"戻る" },
   ko: { knowledge:"지식 베이스", houses:"12하우스", aspects:"주요 각도", course:"점성술 입문", courseSub:"14강 · 기초부터 차트 읽기까지", viewHoroscope:"운세 보기", back:"홈으로" },
 };
-const u=(k:string)=>UI[lang]?.[k]||UI.en[k]||k;
-
 export default function LearnPage() {
   const { language } = useLanguage();
   const lang = language || "zh";
+  const u=(k:string)=>UI[lang]?.[k]||UI.en[k]||k;
   const labels = LABELS[lang] || LABELS.zh;
 
   const [selectedPlanet, setSelectedPlanet] = useState<string>("Sun");
