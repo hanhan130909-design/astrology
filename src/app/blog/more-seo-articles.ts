@@ -1,6 +1,31 @@
 // Compatibility + Moon Sign + Rising Sign SEO articles
 export const moreSeoArticles = [
   {
+    id: "comp-1", slug: "best-free-bazi-calculators-2026",
+    date: "2026-06-19",
+    tags: ["bazi", "calculator", "comparison", "free", "astrology"],
+    category: "comparison", categoryZh: "对比", categoryEn: "Comparison", categoryId: "Perbandingan",
+    title: {
+      zh: "2026年最佳免费八字排盘工具对比 — 5款在线八字计算器评测",
+      en: "5 Best Free BaZi Calculators 2026 — Honest Comparison Review",
+      id: "5 Kalkulator BaZi Gratis Terbaik 2026 — Perbandingan Ulasan",
+      th: "5 เครื่องคำนวณปาจื่อฟรีที่ดีที่สุด 2026",
+      vi: "5 Công Cụ Bát Tự Miễn Phí Tốt Nhất 2026",
+      ms: "5 Kalkulator BaZi Percuma Terbaik 2026",
+      ja: "2026年 無料八字計算ツール ベスト5",
+      ko: "2026년 최고의 무료 팔자 계산기 5선",
+    },
+    excerpt: {
+      zh: "全面对比5款免费在线八字排盘工具：星缘 Starry Fate、XuanSeal、BaziAI、ShenShu AI、Cantian AI。从排盘准确性、AI解读、语言支持、定价等维度评测。",
+      en: "Honest comparison of 5 free BaZi calculators: Starry Fate, XuanSeal, BaziAI, ShenShu AI, Cantian AI. Rated on accuracy, AI quality, language support, and pricing.",
+      id: "Perbandingan 5 kalkulator BaZi gratis: Starry Fate, XuanSeal, BaziAI, ShenShu AI, Cantian AI.",
+    },
+    content: {
+      zh: "选择一款准确的八字排盘工具是学习命理的第一步。市面上免费工具很多，但排盘精度、AI解读质量、语言支持差异巨大。\n\n本文实测对比5款主流免费八字计算器，帮你找到最适合你的那一款。\n\n## 对比总览\n\n星缘 Starry Fate — 综合最佳：8语言支持、真实天文计算、Groq AI对话解读、方法论独有、一次性付费$19.99起。推荐给需要多语言和AI对话的用户。\n\nXuanSeal — 最佳定价模型：精准排盘、一次性报告$19.99-$39.99、Product Hunt发布过。仅英文。推荐给准备付费买报告的英文用户。\n\nBaziAI — 最强AI交互：DeepSeek R1+Qwen3双模型、50万用户、AI对话式解读、月付$14.99。无排盘可视化。\n\nShenShu AI — 最佳免费体验：完全免费无注册、八字+合婚+大运+AI全有。仅中文。\n\nCantian AI — 免费AI算命+排盘、中英双语、功能较基础。\n\n## 怎么选\n\n综合最佳：星缘 Starry Fate（8语言+精度+AI+方法论）。一次性报告：XuanSeal。AI对话：BaziAI。完全免费：ShenShu AI（仅中文）。\n\n[立刻免费排盘](https://lunaxstar.com/bazi)",
+      en: "Choosing the right BaZi calculator matters. Tools differ massively in accuracy, AI quality, and language support.\n\nI tested 5 popular free BaZi calculators to help you pick.\n\n## The Comparison\n\nStarry Fate — Best Overall: 8 languages, real lunar calculation, Groq AI chat with multi-turn conversation, unique methodology framework, one-time payment from $19.99. Best for multi-language users who want AI chat.\n\nXuanSeal — Best Reports: Accurate calculator, one-time report purchases $19.99-$39.99, Product Hunt launched. English only. Best for users wanting detailed one-time reports.\n\nBaziAI — Best AI Chat: DeepSeek R1+Qwen3 dual model, 500K users, conversational AI, $14.99/month. No visual chart display. Best for AI conversation lovers.\n\nShenShu AI — Best Free: Completely free, no registration, BaZi+compatibility+luck cycles+AI all included. Chinese only. Best for Chinese users wanting everything free.\n\nCantian AI — Free AI fortune-telling + calculator, Chinese+English, basic features.\n\n## Which One?\n\nBest Overall: Starry Fate (8 lang + accuracy + AI + strategy). Best Reports: XuanSeal. Best AI Chat: BaziAI. Best Free: ShenShu AI (Chinese only).\n\n[Start your free BaZi chart](https://lunaxstar.com/bazi)",
+    },
+  },
+  {
     id: "41", slug: "aries-leo-compatibility-41",
     category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
     title: {
