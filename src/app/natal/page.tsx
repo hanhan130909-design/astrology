@@ -617,6 +617,26 @@ export default function NatalPage(){
             </div>
           </div>}
         </div>
+        {/* JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              name: "星缘本命星盘 — Natal Chart",
+              description: "专业西洋占星本命盘分析工具，完整行星落位、宫位、相位深度解读，支持多种宫位制与阿拉伯点计算。",
+              applicationCategory: "LifestyleApplication",
+              operatingSystem: "Web",
+              offers: {
+                "@type": "Offer",
+                price: "0",
+                priceCurrency: "USD"
+              },
+              url: "https://lunaxstar.com/natal"
+            })
+          }}
+        />
       </div>
     </div>
   );

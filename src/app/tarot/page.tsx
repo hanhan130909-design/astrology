@@ -526,6 +526,26 @@ export default function TarotPage() {
             )}
           </div>
         )}
+        {/* JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              name: "星缘塔罗占卜 — Tarot Reading",
+              description: "在线塔罗牌占卜工具，支持多种牌阵（单张、三牌、凯尔特十字等），提供多语言AI解读，免费使用。",
+              applicationCategory: "LifestyleApplication",
+              operatingSystem: "Web",
+              offers: {
+                "@type": "Offer",
+                price: "0",
+                priceCurrency: "USD"
+              },
+              url: "https://lunaxstar.com/tarot"
+            })
+          }}
+        />
       </main>
     </div>
   );

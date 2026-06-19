@@ -188,8 +188,37 @@ export default async function BlogArticlePage({ params }: Props) {
     || (typeof article.excerpt === 'string' ? article.excerpt : '')
     || (typeof article.description === 'string' ? article.description : '');
 
+  // JSON-LD structured data for rich results
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    'headline': articleTitle,
+    'description': articleExcerpt,
+    'url': `https://lunaxstar.com/blog/${slug}`,
+    'datePublished': article.date || '2026-01-01',
+    'dateModified': article.date || '2026-01-01',
+    'author': { '@type': 'Organization', 'name': '星缘', 'url': 'https://lunaxstar.com' },
+    'publisher': { '@type': 'Organization', 'name': '星缘', 'url': 'https://lunaxstar.com' },
+    'mainEntityOfPage': { '@type': 'WebPage', '@id': `https://lunaxstar.com/blog/${slug}` },
+    'image': 'https://lunaxstar.com/opengraph-image.png',
+    'inLanguage': 'en',
+    'isAccessibleForFree': true,
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://lunaxstar.com' },
+      { '@type': 'ListItem', 'position': 2, 'name': 'Blog', 'item': 'https://lunaxstar.com/blog' },
+      { '@type': 'ListItem', 'position': 3, 'name': articleTitle },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <article className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
         {/* Back navigation */}
         <Link 

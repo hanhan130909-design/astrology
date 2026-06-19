@@ -194,6 +194,50 @@ export default function HomePage() {
         <Link href="/about" className="text-xs text-gray-400 no-underline mx-3 hover:text-[#171717]">{t.terms}</Link>
         <Link href="/about" className="text-xs text-gray-400 no-underline mx-3 hover:text-[#171717]">{t.contact}</Link>
       </footer>
+      {/* JSON-LD FAQ Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "星缘是什么？",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "星缘是一个基于真实天文计算与AI技术的专业占星平台，提供本命星盘分析、八字排盘、塔罗占卜、每日运势、星座配对等免费占星工具。"
+                }
+              },
+              {
+                "@type": "Question",
+                name: "星缘的占星计算准确吗？",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "星缘使用瑞士星历表（Swiss Ephemeris）进行真实天文计算，行星位置精度达到NASA/JPL水准，确保星盘数据的专业性和准确性。"
+                }
+              },
+              {
+                "@type": "Question",
+                name: "星缘支持哪些功能？",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "星缘支持本命星盘、八字排盘、塔罗占卜、AI智能解读、星座配对、行运追踪、年度运势报告、占星学院课程以及大师一对一咨询等丰富功能。"
+                }
+              },
+              {
+                "@type": "Question",
+                name: "星缘是免费的吗？",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "星缘大部分核心功能（本命盘、八字、塔罗、每日运势等）永久免费使用，部分高级功能（AI深度解读、年度报告、大师咨询）为付费PRO服务。"
+                }
+              }
+            ]
+          })
+        }}
+      />
     </div>
   );
 }

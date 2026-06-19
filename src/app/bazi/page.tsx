@@ -444,6 +444,26 @@ export default function BaziPage() {
               </div>
           </>
         )}
+        {/* JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              name: "星缘八字排盘 — BaZi Chart",
+              description: "专业八字命理排盘工具，支持四柱八字、大运流年、神煞、五行旺衰分析，提供AI智能解读。",
+              applicationCategory: "LifestyleApplication",
+              operatingSystem: "Web",
+              offers: {
+                "@type": "Offer",
+                price: "0",
+                priceCurrency: "USD"
+              },
+              url: "https://lunaxstar.com/bazi"
+            })
+          }}
+        />
       </main>
     </div>
   );
