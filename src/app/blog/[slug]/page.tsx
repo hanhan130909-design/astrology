@@ -6,7 +6,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { destinyArticles, BlogArticle } from '@/content/destiny-blog-articles';
-import { seoArticles } from '../seo-articles'; import { moreSeoArticles } from '../more-seo-articles'; import { commercialArticles } from '../commercial-articles';
+import { seoArticles } from '../seo-articles'; import { moreSeoArticles } from '../more-seo-articles';
 import { ArrowLeft, Clock, Tag } from 'lucide-react';
 
 interface Props {
@@ -16,7 +16,7 @@ interface Props {
 // Generate static params for all articles
 export function generateStaticParams() {
   const destiny = destinyArticles.map((a: BlogArticle) => ({ slug: a.slug }));
-  const seo = [...seoArticles, ...moreSeoArticles, ...commercialArticles].map((a: any) => ({ slug: a.slug }));
+  const seo = [...seoArticles, ...moreSeoArticles].map((a: any) => ({ slug: a.slug }));
   return [...destiny, ...seo];
 }
 
@@ -26,7 +26,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { slug } = await params;
   const article: any = destinyArticles.find((a: BlogArticle) => a.slug === slug) 
-    || seoArticles.find((a: any) => a.slug === slug) || moreSeoArticles.find((a: any) => a.slug === slug) || commercialArticles.find((a: any) => a.slug === slug) || moreSeoArticles.find((a: any) => a.slug === slug) || commercialArticles.find((a: any) => a.slug === slug);
+    || seoArticles.find((a: any) => a.slug === slug) || moreSeoArticles.find((a: any) => a.slug === slug);
   if (!article) { notFound(); }
 
   const metaTitle = typeof article.title === 'string'
