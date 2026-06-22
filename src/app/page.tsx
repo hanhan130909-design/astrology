@@ -1,5 +1,6 @@
 "use client";
 
+import NewsletterForm from "@/components/NewsletterForm";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -177,15 +178,7 @@ export default function HomePage() {
       <section className="text-center py-12 md:py-20 px-6">
         <h2 className="text-xl md:text-\\[28px\\] font-semibold tracking-[-0.8px] mb-6">{t.cta2}</h2>
         <Link href="/natal" className="inline-block no-underline text-sm font-medium px-8 py-3 bg-[#171717] text-white rounded-md hover:bg-black transition-colors mb-8">{t.ctaBtn}</Link>
-        {/* Newsletter */}
-        <div className="max-w-[400px] mx-auto mt-10 p-6 bg-gray-50 rounded-2xl border border-gray-200">
-          <h3 className="text-sm font-semibold text-gray-900 mb-2">📬 订阅周运势</h3>
-          <p className="text-xs text-gray-500 mb-4">每周一发送12星座运势和占星知识</p>
-          <form className="flex gap-2" onSubmit={e=>e.preventDefault()}>
-            <input type="email" placeholder="your@email.com" className="flex-1 p-2.5 bg-white border border-gray-200 rounded-lg text-xs" />
-            <button type="submit" className="px-4 py-2.5 bg-gray-900 text-white rounded-lg text-xs font-semibold hover:bg-black">订阅</button>
-          </form>
-        </div>
+        <NewsletterForm />
       </section>
 
       {/* Footer */}

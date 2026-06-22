@@ -121,9 +121,46 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {/* Google Analytics */}
+        {/* Google Analytics — GA4 */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-CSE41GD9JL" />
         <script dangerouslySetInnerHTML={{__html:`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-CSE41GD9JL');`}} />
+        {/* ============================================================
+            Google Ads Conversion Tracking + Remarketing
+            ============================================================
+            REPLACE THE PLACEHOLDER IDs BELOW with your real Google Ads IDs:
+              - AW-XXXXXXXXX → Your Google Ads Conversion ID
+              - G-XXXXXXXXX  → Your Google Ads Remarketing Tag ID
+
+            HOW TO GET YOUR IDs:
+              1. Go to https://ads.google.com
+              2. Sign in to your Google Ads account
+              3. Navigate to Tools & Settings > Measurement > Conversions
+              4. Create a new conversion action to get your AW- ID
+              5. For remarketing: go to Tools & Settings > Shared Library >
+                 Audience Manager > Audience Sources > Google Ads tag
+              6. Copy both IDs and replace the placeholders below
+
+            If you don't have a Google Ads account yet:
+              - Create one at https://ads.google.com/signup
+              - These placeholder IDs will simply not fire until replaced
+            ============================================================ */}
+        {/* Google Ads — Global Site Tag (gtag.js) base configuration */}
+        <script dangerouslySetInnerHTML={{__html:`
+          /* --- Google Ads Conversion Tracking ---
+             Replace AW-XXXXXXXXX with your real Google Ads Conversion ID */
+          gtag('config', 'AW-XXXXXXXXX');
+
+          /* --- Google Ads Remarketing ---
+             Replace G-XXXXXXXXX with your real Google Ads Remarketing Tag ID */
+          gtag('config', 'G-XXXXXXXXX');
+
+          /* --- Remarketing event snippet (fires on all pages) ---
+             This tells Google Ads to add visitors to your remarketing lists
+             so you can show ads to people who have visited your site. */
+          gtag('event', 'page_view', {
+            'send_to': 'AW-XXXXXXXXX',
+          });
+        `}} />
       </head>
       <body className="bg-white text-gray-900 antialiased min-h-screen overflow-x-hidden">
         <ServiceWorkerRegister />
