@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { getFirestore, collection, addDoc, query, where, getDocs, serverTimestamp } from "firebase/firestore";
 import { app } from "@/lib/firebase";
+import { sendWelcomeEmail } from "@/lib/newsletter";
 
 export default function NewsletterForm() {
   const [email, setEmail] = useState("");
@@ -37,6 +38,11 @@ export default function NewsletterForm() {
         language: navigator.language || "en",
         subscribedAt: serverTimestamp(),
       });
+
+      // Send welcome email via Resend
+      sendWelcomeEmail(email.toLowerCase().trim()).catch((err) =>
+        console.error("Welcome email send error:", err)
+      );
 
       setStatus("success");
       setMessage("订阅成功！每周一查收运势 🎉");
