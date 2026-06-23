@@ -201,7 +201,7 @@ export default function PricingPage() {
   const gumroad: Record<string, string> = {
     compatibility: "https://hanhan55.gumroad.com/l/aqsamm",
     fortune: "https://hanhan55.gumroad.com/l/zxccdv",
-    fate: "https://hanhan55.gumroad.com/l/YOUR_FATE_PRODUCT",
+    fate: "https://hanhan55.gumroad.com/l/xwpgjb",
   };
   const keyMap: Record<string, string> = { free: "free", compatibility: "comp", fortune: "fortune", fate: "fate" };
   const cards = tiers.map((key) => {
