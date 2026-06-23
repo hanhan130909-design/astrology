@@ -197,6 +197,12 @@ export default function PricingPage() {
   const { language } = useLanguage();
   const t = T[language] || T.en;
 
+  // Gumroad checkout links
+  const gumroad: Record<string, string> = {
+    compatibility: "https://hanhan55.gumroad.com/l/aqsamm",
+    fortune: "https://hanhan55.gumroad.com/l/YOUR_FORTUNE_PRODUCT",
+    fate: "https://hanhan55.gumroad.com/l/YOUR_FATE_PRODUCT",
+  };
   const keyMap: Record<string, string> = { free: "free", compatibility: "comp", fortune: "fortune", fate: "fate" };
   const cards = tiers.map((key) => {
     const k = keyMap[key] || key;
@@ -261,18 +267,27 @@ export default function PricingPage() {
                 ))}
               </ul>
 
-              <Link
-                href={card.isFree ? "/bazi" : "/login"}
-                className={`block text-center text-sm font-medium py-2.5 rounded-lg transition-colors ${
-                  card.highlighted
-                    ? "bg-white text-[#171717] hover:bg-gray-100"
-                    : card.isFree
-                    ? "bg-gray-100 text-[#171717] hover:bg-gray-200"
-                    : "bg-[#171717] text-white hover:bg-black"
-                }`}
-              >
-                {card.cta}
-              </Link>
+              {card.isFree ? (
+                <Link
+                  href="/bazi"
+                  className={`block text-center text-sm font-medium py-2.5 rounded-lg transition-colors bg-gray-100 text-[#171717] hover:bg-gray-200`}
+                >
+                  {card.cta}
+                </Link>
+              ) : (
+                <a
+                  href={gumroad[card.key] || "#"}
+                  target="_blank"
+                  rel="noopener"
+                  className={`block text-center text-sm font-medium py-2.5 rounded-lg transition-colors ${
+                    card.highlighted
+                      ? "bg-white text-[#171717] hover:bg-gray-100"
+                      : "bg-[#171717] text-white hover:bg-black"
+                  }`}
+                >
+                  {card.cta}
+                </a>
+              )}
             </div>
           ))}
         </div>
