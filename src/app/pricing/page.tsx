@@ -200,7 +200,7 @@ export default function PricingPage() {
   // Gumroad checkout links
   const gumroad: Record<string, string> = {
     compatibility: "https://hanhan55.gumroad.com/l/aqsamm",
-    fortune: "https://hanhan55.gumroad.com/l/YOUR_FORTUNE_PRODUCT",
+    fortune: "https://hanhan55.gumroad.com/l/zxccdv",
     fate: "https://hanhan55.gumroad.com/l/YOUR_FATE_PRODUCT",
   };
   const keyMap: Record<string, string> = { free: "free", compatibility: "comp", fortune: "fortune", fate: "fate" };
