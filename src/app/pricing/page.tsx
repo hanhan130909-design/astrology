@@ -10,6 +10,9 @@ const T: Record<string, any> = {
     free: "基础版", freePrice: "免费", freeDesc: "永久免费，无需注册",
     freeFeats: ["本命星盘分析", "八字四柱排盘", "每日运势", "塔罗占卜", "行运追踪", "基础社区"],
     freeCta: "免费开始",
+    single: "AI单次解读", singlePrice: "$3.99", singleDesc: "一次付费，一次深度解读", singleBadge: "🔥 热门",
+    singleFeats: ["🔮 AI深度解读", "📊 八字命盘分析", "💡 个性化建议", "📋 结果可保存"],
+    singleCta: "立即解读 ($3.99)",
     compatibility: "合盘分析", compPrice: "$19.99", compDesc: "一次性付费，永久访问",
     compFeats: ["✅ 全部基础功能", "双人八字合盘", "十神配对分析", "五行互补解读", "关系发展趋势", "PDF报告下载"],
     compCta: "购买合盘 ($19.99)",
@@ -33,6 +36,9 @@ const T: Record<string, any> = {
     free: "Basic", freePrice: "Free", freeDesc: "Free forever, no sign-up",
     freeFeats: ["Natal Chart Analysis", "BaZi Four Pillars", "Daily Horoscope", "Tarot Reading", "Transit Tracking", "Basic Community"],
     freeCta: "Start Free",
+    single: "Single AI Reading", singlePrice: "$3.99", singleDesc: "One payment, one deep reading", singleBadge: "🔥 Popular",
+    singleFeats: ["🔮 AI Deep Reading", "📊 BaZi Chart Analysis", "💡 Personalized Advice", "📋 Save Your Results"],
+    singleCta: "Read Now ($3.99)",
     compatibility: "Compatibility", compPrice: "$19.99", compDesc: "One-time payment, lifetime access",
     compFeats: ["✅ All Basic Features", "Dual BaZi Synastry", "Ten Gods Pairing", "Five Elements Balance", "Relationship Forecast", "PDF Report Download"],
     compCta: "Buy Compatibility ($19.99)",
@@ -56,6 +62,9 @@ const T: Record<string, any> = {
     free: "Basic", freePrice: "Gratis", freeDesc: "Gratis selamanya, tanpa daftar",
     freeFeats: ["Analisis Bagan Lahir", "BaZi Empat Pilar", "Horoskop Harian", "Bacaan Tarot", "Pelacakan Transit", "Komunitas Dasar"],
     freeCta: "Mulai Gratis",
+    single: "Bacaan AI Tunggal", singlePrice: "$3.99", singleDesc: "Satu pembayaran, satu bacaan mendalam", singleBadge: "🔥 Populer",
+    singleFeats: ["🔮 Bacaan AI Mendalam", "📊 Analisis Bagan BaZi", "💡 Saran Personal", "📋 Simpan Hasil"],
+    singleCta: "Baca Sekarang ($3.99)",
     compatibility: "Kompatibilitas", compPrice: "$19.99", compDesc: "Bayar sekali, akses seumur hidup",
     compFeats: ["✅ Semua Fitur Basic", "Synastry BaZi Ganda", "Analisis Sepuluh Dewa", "Keseimbangan Lima Elemen", "Ramalan Hubungan", "Unduh Laporan PDF"],
     compCta: "Beli Kompatibilitas ($19.99)",
@@ -79,6 +88,9 @@ const T: Record<string, any> = {
     free: "พื้นฐาน", freePrice: "ฟรี", freeDesc: "ฟรีตลอดไป ไม่ต้องลงทะเบียน",
     freeFeats: ["วิเคราะห์แผนภูมิเกิด", "ปาจื่อสี่เสา", "ดูดวงรายวัน", "ไพ่ทาโรต์", "ติดตามดาว", "ชุมชนพื้นฐาน"],
     freeCta: "เริ่มฟรี",
+    single: "อ่าน AI ครั้งเดียว", singlePrice: "$3.99", singleDesc: "จ่ายครั้งเดียว หนึ่งการอ่านเชิงลึก", singleBadge: "🔥 ยอดนิยม",
+    singleFeats: ["🔮 AI อ่านเชิงลึก", "📊 วิเคราะห์แผนภูมิปาจื่อ", "💡 คำแนะนำส่วนบุคคล", "📋 บันทึกผลลัพธ์"],
+    singleCta: "อ่านเลย ($3.99)",
     compatibility: "ความเข้ากัน", compPrice: "$19.99", compDesc: "จ่ายครั้งเดียว เข้าถึงตลอดชีพ",
     compFeats: ["✅ ทุกฟีเจอร์พื้นฐาน", "ซินแอสทรีปาจื่อคู่", "วิเคราะห์เทพสิบ", "สมดุลห้าธาตุ", "พยากรณ์ความสัมพันธ์", "ดาวน์โหลดรายงาน PDF"],
     compCta: "ซื้อความเข้ากัน ($19.99)",
@@ -102,6 +114,9 @@ const T: Record<string, any> = {
     free: "Cơ bản", freePrice: "Miễn phí", freeDesc: "Miễn phí mãi mãi, không cần đăng ký",
     freeFeats: ["Phân tích bản đồ sao", "Bát Tự Tứ Trụ", "Tử vi hàng ngày", "Tarot", "Theo dõi quá cảnh", "Cộng đồng cơ bản"],
     freeCta: "Bắt đầu miễn phí",
+    single: "Đọc AI Một Lần", singlePrice: "$3.99", singleDesc: "Một lần thanh toán, một lần đọc sâu", singleBadge: "🔥 Phổ biến",
+    singleFeats: ["🔮 AI Đọc Sâu", "📊 Phân tích Bát Tự", "💡 Lời khuyên cá nhân", "📋 Lưu kết quả"],
+    singleCta: "Đọc Ngay ($3.99)",
     compatibility: "Tương hợp", compPrice: "$19.99", compDesc: "Thanh toán một lần, truy cập trọn đời",
     compFeats: ["✅ Tất cả tính năng cơ bản", "Bát Tự đôi Synastry", "Phân tích Thập Thần", "Cân bằng Ngũ Hành", "Dự báo quan hệ", "Tải báo cáo PDF"],
     compCta: "Mua Tương hợp ($19.99)",
@@ -125,6 +140,9 @@ const T: Record<string, any> = {
     free: "Asas", freePrice: "Percuma", freeDesc: "Percuma selamanya, tiada daftar",
     freeFeats: ["Analisis Carta Lahir", "BaZi Empat Tiang", "Horoskop Harian", "Bacaan Tarot", "Pengesanan Transit", "Komuniti Asas"],
     freeCta: "Mula Percuma",
+    single: "Bacaan AI Sekali", singlePrice: "$3.99", singleDesc: "Satu bayaran, satu bacaan mendalam", singleBadge: "🔥 Popular",
+    singleFeats: ["🔮 Bacaan AI Mendalam", "📊 Analisis Carta BaZi", "💡 Nasihat Peribadi", "📋 Simpan Keputusan"],
+    singleCta: "Baca Sekarang ($3.99)",
     compatibility: "Keserasian", compPrice: "$19.99", compDesc: "Bayar sekali, akses seumur hidup",
     compFeats: ["✅ Semua Ciri Asas", "Synastry BaZi Berganda", "Analisis Sepuluh Dewa", "Keseimbangan Lima Unsur", "Ramalan Hubungan", "Muat Turun Laporan PDF"],
     compCta: "Beli Keserasian ($19.99)",
@@ -148,6 +166,9 @@ const T: Record<string, any> = {
     free: "基本", freePrice: "無料", freeDesc: "永久無料、登録不要",
     freeFeats: ["出生図分析", "八字四柱", "デイリー運勢", "タロット", "トランジット追跡", "基本コミュニティ"],
     freeCta: "無料で始める",
+    single: "AIシングルリーディング", singlePrice: "$3.99", singleDesc: "一回払い、一回の深層解読", singleBadge: "🔥 人気",
+    singleFeats: ["🔮 AI深層解読", "📊 八字命盤分析", "💡 パーソナライズされたアドバイス", "📋 結果を保存"],
+    singleCta: "今すぐ読む ($3.99)",
     compatibility: "相性診断", compPrice: "$19.99", compDesc: "一回払い、生涯アクセス",
     compFeats: ["✅ 全基本機能", "デュアル八字シナストリー", "十神ペアリング", "五行バランス", "関係予測", "PDFレポート"],
     compCta: "相性診断を購入 ($19.99)",
@@ -171,6 +192,9 @@ const T: Record<string, any> = {
     free: "기본", freePrice: "무료", freeDesc: "영원히 무료, 가입 불필요",
     freeFeats: ["출생 차트 분석", "사주 팔자", "일일 운세", "타로", "행성 이동 추적", "기본 커뮤니티"],
     freeCta: "무료 시작",
+    single: "AI 단일 해석", singlePrice: "$3.99", singleDesc: "한 번 결제, 한 번의 심층 해석", singleBadge: "🔥 인기",
+    singleFeats: ["🔮 AI 심층 해석", "📊 사주 명반 분석", "💡 개인 맞춤 조언", "📋 결과 저장 가능"],
+    singleCta: "바로 해석 ($3.99)",
     compatibility: "궁합 분석", compPrice: "$19.99", compDesc: "한 번 결제, 평생 이용",
     compFeats: ["✅ 모든 기본 기능", "듀얼 사주 시내스트리", "십신 페어링", "오행 밸런스", "관계 예측", "PDF 리포트 다운로드"],
     compCta: "궁합 구매 ($19.99)",
@@ -199,6 +223,7 @@ export default function PricingPage() {
 
   // Gumroad checkout links
   const gumroad: Record<string, string> = {
+    single: "https://hanhan55.gumroad.com/l/YOUR_SINGLE_PRODUCT",
     compatibility: "https://hanhan55.gumroad.com/l/aqsamm",
     fortune: "https://hanhan55.gumroad.com/l/zxccdv",
     fate: "https://hanhan55.gumroad.com/l/xwpgjb",
@@ -228,6 +253,40 @@ export default function PricingPage() {
           </span>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-[-1.5px] mb-3">{t.hero}</h1>
           <p className="text-gray-500 max-w-lg mx-auto text-sm">{t.heroSub}</p>
+        </div>
+
+        {/* Micro-Payment Single Reading */}
+        <div className="max-w-[1050px] mx-auto mb-6">
+          <div className="bg-[#171717] text-white rounded-2xl p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div className="flex-1">
+              <span className="inline-block text-[11px] font-semibold px-3 py-1 rounded-full bg-green-500 text-black mb-3">
+                {t.singleBadge}
+              </span>
+              <h3 className="text-xl md:text-2xl font-bold mb-1">{t.single}</h3>
+              <div className="text-3xl md:text-4xl font-bold tracking-[-1px] text-green-400 mb-2">
+                {t.singlePrice}<span className="text-sm font-normal text-gray-400">/次</span>
+              </div>
+              <p className="text-gray-400 text-sm">{t.singleDesc}</p>
+            </div>
+            <div className="flex-1 flex flex-col gap-3">
+              <ul className="space-y-2">
+                {(t.singleFeats as string[]).map((feat: string, i: number) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-gray-300">
+                    <Check size={16} className="shrink-0 mt-0.5 text-green-400" />
+                    {feat}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={gumroad.single}
+                target="_blank"
+                rel="noopener"
+                className="inline-block text-center bg-green-500 hover:bg-green-400 text-black font-semibold text-sm py-3 px-6 rounded-lg transition-colors mt-2"
+              >
+                {t.singleCta}
+              </a>
+            </div>
+          </div>
         </div>
 
         {/* Pricing Cards */}
