@@ -8,6 +8,7 @@ import { notFound } from 'next/navigation';
 import { destinyArticles, BlogArticle } from '@/content/destiny-blog-articles';
 import { seoArticles } from '../seo-articles'; import { moreSeoArticles } from '../more-seo-articles';
 import { ArrowLeft, Clock, Tag } from 'lucide-react';
+import ShareButtons from '@/components/ShareButtons';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -260,6 +261,9 @@ export default async function BlogArticlePage({ params }: Props) {
         ">
           {renderContent(articleContent)}
         </div>
+
+        {/* Share buttons — viral loop */}
+        <ShareButtons url={`https://lunaxstar.com/blog/${slug}`} title={articleTitle} />
 
         {/* CTA Footer */}
         <div className="mt-16 p-8 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20 rounded-2xl border border-purple-100 dark:border-purple-800/30 text-center">
