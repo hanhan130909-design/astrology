@@ -1,9 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { collection, addDoc, query, where, getDocs, serverTimestamp } from "firebase/firestore";
-import { db } from "@/lib/firebase";
-import { sendWelcomeEmail } from "@/lib/newsletter";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const t9n: Record<string, Record<string, string>> = {
@@ -117,28 +114,21 @@ export default function NewsletterForm() {
     setMessage("");
 
     try {
-      const q = query(collection(db, "newsletter_subscribers"), where("email", "==", email.toLowerCase().trim()));
-      const existing = await getDocs(q);
-      if (!existing.empty) {
-        setStatus("success");
-        setMessage(t("duplicate"));
-        return;
-      }
-
-      await addDoc(collection(db, "newsletter_subscribers"), {
-        email: email.toLowerCase().trim(),
-        source: "homepage",
-        language: language || navigator.language || "en",
-        subscribedAt: serverTimestamp(),
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.toLowerCase().trim(), language }),
       });
+      const data = await res.json();
 
-      sendWelcomeEmail(email.toLowerCase().trim()).catch((err) =>
-        console.error("Welcome email send error:", err)
-      );
-
-      setStatus("success");
-      setMessage(t("success"));
-      setEmail("");
+      if (res.ok && data.success) {
+        setStatus("success");
+        setMessage(data.message === "already" ? t("duplicate") : t("success"));
+        setEmail("");
+      } else {
+        setStatus("error");
+        setMessage(data.message === "invalid_email" ? t("invalid") : t("error"));
+      }
     } catch (err) {
       console.error("Subscribe error:", err);
       setStatus("error");
