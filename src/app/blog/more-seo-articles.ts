@@ -2198,4 +2198,2326 @@ Ascendant mewakili penampilan. Pisces Rising menunjukkan sifat 梦幻、直觉�
       ko: '처음 출생 차트를 보면 압도되기 쉽습니다 — 12조각으로 나뉜 원, 이상한 기호들이 흩어져 있고 선들이 얽혀 있습니다. 걱정하지 마세요 — 모든 점성술 학생이 바로 여기서 시작합니다. 이 가이드는 가장 간단한 언어로 네이탈 차트를 단계별로 안내합니다.\\\\n\\\\n## 출생 차트(네이탈 차트)란 무엇인가\\\\n\\\\n출생 차트는 "하늘의 지도"입니다 — 당신이 태어난 정확한 순간과 장소에서 태양, 달, 행성들의 12개 별자리와 12하우스에서의 정확한 위치를 포착합니다. 이 지도는 당신의 우주적 지문입니다.\\\\n\\\\n출생 차트에는 네 가지 핵심 구성 요소가 있습니다:\\\\n1. **별자리(사인)** — 12개 별자리, 각각 원형적 에너지를 나타냄\\\\n2. **행성** — 당신 삶의 다양한 측면을 나타내는 10개의 주요 행성\\\\n3. **하우스** — 에너지가 어디에서 펼쳐지는지 보여주는 12개 삶의 영역\\\\n4. **어스펙트** — 행성 간 각도 관계, 내적 역동성을 드러냄\\\\n\\\\n## 1단계: "빅3" 찾기\\\\n\\\\n입문 점성술에서 가장 중요한 세 가지 요소: 태양星座, 달星座, 상승星座(어센던트).\\\\n\\\\n### 태양星座 — 당신의 핵심 자아\\\\n\\\\n태양星座은 당신이 태어났을 때 태양이 위치한 별자리입니다. 태양이 나타내는 것:\\\\n- 핵심 정체성과 삶의 목적\\\\n- 의식적 자기 표현\\\\n- 창의성과 생명력\\\\n\\\\n### 달星座 — 당신의 감정 세계\\\\n\\\\n달星座은 당신이 태어났을 때 달이 차지한 별자리입니다. 달이 나타내는 것:\\\\n- 감정적 욕구와 본능적 반응\\\\n- 안전과 편안함의 원천\\\\n- 사적이고 숨겨진 자아\\\\n\\\\n### 상승星座(어센던트) — 당신의 외적 페르소나\\\\n\\\\n상승星座은 당신이 태어났을 때 동쪽 지평선에서 떠오르고 있던 별자리입니다. 이것이 나타내는 것:\\\\n- 타인에게 주는 첫인상\\\\n- 세상을 대하는 방식\\\\n- 외적 스타일과 태도\\\\n\\\\n## 2단계: 12하우스 이해하기\\\\n\\\\n별자리가 에너지의 "질"(어떻게)을 설명하고, 행성이 에너지의 "원천"(무엇)이라면, 하우스는 에너지가 펼쳐지는 "무대"(어디서)입니다.\\\\n\\\\n**제1하우스(자아의 하우스)**: 정체성, 외모, 성격, 인생 방향\\\\n**제2하우스(가치의 하우스)**: 돈, 자기 가치, 물질적 자원\\\\n**제3하우스(소통의 하우스)**: 의사소통, 학습, 짧은 여행\\\\n**제4하우스(가정의 하우스)**: 가족, 뿌리, 어린 시절, 내적 안전\\\\n**제5하우스(즐거움의 하우스)**: 창의성, 로맨스, 오락, 자녀\\\\n**제6하우스(건강의 하우스)**: 일, 건강, 일상 루틴\\\\n**제7하우스(파트너십의 하우스)**: 결혼, 비즈니스 파트너, 일대일 관계\\\\n**제8하우스(변형의 하우스)**: 깊은 친밀감, 공유 자원, 변형\\\\n**제9하우스(철학의 하우스)**: 고등 교육, 철학, 장거리 여행\\\\n**제10하우스(직업의 하우스)**: 직업, 사회적 지위, 명성, 인생 성취\\\\n**제11하우스(공동체의 하우스)**: 친구, 그룹, 이상, 희망\\\\n**제12하우스(무의식의 하우스)**: 잠재의식, 영성, 은둔, 종결\\\\n\\\\n## 3단계: 당신의 행성들 만나기\\\\n\\\\n출생 차트에는 10개의 주요 행성이 있습니다:\\\\n\\\\n**개인 행성:**\\\\n- **태양** — 핵심 자아, 삶의 목적, 창의성\\\\n- **달** — 감정, 본능, 잠재의식\\\\n- **수성** — 사고, 의사소통, 학습 스타일\\\\n- **금성** — 사랑, 아름다움, 가치관, 매력\\\\n- **화성** — 행동, 욕망, 경쟁, 분노\\\\n\\\\n**사회 행성:**\\\\n- **목성** — 확장, 행운, 성장\\\\n- **토성** — 규율, 제한, 책임, 성숙\\\\n\\\\n**세대 행성:**\\\\n- **천왕성** — 혁신, 반항, 갑작스러운 변화\\\\n- **해왕성** — 꿈, 환상, 영성, 예술\\\\n- **명왕성** — 변형, 권력, 심층 심리, 재탄생\\\\n\\\\n## 4단계: 어스펙트 읽기\\\\n\\\\n어스펙트는 행성 간의 각도 관계입니다:\\\\n\\\\n**합(0°)** — 두 행성이 같은 위치에 있고, 에너지가 융합\\\\n**육분각(60°)** — 적극적 참여가 필요한 조화로운 기회\\\\n**사분각(90°)** — 긴장과 갈등, 내적 마찰을 생성\\\\n**삼분각(120°)** — 가장 조화로운 어스펙트, 에너지가 자연스럽게 흐름\\\\n**충(180°)** — 양극성, 두 극단 사이에서 균형을 찾아야 함\\\\n\\\\n## 5단계: 통합 — 모든 것을 함께 모으기\\\\n\\\\n이제 개별 조각들을 이해했습니다. 그러나 의미 있는 점성술은 하나의 요소를 고립적으로 읽는 것이 아니라 통합하는 것입니다.\\\\n\\\\n누군가의 차트가 다음과 같이 보여준다고 가정합시다:\\\\n- 태양은 사자자리(핵심 자아: 자신감 있고, 창의적이며, 주목받고 싶어함)\\\\n- 달은 게자리(감정적 욕구: 안전, 가정, 보살핌)\\\\n- 상승은 천칭자리(외적 이미지: 우아하고, 사교적이며, 조화를 추구)\\\\n- 금성은 제7하우스(관계가 가장 중요)\\\\n- 화성 사분각 토성(행동이 내적 제한으로 막혀 있다고 느낌)\\\\n\\\\n## 무료 출생 차트 받는 방법\\\\n\\\\nlunaxstar.com/natal을 방문하여 출생 세부 정보를 입력하면 완전한 네이탈 차트를 즉시 받을 수 있습니다. 완전 무료, 등록 불필요, 8개 언어 지원.\\\\n\\\\n[무료 네이탈 차트 받기 →](https://lunaxstar.com/natal)',
     },
   },
+  {
+    id: "89", slug: "aries-taurus-compatibility-89",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `白羊座和金牛座配吗？星座配对深度分析`,
+      en: `Aries and Taurus Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Aries dan Taurus — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `白羊座（3.21-4.19，火象，守护星Mars）与金牛座（4.20-5.20，土象，守护星Venus）的配对分析，配对指数60%。`,
+      en: `Aries (3.21-4.19, 火 sign) & Taurus (4.20-5.20, 土 sign) compatibility guide. 60% match.`,
+      id: `Aries (3.21-4.19, elemen 火) & Taurus (4.20-5.20, elemen 土) panduan kecocokan. 60%.`,
+    },
+    content: {
+      zh: `♈ 白羊座 & ♉ 金牛座 配对
+
+白羊座：3.21-4.19 | 火象 | 守护星Mars
+金牛座：4.20-5.20 | 土象 | 守护星Venus
+
+配对指数60%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♈ Aries & ♉ Taurus Match
+
+Aries: 3.21-4.19 | 火 | Ruler Mars
+Taurus: 4.20-5.20 | 土 | Ruler Venus
+
+60% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♈ Aries & ♉ Taurus Cocok
+
+Aries: 3.21-4.19 | 火 | Mars
+Taurus: 4.20-5.20 | 土 | Venus
+
+Skor 60%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["aries", "taurus", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "90", slug: "aries-gemini-compatibility-90",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `白羊座和双子座配吗？星座配对深度分析`,
+      en: `Aries and Gemini Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Aries dan Gemini — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `白羊座（3.21-4.19，火象，守护星Mars）与双子座（5.21-6.21，风象，守护星Mercury）的配对分析，配对指数88%。`,
+      en: `Aries (3.21-4.19, 火 sign) & Gemini (5.21-6.21, 风 sign) compatibility guide. 88% match.`,
+      id: `Aries (3.21-4.19, elemen 火) & Gemini (5.21-6.21, elemen 风) panduan kecocokan. 88%.`,
+    },
+    content: {
+      zh: `♈ 白羊座 & ♊ 双子座 配对
+
+白羊座：3.21-4.19 | 火象 | 守护星Mars
+双子座：5.21-6.21 | 风象 | 守护星Mercury
+
+配对指数88%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♈ Aries & ♊ Gemini Match
+
+Aries: 3.21-4.19 | 火 | Ruler Mars
+Gemini: 5.21-6.21 | 风 | Ruler Mercury
+
+88% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♈ Aries & ♊ Gemini Cocok
+
+Aries: 3.21-4.19 | 火 | Mars
+Gemini: 5.21-6.21 | 风 | Mercury
+
+Skor 88%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["aries", "gemini", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "91", slug: "aries-cancer-compatibility-91",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `白羊座和巨蟹座配吗？星座配对深度分析`,
+      en: `Aries and Cancer Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Aries dan Cancer — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `白羊座（3.21-4.19，火象，守护星Mars）与巨蟹座（6.22-7.22，水象，守护星Moon）的配对分析，配对指数55%。`,
+      en: `Aries (3.21-4.19, 火 sign) & Cancer (6.22-7.22, 水 sign) compatibility guide. 55% match.`,
+      id: `Aries (3.21-4.19, elemen 火) & Cancer (6.22-7.22, elemen 水) panduan kecocokan. 55%.`,
+    },
+    content: {
+      zh: `♈ 白羊座 & ♋ 巨蟹座 配对
+
+白羊座：3.21-4.19 | 火象 | 守护星Mars
+巨蟹座：6.22-7.22 | 水象 | 守护星Moon
+
+配对指数55%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♈ Aries & ♋ Cancer Match
+
+Aries: 3.21-4.19 | 火 | Ruler Mars
+Cancer: 6.22-7.22 | 水 | Ruler Moon
+
+55% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♈ Aries & ♋ Cancer Cocok
+
+Aries: 3.21-4.19 | 火 | Mars
+Cancer: 6.22-7.22 | 水 | Moon
+
+Skor 55%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["aries", "cancer", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "92", slug: "aries-virgo-compatibility-92",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `白羊座和处女座配吗？星座配对深度分析`,
+      en: `Aries and Virgo Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Aries dan Virgo — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `白羊座（3.21-4.19，火象，守护星Mars）与处女座（8.23-9.22，土象，守护星Mercury）的配对分析，配对指数60%。`,
+      en: `Aries (3.21-4.19, 火 sign) & Virgo (8.23-9.22, 土 sign) compatibility guide. 60% match.`,
+      id: `Aries (3.21-4.19, elemen 火) & Virgo (8.23-9.22, elemen 土) panduan kecocokan. 60%.`,
+    },
+    content: {
+      zh: `♈ 白羊座 & ♍ 处女座 配对
+
+白羊座：3.21-4.19 | 火象 | 守护星Mars
+处女座：8.23-9.22 | 土象 | 守护星Mercury
+
+配对指数60%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♈ Aries & ♍ Virgo Match
+
+Aries: 3.21-4.19 | 火 | Ruler Mars
+Virgo: 8.23-9.22 | 土 | Ruler Mercury
+
+60% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♈ Aries & ♍ Virgo Cocok
+
+Aries: 3.21-4.19 | 火 | Mars
+Virgo: 8.23-9.22 | 土 | Mercury
+
+Skor 60%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["aries", "virgo", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "93", slug: "aries-libra-compatibility-93",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `白羊座和天秤座配吗？星座配对深度分析`,
+      en: `Aries and Libra Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Aries dan Libra — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `白羊座（3.21-4.19，火象，守护星Mars）与天秤座（9.23-10.23，风象，守护星Venus）的配对分析，配对指数88%。`,
+      en: `Aries (3.21-4.19, 火 sign) & Libra (9.23-10.23, 风 sign) compatibility guide. 88% match.`,
+      id: `Aries (3.21-4.19, elemen 火) & Libra (9.23-10.23, elemen 风) panduan kecocokan. 88%.`,
+    },
+    content: {
+      zh: `♈ 白羊座 & ♎ 天秤座 配对
+
+白羊座：3.21-4.19 | 火象 | 守护星Mars
+天秤座：9.23-10.23 | 风象 | 守护星Venus
+
+配对指数88%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♈ Aries & ♎ Libra Match
+
+Aries: 3.21-4.19 | 火 | Ruler Mars
+Libra: 9.23-10.23 | 风 | Ruler Venus
+
+88% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♈ Aries & ♎ Libra Cocok
+
+Aries: 3.21-4.19 | 火 | Mars
+Libra: 9.23-10.23 | 风 | Venus
+
+Skor 88%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["aries", "libra", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "94", slug: "aries-scorpio-compatibility-94",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `白羊座和天蝎座配吗？星座配对深度分析`,
+      en: `Aries and Scorpio Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Aries dan Scorpio — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `白羊座（3.21-4.19，火象，守护星Mars）与天蝎座（10.24-11.22，水象，守护星Pluto）的配对分析，配对指数55%。`,
+      en: `Aries (3.21-4.19, 火 sign) & Scorpio (10.24-11.22, 水 sign) compatibility guide. 55% match.`,
+      id: `Aries (3.21-4.19, elemen 火) & Scorpio (10.24-11.22, elemen 水) panduan kecocokan. 55%.`,
+    },
+    content: {
+      zh: `♈ 白羊座 & ♏ 天蝎座 配对
+
+白羊座：3.21-4.19 | 火象 | 守护星Mars
+天蝎座：10.24-11.22 | 水象 | 守护星Pluto
+
+配对指数55%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♈ Aries & ♏ Scorpio Match
+
+Aries: 3.21-4.19 | 火 | Ruler Mars
+Scorpio: 10.24-11.22 | 水 | Ruler Pluto
+
+55% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♈ Aries & ♏ Scorpio Cocok
+
+Aries: 3.21-4.19 | 火 | Mars
+Scorpio: 10.24-11.22 | 水 | Pluto
+
+Skor 55%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["aries", "scorpio", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "95", slug: "aries-capricorn-compatibility-95",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `白羊座和摩羯座配吗？星座配对深度分析`,
+      en: `Aries and Capricorn Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Aries dan Capricorn — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `白羊座（3.21-4.19，火象，守护星Mars）与摩羯座（12.22-1.19，土象，守护星Saturn）的配对分析，配对指数60%。`,
+      en: `Aries (3.21-4.19, 火 sign) & Capricorn (12.22-1.19, 土 sign) compatibility guide. 60% match.`,
+      id: `Aries (3.21-4.19, elemen 火) & Capricorn (12.22-1.19, elemen 土) panduan kecocokan. 60%.`,
+    },
+    content: {
+      zh: `♈ 白羊座 & ♑ 摩羯座 配对
+
+白羊座：3.21-4.19 | 火象 | 守护星Mars
+摩羯座：12.22-1.19 | 土象 | 守护星Saturn
+
+配对指数60%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♈ Aries & ♑ Capricorn Match
+
+Aries: 3.21-4.19 | 火 | Ruler Mars
+Capricorn: 12.22-1.19 | 土 | Ruler Saturn
+
+60% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♈ Aries & ♑ Capricorn Cocok
+
+Aries: 3.21-4.19 | 火 | Mars
+Capricorn: 12.22-1.19 | 土 | Saturn
+
+Skor 60%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["aries", "capricorn", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "96", slug: "aries-aquarius-compatibility-96",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `白羊座和水瓶座配吗？星座配对深度分析`,
+      en: `Aries and Aquarius Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Aries dan Aquarius — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `白羊座（3.21-4.19，火象，守护星Mars）与水瓶座（1.20-2.18，风象，守护星Uranus）的配对分析，配对指数88%。`,
+      en: `Aries (3.21-4.19, 火 sign) & Aquarius (1.20-2.18, 风 sign) compatibility guide. 88% match.`,
+      id: `Aries (3.21-4.19, elemen 火) & Aquarius (1.20-2.18, elemen 风) panduan kecocokan. 88%.`,
+    },
+    content: {
+      zh: `♈ 白羊座 & ♒ 水瓶座 配对
+
+白羊座：3.21-4.19 | 火象 | 守护星Mars
+水瓶座：1.20-2.18 | 风象 | 守护星Uranus
+
+配对指数88%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♈ Aries & ♒ Aquarius Match
+
+Aries: 3.21-4.19 | 火 | Ruler Mars
+Aquarius: 1.20-2.18 | 风 | Ruler Uranus
+
+88% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♈ Aries & ♒ Aquarius Cocok
+
+Aries: 3.21-4.19 | 火 | Mars
+Aquarius: 1.20-2.18 | 风 | Uranus
+
+Skor 88%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["aries", "aquarius", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "97", slug: "aries-pisces-compatibility-97",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `白羊座和双鱼座配吗？星座配对深度分析`,
+      en: `Aries and Pisces Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Aries dan Pisces — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `白羊座（3.21-4.19，火象，守护星Mars）与双鱼座（2.19-3.20，水象，守护星Neptune）的配对分析，配对指数55%。`,
+      en: `Aries (3.21-4.19, 火 sign) & Pisces (2.19-3.20, 水 sign) compatibility guide. 55% match.`,
+      id: `Aries (3.21-4.19, elemen 火) & Pisces (2.19-3.20, elemen 水) panduan kecocokan. 55%.`,
+    },
+    content: {
+      zh: `♈ 白羊座 & ♓ 双鱼座 配对
+
+白羊座：3.21-4.19 | 火象 | 守护星Mars
+双鱼座：2.19-3.20 | 水象 | 守护星Neptune
+
+配对指数55%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♈ Aries & ♓ Pisces Match
+
+Aries: 3.21-4.19 | 火 | Ruler Mars
+Pisces: 2.19-3.20 | 水 | Ruler Neptune
+
+55% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♈ Aries & ♓ Pisces Cocok
+
+Aries: 3.21-4.19 | 火 | Mars
+Pisces: 2.19-3.20 | 水 | Neptune
+
+Skor 55%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["aries", "pisces", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "98", slug: "taurus-gemini-compatibility-98",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `金牛座和双子座配吗？星座配对深度分析`,
+      en: `Taurus and Gemini Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Taurus dan Gemini — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `金牛座（4.20-5.20，土象，守护星Venus）与双子座（5.21-6.21，风象，守护星Mercury）的配对分析，配对指数62%。`,
+      en: `Taurus (4.20-5.20, 土 sign) & Gemini (5.21-6.21, 风 sign) compatibility guide. 62% match.`,
+      id: `Taurus (4.20-5.20, elemen 土) & Gemini (5.21-6.21, elemen 风) panduan kecocokan. 62%.`,
+    },
+    content: {
+      zh: `♉ 金牛座 & ♊ 双子座 配对
+
+金牛座：4.20-5.20 | 土象 | 守护星Venus
+双子座：5.21-6.21 | 风象 | 守护星Mercury
+
+配对指数62%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♉ Taurus & ♊ Gemini Match
+
+Taurus: 4.20-5.20 | 土 | Ruler Venus
+Gemini: 5.21-6.21 | 风 | Ruler Mercury
+
+62% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♉ Taurus & ♊ Gemini Cocok
+
+Taurus: 4.20-5.20 | 土 | Venus
+Gemini: 5.21-6.21 | 风 | Mercury
+
+Skor 62%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["taurus", "gemini", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "99", slug: "taurus-cancer-compatibility-99",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `金牛座和巨蟹座配吗？星座配对深度分析`,
+      en: `Taurus and Cancer Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Taurus dan Cancer — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `金牛座（4.20-5.20，土象，守护星Venus）与巨蟹座（6.22-7.22，水象，守护星Moon）的配对分析，配对指数85%。`,
+      en: `Taurus (4.20-5.20, 土 sign) & Cancer (6.22-7.22, 水 sign) compatibility guide. 85% match.`,
+      id: `Taurus (4.20-5.20, elemen 土) & Cancer (6.22-7.22, elemen 水) panduan kecocokan. 85%.`,
+    },
+    content: {
+      zh: `♉ 金牛座 & ♋ 巨蟹座 配对
+
+金牛座：4.20-5.20 | 土象 | 守护星Venus
+巨蟹座：6.22-7.22 | 水象 | 守护星Moon
+
+配对指数85%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♉ Taurus & ♋ Cancer Match
+
+Taurus: 4.20-5.20 | 土 | Ruler Venus
+Cancer: 6.22-7.22 | 水 | Ruler Moon
+
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♉ Taurus & ♋ Cancer Cocok
+
+Taurus: 4.20-5.20 | 土 | Venus
+Cancer: 6.22-7.22 | 水 | Moon
+
+Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["taurus", "cancer", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "100", slug: "taurus-leo-compatibility-100",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `金牛座和狮子座配吗？星座配对深度分析`,
+      en: `Taurus and Leo Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Taurus dan Leo — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `金牛座（4.20-5.20，土象，守护星Venus）与狮子座（7.23-8.22，火象，守护星Sun）的配对分析，配对指数60%。`,
+      en: `Taurus (4.20-5.20, 土 sign) & Leo (7.23-8.22, 火 sign) compatibility guide. 60% match.`,
+      id: `Taurus (4.20-5.20, elemen 土) & Leo (7.23-8.22, elemen 火) panduan kecocokan. 60%.`,
+    },
+    content: {
+      zh: `♉ 金牛座 & ♌ 狮子座 配对
+
+金牛座：4.20-5.20 | 土象 | 守护星Venus
+狮子座：7.23-8.22 | 火象 | 守护星Sun
+
+配对指数60%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♉ Taurus & ♌ Leo Match
+
+Taurus: 4.20-5.20 | 土 | Ruler Venus
+Leo: 7.23-8.22 | 火 | Ruler Sun
+
+60% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♉ Taurus & ♌ Leo Cocok
+
+Taurus: 4.20-5.20 | 土 | Venus
+Leo: 7.23-8.22 | 火 | Sun
+
+Skor 60%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["taurus", "leo", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "101", slug: "taurus-libra-compatibility-101",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `金牛座和天秤座配吗？星座配对深度分析`,
+      en: `Taurus and Libra Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Taurus dan Libra — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `金牛座（4.20-5.20，土象，守护星Venus）与天秤座（9.23-10.23，风象，守护星Venus）的配对分析，配对指数62%。`,
+      en: `Taurus (4.20-5.20, 土 sign) & Libra (9.23-10.23, 风 sign) compatibility guide. 62% match.`,
+      id: `Taurus (4.20-5.20, elemen 土) & Libra (9.23-10.23, elemen 风) panduan kecocokan. 62%.`,
+    },
+    content: {
+      zh: `♉ 金牛座 & ♎ 天秤座 配对
+
+金牛座：4.20-5.20 | 土象 | 守护星Venus
+天秤座：9.23-10.23 | 风象 | 守护星Venus
+
+配对指数62%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♉ Taurus & ♎ Libra Match
+
+Taurus: 4.20-5.20 | 土 | Ruler Venus
+Libra: 9.23-10.23 | 风 | Ruler Venus
+
+62% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♉ Taurus & ♎ Libra Cocok
+
+Taurus: 4.20-5.20 | 土 | Venus
+Libra: 9.23-10.23 | 风 | Venus
+
+Skor 62%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["taurus", "libra", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "102", slug: "taurus-scorpio-compatibility-102",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `金牛座和天蝎座配吗？星座配对深度分析`,
+      en: `Taurus and Scorpio Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Taurus dan Scorpio — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `金牛座（4.20-5.20，土象，守护星Venus）与天蝎座（10.24-11.22，水象，守护星Pluto）的配对分析，配对指数85%。`,
+      en: `Taurus (4.20-5.20, 土 sign) & Scorpio (10.24-11.22, 水 sign) compatibility guide. 85% match.`,
+      id: `Taurus (4.20-5.20, elemen 土) & Scorpio (10.24-11.22, elemen 水) panduan kecocokan. 85%.`,
+    },
+    content: {
+      zh: `♉ 金牛座 & ♏ 天蝎座 配对
+
+金牛座：4.20-5.20 | 土象 | 守护星Venus
+天蝎座：10.24-11.22 | 水象 | 守护星Pluto
+
+配对指数85%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♉ Taurus & ♏ Scorpio Match
+
+Taurus: 4.20-5.20 | 土 | Ruler Venus
+Scorpio: 10.24-11.22 | 水 | Ruler Pluto
+
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♉ Taurus & ♏ Scorpio Cocok
+
+Taurus: 4.20-5.20 | 土 | Venus
+Scorpio: 10.24-11.22 | 水 | Pluto
+
+Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["taurus", "scorpio", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "103", slug: "taurus-sagittarius-compatibility-103",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `金牛座和射手座配吗？星座配对深度分析`,
+      en: `Taurus and Sagittarius Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Taurus dan Sagittarius — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `金牛座（4.20-5.20，土象，守护星Venus）与射手座（11.23-12.21，火象，守护星Jupiter）的配对分析，配对指数60%。`,
+      en: `Taurus (4.20-5.20, 土 sign) & Sagittarius (11.23-12.21, 火 sign) compatibility guide. 60% match.`,
+      id: `Taurus (4.20-5.20, elemen 土) & Sagittarius (11.23-12.21, elemen 火) panduan kecocokan. 60%.`,
+    },
+    content: {
+      zh: `♉ 金牛座 & ♐ 射手座 配对
+
+金牛座：4.20-5.20 | 土象 | 守护星Venus
+射手座：11.23-12.21 | 火象 | 守护星Jupiter
+
+配对指数60%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♉ Taurus & ♐ Sagittarius Match
+
+Taurus: 4.20-5.20 | 土 | Ruler Venus
+Sagittarius: 11.23-12.21 | 火 | Ruler Jupiter
+
+60% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♉ Taurus & ♐ Sagittarius Cocok
+
+Taurus: 4.20-5.20 | 土 | Venus
+Sagittarius: 11.23-12.21 | 火 | Jupiter
+
+Skor 60%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["taurus", "sagittarius", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "104", slug: "taurus-aquarius-compatibility-104",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `金牛座和水瓶座配吗？星座配对深度分析`,
+      en: `Taurus and Aquarius Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Taurus dan Aquarius — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `金牛座（4.20-5.20，土象，守护星Venus）与水瓶座（1.20-2.18，风象，守护星Uranus）的配对分析，配对指数62%。`,
+      en: `Taurus (4.20-5.20, 土 sign) & Aquarius (1.20-2.18, 风 sign) compatibility guide. 62% match.`,
+      id: `Taurus (4.20-5.20, elemen 土) & Aquarius (1.20-2.18, elemen 风) panduan kecocokan. 62%.`,
+    },
+    content: {
+      zh: `♉ 金牛座 & ♒ 水瓶座 配对
+
+金牛座：4.20-5.20 | 土象 | 守护星Venus
+水瓶座：1.20-2.18 | 风象 | 守护星Uranus
+
+配对指数62%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♉ Taurus & ♒ Aquarius Match
+
+Taurus: 4.20-5.20 | 土 | Ruler Venus
+Aquarius: 1.20-2.18 | 风 | Ruler Uranus
+
+62% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♉ Taurus & ♒ Aquarius Cocok
+
+Taurus: 4.20-5.20 | 土 | Venus
+Aquarius: 1.20-2.18 | 风 | Uranus
+
+Skor 62%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["taurus", "aquarius", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "105", slug: "taurus-pisces-compatibility-105",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `金牛座和双鱼座配吗？星座配对深度分析`,
+      en: `Taurus and Pisces Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Taurus dan Pisces — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `金牛座（4.20-5.20，土象，守护星Venus）与双鱼座（2.19-3.20，水象，守护星Neptune）的配对分析，配对指数85%。`,
+      en: `Taurus (4.20-5.20, 土 sign) & Pisces (2.19-3.20, 水 sign) compatibility guide. 85% match.`,
+      id: `Taurus (4.20-5.20, elemen 土) & Pisces (2.19-3.20, elemen 水) panduan kecocokan. 85%.`,
+    },
+    content: {
+      zh: `♉ 金牛座 & ♓ 双鱼座 配对
+
+金牛座：4.20-5.20 | 土象 | 守护星Venus
+双鱼座：2.19-3.20 | 水象 | 守护星Neptune
+
+配对指数85%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♉ Taurus & ♓ Pisces Match
+
+Taurus: 4.20-5.20 | 土 | Ruler Venus
+Pisces: 2.19-3.20 | 水 | Ruler Neptune
+
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♉ Taurus & ♓ Pisces Cocok
+
+Taurus: 4.20-5.20 | 土 | Venus
+Pisces: 2.19-3.20 | 水 | Neptune
+
+Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["taurus", "pisces", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "106", slug: "gemini-cancer-compatibility-106",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `双子座和巨蟹座配吗？星座配对深度分析`,
+      en: `Gemini and Cancer Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Gemini dan Cancer — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `双子座（5.21-6.21，风象，守护星Mercury）与巨蟹座（6.22-7.22，水象，守护星Moon）的配对分析，配对指数58%。`,
+      en: `Gemini (5.21-6.21, 风 sign) & Cancer (6.22-7.22, 水 sign) compatibility guide. 58% match.`,
+      id: `Gemini (5.21-6.21, elemen 风) & Cancer (6.22-7.22, elemen 水) panduan kecocokan. 58%.`,
+    },
+    content: {
+      zh: `♊ 双子座 & ♋ 巨蟹座 配对
+
+双子座：5.21-6.21 | 风象 | 守护星Mercury
+巨蟹座：6.22-7.22 | 水象 | 守护星Moon
+
+配对指数58%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♊ Gemini & ♋ Cancer Match
+
+Gemini: 5.21-6.21 | 风 | Ruler Mercury
+Cancer: 6.22-7.22 | 水 | Ruler Moon
+
+58% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♊ Gemini & ♋ Cancer Cocok
+
+Gemini: 5.21-6.21 | 风 | Mercury
+Cancer: 6.22-7.22 | 水 | Moon
+
+Skor 58%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["gemini", "cancer", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "107", slug: "gemini-leo-compatibility-107",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `双子座和狮子座配吗？星座配对深度分析`,
+      en: `Gemini and Leo Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Gemini dan Leo — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `双子座（5.21-6.21，风象，守护星Mercury）与狮子座（7.23-8.22，火象，守护星Sun）的配对分析，配对指数88%。`,
+      en: `Gemini (5.21-6.21, 风 sign) & Leo (7.23-8.22, 火 sign) compatibility guide. 88% match.`,
+      id: `Gemini (5.21-6.21, elemen 风) & Leo (7.23-8.22, elemen 火) panduan kecocokan. 88%.`,
+    },
+    content: {
+      zh: `♊ 双子座 & ♌ 狮子座 配对
+
+双子座：5.21-6.21 | 风象 | 守护星Mercury
+狮子座：7.23-8.22 | 火象 | 守护星Sun
+
+配对指数88%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♊ Gemini & ♌ Leo Match
+
+Gemini: 5.21-6.21 | 风 | Ruler Mercury
+Leo: 7.23-8.22 | 火 | Ruler Sun
+
+88% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♊ Gemini & ♌ Leo Cocok
+
+Gemini: 5.21-6.21 | 风 | Mercury
+Leo: 7.23-8.22 | 火 | Sun
+
+Skor 88%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["gemini", "leo", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "108", slug: "gemini-virgo-compatibility-108",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `双子座和处女座配吗？星座配对深度分析`,
+      en: `Gemini and Virgo Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Gemini dan Virgo — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `双子座（5.21-6.21，风象，守护星Mercury）与处女座（8.23-9.22，土象，守护星Mercury）的配对分析，配对指数62%。`,
+      en: `Gemini (5.21-6.21, 风 sign) & Virgo (8.23-9.22, 土 sign) compatibility guide. 62% match.`,
+      id: `Gemini (5.21-6.21, elemen 风) & Virgo (8.23-9.22, elemen 土) panduan kecocokan. 62%.`,
+    },
+    content: {
+      zh: `♊ 双子座 & ♍ 处女座 配对
+
+双子座：5.21-6.21 | 风象 | 守护星Mercury
+处女座：8.23-9.22 | 土象 | 守护星Mercury
+
+配对指数62%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♊ Gemini & ♍ Virgo Match
+
+Gemini: 5.21-6.21 | 风 | Ruler Mercury
+Virgo: 8.23-9.22 | 土 | Ruler Mercury
+
+62% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♊ Gemini & ♍ Virgo Cocok
+
+Gemini: 5.21-6.21 | 风 | Mercury
+Virgo: 8.23-9.22 | 土 | Mercury
+
+Skor 62%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["gemini", "virgo", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "109", slug: "gemini-scorpio-compatibility-109",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `双子座和天蝎座配吗？星座配对深度分析`,
+      en: `Gemini and Scorpio Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Gemini dan Scorpio — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `双子座（5.21-6.21，风象，守护星Mercury）与天蝎座（10.24-11.22，水象，守护星Pluto）的配对分析，配对指数58%。`,
+      en: `Gemini (5.21-6.21, 风 sign) & Scorpio (10.24-11.22, 水 sign) compatibility guide. 58% match.`,
+      id: `Gemini (5.21-6.21, elemen 风) & Scorpio (10.24-11.22, elemen 水) panduan kecocokan. 58%.`,
+    },
+    content: {
+      zh: `♊ 双子座 & ♏ 天蝎座 配对
+
+双子座：5.21-6.21 | 风象 | 守护星Mercury
+天蝎座：10.24-11.22 | 水象 | 守护星Pluto
+
+配对指数58%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♊ Gemini & ♏ Scorpio Match
+
+Gemini: 5.21-6.21 | 风 | Ruler Mercury
+Scorpio: 10.24-11.22 | 水 | Ruler Pluto
+
+58% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♊ Gemini & ♏ Scorpio Cocok
+
+Gemini: 5.21-6.21 | 风 | Mercury
+Scorpio: 10.24-11.22 | 水 | Pluto
+
+Skor 58%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["gemini", "scorpio", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "110", slug: "gemini-sagittarius-compatibility-110",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `双子座和射手座配吗？星座配对深度分析`,
+      en: `Gemini and Sagittarius Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Gemini dan Sagittarius — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `双子座（5.21-6.21，风象，守护星Mercury）与射手座（11.23-12.21，火象，守护星Jupiter）的配对分析，配对指数88%。`,
+      en: `Gemini (5.21-6.21, 风 sign) & Sagittarius (11.23-12.21, 火 sign) compatibility guide. 88% match.`,
+      id: `Gemini (5.21-6.21, elemen 风) & Sagittarius (11.23-12.21, elemen 火) panduan kecocokan. 88%.`,
+    },
+    content: {
+      zh: `♊ 双子座 & ♐ 射手座 配对
+
+双子座：5.21-6.21 | 风象 | 守护星Mercury
+射手座：11.23-12.21 | 火象 | 守护星Jupiter
+
+配对指数88%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♊ Gemini & ♐ Sagittarius Match
+
+Gemini: 5.21-6.21 | 风 | Ruler Mercury
+Sagittarius: 11.23-12.21 | 火 | Ruler Jupiter
+
+88% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♊ Gemini & ♐ Sagittarius Cocok
+
+Gemini: 5.21-6.21 | 风 | Mercury
+Sagittarius: 11.23-12.21 | 火 | Jupiter
+
+Skor 88%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["gemini", "sagittarius", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "111", slug: "gemini-capricorn-compatibility-111",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `双子座和摩羯座配吗？星座配对深度分析`,
+      en: `Gemini and Capricorn Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Gemini dan Capricorn — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `双子座（5.21-6.21，风象，守护星Mercury）与摩羯座（12.22-1.19，土象，守护星Saturn）的配对分析，配对指数62%。`,
+      en: `Gemini (5.21-6.21, 风 sign) & Capricorn (12.22-1.19, 土 sign) compatibility guide. 62% match.`,
+      id: `Gemini (5.21-6.21, elemen 风) & Capricorn (12.22-1.19, elemen 土) panduan kecocokan. 62%.`,
+    },
+    content: {
+      zh: `♊ 双子座 & ♑ 摩羯座 配对
+
+双子座：5.21-6.21 | 风象 | 守护星Mercury
+摩羯座：12.22-1.19 | 土象 | 守护星Saturn
+
+配对指数62%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♊ Gemini & ♑ Capricorn Match
+
+Gemini: 5.21-6.21 | 风 | Ruler Mercury
+Capricorn: 12.22-1.19 | 土 | Ruler Saturn
+
+62% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♊ Gemini & ♑ Capricorn Cocok
+
+Gemini: 5.21-6.21 | 风 | Mercury
+Capricorn: 12.22-1.19 | 土 | Saturn
+
+Skor 62%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["gemini", "capricorn", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "112", slug: "gemini-pisces-compatibility-112",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `双子座和双鱼座配吗？星座配对深度分析`,
+      en: `Gemini and Pisces Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Gemini dan Pisces — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `双子座（5.21-6.21，风象，守护星Mercury）与双鱼座（2.19-3.20，水象，守护星Neptune）的配对分析，配对指数58%。`,
+      en: `Gemini (5.21-6.21, 风 sign) & Pisces (2.19-3.20, 水 sign) compatibility guide. 58% match.`,
+      id: `Gemini (5.21-6.21, elemen 风) & Pisces (2.19-3.20, elemen 水) panduan kecocokan. 58%.`,
+    },
+    content: {
+      zh: `♊ 双子座 & ♓ 双鱼座 配对
+
+双子座：5.21-6.21 | 风象 | 守护星Mercury
+双鱼座：2.19-3.20 | 水象 | 守护星Neptune
+
+配对指数58%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♊ Gemini & ♓ Pisces Match
+
+Gemini: 5.21-6.21 | 风 | Ruler Mercury
+Pisces: 2.19-3.20 | 水 | Ruler Neptune
+
+58% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♊ Gemini & ♓ Pisces Cocok
+
+Gemini: 5.21-6.21 | 风 | Mercury
+Pisces: 2.19-3.20 | 水 | Neptune
+
+Skor 58%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["gemini", "pisces", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "113", slug: "cancer-leo-compatibility-113",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `巨蟹座和狮子座配吗？星座配对深度分析`,
+      en: `Cancer and Leo Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Cancer dan Leo — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `巨蟹座（6.22-7.22，水象，守护星Moon）与狮子座（7.23-8.22，火象，守护星Sun）的配对分析，配对指数55%。`,
+      en: `Cancer (6.22-7.22, 水 sign) & Leo (7.23-8.22, 火 sign) compatibility guide. 55% match.`,
+      id: `Cancer (6.22-7.22, elemen 水) & Leo (7.23-8.22, elemen 火) panduan kecocokan. 55%.`,
+    },
+    content: {
+      zh: `♋ 巨蟹座 & ♌ 狮子座 配对
+
+巨蟹座：6.22-7.22 | 水象 | 守护星Moon
+狮子座：7.23-8.22 | 火象 | 守护星Sun
+
+配对指数55%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♋ Cancer & ♌ Leo Match
+
+Cancer: 6.22-7.22 | 水 | Ruler Moon
+Leo: 7.23-8.22 | 火 | Ruler Sun
+
+55% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♋ Cancer & ♌ Leo Cocok
+
+Cancer: 6.22-7.22 | 水 | Moon
+Leo: 7.23-8.22 | 火 | Sun
+
+Skor 55%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["cancer", "leo", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "114", slug: "cancer-virgo-compatibility-114",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `巨蟹座和处女座配吗？星座配对深度分析`,
+      en: `Cancer and Virgo Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Cancer dan Virgo — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `巨蟹座（6.22-7.22，水象，守护星Moon）与处女座（8.23-9.22，土象，守护星Mercury）的配对分析，配对指数85%。`,
+      en: `Cancer (6.22-7.22, 水 sign) & Virgo (8.23-9.22, 土 sign) compatibility guide. 85% match.`,
+      id: `Cancer (6.22-7.22, elemen 水) & Virgo (8.23-9.22, elemen 土) panduan kecocokan. 85%.`,
+    },
+    content: {
+      zh: `♋ 巨蟹座 & ♍ 处女座 配对
+
+巨蟹座：6.22-7.22 | 水象 | 守护星Moon
+处女座：8.23-9.22 | 土象 | 守护星Mercury
+
+配对指数85%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♋ Cancer & ♍ Virgo Match
+
+Cancer: 6.22-7.22 | 水 | Ruler Moon
+Virgo: 8.23-9.22 | 土 | Ruler Mercury
+
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♋ Cancer & ♍ Virgo Cocok
+
+Cancer: 6.22-7.22 | 水 | Moon
+Virgo: 8.23-9.22 | 土 | Mercury
+
+Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["cancer", "virgo", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "115", slug: "cancer-libra-compatibility-115",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `巨蟹座和天秤座配吗？星座配对深度分析`,
+      en: `Cancer and Libra Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Cancer dan Libra — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `巨蟹座（6.22-7.22，水象，守护星Moon）与天秤座（9.23-10.23，风象，守护星Venus）的配对分析，配对指数58%。`,
+      en: `Cancer (6.22-7.22, 水 sign) & Libra (9.23-10.23, 风 sign) compatibility guide. 58% match.`,
+      id: `Cancer (6.22-7.22, elemen 水) & Libra (9.23-10.23, elemen 风) panduan kecocokan. 58%.`,
+    },
+    content: {
+      zh: `♋ 巨蟹座 & ♎ 天秤座 配对
+
+巨蟹座：6.22-7.22 | 水象 | 守护星Moon
+天秤座：9.23-10.23 | 风象 | 守护星Venus
+
+配对指数58%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♋ Cancer & ♎ Libra Match
+
+Cancer: 6.22-7.22 | 水 | Ruler Moon
+Libra: 9.23-10.23 | 风 | Ruler Venus
+
+58% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♋ Cancer & ♎ Libra Cocok
+
+Cancer: 6.22-7.22 | 水 | Moon
+Libra: 9.23-10.23 | 风 | Venus
+
+Skor 58%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["cancer", "libra", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "116", slug: "cancer-sagittarius-compatibility-116",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `巨蟹座和射手座配吗？星座配对深度分析`,
+      en: `Cancer and Sagittarius Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Cancer dan Sagittarius — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `巨蟹座（6.22-7.22，水象，守护星Moon）与射手座（11.23-12.21，火象，守护星Jupiter）的配对分析，配对指数55%。`,
+      en: `Cancer (6.22-7.22, 水 sign) & Sagittarius (11.23-12.21, 火 sign) compatibility guide. 55% match.`,
+      id: `Cancer (6.22-7.22, elemen 水) & Sagittarius (11.23-12.21, elemen 火) panduan kecocokan. 55%.`,
+    },
+    content: {
+      zh: `♋ 巨蟹座 & ♐ 射手座 配对
+
+巨蟹座：6.22-7.22 | 水象 | 守护星Moon
+射手座：11.23-12.21 | 火象 | 守护星Jupiter
+
+配对指数55%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♋ Cancer & ♐ Sagittarius Match
+
+Cancer: 6.22-7.22 | 水 | Ruler Moon
+Sagittarius: 11.23-12.21 | 火 | Ruler Jupiter
+
+55% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♋ Cancer & ♐ Sagittarius Cocok
+
+Cancer: 6.22-7.22 | 水 | Moon
+Sagittarius: 11.23-12.21 | 火 | Jupiter
+
+Skor 55%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["cancer", "sagittarius", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "117", slug: "cancer-capricorn-compatibility-117",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `巨蟹座和摩羯座配吗？星座配对深度分析`,
+      en: `Cancer and Capricorn Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Cancer dan Capricorn — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `巨蟹座（6.22-7.22，水象，守护星Moon）与摩羯座（12.22-1.19，土象，守护星Saturn）的配对分析，配对指数85%。`,
+      en: `Cancer (6.22-7.22, 水 sign) & Capricorn (12.22-1.19, 土 sign) compatibility guide. 85% match.`,
+      id: `Cancer (6.22-7.22, elemen 水) & Capricorn (12.22-1.19, elemen 土) panduan kecocokan. 85%.`,
+    },
+    content: {
+      zh: `♋ 巨蟹座 & ♑ 摩羯座 配对
+
+巨蟹座：6.22-7.22 | 水象 | 守护星Moon
+摩羯座：12.22-1.19 | 土象 | 守护星Saturn
+
+配对指数85%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♋ Cancer & ♑ Capricorn Match
+
+Cancer: 6.22-7.22 | 水 | Ruler Moon
+Capricorn: 12.22-1.19 | 土 | Ruler Saturn
+
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♋ Cancer & ♑ Capricorn Cocok
+
+Cancer: 6.22-7.22 | 水 | Moon
+Capricorn: 12.22-1.19 | 土 | Saturn
+
+Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["cancer", "capricorn", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "118", slug: "cancer-aquarius-compatibility-118",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `巨蟹座和水瓶座配吗？星座配对深度分析`,
+      en: `Cancer and Aquarius Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Cancer dan Aquarius — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `巨蟹座（6.22-7.22，水象，守护星Moon）与水瓶座（1.20-2.18，风象，守护星Uranus）的配对分析，配对指数58%。`,
+      en: `Cancer (6.22-7.22, 水 sign) & Aquarius (1.20-2.18, 风 sign) compatibility guide. 58% match.`,
+      id: `Cancer (6.22-7.22, elemen 水) & Aquarius (1.20-2.18, elemen 风) panduan kecocokan. 58%.`,
+    },
+    content: {
+      zh: `♋ 巨蟹座 & ♒ 水瓶座 配对
+
+巨蟹座：6.22-7.22 | 水象 | 守护星Moon
+水瓶座：1.20-2.18 | 风象 | 守护星Uranus
+
+配对指数58%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♋ Cancer & ♒ Aquarius Match
+
+Cancer: 6.22-7.22 | 水 | Ruler Moon
+Aquarius: 1.20-2.18 | 风 | Ruler Uranus
+
+58% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♋ Cancer & ♒ Aquarius Cocok
+
+Cancer: 6.22-7.22 | 水 | Moon
+Aquarius: 1.20-2.18 | 风 | Uranus
+
+Skor 58%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["cancer", "aquarius", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "119", slug: "leo-virgo-compatibility-119",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `狮子座和处女座配吗？星座配对深度分析`,
+      en: `Leo and Virgo Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Leo dan Virgo — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `狮子座（7.23-8.22，火象，守护星Sun）与处女座（8.23-9.22，土象，守护星Mercury）的配对分析，配对指数60%。`,
+      en: `Leo (7.23-8.22, 火 sign) & Virgo (8.23-9.22, 土 sign) compatibility guide. 60% match.`,
+      id: `Leo (7.23-8.22, elemen 火) & Virgo (8.23-9.22, elemen 土) panduan kecocokan. 60%.`,
+    },
+    content: {
+      zh: `♌ 狮子座 & ♍ 处女座 配对
+
+狮子座：7.23-8.22 | 火象 | 守护星Sun
+处女座：8.23-9.22 | 土象 | 守护星Mercury
+
+配对指数60%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♌ Leo & ♍ Virgo Match
+
+Leo: 7.23-8.22 | 火 | Ruler Sun
+Virgo: 8.23-9.22 | 土 | Ruler Mercury
+
+60% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♌ Leo & ♍ Virgo Cocok
+
+Leo: 7.23-8.22 | 火 | Sun
+Virgo: 8.23-9.22 | 土 | Mercury
+
+Skor 60%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["leo", "virgo", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "120", slug: "leo-libra-compatibility-120",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `狮子座和天秤座配吗？星座配对深度分析`,
+      en: `Leo and Libra Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Leo dan Libra — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `狮子座（7.23-8.22，火象，守护星Sun）与天秤座（9.23-10.23，风象，守护星Venus）的配对分析，配对指数88%。`,
+      en: `Leo (7.23-8.22, 火 sign) & Libra (9.23-10.23, 风 sign) compatibility guide. 88% match.`,
+      id: `Leo (7.23-8.22, elemen 火) & Libra (9.23-10.23, elemen 风) panduan kecocokan. 88%.`,
+    },
+    content: {
+      zh: `♌ 狮子座 & ♎ 天秤座 配对
+
+狮子座：7.23-8.22 | 火象 | 守护星Sun
+天秤座：9.23-10.23 | 风象 | 守护星Venus
+
+配对指数88%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♌ Leo & ♎ Libra Match
+
+Leo: 7.23-8.22 | 火 | Ruler Sun
+Libra: 9.23-10.23 | 风 | Ruler Venus
+
+88% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♌ Leo & ♎ Libra Cocok
+
+Leo: 7.23-8.22 | 火 | Sun
+Libra: 9.23-10.23 | 风 | Venus
+
+Skor 88%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["leo", "libra", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "121", slug: "leo-scorpio-compatibility-121",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `狮子座和天蝎座配吗？星座配对深度分析`,
+      en: `Leo and Scorpio Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Leo dan Scorpio — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `狮子座（7.23-8.22，火象，守护星Sun）与天蝎座（10.24-11.22，水象，守护星Pluto）的配对分析，配对指数55%。`,
+      en: `Leo (7.23-8.22, 火 sign) & Scorpio (10.24-11.22, 水 sign) compatibility guide. 55% match.`,
+      id: `Leo (7.23-8.22, elemen 火) & Scorpio (10.24-11.22, elemen 水) panduan kecocokan. 55%.`,
+    },
+    content: {
+      zh: `♌ 狮子座 & ♏ 天蝎座 配对
+
+狮子座：7.23-8.22 | 火象 | 守护星Sun
+天蝎座：10.24-11.22 | 水象 | 守护星Pluto
+
+配对指数55%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♌ Leo & ♏ Scorpio Match
+
+Leo: 7.23-8.22 | 火 | Ruler Sun
+Scorpio: 10.24-11.22 | 水 | Ruler Pluto
+
+55% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♌ Leo & ♏ Scorpio Cocok
+
+Leo: 7.23-8.22 | 火 | Sun
+Scorpio: 10.24-11.22 | 水 | Pluto
+
+Skor 55%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["leo", "scorpio", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "122", slug: "leo-capricorn-compatibility-122",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `狮子座和摩羯座配吗？星座配对深度分析`,
+      en: `Leo and Capricorn Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Leo dan Capricorn — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `狮子座（7.23-8.22，火象，守护星Sun）与摩羯座（12.22-1.19，土象，守护星Saturn）的配对分析，配对指数60%。`,
+      en: `Leo (7.23-8.22, 火 sign) & Capricorn (12.22-1.19, 土 sign) compatibility guide. 60% match.`,
+      id: `Leo (7.23-8.22, elemen 火) & Capricorn (12.22-1.19, elemen 土) panduan kecocokan. 60%.`,
+    },
+    content: {
+      zh: `♌ 狮子座 & ♑ 摩羯座 配对
+
+狮子座：7.23-8.22 | 火象 | 守护星Sun
+摩羯座：12.22-1.19 | 土象 | 守护星Saturn
+
+配对指数60%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♌ Leo & ♑ Capricorn Match
+
+Leo: 7.23-8.22 | 火 | Ruler Sun
+Capricorn: 12.22-1.19 | 土 | Ruler Saturn
+
+60% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♌ Leo & ♑ Capricorn Cocok
+
+Leo: 7.23-8.22 | 火 | Sun
+Capricorn: 12.22-1.19 | 土 | Saturn
+
+Skor 60%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["leo", "capricorn", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "123", slug: "leo-aquarius-compatibility-123",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `狮子座和水瓶座配吗？星座配对深度分析`,
+      en: `Leo and Aquarius Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Leo dan Aquarius — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `狮子座（7.23-8.22，火象，守护星Sun）与水瓶座（1.20-2.18，风象，守护星Uranus）的配对分析，配对指数88%。`,
+      en: `Leo (7.23-8.22, 火 sign) & Aquarius (1.20-2.18, 风 sign) compatibility guide. 88% match.`,
+      id: `Leo (7.23-8.22, elemen 火) & Aquarius (1.20-2.18, elemen 风) panduan kecocokan. 88%.`,
+    },
+    content: {
+      zh: `♌ 狮子座 & ♒ 水瓶座 配对
+
+狮子座：7.23-8.22 | 火象 | 守护星Sun
+水瓶座：1.20-2.18 | 风象 | 守护星Uranus
+
+配对指数88%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♌ Leo & ♒ Aquarius Match
+
+Leo: 7.23-8.22 | 火 | Ruler Sun
+Aquarius: 1.20-2.18 | 风 | Ruler Uranus
+
+88% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♌ Leo & ♒ Aquarius Cocok
+
+Leo: 7.23-8.22 | 火 | Sun
+Aquarius: 1.20-2.18 | 风 | Uranus
+
+Skor 88%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["leo", "aquarius", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "124", slug: "leo-pisces-compatibility-124",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `狮子座和双鱼座配吗？星座配对深度分析`,
+      en: `Leo and Pisces Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Leo dan Pisces — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `狮子座（7.23-8.22，火象，守护星Sun）与双鱼座（2.19-3.20，水象，守护星Neptune）的配对分析，配对指数55%。`,
+      en: `Leo (7.23-8.22, 火 sign) & Pisces (2.19-3.20, 水 sign) compatibility guide. 55% match.`,
+      id: `Leo (7.23-8.22, elemen 火) & Pisces (2.19-3.20, elemen 水) panduan kecocokan. 55%.`,
+    },
+    content: {
+      zh: `♌ 狮子座 & ♓ 双鱼座 配对
+
+狮子座：7.23-8.22 | 火象 | 守护星Sun
+双鱼座：2.19-3.20 | 水象 | 守护星Neptune
+
+配对指数55%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♌ Leo & ♓ Pisces Match
+
+Leo: 7.23-8.22 | 火 | Ruler Sun
+Pisces: 2.19-3.20 | 水 | Ruler Neptune
+
+55% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♌ Leo & ♓ Pisces Cocok
+
+Leo: 7.23-8.22 | 火 | Sun
+Pisces: 2.19-3.20 | 水 | Neptune
+
+Skor 55%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["leo", "pisces", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "125", slug: "virgo-libra-compatibility-125",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `处女座和天秤座配吗？星座配对深度分析`,
+      en: `Virgo and Libra Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Virgo dan Libra — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `处女座（8.23-9.22，土象，守护星Mercury）与天秤座（9.23-10.23，风象，守护星Venus）的配对分析，配对指数62%。`,
+      en: `Virgo (8.23-9.22, 土 sign) & Libra (9.23-10.23, 风 sign) compatibility guide. 62% match.`,
+      id: `Virgo (8.23-9.22, elemen 土) & Libra (9.23-10.23, elemen 风) panduan kecocokan. 62%.`,
+    },
+    content: {
+      zh: `♍ 处女座 & ♎ 天秤座 配对
+
+处女座：8.23-9.22 | 土象 | 守护星Mercury
+天秤座：9.23-10.23 | 风象 | 守护星Venus
+
+配对指数62%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♍ Virgo & ♎ Libra Match
+
+Virgo: 8.23-9.22 | 土 | Ruler Mercury
+Libra: 9.23-10.23 | 风 | Ruler Venus
+
+62% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♍ Virgo & ♎ Libra Cocok
+
+Virgo: 8.23-9.22 | 土 | Mercury
+Libra: 9.23-10.23 | 风 | Venus
+
+Skor 62%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["virgo", "libra", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "126", slug: "virgo-scorpio-compatibility-126",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `处女座和天蝎座配吗？星座配对深度分析`,
+      en: `Virgo and Scorpio Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Virgo dan Scorpio — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `处女座（8.23-9.22，土象，守护星Mercury）与天蝎座（10.24-11.22，水象，守护星Pluto）的配对分析，配对指数85%。`,
+      en: `Virgo (8.23-9.22, 土 sign) & Scorpio (10.24-11.22, 水 sign) compatibility guide. 85% match.`,
+      id: `Virgo (8.23-9.22, elemen 土) & Scorpio (10.24-11.22, elemen 水) panduan kecocokan. 85%.`,
+    },
+    content: {
+      zh: `♍ 处女座 & ♏ 天蝎座 配对
+
+处女座：8.23-9.22 | 土象 | 守护星Mercury
+天蝎座：10.24-11.22 | 水象 | 守护星Pluto
+
+配对指数85%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♍ Virgo & ♏ Scorpio Match
+
+Virgo: 8.23-9.22 | 土 | Ruler Mercury
+Scorpio: 10.24-11.22 | 水 | Ruler Pluto
+
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♍ Virgo & ♏ Scorpio Cocok
+
+Virgo: 8.23-9.22 | 土 | Mercury
+Scorpio: 10.24-11.22 | 水 | Pluto
+
+Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["virgo", "scorpio", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "127", slug: "virgo-sagittarius-compatibility-127",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `处女座和射手座配吗？星座配对深度分析`,
+      en: `Virgo and Sagittarius Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Virgo dan Sagittarius — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `处女座（8.23-9.22，土象，守护星Mercury）与射手座（11.23-12.21，火象，守护星Jupiter）的配对分析，配对指数60%。`,
+      en: `Virgo (8.23-9.22, 土 sign) & Sagittarius (11.23-12.21, 火 sign) compatibility guide. 60% match.`,
+      id: `Virgo (8.23-9.22, elemen 土) & Sagittarius (11.23-12.21, elemen 火) panduan kecocokan. 60%.`,
+    },
+    content: {
+      zh: `♍ 处女座 & ♐ 射手座 配对
+
+处女座：8.23-9.22 | 土象 | 守护星Mercury
+射手座：11.23-12.21 | 火象 | 守护星Jupiter
+
+配对指数60%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♍ Virgo & ♐ Sagittarius Match
+
+Virgo: 8.23-9.22 | 土 | Ruler Mercury
+Sagittarius: 11.23-12.21 | 火 | Ruler Jupiter
+
+60% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♍ Virgo & ♐ Sagittarius Cocok
+
+Virgo: 8.23-9.22 | 土 | Mercury
+Sagittarius: 11.23-12.21 | 火 | Jupiter
+
+Skor 60%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["virgo", "sagittarius", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "128", slug: "virgo-aquarius-compatibility-128",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `处女座和水瓶座配吗？星座配对深度分析`,
+      en: `Virgo and Aquarius Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Virgo dan Aquarius — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `处女座（8.23-9.22，土象，守护星Mercury）与水瓶座（1.20-2.18，风象，守护星Uranus）的配对分析，配对指数62%。`,
+      en: `Virgo (8.23-9.22, 土 sign) & Aquarius (1.20-2.18, 风 sign) compatibility guide. 62% match.`,
+      id: `Virgo (8.23-9.22, elemen 土) & Aquarius (1.20-2.18, elemen 风) panduan kecocokan. 62%.`,
+    },
+    content: {
+      zh: `♍ 处女座 & ♒ 水瓶座 配对
+
+处女座：8.23-9.22 | 土象 | 守护星Mercury
+水瓶座：1.20-2.18 | 风象 | 守护星Uranus
+
+配对指数62%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♍ Virgo & ♒ Aquarius Match
+
+Virgo: 8.23-9.22 | 土 | Ruler Mercury
+Aquarius: 1.20-2.18 | 风 | Ruler Uranus
+
+62% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♍ Virgo & ♒ Aquarius Cocok
+
+Virgo: 8.23-9.22 | 土 | Mercury
+Aquarius: 1.20-2.18 | 风 | Uranus
+
+Skor 62%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["virgo", "aquarius", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "129", slug: "virgo-pisces-compatibility-129",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `处女座和双鱼座配吗？星座配对深度分析`,
+      en: `Virgo and Pisces Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Virgo dan Pisces — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `处女座（8.23-9.22，土象，守护星Mercury）与双鱼座（2.19-3.20，水象，守护星Neptune）的配对分析，配对指数85%。`,
+      en: `Virgo (8.23-9.22, 土 sign) & Pisces (2.19-3.20, 水 sign) compatibility guide. 85% match.`,
+      id: `Virgo (8.23-9.22, elemen 土) & Pisces (2.19-3.20, elemen 水) panduan kecocokan. 85%.`,
+    },
+    content: {
+      zh: `♍ 处女座 & ♓ 双鱼座 配对
+
+处女座：8.23-9.22 | 土象 | 守护星Mercury
+双鱼座：2.19-3.20 | 水象 | 守护星Neptune
+
+配对指数85%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♍ Virgo & ♓ Pisces Match
+
+Virgo: 8.23-9.22 | 土 | Ruler Mercury
+Pisces: 2.19-3.20 | 水 | Ruler Neptune
+
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♍ Virgo & ♓ Pisces Cocok
+
+Virgo: 8.23-9.22 | 土 | Mercury
+Pisces: 2.19-3.20 | 水 | Neptune
+
+Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["virgo", "pisces", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "130", slug: "libra-scorpio-compatibility-130",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `天秤座和天蝎座配吗？星座配对深度分析`,
+      en: `Libra and Scorpio Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Libra dan Scorpio — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `天秤座（9.23-10.23，风象，守护星Venus）与天蝎座（10.24-11.22，水象，守护星Pluto）的配对分析，配对指数58%。`,
+      en: `Libra (9.23-10.23, 风 sign) & Scorpio (10.24-11.22, 水 sign) compatibility guide. 58% match.`,
+      id: `Libra (9.23-10.23, elemen 风) & Scorpio (10.24-11.22, elemen 水) panduan kecocokan. 58%.`,
+    },
+    content: {
+      zh: `♎ 天秤座 & ♏ 天蝎座 配对
+
+天秤座：9.23-10.23 | 风象 | 守护星Venus
+天蝎座：10.24-11.22 | 水象 | 守护星Pluto
+
+配对指数58%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♎ Libra & ♏ Scorpio Match
+
+Libra: 9.23-10.23 | 风 | Ruler Venus
+Scorpio: 10.24-11.22 | 水 | Ruler Pluto
+
+58% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♎ Libra & ♏ Scorpio Cocok
+
+Libra: 9.23-10.23 | 风 | Venus
+Scorpio: 10.24-11.22 | 水 | Pluto
+
+Skor 58%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["libra", "scorpio", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "131", slug: "libra-sagittarius-compatibility-131",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `天秤座和射手座配吗？星座配对深度分析`,
+      en: `Libra and Sagittarius Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Libra dan Sagittarius — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `天秤座（9.23-10.23，风象，守护星Venus）与射手座（11.23-12.21，火象，守护星Jupiter）的配对分析，配对指数88%。`,
+      en: `Libra (9.23-10.23, 风 sign) & Sagittarius (11.23-12.21, 火 sign) compatibility guide. 88% match.`,
+      id: `Libra (9.23-10.23, elemen 风) & Sagittarius (11.23-12.21, elemen 火) panduan kecocokan. 88%.`,
+    },
+    content: {
+      zh: `♎ 天秤座 & ♐ 射手座 配对
+
+天秤座：9.23-10.23 | 风象 | 守护星Venus
+射手座：11.23-12.21 | 火象 | 守护星Jupiter
+
+配对指数88%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♎ Libra & ♐ Sagittarius Match
+
+Libra: 9.23-10.23 | 风 | Ruler Venus
+Sagittarius: 11.23-12.21 | 火 | Ruler Jupiter
+
+88% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♎ Libra & ♐ Sagittarius Cocok
+
+Libra: 9.23-10.23 | 风 | Venus
+Sagittarius: 11.23-12.21 | 火 | Jupiter
+
+Skor 88%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["libra", "sagittarius", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "132", slug: "libra-capricorn-compatibility-132",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `天秤座和摩羯座配吗？星座配对深度分析`,
+      en: `Libra and Capricorn Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Libra dan Capricorn — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `天秤座（9.23-10.23，风象，守护星Venus）与摩羯座（12.22-1.19，土象，守护星Saturn）的配对分析，配对指数62%。`,
+      en: `Libra (9.23-10.23, 风 sign) & Capricorn (12.22-1.19, 土 sign) compatibility guide. 62% match.`,
+      id: `Libra (9.23-10.23, elemen 风) & Capricorn (12.22-1.19, elemen 土) panduan kecocokan. 62%.`,
+    },
+    content: {
+      zh: `♎ 天秤座 & ♑ 摩羯座 配对
+
+天秤座：9.23-10.23 | 风象 | 守护星Venus
+摩羯座：12.22-1.19 | 土象 | 守护星Saturn
+
+配对指数62%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♎ Libra & ♑ Capricorn Match
+
+Libra: 9.23-10.23 | 风 | Ruler Venus
+Capricorn: 12.22-1.19 | 土 | Ruler Saturn
+
+62% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♎ Libra & ♑ Capricorn Cocok
+
+Libra: 9.23-10.23 | 风 | Venus
+Capricorn: 12.22-1.19 | 土 | Saturn
+
+Skor 62%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["libra", "capricorn", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "133", slug: "libra-pisces-compatibility-133",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `天秤座和双鱼座配吗？星座配对深度分析`,
+      en: `Libra and Pisces Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Libra dan Pisces — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `天秤座（9.23-10.23，风象，守护星Venus）与双鱼座（2.19-3.20，水象，守护星Neptune）的配对分析，配对指数58%。`,
+      en: `Libra (9.23-10.23, 风 sign) & Pisces (2.19-3.20, 水 sign) compatibility guide. 58% match.`,
+      id: `Libra (9.23-10.23, elemen 风) & Pisces (2.19-3.20, elemen 水) panduan kecocokan. 58%.`,
+    },
+    content: {
+      zh: `♎ 天秤座 & ♓ 双鱼座 配对
+
+天秤座：9.23-10.23 | 风象 | 守护星Venus
+双鱼座：2.19-3.20 | 水象 | 守护星Neptune
+
+配对指数58%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♎ Libra & ♓ Pisces Match
+
+Libra: 9.23-10.23 | 风 | Ruler Venus
+Pisces: 2.19-3.20 | 水 | Ruler Neptune
+
+58% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♎ Libra & ♓ Pisces Cocok
+
+Libra: 9.23-10.23 | 风 | Venus
+Pisces: 2.19-3.20 | 水 | Neptune
+
+Skor 58%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["libra", "pisces", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "134", slug: "scorpio-sagittarius-compatibility-134",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `天蝎座和射手座配吗？星座配对深度分析`,
+      en: `Scorpio and Sagittarius Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Scorpio dan Sagittarius — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `天蝎座（10.24-11.22，水象，守护星Pluto）与射手座（11.23-12.21，火象，守护星Jupiter）的配对分析，配对指数55%。`,
+      en: `Scorpio (10.24-11.22, 水 sign) & Sagittarius (11.23-12.21, 火 sign) compatibility guide. 55% match.`,
+      id: `Scorpio (10.24-11.22, elemen 水) & Sagittarius (11.23-12.21, elemen 火) panduan kecocokan. 55%.`,
+    },
+    content: {
+      zh: `♏ 天蝎座 & ♐ 射手座 配对
+
+天蝎座：10.24-11.22 | 水象 | 守护星Pluto
+射手座：11.23-12.21 | 火象 | 守护星Jupiter
+
+配对指数55%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♏ Scorpio & ♐ Sagittarius Match
+
+Scorpio: 10.24-11.22 | 水 | Ruler Pluto
+Sagittarius: 11.23-12.21 | 火 | Ruler Jupiter
+
+55% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♏ Scorpio & ♐ Sagittarius Cocok
+
+Scorpio: 10.24-11.22 | 水 | Pluto
+Sagittarius: 11.23-12.21 | 火 | Jupiter
+
+Skor 55%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["scorpio", "sagittarius", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "135", slug: "scorpio-capricorn-compatibility-135",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `天蝎座和摩羯座配吗？星座配对深度分析`,
+      en: `Scorpio and Capricorn Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Scorpio dan Capricorn — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `天蝎座（10.24-11.22，水象，守护星Pluto）与摩羯座（12.22-1.19，土象，守护星Saturn）的配对分析，配对指数85%。`,
+      en: `Scorpio (10.24-11.22, 水 sign) & Capricorn (12.22-1.19, 土 sign) compatibility guide. 85% match.`,
+      id: `Scorpio (10.24-11.22, elemen 水) & Capricorn (12.22-1.19, elemen 土) panduan kecocokan. 85%.`,
+    },
+    content: {
+      zh: `♏ 天蝎座 & ♑ 摩羯座 配对
+
+天蝎座：10.24-11.22 | 水象 | 守护星Pluto
+摩羯座：12.22-1.19 | 土象 | 守护星Saturn
+
+配对指数85%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♏ Scorpio & ♑ Capricorn Match
+
+Scorpio: 10.24-11.22 | 水 | Ruler Pluto
+Capricorn: 12.22-1.19 | 土 | Ruler Saturn
+
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♏ Scorpio & ♑ Capricorn Cocok
+
+Scorpio: 10.24-11.22 | 水 | Pluto
+Capricorn: 12.22-1.19 | 土 | Saturn
+
+Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["scorpio", "capricorn", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "136", slug: "scorpio-aquarius-compatibility-136",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `天蝎座和水瓶座配吗？星座配对深度分析`,
+      en: `Scorpio and Aquarius Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Scorpio dan Aquarius — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `天蝎座（10.24-11.22，水象，守护星Pluto）与水瓶座（1.20-2.18，风象，守护星Uranus）的配对分析，配对指数58%。`,
+      en: `Scorpio (10.24-11.22, 水 sign) & Aquarius (1.20-2.18, 风 sign) compatibility guide. 58% match.`,
+      id: `Scorpio (10.24-11.22, elemen 水) & Aquarius (1.20-2.18, elemen 风) panduan kecocokan. 58%.`,
+    },
+    content: {
+      zh: `♏ 天蝎座 & ♒ 水瓶座 配对
+
+天蝎座：10.24-11.22 | 水象 | 守护星Pluto
+水瓶座：1.20-2.18 | 风象 | 守护星Uranus
+
+配对指数58%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♏ Scorpio & ♒ Aquarius Match
+
+Scorpio: 10.24-11.22 | 水 | Ruler Pluto
+Aquarius: 1.20-2.18 | 风 | Ruler Uranus
+
+58% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♏ Scorpio & ♒ Aquarius Cocok
+
+Scorpio: 10.24-11.22 | 水 | Pluto
+Aquarius: 1.20-2.18 | 风 | Uranus
+
+Skor 58%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["scorpio", "aquarius", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "137", slug: "sagittarius-capricorn-compatibility-137",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `射手座和摩羯座配吗？星座配对深度分析`,
+      en: `Sagittarius and Capricorn Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Sagittarius dan Capricorn — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `射手座（11.23-12.21，火象，守护星Jupiter）与摩羯座（12.22-1.19，土象，守护星Saturn）的配对分析，配对指数60%。`,
+      en: `Sagittarius (11.23-12.21, 火 sign) & Capricorn (12.22-1.19, 土 sign) compatibility guide. 60% match.`,
+      id: `Sagittarius (11.23-12.21, elemen 火) & Capricorn (12.22-1.19, elemen 土) panduan kecocokan. 60%.`,
+    },
+    content: {
+      zh: `♐ 射手座 & ♑ 摩羯座 配对
+
+射手座：11.23-12.21 | 火象 | 守护星Jupiter
+摩羯座：12.22-1.19 | 土象 | 守护星Saturn
+
+配对指数60%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♐ Sagittarius & ♑ Capricorn Match
+
+Sagittarius: 11.23-12.21 | 火 | Ruler Jupiter
+Capricorn: 12.22-1.19 | 土 | Ruler Saturn
+
+60% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♐ Sagittarius & ♑ Capricorn Cocok
+
+Sagittarius: 11.23-12.21 | 火 | Jupiter
+Capricorn: 12.22-1.19 | 土 | Saturn
+
+Skor 60%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["sagittarius", "capricorn", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "138", slug: "sagittarius-aquarius-compatibility-138",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `射手座和水瓶座配吗？星座配对深度分析`,
+      en: `Sagittarius and Aquarius Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Sagittarius dan Aquarius — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `射手座（11.23-12.21，火象，守护星Jupiter）与水瓶座（1.20-2.18，风象，守护星Uranus）的配对分析，配对指数88%。`,
+      en: `Sagittarius (11.23-12.21, 火 sign) & Aquarius (1.20-2.18, 风 sign) compatibility guide. 88% match.`,
+      id: `Sagittarius (11.23-12.21, elemen 火) & Aquarius (1.20-2.18, elemen 风) panduan kecocokan. 88%.`,
+    },
+    content: {
+      zh: `♐ 射手座 & ♒ 水瓶座 配对
+
+射手座：11.23-12.21 | 火象 | 守护星Jupiter
+水瓶座：1.20-2.18 | 风象 | 守护星Uranus
+
+配对指数88%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♐ Sagittarius & ♒ Aquarius Match
+
+Sagittarius: 11.23-12.21 | 火 | Ruler Jupiter
+Aquarius: 1.20-2.18 | 风 | Ruler Uranus
+
+88% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♐ Sagittarius & ♒ Aquarius Cocok
+
+Sagittarius: 11.23-12.21 | 火 | Jupiter
+Aquarius: 1.20-2.18 | 风 | Uranus
+
+Skor 88%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["sagittarius", "aquarius", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "139", slug: "sagittarius-pisces-compatibility-139",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `射手座和双鱼座配吗？星座配对深度分析`,
+      en: `Sagittarius and Pisces Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Sagittarius dan Pisces — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `射手座（11.23-12.21，火象，守护星Jupiter）与双鱼座（2.19-3.20，水象，守护星Neptune）的配对分析，配对指数55%。`,
+      en: `Sagittarius (11.23-12.21, 火 sign) & Pisces (2.19-3.20, 水 sign) compatibility guide. 55% match.`,
+      id: `Sagittarius (11.23-12.21, elemen 火) & Pisces (2.19-3.20, elemen 水) panduan kecocokan. 55%.`,
+    },
+    content: {
+      zh: `♐ 射手座 & ♓ 双鱼座 配对
+
+射手座：11.23-12.21 | 火象 | 守护星Jupiter
+双鱼座：2.19-3.20 | 水象 | 守护星Neptune
+
+配对指数55%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♐ Sagittarius & ♓ Pisces Match
+
+Sagittarius: 11.23-12.21 | 火 | Ruler Jupiter
+Pisces: 2.19-3.20 | 水 | Ruler Neptune
+
+55% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♐ Sagittarius & ♓ Pisces Cocok
+
+Sagittarius: 11.23-12.21 | 火 | Jupiter
+Pisces: 2.19-3.20 | 水 | Neptune
+
+Skor 55%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["sagittarius", "pisces", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "140", slug: "capricorn-aquarius-compatibility-140",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `摩羯座和水瓶座配吗？星座配对深度分析`,
+      en: `Capricorn and Aquarius Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Capricorn dan Aquarius — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `摩羯座（12.22-1.19，土象，守护星Saturn）与水瓶座（1.20-2.18，风象，守护星Uranus）的配对分析，配对指数62%。`,
+      en: `Capricorn (12.22-1.19, 土 sign) & Aquarius (1.20-2.18, 风 sign) compatibility guide. 62% match.`,
+      id: `Capricorn (12.22-1.19, elemen 土) & Aquarius (1.20-2.18, elemen 风) panduan kecocokan. 62%.`,
+    },
+    content: {
+      zh: `♑ 摩羯座 & ♒ 水瓶座 配对
+
+摩羯座：12.22-1.19 | 土象 | 守护星Saturn
+水瓶座：1.20-2.18 | 风象 | 守护星Uranus
+
+配对指数62%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♑ Capricorn & ♒ Aquarius Match
+
+Capricorn: 12.22-1.19 | 土 | Ruler Saturn
+Aquarius: 1.20-2.18 | 风 | Ruler Uranus
+
+62% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♑ Capricorn & ♒ Aquarius Cocok
+
+Capricorn: 12.22-1.19 | 土 | Saturn
+Aquarius: 1.20-2.18 | 风 | Uranus
+
+Skor 62%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["capricorn", "aquarius", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "141", slug: "capricorn-pisces-compatibility-141",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `摩羯座和双鱼座配吗？星座配对深度分析`,
+      en: `Capricorn and Pisces Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Capricorn dan Pisces — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `摩羯座（12.22-1.19，土象，守护星Saturn）与双鱼座（2.19-3.20，水象，守护星Neptune）的配对分析，配对指数85%。`,
+      en: `Capricorn (12.22-1.19, 土 sign) & Pisces (2.19-3.20, 水 sign) compatibility guide. 85% match.`,
+      id: `Capricorn (12.22-1.19, elemen 土) & Pisces (2.19-3.20, elemen 水) panduan kecocokan. 85%.`,
+    },
+    content: {
+      zh: `♑ 摩羯座 & ♓ 双鱼座 配对
+
+摩羯座：12.22-1.19 | 土象 | 守护星Saturn
+双鱼座：2.19-3.20 | 水象 | 守护星Neptune
+
+配对指数85%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♑ Capricorn & ♓ Pisces Match
+
+Capricorn: 12.22-1.19 | 土 | Ruler Saturn
+Pisces: 2.19-3.20 | 水 | Ruler Neptune
+
+85% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♑ Capricorn & ♓ Pisces Cocok
+
+Capricorn: 12.22-1.19 | 土 | Saturn
+Pisces: 2.19-3.20 | 水 | Neptune
+
+Skor 85%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["capricorn", "pisces", "compatibility", "love", "zodiac"],
+  },
+  {
+    id: "142", slug: "aquarius-pisces-compatibility-142",
+    category: "compatibility", categoryZh: "配对", categoryEn: "Compatibility", categoryId: "Kecocokan",
+    date: "2026-06-21",
+    title: {
+      zh: `水瓶座和双鱼座配吗？星座配对深度分析`,
+      en: `Aquarius and Pisces Compatibility — Zodiac Match Guide`,
+      id: `Kecocokan Aquarius dan Pisces — Panduan Zodiak`,
+    },
+    excerpt: {
+      zh: `水瓶座（1.20-2.18，风象，守护星Uranus）与双鱼座（2.19-3.20，水象，守护星Neptune）的配对分析，配对指数58%。`,
+      en: `Aquarius (1.20-2.18, 风 sign) & Pisces (2.19-3.20, 水 sign) compatibility guide. 58% match.`,
+      id: `Aquarius (1.20-2.18, elemen 风) & Pisces (2.19-3.20, elemen 水) panduan kecocokan. 58%.`,
+    },
+    content: {
+      zh: `♒ 水瓶座 & ♓ 双鱼座 配对
+
+水瓶座：1.20-2.18 | 风象 | 守护星Uranus
+双鱼座：2.19-3.20 | 水象 | 守护星Neptune
+
+配对指数58%。使用 lunaxstar.com 配对工具输入双方出生信息获取精准合盘解读。`,
+      en: `♒ Aquarius & ♓ Pisces Match
+
+Aquarius: 1.20-2.18 | 风 | Ruler Uranus
+Pisces: 2.19-3.20 | 水 | Ruler Neptune
+
+58% compatibility. Use lunaxstar.com with both birth data for accurate synastry.
+
+---
+
+**Related:**
+[Free Synastry Calculator — Check Any Relationship](/compatibility)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `♒ Aquarius & ♓ Pisces Cocok
+
+Aquarius: 1.20-2.18 | 风 | Uranus
+Pisces: 2.19-3.20 | 水 | Neptune
+
+Skor 58%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
+    },
+    readTime: 3,
+    tags: ["aquarius", "pisces", "compatibility", "love", "zodiac"],
+  },
 ];

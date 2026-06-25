@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { getFirestore, collection, addDoc, query, where, getDocs, serverTimestamp } from "firebase/firestore";
-import { app } from "@/lib/firebase";
+import { collection, addDoc, query, where, getDocs, serverTimestamp } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 import { sendWelcomeEmail } from "@/lib/newsletter";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -117,7 +117,6 @@ export default function NewsletterForm() {
     setMessage("");
 
     try {
-      const db = getFirestore(app);
       const q = query(collection(db, "newsletter_subscribers"), where("email", "==", email.toLowerCase().trim()));
       const existing = await getDocs(q);
       if (!existing.empty) {
