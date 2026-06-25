@@ -4520,4 +4520,3304 @@ Skor 58%. Gunakan lunaxstar.com dengan data lahir untuk synastry akurat.`,
     readTime: 3,
     tags: ["aquarius", "pisces", "compatibility", "love", "zodiac"],
   },
+  {
+    id: "143", slug: "rat-ox-chinese-zodiac-compatibility-143",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属鼠和属牛配吗？生肖配对（六合）深度分析`,
+      en: `Rat and Ox Chinese Zodiac Compatibility — Secret Friends (六合)`,
+      id: `Kecocokan Shio Tikus dan Kerbau — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属鼠（水）与属牛（土）的生肖配对关系为「六合」，配对指数95%。六合贵人，天作之合，彼此扶持。`,
+      en: `Rat (水) & Ox (土) Chinese zodiac compatibility: Secret Friends (六合). 95% match.`,
+      id: `Shio Tikus (水) & Kerbau (土): Secret Friends (六合). Skor 95%.`,
+    },
+    content: {
+      zh: `属鼠 & 属牛 生肖配对
+
+属鼠：水行 | 出生年 1984 / 1996 / 2008 / 2020
+属牛：土行 | 出生年 1985 / 1997 / 2009 / 2021
+
+关系：六合 | 配对指数 95%
+六合贵人，天作之合，彼此扶持。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Rat & Ox Chinese Zodiac Match
+
+Rat: 水 element | Birth years 1984 / 1996 / 2008 / 2020
+Ox: 土 element | Birth years 1985 / 1997 / 2009 / 2021
+
+Relationship: Secret Friends (六合) | 95% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Tikus & Kerbau
+
+Tikus: elemen 水 | Tahun lahir 1984 / 1996 / 2008 / 2020
+Kerbau: elemen 土 | Tahun lahir 1985 / 1997 / 2009 / 2021
+
+Hubungan: Secret Friends (六合) | Skor 95%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["rat", "ox", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "144", slug: "rat-tiger-chinese-zodiac-compatibility-144",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属鼠和属虎配吗？生肖配对（中性）深度分析`,
+      en: `Rat and Tiger Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Tikus dan Macan — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属鼠（水）与属虎（木）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Rat (水) & Tiger (木) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Tikus (水) & Macan (木): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属鼠 & 属虎 生肖配对
+
+属鼠：水行 | 出生年 1984 / 1996 / 2008 / 2020
+属虎：木行 | 出生年 1986 / 1998 / 2010 / 2022
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Rat & Tiger Chinese Zodiac Match
+
+Rat: 水 element | Birth years 1984 / 1996 / 2008 / 2020
+Tiger: 木 element | Birth years 1986 / 1998 / 2010 / 2022
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Tikus & Macan
+
+Tikus: elemen 水 | Tahun lahir 1984 / 1996 / 2008 / 2020
+Macan: elemen 木 | Tahun lahir 1986 / 1998 / 2010 / 2022
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["rat", "tiger", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "145", slug: "rat-rabbit-chinese-zodiac-compatibility-145",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属鼠和属兔配吗？生肖配对（中性）深度分析`,
+      en: `Rat and Rabbit Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Tikus dan Kelinci — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属鼠（水）与属兔（木）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Rat (水) & Rabbit (木) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Tikus (水) & Kelinci (木): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属鼠 & 属兔 生肖配对
+
+属鼠：水行 | 出生年 1984 / 1996 / 2008 / 2020
+属兔：木行 | 出生年 1987 / 1999 / 2011 / 2023
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Rat & Rabbit Chinese Zodiac Match
+
+Rat: 水 element | Birth years 1984 / 1996 / 2008 / 2020
+Rabbit: 木 element | Birth years 1987 / 1999 / 2011 / 2023
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Tikus & Kelinci
+
+Tikus: elemen 水 | Tahun lahir 1984 / 1996 / 2008 / 2020
+Kelinci: elemen 木 | Tahun lahir 1987 / 1999 / 2011 / 2023
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["rat", "rabbit", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "146", slug: "rat-dragon-chinese-zodiac-compatibility-146",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属鼠和属龙配吗？生肖配对（三合）深度分析`,
+      en: `Rat and Dragon Chinese Zodiac Compatibility — Three Harmonies (三合)`,
+      id: `Kecocokan Shio Tikus dan Naga — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属鼠（水）与属龙（土）的生肖配对关系为「三合」，配对指数90%。三合局，天然盟友，互补共赢。`,
+      en: `Rat (水) & Dragon (土) Chinese zodiac compatibility: Three Harmonies (三合). 90% match.`,
+      id: `Shio Tikus (水) & Naga (土): Three Harmonies (三合). Skor 90%.`,
+    },
+    content: {
+      zh: `属鼠 & 属龙 生肖配对
+
+属鼠：水行 | 出生年 1984 / 1996 / 2008 / 2020
+属龙：土行 | 出生年 1988 / 2000 / 2012 / 2024
+
+关系：三合 | 配对指数 90%
+三合局，天然盟友，互补共赢。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Rat & Dragon Chinese Zodiac Match
+
+Rat: 水 element | Birth years 1984 / 1996 / 2008 / 2020
+Dragon: 土 element | Birth years 1988 / 2000 / 2012 / 2024
+
+Relationship: Three Harmonies (三合) | 90% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Tikus & Naga
+
+Tikus: elemen 水 | Tahun lahir 1984 / 1996 / 2008 / 2020
+Naga: elemen 土 | Tahun lahir 1988 / 2000 / 2012 / 2024
+
+Hubungan: Three Harmonies (三合) | Skor 90%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["rat", "dragon", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "147", slug: "rat-snake-chinese-zodiac-compatibility-147",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属鼠和属蛇配吗？生肖配对（中性）深度分析`,
+      en: `Rat and Snake Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Tikus dan Ular — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属鼠（水）与属蛇（火）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Rat (水) & Snake (火) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Tikus (水) & Ular (火): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属鼠 & 属蛇 生肖配对
+
+属鼠：水行 | 出生年 1984 / 1996 / 2008 / 2020
+属蛇：火行 | 出生年 1989 / 2001 / 2013 / 2025
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Rat & Snake Chinese Zodiac Match
+
+Rat: 水 element | Birth years 1984 / 1996 / 2008 / 2020
+Snake: 火 element | Birth years 1989 / 2001 / 2013 / 2025
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Tikus & Ular
+
+Tikus: elemen 水 | Tahun lahir 1984 / 1996 / 2008 / 2020
+Ular: elemen 火 | Tahun lahir 1989 / 2001 / 2013 / 2025
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["rat", "snake", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "148", slug: "rat-horse-chinese-zodiac-compatibility-148",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属鼠和属马配吗？生肖配对（六冲）深度分析`,
+      en: `Rat and Horse Chinese Zodiac Compatibility — Clash (六冲)`,
+      id: `Kecocokan Shio Tikus dan Kuda — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属鼠（水）与属马（火）的生肖配对关系为「六冲」，配对指数45%。六冲，能量对撞，需要磨合包容。`,
+      en: `Rat (水) & Horse (火) Chinese zodiac compatibility: Clash (六冲). 45% match.`,
+      id: `Shio Tikus (水) & Kuda (火): Clash (六冲). Skor 45%.`,
+    },
+    content: {
+      zh: `属鼠 & 属马 生肖配对
+
+属鼠：水行 | 出生年 1984 / 1996 / 2008 / 2020
+属马：火行 | 出生年 1990 / 2002 / 2014 / 2026
+
+关系：六冲 | 配对指数 45%
+六冲，能量对撞，需要磨合包容。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Rat & Horse Chinese Zodiac Match
+
+Rat: 水 element | Birth years 1984 / 1996 / 2008 / 2020
+Horse: 火 element | Birth years 1990 / 2002 / 2014 / 2026
+
+Relationship: Clash (六冲) | 45% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Tikus & Kuda
+
+Tikus: elemen 水 | Tahun lahir 1984 / 1996 / 2008 / 2020
+Kuda: elemen 火 | Tahun lahir 1990 / 2002 / 2014 / 2026
+
+Hubungan: Clash (六冲) | Skor 45%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["rat", "horse", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "149", slug: "rat-goat-chinese-zodiac-compatibility-149",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属鼠和属羊配吗？生肖配对（六害）深度分析`,
+      en: `Rat and Goat Chinese Zodiac Compatibility — Harm (六害)`,
+      id: `Kecocokan Shio Tikus dan Kambing — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属鼠（水）与属羊（土）的生肖配对关系为「六害」，配对指数52%。六害，相处有摩擦，需多耐心。`,
+      en: `Rat (水) & Goat (土) Chinese zodiac compatibility: Harm (六害). 52% match.`,
+      id: `Shio Tikus (水) & Kambing (土): Harm (六害). Skor 52%.`,
+    },
+    content: {
+      zh: `属鼠 & 属羊 生肖配对
+
+属鼠：水行 | 出生年 1984 / 1996 / 2008 / 2020
+属羊：土行 | 出生年 1991 / 2003 / 2015 / 2027
+
+关系：六害 | 配对指数 52%
+六害，相处有摩擦，需多耐心。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Rat & Goat Chinese Zodiac Match
+
+Rat: 水 element | Birth years 1984 / 1996 / 2008 / 2020
+Goat: 土 element | Birth years 1991 / 2003 / 2015 / 2027
+
+Relationship: Harm (六害) | 52% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Tikus & Kambing
+
+Tikus: elemen 水 | Tahun lahir 1984 / 1996 / 2008 / 2020
+Kambing: elemen 土 | Tahun lahir 1991 / 2003 / 2015 / 2027
+
+Hubungan: Harm (六害) | Skor 52%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["rat", "goat", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "150", slug: "rat-monkey-chinese-zodiac-compatibility-150",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属鼠和属猴配吗？生肖配对（三合）深度分析`,
+      en: `Rat and Monkey Chinese Zodiac Compatibility — Three Harmonies (三合)`,
+      id: `Kecocokan Shio Tikus dan Monyet — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属鼠（水）与属猴（金）的生肖配对关系为「三合」，配对指数90%。三合局，天然盟友，互补共赢。`,
+      en: `Rat (水) & Monkey (金) Chinese zodiac compatibility: Three Harmonies (三合). 90% match.`,
+      id: `Shio Tikus (水) & Monyet (金): Three Harmonies (三合). Skor 90%.`,
+    },
+    content: {
+      zh: `属鼠 & 属猴 生肖配对
+
+属鼠：水行 | 出生年 1984 / 1996 / 2008 / 2020
+属猴：金行 | 出生年 1992 / 2004 / 2016 / 2028
+
+关系：三合 | 配对指数 90%
+三合局，天然盟友，互补共赢。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Rat & Monkey Chinese Zodiac Match
+
+Rat: 水 element | Birth years 1984 / 1996 / 2008 / 2020
+Monkey: 金 element | Birth years 1992 / 2004 / 2016 / 2028
+
+Relationship: Three Harmonies (三合) | 90% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Tikus & Monyet
+
+Tikus: elemen 水 | Tahun lahir 1984 / 1996 / 2008 / 2020
+Monyet: elemen 金 | Tahun lahir 1992 / 2004 / 2016 / 2028
+
+Hubungan: Three Harmonies (三合) | Skor 90%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["rat", "monkey", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "151", slug: "rat-rooster-chinese-zodiac-compatibility-151",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属鼠和属鸡配吗？生肖配对（中性）深度分析`,
+      en: `Rat and Rooster Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Tikus dan Ayam — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属鼠（水）与属鸡（金）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Rat (水) & Rooster (金) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Tikus (水) & Ayam (金): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属鼠 & 属鸡 生肖配对
+
+属鼠：水行 | 出生年 1984 / 1996 / 2008 / 2020
+属鸡：金行 | 出生年 1993 / 2005 / 2017 / 2029
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Rat & Rooster Chinese Zodiac Match
+
+Rat: 水 element | Birth years 1984 / 1996 / 2008 / 2020
+Rooster: 金 element | Birth years 1993 / 2005 / 2017 / 2029
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Tikus & Ayam
+
+Tikus: elemen 水 | Tahun lahir 1984 / 1996 / 2008 / 2020
+Ayam: elemen 金 | Tahun lahir 1993 / 2005 / 2017 / 2029
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["rat", "rooster", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "152", slug: "rat-dog-chinese-zodiac-compatibility-152",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属鼠和属狗配吗？生肖配对（中性）深度分析`,
+      en: `Rat and Dog Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Tikus dan Anjing — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属鼠（水）与属狗（土）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Rat (水) & Dog (土) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Tikus (水) & Anjing (土): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属鼠 & 属狗 生肖配对
+
+属鼠：水行 | 出生年 1984 / 1996 / 2008 / 2020
+属狗：土行 | 出生年 1994 / 2006 / 2018 / 2030
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Rat & Dog Chinese Zodiac Match
+
+Rat: 水 element | Birth years 1984 / 1996 / 2008 / 2020
+Dog: 土 element | Birth years 1994 / 2006 / 2018 / 2030
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Tikus & Anjing
+
+Tikus: elemen 水 | Tahun lahir 1984 / 1996 / 2008 / 2020
+Anjing: elemen 土 | Tahun lahir 1994 / 2006 / 2018 / 2030
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["rat", "dog", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "153", slug: "rat-pig-chinese-zodiac-compatibility-153",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属鼠和属猪配吗？生肖配对（中性）深度分析`,
+      en: `Rat and Pig Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Tikus dan Babi — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属鼠（水）与属猪（水）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Rat (水) & Pig (水) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Tikus (水) & Babi (水): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属鼠 & 属猪 生肖配对
+
+属鼠：水行 | 出生年 1984 / 1996 / 2008 / 2020
+属猪：水行 | 出生年 1995 / 2007 / 2019 / 2031
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Rat & Pig Chinese Zodiac Match
+
+Rat: 水 element | Birth years 1984 / 1996 / 2008 / 2020
+Pig: 水 element | Birth years 1995 / 2007 / 2019 / 2031
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Tikus & Babi
+
+Tikus: elemen 水 | Tahun lahir 1984 / 1996 / 2008 / 2020
+Babi: elemen 水 | Tahun lahir 1995 / 2007 / 2019 / 2031
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["rat", "pig", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "154", slug: "ox-tiger-chinese-zodiac-compatibility-154",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属牛和属虎配吗？生肖配对（中性）深度分析`,
+      en: `Ox and Tiger Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Kerbau dan Macan — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属牛（土）与属虎（木）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Ox (土) & Tiger (木) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Kerbau (土) & Macan (木): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属牛 & 属虎 生肖配对
+
+属牛：土行 | 出生年 1985 / 1997 / 2009 / 2021
+属虎：木行 | 出生年 1986 / 1998 / 2010 / 2022
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Ox & Tiger Chinese Zodiac Match
+
+Ox: 土 element | Birth years 1985 / 1997 / 2009 / 2021
+Tiger: 木 element | Birth years 1986 / 1998 / 2010 / 2022
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kerbau & Macan
+
+Kerbau: elemen 土 | Tahun lahir 1985 / 1997 / 2009 / 2021
+Macan: elemen 木 | Tahun lahir 1986 / 1998 / 2010 / 2022
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["ox", "tiger", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "155", slug: "ox-rabbit-chinese-zodiac-compatibility-155",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属牛和属兔配吗？生肖配对（中性）深度分析`,
+      en: `Ox and Rabbit Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Kerbau dan Kelinci — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属牛（土）与属兔（木）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Ox (土) & Rabbit (木) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Kerbau (土) & Kelinci (木): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属牛 & 属兔 生肖配对
+
+属牛：土行 | 出生年 1985 / 1997 / 2009 / 2021
+属兔：木行 | 出生年 1987 / 1999 / 2011 / 2023
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Ox & Rabbit Chinese Zodiac Match
+
+Ox: 土 element | Birth years 1985 / 1997 / 2009 / 2021
+Rabbit: 木 element | Birth years 1987 / 1999 / 2011 / 2023
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kerbau & Kelinci
+
+Kerbau: elemen 土 | Tahun lahir 1985 / 1997 / 2009 / 2021
+Kelinci: elemen 木 | Tahun lahir 1987 / 1999 / 2011 / 2023
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["ox", "rabbit", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "156", slug: "ox-dragon-chinese-zodiac-compatibility-156",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属牛和属龙配吗？生肖配对（中性）深度分析`,
+      en: `Ox and Dragon Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Kerbau dan Naga — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属牛（土）与属龙（土）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Ox (土) & Dragon (土) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Kerbau (土) & Naga (土): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属牛 & 属龙 生肖配对
+
+属牛：土行 | 出生年 1985 / 1997 / 2009 / 2021
+属龙：土行 | 出生年 1988 / 2000 / 2012 / 2024
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Ox & Dragon Chinese Zodiac Match
+
+Ox: 土 element | Birth years 1985 / 1997 / 2009 / 2021
+Dragon: 土 element | Birth years 1988 / 2000 / 2012 / 2024
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kerbau & Naga
+
+Kerbau: elemen 土 | Tahun lahir 1985 / 1997 / 2009 / 2021
+Naga: elemen 土 | Tahun lahir 1988 / 2000 / 2012 / 2024
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["ox", "dragon", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "157", slug: "ox-snake-chinese-zodiac-compatibility-157",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属牛和属蛇配吗？生肖配对（三合）深度分析`,
+      en: `Ox and Snake Chinese Zodiac Compatibility — Three Harmonies (三合)`,
+      id: `Kecocokan Shio Kerbau dan Ular — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属牛（土）与属蛇（火）的生肖配对关系为「三合」，配对指数90%。三合局，天然盟友，互补共赢。`,
+      en: `Ox (土) & Snake (火) Chinese zodiac compatibility: Three Harmonies (三合). 90% match.`,
+      id: `Shio Kerbau (土) & Ular (火): Three Harmonies (三合). Skor 90%.`,
+    },
+    content: {
+      zh: `属牛 & 属蛇 生肖配对
+
+属牛：土行 | 出生年 1985 / 1997 / 2009 / 2021
+属蛇：火行 | 出生年 1989 / 2001 / 2013 / 2025
+
+关系：三合 | 配对指数 90%
+三合局，天然盟友，互补共赢。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Ox & Snake Chinese Zodiac Match
+
+Ox: 土 element | Birth years 1985 / 1997 / 2009 / 2021
+Snake: 火 element | Birth years 1989 / 2001 / 2013 / 2025
+
+Relationship: Three Harmonies (三合) | 90% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kerbau & Ular
+
+Kerbau: elemen 土 | Tahun lahir 1985 / 1997 / 2009 / 2021
+Ular: elemen 火 | Tahun lahir 1989 / 2001 / 2013 / 2025
+
+Hubungan: Three Harmonies (三合) | Skor 90%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["ox", "snake", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "158", slug: "ox-horse-chinese-zodiac-compatibility-158",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属牛和属马配吗？生肖配对（六害）深度分析`,
+      en: `Ox and Horse Chinese Zodiac Compatibility — Harm (六害)`,
+      id: `Kecocokan Shio Kerbau dan Kuda — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属牛（土）与属马（火）的生肖配对关系为「六害」，配对指数52%。六害，相处有摩擦，需多耐心。`,
+      en: `Ox (土) & Horse (火) Chinese zodiac compatibility: Harm (六害). 52% match.`,
+      id: `Shio Kerbau (土) & Kuda (火): Harm (六害). Skor 52%.`,
+    },
+    content: {
+      zh: `属牛 & 属马 生肖配对
+
+属牛：土行 | 出生年 1985 / 1997 / 2009 / 2021
+属马：火行 | 出生年 1990 / 2002 / 2014 / 2026
+
+关系：六害 | 配对指数 52%
+六害，相处有摩擦，需多耐心。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Ox & Horse Chinese Zodiac Match
+
+Ox: 土 element | Birth years 1985 / 1997 / 2009 / 2021
+Horse: 火 element | Birth years 1990 / 2002 / 2014 / 2026
+
+Relationship: Harm (六害) | 52% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kerbau & Kuda
+
+Kerbau: elemen 土 | Tahun lahir 1985 / 1997 / 2009 / 2021
+Kuda: elemen 火 | Tahun lahir 1990 / 2002 / 2014 / 2026
+
+Hubungan: Harm (六害) | Skor 52%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["ox", "horse", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "159", slug: "ox-goat-chinese-zodiac-compatibility-159",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属牛和属羊配吗？生肖配对（六冲）深度分析`,
+      en: `Ox and Goat Chinese Zodiac Compatibility — Clash (六冲)`,
+      id: `Kecocokan Shio Kerbau dan Kambing — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属牛（土）与属羊（土）的生肖配对关系为「六冲」，配对指数45%。六冲，能量对撞，需要磨合包容。`,
+      en: `Ox (土) & Goat (土) Chinese zodiac compatibility: Clash (六冲). 45% match.`,
+      id: `Shio Kerbau (土) & Kambing (土): Clash (六冲). Skor 45%.`,
+    },
+    content: {
+      zh: `属牛 & 属羊 生肖配对
+
+属牛：土行 | 出生年 1985 / 1997 / 2009 / 2021
+属羊：土行 | 出生年 1991 / 2003 / 2015 / 2027
+
+关系：六冲 | 配对指数 45%
+六冲，能量对撞，需要磨合包容。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Ox & Goat Chinese Zodiac Match
+
+Ox: 土 element | Birth years 1985 / 1997 / 2009 / 2021
+Goat: 土 element | Birth years 1991 / 2003 / 2015 / 2027
+
+Relationship: Clash (六冲) | 45% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kerbau & Kambing
+
+Kerbau: elemen 土 | Tahun lahir 1985 / 1997 / 2009 / 2021
+Kambing: elemen 土 | Tahun lahir 1991 / 2003 / 2015 / 2027
+
+Hubungan: Clash (六冲) | Skor 45%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["ox", "goat", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "160", slug: "ox-monkey-chinese-zodiac-compatibility-160",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属牛和属猴配吗？生肖配对（中性）深度分析`,
+      en: `Ox and Monkey Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Kerbau dan Monyet — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属牛（土）与属猴（金）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Ox (土) & Monkey (金) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Kerbau (土) & Monyet (金): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属牛 & 属猴 生肖配对
+
+属牛：土行 | 出生年 1985 / 1997 / 2009 / 2021
+属猴：金行 | 出生年 1992 / 2004 / 2016 / 2028
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Ox & Monkey Chinese Zodiac Match
+
+Ox: 土 element | Birth years 1985 / 1997 / 2009 / 2021
+Monkey: 金 element | Birth years 1992 / 2004 / 2016 / 2028
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kerbau & Monyet
+
+Kerbau: elemen 土 | Tahun lahir 1985 / 1997 / 2009 / 2021
+Monyet: elemen 金 | Tahun lahir 1992 / 2004 / 2016 / 2028
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["ox", "monkey", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "161", slug: "ox-rooster-chinese-zodiac-compatibility-161",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属牛和属鸡配吗？生肖配对（三合）深度分析`,
+      en: `Ox and Rooster Chinese Zodiac Compatibility — Three Harmonies (三合)`,
+      id: `Kecocokan Shio Kerbau dan Ayam — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属牛（土）与属鸡（金）的生肖配对关系为「三合」，配对指数90%。三合局，天然盟友，互补共赢。`,
+      en: `Ox (土) & Rooster (金) Chinese zodiac compatibility: Three Harmonies (三合). 90% match.`,
+      id: `Shio Kerbau (土) & Ayam (金): Three Harmonies (三合). Skor 90%.`,
+    },
+    content: {
+      zh: `属牛 & 属鸡 生肖配对
+
+属牛：土行 | 出生年 1985 / 1997 / 2009 / 2021
+属鸡：金行 | 出生年 1993 / 2005 / 2017 / 2029
+
+关系：三合 | 配对指数 90%
+三合局，天然盟友，互补共赢。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Ox & Rooster Chinese Zodiac Match
+
+Ox: 土 element | Birth years 1985 / 1997 / 2009 / 2021
+Rooster: 金 element | Birth years 1993 / 2005 / 2017 / 2029
+
+Relationship: Three Harmonies (三合) | 90% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kerbau & Ayam
+
+Kerbau: elemen 土 | Tahun lahir 1985 / 1997 / 2009 / 2021
+Ayam: elemen 金 | Tahun lahir 1993 / 2005 / 2017 / 2029
+
+Hubungan: Three Harmonies (三合) | Skor 90%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["ox", "rooster", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "162", slug: "ox-dog-chinese-zodiac-compatibility-162",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属牛和属狗配吗？生肖配对（中性）深度分析`,
+      en: `Ox and Dog Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Kerbau dan Anjing — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属牛（土）与属狗（土）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Ox (土) & Dog (土) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Kerbau (土) & Anjing (土): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属牛 & 属狗 生肖配对
+
+属牛：土行 | 出生年 1985 / 1997 / 2009 / 2021
+属狗：土行 | 出生年 1994 / 2006 / 2018 / 2030
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Ox & Dog Chinese Zodiac Match
+
+Ox: 土 element | Birth years 1985 / 1997 / 2009 / 2021
+Dog: 土 element | Birth years 1994 / 2006 / 2018 / 2030
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kerbau & Anjing
+
+Kerbau: elemen 土 | Tahun lahir 1985 / 1997 / 2009 / 2021
+Anjing: elemen 土 | Tahun lahir 1994 / 2006 / 2018 / 2030
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["ox", "dog", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "163", slug: "ox-pig-chinese-zodiac-compatibility-163",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属牛和属猪配吗？生肖配对（中性）深度分析`,
+      en: `Ox and Pig Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Kerbau dan Babi — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属牛（土）与属猪（水）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Ox (土) & Pig (水) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Kerbau (土) & Babi (水): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属牛 & 属猪 生肖配对
+
+属牛：土行 | 出生年 1985 / 1997 / 2009 / 2021
+属猪：水行 | 出生年 1995 / 2007 / 2019 / 2031
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Ox & Pig Chinese Zodiac Match
+
+Ox: 土 element | Birth years 1985 / 1997 / 2009 / 2021
+Pig: 水 element | Birth years 1995 / 2007 / 2019 / 2031
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kerbau & Babi
+
+Kerbau: elemen 土 | Tahun lahir 1985 / 1997 / 2009 / 2021
+Babi: elemen 水 | Tahun lahir 1995 / 2007 / 2019 / 2031
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["ox", "pig", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "164", slug: "tiger-rabbit-chinese-zodiac-compatibility-164",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属虎和属兔配吗？生肖配对（中性）深度分析`,
+      en: `Tiger and Rabbit Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Macan dan Kelinci — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属虎（木）与属兔（木）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Tiger (木) & Rabbit (木) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Macan (木) & Kelinci (木): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属虎 & 属兔 生肖配对
+
+属虎：木行 | 出生年 1986 / 1998 / 2010 / 2022
+属兔：木行 | 出生年 1987 / 1999 / 2011 / 2023
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Tiger & Rabbit Chinese Zodiac Match
+
+Tiger: 木 element | Birth years 1986 / 1998 / 2010 / 2022
+Rabbit: 木 element | Birth years 1987 / 1999 / 2011 / 2023
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Macan & Kelinci
+
+Macan: elemen 木 | Tahun lahir 1986 / 1998 / 2010 / 2022
+Kelinci: elemen 木 | Tahun lahir 1987 / 1999 / 2011 / 2023
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["tiger", "rabbit", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "165", slug: "tiger-dragon-chinese-zodiac-compatibility-165",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属虎和属龙配吗？生肖配对（中性）深度分析`,
+      en: `Tiger and Dragon Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Macan dan Naga — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属虎（木）与属龙（土）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Tiger (木) & Dragon (土) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Macan (木) & Naga (土): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属虎 & 属龙 生肖配对
+
+属虎：木行 | 出生年 1986 / 1998 / 2010 / 2022
+属龙：土行 | 出生年 1988 / 2000 / 2012 / 2024
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Tiger & Dragon Chinese Zodiac Match
+
+Tiger: 木 element | Birth years 1986 / 1998 / 2010 / 2022
+Dragon: 土 element | Birth years 1988 / 2000 / 2012 / 2024
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Macan & Naga
+
+Macan: elemen 木 | Tahun lahir 1986 / 1998 / 2010 / 2022
+Naga: elemen 土 | Tahun lahir 1988 / 2000 / 2012 / 2024
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["tiger", "dragon", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "166", slug: "tiger-snake-chinese-zodiac-compatibility-166",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属虎和属蛇配吗？生肖配对（六害）深度分析`,
+      en: `Tiger and Snake Chinese Zodiac Compatibility — Harm (六害)`,
+      id: `Kecocokan Shio Macan dan Ular — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属虎（木）与属蛇（火）的生肖配对关系为「六害」，配对指数52%。六害，相处有摩擦，需多耐心。`,
+      en: `Tiger (木) & Snake (火) Chinese zodiac compatibility: Harm (六害). 52% match.`,
+      id: `Shio Macan (木) & Ular (火): Harm (六害). Skor 52%.`,
+    },
+    content: {
+      zh: `属虎 & 属蛇 生肖配对
+
+属虎：木行 | 出生年 1986 / 1998 / 2010 / 2022
+属蛇：火行 | 出生年 1989 / 2001 / 2013 / 2025
+
+关系：六害 | 配对指数 52%
+六害，相处有摩擦，需多耐心。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Tiger & Snake Chinese Zodiac Match
+
+Tiger: 木 element | Birth years 1986 / 1998 / 2010 / 2022
+Snake: 火 element | Birth years 1989 / 2001 / 2013 / 2025
+
+Relationship: Harm (六害) | 52% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Macan & Ular
+
+Macan: elemen 木 | Tahun lahir 1986 / 1998 / 2010 / 2022
+Ular: elemen 火 | Tahun lahir 1989 / 2001 / 2013 / 2025
+
+Hubungan: Harm (六害) | Skor 52%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["tiger", "snake", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "167", slug: "tiger-horse-chinese-zodiac-compatibility-167",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属虎和属马配吗？生肖配对（三合）深度分析`,
+      en: `Tiger and Horse Chinese Zodiac Compatibility — Three Harmonies (三合)`,
+      id: `Kecocokan Shio Macan dan Kuda — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属虎（木）与属马（火）的生肖配对关系为「三合」，配对指数90%。三合局，天然盟友，互补共赢。`,
+      en: `Tiger (木) & Horse (火) Chinese zodiac compatibility: Three Harmonies (三合). 90% match.`,
+      id: `Shio Macan (木) & Kuda (火): Three Harmonies (三合). Skor 90%.`,
+    },
+    content: {
+      zh: `属虎 & 属马 生肖配对
+
+属虎：木行 | 出生年 1986 / 1998 / 2010 / 2022
+属马：火行 | 出生年 1990 / 2002 / 2014 / 2026
+
+关系：三合 | 配对指数 90%
+三合局，天然盟友，互补共赢。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Tiger & Horse Chinese Zodiac Match
+
+Tiger: 木 element | Birth years 1986 / 1998 / 2010 / 2022
+Horse: 火 element | Birth years 1990 / 2002 / 2014 / 2026
+
+Relationship: Three Harmonies (三合) | 90% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Macan & Kuda
+
+Macan: elemen 木 | Tahun lahir 1986 / 1998 / 2010 / 2022
+Kuda: elemen 火 | Tahun lahir 1990 / 2002 / 2014 / 2026
+
+Hubungan: Three Harmonies (三合) | Skor 90%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["tiger", "horse", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "168", slug: "tiger-goat-chinese-zodiac-compatibility-168",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属虎和属羊配吗？生肖配对（中性）深度分析`,
+      en: `Tiger and Goat Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Macan dan Kambing — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属虎（木）与属羊（土）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Tiger (木) & Goat (土) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Macan (木) & Kambing (土): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属虎 & 属羊 生肖配对
+
+属虎：木行 | 出生年 1986 / 1998 / 2010 / 2022
+属羊：土行 | 出生年 1991 / 2003 / 2015 / 2027
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Tiger & Goat Chinese Zodiac Match
+
+Tiger: 木 element | Birth years 1986 / 1998 / 2010 / 2022
+Goat: 土 element | Birth years 1991 / 2003 / 2015 / 2027
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Macan & Kambing
+
+Macan: elemen 木 | Tahun lahir 1986 / 1998 / 2010 / 2022
+Kambing: elemen 土 | Tahun lahir 1991 / 2003 / 2015 / 2027
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["tiger", "goat", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "169", slug: "tiger-monkey-chinese-zodiac-compatibility-169",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属虎和属猴配吗？生肖配对（六冲）深度分析`,
+      en: `Tiger and Monkey Chinese Zodiac Compatibility — Clash (六冲)`,
+      id: `Kecocokan Shio Macan dan Monyet — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属虎（木）与属猴（金）的生肖配对关系为「六冲」，配对指数45%。六冲，能量对撞，需要磨合包容。`,
+      en: `Tiger (木) & Monkey (金) Chinese zodiac compatibility: Clash (六冲). 45% match.`,
+      id: `Shio Macan (木) & Monyet (金): Clash (六冲). Skor 45%.`,
+    },
+    content: {
+      zh: `属虎 & 属猴 生肖配对
+
+属虎：木行 | 出生年 1986 / 1998 / 2010 / 2022
+属猴：金行 | 出生年 1992 / 2004 / 2016 / 2028
+
+关系：六冲 | 配对指数 45%
+六冲，能量对撞，需要磨合包容。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Tiger & Monkey Chinese Zodiac Match
+
+Tiger: 木 element | Birth years 1986 / 1998 / 2010 / 2022
+Monkey: 金 element | Birth years 1992 / 2004 / 2016 / 2028
+
+Relationship: Clash (六冲) | 45% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Macan & Monyet
+
+Macan: elemen 木 | Tahun lahir 1986 / 1998 / 2010 / 2022
+Monyet: elemen 金 | Tahun lahir 1992 / 2004 / 2016 / 2028
+
+Hubungan: Clash (六冲) | Skor 45%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["tiger", "monkey", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "170", slug: "tiger-rooster-chinese-zodiac-compatibility-170",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属虎和属鸡配吗？生肖配对（中性）深度分析`,
+      en: `Tiger and Rooster Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Macan dan Ayam — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属虎（木）与属鸡（金）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Tiger (木) & Rooster (金) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Macan (木) & Ayam (金): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属虎 & 属鸡 生肖配对
+
+属虎：木行 | 出生年 1986 / 1998 / 2010 / 2022
+属鸡：金行 | 出生年 1993 / 2005 / 2017 / 2029
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Tiger & Rooster Chinese Zodiac Match
+
+Tiger: 木 element | Birth years 1986 / 1998 / 2010 / 2022
+Rooster: 金 element | Birth years 1993 / 2005 / 2017 / 2029
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Macan & Ayam
+
+Macan: elemen 木 | Tahun lahir 1986 / 1998 / 2010 / 2022
+Ayam: elemen 金 | Tahun lahir 1993 / 2005 / 2017 / 2029
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["tiger", "rooster", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "171", slug: "tiger-dog-chinese-zodiac-compatibility-171",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属虎和属狗配吗？生肖配对（三合）深度分析`,
+      en: `Tiger and Dog Chinese Zodiac Compatibility — Three Harmonies (三合)`,
+      id: `Kecocokan Shio Macan dan Anjing — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属虎（木）与属狗（土）的生肖配对关系为「三合」，配对指数90%。三合局，天然盟友，互补共赢。`,
+      en: `Tiger (木) & Dog (土) Chinese zodiac compatibility: Three Harmonies (三合). 90% match.`,
+      id: `Shio Macan (木) & Anjing (土): Three Harmonies (三合). Skor 90%.`,
+    },
+    content: {
+      zh: `属虎 & 属狗 生肖配对
+
+属虎：木行 | 出生年 1986 / 1998 / 2010 / 2022
+属狗：土行 | 出生年 1994 / 2006 / 2018 / 2030
+
+关系：三合 | 配对指数 90%
+三合局，天然盟友，互补共赢。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Tiger & Dog Chinese Zodiac Match
+
+Tiger: 木 element | Birth years 1986 / 1998 / 2010 / 2022
+Dog: 土 element | Birth years 1994 / 2006 / 2018 / 2030
+
+Relationship: Three Harmonies (三合) | 90% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Macan & Anjing
+
+Macan: elemen 木 | Tahun lahir 1986 / 1998 / 2010 / 2022
+Anjing: elemen 土 | Tahun lahir 1994 / 2006 / 2018 / 2030
+
+Hubungan: Three Harmonies (三合) | Skor 90%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["tiger", "dog", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "172", slug: "tiger-pig-chinese-zodiac-compatibility-172",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属虎和属猪配吗？生肖配对（六合）深度分析`,
+      en: `Tiger and Pig Chinese Zodiac Compatibility — Secret Friends (六合)`,
+      id: `Kecocokan Shio Macan dan Babi — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属虎（木）与属猪（水）的生肖配对关系为「六合」，配对指数95%。六合贵人，天作之合，彼此扶持。`,
+      en: `Tiger (木) & Pig (水) Chinese zodiac compatibility: Secret Friends (六合). 95% match.`,
+      id: `Shio Macan (木) & Babi (水): Secret Friends (六合). Skor 95%.`,
+    },
+    content: {
+      zh: `属虎 & 属猪 生肖配对
+
+属虎：木行 | 出生年 1986 / 1998 / 2010 / 2022
+属猪：水行 | 出生年 1995 / 2007 / 2019 / 2031
+
+关系：六合 | 配对指数 95%
+六合贵人，天作之合，彼此扶持。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Tiger & Pig Chinese Zodiac Match
+
+Tiger: 木 element | Birth years 1986 / 1998 / 2010 / 2022
+Pig: 水 element | Birth years 1995 / 2007 / 2019 / 2031
+
+Relationship: Secret Friends (六合) | 95% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Macan & Babi
+
+Macan: elemen 木 | Tahun lahir 1986 / 1998 / 2010 / 2022
+Babi: elemen 水 | Tahun lahir 1995 / 2007 / 2019 / 2031
+
+Hubungan: Secret Friends (六合) | Skor 95%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["tiger", "pig", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "173", slug: "rabbit-dragon-chinese-zodiac-compatibility-173",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属兔和属龙配吗？生肖配对（六害）深度分析`,
+      en: `Rabbit and Dragon Chinese Zodiac Compatibility — Harm (六害)`,
+      id: `Kecocokan Shio Kelinci dan Naga — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属兔（木）与属龙（土）的生肖配对关系为「六害」，配对指数52%。六害，相处有摩擦，需多耐心。`,
+      en: `Rabbit (木) & Dragon (土) Chinese zodiac compatibility: Harm (六害). 52% match.`,
+      id: `Shio Kelinci (木) & Naga (土): Harm (六害). Skor 52%.`,
+    },
+    content: {
+      zh: `属兔 & 属龙 生肖配对
+
+属兔：木行 | 出生年 1987 / 1999 / 2011 / 2023
+属龙：土行 | 出生年 1988 / 2000 / 2012 / 2024
+
+关系：六害 | 配对指数 52%
+六害，相处有摩擦，需多耐心。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Rabbit & Dragon Chinese Zodiac Match
+
+Rabbit: 木 element | Birth years 1987 / 1999 / 2011 / 2023
+Dragon: 土 element | Birth years 1988 / 2000 / 2012 / 2024
+
+Relationship: Harm (六害) | 52% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kelinci & Naga
+
+Kelinci: elemen 木 | Tahun lahir 1987 / 1999 / 2011 / 2023
+Naga: elemen 土 | Tahun lahir 1988 / 2000 / 2012 / 2024
+
+Hubungan: Harm (六害) | Skor 52%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["rabbit", "dragon", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "174", slug: "rabbit-snake-chinese-zodiac-compatibility-174",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属兔和属蛇配吗？生肖配对（中性）深度分析`,
+      en: `Rabbit and Snake Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Kelinci dan Ular — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属兔（木）与属蛇（火）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Rabbit (木) & Snake (火) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Kelinci (木) & Ular (火): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属兔 & 属蛇 生肖配对
+
+属兔：木行 | 出生年 1987 / 1999 / 2011 / 2023
+属蛇：火行 | 出生年 1989 / 2001 / 2013 / 2025
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Rabbit & Snake Chinese Zodiac Match
+
+Rabbit: 木 element | Birth years 1987 / 1999 / 2011 / 2023
+Snake: 火 element | Birth years 1989 / 2001 / 2013 / 2025
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kelinci & Ular
+
+Kelinci: elemen 木 | Tahun lahir 1987 / 1999 / 2011 / 2023
+Ular: elemen 火 | Tahun lahir 1989 / 2001 / 2013 / 2025
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["rabbit", "snake", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "175", slug: "rabbit-horse-chinese-zodiac-compatibility-175",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属兔和属马配吗？生肖配对（中性）深度分析`,
+      en: `Rabbit and Horse Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Kelinci dan Kuda — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属兔（木）与属马（火）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Rabbit (木) & Horse (火) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Kelinci (木) & Kuda (火): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属兔 & 属马 生肖配对
+
+属兔：木行 | 出生年 1987 / 1999 / 2011 / 2023
+属马：火行 | 出生年 1990 / 2002 / 2014 / 2026
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Rabbit & Horse Chinese Zodiac Match
+
+Rabbit: 木 element | Birth years 1987 / 1999 / 2011 / 2023
+Horse: 火 element | Birth years 1990 / 2002 / 2014 / 2026
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kelinci & Kuda
+
+Kelinci: elemen 木 | Tahun lahir 1987 / 1999 / 2011 / 2023
+Kuda: elemen 火 | Tahun lahir 1990 / 2002 / 2014 / 2026
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["rabbit", "horse", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "176", slug: "rabbit-goat-chinese-zodiac-compatibility-176",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属兔和属羊配吗？生肖配对（三合）深度分析`,
+      en: `Rabbit and Goat Chinese Zodiac Compatibility — Three Harmonies (三合)`,
+      id: `Kecocokan Shio Kelinci dan Kambing — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属兔（木）与属羊（土）的生肖配对关系为「三合」，配对指数90%。三合局，天然盟友，互补共赢。`,
+      en: `Rabbit (木) & Goat (土) Chinese zodiac compatibility: Three Harmonies (三合). 90% match.`,
+      id: `Shio Kelinci (木) & Kambing (土): Three Harmonies (三合). Skor 90%.`,
+    },
+    content: {
+      zh: `属兔 & 属羊 生肖配对
+
+属兔：木行 | 出生年 1987 / 1999 / 2011 / 2023
+属羊：土行 | 出生年 1991 / 2003 / 2015 / 2027
+
+关系：三合 | 配对指数 90%
+三合局，天然盟友，互补共赢。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Rabbit & Goat Chinese Zodiac Match
+
+Rabbit: 木 element | Birth years 1987 / 1999 / 2011 / 2023
+Goat: 土 element | Birth years 1991 / 2003 / 2015 / 2027
+
+Relationship: Three Harmonies (三合) | 90% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kelinci & Kambing
+
+Kelinci: elemen 木 | Tahun lahir 1987 / 1999 / 2011 / 2023
+Kambing: elemen 土 | Tahun lahir 1991 / 2003 / 2015 / 2027
+
+Hubungan: Three Harmonies (三合) | Skor 90%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["rabbit", "goat", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "177", slug: "rabbit-monkey-chinese-zodiac-compatibility-177",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属兔和属猴配吗？生肖配对（中性）深度分析`,
+      en: `Rabbit and Monkey Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Kelinci dan Monyet — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属兔（木）与属猴（金）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Rabbit (木) & Monkey (金) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Kelinci (木) & Monyet (金): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属兔 & 属猴 生肖配对
+
+属兔：木行 | 出生年 1987 / 1999 / 2011 / 2023
+属猴：金行 | 出生年 1992 / 2004 / 2016 / 2028
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Rabbit & Monkey Chinese Zodiac Match
+
+Rabbit: 木 element | Birth years 1987 / 1999 / 2011 / 2023
+Monkey: 金 element | Birth years 1992 / 2004 / 2016 / 2028
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kelinci & Monyet
+
+Kelinci: elemen 木 | Tahun lahir 1987 / 1999 / 2011 / 2023
+Monyet: elemen 金 | Tahun lahir 1992 / 2004 / 2016 / 2028
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["rabbit", "monkey", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "178", slug: "rabbit-rooster-chinese-zodiac-compatibility-178",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属兔和属鸡配吗？生肖配对（六冲）深度分析`,
+      en: `Rabbit and Rooster Chinese Zodiac Compatibility — Clash (六冲)`,
+      id: `Kecocokan Shio Kelinci dan Ayam — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属兔（木）与属鸡（金）的生肖配对关系为「六冲」，配对指数45%。六冲，能量对撞，需要磨合包容。`,
+      en: `Rabbit (木) & Rooster (金) Chinese zodiac compatibility: Clash (六冲). 45% match.`,
+      id: `Shio Kelinci (木) & Ayam (金): Clash (六冲). Skor 45%.`,
+    },
+    content: {
+      zh: `属兔 & 属鸡 生肖配对
+
+属兔：木行 | 出生年 1987 / 1999 / 2011 / 2023
+属鸡：金行 | 出生年 1993 / 2005 / 2017 / 2029
+
+关系：六冲 | 配对指数 45%
+六冲，能量对撞，需要磨合包容。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Rabbit & Rooster Chinese Zodiac Match
+
+Rabbit: 木 element | Birth years 1987 / 1999 / 2011 / 2023
+Rooster: 金 element | Birth years 1993 / 2005 / 2017 / 2029
+
+Relationship: Clash (六冲) | 45% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kelinci & Ayam
+
+Kelinci: elemen 木 | Tahun lahir 1987 / 1999 / 2011 / 2023
+Ayam: elemen 金 | Tahun lahir 1993 / 2005 / 2017 / 2029
+
+Hubungan: Clash (六冲) | Skor 45%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["rabbit", "rooster", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "179", slug: "rabbit-dog-chinese-zodiac-compatibility-179",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属兔和属狗配吗？生肖配对（六合）深度分析`,
+      en: `Rabbit and Dog Chinese Zodiac Compatibility — Secret Friends (六合)`,
+      id: `Kecocokan Shio Kelinci dan Anjing — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属兔（木）与属狗（土）的生肖配对关系为「六合」，配对指数95%。六合贵人，天作之合，彼此扶持。`,
+      en: `Rabbit (木) & Dog (土) Chinese zodiac compatibility: Secret Friends (六合). 95% match.`,
+      id: `Shio Kelinci (木) & Anjing (土): Secret Friends (六合). Skor 95%.`,
+    },
+    content: {
+      zh: `属兔 & 属狗 生肖配对
+
+属兔：木行 | 出生年 1987 / 1999 / 2011 / 2023
+属狗：土行 | 出生年 1994 / 2006 / 2018 / 2030
+
+关系：六合 | 配对指数 95%
+六合贵人，天作之合，彼此扶持。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Rabbit & Dog Chinese Zodiac Match
+
+Rabbit: 木 element | Birth years 1987 / 1999 / 2011 / 2023
+Dog: 土 element | Birth years 1994 / 2006 / 2018 / 2030
+
+Relationship: Secret Friends (六合) | 95% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kelinci & Anjing
+
+Kelinci: elemen 木 | Tahun lahir 1987 / 1999 / 2011 / 2023
+Anjing: elemen 土 | Tahun lahir 1994 / 2006 / 2018 / 2030
+
+Hubungan: Secret Friends (六合) | Skor 95%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["rabbit", "dog", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "180", slug: "rabbit-pig-chinese-zodiac-compatibility-180",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属兔和属猪配吗？生肖配对（三合）深度分析`,
+      en: `Rabbit and Pig Chinese Zodiac Compatibility — Three Harmonies (三合)`,
+      id: `Kecocokan Shio Kelinci dan Babi — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属兔（木）与属猪（水）的生肖配对关系为「三合」，配对指数90%。三合局，天然盟友，互补共赢。`,
+      en: `Rabbit (木) & Pig (水) Chinese zodiac compatibility: Three Harmonies (三合). 90% match.`,
+      id: `Shio Kelinci (木) & Babi (水): Three Harmonies (三合). Skor 90%.`,
+    },
+    content: {
+      zh: `属兔 & 属猪 生肖配对
+
+属兔：木行 | 出生年 1987 / 1999 / 2011 / 2023
+属猪：水行 | 出生年 1995 / 2007 / 2019 / 2031
+
+关系：三合 | 配对指数 90%
+三合局，天然盟友，互补共赢。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Rabbit & Pig Chinese Zodiac Match
+
+Rabbit: 木 element | Birth years 1987 / 1999 / 2011 / 2023
+Pig: 水 element | Birth years 1995 / 2007 / 2019 / 2031
+
+Relationship: Three Harmonies (三合) | 90% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kelinci & Babi
+
+Kelinci: elemen 木 | Tahun lahir 1987 / 1999 / 2011 / 2023
+Babi: elemen 水 | Tahun lahir 1995 / 2007 / 2019 / 2031
+
+Hubungan: Three Harmonies (三合) | Skor 90%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["rabbit", "pig", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "181", slug: "dragon-snake-chinese-zodiac-compatibility-181",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属龙和属蛇配吗？生肖配对（中性）深度分析`,
+      en: `Dragon and Snake Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Naga dan Ular — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属龙（土）与属蛇（火）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Dragon (土) & Snake (火) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Naga (土) & Ular (火): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属龙 & 属蛇 生肖配对
+
+属龙：土行 | 出生年 1988 / 2000 / 2012 / 2024
+属蛇：火行 | 出生年 1989 / 2001 / 2013 / 2025
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Dragon & Snake Chinese Zodiac Match
+
+Dragon: 土 element | Birth years 1988 / 2000 / 2012 / 2024
+Snake: 火 element | Birth years 1989 / 2001 / 2013 / 2025
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Naga & Ular
+
+Naga: elemen 土 | Tahun lahir 1988 / 2000 / 2012 / 2024
+Ular: elemen 火 | Tahun lahir 1989 / 2001 / 2013 / 2025
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["dragon", "snake", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "182", slug: "dragon-horse-chinese-zodiac-compatibility-182",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属龙和属马配吗？生肖配对（中性）深度分析`,
+      en: `Dragon and Horse Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Naga dan Kuda — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属龙（土）与属马（火）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Dragon (土) & Horse (火) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Naga (土) & Kuda (火): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属龙 & 属马 生肖配对
+
+属龙：土行 | 出生年 1988 / 2000 / 2012 / 2024
+属马：火行 | 出生年 1990 / 2002 / 2014 / 2026
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Dragon & Horse Chinese Zodiac Match
+
+Dragon: 土 element | Birth years 1988 / 2000 / 2012 / 2024
+Horse: 火 element | Birth years 1990 / 2002 / 2014 / 2026
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Naga & Kuda
+
+Naga: elemen 土 | Tahun lahir 1988 / 2000 / 2012 / 2024
+Kuda: elemen 火 | Tahun lahir 1990 / 2002 / 2014 / 2026
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["dragon", "horse", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "183", slug: "dragon-goat-chinese-zodiac-compatibility-183",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属龙和属羊配吗？生肖配对（中性）深度分析`,
+      en: `Dragon and Goat Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Naga dan Kambing — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属龙（土）与属羊（土）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Dragon (土) & Goat (土) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Naga (土) & Kambing (土): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属龙 & 属羊 生肖配对
+
+属龙：土行 | 出生年 1988 / 2000 / 2012 / 2024
+属羊：土行 | 出生年 1991 / 2003 / 2015 / 2027
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Dragon & Goat Chinese Zodiac Match
+
+Dragon: 土 element | Birth years 1988 / 2000 / 2012 / 2024
+Goat: 土 element | Birth years 1991 / 2003 / 2015 / 2027
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Naga & Kambing
+
+Naga: elemen 土 | Tahun lahir 1988 / 2000 / 2012 / 2024
+Kambing: elemen 土 | Tahun lahir 1991 / 2003 / 2015 / 2027
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["dragon", "goat", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "184", slug: "dragon-monkey-chinese-zodiac-compatibility-184",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属龙和属猴配吗？生肖配对（三合）深度分析`,
+      en: `Dragon and Monkey Chinese Zodiac Compatibility — Three Harmonies (三合)`,
+      id: `Kecocokan Shio Naga dan Monyet — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属龙（土）与属猴（金）的生肖配对关系为「三合」，配对指数90%。三合局，天然盟友，互补共赢。`,
+      en: `Dragon (土) & Monkey (金) Chinese zodiac compatibility: Three Harmonies (三合). 90% match.`,
+      id: `Shio Naga (土) & Monyet (金): Three Harmonies (三合). Skor 90%.`,
+    },
+    content: {
+      zh: `属龙 & 属猴 生肖配对
+
+属龙：土行 | 出生年 1988 / 2000 / 2012 / 2024
+属猴：金行 | 出生年 1992 / 2004 / 2016 / 2028
+
+关系：三合 | 配对指数 90%
+三合局，天然盟友，互补共赢。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Dragon & Monkey Chinese Zodiac Match
+
+Dragon: 土 element | Birth years 1988 / 2000 / 2012 / 2024
+Monkey: 金 element | Birth years 1992 / 2004 / 2016 / 2028
+
+Relationship: Three Harmonies (三合) | 90% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Naga & Monyet
+
+Naga: elemen 土 | Tahun lahir 1988 / 2000 / 2012 / 2024
+Monyet: elemen 金 | Tahun lahir 1992 / 2004 / 2016 / 2028
+
+Hubungan: Three Harmonies (三合) | Skor 90%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["dragon", "monkey", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "185", slug: "dragon-rooster-chinese-zodiac-compatibility-185",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属龙和属鸡配吗？生肖配对（六合）深度分析`,
+      en: `Dragon and Rooster Chinese Zodiac Compatibility — Secret Friends (六合)`,
+      id: `Kecocokan Shio Naga dan Ayam — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属龙（土）与属鸡（金）的生肖配对关系为「六合」，配对指数95%。六合贵人，天作之合，彼此扶持。`,
+      en: `Dragon (土) & Rooster (金) Chinese zodiac compatibility: Secret Friends (六合). 95% match.`,
+      id: `Shio Naga (土) & Ayam (金): Secret Friends (六合). Skor 95%.`,
+    },
+    content: {
+      zh: `属龙 & 属鸡 生肖配对
+
+属龙：土行 | 出生年 1988 / 2000 / 2012 / 2024
+属鸡：金行 | 出生年 1993 / 2005 / 2017 / 2029
+
+关系：六合 | 配对指数 95%
+六合贵人，天作之合，彼此扶持。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Dragon & Rooster Chinese Zodiac Match
+
+Dragon: 土 element | Birth years 1988 / 2000 / 2012 / 2024
+Rooster: 金 element | Birth years 1993 / 2005 / 2017 / 2029
+
+Relationship: Secret Friends (六合) | 95% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Naga & Ayam
+
+Naga: elemen 土 | Tahun lahir 1988 / 2000 / 2012 / 2024
+Ayam: elemen 金 | Tahun lahir 1993 / 2005 / 2017 / 2029
+
+Hubungan: Secret Friends (六合) | Skor 95%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["dragon", "rooster", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "186", slug: "dragon-dog-chinese-zodiac-compatibility-186",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属龙和属狗配吗？生肖配对（六冲）深度分析`,
+      en: `Dragon and Dog Chinese Zodiac Compatibility — Clash (六冲)`,
+      id: `Kecocokan Shio Naga dan Anjing — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属龙（土）与属狗（土）的生肖配对关系为「六冲」，配对指数45%。六冲，能量对撞，需要磨合包容。`,
+      en: `Dragon (土) & Dog (土) Chinese zodiac compatibility: Clash (六冲). 45% match.`,
+      id: `Shio Naga (土) & Anjing (土): Clash (六冲). Skor 45%.`,
+    },
+    content: {
+      zh: `属龙 & 属狗 生肖配对
+
+属龙：土行 | 出生年 1988 / 2000 / 2012 / 2024
+属狗：土行 | 出生年 1994 / 2006 / 2018 / 2030
+
+关系：六冲 | 配对指数 45%
+六冲，能量对撞，需要磨合包容。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Dragon & Dog Chinese Zodiac Match
+
+Dragon: 土 element | Birth years 1988 / 2000 / 2012 / 2024
+Dog: 土 element | Birth years 1994 / 2006 / 2018 / 2030
+
+Relationship: Clash (六冲) | 45% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Naga & Anjing
+
+Naga: elemen 土 | Tahun lahir 1988 / 2000 / 2012 / 2024
+Anjing: elemen 土 | Tahun lahir 1994 / 2006 / 2018 / 2030
+
+Hubungan: Clash (六冲) | Skor 45%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["dragon", "dog", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "187", slug: "dragon-pig-chinese-zodiac-compatibility-187",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属龙和属猪配吗？生肖配对（中性）深度分析`,
+      en: `Dragon and Pig Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Naga dan Babi — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属龙（土）与属猪（水）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Dragon (土) & Pig (水) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Naga (土) & Babi (水): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属龙 & 属猪 生肖配对
+
+属龙：土行 | 出生年 1988 / 2000 / 2012 / 2024
+属猪：水行 | 出生年 1995 / 2007 / 2019 / 2031
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Dragon & Pig Chinese Zodiac Match
+
+Dragon: 土 element | Birth years 1988 / 2000 / 2012 / 2024
+Pig: 水 element | Birth years 1995 / 2007 / 2019 / 2031
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Naga & Babi
+
+Naga: elemen 土 | Tahun lahir 1988 / 2000 / 2012 / 2024
+Babi: elemen 水 | Tahun lahir 1995 / 2007 / 2019 / 2031
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["dragon", "pig", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "188", slug: "snake-horse-chinese-zodiac-compatibility-188",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属蛇和属马配吗？生肖配对（中性）深度分析`,
+      en: `Snake and Horse Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Ular dan Kuda — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属蛇（火）与属马（火）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Snake (火) & Horse (火) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Ular (火) & Kuda (火): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属蛇 & 属马 生肖配对
+
+属蛇：火行 | 出生年 1989 / 2001 / 2013 / 2025
+属马：火行 | 出生年 1990 / 2002 / 2014 / 2026
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Snake & Horse Chinese Zodiac Match
+
+Snake: 火 element | Birth years 1989 / 2001 / 2013 / 2025
+Horse: 火 element | Birth years 1990 / 2002 / 2014 / 2026
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Ular & Kuda
+
+Ular: elemen 火 | Tahun lahir 1989 / 2001 / 2013 / 2025
+Kuda: elemen 火 | Tahun lahir 1990 / 2002 / 2014 / 2026
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["snake", "horse", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "189", slug: "snake-goat-chinese-zodiac-compatibility-189",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属蛇和属羊配吗？生肖配对（中性）深度分析`,
+      en: `Snake and Goat Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Ular dan Kambing — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属蛇（火）与属羊（土）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Snake (火) & Goat (土) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Ular (火) & Kambing (土): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属蛇 & 属羊 生肖配对
+
+属蛇：火行 | 出生年 1989 / 2001 / 2013 / 2025
+属羊：土行 | 出生年 1991 / 2003 / 2015 / 2027
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Snake & Goat Chinese Zodiac Match
+
+Snake: 火 element | Birth years 1989 / 2001 / 2013 / 2025
+Goat: 土 element | Birth years 1991 / 2003 / 2015 / 2027
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Ular & Kambing
+
+Ular: elemen 火 | Tahun lahir 1989 / 2001 / 2013 / 2025
+Kambing: elemen 土 | Tahun lahir 1991 / 2003 / 2015 / 2027
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["snake", "goat", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "190", slug: "snake-monkey-chinese-zodiac-compatibility-190",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属蛇和属猴配吗？生肖配对（六合）深度分析`,
+      en: `Snake and Monkey Chinese Zodiac Compatibility — Secret Friends (六合)`,
+      id: `Kecocokan Shio Ular dan Monyet — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属蛇（火）与属猴（金）的生肖配对关系为「六合」，配对指数95%。六合贵人，天作之合，彼此扶持。`,
+      en: `Snake (火) & Monkey (金) Chinese zodiac compatibility: Secret Friends (六合). 95% match.`,
+      id: `Shio Ular (火) & Monyet (金): Secret Friends (六合). Skor 95%.`,
+    },
+    content: {
+      zh: `属蛇 & 属猴 生肖配对
+
+属蛇：火行 | 出生年 1989 / 2001 / 2013 / 2025
+属猴：金行 | 出生年 1992 / 2004 / 2016 / 2028
+
+关系：六合 | 配对指数 95%
+六合贵人，天作之合，彼此扶持。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Snake & Monkey Chinese Zodiac Match
+
+Snake: 火 element | Birth years 1989 / 2001 / 2013 / 2025
+Monkey: 金 element | Birth years 1992 / 2004 / 2016 / 2028
+
+Relationship: Secret Friends (六合) | 95% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Ular & Monyet
+
+Ular: elemen 火 | Tahun lahir 1989 / 2001 / 2013 / 2025
+Monyet: elemen 金 | Tahun lahir 1992 / 2004 / 2016 / 2028
+
+Hubungan: Secret Friends (六合) | Skor 95%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["snake", "monkey", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "191", slug: "snake-rooster-chinese-zodiac-compatibility-191",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属蛇和属鸡配吗？生肖配对（三合）深度分析`,
+      en: `Snake and Rooster Chinese Zodiac Compatibility — Three Harmonies (三合)`,
+      id: `Kecocokan Shio Ular dan Ayam — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属蛇（火）与属鸡（金）的生肖配对关系为「三合」，配对指数90%。三合局，天然盟友，互补共赢。`,
+      en: `Snake (火) & Rooster (金) Chinese zodiac compatibility: Three Harmonies (三合). 90% match.`,
+      id: `Shio Ular (火) & Ayam (金): Three Harmonies (三合). Skor 90%.`,
+    },
+    content: {
+      zh: `属蛇 & 属鸡 生肖配对
+
+属蛇：火行 | 出生年 1989 / 2001 / 2013 / 2025
+属鸡：金行 | 出生年 1993 / 2005 / 2017 / 2029
+
+关系：三合 | 配对指数 90%
+三合局，天然盟友，互补共赢。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Snake & Rooster Chinese Zodiac Match
+
+Snake: 火 element | Birth years 1989 / 2001 / 2013 / 2025
+Rooster: 金 element | Birth years 1993 / 2005 / 2017 / 2029
+
+Relationship: Three Harmonies (三合) | 90% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Ular & Ayam
+
+Ular: elemen 火 | Tahun lahir 1989 / 2001 / 2013 / 2025
+Ayam: elemen 金 | Tahun lahir 1993 / 2005 / 2017 / 2029
+
+Hubungan: Three Harmonies (三合) | Skor 90%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["snake", "rooster", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "192", slug: "snake-dog-chinese-zodiac-compatibility-192",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属蛇和属狗配吗？生肖配对（中性）深度分析`,
+      en: `Snake and Dog Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Ular dan Anjing — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属蛇（火）与属狗（土）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Snake (火) & Dog (土) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Ular (火) & Anjing (土): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属蛇 & 属狗 生肖配对
+
+属蛇：火行 | 出生年 1989 / 2001 / 2013 / 2025
+属狗：土行 | 出生年 1994 / 2006 / 2018 / 2030
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Snake & Dog Chinese Zodiac Match
+
+Snake: 火 element | Birth years 1989 / 2001 / 2013 / 2025
+Dog: 土 element | Birth years 1994 / 2006 / 2018 / 2030
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Ular & Anjing
+
+Ular: elemen 火 | Tahun lahir 1989 / 2001 / 2013 / 2025
+Anjing: elemen 土 | Tahun lahir 1994 / 2006 / 2018 / 2030
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["snake", "dog", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "193", slug: "snake-pig-chinese-zodiac-compatibility-193",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属蛇和属猪配吗？生肖配对（六冲）深度分析`,
+      en: `Snake and Pig Chinese Zodiac Compatibility — Clash (六冲)`,
+      id: `Kecocokan Shio Ular dan Babi — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属蛇（火）与属猪（水）的生肖配对关系为「六冲」，配对指数45%。六冲，能量对撞，需要磨合包容。`,
+      en: `Snake (火) & Pig (水) Chinese zodiac compatibility: Clash (六冲). 45% match.`,
+      id: `Shio Ular (火) & Babi (水): Clash (六冲). Skor 45%.`,
+    },
+    content: {
+      zh: `属蛇 & 属猪 生肖配对
+
+属蛇：火行 | 出生年 1989 / 2001 / 2013 / 2025
+属猪：水行 | 出生年 1995 / 2007 / 2019 / 2031
+
+关系：六冲 | 配对指数 45%
+六冲，能量对撞，需要磨合包容。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Snake & Pig Chinese Zodiac Match
+
+Snake: 火 element | Birth years 1989 / 2001 / 2013 / 2025
+Pig: 水 element | Birth years 1995 / 2007 / 2019 / 2031
+
+Relationship: Clash (六冲) | 45% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Ular & Babi
+
+Ular: elemen 火 | Tahun lahir 1989 / 2001 / 2013 / 2025
+Babi: elemen 水 | Tahun lahir 1995 / 2007 / 2019 / 2031
+
+Hubungan: Clash (六冲) | Skor 45%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["snake", "pig", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "194", slug: "horse-goat-chinese-zodiac-compatibility-194",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属马和属羊配吗？生肖配对（六合）深度分析`,
+      en: `Horse and Goat Chinese Zodiac Compatibility — Secret Friends (六合)`,
+      id: `Kecocokan Shio Kuda dan Kambing — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属马（火）与属羊（土）的生肖配对关系为「六合」，配对指数95%。六合贵人，天作之合，彼此扶持。`,
+      en: `Horse (火) & Goat (土) Chinese zodiac compatibility: Secret Friends (六合). 95% match.`,
+      id: `Shio Kuda (火) & Kambing (土): Secret Friends (六合). Skor 95%.`,
+    },
+    content: {
+      zh: `属马 & 属羊 生肖配对
+
+属马：火行 | 出生年 1990 / 2002 / 2014 / 2026
+属羊：土行 | 出生年 1991 / 2003 / 2015 / 2027
+
+关系：六合 | 配对指数 95%
+六合贵人，天作之合，彼此扶持。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Horse & Goat Chinese Zodiac Match
+
+Horse: 火 element | Birth years 1990 / 2002 / 2014 / 2026
+Goat: 土 element | Birth years 1991 / 2003 / 2015 / 2027
+
+Relationship: Secret Friends (六合) | 95% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kuda & Kambing
+
+Kuda: elemen 火 | Tahun lahir 1990 / 2002 / 2014 / 2026
+Kambing: elemen 土 | Tahun lahir 1991 / 2003 / 2015 / 2027
+
+Hubungan: Secret Friends (六合) | Skor 95%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["horse", "goat", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "195", slug: "horse-monkey-chinese-zodiac-compatibility-195",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属马和属猴配吗？生肖配对（中性）深度分析`,
+      en: `Horse and Monkey Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Kuda dan Monyet — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属马（火）与属猴（金）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Horse (火) & Monkey (金) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Kuda (火) & Monyet (金): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属马 & 属猴 生肖配对
+
+属马：火行 | 出生年 1990 / 2002 / 2014 / 2026
+属猴：金行 | 出生年 1992 / 2004 / 2016 / 2028
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Horse & Monkey Chinese Zodiac Match
+
+Horse: 火 element | Birth years 1990 / 2002 / 2014 / 2026
+Monkey: 金 element | Birth years 1992 / 2004 / 2016 / 2028
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kuda & Monyet
+
+Kuda: elemen 火 | Tahun lahir 1990 / 2002 / 2014 / 2026
+Monyet: elemen 金 | Tahun lahir 1992 / 2004 / 2016 / 2028
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["horse", "monkey", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "196", slug: "horse-rooster-chinese-zodiac-compatibility-196",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属马和属鸡配吗？生肖配对（中性）深度分析`,
+      en: `Horse and Rooster Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Kuda dan Ayam — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属马（火）与属鸡（金）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Horse (火) & Rooster (金) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Kuda (火) & Ayam (金): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属马 & 属鸡 生肖配对
+
+属马：火行 | 出生年 1990 / 2002 / 2014 / 2026
+属鸡：金行 | 出生年 1993 / 2005 / 2017 / 2029
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Horse & Rooster Chinese Zodiac Match
+
+Horse: 火 element | Birth years 1990 / 2002 / 2014 / 2026
+Rooster: 金 element | Birth years 1993 / 2005 / 2017 / 2029
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kuda & Ayam
+
+Kuda: elemen 火 | Tahun lahir 1990 / 2002 / 2014 / 2026
+Ayam: elemen 金 | Tahun lahir 1993 / 2005 / 2017 / 2029
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["horse", "rooster", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "197", slug: "horse-dog-chinese-zodiac-compatibility-197",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属马和属狗配吗？生肖配对（三合）深度分析`,
+      en: `Horse and Dog Chinese Zodiac Compatibility — Three Harmonies (三合)`,
+      id: `Kecocokan Shio Kuda dan Anjing — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属马（火）与属狗（土）的生肖配对关系为「三合」，配对指数90%。三合局，天然盟友，互补共赢。`,
+      en: `Horse (火) & Dog (土) Chinese zodiac compatibility: Three Harmonies (三合). 90% match.`,
+      id: `Shio Kuda (火) & Anjing (土): Three Harmonies (三合). Skor 90%.`,
+    },
+    content: {
+      zh: `属马 & 属狗 生肖配对
+
+属马：火行 | 出生年 1990 / 2002 / 2014 / 2026
+属狗：土行 | 出生年 1994 / 2006 / 2018 / 2030
+
+关系：三合 | 配对指数 90%
+三合局，天然盟友，互补共赢。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Horse & Dog Chinese Zodiac Match
+
+Horse: 火 element | Birth years 1990 / 2002 / 2014 / 2026
+Dog: 土 element | Birth years 1994 / 2006 / 2018 / 2030
+
+Relationship: Three Harmonies (三合) | 90% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kuda & Anjing
+
+Kuda: elemen 火 | Tahun lahir 1990 / 2002 / 2014 / 2026
+Anjing: elemen 土 | Tahun lahir 1994 / 2006 / 2018 / 2030
+
+Hubungan: Three Harmonies (三合) | Skor 90%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["horse", "dog", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "198", slug: "horse-pig-chinese-zodiac-compatibility-198",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属马和属猪配吗？生肖配对（中性）深度分析`,
+      en: `Horse and Pig Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Kuda dan Babi — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属马（火）与属猪（水）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Horse (火) & Pig (水) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Kuda (火) & Babi (水): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属马 & 属猪 生肖配对
+
+属马：火行 | 出生年 1990 / 2002 / 2014 / 2026
+属猪：水行 | 出生年 1995 / 2007 / 2019 / 2031
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Horse & Pig Chinese Zodiac Match
+
+Horse: 火 element | Birth years 1990 / 2002 / 2014 / 2026
+Pig: 水 element | Birth years 1995 / 2007 / 2019 / 2031
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kuda & Babi
+
+Kuda: elemen 火 | Tahun lahir 1990 / 2002 / 2014 / 2026
+Babi: elemen 水 | Tahun lahir 1995 / 2007 / 2019 / 2031
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["horse", "pig", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "199", slug: "goat-monkey-chinese-zodiac-compatibility-199",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属羊和属猴配吗？生肖配对（中性）深度分析`,
+      en: `Goat and Monkey Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Kambing dan Monyet — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属羊（土）与属猴（金）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Goat (土) & Monkey (金) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Kambing (土) & Monyet (金): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属羊 & 属猴 生肖配对
+
+属羊：土行 | 出生年 1991 / 2003 / 2015 / 2027
+属猴：金行 | 出生年 1992 / 2004 / 2016 / 2028
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Goat & Monkey Chinese Zodiac Match
+
+Goat: 土 element | Birth years 1991 / 2003 / 2015 / 2027
+Monkey: 金 element | Birth years 1992 / 2004 / 2016 / 2028
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kambing & Monyet
+
+Kambing: elemen 土 | Tahun lahir 1991 / 2003 / 2015 / 2027
+Monyet: elemen 金 | Tahun lahir 1992 / 2004 / 2016 / 2028
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["goat", "monkey", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "200", slug: "goat-rooster-chinese-zodiac-compatibility-200",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属羊和属鸡配吗？生肖配对（中性）深度分析`,
+      en: `Goat and Rooster Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Kambing dan Ayam — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属羊（土）与属鸡（金）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Goat (土) & Rooster (金) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Kambing (土) & Ayam (金): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属羊 & 属鸡 生肖配对
+
+属羊：土行 | 出生年 1991 / 2003 / 2015 / 2027
+属鸡：金行 | 出生年 1993 / 2005 / 2017 / 2029
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Goat & Rooster Chinese Zodiac Match
+
+Goat: 土 element | Birth years 1991 / 2003 / 2015 / 2027
+Rooster: 金 element | Birth years 1993 / 2005 / 2017 / 2029
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kambing & Ayam
+
+Kambing: elemen 土 | Tahun lahir 1991 / 2003 / 2015 / 2027
+Ayam: elemen 金 | Tahun lahir 1993 / 2005 / 2017 / 2029
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["goat", "rooster", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "201", slug: "goat-dog-chinese-zodiac-compatibility-201",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属羊和属狗配吗？生肖配对（中性）深度分析`,
+      en: `Goat and Dog Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Kambing dan Anjing — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属羊（土）与属狗（土）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Goat (土) & Dog (土) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Kambing (土) & Anjing (土): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属羊 & 属狗 生肖配对
+
+属羊：土行 | 出生年 1991 / 2003 / 2015 / 2027
+属狗：土行 | 出生年 1994 / 2006 / 2018 / 2030
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Goat & Dog Chinese Zodiac Match
+
+Goat: 土 element | Birth years 1991 / 2003 / 2015 / 2027
+Dog: 土 element | Birth years 1994 / 2006 / 2018 / 2030
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kambing & Anjing
+
+Kambing: elemen 土 | Tahun lahir 1991 / 2003 / 2015 / 2027
+Anjing: elemen 土 | Tahun lahir 1994 / 2006 / 2018 / 2030
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["goat", "dog", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "202", slug: "goat-pig-chinese-zodiac-compatibility-202",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属羊和属猪配吗？生肖配对（三合）深度分析`,
+      en: `Goat and Pig Chinese Zodiac Compatibility — Three Harmonies (三合)`,
+      id: `Kecocokan Shio Kambing dan Babi — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属羊（土）与属猪（水）的生肖配对关系为「三合」，配对指数90%。三合局，天然盟友，互补共赢。`,
+      en: `Goat (土) & Pig (水) Chinese zodiac compatibility: Three Harmonies (三合). 90% match.`,
+      id: `Shio Kambing (土) & Babi (水): Three Harmonies (三合). Skor 90%.`,
+    },
+    content: {
+      zh: `属羊 & 属猪 生肖配对
+
+属羊：土行 | 出生年 1991 / 2003 / 2015 / 2027
+属猪：水行 | 出生年 1995 / 2007 / 2019 / 2031
+
+关系：三合 | 配对指数 90%
+三合局，天然盟友，互补共赢。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Goat & Pig Chinese Zodiac Match
+
+Goat: 土 element | Birth years 1991 / 2003 / 2015 / 2027
+Pig: 水 element | Birth years 1995 / 2007 / 2019 / 2031
+
+Relationship: Three Harmonies (三合) | 90% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Kambing & Babi
+
+Kambing: elemen 土 | Tahun lahir 1991 / 2003 / 2015 / 2027
+Babi: elemen 水 | Tahun lahir 1995 / 2007 / 2019 / 2031
+
+Hubungan: Three Harmonies (三合) | Skor 90%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["goat", "pig", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "203", slug: "monkey-rooster-chinese-zodiac-compatibility-203",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属猴和属鸡配吗？生肖配对（中性）深度分析`,
+      en: `Monkey and Rooster Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Monyet dan Ayam — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属猴（金）与属鸡（金）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Monkey (金) & Rooster (金) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Monyet (金) & Ayam (金): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属猴 & 属鸡 生肖配对
+
+属猴：金行 | 出生年 1992 / 2004 / 2016 / 2028
+属鸡：金行 | 出生年 1993 / 2005 / 2017 / 2029
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Monkey & Rooster Chinese Zodiac Match
+
+Monkey: 金 element | Birth years 1992 / 2004 / 2016 / 2028
+Rooster: 金 element | Birth years 1993 / 2005 / 2017 / 2029
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Monyet & Ayam
+
+Monyet: elemen 金 | Tahun lahir 1992 / 2004 / 2016 / 2028
+Ayam: elemen 金 | Tahun lahir 1993 / 2005 / 2017 / 2029
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["monkey", "rooster", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "204", slug: "monkey-dog-chinese-zodiac-compatibility-204",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属猴和属狗配吗？生肖配对（中性）深度分析`,
+      en: `Monkey and Dog Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Monyet dan Anjing — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属猴（金）与属狗（土）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Monkey (金) & Dog (土) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Monyet (金) & Anjing (土): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属猴 & 属狗 生肖配对
+
+属猴：金行 | 出生年 1992 / 2004 / 2016 / 2028
+属狗：土行 | 出生年 1994 / 2006 / 2018 / 2030
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Monkey & Dog Chinese Zodiac Match
+
+Monkey: 金 element | Birth years 1992 / 2004 / 2016 / 2028
+Dog: 土 element | Birth years 1994 / 2006 / 2018 / 2030
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Monyet & Anjing
+
+Monyet: elemen 金 | Tahun lahir 1992 / 2004 / 2016 / 2028
+Anjing: elemen 土 | Tahun lahir 1994 / 2006 / 2018 / 2030
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["monkey", "dog", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "205", slug: "monkey-pig-chinese-zodiac-compatibility-205",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属猴和属猪配吗？生肖配对（六害）深度分析`,
+      en: `Monkey and Pig Chinese Zodiac Compatibility — Harm (六害)`,
+      id: `Kecocokan Shio Monyet dan Babi — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属猴（金）与属猪（水）的生肖配对关系为「六害」，配对指数52%。六害，相处有摩擦，需多耐心。`,
+      en: `Monkey (金) & Pig (水) Chinese zodiac compatibility: Harm (六害). 52% match.`,
+      id: `Shio Monyet (金) & Babi (水): Harm (六害). Skor 52%.`,
+    },
+    content: {
+      zh: `属猴 & 属猪 生肖配对
+
+属猴：金行 | 出生年 1992 / 2004 / 2016 / 2028
+属猪：水行 | 出生年 1995 / 2007 / 2019 / 2031
+
+关系：六害 | 配对指数 52%
+六害，相处有摩擦，需多耐心。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Monkey & Pig Chinese Zodiac Match
+
+Monkey: 金 element | Birth years 1992 / 2004 / 2016 / 2028
+Pig: 水 element | Birth years 1995 / 2007 / 2019 / 2031
+
+Relationship: Harm (六害) | 52% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Monyet & Babi
+
+Monyet: elemen 金 | Tahun lahir 1992 / 2004 / 2016 / 2028
+Babi: elemen 水 | Tahun lahir 1995 / 2007 / 2019 / 2031
+
+Hubungan: Harm (六害) | Skor 52%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["monkey", "pig", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "206", slug: "rooster-dog-chinese-zodiac-compatibility-206",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属鸡和属狗配吗？生肖配对（六害）深度分析`,
+      en: `Rooster and Dog Chinese Zodiac Compatibility — Harm (六害)`,
+      id: `Kecocokan Shio Ayam dan Anjing — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属鸡（金）与属狗（土）的生肖配对关系为「六害」，配对指数52%。六害，相处有摩擦，需多耐心。`,
+      en: `Rooster (金) & Dog (土) Chinese zodiac compatibility: Harm (六害). 52% match.`,
+      id: `Shio Ayam (金) & Anjing (土): Harm (六害). Skor 52%.`,
+    },
+    content: {
+      zh: `属鸡 & 属狗 生肖配对
+
+属鸡：金行 | 出生年 1993 / 2005 / 2017 / 2029
+属狗：土行 | 出生年 1994 / 2006 / 2018 / 2030
+
+关系：六害 | 配对指数 52%
+六害，相处有摩擦，需多耐心。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Rooster & Dog Chinese Zodiac Match
+
+Rooster: 金 element | Birth years 1993 / 2005 / 2017 / 2029
+Dog: 土 element | Birth years 1994 / 2006 / 2018 / 2030
+
+Relationship: Harm (六害) | 52% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Ayam & Anjing
+
+Ayam: elemen 金 | Tahun lahir 1993 / 2005 / 2017 / 2029
+Anjing: elemen 土 | Tahun lahir 1994 / 2006 / 2018 / 2030
+
+Hubungan: Harm (六害) | Skor 52%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["rooster", "dog", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "207", slug: "rooster-pig-chinese-zodiac-compatibility-207",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属鸡和属猪配吗？生肖配对（中性）深度分析`,
+      en: `Rooster and Pig Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Ayam dan Babi — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属鸡（金）与属猪（水）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Rooster (金) & Pig (水) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Ayam (金) & Babi (水): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属鸡 & 属猪 生肖配对
+
+属鸡：金行 | 出生年 1993 / 2005 / 2017 / 2029
+属猪：水行 | 出生年 1995 / 2007 / 2019 / 2031
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Rooster & Pig Chinese Zodiac Match
+
+Rooster: 金 element | Birth years 1993 / 2005 / 2017 / 2029
+Pig: 水 element | Birth years 1995 / 2007 / 2019 / 2031
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Ayam & Babi
+
+Ayam: elemen 金 | Tahun lahir 1993 / 2005 / 2017 / 2029
+Babi: elemen 水 | Tahun lahir 1995 / 2007 / 2019 / 2031
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["rooster", "pig", "chinese-zodiac", "shio", "compatibility"],
+  },
+  {
+    id: "208", slug: "dog-pig-chinese-zodiac-compatibility-208",
+    category: "compatibility", categoryZh: "生肖配对", categoryEn: "Chinese Zodiac", categoryId: "Shio",
+    date: "2026-06-21",
+    title: {
+      zh: `属狗和属猪配吗？生肖配对（中性）深度分析`,
+      en: `Dog and Pig Chinese Zodiac Compatibility — Neutral`,
+      id: `Kecocokan Shio Anjing dan Babi — Panduan Shio`,
+    },
+    excerpt: {
+      zh: `属狗（土）与属猪（水）的生肖配对关系为「中性」，配对指数72%。中性组合，用心经营可成。`,
+      en: `Dog (土) & Pig (水) Chinese zodiac compatibility: Neutral. 72% match.`,
+      id: `Shio Anjing (土) & Babi (水): Neutral. Skor 72%.`,
+    },
+    content: {
+      zh: `属狗 & 属猪 生肖配对
+
+属狗：土行 | 出生年 1994 / 2006 / 2018 / 2030
+属猪：水行 | 出生年 1995 / 2007 / 2019 / 2031
+
+关系：中性 | 配对指数 72%
+中性组合，用心经营可成。
+
+生肖配对只是八字合婚的第一层。使用 lunaxstar.com 输入双方完整出生信息，获取八字合盘 + 五行互补 + AI 深度解读。`,
+      en: `Dog & Pig Chinese Zodiac Match
+
+Dog: 土 element | Birth years 1994 / 2006 / 2018 / 2030
+Pig: 水 element | Birth years 1995 / 2007 / 2019 / 2031
+
+Relationship: Neutral | 72% compatibility
+
+Zodiac animal matching is only the surface. Enter both birth dates on lunaxstar.com for a full BaZi synastry with Five Elements analysis and AI reading.
+
+---
+
+**Related:**
+[Free BaZi Compatibility Calculator](/compatibility/bazi)
+[Get a Deep AI Reading · $3.99](/pricing)`,
+      id: `Shio Anjing & Babi
+
+Anjing: elemen 土 | Tahun lahir 1994 / 2006 / 2018 / 2030
+Babi: elemen 水 | Tahun lahir 1995 / 2007 / 2019 / 2031
+
+Hubungan: Neutral | Skor 72%
+
+Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
+    },
+    readTime: 3,
+    tags: ["dog", "pig", "chinese-zodiac", "shio", "compatibility"],
+  },
 ];
