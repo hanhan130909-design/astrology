@@ -11,11 +11,11 @@ const T: Record<string, any> = {
     btn2: "完整年运报告 · $29.99",
   },
   en: {
-    title: "🔮 Unlock Deep Reading",
-    line1: "Your free chart is just the surface —",
-    line2: "AI deep reading reveals your Day Master personality, 10-year luck cycles, career, wealth & love analysis.",
-    btn1: "Single AI Reading · $3.99",
-    btn2: "Yearly Fortune Book · $29.99",
+    title: "🔮 Go Deeper With AI",
+    line1: "Your free chart only scratches the surface —",
+    line2: "Unlock your Day Master personality profile, 10-year luck cycles, and detailed career, wealth & relationship insights.",
+    btn1: "AI Deep Reading · $3.99",
+    btn2: "Annual Fortune Report · $29.99",
   },
   id: {
     title: "🔮 Buka Bacaan Mendalam",
