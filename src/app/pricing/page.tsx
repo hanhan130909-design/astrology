@@ -223,7 +223,7 @@ export default function PricingPage() {
 
   // Gumroad checkout links
   const gumroad: Record<string, string> = {
-    single: "https://hanhan55.gumroad.com/l/YOUR_SINGLE_PRODUCT",
+    single: "https://hanhan55.gumroad.com/l/zgbent",
     compatibility: "https://hanhan55.gumroad.com/l/aqsamm",
     fortune: "https://hanhan55.gumroad.com/l/zxccdv",
     fate: "https://hanhan55.gumroad.com/l/xwpgjb",

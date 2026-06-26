@@ -27,7 +27,7 @@ const T: Record<string, any> = {
 };
 
 const GUMLINKS: Record<string, string> = {
-  single: "https://hanhan55.gumroad.com/l/YOUR_SINGLE_PRODUCT",
+  single: "https://hanhan55.gumroad.com/l/zgbent",
   fortune: "https://hanhan55.gumroad.com/l/zxccdv",
 };
 
