@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { buildBaziViewData } from "@/lib/baziViewData";
 import { ArrowLeft, Save, X, Trash2, Send, Loader2, Sparkles, Compass, ChevronDown } from "lucide-react";
+import BaziPurchaseCTA from "@/components/BaziPurchaseCTA";
 
 // ──────────────────────── 翻译 ────────────────────────
 const T: Record<string, Record<string, string>> = {
@@ -427,7 +428,9 @@ export default function BaziPage() {
               </button>
             </div>
 
-            {/* AI解读 */}
+            {/* AI读取 */} {/*付费入口 */}
+            <BaziPurchaseCTA />
+
             <div className="text-xs font-semibold bg-gray-900 text-white px-3 py-1 rounded inline-block mb-3 mt-4">AI解读</div>
             
               <div className="border rounded-xl overflow-hidden">
