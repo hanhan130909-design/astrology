@@ -8,5 +8,11 @@
     "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID": "684890555392",
     "NEXT_PUBLIC_FIREBASE_APP_ID": "1:684890555392:web:bf52ff9d92bb1dd50544e5",
     "NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID": "G-CSE41GD9JL"
-  }
+  },
+  "crons": [
+    {
+      "path": "/api/cron/weekly-horoscope",
+      "schedule": "0 12 * * 1"
+    }
+  ]
 }
