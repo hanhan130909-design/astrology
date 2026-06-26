@@ -131,7 +131,9 @@ export function EmailSubscribe() {
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
+          <label htmlFor="subscribe-email" className="sr-only">{t.emailPlaceholder}</label>
           <input
+            id="subscribe-email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -142,7 +144,9 @@ export function EmailSubscribe() {
         </div>
 
         <div>
+          <label htmlFor="subscribe-zodiac" className="sr-only">{t.selectZodiac}</label>
           <select
+            id="subscribe-zodiac"
             value={selectedZodiac}
             onChange={(e) => setSelectedZodiac(e.target.value)}
             className="w-full px-4 py-3 bg-gray-50 border border-white/10 rounded-xl text-white focus:outline-none focus:border-gray-500/50 transition-colors appearance-none cursor-pointer"

@@ -4,6 +4,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
+import { CookieConsent } from "@/components/CookieConsent";
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
@@ -171,6 +172,7 @@ export default function RootLayout({
             <AuthProvider>
               <Navbar />
               {children}
+              <CookieConsent />
             </AuthProvider>
           </LanguageProvider>
         </ThemeProvider>
