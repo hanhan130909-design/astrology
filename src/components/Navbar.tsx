@@ -111,6 +111,7 @@ export default function Navbar() {
             )}
           </div>
 
+          <Link href="/shop" className="text-xs font-medium text-gray-400 hover:text-[#171717] no-underline shrink-0 hidden sm:inline">🎨 Shop</Link>
           <Link href="/pricing" className="text-xs font-medium text-gray-400 hover:text-[#171717] no-underline shrink-0 hidden sm:inline">PRO</Link>
           {user ? (
             <div className="flex items-center gap-2 shrink-0">
@@ -144,8 +145,8 @@ export default function Navbar() {
             ))}
           </div>
           <div className="mt-3 pt-3 border-t border-gray-100">
-            <Link href="/pricing" onClick={() => setMenuOpen(false)}
-              className="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-600 hover:bg-gray-50 no-underline sm:hidden">PRO</Link>
+            <Link href="/shop" onClick={() => setMenuOpen(false)} className="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-600 hover:bg-gray-50 no-underline sm:hidden">🎨 Shop</Link>
+            <Link href="/pricing" onClick={() => setMenuOpen(false)} className="block px-3 py-2.5 rounded-md text-sm font-medium text-gray-600 hover:bg-gray-50 no-underline sm:hidden">PRO</Link>
           </div>
         </div>
       )}
