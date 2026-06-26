@@ -124,6 +124,8 @@ export default function RootLayout({
         {/* Google Analytics — GA4 */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-CSE41GD9JL" />
         <script dangerouslySetInnerHTML={{__html:`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-CSE41GD9JL');gtag('config','AW-18261460159');`}} />
+        {/* AdSense */}
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8610947417148845" crossOrigin="anonymous" />
         {/* ============================================================
             Google Ads Conversion Tracking + Remarketing
             ============================================================
