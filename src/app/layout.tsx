@@ -1,11 +1,14 @@
 ﻿import type { Metadata, Viewport } from "next";
+import dynamic from "next/dynamic";
 import "./globals.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
-import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
-import { CookieConsent } from "@/components/CookieConsent";
 import Navbar from "@/components/Navbar";
+
+// Lazy-loaded below-the-fold components (reduce initial JS bundle)
+const ServiceWorkerRegister = dynamic(() => import("@/components/ServiceWorkerRegister").then((m) => m.ServiceWorkerRegister));
+const CookieConsent = dynamic(() => import("@/components/CookieConsent").then((m) => m.CookieConsent));
 
 export const metadata: Metadata = {
   title: {
@@ -114,10 +117,13 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{__html:`(function(){var l=document.querySelectorAll('link[rel="stylesheet"]');for(var i=0;i<l.length;i++){var s=l[i];s.media='print';s.onload=function(){this.media='all';this.onload=null}}})()`}} />
         {/* System fonts — no Google Fonts CDN (blocked in China) */}
         <style>{`
-          @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; src: local('Inter'), local('PingFang SC'), local('Microsoft YaHei'); }
-          @font-face { font-family: 'Noto Sans SC'; font-style: normal; font-weight: 400; src: local('Noto Sans SC'), local('PingFang SC'), local('Microsoft YaHei'), local('SimHei'); }
+          @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: local('Inter'), local('PingFang SC'), local('Microsoft YaHei'); }
+          @font-face { font-family: 'Noto Sans SC'; font-style: normal; font-weight: 400; font-display: swap; src: local('Noto Sans SC'), local('PingFang SC'), local('Microsoft YaHei'), local('SimHei'); }
           body { font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', system-ui, -apple-system, sans-serif; }
         `}</style>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -127,43 +133,6 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{__html:`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-CSE41GD9JL');gtag('config','AW-18261460159');`}} />
         {/* AdSense */}
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8610947417148845" crossOrigin="anonymous" />
-        {/* ============================================================
-            Google Ads Conversion Tracking + Remarketing
-            ============================================================
-            REPLACE THE PLACEHOLDER IDs BELOW with your real Google Ads IDs:
-              - AW-XXXXXXXXX → Your Google Ads Conversion ID
-              - G-XXXXXXXXX  → Your Google Ads Remarketing Tag ID
-
-            HOW TO GET YOUR IDs:
-              1. Go to https://ads.google.com
-              2. Sign in to your Google Ads account
-              3. Navigate to Tools & Settings > Measurement > Conversions
-              4. Create a new conversion action to get your AW- ID
-              5. For remarketing: go to Tools & Settings > Shared Library >
-                 Audience Manager > Audience Sources > Google Ads tag
-              6. Copy both IDs and replace the placeholders below
-
-            If you don't have a Google Ads account yet:
-              - Create one at https://ads.google.com/signup
-              - These placeholder IDs will simply not fire until replaced
-            ============================================================ */}
-        {/* Google Ads — Global Site Tag (gtag.js) base configuration */}
-        <script dangerouslySetInnerHTML={{__html:`
-          /* --- Google Ads Conversion Tracking ---
-             Replace AW-XXXXXXXXX with your real Google Ads Conversion ID */
-          gtag('config', 'AW-XXXXXXXXX');
-
-          /* --- Google Ads Remarketing ---
-             Replace G-XXXXXXXXX with your real Google Ads Remarketing Tag ID */
-          gtag('config', 'G-XXXXXXXXX');
-
-          /* --- Remarketing event snippet (fires on all pages) ---
-             This tells Google Ads to add visitors to your remarketing lists
-             so you can show ads to people who have visited your site. */
-          gtag('event', 'page_view', {
-            'send_to': 'AW-XXXXXXXXX',
-          });
-        `}} />
       </head>
       <body className="bg-white text-gray-900 antialiased min-h-screen overflow-x-hidden">
         <ServiceWorkerRegister />

@@ -36,6 +36,7 @@ export default function ShopPage() {
                 <img
                   src={`/shop/thumb-${p.id}.png`}
                   alt={p.zh}
+                  width={300} height={533}
                   className="w-full h-full object-cover"
                 />
               </div>
