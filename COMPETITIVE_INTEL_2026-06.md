@@ -1,128 +1,85 @@
-# Competitive Intel Update — June 2026
-> Compiled: 2026-06-22 | Source: Web research, official sites, public data
-> For: lunaxstar.com competitive positioning
+# Competitive Intel — lunaxstar.com
+> Last full update: 2026-06-26 | Next: daily cron auto-check
+> See bottom for automated monitoring checklist
 
 ---
 
-## 1. Cantian AI (cantian.ai)
+## 🀄 BaZi 赛道
 
-**Date Checked:** June 2026
+| 竞品 | URL | 威胁 | 用户 | 定价 | 最新 |
+|------|-----|------|------|------|------|
+| **BaziAI** | bazi-ai.com | 🔴 高 | 50万+ | $14.99/月,年$99 | DeepSeek R1,请符$9.99,小红书裂变,占卜Tab新增 |
+| **XuanSeal** | xuanseal.com | 🟡 中 | 未知 | $29.99/次,$99/年 | PH发布,BaZi+塔罗+数字学,英文为主 |
+| **ShenShu AI** | shen-shu.com | 🟡 中 | 未知 | 完全免费 | PH发布,纯BaZi AI对话追问,中文 |
+| **Cantian AI** | cantian.ai | 🟡 中 | 1M+ | 免费 | 开源,MCP,BaZi+风水+起名+起卦 |
+| **Nummi** | App Store | 🟢 低 | 登顶App Store | 内购 | AI Vedic占星,App-only |
 
-**Overview:**
-Cantian AI is a free AI astrology and BaZi calculator platform combining traditional Chinese metaphysics with LLMs (GPT, DeepSeek). It offers personalized BaZi interpretations and a multilingual knowledge base.
+## ♈ 西方占星赛道
 
-**Key Findings:**
-- **Features:** Free BaZi calculator + AI fortune-telling. Personalized knowledge base that updates dynamically. Multilingual support (Chinese + English confirmed). Combines eastern astrology with AI LLMs.
-- **Pricing:** Appears to be completely free. No paid tiers visible.
-- **User Numbers:** No public user count found.
-- **Recent Launches:** Active platform but no major new feature launches detected in recent months. Listed on multiple AI tool directories (Creati.ai, AIStage, Toolify, YesChat, AIBase).
-- **Strengths:** Free access, LLM-powered, multilingual.
-- **Weaknesses:** Basic features compared to competitors. No visual chart display evident. No synastry/compatibility features advertised. No Western astrology.
+| 竞品 | 威胁 | 数据 | 定价 | 备注 |
+|------|------|------|------|------|
+| **Co-Star** | 🟢 低 | 1500万下载 | $2.99/月 | App-only,无BaZi,NASA数据 |
+| **The Pattern** | 🟢 低 | ~$300K/月 | $14.99/月 | 人格社交,仅英文 |
 
-**Source URLs:**
-- https://www.cantian.ai/
-- https://creati.ai/ai-tools/cantian-ai/
-- https://aibase.com/tool/35148
+## 🛡️ 星缘的护城河
 
-**Threat Assessment:** 🟡 LOW-MEDIUM
-- Not a direct threat to lunaxstar.com given limited feature set and narrower scope (BaZi only). However, free AI-powered BaZi is a growing category, and Cantian's multilingual angle overlaps with our positioning. Monitor for feature expansion.
+| 优势 | 星缘 | 所有竞品 |
+|------|:---:|:---:|
+| 8 语言 | ✅ | ❌ |
+| BaZi + 西方双轨 | ✅ | ❌ |
+| 免费排盘 + AI 对话 | ✅ | 部分 |
+| 一次性付款 ($3.99-$39.99) | ✅ | BaziAI/Co-Star仅订阅 |
+| 160+ SEO 文章 + Schema | ✅ | 无 |
+| Newsletter 自动周运势 | ✅ | 无 |
+| Shop 壁纸衍生品 ($9.99) | ✅ | 部分 |
+| Product Hunt launch | ❌ | XuanSeal/ShenShu ✅ |
+| 小红书/社交裂变 | ❌ | BaziAI ✅ |
+| 请符周边 ($9.99) | ❌ | BaziAI ✅ |
+| App 端 | ❌ | Co-Star ✅ |
 
----
+## 🔍 每日监控清单（喂进 cron 脚本）
 
-## 2. Co-Star (costarastrology.com)
+### 竞品网站（每日 HEAD 检查，异常则告警）
+```
+https://bazi-ai.com
+https://xuanseal.com
+https://shen-shu.com
+https://cantian.ai
+https://www.producthunt.com/products/starry-fate
+```
 
-**Date Checked:** June 2026
+### Google 搜索信号（搜对应关键词，看星缘排名变化）
+```
+site:lunaxstar.com 新收录 (用 GSC API)
+"bazi calculator" 排名
+"free natal chart" 排名
+"chinese astrology" 排名
+"zodiac compatibility" 排名
+```
 
-**Overview:**
-Co-Star is the leading Western astrology app, VC-backed with $6M+ total funding. Known for hyper-personalized, real-time horoscopes using NASA data with a distinctive minimalist, genderless design.
+### 竞品动态关键词推送（有新结果说明竞品在动）
+```
+BaziAI new feature 2026
+Cantian AI update 2026
+XuanSeal pricing change 2026
+new bazi app 2026
+free astrology site launched 2026
+```
 
-**Key Findings:**
-- **Funding:** Raised $750K pre-seed (2018, Female Founders Fund). Total funding reported at $6M in venture capital as of 2020. No recent funding rounds publicly disclosed.
-- **User Growth:** Described as "the astrology app intriguing millennials everywhere" (Vogue) and "the app to beat" (Financial Times). No public user count available. Strong cultural presence.
-- **Features:** Daily push notifications with unconventional blunt tone. Personalized birth charts using NASA planetary data. App-only (iOS + Android). Focus on psychological/relational insights.
-- **Recent Changes:** Wikipedia page updated April 29, 2026 — no major feature launches noted. Core product remains stable.
-- **Strengths:** Strong brand recognition, VC backing, cultural cachet, distinctive tone.
-- **Weaknesses:** Western astrology only — no BaZi/Eastern astrology. App-only (no web). Requires signup. No free web calculator.
+### 星缘自身（每日检查）
+```
+lunaxstar.com 首页 200
+lunaxstar.com/blog listing 200
+所有 API 端点正常 (subscribe/newsletter/cron)
+GA4 指标 (活跃用户/流量来源)
+GSC 展示/点击/收录数
+Ads 花费/转化 (如有)
+```
 
-**Source URLs:**
-- https://en.wikipedia.org/wiki/Co–Star
-- https://www.costarastrology.com/
-- https://www.marketplace.org/story/2020/02/25/whats-behind-millennials-obsession-with-astrology
-
-**Threat Assessment:** 🟢 LOW (not direct competitor)
-- Co-Star operates in the Western astrology app space, not touching BaZi or Eastern systems. Different market segment. However, their brand strength sets a high bar for UX and personalization that all astrology platforms should benchmark against.
-
----
-
-## 3. XuanSeal (xuanseal.com)
-
-**Date Checked:** June 2026
-
-**Overview:**
-XuanSeal is an AI Chinese astrology platform offering free BaZi chart generation with true solar time correction, Day Master analysis, and paid detailed readings.
-
-**Key Findings:**
-- **Features:** Free BaZi (Four Pillars) calculator. Day Master + Five Elements analysis. True solar time correction. Paid chart-based deterministic readings ($19.99–$39.99 per report). Product Hunt launched previously.
-- **Pricing:** Freemium model. Free BaZi chart preview. One-time payment for full reports: $19.99–$39.99. No subscription model detected.
-- **User Numbers:** No public data.
-- **Recent Changes:** Website updated with clean BaZi calculator + AI readings. Listed on AlternativeTo, AIStage, AstroDir, Turbo0. No major pricing changes or new features detected recently.
-- **Strengths:** Accurate BaZi calculator (true solar time), clean UX, transparent one-time pricing, Product Hunt validation.
-- **Weaknesses:** English only. No Western astrology. No multi-language support. No free AI chat (paid reports only). Limited to BaZi.
-
-**Source URLs:**
-- https://xuanseal.com/
-- https://astrodir.com/item/xuanseal
-- https://alternativeto.net/software/xuanseal-bazi-calculator/about/
-- https://aitools.fyi/xuanseal
-
-**Threat Assessment:** 🟡 MEDIUM
-- XuanSeal's one-time pricing model and Product Hunt success make it a credible competitor in the "paid BaZi reports" niche. However, English-only is a significant limitation compared to lunaxstar's 8-language support. Our free AI chat and Western astrology integration are key differentiators.
-
----
-
-## 4. The Pattern (thepattern.com)
-
-**Date Checked:** June 2026
-
-**Overview:**
-The Pattern is a personalized astrology app known for deep psychological insights. It's one of the top-grossing astrology apps alongside Co-Star.
-
-**Key Findings:**
-- **Features:** Personalized astrological insights (now "easier to find in the tab about You" per App Store notes). Romantic relationship + transit insights. Monthly moon journeys (360 immersive audios). Astrology classes. Bond analysis ("Run a Bond" feature).
-- **Pricing:** Free to download. In-app purchases for premium features (subscription model implied).
-- **User Numbers:** Not publicly disclosed. Strong App Store and Google Play presence. Latest Android version: 5.23.0 (Feb 6, 2026). iOS updated May 7, 2026.
-- **Recent Changes (May 2026):** Refined personalized insights UX. Added romantic relationship and transit insights. Monthly moon journeys with 360 immersive audios. Astrology classes for deeper learning.
-- **Strengths:** Deep psychological profiling, strong brand, bond/relationship features, educational content.
-- **Weaknesses:** Western astrology only. App-only. No BaZi/Eastern astrology. Requires account.
-
-**Source URLs:**
-- https://www.thepattern.com/
-- https://apps.apple.com/us/app/the-pattern-astrology/id1071085727
-- https://play.google.com/store/apps/details?id=com.thepattern.app
-
-**Threat Assessment:** 🟢 LOW (not direct competitor)
-- The Pattern competes in the Western astrology app space, not Eastern. Their "Bond" relationship analysis is worth noting as synastry is a key feature on lunaxstar. Their educational content strategy (astrology classes, moon journeys) is an interesting content play.
-
----
-
-## Strategic Summary
-
-| Competitor | Type | Threat Level | Key Differentiator |
-|---|---|---|---|
-| Cantian AI | BaZi + AI | LOW-MEDIUM | Free AI, multilingual but basic |
-| Co-Star | Western Astro App | LOW | Brand, cultural presence |
-| XuanSeal | BaZi + AI Reports | MEDIUM | One-time pricing, Product Hunt |
-| The Pattern | Western Astro App | LOW | Deep psychology, education |
-
-**Lunaxstar Competitive Advantages:**
-- **8 languages** vs competitors' 1-2
-- **Both Eastern (BaZi) + Western astrology** — unique in market
-- **Free AI chat** with Groq multi-turn conversation
-- **No registration required** for core features
-- **Real astronomical calculation** (Swiss Ephemeris) for accuracy
-- **Unique methodology framework** (professional reports)
-
-**Watch Points:**
-- XuanSeal's Product Hunt traction shows demand for "one-time purchase" BaZi reports
-- Cantian AI's free LLM approach could evolve quickly if they add features
-- The Pattern's educational content (astrology classes) could be replicated for lunaxstar blog
+### 新竞品发现（每周一次深度搜）
+```
+"AI bazi" free online
+"八字AI" 免费
+"free astrology AI" new site
+"zodiac AI" app launch
+```

@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "行运追踪 - 行星过境",
-  description: "实时追踪行星换座与重要相位，了解天象变化对你的影响。",
-  keywords: ["transit chart", "planetary transit", "transit analysis", "AI transit"],
+  title: "星象日历 - 行星换座、月相、逆行与相位",
+  description: "按月份查看太阳换座、月相、行星换座、逆行顺行与重要相位，不需要填写出生资料。",
+  keywords: ["星象日历", "astrology calendar", "moon phases", "planetary ingress", "retrograde"],
   openGraph: {
-    title: "行运追踪 - 行星过境",
-    description: "Generate a free professional transit chart tracking planetary transits affecting your natal chart. AI-powered analysis reveals fortune turning points.",
+    title: "星象日历 - 行星换座、月相、逆行与相位",
+    description: "Monthly astrology calendar for planetary ingresses, moon phases, retrogrades, direct stations, and major aspects.",
     type: "website",
     siteName: "Starry Fate",
   },
   twitter: {
     card: "summary_large_image",
-    title: "行运追踪 - 行星过境",
-    description: "Generate a free professional transit chart tracking planetary transits affecting your natal chart. AI-powered analysis reveals fortune turning points.",
+    title: "星象日历 - 行星换座、月相、逆行与相位",
+    description: "Monthly astrology calendar for planetary ingresses, moon phases, retrogrades, direct stations, and major aspects.",
   },
 };
 
@@ -30,8 +30,8 @@ export default function TransitsLayout({
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebPage",
-            name: "Transit Chart Analysis",
-            description: "The Transit Chart is a core tool for astrological forecasting. By overlaying current planetary positions onto your natal chart, understand present energy influences and future turning points.",
+            name: "Astrology Calendar",
+            description: "Monthly astrology calendar for planetary ingresses, moon phases, retrogrades, direct stations, and major aspects.",
             provider: { "@type": "Organization", name: "星缘", url: "https://lunaxstar.com" }
           })
         }}

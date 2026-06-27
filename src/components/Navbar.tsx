@@ -7,7 +7,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useAuth } from "@/contexts/AuthContext";
 
 const T: Record<string, Record<string, string>> = {
-  zh: { brand:"星缘", horoscope:"运势", natal:"星盘", bazi:"八字", compatibility:"配对", ai:"AI解读", learn:"学习", transits:"天象", community:"社区", tarot:"塔罗", strategy:"方法论" },
+  zh: { brand:"星缘", horoscope:"运势", natal:"星盘", bazi:"八字", compatibility:"配对", ai:"AI解读", learn:"学习", transits:"星象日历", community:"社区", tarot:"塔罗", strategy:"方法论" },
   en: { brand:"Starry Fate", horoscope:"Horoscope", natal:"Chart", bazi:"BaZi", compatibility:"Match", ai:"AI", learn:"Learn", transits:"Transits", community:"Community", tarot:"Tarot", strategy:"Strategy" },
   id: { brand:"Starry Fate", horoscope:"Horoskop", natal:"Bagan", bazi:"BaZi", compatibility:"Cocok", ai:"AI", learn:"Belajar", transits:"Transit", community:"Komunitas", tarot:"Tarot", strategy:"Strategi" },
   th: { brand:"สตาร์รี่เฟท", horoscope:"ดูดวง", natal:"ดวง", bazi:"ปาจื่อ", compatibility:"คู่", ai:"AI", learn:"เรียน", transits:"ดาว", community:"ชุมชน", tarot:"ไพ่", strategy:"กลยุทธ์" },
