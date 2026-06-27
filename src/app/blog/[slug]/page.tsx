@@ -47,6 +47,16 @@ export async function generateMetadata(
     },
     alternates: {
       canonical: `https://lunaxstar.com/blog/${slug}`,
+      languages: {
+        "en-US": `https://lunaxstar.com/blog/${slug}`,
+        "zh-CN": `https://lunaxstar.com/blog/${slug}`,
+        "id-ID": `https://lunaxstar.com/blog/${slug}`,
+        "th-TH": `https://lunaxstar.com/blog/${slug}`,
+        "vi-VN": `https://lunaxstar.com/blog/${slug}`,
+        "ms-MY": `https://lunaxstar.com/blog/${slug}`,
+        "ja-JP": `https://lunaxstar.com/blog/${slug}`,
+        "ko-KR": `https://lunaxstar.com/blog/${slug}`,
+      },
     },
   };
 }

@@ -27,6 +27,11 @@ export const metadata: Metadata = {
       "zh-CN": "/",
       "en-US": "/en",
       "id-ID": "/id",
+      "th-TH": "/",
+      "vi-VN": "/",
+      "ms-MY": "/",
+      "ja-JP": "/",
+      "ko-KR": "/",
     },
   },
   openGraph: {
