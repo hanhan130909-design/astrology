@@ -426,6 +426,26 @@ export default function BaziPage() {
               <button onClick={()=>document.getElementById("chat-input")?.focus()} className="flex-1 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-xs font-medium text-gray-700 hover:bg-gray-100 transition-colors">
                 AI指令 ›
               </button>
+              <button onClick={async()=>{
+                if(!bazi?.dayMaster) return;
+                const dmMap: Record<string,[string,string,string]> = {
+                  甲:["Yang Wood","木","Wood"], 乙:["Yin Wood","木","Wood"],
+                  丙:["Yang Fire","火","Fire"], 丁:["Yin Fire","火","Fire"],
+                  戊:["Yang Earth","土","Earth"], 己:["Yin Earth","土","Earth"],
+                  庚:["Yang Metal","金","Metal"], 辛:["Yin Metal","金","Metal"],
+                  壬:["Yang Water","水","Water"], 癸:["Yin Water","水","Water"]
+                };
+                const [dmEn,el,elEn] = dmMap[bazi.dayMaster]||["","",""];
+                try{
+                  const resp=await fetch("/api/share-card",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({type:"bazi",dayMaster:bazi.dayMaster,dayMasterEn:dmEn,element:el,elementEn:elEn})});
+                  const blob=await resp.blob();
+                  const file=new File([blob],"my-bazi-daymaster.png",{type:"image/png"});
+                  if(navigator.share) await navigator.share({title:"My BaZi Day Master",files:[file]});
+                  else {const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="my-bazi-daymaster.png";a.click();}
+                }catch(e){console.error("Share error:",e)}
+              }} className="flex-1 py-2.5 bg-gray-900 text-white rounded-xl text-xs font-medium hover:bg-black transition-colors">
+                📤 分享日主
+              </button>
             </div>
 
             {/* AI读取 */} {/*付费入口 */}
