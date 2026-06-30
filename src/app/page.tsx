@@ -107,7 +107,7 @@ export default function HomePage() {
       <div className="flex justify-center gap-6 md:gap-12 pb-16">
         <div className="text-center"><div className="text-2xl md:text-[32px] font-semibold tracking-[-1px]">100%</div><div className="text-[13px] text-gray-500 mt-1">{t.free}</div></div>
         <div className="text-center"><div className="text-2xl md:text-[32px] font-semibold tracking-[-1px]">8</div><div className="text-[13px] text-gray-500 mt-1">{t.lang}</div></div>
-        <div className="text-center"><div className="text-2xl md:text-[32px] font-semibold tracking-[-1px]">80+</div><div className="text-[13px] text-gray-500 mt-1">SEO Articles</div></div>
+        <div className="text-center"><div className="text-2xl md:text-[32px] font-semibold tracking-[-1px]">190+</div><div className="text-[13px] text-gray-500 mt-1">SEO Articles</div></div>
         <div className="text-center"><div className="text-2xl md:text-[32px] font-semibold tracking-[-1px]">Real</div><div className="text-[13px] text-gray-500 mt-1">{t.real}</div></div>
       </div>
 
