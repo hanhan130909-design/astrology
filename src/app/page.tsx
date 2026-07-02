@@ -92,14 +92,27 @@ export default function HomePage() {
             </g>
           </svg>
         </div>
-        {/* Rotating Taiji — right side */}
+        {/* Rotating BaGua — right side */}
         <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none opacity-[0.08]" aria-hidden="true">
-          <div className="taiji-spin" style={{width:220,height:220}}>
-            <svg width="220" height="220" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="110" cy="110" r="108" fill="#171717"/>
-              <path d="M110 2a108 108 0 0 1 0 216A108 108 0 0 1 2 110" fill="#f0f0f0"/>
-              <circle cx="110" cy="56" r="18" fill="#f0f0f0"/>
-              <circle cx="110" cy="164" r="18" fill="#171717"/>
+          <div className="taiji-spin">
+            <svg width="260" height="260" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+              {/* Outer ring */}
+              <circle cx="130" cy="130" r="126" fill="none" stroke="#171717" strokeWidth="2"/>
+              <circle cx="130" cy="130" r="120" fill="none" stroke="#171717" strokeWidth="0.5"/>
+              {/* 8 Trigrams: ☰☱☲☳☴☵☶☷ — Fu Xi arrangement */}
+              {[[1,1,1],[0,1,1],[1,0,1],[0,0,1],[1,1,0],[0,1,0],[1,0,0],[0,0,0]].map((tri,i)=>(
+                <g key={i} transform={`rotate(${i*45} 130 130) translate(0 -104)`}>
+                  {tri.map((solid,j)=> solid
+                    ? <line key={j} x1="-10" y1={-8+j*8} x2="10" y2={-8+j*8} stroke="#171717" strokeWidth="2"/>
+                    : <g key={j}><line x1="-10" y1={-8+j*8} x2="-2" y2={-8+j*8} stroke="#171717" strokeWidth="2"/><line x1="2" y1={-8+j*8} x2="10" y2={-8+j*8} stroke="#171717" strokeWidth="2"/></g>
+                  )}
+                </g>
+              ))}
+              {/* Yin-Yang center */}
+              <circle cx="130" cy="130" r="65" fill="#171717"/>
+              <path d="M130 65 A32.5 32.5 0 0 1 130 130 A32.5 32.5 0 0 0 130 195 A65 65 0 0 1 130 65 Z" fill="#f0f0f0"/>
+              <circle cx="130" cy="97.5" r="9" fill="#f0f0f0"/>
+              <circle cx="130" cy="162.5" r="9" fill="#171717"/>
             </svg>
           </div>
         </div>
