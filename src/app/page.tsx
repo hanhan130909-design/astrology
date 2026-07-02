@@ -92,6 +92,17 @@ export default function HomePage() {
             </g>
           </svg>
         </div>
+        {/* Rotating Taiji — right side */}
+        <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none opacity-[0.08]" aria-hidden="true">
+          <div className="taiji-spin" style={{width:220,height:220}}>
+            <svg width="220" height="220" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="110" cy="110" r="108" fill="#171717"/>
+              <path d="M110 2a108 108 0 0 1 0 216A108 108 0 0 1 2 110" fill="#f0f0f0"/>
+              <circle cx="110" cy="56" r="18" fill="#f0f0f0"/>
+              <circle cx="110" cy="164" r="18" fill="#171717"/>
+            </svg>
+          </div>
+        </div>
         <span className="relative inline-block text-[11px] font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full mb-6 tracking-wide uppercase">
           {t.badge}
         </span>
