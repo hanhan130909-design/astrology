@@ -93,7 +93,7 @@ export default function HomePage() {
           </svg>
         </div>
         {/* Rotating BaGua — right side */}
-        <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none opacity-[0.08]" aria-hidden="true">
+        <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none opacity-[0.15]" aria-hidden="true">
           <div className="taiji-spin">
             <svg width="260" height="260" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
               {/* Outer ring */}
