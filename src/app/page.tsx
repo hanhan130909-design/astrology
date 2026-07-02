@@ -93,26 +93,26 @@ export default function HomePage() {
           </svg>
         </div>
         {/* Rotating BaGua — right side */}
-        <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none opacity-[0.15]" aria-hidden="true">
+        <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none" aria-hidden="true">
           <div className="taiji-spin">
             <svg width="260" height="260" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
               {/* Outer ring */}
-              <circle cx="130" cy="130" r="126" fill="none" stroke="#171717" strokeWidth="2"/>
-              <circle cx="130" cy="130" r="120" fill="none" stroke="#171717" strokeWidth="0.5"/>
+              <circle cx="130" cy="130" r="126" fill="none" stroke="#171717" strokeWidth="2" opacity="0.3"/>
+              <circle cx="130" cy="130" r="120" fill="none" stroke="#171717" strokeWidth="0.5" opacity="0.2"/>
               {/* 8 Trigrams: ☰☱☲☳☴☵☶☷ — Fu Xi arrangement */}
               {[[1,1,1],[0,1,1],[1,0,1],[0,0,1],[1,1,0],[0,1,0],[1,0,0],[0,0,0]].map((tri,i)=>(
-                <g key={i} transform={`rotate(${i*45} 130 130) translate(0 -104)`}>
+                <g key={i} transform={`rotate(${i*45} 130 130) translate(0 -104)`} opacity="0.35">
                   {tri.map((solid,j)=> solid
-                    ? <line key={j} x1="-10" y1={-8+j*8} x2="10" y2={-8+j*8} stroke="#171717" strokeWidth="2"/>
-                    : <g key={j}><line x1="-10" y1={-8+j*8} x2="-2" y2={-8+j*8} stroke="#171717" strokeWidth="2"/><line x1="2" y1={-8+j*8} x2="10" y2={-8+j*8} stroke="#171717" strokeWidth="2"/></g>
+                    ? <line key={j} x1="-10" y1={-8+j*8} x2="10" y2={-8+j*8} stroke="#171717" strokeWidth="2.5"/>
+                    : <g key={j}><line x1="-10" y1={-8+j*8} x2="-2" y2={-8+j*8} stroke="#171717" strokeWidth="2.5"/><line x1="2" y1={-8+j*8} x2="10" y2={-8+j*8} stroke="#171717" strokeWidth="2.5"/></g>
                   )}
                 </g>
               ))}
               {/* Yin-Yang center */}
-              <circle cx="130" cy="130" r="65" fill="#171717"/>
-              <path d="M130 65 A32.5 32.5 0 0 1 130 130 A32.5 32.5 0 0 0 130 195 A65 65 0 0 1 130 65 Z" fill="#f0f0f0"/>
-              <circle cx="130" cy="97.5" r="9" fill="#f0f0f0"/>
-              <circle cx="130" cy="162.5" r="9" fill="#171717"/>
+              <circle cx="130" cy="130" r="65" fill="#171717" opacity="0.35"/>
+              <path d="M130 65 A32.5 32.5 0 0 1 130 130 A32.5 32.5 0 0 0 130 195 A65 65 0 0 1 130 65 Z" fill="#f0f0f0" opacity="0.45"/>
+              <circle cx="130" cy="97.5" r="9" fill="#f0f0f0" opacity="0.5"/>
+              <circle cx="130" cy="162.5" r="9" fill="#171717" opacity="0.4"/>
             </svg>
           </div>
         </div>
