@@ -10077,4 +10077,372 @@ Cek kecocokan lengkap di lunaxstar.com dengan data lahir kedua pasangan.`,
     readTime: 4,
     tags: ["pluto", "planet", "astrology", "birth-chart"],
   },
+  {
+    id: "265", slug: "how-to-read-bazi-chart-beginner-265",
+    category: "bazi", categoryZh: "八字入门", categoryEn: "BaZi Basics", categoryId: "Dasar BaZi",
+    date: "2026-07-04",
+    title: {
+      zh: `如何看懂自己的八字命盘？新手完整指南`,
+      en: `How to Read Your BaZi Chart: A Complete Beginner Guide`,
+      id: `Cara Membaca Bagan BaZi Anda: Panduan Pemula`,
+      th: `วิธีอ่านแผนภูมิ BaZi ของคุณ: คู่มือสำหรับผู้เริ่มต้น`,
+      vi: `Cách Đọc Biểu Đồ BaZi Của Bạn: Hướng Dẫn Cho Người Mới`,
+      ms: `Cara Membaca Carta BaZi Anda: Panduan Pemula`,
+      ja: `八字命盤の読み方：初心者完全ガイド`,
+      ko: `사주 명반 읽는 법: 초보자 완벽 가이드`,
+    },
+    excerpt: {
+      zh: `拿到八字盘却看不懂？从日主到十神，从大运到流年，一步步教你看懂自己的命盘。`,
+      en: `Got your BaZi chart but don't know what it means? From Day Master to Ten Gods, luck cycles to annual stars — learn to read your own destiny chart step by step.`,
+      id: `Punya bagan BaZi tapi tidak mengerti? Dari Day Master hingga Dewa, pelajari langkah demi langkah.`,
+    },
+    content: {
+      en: `# How to Read Your BaZi Chart: A Beginner Guide
+
+You have just generated your BaZi chart on lunaxstar.com. You are staring at four pillars, eight Chinese characters, and a dozen terms that sound like poetry in a foreign language. Day Master. Ten Gods. Luck Pillars. Hidden Stems. What does any of this mean?
+
+I am a Feng Shui practitioner, and I remember my first BaZi chart. I thought I was reading a restaurant menu written by a calligrapher on hallucinogens. It took me weeks to realize that those eight characters are actually a compressed autobiography of your life — your personality, your career arc, your love patterns, your health tendencies — all encoded in a system that predates the Roman Empire.
+
+This guide is not about memorizing tables. It is about learning to READ your chart the way a musician reads sheet music — translating symbols into melody. By the end, you will understand every section of your lunaxstar.com BaZi report.
+
+## Step 1: Find Your Day Master
+
+Your Day Master is the Heavenly Stem of your Day Pillar. It is the single most important character in your chart. Think of it as your zodiac sign on steroids — it defines your core energy, your default personality, your elemental blueprint.
+
+On your lunaxstar.com chart, look for "Day Master" at the top of the results. It will show one of ten characters: 甲 (Yang Wood), 乙 (Yin Wood), 丙 (Yang Fire), 丁 (Yin Fire), 戊 (Yang Earth), 己 (Yin Earth), 庚 (Yang Metal), 辛 (Yin Metal), 壬 (Yang Water), or 癸 (Yin Water).
+
+**Quick personality cheat sheet:**
+- **Yang Wood (甲)**: The visionary. You see the forest before the trees. You are ambitious, direct, and hate being micromanaged.
+- **Yin Wood (乙)**: The strategist. Like ivy that finds every crack in the wall, you are flexible, diplomatic, and quietly persistent.
+- **Yang Fire (丙)**: The sun. You radiate warmth and confidence. People orbit around you naturally — just don't burn them.
+- **Yin Fire (丁)**: The candle. Focused, intense, illuminating one spot brilliantly. You are the person everyone confides in.
+- **Yang Earth (戊)**: The mountain. Stable, protective, immovable when necessary. You are the friend who always answers the phone at 3 AM.
+- **Yin Earth (己)**: The garden. Nurturing, detail-oriented, endlessly patient. You make things grow.
+- **Yang Metal (庚)**: The sword. Sharp, decisive, transformative. You cut through nonsense like a hot knife through butter.
+- **Yin Metal (辛)**: The needle. Precise, elegant, surgical. You see the flaw everyone else misses.
+- **Yang Water (壬)**: The ocean. Vast, deep, unknowable. Your mind contains multitudes.
+- **Yin Water (癸)**: The rain. Gentle, pervasive, emotionally intelligent. You feel everything and notice everything.
+
+## Step 2: Read Your Four Pillars
+
+Your chart has four columns — Year, Month, Day, Hour. Each column has a Heavenly Stem (top) and an Earthly Branch (bottom).
+
+- **Year Pillar**: Your ancestry, your public image, your relationship with grandparents and authority. Think: "How the world sees me."
+- **Month Pillar**: Your career, your parents, your formative environment. Think: "How I work and who raised me."
+- **Day Pillar**: Your SELF (Day Master is here) and your spouse. Think: "Who I am and who I love."
+- **Hour Pillar**: Your children, your creativity, your secret dreams. Think: "What I leave behind."
+
+Look at the interactions between the Stems and Branches across these pillars. Do two Branches clash? Expect tension in those life areas. Do two Stems combine? Something is working together harmoniously.
+
+## Step 3: Understand the Ten Gods
+
+On your lunaxstar.com chart, you will see terms like "Direct Resource" or "Hurting Officer" listed alongside each pillar. These are the Ten Gods — they describe the relationship between each element in your chart and your Day Master.
+
+**The most important Ten Gods for beginners:**
+
+- **Direct Resource (正印)**: Knowledge, mentors, nurturing. Too much = overprotected. Too little = unsupported.
+- **Indirect Resource (偏印)**: Unconventional wisdom, spirituality, intuition. Too much = overthinking. Too little = ignored gut feelings.
+- **Friend (比肩)**: Peers, competition, self-reliance. Too much = stubborn. Too little = lost without others.
+- **Rob Wealth (劫财)**: Rivals, social networks, risk-taking. Too much = financial instability. Too little = lonely.
+- **Direct Officer (正官)**: Authority, discipline, career structure. Too much = oppressed. Too little = aimless.
+- **7 Killings (七杀)**: Power, ambition, pressure. Too much = burned out. Too little = unmotivated.
+- **Direct Wealth (正财)**: Earned income, stability, traditional success. Too much = miserly. Too little = financially chaotic.
+- **Indirect Wealth (偏财)**: Windfalls, entrepreneurship, risk money. Too much = gambler. Too little = missed opportunities.
+- **Eating God (食神)**: Creativity, expression, enjoyment. Too much = indulgent. Too little = joyless.
+- **Hurting Officer (伤官)**: Talent, rebellion, innovation. Too much = troublemaker. Too little = conformist.
+
+## Step 4: Scan Your Luck Pillars
+
+The bottom section of your chart shows 10-year luck cycles (大运). Each decade of your life is governed by a different elemental combination. This is where BaZi gets eerily accurate.
+
+Find your current decade. Look at the Ten God listed for this pillar. If it is a Wealth star, this decade is about money. If it is an Officer star, this decade is about career and responsibility. If it is a Resource star, this decade is about learning and mentorship.
+
+Then check the current year (流年). 2026 is the Year of the Fire Horse. If the Horse clashes with your Day Pillar Branch, expect a turbulent year. If it combines harmoniously, opportunities abound.
+
+## Step 5: Read the Story, Not the Ingredients
+
+The most common mistake beginners make is reading their chart like a shopping list — "I have Direct Wealth, so I will be rich." BaZi does not work that way. Your chart is a system of checks and balances.
+
+A strong Day Master with too much wealth and too little self-control = money that comes and goes. A weak Day Master supported by Resource stars = steady progress through education and mentorship. Every element influences every other element. Your job is to see the narrative arc, not the bullet points.
+
+## Your Chart Is Ready
+
+If you have not already generated your chart, go to lunaxstar.com/bazi. Enter your birth date, time, and city. Your full BaZi chart — Four Pillars, Day Master, Ten Gods, Luck Pillars, hidden stems — will appear instantly. Free. No signup.
+
+And if you want to go deeper, our AI reading (powered by Groq Llama 3.3 and DeepSeek) will write a personalized interpretation of your chart. $3.99 for a deep reading that would cost $50+ from a human practitioner.
+
+**Start here:** [Free BaZi Calculator](/bazi)`,
+      zh: `# 如何看懂自己的八字命盘
+
+你刚在 lunaxstar.com 生成了你的八字命盘。四柱、八个字、十几个术语——日主、十神、大运、藏干。这些到底是什么意思？
+
+我是一个风水从业者。我还记得第一次看自己的八字盘——感觉在看书法家吃了蘑菇后写的菜单。我用了几周才明白，那八个字其实是你人生的压缩自传：你的性格、你的事业轨迹、你的感情模式、你的健康倾向——全都编码在一套比罗马帝国还古老的系统里。
+
+这篇指南不是要你背诵表格，而是教你像音乐家读谱一样看懂命盘——把符号翻译成旋律。读完你就能理解 lunaxstar.com 八字报告的每一个板块。
+
+## 第一步：找到你的日主
+
+日主是你日柱的天干，是你命盘中最重要的那个字。可以把它理解为强化版的星座——它定义了你的核心能量、默认性格和五行蓝图。
+
+在 lunaxstar.com 的八字结果中，顶部会标注"日主"。它会显示十个字之一：甲（阳木）、乙（阴木）、丙（阳火）、丁（阴火）、戊（阳土）、己（阴土）、庚（阳金）、辛（阴金）、壬（阳水）、癸（阴水）。
+
+## 第二步：读懂四柱
+
+你的命盘有四列：年、月、日、时。每列上面是天干，下面是地支。
+
+- **年柱**：祖业、公众形象、与长辈的关系。"世界怎么看你。"
+- **月柱**：事业、父母、成长环境。"我怎么工作，谁养大我。"
+- **日柱**：你自己（日主在这里）和配偶。"我是谁，我爱谁。"
+- **时柱**：子女、创造力、隐秘的梦想。"我留下什么。"
+
+看看四柱之间的干支互动。有没有两个地支相冲？那些领域会有张力。两个天干相合？某些东西正在和谐运作。
+
+## 第三步：理解十神
+
+在 lunaxstar.com 的命盘上，你会在每柱旁边看到"正印"、"伤官"之类的词。这些就是十神——它们描述每个五行和你的日主之间的关系。
+
+## 第四步：扫描大运
+
+命盘下半部分显示十年大运。你人生的每个十年都由不同的五行组合主宰。这是八字最诡异准确的部分。
+
+找到你当前的大运，看它的十神。如果是财星，这十年是钱的事。如果是官星，这十年是事业和责任。如果是印星，这十年是学习和贵人。
+
+然后再看流年。2026 年是火马年。如果马和你的日柱地支冲了，动荡之年。如果合了，机会多多。
+
+## 第五步：读故事，不是读配料表
+
+新手最常犯的错误是把命盘当购物清单——"我有正财，所以我会发财"。八字不是这么运作的。你的命盘是一个制衡系统。
+
+身强的日主配上太多财星而缺少自我约束 = 钱来得快去得也快。身弱的日主得到印星支持 = 通过学习和贵人稳健前进。每个元素都影响其他元素。你要看的是叙事的弧线，不是要点清单。
+
+去 lunaxstar.com/bazi 生成你的八字命盘。输入生日、时辰、城市。四柱、日主、十神、大运、藏干瞬间呈现。免费。无需注册。`,
+      id: `Punya bagan BaZi tapi bingung? Panduan ini mengajarkan Anda membaca Day Master, Empat Pilar, Sepuluh Dewa, dan siklus keberuntungan langkah demi langkah. Mulai gratis di lunaxstar.com/bazi.`,
+    },
+    readTime: 8,
+    tags: ["bazi", "beginner", "guide", "day-master"],
+  },
+  {
+    id: "266", slug: "why-rising-sign-matters-more-than-sun-266",
+    category: "astrology", categoryZh: "占星入门", categoryEn: "Astrology Basics", categoryId: "Dasar Astrologi",
+    date: "2026-07-04",
+    title: {
+      zh: `为什么上升星座比太阳星座更重要？`,
+      en: `Why Your Rising Sign Matters More Than Your Sun Sign`,
+      id: `Mengapa Rising Sign Lebih Penting dari Sun Sign`,
+      th: `ทำไม Rising Sign ถึงสำคัญกว่า Sun Sign`,
+      vi: `Tại Sao Rising Sign Quan Trọng Hơn Sun Sign`,
+      ms: `Mengapa Rising Sign Lebih Penting dari Sun Sign`,
+      ja: `なぜ上昇星座は太陽星座より重要なのか`,
+      ko: `상승 별자리가 태양 별자리보다 중요한 이유`,
+    },
+    excerpt: {
+      zh: `大多数人不了解上升星座——那是你在别人眼中真正的样子，比太阳星座更能定义你。`,
+      en: `Most people don't know their Rising sign — but it is the real you that others see. It defines your personality more than your Sun sign. Here is why.`,
+      id: `Kebanyakan orang tidak tahu Rising sign mereka — padahal itu yang paling menentukan kepribadian.`,
+    },
+    content: {
+      en: `# Why Your Rising Sign Matters More Than Your Sun Sign
+
+Walk into any party and someone will ask: "What is your sign?" They mean your Sun sign. But they are asking the wrong question.
+
+Your Sun sign is how you shine when you are comfortable, confident, and fully yourself. Your Rising sign — your Ascendant — is how you show up to the world BEFORE anyone gets to know you. It is your first impression, your physical appearance, your automatic reactions. And for most people you meet, it IS you.
+
+I learned this the hard way. I am a Leo Sun. According to every horoscope app, I should be the life of every party — charismatic, dramatic, impossible to ignore. But strangers often describe me as quiet, observant, maybe even a little distant. That is because my Rising sign is Virgo. Virgo rising filters everything through analysis and precision. The lion only comes out with people I trust.
+
+## The Big Three — And Why Rising Comes First
+
+Your astrological DNA has three major components:
+
+1. **Sun Sign** — Your core identity. Who you are when no one is watching. Your fundamental self.
+2. **Moon Sign** — Your emotional world. How you feel, what you need to feel safe, your instinctive reactions. Your private self.
+3. **Rising Sign (Ascendant)** — Your social mask. How the world perceives you. Your appearance, your automatic behavior. Your public self.
+
+Here is the kicker: your Rising sign determines the ENTIRE STRUCTURE of your birth chart. The Rising sign sets which zodiac sign falls in your 1st house, which then determines which sign rules every other house. Two people with the same Sun sign but different Rising signs will have completely different life experiences in love, career, and home.
+
+A Leo Sun with Aries Rising is a double-fire powerhouse — bold, direct, impossible to miss. A Leo Sun with Virgo Rising is a creative perfectionist — the lion who edits everything three times before showing anyone. Same Sun. Completely different person.
+
+## How Your Rising Sign Changes Everything
+
+**Rising Sign determines your appearance:** Your Rising sign influences your physical features more than any other placement. Scorpio risings have intense, magnetic eyes. Libra risings have symmetrical, pleasant features. Capricorn risings look serious and composed even when they are panicking internally.
+
+**Rising Sign determines your approach to life:** If your Sun is in cautious Capricorn but your Rising is in impulsive Aries, you will come across as bold and decisive even though internally you are planning every detail. Your Rising sign is the engine, your Sun is the driver.
+
+**Rising Sign determines your first impression:** You have approximately seven seconds to make a first impression. Your Rising sign controls those seven seconds. It is the outfit you wear before you realize you are wearing anything at all.
+
+## Find Yours in 30 Seconds
+
+Unlike your Sun sign — which you can figure out from your birth date alone — your Rising sign requires your exact birth TIME. This is why most casual horoscope readers never learn theirs. But it is the single most transformative piece of astrological information you can have.
+
+Go to lunaxstar.com/natal. Enter your birth date, your exact birth time, and your birth city. Your complete natal chart — Sun, Moon, Rising, all planets in all houses — appears instantly. Free. No signup.
+
+You might discover you have been introducing yourself wrong your whole life.`,
+      zh: `# 为什么上升星座比太阳星座更重要
+
+走进任何聚会，总会有人问："你是什么星座？"他们问的是太阳星座。但这是问错问题了。
+
+你的太阳星座是你在放松、自信、完全做自己时的样子。你的上升星座——你的命度——是你在任何人了解你之前，向世界展示的样子。它是你的第一印象、你的外貌、你的自动反应。对大多数你遇到的人来说，它就是"你"。
+
+## 为什么上升星座排第一
+
+1. **太阳星座**：核心身份。没人在看时你是谁。
+2. **月亮星座**：情感世界。你如何感受、你需要什么来感到安全。
+3. **上升星座（命度）**：社交面具。世界如何看你。你的外貌，你的自动行为。
+
+关键点：你的上升星座决定了你整个星盘的结构。上升星座设定了第一宫是什么星座，从而决定了其他每个宫的宫主星。两个太阳星座相同但上升不同的人，在爱情、事业和家庭方面的经历将完全不同。
+
+狮子太阳 + 白羊上升 = 双火动力——大胆、直接、无法忽视。狮子太阳 + 处女上升 = 创意完美主义者——给别人看之前编辑三遍。同样的太阳。完全不同的人。
+
+去 lunaxstar.com/natal 输入你的出生日期、准确出生时间和出生城市。你的完整本命星盘瞬间呈现。免费。无需注册。`,
+      id: `Rising sign Anda adalah bagaimana dunia melihat Anda — lebih penting dari Sun sign. Temukan Rising sign Anda gratis di lunaxstar.com/natal dengan waktu lahir yang tepat.`,
+    },
+    readTime: 6,
+    tags: ["rising-sign", "ascendant", "astrology", "birth-chart"],
+  },
+  {
+    id: "267", slug: "swiss-ephemeris-accuracy-astrology-267",
+    category: "astrology", categoryZh: "占星知识", categoryEn: "Astrology", categoryId: "Astrologi",
+    date: "2026-07-04",
+    title: {
+      zh: `你的星盘有多准？Swiss Ephemeris 与普通占星算法的区别`,
+      en: `How Accurate Is Your Birth Chart? Swiss Ephemeris vs Generic Algorithms`,
+      id: `Seberapa Akurat Bagan Lahir Anda? Swiss Ephemeris vs Algoritma Biasa`,
+    },
+    excerpt: {
+      zh: `大多数免费占星网站用简化公式。lunaxstar.com 用 NASA 级别的 Swiss Ephemeris。精度差一个数量级。`,
+      en: `Most free astrology sites use simplified formulas. lunaxstar.com uses NASA-grade Swiss Ephemeris. The accuracy difference is an order of magnitude.`,
+      id: `Kebanyakan situs astrologi gratis menggunakan rumus sederhana. lunaxstar.com menggunakan Swiss Ephemeris — akurasi tingkat NASA.`,
+    },
+    content: {
+      en: `# How Accurate Is Your Birth Chart?
+
+Not all birth charts are created equal. The difference between a chart calculated with generic formulas and one calculated with Swiss Ephemeris is the difference between a blurry photocopy and a high-resolution photograph.
+
+## The Problem With Most Free Charts
+
+Most free astrology websites and apps use simplified planetary position formulas. These formulas — often derived from truncated trigonometric series — are accurate to within about 1 degree. That sounds precise. It is not.
+
+One degree of error in planetary position can shift a planet from one house to another, change an aspect from exact to wide, or even move a planet between zodiac signs. In astrology, one degree is the difference between "Mars is in your 7th house of relationships" and "Mars is in your 8th house of shared resources." Completely different interpretations.
+
+## What Is Swiss Ephemeris?
+
+Swiss Ephemeris is the gold standard of astronomical calculation. It is based on the JPL DE431 planetary ephemeris — the same dataset NASA uses for spacecraft navigation. Its precision is measured in milliarcseconds (thousandths of an arcsecond), not degrees.
+
+Developed by Astrodienst AG in Zurich, Swiss Ephemeris is used by professional astrologers, astronomical researchers, and — now — lunaxstar.com. It accounts for gravitational perturbations, relativistic effects, and planetary nutation. It does not approximate. It calculates.
+
+## Why lunaxstar.com Uses It
+
+We chose Swiss Ephemeris because we are run by a Feng Shui practitioner who would rather give no reading than an inaccurate one. BaZi (Chinese astrology) is especially sensitive to hour-level precision because the Day Pillar is determined by the exact solar longitude at birth. A simplified formula can misidentify your Day Master — the most important element in your entire chart.
+
+Most free platforms cannot afford the computational cost of Swiss Ephemeris. We chose to absorb it because accuracy is not a premium feature. It is the bare minimum.
+
+## How to Verify
+
+Generate your natal chart at lunaxstar.com/natal. Then compare it with any professional tool (Astro.com, Solar Fire). The planet positions, house cusps, and aspects will match to within arcseconds. We publish our methodology on our Methodology page — because you should never have to trust astrology blindly.`,
+      zh: `# 你的星盘有多准？
+
+不是所有星盘都一样准。用通用公式算的星盘和用 Swiss Ephemeris 算的星盘，差别就像模糊复印件和高分辨率照片。
+
+## 大多数免费星盘的问题
+
+大多数免费占星网站和 App 使用简化的行星位置公式。这些公式通常来自截断的三角级数，精确度大约在 1 度以内。听起来精确？但这不够。
+
+1 度的行星位置误差可以把一颗行星从一个宫位移到另一个、把精确相位变成宽松相位、甚至把行星移到不同的星座。在占星中，1 度就是"火星在你的第七宫关系宫"和"火星在你的第八宫共同资源宫"的差别——完全不同的解读。
+
+## 什么是 Swiss Ephemeris？
+
+Swiss Ephemeris 是天文计算的黄金标准。它基于 JPL DE431 行星历表——NASA 用来做航天器导航的同一套数据。它的精度以毫角秒为单位，而不是度数。
+
+由苏黎世 Astrodienst AG 开发，Swiss Ephemeris 被专业占星师、天文研究者——以及现在的 lunaxstar.com——使用。它考虑引力扰动、相对论效应和行星章动。它不近似。它直接计算。
+
+我们在 lunaxstar.com/natal 用 Swiss Ephemeris 生成你的星盘。免费。没有捷径。`,
+    },
+    readTime: 5,
+    tags: ["swiss-ephemeris", "astrology", "accuracy", "birth-chart"],
+  },
+  {
+    id: "268", slug: "five-elements-imbalance-health-268",
+    category: "bazi", categoryZh: "八字进阶", categoryEn: "BaZi Advanced", categoryId: "BaZi Lanjutan",
+    date: "2026-07-04",
+    title: {
+      zh: `五行不平衡的身体信号：你的八字在告诉你什么？`,
+      en: `Five Element Imbalance: What Your BaZi Chart Reveals About Your Health`,
+      id: `Ketidakseimbangan Elemen: Apa yang Diungkap BaZi Tentang Kesehatan Anda`,
+    },
+    excerpt: {
+      zh: `五行（木火土金水）失衡不只是命理概念——它会表现为身体症状。作为风水师，我见过太多例子。`,
+      en: `Five Element imbalances are not just metaphysical concepts — they show up as physical symptoms. As a Feng Shui practitioner, I have seen it too many times.`,
+      id: `Ketidakseimbangan Lima Elemen bukan hanya konsep metafisik — muncul sebagai gejala fisik.`,
+    },
+    content: {
+      en: `# Five Element Imbalance: Health Signals in Your BaZi Chart
+
+In traditional Chinese medicine, the body is a microcosm of the Five Elements: Wood (liver, tendons), Fire (heart, blood vessels), Earth (spleen, muscles), Metal (lungs, skin), Water (kidneys, bones). When your BaZi chart shows a severe excess or deficiency of any element, your body often tells the same story.
+
+**Wood Imbalance (too much):** Frequent headaches, tendon tightness, irritability. Your liver is working overtime processing stress. You need Metal energy (structure, boundaries) to prune back the overgrowth.
+
+**Wood Imbalance (too little):** Chronic indecision, lack of direction, easily fatigued. You need more Wood — set goals, exercise, spend time in nature.
+
+**Fire Imbalance (too much):** Insomnia, racing heart, anxiety, inflammatory conditions. Your internal engine is redlining. Water energy (rest, hydration, calm) is your medicine.
+
+**Fire Imbalance (too little):** Low motivation, cold extremities, lack of joy. You are running on empty. Boost Fire with sunlight, cardiovascular exercise, and social connection.
+
+**Earth Imbalance (too much):** Weight gain, sluggish digestion, overthinking loops. Your center is stagnant. Wood energy (movement, new goals) breaks up the inertia.
+
+**Earth Imbalance (too little):** Scattered energy, poor nutrient absorption, feeling ungrounded. You need Earth — routine meals, stable schedule, grounding practices.
+
+**Metal Imbalance (too much):** Dry skin, rigid thinking, grief that will not release. Your boundaries have become walls. Fire energy (warmth, spontaneity, letting go) melts the excess.
+
+**Metal Imbalance (too little):** Weak immune system, lack of boundaries, easily influenced. Strengthen Metal with deep breathing, organization, and protecting your time.
+
+**Water Imbalance (too much):** Fluid retention, excessive fear, isolation. Your depths have become a flood. Earth energy (grounding, stability, routine) contains the overflow.
+
+**Water Imbalance (too little):** Dryness, brittle bones, burnout, inability to rest. You are depleted at the source. Prioritize sleep, hydration, and quiet time.
+
+Generate your BaZi chart at lunaxstar.com/bazi to see your elemental constitution. The chart shows your Day Master element and the distribution of all Five Elements across your Four Pillars. Understanding your imbalances is the first step to restoring harmony.`,
+    },
+    readTime: 6,
+    tags: ["five-elements", "bazi", "health", "wellness"],
+  },
+  {
+    id: "269", slug: "bazi-career-wealth-ten-gods-269",
+    category: "bazi", categoryZh: "八字进阶", categoryEn: "BaZi Advanced", categoryId: "BaZi Lanjutan",
+    date: "2026-07-04",
+    title: {
+      zh: `八字看事业和财运：你的十神在说什么？`,
+      en: `BaZi for Career and Wealth: What Your Ten Gods Are Telling You`,
+      id: `BaZi untuk Karier dan Kekayaan: Apa Kata Sepuluh Dewa Anda`,
+    },
+    excerpt: {
+      zh: `你的八字里藏着你最适合的事业类型和财富模式。十神给出了清晰的指引。`,
+      en: `Your BaZi chart encodes your ideal career path and wealth pattern. The Ten Gods provide clear guidance.`,
+      id: `Bagan BaZi Anda mengungkap jalur karier ideal dan pola kekayaan. Sepuluh Dewa memberi panduan jelas.`,
+    },
+    content: {
+      en: `# BaZi for Career and Wealth
+
+When clients come to me as a Feng Shui practitioner, the two most common questions are: "What should I do for work?" and "When will money come?" Your BaZi chart answers both questions — not with vague platitudes, but with a specific elemental strategy.
+
+## Read Your Wealth Stars
+
+In BaZi, the element that your Day Master "controls" is your Wealth star. If you are a Wood Day Master, Earth is your Wealth (Wood controls Earth). If you are a Fire Day Master, Metal is your Wealth.
+
+**Direct Wealth (正财):** Steady income. Salary. Long-term asset building. If Direct Wealth is strong in your chart, you are built for stable career paths — corporate leadership, civil service, established industries. Your money comes through consistency, not windfalls.
+
+**Indirect Wealth (偏财):** Windfalls. Business. Risk-taking. If Indirect Wealth dominates, you are an entrepreneur at heart — even if you are currently working a day job. Your money comes in bursts. Cash flow is irregular but potentially larger than any salary.
+
+## Read Your Career (Officer) Stars
+
+**Direct Officer (正官):** Authority, order, structure. Strong Direct Officer = you thrive in hierarchies. You respect rules and climb ladders methodically. You might be a manager, a lawyer, a compliance officer — someone who builds order.
+
+**Seven Killings (七杀):** Power, ambition, pressure. Strong Seven Killings = you are a fighter. You lead through intensity. You might be a CEO, a startup founder, a surgeon, a military leader — someone who thrives under pressure and transforms situations through force of will.
+
+## The Winning Formula
+
+The most successful charts balance Wealth stars with self-strength. A Day Master that is too weak cannot hold onto wealth — money flows through but never stays. A Day Master without Wealth stars may be stable but never abundant.
+
+Your job is to understand your chart's unique equation and play to its strengths. Generate your free BaZi chart at lunaxstar.com/bazi. Look at your Day Master, your Wealth stars, and your Officer stars. The strategy for your career and money is literally encoded in eight characters.`,
+    },
+    readTime: 5,
+    tags: ["bazi", "career", "wealth", "ten-gods"],
+  },
 ];
