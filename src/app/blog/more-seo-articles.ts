@@ -10567,4 +10567,964 @@ AI as first pass + human interpretation = 10x more clients at lower cost with hi
 Generate your AI reading at lunaxstar.com/bazi.`, zh: `从Groq到DeepSeek，大语言模型如何改变占星解读。。免费获取完整解读在 lunaxstar.com。` },
     readTime: 6, tags: ['ai', 'astrology', 'deepseek', 'trends'],
   },
+  {
+    id: "275", slug: "venus-in-aries-meaning-275",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `金星落在白羊座的含义：love风格解读`,
+      en: `Venus in Aries: Love style, attraction, values, beauty, romance`,
+      id: `Venus di Aries: Love style, attraction, values, beauty, romance`,
+    },
+    excerpt: {
+      zh: `金星在白羊座代表bold, passionate, impulsive的love方式。`,
+      en: `Venus in Aries brings bold, passionate, impulsive to your love style. Venus is the planet of love and beauty.`,
+      id: `Venus di Aries: gaya love yang bold, passionate, impulsive.`,
+    },
+    content: {
+      en: `# Venus in Aries\n\nVenus is the planet of love and beauty. When Venus is in Aries, your approach to romance and what you find attractive is filtered through Aries energy. You express affection passionate intensity. In relationships, you need excitement and boldness. Your aesthetic taste leans toward the dramatic and striking.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 金星落在白羊座\n\n金星落在白羊座时，你的love风格带有白羊座的bold, passionate, impulsive特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["aries", "venus", "astrology", "birth-chart"],
+  },
+  {
+    id: "276", slug: "venus-in-taurus-meaning-276",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `金星落在金牛座的含义：love风格解读`,
+      en: `Venus in Taurus: Love style, attraction, values, beauty, romance`,
+      id: `Venus di Taurus: Love style, attraction, values, beauty, romance`,
+    },
+    excerpt: {
+      zh: `金星在金牛座代表patient, sensual, stubborn的love方式。`,
+      en: `Venus in Taurus brings patient, sensual, stubborn to your love style. Venus is the planet of love and beauty.`,
+      id: `Venus di Taurus: gaya love yang patient, sensual, stubborn.`,
+    },
+    content: {
+      en: `# Venus in Taurus\n\nVenus is the planet of love and beauty. When Venus is in Taurus, your approach to romance and what you find attractive is filtered through Taurus energy. You express affection steady devotion. In relationships, you need security and loyalty. Your aesthetic taste leans toward the natural and refined.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 金星落在金牛座\n\n金星落在金牛座时，你的love风格带有金牛座的patient, sensual, stubborn特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["taurus", "venus", "astrology", "birth-chart"],
+  },
+  {
+    id: "277", slug: "venus-in-gemini-meaning-277",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `金星落在双子座的含义：love风格解读`,
+      en: `Venus in Gemini: Love style, attraction, values, beauty, romance`,
+      id: `Venus di Gemini: Love style, attraction, values, beauty, romance`,
+    },
+    excerpt: {
+      zh: `金星在双子座代表curious, witty, restless的love方式。`,
+      en: `Venus in Gemini brings curious, witty, restless to your love style. Venus is the planet of love and beauty.`,
+      id: `Venus di Gemini: gaya love yang curious, witty, restless.`,
+    },
+    content: {
+      en: `# Venus in Gemini\n\nVenus is the planet of love and beauty. When Venus is in Gemini, your approach to romance and what you find attractive is filtered through Gemini energy. You express affection intellectual charm. In relationships, you need mental stimulation and freedom. Your aesthetic taste leans toward the modern and eclectic.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 金星落在双子座\n\n金星落在双子座时，你的love风格带有双子座的curious, witty, restless特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["gemini", "venus", "astrology", "birth-chart"],
+  },
+  {
+    id: "278", slug: "venus-in-cancer-meaning-278",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `金星落在巨蟹座的含义：love风格解读`,
+      en: `Venus in Cancer: Love style, attraction, values, beauty, romance`,
+      id: `Venus di Cancer: Love style, attraction, values, beauty, romance`,
+    },
+    excerpt: {
+      zh: `金星在巨蟹座代表nurturing, moody, protective的love方式。`,
+      en: `Venus in Cancer brings nurturing, moody, protective to your love style. Venus is the planet of love and beauty.`,
+      id: `Venus di Cancer: gaya love yang nurturing, moody, protective.`,
+    },
+    content: {
+      en: `# Venus in Cancer\n\nVenus is the planet of love and beauty. When Venus is in Cancer, your approach to romance and what you find attractive is filtered through Cancer energy. You express affection deep emotional connection. In relationships, you need profound intimacy and trust. Your aesthetic taste leans toward the dreamy and emotional.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 金星落在巨蟹座\n\n金星落在巨蟹座时，你的love风格带有巨蟹座的nurturing, moody, protective特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["cancer", "venus", "astrology", "birth-chart"],
+  },
+  {
+    id: "279", slug: "venus-in-leo-meaning-279",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `金星落在狮子座的含义：love风格解读`,
+      en: `Venus in Leo: Love style, attraction, values, beauty, romance`,
+      id: `Venus di Leo: Love style, attraction, values, beauty, romance`,
+    },
+    excerpt: {
+      zh: `金星在狮子座代表charismatic, generous, dramatic的love方式。`,
+      en: `Venus in Leo brings charismatic, generous, dramatic to your love style. Venus is the planet of love and beauty.`,
+      id: `Venus di Leo: gaya love yang charismatic, generous, dramatic.`,
+    },
+    content: {
+      en: `# Venus in Leo\n\nVenus is the planet of love and beauty. When Venus is in Leo, your approach to romance and what you find attractive is filtered through Leo energy. You express affection passionate intensity. In relationships, you need excitement and boldness. Your aesthetic taste leans toward the dramatic and striking.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 金星落在狮子座\n\n金星落在狮子座时，你的love风格带有狮子座的charismatic, generous, dramatic特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["leo", "venus", "astrology", "birth-chart"],
+  },
+  {
+    id: "280", slug: "venus-in-virgo-meaning-280",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `金星落在处女座的含义：love风格解读`,
+      en: `Venus in Virgo: Love style, attraction, values, beauty, romance`,
+      id: `Venus di Virgo: Love style, attraction, values, beauty, romance`,
+    },
+    excerpt: {
+      zh: `金星在处女座代表analytical, practical, modest的love方式。`,
+      en: `Venus in Virgo brings analytical, practical, modest to your love style. Venus is the planet of love and beauty.`,
+      id: `Venus di Virgo: gaya love yang analytical, practical, modest.`,
+    },
+    content: {
+      en: `# Venus in Virgo\n\nVenus is the planet of love and beauty. When Venus is in Virgo, your approach to romance and what you find attractive is filtered through Virgo energy. You express affection steady devotion. In relationships, you need security and loyalty. Your aesthetic taste leans toward the natural and refined.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 金星落在处女座\n\n金星落在处女座时，你的love风格带有处女座的analytical, practical, modest特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["virgo", "venus", "astrology", "birth-chart"],
+  },
+  {
+    id: "281", slug: "venus-in-libra-meaning-281",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `金星落在天秤座的含义：love风格解读`,
+      en: `Venus in Libra: Love style, attraction, values, beauty, romance`,
+      id: `Venus di Libra: Love style, attraction, values, beauty, romance`,
+    },
+    excerpt: {
+      zh: `金星在天秤座代表diplomatic, charming, indecisive的love方式。`,
+      en: `Venus in Libra brings diplomatic, charming, indecisive to your love style. Venus is the planet of love and beauty.`,
+      id: `Venus di Libra: gaya love yang diplomatic, charming, indecisive.`,
+    },
+    content: {
+      en: `# Venus in Libra\n\nVenus is the planet of love and beauty. When Venus is in Libra, your approach to romance and what you find attractive is filtered through Libra energy. You express affection intellectual charm. In relationships, you need mental stimulation and freedom. Your aesthetic taste leans toward the modern and eclectic.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 金星落在天秤座\n\n金星落在天秤座时，你的love风格带有天秤座的diplomatic, charming, indecisive特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["libra", "venus", "astrology", "birth-chart"],
+  },
+  {
+    id: "282", slug: "venus-in-scorpio-meaning-282",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `金星落在天蝎座的含义：love风格解读`,
+      en: `Venus in Scorpio: Love style, attraction, values, beauty, romance`,
+      id: `Venus di Scorpio: Love style, attraction, values, beauty, romance`,
+    },
+    excerpt: {
+      zh: `金星在天蝎座代表intense, mysterious, powerful的love方式。`,
+      en: `Venus in Scorpio brings intense, mysterious, powerful to your love style. Venus is the planet of love and beauty.`,
+      id: `Venus di Scorpio: gaya love yang intense, mysterious, powerful.`,
+    },
+    content: {
+      en: `# Venus in Scorpio\n\nVenus is the planet of love and beauty. When Venus is in Scorpio, your approach to romance and what you find attractive is filtered through Scorpio energy. You express affection deep emotional connection. In relationships, you need profound intimacy and trust. Your aesthetic taste leans toward the dreamy and emotional.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 金星落在天蝎座\n\n金星落在天蝎座时，你的love风格带有天蝎座的intense, mysterious, powerful特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["scorpio", "venus", "astrology", "birth-chart"],
+  },
+  {
+    id: "283", slug: "venus-in-sagittarius-meaning-283",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `金星落在射手座的含义：love风格解读`,
+      en: `Venus in Sagittarius: Love style, attraction, values, beauty, romance`,
+      id: `Venus di Sagittarius: Love style, attraction, values, beauty, romance`,
+    },
+    excerpt: {
+      zh: `金星在射手座代表adventurous, optimistic, blunt的love方式。`,
+      en: `Venus in Sagittarius brings adventurous, optimistic, blunt to your love style. Venus is the planet of love and beauty.`,
+      id: `Venus di Sagittarius: gaya love yang adventurous, optimistic, blunt.`,
+    },
+    content: {
+      en: `# Venus in Sagittarius\n\nVenus is the planet of love and beauty. When Venus is in Sagittarius, your approach to romance and what you find attractive is filtered through Sagittarius energy. You express affection passionate intensity. In relationships, you need excitement and boldness. Your aesthetic taste leans toward the dramatic and striking.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 金星落在射手座\n\n金星落在射手座时，你的love风格带有射手座的adventurous, optimistic, blunt特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["sagittarius", "venus", "astrology", "birth-chart"],
+  },
+  {
+    id: "284", slug: "venus-in-capricorn-meaning-284",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `金星落在摩羯座的含义：love风格解读`,
+      en: `Venus in Capricorn: Love style, attraction, values, beauty, romance`,
+      id: `Venus di Capricorn: Love style, attraction, values, beauty, romance`,
+    },
+    excerpt: {
+      zh: `金星在摩羯座代表ambitious, disciplined, reserved的love方式。`,
+      en: `Venus in Capricorn brings ambitious, disciplined, reserved to your love style. Venus is the planet of love and beauty.`,
+      id: `Venus di Capricorn: gaya love yang ambitious, disciplined, reserved.`,
+    },
+    content: {
+      en: `# Venus in Capricorn\n\nVenus is the planet of love and beauty. When Venus is in Capricorn, your approach to romance and what you find attractive is filtered through Capricorn energy. You express affection steady devotion. In relationships, you need security and loyalty. Your aesthetic taste leans toward the natural and refined.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 金星落在摩羯座\n\n金星落在摩羯座时，你的love风格带有摩羯座的ambitious, disciplined, reserved特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["capricorn", "venus", "astrology", "birth-chart"],
+  },
+  {
+    id: "285", slug: "venus-in-aquarius-meaning-285",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `金星落在水瓶座的含义：love风格解读`,
+      en: `Venus in Aquarius: Love style, attraction, values, beauty, romance`,
+      id: `Venus di Aquarius: Love style, attraction, values, beauty, romance`,
+    },
+    excerpt: {
+      zh: `金星在水瓶座代表innovative, independent, aloof的love方式。`,
+      en: `Venus in Aquarius brings innovative, independent, aloof to your love style. Venus is the planet of love and beauty.`,
+      id: `Venus di Aquarius: gaya love yang innovative, independent, aloof.`,
+    },
+    content: {
+      en: `# Venus in Aquarius\n\nVenus is the planet of love and beauty. When Venus is in Aquarius, your approach to romance and what you find attractive is filtered through Aquarius energy. You express affection intellectual charm. In relationships, you need mental stimulation and freedom. Your aesthetic taste leans toward the modern and eclectic.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 金星落在水瓶座\n\n金星落在水瓶座时，你的love风格带有水瓶座的innovative, independent, aloof特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["aquarius", "venus", "astrology", "birth-chart"],
+  },
+  {
+    id: "286", slug: "venus-in-pisces-meaning-286",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `金星落在双鱼座的含义：love风格解读`,
+      en: `Venus in Pisces: Love style, attraction, values, beauty, romance`,
+      id: `Venus di Pisces: Love style, attraction, values, beauty, romance`,
+    },
+    excerpt: {
+      zh: `金星在双鱼座代表compassionate, artistic, escapist的love方式。`,
+      en: `Venus in Pisces brings compassionate, artistic, escapist to your love style. Venus is the planet of love and beauty.`,
+      id: `Venus di Pisces: gaya love yang compassionate, artistic, escapist.`,
+    },
+    content: {
+      en: `# Venus in Pisces\n\nVenus is the planet of love and beauty. When Venus is in Pisces, your approach to romance and what you find attractive is filtered through Pisces energy. You express affection deep emotional connection. In relationships, you need profound intimacy and trust. Your aesthetic taste leans toward the dreamy and emotional.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 金星落在双鱼座\n\n金星落在双鱼座时，你的love风格带有双鱼座的compassionate, artistic, escapist特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["pisces", "venus", "astrology", "birth-chart"],
+  },
+  {
+    id: "287", slug: "mars-in-aries-meaning-287",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `火星落在白羊座的含义：drive风格解读`,
+      en: `Mars in Aries: Ambition, desire, aggression, sex, energy`,
+      id: `Mars di Aries: Ambition, desire, aggression, sex, energy`,
+    },
+    excerpt: {
+      zh: `火星在白羊座代表bold, passionate, impulsive的drive方式。`,
+      en: `Mars in Aries brings bold, passionate, impulsive to your drive style. Mars is the planet of action and desire.`,
+      id: `Mars di Aries: gaya drive yang bold, passionate, impulsive.`,
+    },
+    content: {
+      en: `# Mars in Aries\n\nMars is the planet of action and desire. With Mars in Aries, your drive and ambition are channeled through Aries energy. You pursue goals passionate intensity. You express anger explosively and then forget quickly. Your physical energy and sexual drive are intense and unstoppable.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 火星落在白羊座\n\n火星落在白羊座时，你的drive风格带有白羊座的bold, passionate, impulsive特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["aries", "mars", "astrology", "birth-chart"],
+  },
+  {
+    id: "288", slug: "mars-in-taurus-meaning-288",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `火星落在金牛座的含义：drive风格解读`,
+      en: `Mars in Taurus: Ambition, desire, aggression, sex, energy`,
+      id: `Mars di Taurus: Ambition, desire, aggression, sex, energy`,
+    },
+    excerpt: {
+      zh: `火星在金牛座代表patient, sensual, stubborn的drive方式。`,
+      en: `Mars in Taurus brings patient, sensual, stubborn to your drive style. Mars is the planet of action and desire.`,
+      id: `Mars di Taurus: gaya drive yang patient, sensual, stubborn.`,
+    },
+    content: {
+      en: `# Mars in Taurus\n\nMars is the planet of action and desire. With Mars in Taurus, your drive and ambition are channeled through Taurus energy. You pursue goals steady devotion. You express anger slowly but it lasts. Your physical energy and sexual drive are steady and enduring.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 火星落在金牛座\n\n火星落在金牛座时，你的drive风格带有金牛座的patient, sensual, stubborn特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["taurus", "mars", "astrology", "birth-chart"],
+  },
+  {
+    id: "289", slug: "mars-in-gemini-meaning-289",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `火星落在双子座的含义：drive风格解读`,
+      en: `Mars in Gemini: Ambition, desire, aggression, sex, energy`,
+      id: `Mars di Gemini: Ambition, desire, aggression, sex, energy`,
+    },
+    excerpt: {
+      zh: `火星在双子座代表curious, witty, restless的drive方式。`,
+      en: `Mars in Gemini brings curious, witty, restless to your drive style. Mars is the planet of action and desire.`,
+      id: `Mars di Gemini: gaya drive yang curious, witty, restless.`,
+    },
+    content: {
+      en: `# Mars in Gemini\n\nMars is the planet of action and desire. With Mars in Gemini, your drive and ambition are channeled through Gemini energy. You pursue goals intellectual charm. You express anger verbally and analytically. Your physical energy and sexual drive are quick but scattered.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 火星落在双子座\n\n火星落在双子座时，你的drive风格带有双子座的curious, witty, restless特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["gemini", "mars", "astrology", "birth-chart"],
+  },
+  {
+    id: "290", slug: "mars-in-cancer-meaning-290",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `火星落在巨蟹座的含义：drive风格解读`,
+      en: `Mars in Cancer: Ambition, desire, aggression, sex, energy`,
+      id: `Mars di Cancer: Ambition, desire, aggression, sex, energy`,
+    },
+    excerpt: {
+      zh: `火星在巨蟹座代表nurturing, moody, protective的drive方式。`,
+      en: `Mars in Cancer brings nurturing, moody, protective to your drive style. Mars is the planet of action and desire.`,
+      id: `Mars di Cancer: gaya drive yang nurturing, moody, protective.`,
+    },
+    content: {
+      en: `# Mars in Cancer\n\nMars is the planet of action and desire. With Mars in Cancer, your drive and ambition are channeled through Cancer energy. You pursue goals deep emotional connection. You express anger passive-aggressively and deeply. Your physical energy and sexual drive are deep and magnetic.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 火星落在巨蟹座\n\n火星落在巨蟹座时，你的drive风格带有巨蟹座的nurturing, moody, protective特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["cancer", "mars", "astrology", "birth-chart"],
+  },
+  {
+    id: "291", slug: "mars-in-leo-meaning-291",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `火星落在狮子座的含义：drive风格解读`,
+      en: `Mars in Leo: Ambition, desire, aggression, sex, energy`,
+      id: `Mars di Leo: Ambition, desire, aggression, sex, energy`,
+    },
+    excerpt: {
+      zh: `火星在狮子座代表charismatic, generous, dramatic的drive方式。`,
+      en: `Mars in Leo brings charismatic, generous, dramatic to your drive style. Mars is the planet of action and desire.`,
+      id: `Mars di Leo: gaya drive yang charismatic, generous, dramatic.`,
+    },
+    content: {
+      en: `# Mars in Leo\n\nMars is the planet of action and desire. With Mars in Leo, your drive and ambition are channeled through Leo energy. You pursue goals passionate intensity. You express anger explosively and then forget quickly. Your physical energy and sexual drive are intense and unstoppable.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 火星落在狮子座\n\n火星落在狮子座时，你的drive风格带有狮子座的charismatic, generous, dramatic特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["leo", "mars", "astrology", "birth-chart"],
+  },
+  {
+    id: "292", slug: "mars-in-virgo-meaning-292",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `火星落在处女座的含义：drive风格解读`,
+      en: `Mars in Virgo: Ambition, desire, aggression, sex, energy`,
+      id: `Mars di Virgo: Ambition, desire, aggression, sex, energy`,
+    },
+    excerpt: {
+      zh: `火星在处女座代表analytical, practical, modest的drive方式。`,
+      en: `Mars in Virgo brings analytical, practical, modest to your drive style. Mars is the planet of action and desire.`,
+      id: `Mars di Virgo: gaya drive yang analytical, practical, modest.`,
+    },
+    content: {
+      en: `# Mars in Virgo\n\nMars is the planet of action and desire. With Mars in Virgo, your drive and ambition are channeled through Virgo energy. You pursue goals steady devotion. You express anger slowly but it lasts. Your physical energy and sexual drive are steady and enduring.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 火星落在处女座\n\n火星落在处女座时，你的drive风格带有处女座的analytical, practical, modest特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["virgo", "mars", "astrology", "birth-chart"],
+  },
+  {
+    id: "293", slug: "mars-in-libra-meaning-293",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `火星落在天秤座的含义：drive风格解读`,
+      en: `Mars in Libra: Ambition, desire, aggression, sex, energy`,
+      id: `Mars di Libra: Ambition, desire, aggression, sex, energy`,
+    },
+    excerpt: {
+      zh: `火星在天秤座代表diplomatic, charming, indecisive的drive方式。`,
+      en: `Mars in Libra brings diplomatic, charming, indecisive to your drive style. Mars is the planet of action and desire.`,
+      id: `Mars di Libra: gaya drive yang diplomatic, charming, indecisive.`,
+    },
+    content: {
+      en: `# Mars in Libra\n\nMars is the planet of action and desire. With Mars in Libra, your drive and ambition are channeled through Libra energy. You pursue goals intellectual charm. You express anger verbally and analytically. Your physical energy and sexual drive are quick but scattered.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 火星落在天秤座\n\n火星落在天秤座时，你的drive风格带有天秤座的diplomatic, charming, indecisive特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["libra", "mars", "astrology", "birth-chart"],
+  },
+  {
+    id: "294", slug: "mars-in-scorpio-meaning-294",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `火星落在天蝎座的含义：drive风格解读`,
+      en: `Mars in Scorpio: Ambition, desire, aggression, sex, energy`,
+      id: `Mars di Scorpio: Ambition, desire, aggression, sex, energy`,
+    },
+    excerpt: {
+      zh: `火星在天蝎座代表intense, mysterious, powerful的drive方式。`,
+      en: `Mars in Scorpio brings intense, mysterious, powerful to your drive style. Mars is the planet of action and desire.`,
+      id: `Mars di Scorpio: gaya drive yang intense, mysterious, powerful.`,
+    },
+    content: {
+      en: `# Mars in Scorpio\n\nMars is the planet of action and desire. With Mars in Scorpio, your drive and ambition are channeled through Scorpio energy. You pursue goals deep emotional connection. You express anger passive-aggressively and deeply. Your physical energy and sexual drive are deep and magnetic.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 火星落在天蝎座\n\n火星落在天蝎座时，你的drive风格带有天蝎座的intense, mysterious, powerful特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["scorpio", "mars", "astrology", "birth-chart"],
+  },
+  {
+    id: "295", slug: "mars-in-sagittarius-meaning-295",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `火星落在射手座的含义：drive风格解读`,
+      en: `Mars in Sagittarius: Ambition, desire, aggression, sex, energy`,
+      id: `Mars di Sagittarius: Ambition, desire, aggression, sex, energy`,
+    },
+    excerpt: {
+      zh: `火星在射手座代表adventurous, optimistic, blunt的drive方式。`,
+      en: `Mars in Sagittarius brings adventurous, optimistic, blunt to your drive style. Mars is the planet of action and desire.`,
+      id: `Mars di Sagittarius: gaya drive yang adventurous, optimistic, blunt.`,
+    },
+    content: {
+      en: `# Mars in Sagittarius\n\nMars is the planet of action and desire. With Mars in Sagittarius, your drive and ambition are channeled through Sagittarius energy. You pursue goals passionate intensity. You express anger explosively and then forget quickly. Your physical energy and sexual drive are intense and unstoppable.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 火星落在射手座\n\n火星落在射手座时，你的drive风格带有射手座的adventurous, optimistic, blunt特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["sagittarius", "mars", "astrology", "birth-chart"],
+  },
+  {
+    id: "296", slug: "mars-in-capricorn-meaning-296",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `火星落在摩羯座的含义：drive风格解读`,
+      en: `Mars in Capricorn: Ambition, desire, aggression, sex, energy`,
+      id: `Mars di Capricorn: Ambition, desire, aggression, sex, energy`,
+    },
+    excerpt: {
+      zh: `火星在摩羯座代表ambitious, disciplined, reserved的drive方式。`,
+      en: `Mars in Capricorn brings ambitious, disciplined, reserved to your drive style. Mars is the planet of action and desire.`,
+      id: `Mars di Capricorn: gaya drive yang ambitious, disciplined, reserved.`,
+    },
+    content: {
+      en: `# Mars in Capricorn\n\nMars is the planet of action and desire. With Mars in Capricorn, your drive and ambition are channeled through Capricorn energy. You pursue goals steady devotion. You express anger slowly but it lasts. Your physical energy and sexual drive are steady and enduring.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 火星落在摩羯座\n\n火星落在摩羯座时，你的drive风格带有摩羯座的ambitious, disciplined, reserved特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["capricorn", "mars", "astrology", "birth-chart"],
+  },
+  {
+    id: "297", slug: "mars-in-aquarius-meaning-297",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `火星落在水瓶座的含义：drive风格解读`,
+      en: `Mars in Aquarius: Ambition, desire, aggression, sex, energy`,
+      id: `Mars di Aquarius: Ambition, desire, aggression, sex, energy`,
+    },
+    excerpt: {
+      zh: `火星在水瓶座代表innovative, independent, aloof的drive方式。`,
+      en: `Mars in Aquarius brings innovative, independent, aloof to your drive style. Mars is the planet of action and desire.`,
+      id: `Mars di Aquarius: gaya drive yang innovative, independent, aloof.`,
+    },
+    content: {
+      en: `# Mars in Aquarius\n\nMars is the planet of action and desire. With Mars in Aquarius, your drive and ambition are channeled through Aquarius energy. You pursue goals intellectual charm. You express anger verbally and analytically. Your physical energy and sexual drive are quick but scattered.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 火星落在水瓶座\n\n火星落在水瓶座时，你的drive风格带有水瓶座的innovative, independent, aloof特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["aquarius", "mars", "astrology", "birth-chart"],
+  },
+  {
+    id: "298", slug: "mars-in-pisces-meaning-298",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `火星落在双鱼座的含义：drive风格解读`,
+      en: `Mars in Pisces: Ambition, desire, aggression, sex, energy`,
+      id: `Mars di Pisces: Ambition, desire, aggression, sex, energy`,
+    },
+    excerpt: {
+      zh: `火星在双鱼座代表compassionate, artistic, escapist的drive方式。`,
+      en: `Mars in Pisces brings compassionate, artistic, escapist to your drive style. Mars is the planet of action and desire.`,
+      id: `Mars di Pisces: gaya drive yang compassionate, artistic, escapist.`,
+    },
+    content: {
+      en: `# Mars in Pisces\n\nMars is the planet of action and desire. With Mars in Pisces, your drive and ambition are channeled through Pisces energy. You pursue goals deep emotional connection. You express anger passive-aggressively and deeply. Your physical energy and sexual drive are deep and magnetic.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 火星落在双鱼座\n\n火星落在双鱼座时，你的drive风格带有双鱼座的compassionate, artistic, escapist特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["pisces", "mars", "astrology", "birth-chart"],
+  },
+  {
+    id: "299", slug: "mercury-in-aries-meaning-299",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `水星落在白羊座的含义：communication风格解读`,
+      en: `Mercury in Aries: Communication, thinking, learning, wit`,
+      id: `Merkurius di Aries: Communication, thinking, learning, wit`,
+    },
+    excerpt: {
+      zh: `水星在白羊座代表bold, passionate, impulsive的communication方式。`,
+      en: `Mercury in Aries brings bold, passionate, impulsive to your communication style. Mercury rules communication and intellect.`,
+      id: `Merkurius di Aries: gaya communication yang bold, passionate, impulsive.`,
+    },
+    content: {
+      en: `# Mercury in Aries\n\nMercury rules communication and intellect. With Mercury in Aries, your thinking and speaking style is filtered through Aries energy. You process information passionate intensity. You communicate boldly and directly. Your learning style is through action and risk.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 水星落在白羊座\n\n水星落在白羊座时，你的communication风格带有白羊座的bold, passionate, impulsive特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["aries", "mercury", "astrology", "birth-chart"],
+  },
+  {
+    id: "300", slug: "mercury-in-taurus-meaning-300",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `水星落在金牛座的含义：communication风格解读`,
+      en: `Mercury in Taurus: Communication, thinking, learning, wit`,
+      id: `Merkurius di Taurus: Communication, thinking, learning, wit`,
+    },
+    excerpt: {
+      zh: `水星在金牛座代表patient, sensual, stubborn的communication方式。`,
+      en: `Mercury in Taurus brings patient, sensual, stubborn to your communication style. Mercury rules communication and intellect.`,
+      id: `Merkurius di Taurus: gaya communication yang patient, sensual, stubborn.`,
+    },
+    content: {
+      en: `# Mercury in Taurus\n\nMercury rules communication and intellect. With Mercury in Taurus, your thinking and speaking style is filtered through Taurus energy. You process information steady devotion. You communicate practically and deliberately. Your learning style is through repetition and practice.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 水星落在金牛座\n\n水星落在金牛座时，你的communication风格带有金牛座的patient, sensual, stubborn特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["taurus", "mercury", "astrology", "birth-chart"],
+  },
+  {
+    id: "301", slug: "mercury-in-gemini-meaning-301",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `水星落在双子座的含义：communication风格解读`,
+      en: `Mercury in Gemini: Communication, thinking, learning, wit`,
+      id: `Merkurius di Gemini: Communication, thinking, learning, wit`,
+    },
+    excerpt: {
+      zh: `水星在双子座代表curious, witty, restless的communication方式。`,
+      en: `Mercury in Gemini brings curious, witty, restless to your communication style. Mercury rules communication and intellect.`,
+      id: `Merkurius di Gemini: gaya communication yang curious, witty, restless.`,
+    },
+    content: {
+      en: `# Mercury in Gemini\n\nMercury rules communication and intellect. With Mercury in Gemini, your thinking and speaking style is filtered through Gemini energy. You process information intellectual charm. You communicate cleverly and rapidly. Your learning style is through discussion and variety.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 水星落在双子座\n\n水星落在双子座时，你的communication风格带有双子座的curious, witty, restless特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["gemini", "mercury", "astrology", "birth-chart"],
+  },
+  {
+    id: "302", slug: "mercury-in-cancer-meaning-302",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `水星落在巨蟹座的含义：communication风格解读`,
+      en: `Mercury in Cancer: Communication, thinking, learning, wit`,
+      id: `Merkurius di Cancer: Communication, thinking, learning, wit`,
+    },
+    excerpt: {
+      zh: `水星在巨蟹座代表nurturing, moody, protective的communication方式。`,
+      en: `Mercury in Cancer brings nurturing, moody, protective to your communication style. Mercury rules communication and intellect.`,
+      id: `Merkurius di Cancer: gaya communication yang nurturing, moody, protective.`,
+    },
+    content: {
+      en: `# Mercury in Cancer\n\nMercury rules communication and intellect. With Mercury in Cancer, your thinking and speaking style is filtered through Cancer energy. You process information deep emotional connection. You communicate intuitively and emotionally. Your learning style is through emotional immersion.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 水星落在巨蟹座\n\n水星落在巨蟹座时，你的communication风格带有巨蟹座的nurturing, moody, protective特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["cancer", "mercury", "astrology", "birth-chart"],
+  },
+  {
+    id: "303", slug: "mercury-in-leo-meaning-303",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `水星落在狮子座的含义：communication风格解读`,
+      en: `Mercury in Leo: Communication, thinking, learning, wit`,
+      id: `Merkurius di Leo: Communication, thinking, learning, wit`,
+    },
+    excerpt: {
+      zh: `水星在狮子座代表charismatic, generous, dramatic的communication方式。`,
+      en: `Mercury in Leo brings charismatic, generous, dramatic to your communication style. Mercury rules communication and intellect.`,
+      id: `Merkurius di Leo: gaya communication yang charismatic, generous, dramatic.`,
+    },
+    content: {
+      en: `# Mercury in Leo\n\nMercury rules communication and intellect. With Mercury in Leo, your thinking and speaking style is filtered through Leo energy. You process information passionate intensity. You communicate boldly and directly. Your learning style is through action and risk.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 水星落在狮子座\n\n水星落在狮子座时，你的communication风格带有狮子座的charismatic, generous, dramatic特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["leo", "mercury", "astrology", "birth-chart"],
+  },
+  {
+    id: "304", slug: "mercury-in-virgo-meaning-304",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `水星落在处女座的含义：communication风格解读`,
+      en: `Mercury in Virgo: Communication, thinking, learning, wit`,
+      id: `Merkurius di Virgo: Communication, thinking, learning, wit`,
+    },
+    excerpt: {
+      zh: `水星在处女座代表analytical, practical, modest的communication方式。`,
+      en: `Mercury in Virgo brings analytical, practical, modest to your communication style. Mercury rules communication and intellect.`,
+      id: `Merkurius di Virgo: gaya communication yang analytical, practical, modest.`,
+    },
+    content: {
+      en: `# Mercury in Virgo\n\nMercury rules communication and intellect. With Mercury in Virgo, your thinking and speaking style is filtered through Virgo energy. You process information steady devotion. You communicate practically and deliberately. Your learning style is through repetition and practice.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 水星落在处女座\n\n水星落在处女座时，你的communication风格带有处女座的analytical, practical, modest特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["virgo", "mercury", "astrology", "birth-chart"],
+  },
+  {
+    id: "305", slug: "mercury-in-libra-meaning-305",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `水星落在天秤座的含义：communication风格解读`,
+      en: `Mercury in Libra: Communication, thinking, learning, wit`,
+      id: `Merkurius di Libra: Communication, thinking, learning, wit`,
+    },
+    excerpt: {
+      zh: `水星在天秤座代表diplomatic, charming, indecisive的communication方式。`,
+      en: `Mercury in Libra brings diplomatic, charming, indecisive to your communication style. Mercury rules communication and intellect.`,
+      id: `Merkurius di Libra: gaya communication yang diplomatic, charming, indecisive.`,
+    },
+    content: {
+      en: `# Mercury in Libra\n\nMercury rules communication and intellect. With Mercury in Libra, your thinking and speaking style is filtered through Libra energy. You process information intellectual charm. You communicate cleverly and rapidly. Your learning style is through discussion and variety.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 水星落在天秤座\n\n水星落在天秤座时，你的communication风格带有天秤座的diplomatic, charming, indecisive特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["libra", "mercury", "astrology", "birth-chart"],
+  },
+  {
+    id: "306", slug: "mercury-in-scorpio-meaning-306",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `水星落在天蝎座的含义：communication风格解读`,
+      en: `Mercury in Scorpio: Communication, thinking, learning, wit`,
+      id: `Merkurius di Scorpio: Communication, thinking, learning, wit`,
+    },
+    excerpt: {
+      zh: `水星在天蝎座代表intense, mysterious, powerful的communication方式。`,
+      en: `Mercury in Scorpio brings intense, mysterious, powerful to your communication style. Mercury rules communication and intellect.`,
+      id: `Merkurius di Scorpio: gaya communication yang intense, mysterious, powerful.`,
+    },
+    content: {
+      en: `# Mercury in Scorpio\n\nMercury rules communication and intellect. With Mercury in Scorpio, your thinking and speaking style is filtered through Scorpio energy. You process information deep emotional connection. You communicate intuitively and emotionally. Your learning style is through emotional immersion.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 水星落在天蝎座\n\n水星落在天蝎座时，你的communication风格带有天蝎座的intense, mysterious, powerful特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["scorpio", "mercury", "astrology", "birth-chart"],
+  },
+  {
+    id: "307", slug: "mercury-in-sagittarius-meaning-307",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `水星落在射手座的含义：communication风格解读`,
+      en: `Mercury in Sagittarius: Communication, thinking, learning, wit`,
+      id: `Merkurius di Sagittarius: Communication, thinking, learning, wit`,
+    },
+    excerpt: {
+      zh: `水星在射手座代表adventurous, optimistic, blunt的communication方式。`,
+      en: `Mercury in Sagittarius brings adventurous, optimistic, blunt to your communication style. Mercury rules communication and intellect.`,
+      id: `Merkurius di Sagittarius: gaya communication yang adventurous, optimistic, blunt.`,
+    },
+    content: {
+      en: `# Mercury in Sagittarius\n\nMercury rules communication and intellect. With Mercury in Sagittarius, your thinking and speaking style is filtered through Sagittarius energy. You process information passionate intensity. You communicate boldly and directly. Your learning style is through action and risk.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 水星落在射手座\n\n水星落在射手座时，你的communication风格带有射手座的adventurous, optimistic, blunt特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["sagittarius", "mercury", "astrology", "birth-chart"],
+  },
+  {
+    id: "308", slug: "mercury-in-capricorn-meaning-308",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `水星落在摩羯座的含义：communication风格解读`,
+      en: `Mercury in Capricorn: Communication, thinking, learning, wit`,
+      id: `Merkurius di Capricorn: Communication, thinking, learning, wit`,
+    },
+    excerpt: {
+      zh: `水星在摩羯座代表ambitious, disciplined, reserved的communication方式。`,
+      en: `Mercury in Capricorn brings ambitious, disciplined, reserved to your communication style. Mercury rules communication and intellect.`,
+      id: `Merkurius di Capricorn: gaya communication yang ambitious, disciplined, reserved.`,
+    },
+    content: {
+      en: `# Mercury in Capricorn\n\nMercury rules communication and intellect. With Mercury in Capricorn, your thinking and speaking style is filtered through Capricorn energy. You process information steady devotion. You communicate practically and deliberately. Your learning style is through repetition and practice.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 水星落在摩羯座\n\n水星落在摩羯座时，你的communication风格带有摩羯座的ambitious, disciplined, reserved特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["capricorn", "mercury", "astrology", "birth-chart"],
+  },
+  {
+    id: "309", slug: "mercury-in-aquarius-meaning-309",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `水星落在水瓶座的含义：communication风格解读`,
+      en: `Mercury in Aquarius: Communication, thinking, learning, wit`,
+      id: `Merkurius di Aquarius: Communication, thinking, learning, wit`,
+    },
+    excerpt: {
+      zh: `水星在水瓶座代表innovative, independent, aloof的communication方式。`,
+      en: `Mercury in Aquarius brings innovative, independent, aloof to your communication style. Mercury rules communication and intellect.`,
+      id: `Merkurius di Aquarius: gaya communication yang innovative, independent, aloof.`,
+    },
+    content: {
+      en: `# Mercury in Aquarius\n\nMercury rules communication and intellect. With Mercury in Aquarius, your thinking and speaking style is filtered through Aquarius energy. You process information intellectual charm. You communicate cleverly and rapidly. Your learning style is through discussion and variety.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 水星落在水瓶座\n\n水星落在水瓶座时，你的communication风格带有水瓶座的innovative, independent, aloof特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["aquarius", "mercury", "astrology", "birth-chart"],
+  },
+  {
+    id: "310", slug: "mercury-in-pisces-meaning-310",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `水星落在双鱼座的含义：communication风格解读`,
+      en: `Mercury in Pisces: Communication, thinking, learning, wit`,
+      id: `Merkurius di Pisces: Communication, thinking, learning, wit`,
+    },
+    excerpt: {
+      zh: `水星在双鱼座代表compassionate, artistic, escapist的communication方式。`,
+      en: `Mercury in Pisces brings compassionate, artistic, escapist to your communication style. Mercury rules communication and intellect.`,
+      id: `Merkurius di Pisces: gaya communication yang compassionate, artistic, escapist.`,
+    },
+    content: {
+      en: `# Mercury in Pisces\n\nMercury rules communication and intellect. With Mercury in Pisces, your thinking and speaking style is filtered through Pisces energy. You process information deep emotional connection. You communicate intuitively and emotionally. Your learning style is through emotional immersion.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 水星落在双鱼座\n\n水星落在双鱼座时，你的communication风格带有双鱼座的compassionate, artistic, escapist特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["pisces", "mercury", "astrology", "birth-chart"],
+  },
+  {
+    id: "311", slug: "sun-in-aries-meaning-311",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `太阳落在白羊座的含义：core风格解读`,
+      en: `Sun in Aries: Core identity, ego, life force, self-expression`,
+      id: `Matahari di Aries: Core identity, ego, life force, self-expression`,
+    },
+    excerpt: {
+      zh: `太阳在白羊座代表bold, passionate, impulsive的core方式。`,
+      en: `Sun in Aries brings bold, passionate, impulsive to your core style. The Sun represents your core self.`,
+      id: `Matahari di Aries: gaya core yang bold, passionate, impulsive.`,
+    },
+    content: {
+      en: `# Sun in Aries\n\nThe Sun represents your core self. With Sun in Aries, your fundamental identity shines through Aries energy. You express yourself passionate intensity. Your confidence comes from taking bold action. Your life purpose is shaped by inspiring others and creating impact.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 太阳落在白羊座\n\n太阳落在白羊座时，你的core风格带有白羊座的bold, passionate, impulsive特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["aries", "sun", "astrology", "birth-chart"],
+  },
+  {
+    id: "312", slug: "sun-in-taurus-meaning-312",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `太阳落在金牛座的含义：core风格解读`,
+      en: `Sun in Taurus: Core identity, ego, life force, self-expression`,
+      id: `Matahari di Taurus: Core identity, ego, life force, self-expression`,
+    },
+    excerpt: {
+      zh: `太阳在金牛座代表patient, sensual, stubborn的core方式。`,
+      en: `Sun in Taurus brings patient, sensual, stubborn to your core style. The Sun represents your core self.`,
+      id: `Matahari di Taurus: gaya core yang patient, sensual, stubborn.`,
+    },
+    content: {
+      en: `# Sun in Taurus\n\nThe Sun represents your core self. With Sun in Taurus, your fundamental identity shines through Taurus energy. You express yourself steady devotion. Your confidence comes from building lasting results. Your life purpose is shaped by building lasting structures.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 太阳落在金牛座\n\n太阳落在金牛座时，你的core风格带有金牛座的patient, sensual, stubborn特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["taurus", "sun", "astrology", "birth-chart"],
+  },
+  {
+    id: "313", slug: "sun-in-gemini-meaning-313",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `太阳落在双子座的含义：core风格解读`,
+      en: `Sun in Gemini: Core identity, ego, life force, self-expression`,
+      id: `Matahari di Gemini: Core identity, ego, life force, self-expression`,
+    },
+    excerpt: {
+      zh: `太阳在双子座代表curious, witty, restless的core方式。`,
+      en: `Sun in Gemini brings curious, witty, restless to your core style. The Sun represents your core self.`,
+      id: `Matahari di Gemini: gaya core yang curious, witty, restless.`,
+    },
+    content: {
+      en: `# Sun in Gemini\n\nThe Sun represents your core self. With Sun in Gemini, your fundamental identity shines through Gemini energy. You express yourself intellectual charm. Your confidence comes from sharing brilliant ideas. Your life purpose is shaped by connecting ideas and people.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 太阳落在双子座\n\n太阳落在双子座时，你的core风格带有双子座的curious, witty, restless特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["gemini", "sun", "astrology", "birth-chart"],
+  },
+  {
+    id: "314", slug: "sun-in-cancer-meaning-314",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `太阳落在巨蟹座的含义：core风格解读`,
+      en: `Sun in Cancer: Core identity, ego, life force, self-expression`,
+      id: `Matahari di Cancer: Core identity, ego, life force, self-expression`,
+    },
+    excerpt: {
+      zh: `太阳在巨蟹座代表nurturing, moody, protective的core方式。`,
+      en: `Sun in Cancer brings nurturing, moody, protective to your core style. The Sun represents your core self.`,
+      id: `Matahari di Cancer: gaya core yang nurturing, moody, protective.`,
+    },
+    content: {
+      en: `# Sun in Cancer\n\nThe Sun represents your core self. With Sun in Cancer, your fundamental identity shines through Cancer energy. You express yourself deep emotional connection. Your confidence comes from deep emotional understanding. Your life purpose is shaped by healing and transforming.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 太阳落在巨蟹座\n\n太阳落在巨蟹座时，你的core风格带有巨蟹座的nurturing, moody, protective特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["cancer", "sun", "astrology", "birth-chart"],
+  },
+  {
+    id: "315", slug: "sun-in-leo-meaning-315",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `太阳落在狮子座的含义：core风格解读`,
+      en: `Sun in Leo: Core identity, ego, life force, self-expression`,
+      id: `Matahari di Leo: Core identity, ego, life force, self-expression`,
+    },
+    excerpt: {
+      zh: `太阳在狮子座代表charismatic, generous, dramatic的core方式。`,
+      en: `Sun in Leo brings charismatic, generous, dramatic to your core style. The Sun represents your core self.`,
+      id: `Matahari di Leo: gaya core yang charismatic, generous, dramatic.`,
+    },
+    content: {
+      en: `# Sun in Leo\n\nThe Sun represents your core self. With Sun in Leo, your fundamental identity shines through Leo energy. You express yourself passionate intensity. Your confidence comes from taking bold action. Your life purpose is shaped by inspiring others and creating impact.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 太阳落在狮子座\n\n太阳落在狮子座时，你的core风格带有狮子座的charismatic, generous, dramatic特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["leo", "sun", "astrology", "birth-chart"],
+  },
+  {
+    id: "316", slug: "sun-in-virgo-meaning-316",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `太阳落在处女座的含义：core风格解读`,
+      en: `Sun in Virgo: Core identity, ego, life force, self-expression`,
+      id: `Matahari di Virgo: Core identity, ego, life force, self-expression`,
+    },
+    excerpt: {
+      zh: `太阳在处女座代表analytical, practical, modest的core方式。`,
+      en: `Sun in Virgo brings analytical, practical, modest to your core style. The Sun represents your core self.`,
+      id: `Matahari di Virgo: gaya core yang analytical, practical, modest.`,
+    },
+    content: {
+      en: `# Sun in Virgo\n\nThe Sun represents your core self. With Sun in Virgo, your fundamental identity shines through Virgo energy. You express yourself steady devotion. Your confidence comes from building lasting results. Your life purpose is shaped by building lasting structures.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 太阳落在处女座\n\n太阳落在处女座时，你的core风格带有处女座的analytical, practical, modest特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["virgo", "sun", "astrology", "birth-chart"],
+  },
+  {
+    id: "317", slug: "sun-in-libra-meaning-317",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `太阳落在天秤座的含义：core风格解读`,
+      en: `Sun in Libra: Core identity, ego, life force, self-expression`,
+      id: `Matahari di Libra: Core identity, ego, life force, self-expression`,
+    },
+    excerpt: {
+      zh: `太阳在天秤座代表diplomatic, charming, indecisive的core方式。`,
+      en: `Sun in Libra brings diplomatic, charming, indecisive to your core style. The Sun represents your core self.`,
+      id: `Matahari di Libra: gaya core yang diplomatic, charming, indecisive.`,
+    },
+    content: {
+      en: `# Sun in Libra\n\nThe Sun represents your core self. With Sun in Libra, your fundamental identity shines through Libra energy. You express yourself intellectual charm. Your confidence comes from sharing brilliant ideas. Your life purpose is shaped by connecting ideas and people.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 太阳落在天秤座\n\n太阳落在天秤座时，你的core风格带有天秤座的diplomatic, charming, indecisive特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["libra", "sun", "astrology", "birth-chart"],
+  },
+  {
+    id: "318", slug: "sun-in-scorpio-meaning-318",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `太阳落在天蝎座的含义：core风格解读`,
+      en: `Sun in Scorpio: Core identity, ego, life force, self-expression`,
+      id: `Matahari di Scorpio: Core identity, ego, life force, self-expression`,
+    },
+    excerpt: {
+      zh: `太阳在天蝎座代表intense, mysterious, powerful的core方式。`,
+      en: `Sun in Scorpio brings intense, mysterious, powerful to your core style. The Sun represents your core self.`,
+      id: `Matahari di Scorpio: gaya core yang intense, mysterious, powerful.`,
+    },
+    content: {
+      en: `# Sun in Scorpio\n\nThe Sun represents your core self. With Sun in Scorpio, your fundamental identity shines through Scorpio energy. You express yourself deep emotional connection. Your confidence comes from deep emotional understanding. Your life purpose is shaped by healing and transforming.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 太阳落在天蝎座\n\n太阳落在天蝎座时，你的core风格带有天蝎座的intense, mysterious, powerful特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["scorpio", "sun", "astrology", "birth-chart"],
+  },
+  {
+    id: "319", slug: "sun-in-sagittarius-meaning-319",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `太阳落在射手座的含义：core风格解读`,
+      en: `Sun in Sagittarius: Core identity, ego, life force, self-expression`,
+      id: `Matahari di Sagittarius: Core identity, ego, life force, self-expression`,
+    },
+    excerpt: {
+      zh: `太阳在射手座代表adventurous, optimistic, blunt的core方式。`,
+      en: `Sun in Sagittarius brings adventurous, optimistic, blunt to your core style. The Sun represents your core self.`,
+      id: `Matahari di Sagittarius: gaya core yang adventurous, optimistic, blunt.`,
+    },
+    content: {
+      en: `# Sun in Sagittarius\n\nThe Sun represents your core self. With Sun in Sagittarius, your fundamental identity shines through Sagittarius energy. You express yourself passionate intensity. Your confidence comes from taking bold action. Your life purpose is shaped by inspiring others and creating impact.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 太阳落在射手座\n\n太阳落在射手座时，你的core风格带有射手座的adventurous, optimistic, blunt特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["sagittarius", "sun", "astrology", "birth-chart"],
+  },
+  {
+    id: "320", slug: "sun-in-capricorn-meaning-320",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `太阳落在摩羯座的含义：core风格解读`,
+      en: `Sun in Capricorn: Core identity, ego, life force, self-expression`,
+      id: `Matahari di Capricorn: Core identity, ego, life force, self-expression`,
+    },
+    excerpt: {
+      zh: `太阳在摩羯座代表ambitious, disciplined, reserved的core方式。`,
+      en: `Sun in Capricorn brings ambitious, disciplined, reserved to your core style. The Sun represents your core self.`,
+      id: `Matahari di Capricorn: gaya core yang ambitious, disciplined, reserved.`,
+    },
+    content: {
+      en: `# Sun in Capricorn\n\nThe Sun represents your core self. With Sun in Capricorn, your fundamental identity shines through Capricorn energy. You express yourself steady devotion. Your confidence comes from building lasting results. Your life purpose is shaped by building lasting structures.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 太阳落在摩羯座\n\n太阳落在摩羯座时，你的core风格带有摩羯座的ambitious, disciplined, reserved特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["capricorn", "sun", "astrology", "birth-chart"],
+  },
+  {
+    id: "321", slug: "sun-in-aquarius-meaning-321",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `太阳落在水瓶座的含义：core风格解读`,
+      en: `Sun in Aquarius: Core identity, ego, life force, self-expression`,
+      id: `Matahari di Aquarius: Core identity, ego, life force, self-expression`,
+    },
+    excerpt: {
+      zh: `太阳在水瓶座代表innovative, independent, aloof的core方式。`,
+      en: `Sun in Aquarius brings innovative, independent, aloof to your core style. The Sun represents your core self.`,
+      id: `Matahari di Aquarius: gaya core yang innovative, independent, aloof.`,
+    },
+    content: {
+      en: `# Sun in Aquarius\n\nThe Sun represents your core self. With Sun in Aquarius, your fundamental identity shines through Aquarius energy. You express yourself intellectual charm. Your confidence comes from sharing brilliant ideas. Your life purpose is shaped by connecting ideas and people.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 太阳落在水瓶座\n\n太阳落在水瓶座时，你的core风格带有水瓶座的innovative, independent, aloof特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["aquarius", "sun", "astrology", "birth-chart"],
+  },
+  {
+    id: "322", slug: "sun-in-pisces-meaning-322",
+    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
+    date: "2026-07-04",
+    title: {
+      zh: `太阳落在双鱼座的含义：core风格解读`,
+      en: `Sun in Pisces: Core identity, ego, life force, self-expression`,
+      id: `Matahari di Pisces: Core identity, ego, life force, self-expression`,
+    },
+    excerpt: {
+      zh: `太阳在双鱼座代表compassionate, artistic, escapist的core方式。`,
+      en: `Sun in Pisces brings compassionate, artistic, escapist to your core style. The Sun represents your core self.`,
+      id: `Matahari di Pisces: gaya core yang compassionate, artistic, escapist.`,
+    },
+    content: {
+      en: `# Sun in Pisces\n\nThe Sun represents your core self. With Sun in Pisces, your fundamental identity shines through Pisces energy. You express yourself deep emotional connection. Your confidence comes from deep emotional understanding. Your life purpose is shaped by healing and transforming.\n\nDiscover all your planet placements free at lunaxstar.com/natal.`,
+      zh: `# 太阳落在双鱼座\n\n太阳落在双鱼座时，你的core风格带有双鱼座的compassionate, artistic, escapist特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
+    },
+    readTime: 3, tags: ["pisces", "sun", "astrology", "birth-chart"],
+  },
 ];

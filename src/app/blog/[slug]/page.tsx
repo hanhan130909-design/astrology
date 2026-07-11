@@ -272,6 +272,15 @@ export default async function BlogArticlePage({ params }: Props) {
           {renderContent(articleContent)}
         </div>
 
+        {/* Internal linking — passes link equity to key pages */}
+        <div className="mt-12 flex flex-wrap gap-3 text-xs text-gray-500 border-t border-gray-200 pt-6 dark:border-gray-700">
+          <span className="text-gray-400">Related:</span>
+          <a href="/bazi" className="text-blue-600 hover:underline">Free BaZi Calculator</a>
+          <a href="/natal" className="text-blue-600 hover:underline">Free Natal Chart</a>
+          <a href="/compatibility/bazi" className="text-blue-600 hover:underline">BaZi Compatibility</a>
+          <a href="/blog/best-free-bazi-calculators-2026" className="text-blue-600 hover:underline">Best Free BaZi Calculators 2026</a>
+        </div>
+
         {/* Share buttons — viral loop */}
         <ShareButtons url={`https://lunaxstar.com/blog/${slug}`} title={articleTitle} />
 
