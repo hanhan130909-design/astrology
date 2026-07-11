@@ -11731,4 +11731,343 @@ Generate your AI reading at lunaxstar.com/bazi.`, zh: `# AI正在改变占星和
     content: { en: `# Sextile Aspect (60°)\n\nA sextile offers opportunity — but unlike the trine, it requires effort to activate. Think of it as an open door: you still have to walk through. Sextiles reward initiative.\n\nSee all your aspects free at lunaxstar.com/natal.`, zh: `# 六合（60°）\n\n六合提供机会——但与三合不同，它需要努力来激活。把它想象成一扇打开的门：你仍然需要走进去。六合奖励行动。\n\n在 lunaxstar.com/natal 免费查看所有相位。` },
     readTime: 3, tags: ["aspects", "sextile", "astrology"],
   },
+  {
+    id: "340", slug: "moon-sign-emotional-needs-340",
+    category: "astrology", categoryZh: "情感心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: `月亮星座揭示的情感需求——你真正需要什么才能感到安全`, en: `What Your Moon Sign Reveals About Your Emotional Needs` },
+    excerpt: { zh: `你的太阳星座是外壳，月亮星座才是你真正的情感内核。了解你的月亮落座，理解你最深的安全感来源。`, en: `Your Sun sign is the shell. Your Moon sign is your emotional core — how you love, what you need to feel safe, and your instinctive reactions.` },
+    content: { en: `# What Your Moon Sign Reveals About Your Emotional Needs
+
+Your Sun sign is how you present. Your Moon sign is how you FEEL. It governs your inner emotional world — the private you that only your closest people ever see.
+
+If you have ever felt like your Sun sign description doesn't quite capture who you are in your most intimate moments, it's because your Moon sign is running the show. Here is a clinical breakdown of what each Moon placement truly needs to feel safe, seen, and emotionally nourished.
+
+## Moon in Fire Signs (Aries, Leo, Sagittarius)
+
+**Moon in Aries:** You need autonomy. Your emotional safety comes from knowing you can act independently. Clingy partners suffocate you. You process feelings quickly — anger flares and dissipates in minutes. Your love language is bold, direct action. You need someone who matches your pace.
+
+**Moon in Leo:** You need to be seen and celebrated. Praise isn't vanity for you — it's emotional oxygen. You give love lavishly and need the same generosity returned. Invisible to you equals unloved. Your emotional health depends on creative expression and being appreciated for exactly who you are.
+
+**Moon in Sagittarius:** You need freedom and meaning. Your emotional safety comes from knowing there is always an escape route — a next adventure, a new philosophy, a wider horizon. You process feelings through exploration. Confinement of any kind triggers existential dread. You need a partner who is also a fellow traveler.
+
+## Moon in Earth Signs (Taurus, Virgo, Capricorn)
+
+**Moon in Taurus:** You need stability and sensuality. Your emotional safety is physical — a comfortable home, good food, predictable routines. Change destabilizes you. You love slowly but permanently, expressing affection through touch, gifts, and unwavering presence.
+
+**Moon in Virgo:** You need order and usefulness. Your emotional safety comes from feeling competent and needed. Chaos in your environment triggers chaos in your mind. You show love through fixing things — remember that sometimes people just want you to sit with them, not solve them.
+
+**Moon in Capricorn:** You need structure and respect. Your emotional safety comes from achievement and reliability. Vulnerability feels like a strategic risk you weigh carefully. You express love through loyalty, protection, and building a stable future — even if the words "I love you" come slowly.
+
+## Moon in Air Signs (Gemini, Libra, Aquarius)
+
+**Moon in Gemini:** You need mental stimulation and variety. Emotional safety is intellectual — someone who listens, debates, and never bores you. You process feelings by talking through them. Your love language is conversation. Silence feels like abandonment.
+
+**Moon in Libra:** You need harmony and partnership. Emotional safety comes from balanced, beautiful relationships. Conflict destabilizes you deeply. You mirror your partner's emotions — sometimes losing your own in the process. You need someone who helps you find your own voice, not just agree with theirs.
+
+**Moon in Aquarius:** You need space and intellectual connection. Emotional safety is paradoxical — you need deep belonging AND radical independence. You process feelings through ideas and systems. You love the collective but sometimes struggle with one-on-one intimacy. You need someone who respects your freedom as a form of love.
+
+## Moon in Water Signs (Cancer, Scorpio, Pisces)
+
+**Moon in Cancer:** You need emotional security and nurturing. This is the Moon's home sign — you feel everything deeply and remember everything. Home is your sanctuary. You need a partner who understands that your moods are not manipulation — they are weather patterns that pass with gentleness.
+
+**Moon in Scorpio:** You need emotional truth and intensity. Surface-level relationships drain you. You need to merge deeply — body, mind, soul. Trust is earned slowly and broken instantly. Your emotional world is rich and private. You need someone unafraid of the dark.
+
+**Moon in Pisces:** You need transcendence and compassion. Boundaries are your life's curriculum. You absorb everyone's emotions — the blessing and the curse of the empath. You need a partner who grounds you without crushing your magic. Art, music, and solitude are not luxuries — they are emotional necessities.
+
+## Find Your Moon Sign
+
+Unlike your Sun sign, your Moon sign requires your exact birth TIME and PLACE. The Moon changes signs every 2.5 days, so even a few hours can make the difference between Moon in Leo and Moon in Virgo. Generate your complete chart — Sun, Moon, Rising, and all — free at lunaxstar.com/natal.`, zh: `# 月亮星座揭示的情感需求
+
+太阳星座是你的外在表现，月亮星座才是你的情感内核。它掌管你的内心世界——只有最亲密的人才能看到的真正的你。
+
+## 火象月亮（白羊、狮子、射手）
+
+**月亮白羊：** 你需要自主权。情感安全感来自你知道自己可以独立行动。黏人的伴侣让你窒息。你处理情绪很快——愤怒爆发几分钟就消散。你需要一个能匹配你节奏的人。
+
+**月亮狮子：** 你需要被看见和赞美。被称赞对你不是虚荣——是情感氧气。你需要同样大方的爱返还给你。不被看见等于不被爱。
+
+**月亮射手：** 你需要自由和意义。情感安全来自永远有一条出路——下一次冒险、新的哲学、更广阔的视野。你通过探索处理情绪。
+
+## 土象月亮（金牛、处女、摩羯）
+
+**月亮金牛：** 你需要稳定和感官享受。情感安全是物理的——舒适的家、好的食物、可预测的日常。变化让你不安。你慢慢地、永久地爱。
+
+**月亮处女：** 你需要秩序和有用感。情感安全来自感到能干和被需要。混乱的环境触发混乱的思绪。你通过解决问题表达爱。
+
+**月亮摩羯：** 你需要结构和尊重。情感安全来自成就和可靠。脆弱对你来说是需要谨慎权衡的战略风险。你用忠诚、保护、建设稳定未来来表达爱。
+
+## 风象月亮（双子、天秤、水瓶）
+
+**月亮双子：** 你需要精神刺激和多样性。情感安全是智识的。你通过对话处理情绪。沉默就是遗弃。
+
+**月亮天秤：** 你需要和谐与伴侣关系。情感安全来自平衡、美好的关系。冲突深深扰动你。你需要一个帮你找到自己声音的人。
+
+**月亮水瓶：** 你需要空间和智力连接。你热爱集体但有时在一对一的亲密关系中挣扎。你需要一个把你的自由当成爱来尊重的人。
+
+## 水象月亮（巨蟹、天蝎、双鱼）
+
+**月亮巨蟹：** 你需要情感安全和滋养。这是月亮的家园——你深深感受一切，记住一切。家是你的避难所。
+
+**月亮天蝎：** 你需要情感真相和深度。肤浅的关系消耗你。信任慢慢建立、瞬间破裂。你需要一个不畏惧黑暗的人。
+
+**月亮双鱼：** 你需要超越和慈悲。边界是你一生的功课。你吸收所有人的情绪。你需要一个能接住你但不碾碎你的魔法的人。
+
+在 lunaxstar.com/natal 输入你的出生日期、准确时间和出生城市——找到你的月亮星座、日座和上升星座。免费。` },
+    readTime: 8, tags: ['moon-sign', 'emotions', 'astrology', 'psychology'],
+  },
+  {
+    id: "341", slug: "venus-sign-love-language-341",
+    category: "astrology", categoryZh: "情感心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: `你的金星星座决定你的爱的语言——占星情感心理学`, en: `How Your Venus Sign Determines Your Love Language` },
+    excerpt: { zh: `金星不只掌管美和金钱——它就是你表达爱、感受被爱的方式。你的金星落座才是你真正的情感操作系统。`, en: `Venus isn't just beauty and money — it IS how you love and feel loved. Your Venus sign is your emotional operating system.` },
+    content: { en: `# How Your Venus Sign Determines Your Love Language
+
+Most people know about the Five Love Languages — words of affirmation, acts of service, receiving gifts, quality time, physical touch. But where do these preferences COME from? Your Venus sign.
+
+Venus is the planet of love, attraction, and values. It governs not just WHO you love, but HOW you love. Your Venus sign is your romantic operating system — it determines what makes you feel most loved and how you naturally express affection.
+
+## Venus in Fire Signs — Physical Touch & Words of Affirmation
+
+**Venus in Aries:** You love through bold action and physical initiative. Your love language is passionate pursuit — the chase, the spark, the first move. You need a partner who keeps things exciting and doesn't play hard to get forever.
+
+**Venus in Leo:** You love through grand gestures and generous praise. Your love language is being seen and celebrated. You need a partner who makes you feel like royalty — and you return the favor tenfold. Loyalty is everything.
+
+**Venus in Sagittarius:** You love through shared adventure and intellectual stimulation. Your love language is freedom and exploration. You need a partner who is also a fellow traveler — someone who says "let's go" instead of "stay here."
+
+## Venus in Earth Signs — Acts of Service & Receiving Gifts
+
+**Venus in Taurus:** You love through physical presence and material care. Your love language is touch and tangible gifts. A home-cooked meal, a thoughtful present, holding hands silently — these are your declarations of love.
+
+**Venus in Virgo:** You love through fixing and improving. Your love language is acts of service. You notice what your partner needs before they ask. You express love by making their life easier. Remember: sometimes they just want you, not your solutions.
+
+**Venus in Capricorn:** You love through commitment and stability. Your love language is reliability — showing up, keeping promises, building a future together. Romance is a long-term investment for you, not a fleeting feeling.
+
+## Venus in Air Signs — Quality Time & Words of Affirmation
+
+**Venus in Gemini:** You love through conversation and mental connection. Your love language is words — witty banter, deep discussion, the text that makes them laugh. You need intellectual stimulation to stay in love.
+
+**Venus in Libra:** You love through harmony and beauty. Your love language is quality time in beautiful settings. Aesthetic experiences — art galleries, sunsets, candlelit dinners — these are not extras, they are essential to your feeling of being loved.
+
+**Venus in Aquarius:** You love through ideas and ideals. Your love language is intellectual partnership and shared vision. You need someone who gets your big-picture thinking and doesn't try to shrink your uniqueness into a conventional box.
+
+## Venus in Water Signs — Quality Time & Physical Touch
+
+**Venus in Scorpio:** You love through depth and intensity. Your love language is complete emotional and physical merging. Surface-level connection feels like starvation. You need a partner who can go deep and stay there. Trust is not a luxury — it's the only currency that matters.
+
+**Venus in Pisces:** You love through compassion and spiritual connection. Your love language is being understood without words. You feel your partner's emotions as your own. You need someone who protects your softness without exploiting it.
+
+**Venus in Cancer:** You love through nurturing and emotional safety. Your love language is making a home together — literal and emotional. You remember every detail your partner shares. You need a partner who understands that your vulnerability is a gift, not a weakness.
+
+Find your Venus sign free at lunaxstar.com/natal. Your Sun sign is who you are. Your Venus sign is how you love.`, zh: `# 你的金星星座决定你的爱的语言
+
+大多数人知道五种爱的语言——肯定的言辞、服务的行动、接受礼物、精心的时刻、身体的接触。但这些偏好的根源是什么？你的金星星座。
+
+金星不止掌管美和钱——它就是你表达爱和感受被爱的方式。你的金星落座是你的浪漫操作系统。
+
+## 金星在火象——身体接触 + 肯定言辞
+
+**金星白羊：** 你通过大胆行动和身体主动性来爱。你的爱情语言是热情的追求。你需要一个保持刺激的伴侣。
+
+**金星狮子：** 你通过盛大姿态和慷慨赞美来爱。你的爱情语言是被看见和赞美。忠诚就是一切。
+
+**金星射手：**你通过共同冒险和智力刺激来爱。你的爱情语言是自由和探索。你需要一个也说"走吧"而不是"留下"的伴侣。
+
+## 金星在土象——服务行动 + 接受礼物
+
+**金星金牛：** 你通过身体在场和物质关怀来爱。家里做的饭、用心的礼物、无声地牵手——这是你的爱情宣言。
+
+**金星处女：** 你通过解决问题和改善生活来爱。你的爱情语言是服务的行动。记住：有时候他们只要你，不要你的解决方案。
+
+**金星摩羯：** 你通过承诺和稳定来爱。你的爱情语言是可靠——出现，守承诺，共建未来。
+
+## 金星在风象——精心时刻 + 肯定言辞
+
+**金星双子：** 你通过对话和思想连接来爱。你的爱情语言是话语——机智的调侃、深入的讨论、让彼此笑的信息。
+
+**金星天秤：** 你通过和谐与美来爱。你的爱情语言是在美的环境中共度精心时刻。美术馆、日落、烛光晚餐——这些不是额外的东西，是你感知被爱的必需。
+
+**金星水瓶：** 你通过思想和理想来爱。你的爱情语言是智识伙伴和共享愿景。
+
+## 金星在水象——精心时刻 + 身体接触
+
+**金星天蝎：** 你通过深度和强度来爱。你的爱情语言是全身心的情感和身体融合。表面的联结像饥饿。信任不是奢侈品——是唯一的货币。
+
+**金星双鱼：** 你通过慈悲和灵魂连接来爱。你的爱情语言是无言的理解。你需要一个保护你的柔软而不利用它的人。
+
+**金星巨蟹：** 你通过滋养和情感安全来爱。你的爱情语言是建设一个家——物质的也是情感的。你记住对方分享的每件事。
+
+在 lunaxstar.com/natal 找到你的金星落座。你的太阳星座是你是谁。你的金星星座是你如何爱。` },
+    readTime: 8, tags: ['venus', 'love', 'psychology', 'relationships'],
+  },
+  {
+    id: "342", slug: "zodiac-attachment-style-342",
+    category: "astrology", categoryZh: "情感心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: `星座和依恋风格——占星中的情感心理学`, en: `Zodiac Signs and Attachment Styles: An Astrological Psychology Guide` },
+    excerpt: { zh: `你的星座影响的不只是性格——它揭示了你在亲密关系中的依恋模式。安全型、焦虑型还是回避型？占星给出了线索。`, en: `Your zodiac sign shapes more than personality — it reveals your attachment style in relationships. Secure, anxious, or avoidant? Astrology has clues.` },
+    content: { en: `# Zodiac Signs and Attachment Styles
+
+Modern psychology identifies four attachment styles: secure, anxious, avoidant, and disorganized. They shape every relationship you have ever had. And while attachment styles are formed in childhood, your astrological chart can reveal WHICH style you lean toward — and what you need to heal it.
+
+## The Fire Signs — Prone to Avoidant Tendencies
+
+Fire signs (Aries, Leo, Sagittarius) value independence above almost everything. This can manifest as avoidant attachment — pulling away when things get too close, keeping emotional escape routes open, fearing that intimacy equals loss of freedom.
+
+**If you have strong Fire placements:** Your growth is learning that closeness does not mean captivity. A partner who respects your autonomy while asking you to stay is your medicine.
+
+## The Earth Signs — Prone to Anxious Tendencies When Insecure
+
+Earth signs (Taurus, Virgo, Capricorn) need stability and predictability. When these are threatened, they can become anxiously attached — holding tighter when they feel their partner pulling away, craving reassurance, building their entire emotional infrastructure around one person.
+
+**If you have strong Earth placements:** Your growth is internalizing stability instead of outsourcing it to a partner. You can build your own ground.
+
+## The Air Signs — Prone to Avoidant Tendencies
+
+Air signs (Gemini, Libra, Aquarius) live in the mind. They can intellectualize emotions rather than feel them, creating distance that reads as avoidant to more emotionally expressive partners.
+
+**If you have strong Air placements:** Your growth is learning to drop from the head into the heart. Emotions are data, not threats.
+
+## The Water Signs — Prone to Anxious Tendencies
+
+Water signs (Cancer, Scorpio, Pisces) feel everything. Their emotional antennae pick up every signal. This sensitivity can create anxious attachment — fear of abandonment, over-accommodating, losing themselves in others.
+
+**If you have strong Water placements:** Your growth is building boundaries that protect without isolating. Your empathy is a superpower when paired with self-protection.
+
+## Your Chart Is the Map
+
+Your Sun sign gives a clue. Your Moon sign reveals the deeper pattern. Your Venus sign shows how you attach. Your 7th House describes your relationship template. Generate your full chart at lunaxstar.com/natal and read the emotional blueprint encoded in your birth moment.`, zh: `# 星座和依恋风格
+
+现代心理学识别出四种依恋风格：安全型、焦虑型、回避型和紊乱型。它们塑造了你每一段关系。虽然依恋风格形成于童年，但你的星盘能揭示你倾向哪一型——以及你需要什么来治愈它。
+
+## 火象星座——倾向于回避
+
+火象星座把独立看得比什么都重要。这可能表现为回避型依恋——太近了就撤、留情绪逃生通道、害怕亲密等于失去自由。
+
+**火象强的你：** 你的成长在于学习亲近不等于囚禁。一个尊重你自主权同时要求你留下的伴侣是你的解药。
+
+## 土象星座——安全感不足时倾向焦虑
+
+土象需要稳定和可预测。当这些被威胁，他们可能变得焦虑型依恋——对方抽离时握得更紧、渴求确认、把全部情感基础设施建在一个人身上。
+
+**土象强的你：** 你的成长在于把稳定内在化，而不是外包给伴侣。你可以自己建地基。
+
+## 风象星座——倾向回避
+
+风象活在头脑中。他们可能把情绪知性化而非感受它，制造出情绪型伴侣读作回避的距离。
+
+**风象强的你：** 你的成长在于从头脑降到心底。情绪是数据，不是威胁。
+
+## 水象星座——倾向焦虑
+
+水象感受一切。他们的情绪天线捕捉每一个信号。这种敏感可能创造焦虑型依恋——害怕遗弃、过度适应、在别人身上迷失自己。
+
+**水象强的你：** 你的成长在于建立兼顾保护而非隔绝的边界。你的共情加上自护就是超能力。
+
+在 lunaxstar.com/natal 生成你的完整星盘，阅读编码在你出生时刻的情感蓝图。` },
+    readTime: 8, tags: ['attachment', 'psychology', 'relationships', 'zodiac'],
+  },
+  {
+    id: "343", slug: "pluto-shadow-work-343",
+    category: "astrology", categoryZh: "情感心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: `冥王星与阴影工作——占星心理学深度指南`, en: `Pluto and Shadow Work: An Astrological Psychology Guide` },
+    excerpt: { zh: `冥王星揭示你最深的心理模式。它的落座和宫位指向你的阴影——你必须整合的那部分自己。`, en: `Pluto reveals your deepest psychological patterns. Its sign and house point to your shadow — the parts of yourself you must integrate.` },
+    content: { en: `# Pluto and Shadow Work
+
+Carl Jung wrote that until you make the unconscious conscious, it will direct your life and you will call it fate. In astrology, Pluto is that unconscious. It governs the parts of yourself you hide, repress, and project onto others. Shadow work — the practice of integrating these hidden aspects — is Pluto's domain.
+
+## What Your Pluto Sign Reveals
+
+Your Pluto sign (the same for everyone born within roughly 15 years of you) shows the generational shadow you carry. Pluto in Leo (1939-1957): the shadow of ego, the need to be special. Pluto in Virgo (1957-1971): the shadow of perfectionism, the terror of being flawed. Pluto in Libra (1971-1984): the shadow of codependency, losing yourself in relationship. Pluto in Scorpio (1984-1995): the shadow of control, power struggles, fear of betrayal. Pluto in Sagittarius (1995-2008): the shadow of dogma, the fear that your beliefs might be wrong. Pluto in Capricorn (2008-2024): the shadow of authority, the systems that control us.
+
+## What Your Pluto House Reveals
+
+While your Pluto sign is generational, your Pluto HOUSE is personal. It depends on your exact birth time and reveals WHERE in your life the shadow work is happening.
+
+**Pluto in 1st House:** Your sense of self is the battleground. You have likely been through radical identity transformations. Your shadow is around power and personal authority.
+
+**Pluto in 7th House:** Relationships are your crucible. You are drawn to intense, transformative partnerships. Your shadow involves control dynamics with others.
+
+**Pluto in 10th House:** Career and public life are where you transform. Power struggles with authority figures define your path. Your shadow is around ambition and legacy.
+
+## How to Work With Pluto
+
+Pluto transits are slow — it takes 248 years to circle the zodiac. When Pluto aspects a personal planet in your chart, expect a multi-year deep renovation of that area of your life. You do not "survive" Pluto. You become someone new.
+
+The first step is knowing where Pluto sits. Generate your full natal chart at lunaxstar.com/natal — find Pluto's sign and house. That is where your shadow waits to become your strength.`, zh: `# 冥王星与阴影工作
+
+荣格写道：在无意识被意识化之前，它将指挥你的人生，而你会称它为命运。在占星中，冥王星就是那个无意识。
+
+## 你的冥王星座揭示什么
+
+你的冥王星座（与你出生时期前后约15年的人相同）显示你携带的世代阴影。冥王天秤（1971-1984）：共生依赖、在关系中失去自己。冥王天蝎（1984-1995）：控制欲、权力斗争、被背叛恐惧。冥王射手（1995-2008）：教条主义、害怕自己的信念是错的。冥王摩羯（2008-2024）：权威阴影、控制我们的体制。
+
+## 你的冥王宫位揭示什么
+
+冥王星座是世代的，但冥王宫位是个人的——它取决于你的精确出生时间，揭示你生活中哪个领域正在进行阴影工作。
+
+**冥王第一宫：** 自我感是战场。你可能经历过彻底的身份蜕变。
+**冥王第七宫：** 关系是你的坩埚。你被激烈、有转变力的伴侣所吸引。
+**冥王第十宫：** 事业和公众生活是你蜕变的地方。
+
+在 lunaxstar.com/natal 找到你的冥王星座和宫位。那就是你的阴影等待变为力量的地方。` },
+    readTime: 8, tags: ['pluto', 'shadow-work', 'psychology', 'transformation'],
+  },
+  {
+    id: "344", slug: "bazi-spouse-palace-relationships-344",
+    category: "bazi", categoryZh: "情感心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: `八字夫妻宫全解析——你的命盘如何描述你的感情模式`, en: `BaZi Spouse Palace: What Your Chart Reveals About Your Love Patterns` },
+    excerpt: { zh: `八字日柱地支就是你的夫妻宫。它描述你未来的伴侣特质、你的婚姻质感、以及为什么你总是被某一类人吸引。`, en: `Your Day Pillar Branch IS your Spouse Palace. It describes your partner, your marriage, and why you keep dating the same person in different bodies.` },
+    content: { en: `# BaZi Spouse Palace: What Your Chart Reveals About Your Love Patterns
+
+Have you ever noticed that you keep dating the same person — different face, same dynamic? Your BaZi chart explains why.
+
+Your Day Pillar's Earthly Branch is called the Spouse Palace (夫妻宫). It sits directly under your Day Master — the YOU in the chart. This palace describes the type of partner you are drawn to, the quality of your marriage, and the unconscious patterns that run your romantic life.
+
+## Reading Your Spouse Palace
+
+Each of the 12 Earthly Branches has specific partner archetypes:
+
+**子 (Rat) Spouse Palace:** You are attracted to clever, resourceful partners. Your spouse may be intellectually sharp, socially skilled, and financially savvy. The challenge: you may prioritize wit over warmth.
+
+**午 (Horse) Spouse Palace:** You are attracted to energetic, independent partners. Your spouse may be passionate, adventurous, and strong-willed. The challenge: independence can become distance if unmanaged.
+
+**卯 (Rabbit) Spouse Palace:** You are attracted to gentle, artistic partners. Your spouse may be refined, diplomatic, and aesthetically sensitive. The challenge: avoidance of conflict can build silent resentment.
+
+**酉 (Rooster) Spouse Palace:** You are attracted to confident, precise partners. Your spouse may be detail-oriented, direct, and impeccably dressed. The challenge: bluntness can wound without intention.
+
+## Clashes and Combinations
+
+If your Spouse Palace clashes with the current year's Branch, expect relationship turbulence. If the year's Branch combines harmoniously with your Spouse Palace, expect opportunity in love.
+
+The year 2026 is 午 (Horse). If your Spouse Palace is 子 (Rat), this is a clash year — relationship dynamics will be tested. If your Spouse Palace is 未 (Goat) or 寅 (Tiger), this is a harmony year — supportive energies flow.
+
+Generate your BaZi chart at lunaxstar.com/bazi. Your Spouse Palace is literally one character in your chart. Once you know it, you understand the gravitational pull that has been steering your love life.`, zh: `# 八字夫妻宫全解析
+
+你有没有发现你总是在和同一个人谈恋爱——不同的脸，同样模式？你的八字解释了一切。
+
+你的日柱地支就是夫妻宫。它坐在你的日主下面——盘中代表"你"的那个字下面就是"你的配偶"。这个位置描述你被哪类人吸引、你的婚姻质感、以及操控你感情生活的无意识规律。
+
+## 读懂你的夫妻宫
+
+**子（鼠）夫妻宫：** 你被聪明、有智慧的伴侣吸引。配偶可能智力出众、社交能干、理财敏锐。挑战：你可能看重机智甚于温暖。
+
+**午（马）夫妻宫：**你被精力充沛、独立的伴侣吸引。配偶可能热情、冒险、意志坚强。挑战：独立若不处理会变成距离。
+
+**卯（兔）夫妻宫：** 你被温柔、艺术的伴侣吸引。配偶可能优雅、圆滑、审美敏锐。挑战：回避冲突会积累沉默的怨恨。
+
+**酉（鸡）夫妻宫：** 你被自信、精准的伴侣吸引。配偶可能注重细节、直言不讳、衣着讲究。挑战：直率可能无意伤人。
+
+## 冲合
+
+如果你的夫妻宫和今年的地支相冲——感情充满考验。相合——爱有机遇。
+
+2026 年午（马）。你的夫妻宫子（鼠）冲——关系将被检验。如果夫妻宫未（羊）或寅（虎）合——支持能量流动。
+
+在 lunaxstar.com/bazi 生成你的八字——夫妻宫就是盘里的一个字。知道它，你就懂了是什么引力一直在主导你的爱情。` },
+    readTime: 8, tags: ['bazi', 'spouse-palace', 'love', 'relationships'],
+  },
 ];
