@@ -12070,4 +12070,216 @@ Generate your BaZi chart at lunaxstar.com/bazi. Your Spouse Palace is literally 
 在 lunaxstar.com/bazi 生成你的八字——夫妻宫就是盘里的一个字。知道它，你就懂了是什么引力一直在主导你的爱情。` },
     readTime: 8, tags: ['bazi', 'spouse-palace', 'love', 'relationships'],
   },
+  {
+    id: "345", slug: "saturn-return-survival-345",
+    category: "astrology", categoryZh: "情感心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: `土星回归生存指南——29岁的人生转折`, en: `Saturn Return Survival Guide: Navigating Life at 29` },
+    excerpt: { zh: `29岁左右崩溃了？不，你在经历土星回归。它在拆除不需要的、留下真正的根基。`, en: `Falling apart at 29? You are going through your Saturn return — demolition and reconstruction.` },
+    content: { en: `# Saturn Return Survival Guide
+
+Around age 29, something shifts. The Saturn return is your astrological upgrade — whether you want it or not.
+
+## What Happens
+
+Saturn takes 29 years to orbit the Sun. When it returns to your birth position, you level up. Relationships that survive this are real. Career paths that endure are yours.
+
+## Why It Is Hard
+
+Saturn strips what you built to please others. What remains is your authentic life skeleton.
+
+## The Second Return (56-60)
+
+Saturn returns again to review your adult life. The questions are harder: Did I build meaning? Am I ready to leave a legacy?
+
+## How to Navigate
+
+1. Do not resist what Saturn removes.
+2. Do the work in whatever house Saturn transits.
+3. Find a mentor who has been through theirs.
+4. Get your chart at lunaxstar.com/natal to see which house Saturn occupies.`, zh: `# 土星回归生存指南
+
+29岁左右，什么都变了。你正在经历土星回归——不管你愿不愿意。
+
+## 发生了什么
+
+土星绕太阳一圈大约29年。当它回到你出生时的位置，你升级了。能活过这次回归的关系是真的。能活过的事业是你的。
+
+## 为什么这么难
+
+土星剥掉的是你为了取悦别人建立的东西。剩下的是你真实人生的骨架。
+
+## 第二次回归（56-60岁）
+
+土星回来审查你的成年人生。问题更难：我建设了有意义的东西吗？我准备好留下遗产了吗？
+
+## 如何穿过
+
+1. 不要抵抗土星拿走的东西。
+2. 在土星正经过的宫位领域投入行动。
+3. 找一个经历过自己土星回归的导师。
+4. 在 lunaxstar.com/natal 免费生成星盘——看土星落在哪个宫位。` },
+    readTime: 8, tags: ["saturn", "psychology", "growth"],
+  },
+  {
+    id: "346", slug: "chiron-wound-gift-346",
+    category: "astrology", categoryZh: "情感心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: `凯龙——你最深处的伤，最终成为你的礼物`, en: `Chiron: Your Deepest Wound Becomes Your Greatest Gift` },
+    excerpt: { zh: `每个人的出生星盘都有凯龙——它指向你最深的伤痛，也是你为世界提供的最大价值。`, en: `Chiron points to your deepest wound — and your greatest gift to the world. The Wounded Healer paradox.` },
+    content: { en: `# Chiron: Your Deepest Wound Becomes Your Greatest Gift
+
+In Greek myth, Chiron was a healer who could not heal himself. His unhealable wound became his wisdom. In astrology, Chiron represents the same paradox.
+
+## Chiron Through the Signs
+
+**Chiron in Aries:** Wound in identity — not being seen. Gift: teaching radical self-acceptance.
+**Chiron in Taurus:** Wound in security — losing what you loved. Gift: teaching others they have enough.
+**Chiron in Gemini:** Wound in communication — being silenced. Gift: giving voice to the voiceless.
+**Chiron in Cancer:** Wound in belonging — feeling homeless. Gift: creating home for others.
+**Chiron in Leo:** Wound in creative expression — told not to shine. Gift: giving others permission to take the stage.
+**Chiron in Virgo:** Wound in imperfection — being told you are flawed. Gift: teaching wholeness includes broken parts.
+**Chiron in Libra:** Wound in relationships — betrayal. Gift: modeling healthy partnership.
+**Chiron in Scorpio:** Wound in power — violation, control. Gift: guiding others through darkness.
+**Chiron in Sagittarius:** Wound in meaning — losing faith. Gift: helping others find purpose.
+**Chiron in Capricorn:** Wound in achievement — never enough. Gift: redefining success.
+**Chiron in Aquarius:** Wound in belonging — feeling alien. Gift: teaching weirdness is power.
+**Chiron in Pisces:** Wound in the soul — feeling unworthy. Gift: bridging material and spiritual.
+
+Find your Chiron at lunaxstar.com/natal.`, zh: `# 凯龙——你最深处的伤，最终成为你的礼物
+
+希腊神话里，凯龙是治不了自己的治疗者。他的伤成了他的智慧。占星中，凯龙是同一悖论。
+
+## 凯龙穿过十二星座
+
+**凯龙白羊：** 伤口在身份认同。礼物：彻底的自我接纳。
+**凯龙金牛：** 伤口在安全感。礼物：足够。
+**凯龙双子：** 伤口在沟通。礼物：给无声者声音。
+**凯龙巨蟹：** 伤口在归属。礼物：为无家者造家。
+**凯龙狮子：** 伤口在表达。礼物：给别人走上舞台的许可。
+**凯龙处女：** 伤口在不完美。礼物：完整包含破碎。
+**凯龙天秤：** 伤口在关系。礼物：健康的边界。
+**凯龙天蝎：** 伤口在权力。礼物：带人穿过黑暗。
+**凯龙射手：** 伤口在意义。礼物：找到目标。
+**凯龙摩羯：** 伤口在成就。礼物：重新定义成功。
+**凯龙水瓶：** 伤口在归属感。礼物：怪异就是力量。
+**凯龙双鱼：** 伤口在灵魂。礼物：物质和灵性的桥梁。
+
+在 lunaxstar.com/natal 找到你的凯龙。` },
+    readTime: 8, tags: ["chiron", "healing", "psychology"],
+  },
+  {
+    id: "347", slug: "north-node-life-purpose-347",
+    category: "astrology", categoryZh: "情感心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: `北交点——你此生的灵魂目标`, en: `North Node: Your Soul Purpose in This Lifetime` },
+    excerpt: { zh: `北交点不是你想要的——是你灵魂选择来学习的。它指向人生最深的满足感。`, en: `Your North Node is what your soul chose to learn in this lifetime. It points to your deepest fulfillment.` },
+    content: { en: `# North Node: Your Soul Purpose
+
+Your North Node points to your soul direction. The South Node — opposite — is your past-life mastery. Things that come too easily.
+
+## North Node Through the Signs
+
+**North Node in Aries:** You master independence. Learn to put yourself first.
+**North Node in Taurus:** You master stability. Peace is the prize, not boring.
+**North Node in Gemini:** You master communication. Share wisdom in words people understand.
+**North Node in Cancer:** You master emotional vulnerability. Learn to feel.
+**North Node in Leo:** You master creative self-expression. Own your light.
+**North Node in Virgo:** You master service. Bring heaven to earth through action.
+**North Node in Libra:** You master partnership. Learn to lean on someone.
+**North Node in Scorpio:** You master depth. The only way out is through.
+**North Node in Sagittarius:** You master faith. Synthesize knowledge into wisdom.
+**North Node in Capricorn:** You master achievement. Build something that outlasts you.
+**North Node in Aquarius:** You master collective vision. Shine for the collective.
+**North Node in Pisces:** You master surrender. Magic lives beyond control.
+
+Find your Nodes at lunaxstar.com/natal.`, zh: `# 北交点——你此生的灵魂目标
+
+北交点指向灵魂成长方向。南交点——对面——是前世的熟练领域。
+
+## 北交穿过十二星座
+
+**北交白羊：** 学习独立。
+**北交金牛：** 学习稳定。
+**北交双子：** 学习沟通。
+**北交巨蟹：** 学习感受。
+**北交狮子：** 学习表达。
+**北交处女：** 学习服务。
+**北交天秤：** 学习伙伴关系。
+**北交天蝎：** 学习深度。
+**北交射手：** 学习信念。
+**北交摩羯：** 学习成就。
+**北交水瓶：** 学习集体愿景。
+**北交双鱼：** 学习臣服。
+
+在 lunaxstar.com/natal 找到你的南北交点。` },
+    readTime: 8, tags: ["north-node", "purpose", "soul"],
+  },
+  {
+    id: "348", slug: "emotional-intelligence-day-master-348",
+    category: "bazi", categoryZh: "情感心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: `八字日主与情商——你的五行如何塑造你的情绪`, en: `BaZi Day Master and Emotional Intelligence` },
+    excerpt: { zh: `你的日主不仅影响性格——它揭示了你处理情绪的方式。十种日主，十种情绪蓝图。`, en: `Your Day Master reveals how you process emotions. Ten Day Masters, ten emotional blueprints.` },
+    content: { en: `# BaZi Day Master and Emotional Intelligence
+
+Each of the 10 Day Masters has a distinct emotional operating system.
+
+## Wood: Yang Wood acts on emotions. Yin Wood bends around them.
+## Fire: Yang Fire broadcasts feelings. Yin Fire focuses them intensely.
+## Earth: Yang Earth absorbs slowly, releases slower. Yin Earth nurtures others' feelings first.
+## Metal: Yang Metal cuts through emotions with sharp clarity. Yin Metal refines them meticulously.
+## Water: Yang Water holds vast emotional depths beneath a calm surface. Yin Water absorbs the emotional weather of every room.
+
+Find your Day Master at lunaxstar.com/bazi — it is literally the first character in your chart.`, zh: `# 八字日主与情商
+
+十个日主，十种情绪操作系统。
+
+**木：** 甲木以行动处理情绪。乙木绕着别人情绪弯来弯去。
+**火：** 丙火广播感受。丁火把情绪聚焦点燃。
+**土：** 戊土缓慢吸收、更慢释放。己土先养别人再顾及自己。
+**金：** 庚金用锋利的清晰切开情绪。辛金把情绪精雕细琢。
+**水：** 壬水平静表面下藏着浩瀚的深处。癸水吸收每个房间的情绪天气。
+
+在 lunaxstar.com/bazi 找到你的日主——盘里第一个字。` },
+    readTime: 8, tags: ["bazi", "day-master", "emotional-intelligence"],
+  },
+  {
+    id: "349", slug: "zodiac-self-care-guide-349",
+    category: "astrology", categoryZh: "情感心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: `根据星座设计你的自我关怀——占星心理学的日常实践`, en: `Self-Care Based on Your Zodiac Sign` },
+    excerpt: { zh: `通用自我关怀对火象太闷、对水象太浅。你的星座需要独特的情感补给策略。`, en: `Generic self-care fails. Your zodiac element needs a customized emotional refueling strategy.` },
+    content: { en: `# Self-Care Based on Your Zodiac Sign
+
+Generic advice works for almost no one. Your zodiac element reveals what actually recharges you.
+
+## Fire Signs: Self-Care Through Action
+
+Aries, Leo, Sagittarius: stillness drains you. Self-care is a sprint, a dance, a hard workout. Action IS your meditation.
+
+## Earth Signs: Self-Care Through Sensation
+
+Taurus, Virgo, Capricorn: you recharge through the physical. Good food, soft fabrics, quality over novelty.
+
+## Air Signs: Self-Care Through Connection
+
+Gemini, Libra, Aquarius: ideas and conversation fuel you. A deep talk, a great book, stimulating company.
+
+## Water Signs: Self-Care Through Feeling
+
+Cancer, Scorpio, Pisces: permission to feel is your medicine. Water, music, art — things that bypass the rational and reach the soul.
+
+Find both your Sun and Moon signs at lunaxstar.com/natal for a complete self-care blueprint.`, zh: `# 根据星座设计你的自我关怀
+
+通用自我关怀几乎对谁都没用。你的星座元素揭示真正能给你充电的东西。
+
+**火象：** 通过行动来关怀。冲刺、舞蹈、高强度训练——行动就是冥想。
+**土象：** 通过感官来关怀。好的食物、柔软的织物——质量重于新鲜。
+**风象：** 通过连接来关怀。深谈、好书、激发灵感的对话。
+**水象：** 通过感受来关怀。允许自己哭、允许自己感受。水、音乐、艺术。
+
+在 lunaxstar.com/natal 找到你的太阳和月亮星座——建立自己的自我关怀体系。` },
+    readTime: 8, tags: ["self-care", "zodiac", "wellness", "psychology"],
+  },
 ];
