@@ -10466,113 +10466,49 @@ After 15 years as a Feng Shui practitioner, I have heard every myth. Let me clea
 **9. Online Calculations Are Unreliable.** Lunaxstar.com uses NASA-grade Swiss Ephemeris.
 **10. BaZi and Western Astrology Conflict.** They are two lenses on the same person.
 
-Generate your chart free at lunaxstar.com/bazi.`, zh: `风水师逐条破除最常见八字误解。免费获取完整解读在 lunaxstar.com。` },
-    readTime: 6, tags: ['bazi', 'misconceptions', 'guide'],
-  },
-  {
-    id: "271", slug: "pick-auspicious-dates-271",
-    category: "bazi", categoryZh: "八字进阶", categoryEn: "BaZi", categoryId: "BaZi",
-    date: "2026-07-04",
-    title: { zh: `如何用八字选吉日`, en: `How to Pick Auspicious Dates Using BaZi` },
-    excerpt: { zh: `从婚礼到开业——根据个人八字选吉日而非通用黄历。`, en: `Go beyond the generic Chinese almanac. Pick dates personalized to your BaZi chart.` },
-    content: { en: `# How to Pick Auspicious Dates
+Generate your chart free at lunaxstar.com/bazi.`, zh: `# 八字最常见的10个误解——风水师逐一破除
 
-Most people open a Chinese almanac and pick whatever day says auspicious. That is like wearing someone else's prescription glasses. Here is how a Feng Shui practitioner picks dates personalized to YOUR chart.
+做了 15 年风水师，每一个关于八字的误解我都听过。"是不是就是中国算命？""命盘定了就不能改了？""穿红内裤能改运？"让我把最顽固的十个误解，一个个说清楚。
 
-## Five Steps
+## 1. "八字是宿命论——你改变不了命运"
 
-**1. Know your Day Master.** The Heavenly Stem of your Day Pillar is YOU.
-**2. Know your goal.** Marriage needs Spouse Palace support. Business needs Wealth star activation.
-**3. Avoid clashes with YOUR Day Pillar Branch.** Rat day person? Avoid Horse days.
-**4. Seek Six Harmony or Three Harmony combinations** with your Day Branch.
-**5. Check the month too.** A great day in a bad month is undermined.
+这是最大的误解，每次听到都让我牙痒。八字不是监狱判决书，而是天气预报。你的命盘告诉你接下来十年会下雨还是晴天。它不会替你做决定——你可以选择关窗抱怨，也可以拿伞出门。
 
-Real example: A Yang Wood client with Tiger Day Branch. We picked a Horse day in spring (Wood season supports her) — Horse and Tiger form Three Harmony. Ten years married.
+## 2. "看生肖就够了"
 
-Generate your chart at lunaxstar.com/bazi.`, zh: `从婚礼到开业——根据个人八字选吉日而非通用黄历。。免费获取完整解读在 lunaxstar.com。` },
-    readTime: 6, tags: ['bazi', 'dates', 'auspicious'],
-  },
-  {
-    id: "272", slug: "sixty-year-cycle-272",
-    category: "bazi", categoryZh: "八字进阶", categoryEn: "BaZi", categoryId: "BaZi",
-    date: "2026-07-04",
-    title: { zh: `六十甲子完全解析`, en: `The 60-Year Sexagenary Cycle Explained` },
-    excerpt: { zh: `天干地支怎样组合成60年周期，为什么你的出生年份元素很重要。`, en: `Understand the backbone of Chinese metaphysics — the 60-year Stem-Branch cycle.` },
-    content: { en: `# The 60-Year Sexagenary Cycle
+多赚一块钱我早退休了。你的生肖动物只是你命盘的四分之一。月柱、日柱、时柱带的信息比年柱具体得多。
 
-The cycle has been running since 2637 BCE. 2026 is 丙午: Yang Fire on Horse. Understanding it helps you decode why certain years feel different.
+## 3. "你得会中文才懂"
 
-## Building Blocks
+八字确实用汉字和古典概念，但逻辑是通用的。五行理论是自然模型。你不需要懂文言文就能明白火太多会烧干资源。lunaxstar.com 用八种语言呈现一切——不需要古文基础。
 
-**10 Heavenly Stems:** 甲乙丙丁戊己庚辛壬癸 — each Yang/Yin pair tied to one of the Five Elements.
-**12 Earthly Branches:** 子丑寅卯辰巳午未申酉戌亥 — each associated with a zodiac animal and element.
+## 4. "坏的五行要删掉"
 
-10 x 12 = 60 unique combinations. Your birth year sits in this cycle.
+你的命盘是一个系统，不是待办清单。一个"不好"的元素可能恰恰是唯一在平衡你的东西。我见过太多命盘——去掉"多余"的金属性，整个结构就塌了。每根梁都受力，但少一根桥就断。
 
-## Why It Matters
+## 5. "有财运就一定会发财"
 
-Your Year Pillar interacts with every luck cycle. When the current year combines with or clashes against your Year Pillar, you feel it. Some years feel lucky. Others feel uphill. The pattern repeats every 60 years.
+正财星很好——但前提是你日主足够强来掌控它。身弱财旺就像一个小孩抱着百万美金站在危险的街头。钱会被抢走。先修自己。
 
-Find your Year Pillar free at lunaxstar.com/bazi.`, zh: `天干地支怎样组合成60年周期，为什么你的出生年份元素很重要。。免费获取完整解读在 lunaxstar.com。` },
-    readTime: 6, tags: ['bazi', 'sexagenary', 'cycle'],
-  },
-  {
-    id: "273", slug: "bazi-love-deep-273",
-    category: "compatibility", categoryZh: "八字进阶", categoryEn: "BaZi", categoryId: "BaZi",
-    date: "2026-07-04",
-    title: { zh: `八字合婚深度指南`, en: `BaZi Love Compatibility: Beyond Zodiac Animals` },
-    excerpt: { zh: `比生肖配对更准——日主和谐、五行互补、夫妻宫深度解读。`, en: `Go three levels deeper than animal zodiac matching for real BaZi synastry.` },
-    content: { en: `# BaZi Love Compatibility: Beyond Zodiac Animals
+## 6. "生肖相冲不能结婚"
 
-Animal zodiac matching is entertainment. Real compatibility goes three levels deeper.
+每年情人节都有人慌——"我是属鼠的，他是属马的，不配！"放轻松。动物的配对只是八字最表面那一层。真正的合婚要看日主和谐、五行平衡、夫妻宫。我见过"相冲"生肖的夫妻，因为五行盘完美互补，婚姻非常幸福。
 
-## Level 1: Day Master Harmony
+## 7. "八字能预测具体事件"
 
-Wood Day Master + Water Day Master: Water feeds Wood. Natural support. Wood + Metal: Metal chops Wood. Friction needs conscious management.
+八字描述能量模式，不是具体事件。它会告诉你财星大运正在激活——不会告诉你要买哪只股票。它是指南针，不是 GPS。
 
-## Level 2: Spouse Palace Interaction
+## 8. "算一次就够了"
 
-The Earthly Branch of your Day Pillar IS your Spouse Palace. Harmony between two Day Branches creates ease. Clash creates fireworks.
+你的八字出生时是固定了，但你的大运每十年一变（每年变流年）。同一个命盘，在不同的大运周期里反应完全不同。某个水兔年对一种日主是顺风顺水，对另一种是危机。年度运势很重要。
 
-## Level 3: Elemental Balance
+## 9. "网上算的不准"
 
-Does your partner supply the element you are missing? Complementarity matters more than similarity.
+大多数确实不准。所以 lunaxstar.com 用 Swiss Ephemeris——NASA 级别的天文数据——而不是简化公式。你的星盘精度达到角秒级别——职业占星师用的同一个引擎。
 
-Check both charts free at lunaxstar.com/compatibility/bazi.`, zh: `比生肖配对更准——日主和谐、五行互补、夫妻宫深度解读。。免费获取完整解读在 lunaxstar.com。` },
-    readTime: 6, tags: ['bazi', 'compatibility', 'love'],
-  },
-  {
-    id: "274", slug: "ai-changing-astrology-274",
-    category: "astrology", categoryZh: "八字进阶", categoryEn: "BaZi", categoryId: "BaZi",
-    date: "2026-07-04",
-    title: { zh: `AI正在改变占星和八字`, en: `How AI Is Changing Astrology and BaZi` },
-    excerpt: { zh: `从Groq到DeepSeek，大语言模型如何改变占星解读。`, en: `Large language models are transforming how we access astrology.` },
-    content: { en: `# How AI Is Changing Astrology and BaZi
+## 10. "八字和星座冲突"
 
-Three years ago, a BaZi reading meant booking a master for weeks and paying $100-500. Today, you open lunaxstar.com and get a reading in seconds — powered by the same LLMs behind ChatGPT.
-
-## What AI Does Better
-**Consistency.** No fatigue. No bad days. Same logic every time.
-**Pattern Recognition.** Compare your chart against thousands of known patterns instantly.
-**Accessibility.** Instant, free, and multi-language — breaking down historical gatekeeping.
-
-## What AI Still Cannot Do
-**Intuition.** Masters feel charts. AI follows patterns.
-**Cultural context.** Delivery matters as much as accuracy.
-**Live adaptation.** Humans read body language and adjust tone.
-
-## The Sweet Spot
-AI as first pass + human interpretation = 10x more clients at lower cost with higher accuracy. For those who cannot afford a master, lunaxstar.com provides the free starting point.
-
-Generate your AI reading at lunaxstar.com/bazi.`, zh: `从Groq到DeepSeek，大语言模型如何改变占星解读。。免费获取完整解读在 lunaxstar.com。` },
-    readTime: 6, tags: ['ai', 'astrology', 'deepseek', 'trends'],
-  },
-  {
-    id: "275", slug: "venus-in-aries-meaning-275",
-    category: "astrology", categoryZh: "行星落座", categoryEn: "Planets in Signs", categoryId: "Planet dalam Zodiak",
-    date: "2026-07-04",
-    title: {
-      zh: `金星落在白羊座的含义：love风格解读`,
+它们不冲突。它们是同一人的两个镜头。西方占星读的是行星能量，八字看的是五行动力。狮子座太阳配甲木日主完全说得通：都是主导、创造、天生的领导。两个系统一起用，才能看到 3D 立体版的自己。`,
       en: `Venus in Aries: Love style, attraction, values, beauty, romance`,
       id: `Venus di Aries: Love style, attraction, values, beauty, romance`,
     },
@@ -11526,5 +11462,120 @@ Generate your AI reading at lunaxstar.com/bazi.`, zh: `从Groq到DeepSeek，大�
       zh: `# 太阳落在双鱼座\n\n太阳落在双鱼座时，你的core风格带有双鱼座的compassionate, artistic, escapist特质。在 lunaxstar.com/natal 免费生成完整星盘查看所有行星落座。`,
     },
     readTime: 3, tags: ["pisces", "sun", "astrology", "birth-chart"],
+  },
+  {
+    id: "271", slug: "pick-auspicious-dates-271",
+    category: "bazi", categoryZh: "八字进阶", categoryEn: "BaZi", categoryId: "BaZi",
+    date: "2026-07-04",
+    title: { zh: `如何用八字选吉日`, en: `How to Pick Auspicious Dates Using BaZi` },
+    excerpt: { zh: `从婚礼到开业——根据个人八字选吉日而非通用黄历。五步择日法。`, en: `Go beyond the generic Chinese almanac. Pick dates personalized to BaZi chart.` },
+    content: { en: `# How to Pick Auspicious Dates
+
+Most people open an almanac and pick whatever day says auspicious. That is wearing someone else's prescription glasses. Here is a 5-step Feng Shui method personalized to your chart.
+
+**Step 1: Know your Day Master.** Your Day Pillar Stem is YOU.
+**Step 2: Know your goal.** Marriage needs Spouse Palace support. Business needs Wealth star activation.
+**Step 3: Avoid clashes.** Rat day? Avoid Horse. Tiger day? Avoid Monkey.
+**Step 4: Seek combination.** Six Harmony or Three Harmony with your Day Branch is gold.
+**Step 5: Check the month.** A great day in a bad month is undermined.
+
+Real case: Yang Wood, Tiger Branch. Horse day in spring. Tiger+Horse = Three Harmony. Married 10 years.
+
+Generate your chart at lunaxstar.com/bazi.`, zh: `# 如何用八字选吉日
+
+大多数人翻开通用黄历，找到宜嫁娶就定了。这就像因为别人眼镜框好看就拿过来戴——度数不对会头晕。
+
+## 五步择日法
+
+**一、知日主。** 你日柱的天干就是你自己。
+**二、知所求。** 结婚找夫妻宫生旺的日。开业找财星被激活的日。
+**三、避正冲。** 子日人避开午日。寅日人避开申日。
+**四、求合。** 择日地支与日支六合或三合——金标准。
+**五、看月。** 日好月差打折扣。月柱冲命盘就推迟。
+
+## 真实案例
+
+甲木日主，日支寅。春季选午日——寅午三合。婚后十年美满。
+
+在 lunaxstar.com/bazi 生成你的八字亲自试。` },
+    readTime: 6, tags: ['bazi', 'dates', 'auspicious'],
+  },
+  {
+    id: "272", slug: "sixty-year-cycle-272",
+    category: "bazi", categoryZh: "八字进阶", categoryEn: "BaZi", categoryId: "BaZi",
+    date: "2026-07-04",
+    title: { zh: `六十甲子完全解析`, en: `The 60-Year Sexagenary Cycle Explained` },
+    excerpt: { zh: `从公元前2637年至今——六十甲子编码每一年。你的出生年份就在循环里。`, en: `Running since 2637 BCE, the 60-year Stem-Branch cycle encodes every year.` },
+    content: { en: `# The 60-Year Sexagenary Cycle
+
+2024: Wood Dragon. 2025: Wood Snake. 2026: Fire Horse. These names come from the Sexagenary Cycle — running since 2637 BCE.
+
+**10 Heavenly Stems** each tied to a Five Element in Yang/Yin form.
+**12 Earthly Branches** each tied to a zodiac animal and element.
+
+10 x 12 = 60 unique combinations. Your birth year sits in this cycle. When the current year combines with your Year Pillar: support. When it clashes: turbulence. The pattern repeats every 60 years.
+
+Find your Year Pillar free at lunaxstar.com/bazi.`, zh: `# 六十甲子完全解析
+
+2024 甲辰。2025 乙巳。2026 丙午。这些名字出自六十甲子——从公元前 2637 年不间断运转至今。
+
+**十天干**每对一五行分阴阳。**十二地支**各配生肖和五行。
+
+10 × 12 = 60 独一无二组合。你的出生年份就坐在这个循环里。
+
+当年份天干地支与你年柱合——支持。冲——动荡。模式每 60 年精确重放。
+
+在 lunaxstar.com/bazi 找到你的年柱。` },
+    readTime: 6, tags: ['bazi', 'sexagenary', 'cycle'],
+  },
+  {
+    id: "273", slug: "bazi-love-deep-273",
+    category: "compatibility", categoryZh: "八字进阶", categoryEn: "BaZi", categoryId: "BaZi",
+    date: "2026-07-04",
+    title: { zh: `八字合婚深度指南`, en: `BaZi Love Compatibility: Beyond Zodiac Animals` },
+    excerpt: { zh: `比生肖配对更准——日主和谐、夫妻宫互动、五行调候三层解读。`, en: `Three levels deeper than animal zodiac matching: Day Master, Spouse Palace, Element balance.` },
+    content: { en: `# BaZi Love Compatibility: Beyond Zodiac Animals
+
+Animal zodiac matching is entertainment. Real synastry has three levels.
+
+**Level 1: Day Master Harmony.** Wood feeds Fire. Water feeds Wood. When Day Masters support through the generation cycle, the relationship flows naturally.
+**Level 2: Spouse Palace.** Your Day Pillar Branch IS your Spouse Palace. Harmony creates ease. Clash creates fireworks.
+**Level 3: Elemental Balance.** Your missing element, your partner has in excess — this stabilizes you. Complementarity over similarity.
+
+Check both charts at lunaxstar.com/compatibility/bazi.`, zh: `# 八字合婚深度指南
+
+生肖匹配是娱乐。真合婚三层。
+
+**第一层：日主和谐。** 木生火，水生木。日主在相生循环中互为支撑，关系自然顺畅。
+**第二层：夫妻宫。** 日柱地支就是夫妻宫。合则和谐，冲则爆点。
+**第三层：五行互补。** 你缺的元素伴侣过量——这就是调候。互补才能走到一起。
+
+在 lunaxstar.com/compatibility/bazi 输入双方生辰看完整合盘。` },
+    readTime: 6, tags: ['bazi', 'compatibility', 'love'],
+  },
+  {
+    id: "274", slug: "ai-changing-astrology-274",
+    category: "astrology", categoryZh: "八字进阶", categoryEn: "BaZi", categoryId: "BaZi",
+    date: "2026-07-04",
+    title: { zh: `AI正在改变占星和八字`, en: `How AI Is Changing Astrology and BaZi` },
+    excerpt: { zh: `从ChatGPT到DeepSeek，大语言模型重塑占星——一位风水师兼AI建造者的诚实判断。`, en: `LLMs are transforming astrological access. A Feng Shui practitioner and AI builder weighs in.` },
+    content: { en: `# How AI Is Changing Astrology and BaZi
+
+Three years ago: book a master, wait weeks, pay $500. Today: open lunaxstar.com, get a reading in seconds.
+
+**What AI Does Better:** Consistency (no fatigue), pattern recognition (thousands of charts), accessibility (free, multilingual).
+**What AI Cannot Do:** Intuition (masters feel charts), cultural context (wisdom of delivery), live adaptation (reading body language).
+
+**The Future:** AI first pass + human depth. 10x clients at lower cost with better accuracy. For those who cannot afford a master, lunaxstar.com provides the free starting point.
+
+Generate your AI reading at lunaxstar.com/bazi.`, zh: `# AI正在改变占星和八字
+
+三年前：预约大师，等两周，花千元。今天：打开 lunaxstar.com，几秒出解读。
+
+**AI更擅长：** 一致性、模式识别、可及性。
+**AI做不到：** 直觉、文化分寸、即时互动。
+
+**未来：** AI初筛+人类深读。10倍客户更准更便宜。请不起师傅的人，在 lunaxstar.com/bazi 获得免费 AI 入门。` },
+    readTime: 6, tags: ['ai', 'astrology', 'deepseek'],
   },
 ];
