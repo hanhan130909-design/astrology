@@ -12498,4 +12498,412 @@ Find both your Sun and Moon signs at lunaxstar.com/natal for a complete self-car
     content: { en: "Saturn in Pisces brings discipline through compassionate imagination. Responsibility, structure. Get your chart at lunaxstar.com/natal.", zh: "土星在双鱼座带来compassionate imagination的成长方式。在 lunaxstar.com/natal 免费查看。" },
     readTime: 3, tags: ["pisces", "saturn", "astrology", "birth-chart"],
   },
+  {
+    id: "398", slug: "chiron-in-aries-398",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "凯龙在白羊座: 伤口与礼物", en: "Chiron in Aries: Wound & Gift Guide" },
+    excerpt: { zh: "伤口在身份认同。你被告知太过了或不够。你的礼物：彻底的自我接纳。", en: "Your wound is around identity. You were told you are too much or not enough. You" },
+    content: { en: `# Chiron in Aries
+
+Your wound is around identity. You were told you are too much or not enough. Your gift: radical self-acceptance.
+
+Find Chiron at lunaxstar.com/natal.`, zh: `# 凯龙在白羊座
+
+伤口在身份认同。你被告知太过了或不够。你的礼物：彻底的自我接纳。
+
+在 lunaxstar.com/natal 找到你的凯龙。` },
+    readTime: 4, tags: ["chiron", "aries", "healing", "psychology"],
+  },
+  {
+    id: "399", slug: "chiron-in-taurus-399",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "凯龙在金牛座: 伤口与礼物", en: "Chiron in Taurus: Wound & Gift Guide" },
+    excerpt: { zh: "伤口在安全感。你失去了让你感到安全的东西。你的礼物：教别人安全感来自内在。", en: "Your wound is around security. You lost something that made you feel safe. Your " },
+    content: { en: `# Chiron in Taurus
+
+Your wound is around security. You lost something that made you feel safe. Your gift: teaching others security comes from within.
+
+Find Chiron at lunaxstar.com/natal.`, zh: `# 凯龙在金牛座
+
+伤口在安全感。你失去了让你感到安全的东西。你的礼物：教别人安全感来自内在。
+
+在 lunaxstar.com/natal 找到你的凯龙。` },
+    readTime: 4, tags: ["chiron", "taurus", "healing", "psychology"],
+  },
+  {
+    id: "400", slug: "chiron-in-gemini-400",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "凯龙在双子座: 伤口与礼物", en: "Chiron in Gemini: Wound & Gift Guide" },
+    excerpt: { zh: "伤口在沟通。你被沉默或被误解。你的礼物：成为无法说话的人的声音。", en: "Your wound is around communication. You were silenced or misheard. Your gift: be" },
+    content: { en: `# Chiron in Gemini
+
+Your wound is around communication. You were silenced or misheard. Your gift: becoming the voice for those who cannot speak.
+
+Find Chiron at lunaxstar.com/natal.`, zh: `# 凯龙在双子座
+
+伤口在沟通。你被沉默或被误解。你的礼物：成为无法说话的人的声音。
+
+在 lunaxstar.com/natal 找到你的凯龙。` },
+    readTime: 4, tags: ["chiron", "gemini", "healing", "psychology"],
+  },
+  {
+    id: "401", slug: "chiron-in-cancer-401",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "凯龙在巨蟹座: 伤口与礼物", en: "Chiron in Cancer: Wound & Gift Guide" },
+    excerpt: { zh: "伤口在归属。你感到无家可归。你的礼物：为没有家的人创造家。", en: "Your wound is around belonging. You felt homeless — literally or emotionally. Yo" },
+    content: { en: `# Chiron in Cancer
+
+Your wound is around belonging. You felt homeless — literally or emotionally. Your gift: creating home and family for those who have none.
+
+Find Chiron at lunaxstar.com/natal.`, zh: `# 凯龙在巨蟹座
+
+伤口在归属。你感到无家可归。你的礼物：为没有家的人创造家。
+
+在 lunaxstar.com/natal 找到你的凯龙。` },
+    readTime: 4, tags: ["chiron", "cancer", "healing", "psychology"],
+  },
+  {
+    id: "402", slug: "chiron-in-leo-402",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "凯龙在狮子座: 伤口与礼物", en: "Chiron in Leo: Wound & Gift Guide" },
+    excerpt: { zh: "伤口在创意表达。你被告诉熄灭你的光。你的礼物：给别人闪耀的许可。", en: "Your wound is around creative self-expression. You were told to dim your light. " },
+    content: { en: `# Chiron in Leo
+
+Your wound is around creative self-expression. You were told to dim your light. Your gift: giving others permission to shine.
+
+Find Chiron at lunaxstar.com/natal.`, zh: `# 凯龙在狮子座
+
+伤口在创意表达。你被告诉熄灭你的光。你的礼物：给别人闪耀的许可。
+
+在 lunaxstar.com/natal 找到你的凯龙。` },
+    readTime: 4, tags: ["chiron", "leo", "healing", "psychology"],
+  },
+  {
+    id: "403", slug: "chiron-in-virgo-403",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "凯龙在处女座: 伤口与礼物", en: "Chiron in Virgo: Wound & Gift Guide" },
+    excerpt: { zh: "伤口在不完美。你因瑕疵被批评。你的礼物：教导完整包含破碎的部分。", en: "Your wound is around imperfection. You were criticized for being flawed. Your gi" },
+    content: { en: `# Chiron in Virgo
+
+Your wound is around imperfection. You were criticized for being flawed. Your gift: teaching that wholeness includes the broken parts.
+
+Find Chiron at lunaxstar.com/natal.`, zh: `# 凯龙在处女座
+
+伤口在不完美。你因瑕疵被批评。你的礼物：教导完整包含破碎的部分。
+
+在 lunaxstar.com/natal 找到你的凯龙。` },
+    readTime: 4, tags: ["chiron", "virgo", "healing", "psychology"],
+  },
+  {
+    id: "404", slug: "chiron-in-libra-404",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "凯龙在天秤座: 伤口与礼物", en: "Chiron in Libra: Wound & Gift Guide" },
+    excerpt: { zh: "伤口在关系。你经历了背叛或迷失自己。你的礼物：示范健康的边界。", en: "Your wound is in relationships. You experienced betrayal or lost yourself. Your " },
+    content: { en: `# Chiron in Libra
+
+Your wound is in relationships. You experienced betrayal or lost yourself. Your gift: modeling healthy boundaries.
+
+Find Chiron at lunaxstar.com/natal.`, zh: `# 凯龙在天秤座
+
+伤口在关系。你经历了背叛或迷失自己。你的礼物：示范健康的边界。
+
+在 lunaxstar.com/natal 找到你的凯龙。` },
+    readTime: 4, tags: ["chiron", "libra", "healing", "psychology"],
+  },
+  {
+    id: "405", slug: "chiron-in-scorpio-405",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "凯龙在天蝎座: 伤口与礼物", en: "Chiron in Scorpio: Wound & Gift Guide" },
+    excerpt: { zh: "伤口在权力。你经历了侵犯或深度丧失。你的礼物：带领别人穿过最黑暗的蜕变。", en: "Your wound is around power. You experienced violation or deep loss. Your gift: g" },
+    content: { en: `# Chiron in Scorpio
+
+Your wound is around power. You experienced violation or deep loss. Your gift: guiding others through their darkest transformations.
+
+Find Chiron at lunaxstar.com/natal.`, zh: `# 凯龙在天蝎座
+
+伤口在权力。你经历了侵犯或深度丧失。你的礼物：带领别人穿过最黑暗的蜕变。
+
+在 lunaxstar.com/natal 找到你的凯龙。` },
+    readTime: 4, tags: ["chiron", "scorpio", "healing", "psychology"],
+  },
+  {
+    id: "406", slug: "chiron-in-sagittarius-406",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "凯龙在射手座: 伤口与礼物", en: "Chiron in Sagittarius: Wound & Gift Guide" },
+    excerpt: { zh: "伤口在意义。你失去了信念。你的礼物：帮别人在幻灭后找到意义。", en: "Your wound is around meaning. You lost faith. Your gift: helping others find pur" },
+    content: { en: `# Chiron in Sagittarius
+
+Your wound is around meaning. You lost faith. Your gift: helping others find purpose after disillusionment.
+
+Find Chiron at lunaxstar.com/natal.`, zh: `# 凯龙在射手座
+
+伤口在意义。你失去了信念。你的礼物：帮别人在幻灭后找到意义。
+
+在 lunaxstar.com/natal 找到你的凯龙。` },
+    readTime: 4, tags: ["chiron", "sagittarius", "healing", "psychology"],
+  },
+  {
+    id: "407", slug: "chiron-in-capricorn-407",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "凯龙在摩羯座: 伤口与礼物", en: "Chiron in Capricorn: Wound & Gift Guide" },
+    excerpt: { zh: "伤口在成就。期望的重量碾碎了你。你的礼物：按自己的条件重新定义成功。", en: "Your wound is around achievement. The weight of expectation crushed you. Your gi" },
+    content: { en: `# Chiron in Capricorn
+
+Your wound is around achievement. The weight of expectation crushed you. Your gift: redefining success on your own terms.
+
+Find Chiron at lunaxstar.com/natal.`, zh: `# 凯龙在摩羯座
+
+伤口在成就。期望的重量碾碎了你。你的礼物：按自己的条件重新定义成功。
+
+在 lunaxstar.com/natal 找到你的凯龙。` },
+    readTime: 4, tags: ["chiron", "capricorn", "healing", "psychology"],
+  },
+  {
+    id: "408", slug: "chiron-in-aquarius-408",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "凯龙在水瓶座: 伤口与礼物", en: "Chiron in Aquarius: Wound & Gift Guide" },
+    excerpt: { zh: "伤口在与集体的连接。你感到异类或被放逐。你的礼物：教别人怪异就是力量。", en: "Your wound is around belonging to the collective. You felt alien or exiled. Your" },
+    content: { en: `# Chiron in Aquarius
+
+Your wound is around belonging to the collective. You felt alien or exiled. Your gift: teaching others their weirdness is their power.
+
+Find Chiron at lunaxstar.com/natal.`, zh: `# 凯龙在水瓶座
+
+伤口在与集体的连接。你感到异类或被放逐。你的礼物：教别人怪异就是力量。
+
+在 lunaxstar.com/natal 找到你的凯龙。` },
+    readTime: 4, tags: ["chiron", "aquarius", "healing", "psychology"],
+  },
+  {
+    id: "409", slug: "chiron-in-pisces-409",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "凯龙在双鱼座: 伤口与礼物", en: "Chiron in Pisces: Wound & Gift Guide" },
+    excerpt: { zh: "伤口在灵魂。一种宇宙被遗弃感。你的礼物：构建物质与灵性的桥梁。", en: "Your wound is around the soul. A sense of cosmic abandonment. Your gift: bridgin" },
+    content: { en: `# Chiron in Pisces
+
+Your wound is around the soul. A sense of cosmic abandonment. Your gift: bridging the material and the spiritual.
+
+Find Chiron at lunaxstar.com/natal.`, zh: `# 凯龙在双鱼座
+
+伤口在灵魂。一种宇宙被遗弃感。你的礼物：构建物质与灵性的桥梁。
+
+在 lunaxstar.com/natal 找到你的凯龙。` },
+    readTime: 4, tags: ["chiron", "pisces", "healing", "psychology"],
+  },
+  {
+    id: "410", slug: "north-node-in-aries-410",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "北交点在白羊座: 灵魂方向", en: "North Node in Aries: Soul Purpose Guide" },
+    excerpt: { zh: "你在这里学习独立。南交天秤：你是终身和事佬。现在把自己放在第一位。", en: "You are here to master independence. South Node in Libra: you have been the peac" },
+    content: { en: `# North Node in Aries
+
+You are here to master independence. South Node in Libra: you have been the peacemaker. Now put yourself first.
+
+Find your Nodes at lunaxstar.com/natal.`, zh: `# 北交点在白羊座
+
+你在这里学习独立。南交天秤：你是终身和事佬。现在把自己放在第一位。
+
+在 lunaxstar.com/natal 找到你的南北交点。` },
+    readTime: 4, tags: ["north-node", "aries", "soul", "purpose"],
+  },
+  {
+    id: "411", slug: "north-node-in-taurus-411",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "北交点在金牛座: 灵魂方向", en: "North Node in Taurus: Soul Purpose Guide" },
+    excerpt: { zh: "你在这里学习稳定。南交天蝎：你上瘾于强度。平静是奖品。", en: "You are here to master stability. South Node in Scorpio: you were addicted to in" },
+    content: { en: `# North Node in Taurus
+
+You are here to master stability. South Node in Scorpio: you were addicted to intensity. Peace is the prize.
+
+Find your Nodes at lunaxstar.com/natal.`, zh: `# 北交点在金牛座
+
+你在这里学习稳定。南交天蝎：你上瘾于强度。平静是奖品。
+
+在 lunaxstar.com/natal 找到你的南北交点。` },
+    readTime: 4, tags: ["north-node", "taurus", "soul", "purpose"],
+  },
+  {
+    id: "412", slug: "north-node-in-gemini-412",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "北交点在双子座: 灵魂方向", en: "North Node in Gemini: Soul Purpose Guide" },
+    excerpt: { zh: "你在这里学习沟通。南交射手：你是天生的哲学家。用别人能懂的话分享智慧。", en: "You are here to master communication. South Node in Sagittarius: you are a natur" },
+    content: { en: `# North Node in Gemini
+
+You are here to master communication. South Node in Sagittarius: you are a natural philosopher. Share wisdom in words people understand.
+
+Find your Nodes at lunaxstar.com/natal.`, zh: `# 北交点在双子座
+
+你在这里学习沟通。南交射手：你是天生的哲学家。用别人能懂的话分享智慧。
+
+在 lunaxstar.com/natal 找到你的南北交点。` },
+    readTime: 4, tags: ["north-node", "gemini", "soul", "purpose"],
+  },
+  {
+    id: "413", slug: "north-node-in-cancer-413",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "北交点在巨蟹座: 灵魂方向", en: "North Node in Cancer: Soul Purpose Guide" },
+    excerpt: { zh: "你在这里学习情感脆弱。南交摩羯：你在心上砌了墙。现在学习感受。", en: "You are here to master emotional vulnerability. South Node in Capricorn: you bui" },
+    content: { en: `# North Node in Cancer
+
+You are here to master emotional vulnerability. South Node in Capricorn: you built walls. Now learn to feel.
+
+Find your Nodes at lunaxstar.com/natal.`, zh: `# 北交点在巨蟹座
+
+你在这里学习情感脆弱。南交摩羯：你在心上砌了墙。现在学习感受。
+
+在 lunaxstar.com/natal 找到你的南北交点。` },
+    readTime: 4, tags: ["north-node", "cancer", "soul", "purpose"],
+  },
+  {
+    id: "414", slug: "north-node-in-leo-414",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "北交点在狮子座: 灵魂方向", en: "North Node in Leo: Soul Purpose Guide" },
+    excerpt: { zh: "你在这里学习创意表达。南交水瓶：你在边线观察。现在被看见。", en: "You are here to master creative self-expression. South Node in Aquarius: you obs" },
+    content: { en: `# North Node in Leo
+
+You are here to master creative self-expression. South Node in Aquarius: you observed from the sidelines. Now be seen.
+
+Find your Nodes at lunaxstar.com/natal.`, zh: `# 北交点在狮子座
+
+你在这里学习创意表达。南交水瓶：你在边线观察。现在被看见。
+
+在 lunaxstar.com/natal 找到你的南北交点。` },
+    readTime: 4, tags: ["north-node", "leo", "soul", "purpose"],
+  },
+  {
+    id: "415", slug: "north-node-in-virgo-415",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "北交点在处女座: 灵魂方向", en: "North Node in Virgo: Soul Purpose Guide" },
+    excerpt: { zh: "你在这里学习服务。南交双鱼：你漂在梦中。把智慧落进日常行动。", en: "You are here to master service. South Node in Pisces: you drifted in dreams. Bri" },
+    content: { en: `# North Node in Virgo
+
+You are here to master service. South Node in Pisces: you drifted in dreams. Bring wisdom into practical action.
+
+Find your Nodes at lunaxstar.com/natal.`, zh: `# 北交点在处女座
+
+你在这里学习服务。南交双鱼：你漂在梦中。把智慧落进日常行动。
+
+在 lunaxstar.com/natal 找到你的南北交点。` },
+    readTime: 4, tags: ["north-node", "virgo", "soul", "purpose"],
+  },
+  {
+    id: "416", slug: "north-node-in-libra-416",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "北交点在天秤座: 灵魂方向", en: "North Node in Libra: Soul Purpose Guide" },
+    excerpt: { zh: "你在这里学习伙伴关系。南交白羊：你孤身战斗。真正的战斗是让别人和你并肩。", en: "You are here to master partnership. South Node in Aries: you fought alone. The r" },
+    content: { en: `# North Node in Libra
+
+You are here to master partnership. South Node in Aries: you fought alone. The real battle is letting someone fight beside you.
+
+Find your Nodes at lunaxstar.com/natal.`, zh: `# 北交点在天秤座
+
+你在这里学习伙伴关系。南交白羊：你孤身战斗。真正的战斗是让别人和你并肩。
+
+在 lunaxstar.com/natal 找到你的南北交点。` },
+    readTime: 4, tags: ["north-node", "libra", "soul", "purpose"],
+  },
+  {
+    id: "417", slug: "north-node-in-scorpio-417",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "北交点在天蝎座: 灵魂方向", en: "North Node in Scorpio: Soul Purpose Guide" },
+    excerpt: { zh: "你在这里学习深度。南交金牛：你紧抓舒适。唯一的出路是穿过去。", en: "You are here to master depth. South Node in Taurus: you clung to comfort. The on" },
+    content: { en: `# North Node in Scorpio
+
+You are here to master depth. South Node in Taurus: you clung to comfort. The only way out is through.
+
+Find your Nodes at lunaxstar.com/natal.`, zh: `# 北交点在天蝎座
+
+你在这里学习深度。南交金牛：你紧抓舒适。唯一的出路是穿过去。
+
+在 lunaxstar.com/natal 找到你的南北交点。` },
+    readTime: 4, tags: ["north-node", "scorpio", "soul", "purpose"],
+  },
+  {
+    id: "418", slug: "north-node-in-sagittarius-418",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "北交点在射手座: 灵魂方向", en: "North Node in Sagittarius: Soul Purpose Guide" },
+    excerpt: { zh: "你在这里学习信念。南交双子：你收集信息。现在把知识合成智慧。", en: "You are here to master faith. South Node in Gemini: you collected information. N" },
+    content: { en: `# North Node in Sagittarius
+
+You are here to master faith. South Node in Gemini: you collected information. Now synthesize knowledge into wisdom.
+
+Find your Nodes at lunaxstar.com/natal.`, zh: `# 北交点在射手座
+
+你在这里学习信念。南交双子：你收集信息。现在把知识合成智慧。
+
+在 lunaxstar.com/natal 找到你的南北交点。` },
+    readTime: 4, tags: ["north-node", "sagittarius", "soul", "purpose"],
+  },
+  {
+    id: "419", slug: "north-node-in-capricorn-419",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "北交点在摩羯座: 灵魂方向", en: "North Node in Capricorn: Soul Purpose Guide" },
+    excerpt: { zh: "你在这里学习成就。南交巨蟹：你把滋养放在建设之前。创造活得比你久的遗产。", en: "You are here to master achievement. South Node in Cancer: you prioritized nurtur" },
+    content: { en: `# North Node in Capricorn
+
+You are here to master achievement. South Node in Cancer: you prioritized nurturing. Create a legacy that outlasts you.
+
+Find your Nodes at lunaxstar.com/natal.`, zh: `# 北交点在摩羯座
+
+你在这里学习成就。南交巨蟹：你把滋养放在建设之前。创造活得比你久的遗产。
+
+在 lunaxstar.com/natal 找到你的南北交点。` },
+    readTime: 4, tags: ["north-node", "capricorn", "soul", "purpose"],
+  },
+  {
+    id: "420", slug: "north-node-in-aquarius-420",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "北交点在水瓶座: 灵魂方向", en: "North Node in Aquarius: Soul Purpose Guide" },
+    excerpt: { zh: "你在这里学习集体愿景。南交狮子：你是明星。为集体发光。", en: "You are here to master collective vision. South Node in Leo: you were the star. " },
+    content: { en: `# North Node in Aquarius
+
+You are here to master collective vision. South Node in Leo: you were the star. Shine for the collective.
+
+Find your Nodes at lunaxstar.com/natal.`, zh: `# 北交点在水瓶座
+
+你在这里学习集体愿景。南交狮子：你是明星。为集体发光。
+
+在 lunaxstar.com/natal 找到你的南北交点。` },
+    readTime: 4, tags: ["north-node", "aquarius", "soul", "purpose"],
+  },
+  {
+    id: "421", slug: "north-node-in-pisces-421",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "北交点在双鱼座: 灵魂方向", en: "North Node in Pisces: Soul Purpose Guide" },
+    excerpt: { zh: "你在这里学习臣服。南交处女：你控制一切。有些事不可控——那正是魔法所在。", en: "You are here to master surrender. South Node in Virgo: you controlled everything" },
+    content: { en: `# North Node in Pisces
+
+You are here to master surrender. South Node in Virgo: you controlled everything. Some things are beyond control — that is where magic lives.
+
+Find your Nodes at lunaxstar.com/natal.`, zh: `# 北交点在双鱼座
+
+你在这里学习臣服。南交处女：你控制一切。有些事不可控——那正是魔法所在。
+
+在 lunaxstar.com/natal 找到你的南北交点。` },
+    readTime: 4, tags: ["north-node", "pisces", "soul", "purpose"],
+  },
 ];
