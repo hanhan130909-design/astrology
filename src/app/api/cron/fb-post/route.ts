@@ -290,82 +290,51 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "FACEBOOK_PAGE_TOKEN not set" }, { status: 500 });
   }
 
-  // Time-based index: auto-rotates through queue without any persistence
-  const now = Date.now();
-  const idx = Math.floor((now - START) / INTERVAL_MS) % QUEUE_URLS.length;
-  const url = QUEUE_URLS[idx];
+  // Post 2 URLs per cron tick (twice daily output from single daily cron)
+  const idx1 = Math.floor((now - START) / INTERVAL_MS) % QUEUE_URLS.length;
+  const idx2 = (idx1 + 1) % QUEUE_URLS.length;
 
-  // Generate a caption based on the URL slug
-  const slug = url.split("/").pop() || "";
-  const topic = slug.replace(/-/g, " ").replace(/compatibility|daily|horoscope|guide|personality|bazi|zodiac|tarot|meaning|chinese|astro/gi, "").trim() || "Discover your destiny";
-  const message = `✨ ${topic}\n\nFree birth chart + BaZi reading at lunaxstar.com\nWestern + Chinese astrology · 8 languages · No signup\n\n${url}`;
+  async function postOne(url: string, index: number) {
+    const slug = url.split("/").pop() || "";
+    const topic = slug.replace(/-/g, " ").replace(/compatibility|daily|horoscope|guide|personality|bazi|zodiac|tarot|meaning|chinese|astro/gi, "").trim() || "Discover your destiny";
+    const message = `✨ ${topic}\n\nFree birth chart + BaZi reading at lunaxstar.com\nWestern + Chinese astrology · 8 languages · No signup\n\n${url}`;
 
-  try {
-    const resp = await fetch(
-      `https://graph.facebook.com/v25.0/1132956263238202/feed`,
-      {
+    // FB post
+    const fbResp = await fetch(`https://graph.facebook.com/v25.0/1132956263238202/feed`, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ message, link: url, access_token: pageToken }),
+    });
+    const fbData = await fbResp.json();
+    if (!fbResp.ok) return { error: "FB fail", fb: fbData, idx: index, url };
+
+    // IG post
+    let igId: string | null = null;
+    try {
+      const igUserId = "17841458411478506";
+      const igCardUrl = "https://lunaxstar.com/ig-card.png";
+      const igCaption = `✨ ${topic}\n\nFree Birth Chart + BaZi at lunaxstar.com\nLink in bio →`;
+      const mResp = await fetch(`https://graph.facebook.com/v25.0/${igUserId}/media`, {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({ message, link: url, access_token: pageToken }),
-      }
-    );
-    const data = await resp.json();
-
-    if (!resp.ok) {
-      console.error("FB post error:", data);
-      return NextResponse.json({ error: "FB post failed", fb: data }, { status: 500 });
-    }
-
-    // Also post to Instagram with the brand card image
-    let igPostId = null;
-    const igUserId = "17841458411478506";
-    const igCardUrl = "https://lunaxstar.com/ig-card.png";
-    const igCaption = `✨ ${topic}\\n\\nFree Birth Chart + BaZi at lunaxstar.com\\nLink in bio →`;
-
-    try {
-      const mediaResp = await fetch(
-        `https://graph.facebook.com/v25.0/${igUserId}/media`,
-        {
+        body: new URLSearchParams({ image_url: igCardUrl, caption: igCaption, access_token: pageToken }),
+      });
+      const mData = await mResp.json();
+      if (mResp.ok && (mData as any).id) {
+        const pResp = await fetch(`https://graph.facebook.com/v25.0/${igUserId}/media_publish`, {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: new URLSearchParams({
-            image_url: igCardUrl,
-            caption: igCaption,
-            access_token: pageToken,
-          }),
-        }
-      );
-      const mediaData = await mediaResp.json();
-
-      if (mediaResp.ok && (mediaData as any).id) {
-        const pubResp = await fetch(
-          `https://graph.facebook.com/v25.0/${igUserId}/media_publish`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams({
-              creation_id: (mediaData as any).id,
-              access_token: pageToken,
-            }),
-          }
-        );
-        const pubData = await pubResp.json();
-        igPostId = (pubData as any).id || null;
-      } else {
-        console.error("IG media error:", mediaData);
+          body: new URLSearchParams({ creation_id: (mData as any).id, access_token: pageToken }),
+        });
+        igId = ((await pResp.json()) as any).id || null;
       }
-    } catch (igErr) {
-      console.error("IG post error:", igErr);
-    }
+    } catch { /* IG optional */ }
+    return { success: true, idx: index, url, fbPostId: (fbData as any).id, igPostId: igId };
+  }
 
-    return NextResponse.json({
-      success: true,
-      idx,
-      url,
-      fbPostId: (data as any).id,
-      igPostId,
-      remaining: QUEUE_URLS.length - ((idx + 1) % QUEUE_URLS.length),
-    });
+  try {
+    const [r1, r2] = await Promise.all([postOne(QUEUE_URLS[idx1], idx1), postOne(QUEUE_URLS[idx2], idx2)]);
+    return NextResponse.json({ results: [r1, r2], remaining: QUEUE_URLS.length - ((idx2 + 1) % QUEUE_URLS.length) });
   } catch (error) {
     console.error("FB cron error:", error);
     return NextResponse.json({ error: "internal error" }, { status: 500 });
