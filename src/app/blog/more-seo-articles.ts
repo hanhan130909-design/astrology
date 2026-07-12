@@ -13120,4 +13120,272 @@ Find Saturn in your chart at lunaxstar.com/natal. If it sits in your 7th House, 
 在 lunaxstar.com/natal 找到你星盘中的土星。如果它坐在你的第七宫，知道这个：你不是迟到。你在被校准。` },
     readTime: 7, tags: ['saturn', '7th-house', 'love', 'relationships'],
   },
+  {
+    id: "427", slug: "birth-chart-money-psychology-427",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-13",
+    title: { zh: "你的星盘揭示了你的金钱心理——占星中的财富模式", en: "What Your Birth Chart Reveals About Your Relationship With Money" },
+    excerpt: { zh: "为什么有人拼命赚钱却留不住，有人轻松就吸金？星盘和二宫、八字财星给你答案。", en: "Why do some people work hard but never accumulate wealth while others attract money effortlessly? Your chart holds the answer." },
+    content: { en: `# What Your Birth Chart Reveals About Your Relationship With Money
+
+Money is not just currency. It is energy. Your relationship with it was encoded the moment you were born — and both Western astrology and BaZi have surprisingly precise things to say about it.
+
+## The 2nd House: Your Money Blueprint
+
+In your natal chart, the 2nd House governs earned income, personal assets, and your sense of self-worth. The zodiac sign on the cusp of your 2nd House reveals your financial personality.
+
+**2nd House in Aries:** You earn through bold initiative. Impulse spending is your shadow. Your gift: you are not afraid to ask for what you are worth.
+**2nd House in Taurus:** The natural home of the 2nd House. You build wealth slowly, patiently, and permanently. Your shadow: comfort spending. Your gift: you will die wealthy if you stay disciplined.
+**2nd House in Gemini:** You earn through communication, writing, trading, speaking. Multiple income streams. Your shadow: spending on information and gadgets. Your gift: you can monetize any skill.
+
+## Venus: What You Value
+
+Venus is not just love — it is also money. Your Venus sign reveals what you consider valuable and how you spend. Venus in Capricorn: you invest in legacy. Venus in Leo: you spend on self-expression and luxury. Venus in Virgo: you budget meticulously but sometimes deprive yourself.
+
+## The BaZi Wealth Stars
+
+In BaZi, your Day Master controls or is controlled by wealth elements. A strong Day Master with active Wealth stars in the right luck cycle can accumulate significant resources. A weak Day Master with too many Wealth stars is like a small person carrying a heavy treasure chest — it gets taken.
+
+**Direct Wealth (正财):** Earned income. Salary. Slow, steady accumulation.
+**Indirect Wealth (偏财):** Windfalls. Business income. Risk-taking money. Irregular but potentially larger.
+
+## The Integration
+
+Cross-reference your 2nd House, Venus sign, and BaZi Wealth stars. If all three tell the same story — pay attention. Your financial psychology is not a mystery. It is a map. Generate both charts free at lunaxstar.com/natal and lunaxstar.com/bazi.
+
+Read your chart. Understand your money. Stop fighting your nature.`, zh: `# 你的星盘揭示了你的金钱心理
+
+钱不只是货币。它是能量。你和它的关系在你出生的那一刻就被编码了——西方占星和八字对此都有出奇准确的描述。
+
+## 第二宫：你的金钱蓝图
+
+本命盘中第二宫主宰收入、个人资产和自我价值感。宫头的星座揭示你的财务人格。二宫白羊靠大胆主动赚钱、冲动消费是阴影。二宫金牛是二的天然家园——缓慢、耐心、永久地积累。二宫双子靠沟通、写作、交易——多条收入流。
+
+## 金星：你珍惜什么
+
+金星不只管爱情——也管钱。你的金星星座揭示你珍惜什么、你怎么花。金星摩羯投遗产。金星狮子花在自我表达和奢华上。金星处女精细预算但有时剥夺自己。
+
+## 八字的财星
+
+正财：劳动所得，薪水，缓慢稳定的积累。偏财：偏财，生意收入，冒险的钱，不规律但可能更大。身强财旺能积财。身弱财重如小孩抱百宝箱——被抢走。
+
+交叉参考你的二宫、金星星座和八字财星。如果三处都在说同一个故事——认真听。你的财务心理不是谜。是地图。在 lunaxstar.com/natal 和 lunaxstar.com/bazi 读你的盘。` },
+    readTime: 7, tags: ['money', 'psychology', 'astrology', 'bazi', 'wealth'],
+  },
+  {
+    id: "428", slug: "astrology-career-change-428",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-13",
+    title: { zh: "占星中的职业转型——什么时候跳，什么时候留", en: "The Astrology of Career Change: When to Leap and When to Stay" },
+    excerpt: { zh: "该不该辞职？什么时候是跳的好时机？占星的十宫、土星行运和八字大运在给你信号。", en: "Should you quit? When is the right time to leap? Your 10th House, Saturn transits, and BaZi luck cycles are sending signals." },
+    content: { en: `# The Astrology of Career Change
+
+Every client who comes to a Feng Shui practitioner eventually asks the same question: should I leave my job? Here is how astrology and BaZi answer — not with yes or no, but with timing.
+
+## The 10th House: Your Career DNA
+
+The 10th House governs career, public reputation, and legacy. The sign on its cusp and any planets inside describe your professional path. If transiting Saturn is currently in your 10th House, career restructuring is happening whether you initiate it or not. Saturn does not negotiate.
+
+## Saturn Transits: The Forced Pivot
+
+Saturn takes about 2.5 years to transit each house. When it crosses your 10th House, you will be tested in your career. Promotions that feel like burdens. Responsibilities that reveal your limits. This is not Saturn punishing you. It is Saturn showing you whether the structure you built can actually hold your weight.
+
+When Saturn transits your 6th House (daily work), you may feel undervalued or overworked. This is often the prelude to a 10th House career shift — the dissatisfaction brewing in the daily grind before the structural change.
+
+## Jupiter: The Green Light
+
+Jupiter transits bring opportunity. When Jupiter crosses your 10th House (about once every 12 years), doors open. Offers arrive. Visibility increases. Jupiter does not guarantee success — but it creates the conditions where success is possible. If you have been doing the Saturn work (building skills, staying disciplined), Jupiter will amplify it.
+
+## The BaZi Luck Cycle
+
+Your current 10-year Luck Pillar (大运) defines the themes of this decade. If your Luck Pillar is a Wealth decade, financial growth is structurally supported. If it is an Officer decade, career advancement is the theme. If your Luck Pillar clashes with your Day Pillar, expect instability regardless of external conditions.
+
+## When to Leap
+
+Ideal timing: Jupiter transiting your 10th House + BaZi Luck Pillar supporting Wealth or Officer + Saturn having finished its restructuring work. Rarely do all three align. But when they do, the universe is not suggesting you leap — it is pushing you off the edge.
+
+Generate both charts at lunaxstar.com/natal and lunaxstar.com/bazi. Your career timing is not guesswork. It is written in two different astrological systems — and they agree more often than you would think.`, zh: `# 占星中的职业转型
+
+每个来找风水师的客户最终都会问同一个问题：我该不该离职？这里没有对错——只有时机。
+
+## 第十宫：你的职业 DNA
+
+十宫主宰事业、公众名誉和遗产。宫头的星座和里面任何行星描述你的职业路径。过境土星走到你十宫——不管你自己想不想变，转变都会来。土星不谈判。
+
+## 土星行运：被迫的转折
+
+土星在每个宫位停留约 2.5 年。当它穿行你十宫时，你的事业将被检验。那些像负担的晋升、那些暴露你极限的责任——土星不是在惩罚你，是在测试你建的结构能不能扛住你的重量。
+
+## 木星：绿灯
+
+木星行运带来机会。当木星穿行十宫（约每十二年一次），门开了。机会来了。能见度提高了。木星不保证成功——但它创造成功的可能条件。
+
+## 八字大运
+
+你当前的十年大运定义这个十年的主题。财星大运——财富增长结构支持。官星大运——事业晋升。大运冲日柱——不管外部条件多好，内在都不稳。
+
+## 什么时候跳
+
+理想时机：木星穿十宫 + 八字大运财星或官星 + 土星已完成它的结构重建工作。三者很少同时出现。但当它们同时出现，宇宙不是建议你跳——是把你推下悬崖。
+
+在 lunaxstar.com/natal 和 lunaxstar.com/bazi 生成两套命盘。你的职业时机不是猜的。` },
+    readTime: 7, tags: ['career', 'saturn', 'midheaven', 'astrology', 'bazi'],
+  },
+  {
+    id: "429", slug: "read-child-birth-chart-429",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-13",
+    title: { zh: "如何看懂孩子的出生星盘——给父母的占星指南", en: "How to Read Your Childs Birth Chart: A Parent Guide" },
+    excerpt: { zh: "你孩子的月亮揭示ta怎么感受爱。水星揭示ta怎么学习。父母不该把星座当标签——而是当说明书。", en: "Your child Moon sign reveals how they feel love. Their Mercury sign reveals how they learn. Do not label. Understand." },
+    content: { en: `# How to Read Your Childs Birth Chart
+
+You do not need to be an astrologer to use astrology as a parent. Three placements in your child's chart are enough to change how you interact with them.
+
+## The Moon: How They Feel Safe
+
+Your child's Moon sign is their emotional operating system. A Moon in Aries child needs action and autonomy — they process feelings through movement, not words. Do not make them sit still to talk about feelings. Walk with them.
+
+A Moon in Cancer child is deeply sensitive and absorbs the emotional temperature of every room they enter. They need a calm home environment and explicit reassurance that they are loved — even when nothing is wrong.
+
+A Moon in Aquarius child needs space that looks like distance to others. They process emotions through ideas and need alone time to regulate. Do not take their quiet as rejection.
+
+## Mercury: How They Learn
+
+Mercury reveals your child's learning style. Mercury in Aries: they learn fast and lose interest fast. Short, high-intensity bursts. Mercury in Taurus: they learn slowly, deeply, permanently. Do not rush them. Mercury in Gemini: they learn through conversation and variety. Talking is studying for them.
+
+## Mars: What Drives Them
+
+Your child's Mars sign is their engine. Do not try to redirect it. Channel it. Mars in Leo: they need recognition. Mars in Virgo: they need purpose. Mars in Sagittarius: they need exploration.
+
+## The Most Important Rule
+
+Never use a child's chart to predict their future in front of them. A child told they have a difficult chart will fulfill that prophecy. Astrology for children is not about destiny. It is about understanding — a user manual for a soul you are privileged to help grow.
+
+Generate your child's chart at lunaxstar.com/natal. Require their exact birth time. That is the most valuable data point you will ever collect as a parent.`, zh: `# 如何看懂孩子的出生星盘
+
+你不需要成为占星师就能用占星当父母。三个位置就够了。
+
+## 月亮：他们怎么感到安全
+
+月亮白羊的孩子需要行动和自主——他们通过运动处理情绪，不是语言。别让他们坐下来聊感受。走着聊。月亮巨蟹的孩子极度敏感，吸收每个房间的情绪温度。需要平静的家庭环境和明确的被爱确认。月亮水瓶的孩子需要空间——别人读作冷漠。别把他们的安静当成拒绝。
+
+## 水星：他们怎么学习
+
+水星白羊：学得快、失去兴趣更快。短时间高强度爆发。水星金牛：慢慢的、深深的、永久的。别催。水星双子：通过对话和多变性学习。说话就是学习。
+
+## 火星：什么驱动他们
+
+不要试图重定向孩子的火星。疏导它。火星狮子：需要认可。火星处女：需要目标。火星射手：需要探索。
+
+## 最重要的规则
+
+永远不要在孩子面前用星盘预测他们的未来。被告知自己星盘不好的孩子会实现那个预言。给孩子的占星不是命运。是理解——一本你被允许来帮助ta成长的灵魂说明书。
+
+在 lunaxstar.com/natal 生成孩子的星盘。需要精确的出生时间。那是你作为父母收集的最有价值的数据点。` },
+    readTime: 7, tags: ['children', 'parenting', 'astrology', 'moon', 'mercury'],
+  },
+  {
+    id: "430", slug: "lunar-return-monthly-guide-430",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-13",
+    title: { zh: "月亮回归——你的每月生日揭示未来28天", en: "Lunar Returns: How Your Monthly Birthday Reveals Your Next 28 Days" },
+    excerpt: { zh: "每个月月亮回到你出生时的位置，这就是你的个人新月——一个比你太阳回归更实用、更频繁的预测工具。", en: "Every month the Moon returns to your birth position. This is your personal New Moon — a more practical tool than your solar return." },
+    content: { en: `# Lunar Returns: Your Monthly Birthday
+
+Everyone knows about solar returns — the birthday chart that forecasts your year ahead. But few people use lunar returns: a chart calculated for the exact moment each month when the Moon returns to the position it occupied at your birth. That moment is your personal New Moon. It forecasts the next 28 days.
+
+## Why Lunar Returns Matter
+
+A solar return gives you a 12-month weather forecast. A lunar return gives you a 28-day tactical briefing. The quality of the return chart — which house the Moon is in, its aspects — describes the emotional tone of your month.
+
+**Moon in angular houses (1,4,7,10):** A month of visibility. People notice you. Events feel significant.
+**Moon in succedent houses (2,5,8,11):** A month of stability or accumulation. Financial or creative focus.
+**Moon in cadent houses (3,6,9,12):** A month of learning, adjustment, or retreat. Behind-the-scenes energy.
+
+## How to Use It
+
+When the Moon in your lunar return chart makes a trine to Jupiter, it is a month of emotional ease and expansion. Plan launches, dates, creative work. When the Moon squares Saturn, expect emotional challenges. This is not a bad month — it is a training month. Do the hard thing.
+
+## Lunar Return vs. Solar Return
+
+Your solar return is your macro strategy. Your lunar return is your micro execution. Most people crash because they run their daily life on a yearly calendar. Astrology offers you a monthly calendar. Use it.
+
+Get your natal chart at lunaxstar.com/natal (you will need your exact birth time — the Moon changes signs every 2.5 days). Then calculate your next lunar return — it is the moment the transiting Moon returns to your natal Moon degree. Free lunar return calculators exist online. Start tracking your months.
+
+You will be surprised how precisely the emotional weather forecast matches your actual month.`, zh: `# 月亮回归——你的每月生日
+
+每个人都知道太阳回归——生日的星盘预测你未来一年。但几乎没人用月亮回归：每个月月亮回到你出生时位置的精确时刻。那一刻是你的个人新月。它预测接下来 28 天。
+
+## 为什么月亮回归重要
+
+太阳回归给你十二个月天气预报。月亮回归给你二十八天战术简报。回归盘的质量——月亮在哪宫、什么相位——描述你这个月的情绪基调。
+
+月亮在角宫（1、4、7、10）：被看见的月份。事件感觉得到重视。
+月亮在续宫（2、5、8、11）：稳定或积累的月份。财务或创意焦点。
+月亮在果宫（3、6、9、12）：学习、调整或退隐的月份。幕后能量。
+
+## 怎么用它
+
+月亮回归盘里月亮跟木星三合——情绪流畅和扩张的月份。规划发布、约会、创意工作。月亮跟土星刑克——情感挑战的月份。不是坏月份。是训练月。做难的事。
+
+太阳回归是宏观策略。月亮回归是微观执行。大多数人崩溃是因为用年度日历跑日常生活。占星给你月度日历。用它。
+
+在 lunaxstar.com/natal 生成你的本命盘（需要精确出生时间——月亮每 2.5 天变一次星座）。然后算你下一次月亮回归。你会惊讶地发现情绪天气预报跟你的实际月份吻合得有多精确。` },
+    readTime: 7, tags: ['moon', 'lunar-return', 'monthly', 'cycles'],
+  },
+  {
+    id: "431", slug: "bazi-luck-cycle-decoded-431",
+    category: "bazi", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-13",
+    title: { zh: "为什么有些年感觉不一样——八字大运解析", en: "Why Certain Years Feel Different: The BaZi Luck Cycle Explained" },
+    excerpt: { zh: "每隔十年你的人生主题会切换一次。不是巧合——是八字的大运在交替。理解你的大运，理解你的节奏。", en: "Every 10 years your life theme shifts. It is not coincidence — it is your BaZi Luck Cycle. Understand it. Stop fighting your timing." },
+    content: { en: `# Why Certain Years Feel Different: The BaZi Luck Cycle
+
+Every ten years, something shifts. You cannot quite name it but you feel it. The things that worked a decade ago suddenly feel hollow. New opportunities appear in areas you never considered. This is not a midlife crisis. This is your BaZi Luck Cycle changing.
+
+## The 10-Year Pillar
+
+In BaZi, your life is divided into 10-year Luck Pillars (大运). Each pillar is a Heavenly Stem and an Earthly Branch that govern a decade of your life. When your Luck Pillar changes — which happens at ages determined by your birth chart — the elemental rules of your life change with it.
+
+## Reading Your Current Pillar
+
+The Stem and Branch of your Luck Pillar interact with your Day Master. A Luck Pillar that produces your Day Master (Resource cycle) brings learning, mentorship, and support. A Luck Pillar that your Day Master controls (Wealth cycle) brings financial focus and material opportunity. A Luck Pillar that controls your Day Master (Officer cycle) brings pressure, responsibility, and — if you handle it — advancement.
+
+## Why Some People Peak at Different Ages
+
+A person with a strong Wealth Luck Pillar in their 20s may build significant resources young. A person whose Wealth Pillar activates in their 50s may struggle financially early but retire wealthy. Neither is ahead or behind. They are just running different life schedules.
+
+## Annual Stars (流年)
+
+Within each 10-year pillar, every individual year has its own Stem-Branch combination. 2026 is 丙午 (Yang Fire Horse). If Fire feeds your Day Master, this year supports you. If Fire clashes with your chart, expect a year of friction — which is not failure, just resistance training.
+
+## The Practical Use
+
+Knowing your Luck Pillar timing changes everything about how you evaluate your life. That career stall at 35 when your peers were accelerating? Not a personal failure. Your Luck Pillar was in a Resource decade — you were supposed to be learning, not earning.
+
+Generate your BaZi chart at lunaxstar.com/bazi. Look at the Luck Pillars section. Find your current decade. Read its Ten God. That one label will explain more about your current life chapter than any self-help book ever could.`, zh: `# 为什么有些年感觉不一样——八字大运解析
+
+每十年。有某种东西变了。你不太能说清但你能感觉到。十年前管用的东西突然空洞了。新的机会出现在你从未考虑过的领域。这不是中年危机。这是你的八字大运在换。
+
+## 十年大运
+
+在八字里，你的人生被分成十年为单位的运程。每个大运是一个天干和地支的组合，主宰你人生的一个十年。当大运切换——切换的年龄由你的出生盘决定——你人生的五行规则也一起改变。
+
+## 读你当前的大运
+
+大运的天干和地支跟你的日主互动。大运生日主（印运）带来学习、导师、支持。日主克大运（财运）带来财务焦点和物质机会。大运克日主（官运）带来压力、责任——如果你处理好——晋升。
+
+## 为什么有些人在不同年龄到达巅峰
+
+有人在 20 多岁走财运——年轻时积累了大量资源。有人 50 多岁才走到财运——年轻时拮据但晚富。没有谁比谁超前。只是不同的人生时间表。
+
+## 流年
+
+在十年大运内，每一年还有自己的干支组合。2026 丙午（阳火马）。如果火生你的日主——今年支持你。如果火冲你的盘——摩擦之年。不是失败，只是阻力训练。
+
+知道你大运的时间节点会改变你评估人生的方式。35 岁事业停滞而同辈都在加速？不是你失败。你在大运的印运——你那年本该学习，不该挣钱。
+
+在 lunaxstar.com/bazi 生成你的八字。看大运部分。找到你当前的十年。读它的十神。那一个标签比任何自助书都能更准确地解释你当前的人生章节。` },
+    readTime: 7, tags: ['bazi', 'luck-cycle', 'timing', 'decade'],
+  },
 ];
