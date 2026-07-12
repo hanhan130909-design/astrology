@@ -12906,4 +12906,218 @@ Find your Nodes at lunaxstar.com/natal.`, zh: `# 北交点在双鱼座
 在 lunaxstar.com/natal 找到你的南北交点。` },
     readTime: 4, tags: ["north-node", "pisces", "soul", "purpose"],
   },
+  {
+    id: "422", slug: "astrology-of-grief-422",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "占星中的哀伤——你的星盘如何帮你穿越失去", en: "The Astrology of Grief: How Your Chart Helps You Process Loss" },
+    excerpt: { zh: "失去之后，星盘能做什么？月亮、土星和第八宫提供了哀伤的地图——不是绕过去，而是穿过去。", en: "After loss, what can astrology do? Your Moon, Saturn, and 8th House offer a grief map — not to bypass pain, but to move through it." },
+    content: { en: `# The Astrology of Grief
+
+After loss, what can astrology actually do? The answer: not bypass pain, but give it a map. Three chart placements are directly relevant.
+
+**Your Moon:** governs your emotional landscape. When grieving, your Moon sign reveals HOW you grieve. Moon in Aries grieves fast and fiercely then moves. Moon in Cancer grieves slowly, in waves, for years. Neither is wrong. Both are the Moon doing its job.
+
+**Your Saturn:** governs the hard lessons of life. Saturn transits often coincide with loss. Saturn in your 8th House (grief, death, transformation) means you will face profound losses in this lifetime — not as punishment, but as a structural requirement of your soul curriculum.
+
+**Your 8th House:** is the house of death and rebirth. Planets in your 8th House describe your relationship to mortality, intimacy, and transformation. A heavy 8th House does not mean you will die young. It means you are here to learn the depths.
+
+Grief is not a problem to be solved. It is an experience to be metabolized. Your chart does not make it hurt less — but it reveals why this particular loss is part of your particular journey.
+
+Generate your chart at lunaxstar.com/natal. Find your Moon, your Saturn, your 8th House. The map is there.`, zh: `# 占星中的哀伤
+
+失去之后，占星能做什么？答案：不是绕开痛苦，而是给你一张地图。三处星盘配置直接相关。
+
+**你的月亮：**主宰你的情感世界。哀伤时，你的月亮星座揭示你如何哀伤。月亮白羊快要快忘快继续。月亮巨蟹慢——以年为单位的波浪。都没有错。都是月亮在工作。
+
+**你的土星：**主宰生命的硬课。土星行运常常与失去同时发生。土星在你第八宫（哀伤、死亡、蜕变）意味着你这辈子会面对深刻的失去——不是惩罚，而是你灵魂课程的结构需要。
+
+**你的第八宫：**死亡与重生的宫位。八宫里的行星描述你与死亡、亲密和转化的关系。一个很沉的八宫不代表你早死。它代表你此生来此学习深度。
+
+哀伤不是需要解决的问题。是需要代谢的经验。你的星盘不会让痛减轻——但它揭示为什么这特定的失去是你特定旅程的一部分。
+
+在 lunaxstar.com/natal 生成你的星盘。找到你的月亮、土星、八宫。地图在那里。` },
+    readTime: 7, tags: ['grief', 'moon', 'saturn', 'healing'],
+  },
+  {
+    id: "423", slug: "mars-sign-anger-423",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "你的火星星座与愤怒——什么激怒你，如何与它共处", en: "Your Mars Sign and Anger: What Triggers You and How to Work With It" },
+    excerpt: { zh: "火星不是你的敌人——它是你的引擎。你的火星落座揭示你被什么激怒、如何表达愤怒、以及如何把怒火转换成力量。", en: "Mars is not your enemy — it is your engine. Your Mars sign reveals what triggers you, how you express anger, and how to convert rage into power." },
+    content: { en: `# Your Mars Sign and Anger
+
+Mars is not your enemy. It is your engine. The problem is not that you feel anger — it is that most people were never taught how to use it.
+
+## What Your Mars Sign Reveals
+
+**Mars in Fire (Aries, Leo, Sagittarius):** You burn hot and fast. Anger is immediate, explosive, and then over — often leaving others confused while you have already moved on. Your growth: learning to pause between the spark and the fire.
+
+**Mars in Earth (Taurus, Virgo, Capricorn):** You burn slow and long. Anger accumulates over time until it erupts in a way that surprises everyone, including you. Your growth: expressing irritation before it becomes fury.
+
+**Mars in Air (Gemini, Libra, Aquarius):** You intellectualize anger. You argue rather than yell. You process through words — sometimes weaponizing them. Your growth: letting yourself feel anger physically, not just mentally.
+
+**Mars in Water (Cancer, Scorpio, Pisces):** You absorb anger — yours and everyone else's. It becomes depression, passive aggression, or martyrdom. Your growth: learning that healthy anger is protective, not destructive.
+
+## How to Work With Mars
+
+Mars energy cannot be suppressed — it finds another exit. Exercise that matches your sign (competitive for Fire, endurance for Earth, variety for Air, catharsis for Water) is the healthiest channel. Mars in the gym is Mars that does not destroy your relationships.
+
+Find your Mars sign at lunaxstar.com/natal. Knowing your anger is the first step to using it.`, zh: `# 你的火星星座与愤怒
+
+火星不是你的敌人。它是你的引擎。问题不是你感到愤怒——而是大多数人从来没有被教过如何使用它。
+
+## 火星落座揭示什么
+
+**火星在火象：** 你烧得快、烧得热。愤怒瞬间爆发然后过去——常常留下别人迷茫而你早继续了。你的成长：在火星和火焰之间学会暂停。
+
+**火星在土象：** 你烧得慢、烧得长。愤怒累积直到爆发——每个人都惊讶，包括你自己。你的成长：在被激怒之前表达不满。
+
+**火星在风象：** 你把愤怒智性化。你辩论而非咆哮。你通过语言处理——有时把它们武器化。你的成长：让自己用身体感受愤怒，不只用头脑。
+
+**火星在水象：** 你吸收愤怒——自己的和别人的。它变成抑郁、被动攻击或殉道。你的成长：学习健康的愤怒是保护性的，不是破坏性的。
+
+## 如何使用火星
+
+火星能量无法被压抑——它会找另一个出口。匹配你星座的运动（火象竞技、土象耐力、风象多变、水象宣泄）是最健康的通道。在健身房的火星是不会毁掉你关系的火星。
+
+在 lunaxstar.com/natal 找到你的火星落座。认识你的愤怒是使用它的第一步。` },
+    readTime: 7, tags: ['mars', 'anger', 'emotions', 'psychology'],
+  },
+  {
+    id: "424", slug: "why-you-date-same-person-424",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "为什么你总是在和同一个人谈恋爱——占星和八字告诉你原因", en: "Why You Keep Dating the Same Person: Astrology and BaZi Explain" },
+    excerpt: { zh: "不同的脸，同样的剧本。你的金星落座和八字夫妻宫在联手写你每一段感情的底色。", en: "Different face, same story. Your Venus placement and BaZi Spouse Palace are co-writing every relationship you have." },
+    content: { en: `# Why You Keep Dating the Same Person
+
+Different face. Different name. Same dynamic. Same ending. If this sounds familiar, your birth chart knows why.
+
+## The Astrological Pattern: Venus + 7th House
+
+Your Venus sign shows WHAT you find attractive. Your 7th House shows WHO you attract and HOW you relate. If your Venus is in a challenging aspect to Saturn, you may unconsciously seek emotionally unavailable partners — because love that requires earning feels familiar. If your 7th House is ruled by a planet in the 12th House, you may attract unavailable, distant, or hidden partners.
+
+You are not broken. You are running a program written before you were conscious.
+
+## The BaZi Pattern: Spouse Palace + Luck Cycles
+
+Your Day Pillar's Earthly Branch is your Spouse Palace. If it clashes with the current luck cycle, relationship instability is structurally encoded. If your Spouse Palace contains a Ten God that conflicts with your Day Master, you attract partners who embody that tension.
+
+For example: a Day Master with too much Officer star in the Spouse Palace may attract controlling partners. A Day Master whose Spouse Palace is clashed by the current Luck Pillar may find every relationship destabilized until the luck cycle changes.
+
+## How to Break the Pattern
+
+Awareness is the first step. See the program. Name the pattern. Then choose differently — not by overriding your chart, but by working WITH it. Your Venus in Capricorn may always be attracted to ambition. The question is: does their ambition include you?
+
+Generate both your Western chart at lunaxstar.com/natal AND your BaZi chart at lunaxstar.com/bazi. Cross-reference your Venus, 7th House, and Spouse Palace. The pattern is not a curse. It is a map.`, zh: `# 为什么你总是在和同一个人谈恋爱
+
+不同的脸。不同的名字。同样的动态。同样的结局。如果你的星盘知道原因。
+
+## 占星模式：金星 + 第七宫
+
+你的金星星座显示你被什么吸引。你的第七宫显示你吸引谁以及你如何建立关系。如果你的金星与土星形成挑战相位，你可能无意中寻找情感上不可获得的伴侣——因为需要努力赢得的爱让你感到熟悉。
+
+你没有坏掉。你在运行一个在你意识到之前就写好的程序。
+
+## 八字模式：夫妻宫 + 大运
+
+你的日柱地支就是你的夫妻宫。如果它和当前大运相冲，感情不稳定是结构性的。如果你的夫妻宫包含一个和日主冲突的十神，你就在吸引体现那种张力的伴侣。
+
+打破模式的第一步是看到程序。命名规律。然后选择不同——不是推翻你的盘，而是和它合作。你的金星摩羯可能永远被野心吸引。问题是：他们的野心是否包含你？
+
+在 lunaxstar.com/natal 和 lunaxstar.com/bazi 交叉查看你的金星、七宫和夫妻宫。模式不是诅咒。是地图。` },
+    readTime: 7, tags: ['relationships', 'patterns', 'psychology', 'venus', 'bazi'],
+  },
+  {
+    id: "425", slug: "moon-phases-emotional-cycle-425",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "月相与你的情绪周期——顺应节律而非对抗", en: "Moon Phases and Your Emotional Cycle: Work With Your Rhythm" },
+    excerpt: { zh: "新月到满月再回新月——月亮不是背景噪声，它是你情绪的潮汐表。用月相计划你的生活。", en: "New Moon to Full Moon and back — the Moon is not background noise. It is the tide table of your emotions. Plan your life around the phases." },
+    content: { en: `# Moon Phases and Your Emotional Cycle
+
+Farmers plant by the Moon. Fishermen sail by the tides. But somehow modern humans decided that lunar cycles do not apply to them. Your emotions disagree.
+
+## The Eight Phases as an Emotional Map
+
+**New Moon:** A blank page. Energy is low but possibility is high. Set intentions. Do not launch yet — the engine is off.
+
+**Waxing Crescent:** The first spark of momentum. Take one small action toward your intention.
+
+**First Quarter:** A challenge arises. The intention you set at the New Moon meets resistance. This is where most people quit. Push through — the resistance IS the growth.
+
+**Waxing Gibbous:** Refinement. Edit. Polish. The vision is becoming real.
+
+**Full Moon:** Peak illumination. Emotions and events culminate. Things become visible that were hidden. This is a time of release, not initiation.
+
+**Waning Gibbous:** Integration. Digest what the Full Moon revealed. Share your insights.
+
+**Last Quarter:** Letting go. Cut cords. Release what the cycle has shown you need to release.
+
+**Waning Crescent:** Rest. Surrender. The cycle is ending. Do not force new beginnings — they come at the New Moon.
+
+## Your Personal Moon Phase
+
+What Moon phase were you born under? A Full Moon baby processes emotions differently than a New Moon baby. Find your natal Moon phase at lunaxstar.com/natal — your birth chart includes the Moon's exact degree and phase. Once you know your personal lunar signature, you can plan your months around the energies that support you best.`, zh: `# 月相与你的情绪周期
+
+农民按月亮播种。渔夫按潮汐出海。但现代人类不知为何决定月亮周期与自己无关。你的情绪不同意。
+
+## 八个月相的情绪地图
+
+**新月：** 空白页。能量低但可能性高。设意向。别急着启动。
+**蛾眉月：** 第一点动力的火星。为意向做一件小事。
+**上弦月：** 挑战出现。你设的意向遇到阻力。这是大多数人放弃的点——推过去，阻力就是成长。
+**盈凸月：** 精炼。编辑。打磨。
+**满月：** 峰值照明。情绪和事件汇聚。隐藏的变可见。这是释放的时候。
+**亏凸月：** 整合。消化满月揭示的东西。
+**下弦月：** 放手。切断。释放。
+**残月：** 休息。臣服。循环结束了——新月时自然重新开始。
+
+你出生在什么月相下？满月宝宝和残月宝宝处理情绪的方式完全不同。在 lunaxstar.com/natal 找到你的出生月相——你的星盘包含月亮的精确度数和相位。` },
+    readTime: 7, tags: ['moon', 'phases', 'emotions', 'cycle'],
+  },
+  {
+    id: "426", slug: "saturn-in-7th-house-426",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-04",
+    title: { zh: "土星在第七宫——为什么爱情来得晚，你学到了什么", en: "Saturn in the 7th House: Why Love Comes Late and What You Learn" },
+    excerpt: { zh: "土星在第七宫的人，爱情不是来得容易——而是来得深刻。晚婚不是惩罚，是土星在确保你准备好了。", en: "Saturn in the 7th House means love does not come easily — it comes deeply. Late marriage is not punishment. Saturn is making sure you are ready." },
+    content: { en: `# Saturn in the 7th House: Why Love Comes Late
+
+Saturn in the 7th House is one of the most challenging — and most rewarding — placements for relationships. It does not mean you will never find love. It means love is your life's curriculum, not your birthright. You earn it.
+
+## What This Placement Means
+
+The 7th House governs marriage and committed partnerships. Saturn here slows everything down. Relationships that come easily for others — casual dating, light romance, low-stakes connection — feel impossibly heavy for you. You cannot do shallow.
+
+This is not a flaw. It is a filter. Saturn in the 7th rejects what will not last. You may experience loneliness in your twenties and early thirties that feels unjust. But when partnership arrives — and it does — it is built to survive.
+
+## The Gift
+
+You will likely marry later than your peers. You may feel like you are being skipped by love. The truth is Saturn is preparing you to receive something real. A Saturn-ruled partnership does not shatter under pressure. It becomes stronger.
+
+## What You Need to Learn
+
+Boundaries. Saturn in the 7th teaches you that saying no to what is wrong is the prerequisite for saying yes to what is right. Every relationship that ends before the real one arrives taught you something you needed to know. Trust the timing. Saturn works in decades, not days.
+
+Find Saturn in your chart at lunaxstar.com/natal. If it sits in your 7th House, know this: you are not late. You are being calibrated.`, zh: `# 土星在第七宫：为什么爱情来得晚
+
+土星在第七宫是最具挑战性也是最有回报的关系配置。它不代表你永远找不到爱。它代表爱情是你一生的课程，不是你的默认权利。你挣到它。
+
+## 这意味着什么
+
+第七宫主宰婚姻和承诺关系。土星在这里让一切慢下来。别人轻松得来的约会、轻松的关系、低投入的联结，对你来说都不可能的沉重。你做不到浅层。这不是缺陷，是过滤器。土星在第七宫拒绝一切不会持久的东西。
+
+## 礼物
+
+你很可能会比同龄人晚结婚。你可能会感觉自己被爱跳过了。真相是土星在准备你接收真实的东西。一个土星主宰的伴侣关系不会在压力下碎裂——它会变得更强。
+
+## 你需要学到什么
+
+边界。土星在第七宫教你：对错的说不，是向对的说是的前提。每一段在真正的那个人到来之前结束的关系，都教了你一些你需要知道的东西。信任时机。土星按十年维度运作，不按天。
+
+在 lunaxstar.com/natal 找到你星盘中的土星。如果它坐在你的第七宫，知道这个：你不是迟到。你在被校准。` },
+    readTime: 7, tags: ['saturn', '7th-house', 'love', 'relationships'],
+  },
 ];
