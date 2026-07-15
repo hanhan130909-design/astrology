@@ -13388,4 +13388,276 @@ Generate your BaZi chart at lunaxstar.com/bazi. Look at the Luck Pillars section
 在 lunaxstar.com/bazi 生成你的八字。看大运部分。找到你当前的十年。读它的十神。那一个标签比任何自助书都能更准确地解释你当前的人生章节。` },
     readTime: 7, tags: ['bazi', 'luck-cycle', 'timing', 'decade'],
   },
+  {
+    id: "432", slug: "descendant-sign-attract-432",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-13",
+    title: { zh: "你的下降星座——你潜意识吸引的伴侣类型", en: "Your Descendant Sign: The Partner You Subconsciously Attract" },
+    excerpt: { zh: "上升是你戴的面具，下降是你寻找的另一半。它揭示你潜意识里吸引什么类型的伴侣。", en: "Your Ascendant is the mask you wear. Your Descendant is the partner you seek — your shadow self projected onto others." },
+    content: { en: `# Your Descendant Sign: The Partner You Subconsciously Attract
+
+Your Ascendant is the mask you present to the world. Your Descendant — exactly opposite — is who you are drawn to. Projection. Your hidden self, seeking completion in another person.
+
+**Descendant in Aries:** You present as Libra — diplomatic, accommodating. But you are magnetized to bold, direct, sometimes aggressive partners. You need someone who does what you cannot: act without overthinking.
+
+**Descendant in Taurus:** You present as Scorpio — intense, private. But you crave stability. A partner who is grounded, sensual, reliable. Someone who does not leave.
+
+**Descendant in Gemini:** You present as Sagittarius — philosophical, free. But you need conversation. A partner who talks, debates, never bores you. Mental connection is your oxygen.
+
+**Descendant in Cancer:** You present as Capricorn — controlled, achieving. But you need softness. A partner who nurtures, who creates home, who lets you drop the armor.
+
+**Descendant in Leo:** You present as Aquarius — detached, intellectual. But you need to be adored. A partner who sees you, celebrates you, puts you center stage.
+
+**Descendant in Virgo:** You present as Pisces — dreamy, diffuse. But you need order. A partner who is practical, detail-oriented, who builds the structure your soul lacks.
+
+**Descendant in Libra:** You present as Aries — independent, fierce. But you need partnership. A mirror. Someone who teaches you that strength includes leaning on another person.
+
+**Descendant in Scorpio:** You present as Taurus — steady, comfortable. But you are drawn to intensity. A partner who transforms you. Who goes deep and stays there.
+
+**Descendant in Sagittarius:** You present as Gemini — curious, scattered. But you need meaning. A partner with vision, who expands your world, who makes you believe.
+
+**Descendant in Capricorn:** You present as Cancer — nurturing, protective. But you need ambition. A partner who builds, achieves, who makes you feel safe through competence.
+
+**Descendant in Aquarius:** You present as Leo — radiant, central. But you need someone who challenges convention. A partner who is original, who sees the system and breaks it with you.
+
+**Descendant in Pisces:** You present as Virgo — precise, analytical. But you need transcendence. A partner who dissolves your boundaries, who connects you to something larger than yourself.
+
+Find your Descendant sign — it is always exactly opposite your Rising sign — at lunaxstar.com/natal. The partner you have been looking for your whole life has a zodiac sign. It was written the moment you were born.`, zh: `# 你的下降星座——你潜意识吸引的伴侣类型
+
+上升是你给世界的面具。下降——正对面——是你被吸引的人。投射。你隐藏的自己，在另一个人身上寻求完整。
+
+下降白羊：你表现为天秤——圆滑、迁就。但你被大胆、直接、有时候有攻击性的伴侣吸引。你需要一个做你做不了的事的人：不假思索地行动。
+
+下降金牛：你表现为天蝎——强烈、隐秘。但你渴望稳定。一个踏实、感官、可靠的伴侣。一个不离开的人。
+
+下降双子：你表现为射手——哲学、自由。但你需要对话。一个和你说话、辩论、永远不让你无聊的伴侣。大脑连接是你的氧气。
+
+下降巨蟹：你表现为摩羯——克制、成就。但你需要柔软。一个会滋养你、创造家、让你卸下盔甲的人。
+
+下降狮子：你表现为水瓶——疏离、智性。但你需要被崇拜。一个看见你、庆祝你、把你放在舞台中央的伴侣。
+
+下降处女：你表现为双鱼——梦幻、涣散。但你需要秩序。一个务实、注重细节、帮你建立灵魂缺乏的结构的伴侣。
+
+下降天秤：你表现为白羊——独立、凶猛。但你需要伙伴。一面镜子。一个教你力量包括靠在另一个人身上的人。
+
+下降天蝎：你表现为金牛——安稳、舒适。但你被强度吸引。一个会转化你的伴侣。一个走进去就不出来的人。
+
+下降射手：你表现为双子——好奇、分散。但你需要意义。一个有愿景的伴侣，扩展你的世界，让你相信。
+
+下降摩羯：你表现为巨蟹——滋养、保护。但你需要野心。一个建造、成就、通过能力让你感到安全的人。
+
+下降水瓶：你表现为狮子——发光、中心。但你需要挑战常规的人。一个原创的、看到系统并和你一起打破它的伴侣。
+
+下降双鱼：你表现为处女——精准、分析。但你需要超越。一个溶解你边界、把你连接到比你自己更大的东西里的伴侣。
+
+在 lunaxstar.com/natal 找到你的下降——它永远在你上升星座的正对面。` },
+    readTime: 8, tags: ['descendant', 'relationships', 'psychology', 'shadow'],
+  },
+  {
+    id: "433", slug: "mars-retrograde-drive-433",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-13",
+    title: { zh: "火星逆行——当你突然失去动力该怎么办", en: "Mars Retrograde: What to Do When Your Drive Disappears" },
+    excerpt: { zh: "每两年火星逆行一次。你的野心、性欲、行动力像被关掉了一样。不是你在退化——火星在教你内省。", en: "Every two years, Mars disappears. Your ambition, drive, and libido crash. You are not broken — Mars is teaching you to go inward." },
+    content: { en: `# Mars Retrograde: What to Do When Your Drive Disappears
+
+Every two years, Mars — the planet of action, desire, and aggression — goes retrograde. For about 2.5 months, your ambition crashes. Your libido disappears. Your ability to initiate anything feels like pushing a boulder uphill.
+
+You are not broken. Mars is forcing you to STOP. And if you fight it, you make it worse.
+
+## What Mars Retrograde Actually Does
+
+Mars retrograde reverses your outward energy inward. The aggression you normally channel into work, sex, and goals turns back on yourself. This is why Mars retrograde often brings self-criticism, frustration, and a sense of being stuck.
+
+The key: stop initiating. Mars retrograde is not for launching new projects, starting relationships, or picking fights. It is for reviewing, revising, and redirecting existing energy.
+
+## What to Do Instead
+
+**Do not start anything new.** New projects launched under Mars retrograde rarely last. They are built on energy that is already turning inward.
+
+**Review your anger.** Mars retrograde surfaces old resentments. What you suppressed comes back. Sit with it. Journal. Do not confront anyone yet.
+
+**Exercise differently.** Your usual high-intensity workouts may feel impossible. Switch to yoga, swimming, long walks. Move in ways that feel restorative.
+
+**Finish things.** You have a project you abandoned six months ago? This is the cosmic window to complete it. Revisions, editing, closure — these are Mars retrograde strengths.
+
+## When Mars Goes Direct
+
+When Mars stations direct, your energy returns — often suddenly and powerfully. The introspection you did during the retrograde becomes rocket fuel. You will know exactly what to do next because Mars forced you to figure it out from the inside.
+
+Find your Mars sign and house at lunaxstar.com/natal. When Mars retrogrades through a house, that area of your life is under review. Knowing which house softens the confusion into clarity.`, zh: `# 火星逆行——当你突然失去动力
+
+每两年，火星逆行一次。你的野心、性欲、行动力突然像被关掉一样。你不是坏了——火星在教你内省。
+
+火星逆行让你的外向能量转为向内。你平时输出到工作、性和目标上的侵略性，现在转向了你自己。这就是为什么火星逆行期常常带来自我批评、沮丧和卡住的感觉。
+
+**不要开启任何新东西。** 火星逆行期启动的项目很少能持久。它们建立在能量已经在往内转的基础上。
+**审视你的愤怒。** 火星逆行翻出旧怨。你压抑的东西回来了。先写下来。别急着跟任何人当面对质。
+**换种方式运动。** 你平时的高强度训练可能做不动。换成瑜伽、游泳、长距离散步。以恢复性方式移动。
+**完成旧事。** 你有半年前放弃的项目吗？这是完成的宇宙窗口。修订、编辑、收尾——这些是火星逆行的强项。
+
+当火星恢复顺行，你的能量回来——经常是突然且强力的。逆行期做的内省变成了火箭燃料。你会确切知道下一步做什么，因为火星逼着你自己从里面想明白了。
+
+在 lunaxstar.com/natal 找到你的火星星座和宫位。火星在哪个宫逆行，那就是你人生正在被审查的领域。` },
+    readTime: 8, tags: ['mars', 'retrograde', 'psychology', 'energy'],
+  },
+  {
+    id: "434", slug: "bazi-burnout-day-master-434",
+    category: "bazi", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-13",
+    title: { zh: "八字日主与倦怠——你的五行如何预测你的崩溃点", en: "BaZi Day Master Burnout: How Your Element Predicts Your Breaking Point" },
+    excerpt: { zh: "每种日主都有自己的崩溃模式。木日主燃烧殆尽，火日主熄灭，土日主坍塌。知道你的模式才能预防。", en: "Each Day Master has a unique burnout pattern. Wood burns out. Fire extinguishes. Earth collapses. Know your pattern before you break." },
+    content: { en: `# BaZi Day Master Burnout: How Your Element Predicts Your Breaking Point
+
+Burnout is not universal. Your Day Master determines HOW you crash. A Wood Day Master burns out differently than a Metal Day Master. Knowing your elemental breaking point is the first step to preventing it.
+
+**Yang Wood (甲):** You push until you snap. Literally. Like a tree in a storm, you absorb pressure until one day you cannot. Your burnout is dramatic and visible. Prevention: delegate. You do not need to hold up the entire sky.
+
+**Yin Wood (乙):** You adapt until you lose your shape. Like ivy that grows into every crack, you spread too thin. Your burnout is gradual — one day you realize you have no boundaries left. Prevention: say no once a week.
+
+**Yang Fire (丙):** You shine until you consume yourself. The sun cannot burn forever. Your burnout comes from giving too much light and heat to others without replenishment. Prevention: schedule solitude. Fire needs fuel.
+
+**Yin Fire (丁):** You focus until you cannot see anything else. The candle burns hottest at a single point. Your burnout is obsessive — fixating on one problem until it consumes you. Prevention: step back. Literally. Change your physical perspective.
+
+**Yang Earth (戊):** You carry until you collapse. The mountain erodes slowly, then all at once. Your burnout is invisible to others — you seem fine until you are not. Prevention: let someone else carry something. Just one thing.
+
+**Yin Earth (己):** You nurture until you are empty. The garden that feeds everyone else goes unwatered. Your burnout is resentment disguised as selflessness. Prevention: receive. Accept help. Let someone take care of you.
+
+**Yang Metal (庚):** You sharpen until you break. The sword that cuts everything eventually shatters on something harder. Your burnout is sudden, complete, and preceded by increasing rigidity. Prevention: bend. Soften. Not everything needs your edge.
+
+**Yin Metal (辛):** You refine until you disappear. The needle that makes everything perfect eventually pierces itself. Your burnout is quiet — a slow erosion of self-worth through impossible standards. Prevention: good enough IS good enough.
+
+**Yang Water (壬):** You flow until you flood. The ocean that contains everything eventually overflows its boundaries. Your burnout is emotional overwhelm — absorbing too much of the world. Prevention: dam. Create containment. Not everything deserves your depth.
+
+**Yin Water (癸):** You absorb until you drown. The rain that nourishes everything soaks into every surface until it dissolves. Your burnout is invisible — you feel everything and lose yourself in the feeling. Prevention: ground. Physical touch. Routines. Something solid.
+
+Find your Day Master at lunaxstar.com/bazi. The first character in your Day Pillar is your elemental operating system. Know how it breaks so you can stop breaking it.`, zh: `# 八字日主与倦怠——你的五行如何预测你的崩溃点
+
+倦怠不是统一的。你的日主决定了你怎么崩溃。甲木和庚金的燃尽方式完全不同。
+
+**甲木（阳木）：** 你顶到断。像风暴里的树，吸收压力直到某一天扛不住。你的倦怠是戏剧性的、可见的。预防：分派。你不需要撑起整片天。
+**乙木（阴木）：** 你适应到失去形状。像爬满每个裂缝的藤，你把自己摊得太薄。倦怠是渐进的——某天你发现已经没有边界了。预防：每周说一次不。
+**丙火（阳火）：** 你照耀到把自己烧光。太阳不能永远烧。倦怠来自给别人太多光和热而不补给。预防：安排独处。火需要燃料。
+**丁火（阴火）：** 你聚焦到看不见别的。蜡烛在单个点上烧得最烫。倦怠是强迫性的——盯住一个问题直到它把你吞掉。预防：退后一步。物理性的。改变你的视觉角度。
+**戊土（阳土）：** 你扛到坍塌。山慢慢侵蚀，然后一瞬崩塌。你的倦怠别人看不见——你看起来还好直到你不是。预防：让别人替你扛点什么。就一件。
+**己土（阴土）：** 你滋养到掏空。给别人浇水的花园自己没人浇。倦怠是伪装成无私的怨气。预防：接收。接受帮助。让别人照顾你。
+**庚金（阳金）：** 你锋利到断。砍一切的刀最终碰到更硬的东西碎掉。倦怠是突然的、彻底的，之前变本加厉地刚硬。预防：弯曲。软化。不是每件事都需要你的刀锋。
+**辛金（阴金）：** 你精雕到消失。把一切都做完美的针最后扎了自己。倦怠是安静的——通过不可能的标准缓慢侵蚀自我价值。预防：够好就是够好。
+**壬水（阳水）：** 你流动到泛滥。容纳万象的海终于溢出边界。倦怠是情绪超载——吸收了太多世界的东西。预防：筑坝。不是每件事都值得你的深度。
+**癸水（阴水）：** 你吸收到溺亡。滋养一切的雨渗透每寸表面直到溶解。你的倦怠看不见——你感受一切并迷失在感受里。预防：接地。身体接触。日常。坚实的什么。
+
+在 lunaxstar.com/bazi 找到你的日主——日柱第一个字就是你的五行操作系统。` },
+    readTime: 8, tags: ['bazi', 'burnout', 'day-master', 'wellness'],
+  },
+  {
+    id: "435", slug: "synastry-shadow-triggers-435",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-13",
+    title: { zh: "为什么有些人总能激怒你——合盘与阴影心理学", en: "Why Certain People Trigger You: Synastry and Shadow Work" },
+    excerpt: { zh: "当你对某人产生强烈的负面反应——那不是他们的问题。那是你的星盘在指着你自己的阴影。", en: "When someone triggers intense negative emotions in you, it is rarely about them. Your chart is pointing at your own shadow. Here is how synastry exposes it." },
+    content: { en: `# Why Certain People Trigger You: Synastry and Shadow Work
+
+You meet someone and immediately dislike them. Or worse — they make you feel something you cannot name. A crawling irritation. A defensive reaction. An anger disproportionate to anything they actually did.
+
+Jung called this projection. Astrology calls it synastry.
+
+When someone's planet lands on a sensitive point in your chart, it activates the parts of yourself you have repressed. You do not dislike THEM. You dislike what they pull out of you.
+
+## The Most Common Synastry Triggers
+
+**Their Mars square your Moon:** They trigger your emotional defenses. Their aggression or drive feels like an attack on your emotional safety. You react defensively — and often do not know why. Growth: learn that their Mars is not aimed at you. It is just energy. And your Moon is more resilient than it feels.
+
+**Their Saturn conjunct your Sun:** They make you feel inadequate. Their presence reminds you of every standard you have not met. This trigger is especially potent because Saturn-Sun contacts often indicate karmic relationships — you chose each other to grow. Growth: separate their authority from your self-worth.
+
+**Their Pluto opposite your Venus:** They trigger obsession. The attraction is magnetic and terrifying. You feel consumed. This is not love — it is Pluto excavating your deepest relationship wounds. Growth: name what you are afraid of. The fear is older than this person.
+
+## How to Use Synastry Triggers as Growth Tools
+
+Every trigger is information. When someone activates your shadow, they are showing you where you are not whole. The goal is not to avoid these people. It is to integrate what they reveal.
+
+Get your natal chart at lunaxstar.com/natal. When someone triggers you, look at what planet of theirs is aspecting what point of yours. That aspect is not an accident. It is a lesson. And the faster you learn it, the faster you stop attracting it.`, zh: `# 为什么有些人总能激怒你——合盘与阴影心理学
+
+你遇到某个人，立刻讨厌他。或者更糟——他让你感受到某种你叫不出名字的东西。爬行的烦躁。防御性的反应。和他们实际做的事完全不成比例的愤怒。
+
+荣格说这是投射。占星说这是合盘。
+
+当一个人的行星击中你星盘上一个敏感点，它激活了你压抑已久的自己。你不是讨厌他们。你是讨厌他们从你身上拉出来的东西。
+
+**最常见的合盘触发器：**
+
+**他的火星刑你的月亮：** 他触发了你的情感防御。他的侵略或驱动力感觉像是在攻击你的情感安全。你反应防御——而且经常不知道为什么。成长：学习他的火星不是瞄准你。那只是能量。而且你的月亮比它感觉的更有韧性。
+
+**他的土星合你的太阳：** 他让你觉得自己不够好。他的存在提醒你每一个你还没达成的标准。这个触发器特别强烈，因为土星太阳接触通常代表业力关系——你们选了彼此来成长。成长：把他的权威和你的自我价值分开。
+
+**他的冥王冲你的金星：** 他触发痴迷。吸引力是磁性的、吓人的。你感觉被吞没了。这不是爱情——是冥王在挖掘你最深的关系创伤。成长：命名你害怕的东西。恐惧比这个人老得多。
+
+每个触发器都是信息。当某人激活你的阴影，他们在指给你看你在哪里不完整。目标不是回避这些人。是整合他们揭示的东西。
+
+在 lunaxstar.com/natal 获取你的本命盘。下次被人触发时，看看他的哪颗星体和你的哪个点形成了相位。那个相位不是偶然。是一课。你越快学到它，就越快停止吸引它。` },
+    readTime: 8, tags: ['synastry', 'shadow', 'psychology', 'relationships'],
+  },
+  {
+    id: "436", slug: "ic-imum-coeli-roots-436",
+    category: "astrology", categoryZh: "心理", categoryEn: "Psychology", categoryId: "Psikologi",
+    date: "2026-07-13",
+    title: { zh: "天底星座——你童年的根和你最私密的自已", en: "The IC in Astrology: Your Childhood Roots and Private Self" },
+    excerpt: { zh: "天底（IC）是星盘最底部那个点——你的童年基础、家族传承、关门之后的那个你。比月亮更深。", en: "The IC is the deepest point in your chart — your childhood foundation, ancestral DNA, and who you are when the door is locked. Deeper than your Moon." },
+    content: { en: `# The IC in Astrology: Your Childhood Roots and Private Self
+
+Everyone talks about the Midheaven — career, reputation, the public self. But no one talks about the IC: the Imum Coeli, the bottom of the chart. The midnight point. Your foundation. Who you are when no one is watching and the door is locked.
+
+Your IC is directly opposite your Midheaven. What you build in the world (MC) rests on what you came from (IC). If your foundation has cracks, your career structure will eventually show them.
+
+## The IC Through the Signs
+
+**IC in Aries:** You grew up fast. Your childhood required independence earlier than your peers. Survival mode shaped you. Private you: a warrior who does not know how to stop fighting.
+
+**IC in Taurus:** You needed stability and may not have had it. Your home was either a sanctuary or something you have been trying to recreate ever since. Private you: someone who craves peace and will not apologize for it.
+
+**IC in Gemini:** You grew up in a house of words — maybe books, maybe arguments, maybe radio always on. Information was your survival tool. Private you: a thinker who processes everything through language.
+
+**IC in Cancer:** The Moon rules here. Your mother or maternal figure defined your emotional template. Whether nurturing or absent, she IS your foundation. Private you: someone who feels everything and has learned to protect that sensitivity.
+
+**IC in Leo:** You either received a lot of attention or desperately needed it. Your childhood shaped your relationship with being seen. Private you: a performer who is exhausted from performing.
+
+**IC in Virgo:** Your childhood taught you to be useful. Love was earned through competence. Private you: someone who has never felt unconditionally acceptable.
+
+**IC in Libra:** Your childhood required you to keep the peace. You became the mediator, the harmonizer — sometimes at the cost of knowing what YOU actually wanted. Private you: someone learning to have preferences.
+
+**IC in Scorpio:** Your childhood contained intensity — loss, secrets, power dynamics. You learned early that the world is not safe. Private you: someone who trusts almost no one and loves the ones you do trust with ferocious loyalty.
+
+**IC in Sagittarius:** Your childhood may have been geographically or philosophically expansive — or you craved escape from a narrow world. Private you: a seeker who has been searching for home your whole life.
+
+**IC in Capricorn:** Your childhood made you grow up too fast. Responsibility came early. Fun came later — if at all. Private you: someone carrying weight that was never yours to carry.
+
+**IC in Aquarius:** Your childhood taught you that you were different. You may have felt like an alien in your own family. Private you: someone who found belonging in ideas because people were unreliable.
+
+**IC in Pisces:** Your childhood boundaries were porous. You absorbed family emotions like a sponge. Private you: someone who struggles to know where they end and others begin.
+
+Your IC sign is determined by your exact birth time. It is your midnight. Your root. And until you understand it, you will keep building structures on a foundation you never examined.
+
+Get your IC at lunaxstar.com/natal. It is the cusp of your 4th House. Look there first — then look at everything you have built since.`, zh: `# 天底星座——你童年的根和你最私密的自己
+
+每个人都在谈天顶——事业、名誉、公众自我。但没人谈天底：Imum Coeli，星盘最底端。午夜点。你的地基。当没人在看、门锁上之后，你真正是谁。
+
+你的天底在天顶的正对面。你在世界上建造的一切（天顶），都建立在你从哪里来（天底）之上。如果你的地基有裂缝，你的事业结构最终会显示出来。
+
+**天底白羊：** 你童年被迫快长。早于同龄人的独立。生存模式塑造了你。私密的你：一个不知道怎么停止战斗的战士。
+**天底金牛：** 你需要稳定，可能没有得到。你的家要么是避难所，要么是你一直试图重建的东西。私密的你：渴望平静且不为之道歉的人。
+**天底双子：** 你在一间充满词语的房子里长大——也许是书，也许是争吵，也许是一直开着的收音机。信息是你的生存工具。私密的你：一个通过语言处理一切的思考者。
+**天底巨蟹：** 月亮主宰这里。你的母亲或母性角色定义了你的情感模板。无论是滋养的还是缺失的，她就是你的地基。私密的你：感受一切、学会保护那份敏感的人。
+**天底狮子：** 你得到过很多关注，或者极度需要它。你的童年塑造了你和被看见之间的关系。私密的你：一个表演得很累的表演者。
+**天底处女：** 你的童年教你要有用。爱是通过能力挣来的。私密的你：一个从未觉得自己可以无条件被接受的人。
+**天底天秤：** 你的童年要求你保持和平。你成了调停者、和谐者——有时以不知道自己真正想要什么为代价。私密的你：一个正在学习拥有偏好的人。
+**天底天蝎：** 你的童年包含了强度——失去、秘密、权力动态。你很早就学到了这个世界不安全。私密的你：几乎不信任任何人，而对你信任的那几个人以猛烈的忠诚去爱。
+**天底射手：** 你的童年可能是地理或哲学上扩展的——或者你极度渴望逃离一个狭窄的世界。私密的你：一生都在寻找家的寻找者。
+**天底摩羯：**你的童年让你过快地长大。责任早早来了。快乐来得晚——如果真来了的话。私密的你：一个扛着从来不该你扛的重担的人。
+**天底水瓶：** 你的童年教你你是不同的。你可能在自己的家里都感到像异类。私密的你：一个在思想里找到归属感、因为人不可靠的人。
+**天底双鱼：** 你的童年边界是松的。你像海绵吸收家庭情绪。私密的你：一个挣扎于知道自己在哪结束、别人在哪开始的人。
+
+你的天底星座由你的精确出生时间决定。它是你的午夜。你的根。除非你理解它，你将一直把结构建在一个从未检视过的地基上。
+
+在 lunaxstar.com/natal 找到你的天底。它是你第四宫的宫头。先看那里——然后看你从那里以来建造的一切。` },
+    readTime: 8, tags: ['IC', 'childhood', 'psychology', 'roots'],
+  },
 ];
