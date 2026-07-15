@@ -247,6 +247,12 @@ export default function BlogPage() {
   const { language } = useLanguage();
   const currentT = t[language] || t.en;
   
+  // Pagination
+  const PAGE_SIZE = 20;
+  const [page, setPage] = useState(1);
+  const totalPages = Math.ceil(blogArticles.length / PAGE_SIZE);
+  const pagedArticles = blogArticles.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+  
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString(
@@ -294,7 +300,7 @@ export default function BlogPage() {
           
           {/* Articles Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {blogArticles.map((article) => (
+            {pagedArticles.map((article) => (
               <article
                 key={article.id}
                 className="group bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 hover:border-gray-200 transition-all duration-300 hover:-translate-y-1"
@@ -369,12 +375,29 @@ export default function BlogPage() {
         </div>
       </section>
       
-      {/* Footer Info */}
+      {/* Pagination */}
       <section className="px-4 pb-12">
         <div className="max-w-6xl mx-auto text-center">
-          <p className="text-gray-500 text-sm">
-            {language === 'zh' ? '更多精彩内容即将推出，敬请期待...' : language === 'id' ? 'Konten menarik lebih banyak akan segera hadir, nantikan...' : 'More exciting content coming soon, stay tuned...'}
-          </p>
+          <div className="flex items-center justify-center gap-2">
+            <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1}
+              className="px-4 py-2 rounded-lg text-sm font-medium border border-gray-200 disabled:opacity-30 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors">
+              ← Prev
+            </button>
+            {Array.from({length: totalPages}, (_, i) => i + 1).filter(p => p === 1 || p === totalPages || Math.abs(p - page) <= 2).map((p, i, arr) => (
+              <span key={p}>
+                {i > 0 && arr[i-1] !== p - 1 && <span className="px-1 text-gray-300">...</span>}
+                <button onClick={() => setPage(p)}
+                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${p === page ? 'bg-gray-900 text-white' : 'border border-gray-200 hover:bg-gray-50'}`}>
+                  {p}
+                </button>
+              </span>
+            ))}
+            <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages}
+              className="px-4 py-2 rounded-lg text-sm font-medium border border-gray-200 disabled:opacity-30 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors">
+              Next →
+            </button>
+          </div>
+          <p className="text-gray-400 text-xs mt-3">{blogArticles.length} articles · Page {page} of {totalPages}</p>
         </div>
       </section>
     </div>
