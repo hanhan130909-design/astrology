@@ -7,9 +7,9 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useAuth } from "@/contexts/AuthContext";
 
 const T: Record<string, Record<string, string>> = {
-  zh: { brand:"星缘", horoscope:"运势", natal:"星盘", bazi:"八字", compatibility:"配对", ai:"AI解读", learn:"学习", transits:"星象日历", community:"社区", tarot:"塔罗", strategy:"方法论" },
-  en: { brand:"Starry Fate", horoscope:"Horoscope", natal:"Chart", bazi:"BaZi", compatibility:"Match", ai:"AI", learn:"Learn", transits:"Transits", community:"Community", tarot:"Tarot", strategy:"Strategy" },
-  id: { brand:"Starry Fate", horoscope:"Horoskop", natal:"Bagan", bazi:"BaZi", compatibility:"Cocok", ai:"AI", learn:"Belajar", transits:"Transit", community:"Komunitas", tarot:"Tarot", strategy:"Strategi" },
+  zh: { brand:"星缘", horoscope:"运势", natal:"星盘", bazi:"八字", qimen:"奇门", compatibility:"配对", ai:"AI解读", learn:"学习", transits:"星象日历", community:"社区", tarot:"塔罗", strategy:"方法论" },
+  en: { brand:"Starry Fate", horoscope:"Horoscope", natal:"Chart", bazi:"BaZi", qimen:"QiMen", compatibility:"Match", ai:"AI", learn:"Learn", transits:"Transits", community:"Community", tarot:"Tarot", strategy:"Strategy" },
+  id: { brand:"Starry Fate", horoscope:"Horoskop", natal:"Bagan", bazi:"BaZi", qimen:"QiMen", compatibility:"Cocok", ai:"AI", learn:"Belajar", transits:"Transit", community:"Komunitas", tarot:"Tarot", strategy:"Strategi" },
   th: { brand:"สตาร์รี่เฟท", horoscope:"ดูดวง", natal:"ดวง", bazi:"ปาจื่อ", compatibility:"คู่", ai:"AI", learn:"เรียน", transits:"ดาว", community:"ชุมชน", tarot:"ไพ่", strategy:"กลยุทธ์" },
   vi: { brand:"Starry Fate", horoscope:"Tử vi", natal:"Bản đồ", bazi:"Bát Tự", compatibility:"Hợp", ai:"AI", learn:"Học", transits:"Quá cảnh", community:"Cộng đồng", tarot:"Tarot", strategy:"Chiến lược" },
   ms: { brand:"Starry Fate", horoscope:"Horoskop", natal:"Carta", bazi:"BaZi", compatibility:"Serasi", ai:"AI", learn:"Belajar", transits:"Transit", community:"Komuniti", tarot:"Tarot", strategy:"Strategi" },
@@ -42,6 +42,7 @@ export default function Navbar() {
     { name: t.horoscope, href: "/horoscope" },
     { name: t.natal, href: "/natal" },
     { name: t.bazi, href: "/bazi" },
+    { name: t.qimen || "奇门", href: "/qimen" },
     { name: t.strategy, href: "/methodology" },
     { name: t.compatibility, href: "/compatibility" },
     { name: t.ai, href: "/ai-reading" },
