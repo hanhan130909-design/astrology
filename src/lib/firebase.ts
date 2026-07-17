@@ -8,6 +8,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
+  sendPasswordResetEmail,
   onAuthStateChanged,
   User as FirebaseUser
 } from 'firebase/auth';
@@ -187,6 +188,11 @@ export async function loginWithGoogle(language: 'zh' | 'en' | 'id' | 'th' | 'vi'
 export async function logout(): Promise<void> {
   if (!auth) return;
   await signOut(auth);
+}
+
+export async function sendPasswordReset(email: string): Promise<void> {
+  if (!auth) throw new Error("Firebase not configured: password reset is unavailable");
+  await sendPasswordResetEmail(auth, email);
 }
 
 export async function getUserProfile(uid: string): Promise<UserProfile | null> {

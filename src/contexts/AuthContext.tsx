@@ -1,20 +1,7 @@
-// Auth Context — static Firebase import for reliability
 "use client";
 
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import {
-  auth,
-  db,
-  isFirebaseConfigured,
-  loginWithEmail,
-  loginWithGoogle,
-  registerWithEmail,
-  logout as firebaseLogout,
-  onAuthChange,
-  getUserProfile,
-  updateUserProfile,
-  UserProfile as FirebaseUserProfile,
-} from "@/lib/firebase";
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { loadFirebaseClient } from "@/lib/loadFirebaseClient";
 
 export interface UserProfile {
   uid: string;
@@ -40,102 +27,232 @@ interface AuthContextType {
   updateUser: (data: Partial<UserProfile>) => void;
 }
 
+interface FirebaseProfileShape {
+  uid: string;
+  email: string;
+  displayName: string;
+  photoURL?: string | null;
+  language?: string;
+}
+
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 const STORAGE_KEY = "astrology_user";
 
-function toLocalProfile(fp: FirebaseUserProfile): UserProfile {
+function toLocalProfile(firebaseProfile: FirebaseProfileShape): UserProfile {
   return {
-    uid: fp.uid, email: fp.email, displayName: fp.displayName,
-    photoURL: fp.photoURL, language: (fp.language as UserProfile["language"]) || "zh",
+    uid: firebaseProfile.uid,
+    email: firebaseProfile.email,
+    displayName: firebaseProfile.displayName,
+    photoURL: firebaseProfile.photoURL ?? undefined,
+    language: (firebaseProfile.language as UserProfile["language"]) || "zh",
   };
+}
+
+function getErrorMessage(error: unknown, fallback: string): string {
+  if (error instanceof Error && error.message) return error.message;
+  if (typeof error === "object" && error !== null && "message" in error) {
+    const message = (error as { message?: unknown }).message;
+    if (typeof message === "string" && message) return message;
+  }
+  return fallback;
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<UserProfile | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isFirebaseReady, setIsFirebaseReady] = useState(false);
 
   useEffect(() => {
-    if (isFirebaseConfigured && auth) {
-      const unsubscribe = onAuthChange(async (firebaseUser) => {
+    let active = true;
+    let unsubscribe: (() => void) | undefined;
+
+    const restoreLocalProfile = () => {
+      if (!active) return;
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        try {
+          const local = JSON.parse(saved) as UserProfile;
+          setUser(local);
+          setProfile(local);
+        } catch {
+          localStorage.removeItem(STORAGE_KEY);
+        }
+      }
+      setIsLoading(false);
+    };
+
+    void loadFirebaseClient().then((firebase) => {
+      if (!active) return;
+      setIsFirebaseReady(firebase.isFirebaseConfigured);
+
+      if (!firebase.isFirebaseConfigured || !firebase.auth) {
+        restoreLocalProfile();
+        return;
+      }
+
+      unsubscribe = firebase.onAuthChange(async (firebaseUser) => {
+        if (!active) return;
         if (firebaseUser) {
           try {
-            const fp = await getUserProfile(firebaseUser.uid);
-            if (fp) { const local = toLocalProfile(fp as FirebaseUserProfile); setUser(local); setProfile(local); }
-            else { const local: UserProfile = { uid: firebaseUser.uid, email: firebaseUser.email || "", displayName: firebaseUser.displayName || firebaseUser.email?.split("@")[0] || "User", photoURL: firebaseUser.photoURL, language: "zh" }; setUser(local); setProfile(local); }
-          } catch (err) { console.error("Get profile error:", err); }
-        } else { setUser(null); setProfile(null); }
-        setIsLoading(false);
+            const firebaseProfile = await firebase.getUserProfile(firebaseUser.uid);
+            if (!active) return;
+            const local = firebaseProfile
+              ? toLocalProfile(firebaseProfile)
+              : toLocalProfile({
+                uid: firebaseUser.uid,
+                email: firebaseUser.email || "",
+                displayName: firebaseUser.displayName || firebaseUser.email?.split("@")[0] || "User",
+                photoURL: firebaseUser.photoURL,
+                language: "zh",
+              });
+            setUser(local);
+            setProfile(local);
+          } catch (error: unknown) {
+            console.error("Get profile error:", error);
+          }
+        } else {
+          setUser(null);
+          setProfile(null);
+        }
+        if (active) setIsLoading(false);
       });
-      return unsubscribe;
-    }
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) { try { const u = JSON.parse(saved); setUser(u); setProfile(u); } catch { localStorage.removeItem(STORAGE_KEY); } }
-    setIsLoading(false);
+    }).catch((error: unknown) => {
+      console.error("Firebase client load error:", error);
+      if (active) {
+        setIsFirebaseReady(false);
+        restoreLocalProfile();
+      }
+    });
+
+    return () => {
+      active = false;
+      unsubscribe?.();
+    };
   }, []);
 
   const login = async (email: string, password: string, name?: string) => {
     if (!email || !password) return { success: false, error: "Email and password required" };
-    if (isFirebaseConfigured) {
-      try {
-        const fbUser = await loginWithEmail(email, password);
-        const fp = await getUserProfile(fbUser.uid);
-        const local = toLocalProfile((fp || { uid: fbUser.uid, email: fbUser.email || "", displayName: fbUser.displayName || email.split("@")[0], language: "zh" }) as FirebaseUserProfile);
-        setUser(local); setProfile(local); return { success: true };
-      } catch (err: any) { return { success: false, error: err.message || "Login failed" }; }
+    try {
+      const firebase = await loadFirebaseClient();
+      if (firebase.isFirebaseConfigured) {
+        const firebaseUser = await firebase.loginWithEmail(email, password);
+        const firebaseProfile = await firebase.getUserProfile(firebaseUser.uid);
+        const local = toLocalProfile(firebaseProfile || {
+          uid: firebaseUser.uid,
+          email: firebaseUser.email || "",
+          displayName: firebaseUser.displayName || email.split("@")[0],
+          language: "zh",
+        });
+        setUser(local);
+        setProfile(local);
+        return { success: true };
+      }
+
+      const newUser: UserProfile = {
+        uid: `local_${Date.now()}`,
+        email,
+        displayName: name || email.split("@")[0],
+        language: "zh",
+      };
+      setUser(newUser);
+      setProfile(newUser);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(newUser));
+      return { success: true };
+    } catch (error: unknown) {
+      return { success: false, error: getErrorMessage(error, "Login failed") };
     }
-    const newUser: UserProfile = { uid: `local_${Date.now()}`, email, displayName: name || email.split("@")[0], language: "zh" };
-    setUser(newUser); setProfile(newUser); localStorage.setItem(STORAGE_KEY, JSON.stringify(newUser));
-    return { success: true };
   };
 
   const register = async (email: string, password: string, name: string) => {
     if (!email || !password || !name) return { success: false, error: "All fields required" };
-    if (isFirebaseConfigured) {
-      try {
-        const fbUser = await registerWithEmail(email, password, name);
-        const local = toLocalProfile(fbUser as FirebaseUserProfile);
-        setUser(local); setProfile(local); return { success: true };
-      } catch (err: any) { return { success: false, error: err.message || "Registration failed" }; }
+    try {
+      const firebase = await loadFirebaseClient();
+      if (firebase.isFirebaseConfigured) {
+        const firebaseProfile = await firebase.registerWithEmail(email, password, name);
+        const local = toLocalProfile(firebaseProfile);
+        setUser(local);
+        setProfile(local);
+        return { success: true };
+      }
+
+      const newUser: UserProfile = {
+        uid: `local_${Date.now()}`,
+        email,
+        displayName: name,
+        language: "zh",
+      };
+      setUser(newUser);
+      setProfile(newUser);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(newUser));
+      return { success: true };
+    } catch (error: unknown) {
+      return { success: false, error: getErrorMessage(error, "Registration failed") };
     }
-    const newUser: UserProfile = { uid: `local_${Date.now()}`, email, displayName: name, language: "zh" };
-    setUser(newUser); setProfile(newUser); localStorage.setItem(STORAGE_KEY, JSON.stringify(newUser));
-    return { success: true };
   };
 
   const signIn = async (email: string, password: string) => login(email, password);
   const signUp = async (email: string, password: string, name: string) => register(email, password, name);
 
   const loginWithGoogleFn = async (language: string = "zh") => {
-    if (isFirebaseConfigured) {
-      try {
-        const fp = await loginWithGoogle(language as "id" | "en" | "zh");
-        const local = toLocalProfile(fp as FirebaseUserProfile);
-        setUser(local); setProfile(local); return { success: true };
-      } catch (err: any) { return { success: false, error: err.message || "Google login failed" }; }
+    try {
+      const firebase = await loadFirebaseClient();
+      if (firebase.isFirebaseConfigured) {
+        const firebaseProfile = await firebase.loginWithGoogle(language as UserProfile["language"]);
+        const local = toLocalProfile(firebaseProfile);
+        setUser(local);
+        setProfile(local);
+        return { success: true };
+      }
+
+      const newUser: UserProfile = {
+        uid: `local_google_${Date.now()}`,
+        email: "google.user@gmail.com",
+        displayName: "Google User",
+        language: language as UserProfile["language"],
+      };
+      setUser(newUser);
+      setProfile(newUser);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(newUser));
+      return { success: true };
+    } catch (error: unknown) {
+      return { success: false, error: getErrorMessage(error, "Google login failed") };
     }
-    const newUser: UserProfile = { uid: `local_google_${Date.now()}`, email: "google.user@gmail.com", displayName: "Google User", language: language as UserProfile["language"] };
-    setUser(newUser); setProfile(newUser); localStorage.setItem(STORAGE_KEY, JSON.stringify(newUser));
-    return { success: true };
   };
 
   const logout = () => {
-    if (isFirebaseConfigured) firebaseLogout().catch(console.error);
-    setUser(null); setProfile(null); localStorage.removeItem(STORAGE_KEY);
+    setUser(null);
+    setProfile(null);
+    localStorage.removeItem(STORAGE_KEY);
+    void loadFirebaseClient()
+      .then((firebase) => firebase.logout())
+      .catch((error: unknown) => console.error("Logout error:", error));
   };
 
-  const updateUser = async (data: Partial<UserProfile>) => {
-    if (user) {
-      const updated = { ...user, ...data };
-      setUser(updated); setProfile(updated);
-      if (isFirebaseConfigured && db) {
-        try { await updateUserProfile(user.uid, updated); } catch (err) { console.error("Update error:", err); }
-      } else { localStorage.setItem(STORAGE_KEY, JSON.stringify(updated)); }
-    }
+  const updateUser = (data: Partial<UserProfile>) => {
+    if (!user) return;
+    const updated = { ...user, ...data };
+    setUser(updated);
+    setProfile(updated);
+
+    void loadFirebaseClient().then(async (firebase) => {
+      if (firebase.isFirebaseConfigured && firebase.db) {
+        try {
+          await firebase.updateUserProfile(user.uid, updated);
+        } catch (error: unknown) {
+          console.error("Update error:", error);
+        }
+      } else {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+      }
+    }).catch((error: unknown) => {
+      console.error("Firebase client load error while updating user:", error);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+    });
   };
 
   return (
-    <AuthContext.Provider value={{ user, profile, isLoading, isConfigured: true, isFirebaseReady: isFirebaseConfigured, login, register, signIn, signUp, loginWithGoogle: loginWithGoogleFn, logout, signOut: logout, updateUser }}>
+    <AuthContext.Provider value={{ user, profile, isLoading, isConfigured: true, isFirebaseReady, login, register, signIn, signUp, loginWithGoogle: loginWithGoogleFn, logout, signOut: logout, updateUser }}>
       {children}
     </AuthContext.Provider>
   );

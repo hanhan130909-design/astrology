@@ -71,16 +71,7 @@ function resolveLocalModule(specifier, importerPath) {
 }
 
 function getStaticModuleSpecifiers(filePath) {
-  const source = fs.readFileSync(filePath, "utf8");
-  const sourceFile = ts.createSourceFile(
-    filePath,
-    source,
-    ts.ScriptTarget.Latest,
-    true,
-    filePath.endsWith(".tsx") ? ts.ScriptKind.TSX : ts.ScriptKind.TS,
-  );
-
-  return sourceFile.statements.flatMap((statement) => {
+  return getSourceFile(filePath).statements.flatMap((statement) => {
     if (
       (ts.isImportDeclaration(statement) || ts.isExportDeclaration(statement))
       && statement.moduleSpecifier
@@ -89,6 +80,76 @@ function getStaticModuleSpecifiers(filePath) {
       return [statement.moduleSpecifier.text];
     }
     return [];
+  });
+}
+
+function getSourceFile(filePath) {
+  const source = fs.readFileSync(filePath, "utf8");
+  return ts.createSourceFile(
+    filePath,
+    source,
+    ts.ScriptTarget.Latest,
+    true,
+    filePath.endsWith(".tsx") ? ts.ScriptKind.TSX : ts.ScriptKind.TS,
+  );
+}
+
+function getDynamicModuleSpecifiers(filePath) {
+  const specifiers = [];
+  const visit = (node) => {
+    if (
+      ts.isCallExpression(node)
+      && node.expression.kind === ts.SyntaxKind.ImportKeyword
+      && node.arguments.length === 1
+      && ts.isStringLiteralLike(node.arguments[0])
+    ) {
+      specifiers.push(node.arguments[0].text);
+    }
+    ts.forEachChild(node, visit);
+  };
+  visit(getSourceFile(filePath));
+  return specifiers;
+}
+
+function getNamedImports(filePath, moduleSpecifier) {
+  return getSourceFile(filePath).statements.flatMap((statement) => {
+    if (
+      !ts.isImportDeclaration(statement)
+      || !ts.isStringLiteralLike(statement.moduleSpecifier)
+      || statement.moduleSpecifier.text !== moduleSpecifier
+      || !statement.importClause?.namedBindings
+      || !ts.isNamedImports(statement.importClause.namedBindings)
+    ) return [];
+
+    return statement.importClause.namedBindings.elements.map(
+      (element) => element.propertyName?.text ?? element.name.text,
+    );
+  });
+}
+
+function hasIdentifierCall(filePath, identifier) {
+  let found = false;
+  const visit = (node) => {
+    if (
+      ts.isCallExpression(node)
+      && ts.isIdentifier(node.expression)
+      && node.expression.text === identifier
+    ) {
+      found = true;
+      return;
+    }
+    ts.forEachChild(node, visit);
+  };
+  visit(getSourceFile(filePath));
+  return found;
+}
+
+function walkProductionSources(directoryPath) {
+  return fs.readdirSync(directoryPath, { withFileTypes: true }).flatMap((entry) => {
+    const entryPath = path.join(directoryPath, entry.name);
+    if (entry.isDirectory()) return walkProductionSources(entryPath);
+    if (!entry.isFile() || !/\.tsx?$/.test(entry.name) || entry.name.endsWith(".d.ts")) return [];
+    return [entryPath];
   });
 }
 
@@ -211,5 +272,56 @@ assert.equal(
   summaries.find((article) => article.slug === "aries-leo-compatibility-41").date,
   "",
 );
+
+const authContextPath = path.resolve("src/contexts/AuthContext.tsx");
+const natalPagePath = path.resolve("src/app/natal/page.tsx");
+const firebaseLoaderPath = path.resolve("src/lib/loadFirebaseClient.ts");
+const firebaseBoundaryModules = [authContextPath, natalPagePath, firebaseLoaderPath];
+
+for (const consumerPath of [authContextPath, natalPagePath]) {
+  const staticSpecifiers = getStaticModuleSpecifiers(consumerPath);
+  assert.equal(
+    staticSpecifiers.includes("@/lib/firebase"),
+    false,
+    `${consumerPath} must not statically import @/lib/firebase`,
+  );
+  assert.equal(
+    staticSpecifiers.includes("@/lib/loadFirebaseClient"),
+    true,
+    `${consumerPath} must import loadFirebaseClient`,
+  );
+  assert.equal(
+    hasIdentifierCall(consumerPath, "loadFirebaseClient"),
+    true,
+    `${consumerPath} must call loadFirebaseClient`,
+  );
+}
+
+assert.equal(
+  getStaticModuleSpecifiers(natalPagePath).includes("firebase/auth"),
+  false,
+  "natal page must not statically import firebase/auth",
+);
+
+for (const boundaryPath of firebaseBoundaryModules) {
+  const firebaseDynamicImports = getDynamicModuleSpecifiers(boundaryPath).filter(
+    (specifier) => specifier === "@/lib/firebase",
+  );
+  assert.equal(
+    firebaseDynamicImports.length,
+    boundaryPath === firebaseLoaderPath ? 1 : 0,
+    "only loadFirebaseClient may dynamically import @/lib/firebase in Firebase boundary modules",
+  );
+}
+
+const firebaseFacadePath = path.resolve("src/lib/firebase.ts");
+for (const productionPath of walkProductionSources(sourceRoot)) {
+  if (path.resolve(productionPath) === firebaseFacadePath) continue;
+  assert.equal(
+    getNamedImports(productionPath, "firebase/auth").includes("sendPasswordResetEmail"),
+    false,
+    `${productionPath} must use the Firebase facade for password reset`,
+  );
+}
 
 console.log(`Performance boundary tests passed (${summaries.length} body-free blog summaries)`);

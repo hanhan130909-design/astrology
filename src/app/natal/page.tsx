@@ -3,11 +3,11 @@
 import { useEffect, useRef, useState, Fragment } from "react";
 import NatalChartWheel from "@/components/NatalChartWheel";
 import { AspectMatrix } from "@/components/AlmutenChartLayout";
+import { useAuth } from "@/contexts/AuthContext";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { auth, logout } from "@/lib/firebase";
+import { loadFirebaseClient } from "@/lib/loadFirebaseClient";
 import { saveLatestBirthProfile } from "@/lib/latestBirthProfile";
 import { trackAnalyticsEvent } from "@/lib/analytics";
-import { sendPasswordResetEmail } from "firebase/auth";
 import { Send, Loader2, Sparkles, MessageCircle, X } from "lucide-react";
 import "./natal-mobile.css";
 
@@ -41,6 +41,7 @@ function addMonths(date:Date,months:number){const d=new Date(date);d.setMonth(d.
 function lonParts(lon:number){const n=norm(lon);const sign=Math.floor(n/30)%12;const inSign=n%30;return{sign,deg:Math.floor(inSign),min:Math.round((inSign%1)*60)};}
 function signGlyph(sign:number){return `${SIGN_SYMBOLS[sign]}\uFE0E`;}
 function groupedRows<T>(items:T[],groups=6){const rows=Math.ceil(items.length/groups)||0;return Array.from({length:rows},(_,row)=>Array.from({length:groups},(_,group)=>items[row+group*rows]||null));}
+function getErrorMessage(error:unknown,fallback:string){return error instanceof Error&&error.message?error.message:fallback;}
 function findHouseForLongitude(lon:number,houses:any[]){for(let i=0;i<houses.length;i++){const c=norm(houses[i].longitude),n=norm(houses[(i+1)%houses.length].longitude);if(c<=n?lon>=c&&lon<n:lon>=c||lon<n)return Number(houses[i].house);}return 0;}
 function buildFirdariaPeriods(chart:any,year:number,month:number,day:number){
   const houses=chart?.houses||[];
@@ -68,6 +69,7 @@ function buildFirdariaPeriods(chart:any,year:number,month:number,day:number){
 
 export default function NatalPage(){
   const { setLanguage } = useLanguage();
+  const { user, logout } = useAuth();
   const now = new Date();
   const [name,setName] = useState("Quick Chart");
   const [month,setMonth] = useState(now.getMonth()+1);
@@ -184,12 +186,11 @@ export default function NatalPage(){
   const deleteSavedChart = (idx:number)=>{const list=[...savedCharts];list.splice(idx,1);setSavedCharts(list);localStorage.setItem("natal_charts",JSON.stringify(list));};
   const handlePasswordReset = async()=>{
     setOpenMenu(null);
-    const email=auth?.currentUser?.email || window.prompt("请输入要重置密码的邮箱");
+    const email=user?.email || window.prompt("请输入要重置密码的邮箱");
     if(!email)return;
-    if(!auth){alert("Firebase 未配置，暂时无法发送重置邮件");return;}
-    try{await sendPasswordResetEmail(auth,email);alert("密码重置邮件已发送");}catch(e:any){alert(e?.message||"发送失败");}
+    try{const firebase=await loadFirebaseClient();await firebase.sendPasswordReset(email);alert("密码重置邮件已发送");}catch(error:unknown){alert(getErrorMessage(error,"发送失败"));}
   };
-  const handleLogout = async()=>{setOpenMenu(null);await logout();alert("已登出");window.location.href="/login";};
+  const handleLogout = ()=>{setOpenMenu(null);logout();alert("已登出");window.location.href="/login";};
   const chooseLanguage = (lang:string)=>{setLanguage(lang);localStorage.setItem("language",lang);setLanguageDialogOpen(false);window.location.reload();};
   const adjustBirthTime = (delta:number)=>{
     const d=new Date(year,month-1,day,Number(hour),Number(minute)+delta);
