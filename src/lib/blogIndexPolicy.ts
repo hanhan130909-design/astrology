@@ -19,6 +19,7 @@ export const CORNERSTONE_SLUGS = [
 ] as const;
 
 const cornerstoneSlugs = new Set<string>(CORNERSTONE_SLUGS);
+const routeSafeSlugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const rejectedBodyPatterns = [
   /[木火土金水]\s+(?:element|sign)/i,
   /every ending b\b/i,
@@ -36,13 +37,14 @@ export function isIndexableArticle(article: unknown): article is IndexableArticl
   if (!article || typeof article !== "object") return false;
 
   const candidate = article as IndexableArticle;
-  if (typeof candidate.slug !== "string" || candidate.slug.trim() === "") return false;
+  if (typeof candidate.slug !== "string" || !routeSafeSlugPattern.test(candidate.slug)) return false;
 
   const body = getEnglishBody(candidate)?.trim();
-  if (!body || rejectedBodyPatterns.some((pattern) => pattern.test(body))) return false;
+  if (!body) return false;
 
   if (cornerstoneSlugs.has(candidate.slug)) return body.length >= 1000;
+  if (rejectedBodyPatterns.some((pattern) => pattern.test(body))) return false;
 
-  const headingCount = body.match(/^##\s+.+$/gm)?.length ?? 0;
+  const headingCount = body.match(/^##[ \t]+\S[^\r\n]*$/gm)?.length ?? 0;
   return body.length >= 1200 && headingCount >= 2;
 }
