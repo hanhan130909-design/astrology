@@ -73,6 +73,7 @@ delete globalThis.window;
 
 const natalSource = fs.readFileSync("src/app/natal/page.tsx", "utf8");
 const solarSource = fs.readFileSync("src/components/SolarReturnCalculator.tsx", "utf8");
+const nextConfigSource = fs.readFileSync("next.config.ts", "utf8");
 for (const eventName of ANALYTICS_EVENT_NAMES) {
   assert.match(`${natalSource}\n${solarSource}`, new RegExp(eventName));
 }
@@ -81,5 +82,8 @@ assert.match(natalSource, /requestChart\([^;]+\);/);
 assert.match(solarSource, /calculateSolarReturn\(null,\s*null,\s*null,\s*true\)/);
 assert.doesNotMatch(natalSource, /trackAnalyticsEvent\([^\n]+(?:name|city|year|month|day|hour|minute|latitude|longitude|email)/);
 assert.doesNotMatch(solarSource, /trackAnalyticsEvent\([^\n]+(?:birthData|cityName|bYear|bMonth|bDay|bHour|bMinute|birthLat|birthLng|email)/);
+assert.match(nextConfigSource, /geolocation=\(self\)/);
+assert.match(nextConfigSource, /connect-src[^";]*https:\/\/analytics\.google\.com/);
+assert.match(nextConfigSource, /script-src[^";]*https:\/\/pagead2\.googlesyndication\.com/);
 
 console.log("Analytics event tests passed");
