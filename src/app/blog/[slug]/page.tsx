@@ -2,14 +2,14 @@
  * Dynamic Blog Article Page — /blog/[slug]
  * Renders individual Destiny Code articles with markdown-like content
  */
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { destinyArticles, BlogArticle } from '@/content/destiny-blog-articles';
 import { seoArticles } from '../seo-articles'; import { moreSeoArticles } from '../more-seo-articles';
 import { ArrowLeft, Clock, Tag } from 'lucide-react';
 import ShareButtons from '@/components/ShareButtons';
-import { isIndexableArticle } from '@/lib/blogIndexPolicy';
+import { createBlogArticleMetadata, selectContextualCornerstone } from '@/lib/blogArticleSeo';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -31,31 +31,7 @@ export async function generateMetadata(
     || seoArticles.find((a: any) => a.slug === slug) || moreSeoArticles.find((a: any) => a.slug === slug);
   if (!article) { notFound(); }
 
-  const metaTitle = typeof article.title === 'string'
-    ? article.title
-    : (article.title?.en || article.title?.zh || 'Article');
-  const metaDesc = article.excerpt?.en || article.description?.en
-    || (typeof article.excerpt === 'string' ? article.excerpt : '')
-    || (typeof article.description === 'string' ? article.description : '');
-  const canonical = `https://lunaxstar.com/blog/${slug}`;
-
-  return {
-    title: `${metaTitle} | 星缘 Blog`,
-    description: metaDesc,
-    robots: {
-      index: isIndexableArticle(article),
-      follow: true,
-    },
-    openGraph: {
-      title: metaTitle,
-      description: metaDesc,
-      type: 'article',
-      url: canonical,
-    },
-    alternates: {
-      canonical,
-    },
-  };
+  return createBlogArticleMetadata(article, slug);
 }
 
 // Simple markdown renderer (headings, paragraphs, bold, italic, links, lists)
@@ -196,21 +172,11 @@ export default async function BlogArticlePage({ params }: Props) {
     || (typeof article.excerpt === 'string' ? article.excerpt : '')
     || (typeof article.description === 'string' ? article.description : '');
 
-  const relatedCornerstones = /bazi|chinese|day master/i.test(`${articleTitle} ${categoryLabel}`)
-    ? [
-        { slug: 'what-is-chinese-astrology-bazi', label: 'What Is Chinese Astrology (BaZi)?' },
-        { slug: 'bazi-calculator-what-is-day-master', label: 'BaZi Day Master Guide' },
-      ]
-    : /compatibility|relationship|love/i.test(`${articleTitle} ${categoryLabel}`)
-      ? [
-          { slug: 'chinese-zodiac-compatibility-love', label: 'Chinese Zodiac Love Compatibility' },
-          { slug: 'what-does-my-birth-chart-mean', label: 'What Does My Birth Chart Mean?' },
-        ]
-      : [
-          { slug: 'free-natal-chart-interpretation-guide', label: 'Free Natal Chart Interpretation Guide' },
-          { slug: 'rising-sign-meaning-how-to-find', label: 'Rising Sign Meaning and How to Find It' },
-        ];
-  const relatedCornerstone = relatedCornerstones.find((candidate) => candidate.slug !== slug)!;
+  const relatedCornerstone = selectContextualCornerstone({
+    slug,
+    title: articleTitle,
+    categoryLabel,
+  });
 
   // JSON-LD structured data for rich results
   const articleJsonLd = {
