@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState, Fragment } from "react";
+import { useEffect, useRef, useState, Fragment } from "react";
 import NatalChartWheel from "@/components/NatalChartWheel";
 import { AspectMatrix } from "@/components/AlmutenChartLayout";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { auth, logout } from "@/lib/firebase";
 import { saveLatestBirthProfile } from "@/lib/latestBirthProfile";
+import { trackAnalyticsEvent } from "@/lib/analytics";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { Send, Loader2, Sparkles, MessageCircle, X } from "lucide-react";
 
@@ -95,6 +96,7 @@ export default function NatalPage(){
   const [chatMsgs,setChatMsgs] = useState<{role:string,content:string}[]>([]);
   const [chatInput,setChatInput] = useState("");
   const [chatLoading,setChatLoading] = useState(false);
+  const birthFormStarted = useRef(false);
 
   const lat = (glatDeg + glatMin / 60) * (glatDir === "S" ? -1 : 1);
   const lng = (glonDeg + glonMin / 60) * (glonDir === "W" ? -1 : 1);
@@ -124,18 +126,26 @@ export default function NatalPage(){
     }catch{setChatMsgs(p=>[...p,{role:"assistant",content:"AI暂不可用"}]);}finally{setChatLoading(false);}
   };
 
-  const requestChart = async(body:any)=>{
+  const requestChart = async(body:any,source:"automatic"|"user"="automatic")=>{
     setLoading(true);
     try{
       const r = await fetch("/api/chart",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
       const d = await r.json();
       if(d.error) throw new Error(d.error);
       setChart(d.data || d);
-    }catch{}finally{setLoading(false);}
+      if(source==="user")trackAnalyticsEvent("chart_generated",{chart_type:"natal",house_system:hsys});
+    }catch{
+      if(source==="user")trackAnalyticsEvent("chart_generation_error",{chart_type:"natal",house_system:hsys,error_category:"api_error"});
+    }finally{setLoading(false);}
   };
   const drawChart = async()=>{
     saveLatestBirthProfile(currentBirthProfile());
-    await requestChart({year,month,day,hour:Number(hour),minute:Number(minute),latitude:lat,longitude:lng,timezone:tzHours,houseSystem:hsys});
+    await requestChart({year,month,day,hour:Number(hour),minute:Number(minute),latitude:lat,longitude:lng,timezone:tzHours,houseSystem:hsys},"user");
+  };
+  const trackBirthFormStart = ()=>{
+    if(birthFormStarted.current)return;
+    birthFormStarted.current=true;
+    trackAnalyticsEvent("birth_form_start",{chart_type:"natal",house_system:hsys});
   };
 
   useEffect(()=>{
@@ -153,8 +163,8 @@ export default function NatalPage(){
     try{const r=await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(city)}&limit=1`);const d=await r.json();if(d?.[0]){const la=parseFloat(d[0].lat),lo=parseFloat(d[0].lon);setGlatDeg(Math.trunc(Math.abs(la)));setGlatMin(Math.round((Math.abs(la)%1)*60));setGlatDir(la>=0?"N":"S");setGlonDeg(Math.trunc(Math.abs(lo)));setGlonMin(Math.round((Math.abs(lo)%1)*60));setGlonDir(lo>=0?"E":"W");setTz(Math.round(lo/15)*60);}}catch{}
   };
   const handleSave = ()=>{if(!chart)return;saveLatestBirthProfile(currentBirthProfile());const s=JSON.parse(localStorage.getItem("natal_charts")||"[]");s.unshift({name,ts:Date.now(),birthData:{name,year,month,day,hour,minute,lat,lng,tz,hsys}});localStorage.setItem("natal_charts",JSON.stringify(s.slice(0,20)));alert("已储存");};
-  const handleCopyLink = ()=>{navigator.clipboard.writeText(window.location.href).then(()=>alert("链接已复制"));};
-  const handleExportImage = async()=>{const el=document.getElementById("chart");if(!el)return;try{const{default:h}=await import("html2canvas");const c=await h(el,{backgroundColor:"#0f0f1a",scale:2});const a=document.createElement("a");a.download=`chart-${year}-${month}-${day}.png`;a.href=c.toDataURL();a.click();}catch{}};
+  const handleCopyLink = ()=>{navigator.clipboard.writeText(window.location.href).then(()=>{trackAnalyticsEvent("chart_shared",{chart_type:"natal",share_method:"copy_link"});alert("链接已复制");});};
+  const handleExportImage = async()=>{const el=document.getElementById("chart");if(!el)return;try{const{default:h}=await import("html2canvas");const c=await h(el,{backgroundColor:"#0f0f1a",scale:2});const a=document.createElement("a");a.download=`chart-${year}-${month}-${day}.png`;a.href=c.toDataURL();a.click();trackAnalyticsEvent("chart_shared",{chart_type:"natal",share_method:"download_image"});}catch{}};
   const openSavedCharts = ()=>{setSavedCharts(JSON.parse(localStorage.getItem("natal_charts")||"[]"));setSavedDialogOpen(true);setOpenMenu(null);};
   const focusQuickChart = ()=>{setSidebarOpen(true);setOpenMenu(null);window.setTimeout(()=>document.getElementById("rightsidebar")?.scrollIntoView({behavior:"smooth",block:"start"}),0);};
   const startNewChart = ()=>{const current=new Date();setName("Quick Chart");setYear(current.getFullYear());setMonth(current.getMonth()+1);setDay(current.getDate());setHour(current.getHours());setMinute(current.getMinutes());setCity("台北市");setGlonDeg(121);setGlonMin(30);setGlonDir("E");setGlatDeg(25);setGlatMin(3);setGlatDir("N");setTz(-current.getTimezoneOffset());setHsys(DEFAULT_HOUSE_SYSTEM);setChart(null);focusQuickChart();};
@@ -576,7 +586,7 @@ export default function NatalPage(){
             <strong>快速制图</strong>
             <span style={{float:"right",cursor:"pointer"}}>{sidebarOpen?"−":"+"}</span>
           </div>
-          {sidebarOpen&&<div id="sidebar_form"><hr/>
+          {sidebarOpen&&<div id="sidebar_form" onFocusCapture={trackBirthFormStart} onChangeCapture={trackBirthFormStart}><hr/>
             <label style={{fontWeight:"bold",fontSize:"12px"}}>名字:</label>
             <input type="text" value={name} onChange={e=>setName(e.target.value)} size={25} style={{width:"100%",border:"1px solid #888",background:"#555",color:"white",padding:"2px 4px",marginBottom:6}}/>
             <label style={{fontWeight:"bold",fontSize:"12px"}}>出生时间:</label><br/>

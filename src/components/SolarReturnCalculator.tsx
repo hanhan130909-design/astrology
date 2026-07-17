@@ -8,6 +8,7 @@ import ClassicReturnChart from '@/components/ClassicReturnChart';
 import { useChartStorage } from '@/app/natal/useChartStorage';
 import { loadLatestBirthProfile, profileToBirthData } from '@/lib/latestBirthProfile';
 import { createSolarReturnRequestPayload } from '@/lib/solarReturnRequest';
+import { trackAnalyticsEvent } from '@/lib/analytics';
 
 const ALL_CITIES = [
   {id:"jakarta",name:{zh:"雅加达",en:"Jakarta",id:"Jakarta"},lat:-6.2088,lng:106.8456,tz:7},
@@ -54,10 +55,11 @@ export default function SolarReturnCalculator() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showSaved, setShowSaved] = useState(false);
+  const birthFormStarted = useRef(false);
 
   const bCity = ALL_CITIES.find((c: any) => c.id === bCityId) || ALL_CITIES[0];
 
-  const calculateSolarReturn = async (profileOverride: any = null, returnYearOverride: number | null = null, houseSystemOverride: string | null = null) => {
+  const calculateSolarReturn = async (profileOverride: any = null, returnYearOverride: number | null = null, houseSystemOverride: string | null = null, userInitiated = false) => {
     const savedBirth = profileOverride ? profileToBirthData(profileOverride) : null;
     const birthData = savedBirth || { year: bYear, month: bMonth, day: bDay, hour: bHour, minute: bMinute, lat: birthLat, lng: birthLng, tz: birthTz };
     setLoading(true);
@@ -75,11 +77,19 @@ export default function SolarReturnCalculator() {
       const data = await res.json();
       if (data.error) throw new Error(data.error);
       setChart(data);
+      if (userInitiated) trackAnalyticsEvent('chart_generated', { chart_type: 'solar_return', house_system: houseSystemOverride || houseSystem });
     } catch (e: any) {
       setError(e.message);
+      if (userInitiated) trackAnalyticsEvent('chart_generation_error', { chart_type: 'solar_return', house_system: houseSystemOverride || houseSystem, error_category: 'api_error' });
     } finally {
       setLoading(false);
     }
+  };
+
+  const trackBirthFormStart = () => {
+    if (birthFormStarted.current) return;
+    birthFormStarted.current = true;
+    trackAnalyticsEvent('birth_form_start', { chart_type: 'solar_return', house_system: houseSystem });
   };
 
   useEffect(() => {
@@ -161,7 +171,7 @@ export default function SolarReturnCalculator() {
 
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Input Form */}
-          <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200">
+          <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200" onFocusCapture={trackBirthFormStart} onChangeCapture={trackBirthFormStart}>
             <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
               <Calendar size={18} className="text-gray-600"/>
               {language === 'zh' ? '出生信息':language==='zh'?'出生信息':language==='en'?'Birth Info':language==='id'?'Info Kelahiran':language==='th'?'ข้อมูลเกิด':language==='vi'?'Thông tin sinh':language==='ms'?'Info Kelahiran':language==='ja'?'出生情報':language==='ko'?'출생 정보':'Birth Info'}
@@ -221,7 +231,7 @@ export default function SolarReturnCalculator() {
               <input type="number" value={srYear} onChange={e => setSrYear(parseInt(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm"/>
             </div>
 
-            <button onClick={calculateSolarReturn} disabled={loading} className="w-full py-3 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 disabled:opacity-50 rounded-xl font-bold text-gray-900 transition-all flex items-center justify-center gap-2">
+            <button onClick={() => calculateSolarReturn(null, null, null, true)} disabled={loading} className="w-full py-3 bg-gradient-to-r from-gray-600 to-gray-600 hover:from-gray-500 hover:to-gray-500 disabled:opacity-50 rounded-xl font-bold text-gray-900 transition-all flex items-center justify-center gap-2">
               <Sun size={18} />
               {loading ? (language === 'zh' ? '计算中...' : 'Calculating...') : (language === 'zh' ? '计算日返盘' : 'Calculate Solar Return')}
             </button>
