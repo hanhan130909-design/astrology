@@ -11,7 +11,8 @@
     "test:blog-index": "node --experimental-strip-types scripts/test-blog-index-policy.mjs",
     "test:solar-return-content": "node --experimental-strip-types scripts/test-solar-return-content.mjs",
     "test:analytics": "node --experimental-strip-types scripts/test-analytics.mjs",
-    "test:natal-mobile": "node scripts/test-natal-mobile-css.mjs"
+    "test:natal-mobile": "node scripts/test-natal-mobile-css.mjs",
+    "test:acquisition": "npm run test:seo-metadata && npm run test:blog-index && npm run test:solar-return-content && npm run test:analytics && npm run test:natal-mobile"
   },
   "dependencies": {
     "astronomy-engine": "^2.1.19",
