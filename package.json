@@ -10,7 +10,8 @@
     "test:seo-metadata": "node --experimental-strip-types scripts/test-seo-metadata.mjs",
     "test:blog-index": "node --experimental-strip-types scripts/test-blog-index-policy.mjs",
     "test:solar-return-content": "node --experimental-strip-types scripts/test-solar-return-content.mjs",
-    "test:analytics": "node --experimental-strip-types scripts/test-analytics.mjs"
+    "test:analytics": "node --experimental-strip-types scripts/test-analytics.mjs",
+    "test:natal-mobile": "node scripts/test-natal-mobile-css.mjs"
   },
   "dependencies": {
     "astronomy-engine": "^2.1.19",

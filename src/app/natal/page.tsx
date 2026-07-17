@@ -9,6 +9,7 @@ import { saveLatestBirthProfile } from "@/lib/latestBirthProfile";
 import { trackAnalyticsEvent } from "@/lib/analytics";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { Send, Loader2, Sparkles, MessageCircle, X } from "lucide-react";
+import "./natal-mobile.css";
 
 const MONTHS = ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];
 const SIGN_SYMBOLS = ["♈","♉","♊","♋","♌","♍","♎","♏","♐","♑","♒","♓"];

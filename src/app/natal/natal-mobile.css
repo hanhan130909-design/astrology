@@ -1,0 +1,83 @@
+@media (max-width: 767px) {
+  .natal-page-shell {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: clip;
+  }
+
+  #rightsidebar {
+    order: 1;
+    position: static !important;
+    width: auto !important;
+    max-width: calc(100vw - 16px);
+    margin: 8px 8px 0 !important;
+    box-sizing: border-box;
+  }
+
+  #natalmain {
+    order: 2;
+    width: 100%;
+    max-width: 100vw;
+    min-width: 0;
+    padding: 10px 8px 18px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  #chartwrap {
+    width: 100%;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    overflow-x: visible;
+  }
+
+  #chart {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  #chart svg {
+    width: min(100%, 520px);
+    max-width: 100%;
+    height: auto;
+    flex: 0 1 auto;
+  }
+
+  #aspgrid {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .alm-tabs,
+  .alm-panel,
+  .alm-grid-3 {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .alm-table {
+    min-width: 700px;
+  }
+
+  .natal-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .natal-actions button {
+    flex: 1 1 120px;
+    min-height: 38px;
+  }
+}
