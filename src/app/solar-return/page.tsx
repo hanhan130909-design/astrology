@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Sun, Search, MapPin, X, Calendar, Star } from 'lucide-react';
 import ClassicReturnChart from '@/components/ClassicReturnChart';
+import SolarReturnSeoContent from '@/components/SolarReturnSeoContent';
 import { useChartStorage } from '../natal/useChartStorage';
 import { loadLatestBirthProfile, profileToBirthData } from '@/lib/latestBirthProfile';
 
@@ -152,12 +153,10 @@ export default function SolarReturnPage() {
             {language === 'zh' ? '太阳回归盘':language==='zh'?'太阳回归盘':language==='en'?'Solar Return':language==='id'?'Solar Return':language==='th'?'สุริยคติ':language==='vi'?'Solar Return':language==='ms'?'Solar Return':language==='ja'?'太陽回帰図':language==='ko'?'솔라 리턴':'Solar Return'}
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            {language === 'zh' ? '☀️ 日返盘分析':language==='zh'?'☀️ 日返盘分析':language==='en'?'☀️ Solar Return':language==='id'?'☀️ Solar Return':language==='th'?'☀️ สุริยคติ':language==='vi'?'☀️ Solar Return':language==='ms'?'☀️ Solar Return':language==='ja'?'☀️ 太陽回帰図':language==='ko'?'☀️ 솔라 리턴':'☀️ Solar Return'}
+            Free Solar Return Chart Calculator
           </h1>
           <p className="text-gray-500 max-w-xl mx-auto text-sm">
-            {language === 'zh' 
-              ? '太阳每年回到出生位置的时刻，揭示你这一年的整体能量主题' 
-              : 'When the Sun returns to its birth position, revealing your yearly energy themes'}
+            Calculate your yearly astrology chart for free. No signup required.
           </p>
         </div>
 
@@ -287,6 +286,8 @@ export default function SolarReturnPage() {
         {chart?.solarReturn && (
           <ClassicReturnChart chart={chart.solarReturn} className="mt-8" />
         )}
+
+        <SolarReturnSeoContent />
       </main>
     </div>
   );
