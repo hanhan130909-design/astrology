@@ -186,11 +186,23 @@ export default function NatalPage(){
   const deleteSavedChart = (idx:number)=>{const list=[...savedCharts];list.splice(idx,1);setSavedCharts(list);localStorage.setItem("natal_charts",JSON.stringify(list));};
   const handlePasswordReset = async()=>{
     setOpenMenu(null);
-    const email=user?.email || window.prompt("请输入要重置密码的邮箱");
-    if(!email)return;
-    try{const firebase=await loadFirebaseClient();await firebase.sendPasswordReset(email);alert("密码重置邮件已发送");}catch(error:unknown){alert(getErrorMessage(error,"发送失败"));}
+    try{
+      const firebase=await loadFirebaseClient();
+      if(!firebase.isFirebaseConfigured||!firebase.auth){alert("Firebase 未配置，暂时无法发送重置邮件");return;}
+      const email=firebase.auth.currentUser?.email||user?.email||window.prompt("请输入要重置密码的邮箱");
+      if(!email)return;
+      await firebase.sendPasswordReset(email);
+      alert("密码重置邮件已发送");
+    }catch(error:unknown){alert(getErrorMessage(error,"发送失败"));}
   };
-  const handleLogout = ()=>{setOpenMenu(null);logout();alert("已登出");window.location.href="/login";};
+  const handleLogout = async()=>{
+    setOpenMenu(null);
+    try{
+      await logout();
+      alert("已登出");
+      window.location.href="/login";
+    }catch(error:unknown){alert(getErrorMessage(error,"登出失败"));}
+  };
   const chooseLanguage = (lang:string)=>{setLanguage(lang);localStorage.setItem("language",lang);setLanguageDialogOpen(false);window.location.reload();};
   const adjustBirthTime = (delta:number)=>{
     const d=new Date(year,month-1,day,Number(hour),Number(minute)+delta);

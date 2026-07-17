@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { loadFirebaseClient } from "@/lib/loadFirebaseClient";
 
 export interface UserProfile {
@@ -62,10 +62,30 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isFirebaseReady, setIsFirebaseReady] = useState(false);
+  const [subscriptionVersion, setSubscriptionVersion] = useState(0);
+  const firebaseReadyRef = useRef(false);
+
+  const loadAuthFirebaseClient = async () => {
+    try {
+      const firebase = await loadFirebaseClient();
+      const ready = Boolean(firebase.isFirebaseConfigured && firebase.auth);
+      if (ready && !firebaseReadyRef.current) {
+        setSubscriptionVersion((version) => version + 1);
+      }
+      firebaseReadyRef.current = ready;
+      setIsFirebaseReady(ready);
+      return firebase;
+    } catch (error: unknown) {
+      firebaseReadyRef.current = false;
+      setIsFirebaseReady(false);
+      throw error;
+    }
+  };
 
   useEffect(() => {
     let active = true;
     let unsubscribe: (() => void) | undefined;
+    let authEventGeneration = 0;
 
     const restoreLocalProfile = () => {
       if (!active) return;
@@ -84,42 +104,51 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     void loadFirebaseClient().then((firebase) => {
       if (!active) return;
-      setIsFirebaseReady(firebase.isFirebaseConfigured);
+      const ready = Boolean(firebase.isFirebaseConfigured && firebase.auth);
+      firebaseReadyRef.current = ready;
+      setIsFirebaseReady(ready);
 
-      if (!firebase.isFirebaseConfigured || !firebase.auth) {
+      if (!ready) {
         restoreLocalProfile();
         return;
       }
 
       unsubscribe = firebase.onAuthChange(async (firebaseUser) => {
+        const callbackToken = ++authEventGeneration;
         if (!active) return;
-        if (firebaseUser) {
-          try {
-            const firebaseProfile = await firebase.getUserProfile(firebaseUser.uid);
-            if (!active) return;
-            const local = firebaseProfile
-              ? toLocalProfile(firebaseProfile)
-              : toLocalProfile({
-                uid: firebaseUser.uid,
-                email: firebaseUser.email || "",
-                displayName: firebaseUser.displayName || firebaseUser.email?.split("@")[0] || "User",
-                photoURL: firebaseUser.photoURL,
-                language: "zh",
-              });
-            setUser(local);
-            setProfile(local);
-          } catch (error: unknown) {
-            console.error("Get profile error:", error);
-          }
-        } else {
+        if (!firebaseUser) {
+          if (callbackToken !== authEventGeneration) return;
           setUser(null);
           setProfile(null);
+          setIsLoading(false);
+          return;
         }
-        if (active) setIsLoading(false);
+
+        try {
+          const firebaseProfile = await firebase.getUserProfile(firebaseUser.uid);
+          if (!active || callbackToken !== authEventGeneration) return;
+          const local = firebaseProfile
+            ? toLocalProfile(firebaseProfile)
+            : toLocalProfile({
+              uid: firebaseUser.uid,
+              email: firebaseUser.email || "",
+              displayName: firebaseUser.displayName || firebaseUser.email?.split("@")[0] || "User",
+              photoURL: firebaseUser.photoURL,
+              language: "zh",
+            });
+          setUser(local);
+          setProfile(local);
+          setIsLoading(false);
+        } catch (error: unknown) {
+          if (!active || callbackToken !== authEventGeneration) return;
+          console.error("Get profile error:", error);
+          setIsLoading(false);
+        }
       });
     }).catch((error: unknown) => {
       console.error("Firebase client load error:", error);
       if (active) {
+        firebaseReadyRef.current = false;
         setIsFirebaseReady(false);
         restoreLocalProfile();
       }
@@ -127,14 +156,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     return () => {
       active = false;
+      authEventGeneration += 1;
       unsubscribe?.();
     };
-  }, []);
+  }, [subscriptionVersion]);
 
   const login = async (email: string, password: string, name?: string) => {
     if (!email || !password) return { success: false, error: "Email and password required" };
     try {
-      const firebase = await loadFirebaseClient();
+      const firebase = await loadAuthFirebaseClient();
       if (firebase.isFirebaseConfigured) {
         const firebaseUser = await firebase.loginWithEmail(email, password);
         const firebaseProfile = await firebase.getUserProfile(firebaseUser.uid);
@@ -167,7 +197,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const register = async (email: string, password: string, name: string) => {
     if (!email || !password || !name) return { success: false, error: "All fields required" };
     try {
-      const firebase = await loadFirebaseClient();
+      const firebase = await loadAuthFirebaseClient();
       if (firebase.isFirebaseConfigured) {
         const firebaseProfile = await firebase.registerWithEmail(email, password, name);
         const local = toLocalProfile(firebaseProfile);
@@ -196,7 +226,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const loginWithGoogleFn = async (language: string = "zh") => {
     try {
-      const firebase = await loadFirebaseClient();
+      const firebase = await loadAuthFirebaseClient();
       if (firebase.isFirebaseConfigured) {
         const firebaseProfile = await firebase.loginWithGoogle(language as UserProfile["language"]);
         const local = toLocalProfile(firebaseProfile);
@@ -220,35 +250,40 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const logout = () => {
+  const logout = async () => {
     setUser(null);
     setProfile(null);
     localStorage.removeItem(STORAGE_KEY);
-    void loadFirebaseClient()
-      .then((firebase) => firebase.logout())
-      .catch((error: unknown) => console.error("Logout error:", error));
+    try {
+      const firebase = await loadAuthFirebaseClient();
+      await firebase.logout();
+    } catch (error: unknown) {
+      console.error("Logout error:", error);
+      throw error;
+    }
   };
 
-  const updateUser = (data: Partial<UserProfile>) => {
+  const updateUser = async (data: Partial<UserProfile>) => {
     if (!user) return;
     const updated = { ...user, ...data };
     setUser(updated);
     setProfile(updated);
 
-    void loadFirebaseClient().then(async (firebase) => {
+    try {
+      const firebase = await loadAuthFirebaseClient();
       if (firebase.isFirebaseConfigured && firebase.db) {
-        try {
-          await firebase.updateUserProfile(user.uid, updated);
-        } catch (error: unknown) {
-          console.error("Update error:", error);
-        }
+        await firebase.updateUserProfile(user.uid, updated);
       } else {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
       }
-    }).catch((error: unknown) => {
-      console.error("Firebase client load error while updating user:", error);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
-    });
+    } catch (error: unknown) {
+      console.error("Update error:", error);
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+      } catch (storageError: unknown) {
+        console.error("Local profile update error:", storageError);
+      }
+    }
   };
 
   return (

@@ -47,6 +47,11 @@ assert.deepEqual(summary.title, representativeArticle.title);
 const sourceRoot = path.resolve("src");
 
 function resolveLocalModule(specifier, importerPath) {
+  const explicitExtension = path.extname(specifier);
+  if (explicitExtension && ![".js", ".jsx", ".ts", ".tsx"].includes(explicitExtension)) {
+    return null;
+  }
+
   let basePath;
   if (specifier.startsWith("@/")) {
     basePath = path.join(sourceRoot, specifier.slice(2));
@@ -60,8 +65,12 @@ function resolveLocalModule(specifier, importerPath) {
     basePath,
     `${basePath}.ts`,
     `${basePath}.tsx`,
+    `${basePath}.js`,
+    `${basePath}.jsx`,
     path.join(basePath, "index.ts"),
     path.join(basePath, "index.tsx"),
+    path.join(basePath, "index.js"),
+    path.join(basePath, "index.jsx"),
   ];
   const resolvedPath = candidates.find((candidate) => (
     fs.existsSync(candidate) && fs.statSync(candidate).isFile()
@@ -85,12 +94,19 @@ function getStaticModuleSpecifiers(filePath) {
 
 function getSourceFile(filePath) {
   const source = fs.readFileSync(filePath, "utf8");
+  const scriptKind = filePath.endsWith(".tsx")
+    ? ts.ScriptKind.TSX
+    : filePath.endsWith(".jsx")
+      ? ts.ScriptKind.JSX
+      : filePath.endsWith(".js")
+        ? ts.ScriptKind.JS
+        : ts.ScriptKind.TS;
   return ts.createSourceFile(
     filePath,
     source,
     ts.ScriptTarget.Latest,
     true,
-    filePath.endsWith(".tsx") ? ts.ScriptKind.TSX : ts.ScriptKind.TS,
+    scriptKind,
   );
 }
 
@@ -148,7 +164,7 @@ function walkProductionSources(directoryPath) {
   return fs.readdirSync(directoryPath, { withFileTypes: true }).flatMap((entry) => {
     const entryPath = path.join(directoryPath, entry.name);
     if (entry.isDirectory()) return walkProductionSources(entryPath);
-    if (!entry.isFile() || !/\.tsx?$/.test(entry.name) || entry.name.endsWith(".d.ts")) return [];
+    if (!entry.isFile() || !/\.[jt]sx?$/.test(entry.name) || entry.name.endsWith(".d.ts")) return [];
     return [entryPath];
   });
 }
@@ -276,15 +292,10 @@ assert.equal(
 const authContextPath = path.resolve("src/contexts/AuthContext.tsx");
 const natalPagePath = path.resolve("src/app/natal/page.tsx");
 const firebaseLoaderPath = path.resolve("src/lib/loadFirebaseClient.ts");
-const firebaseBoundaryModules = [authContextPath, natalPagePath, firebaseLoaderPath];
+const firebaseFacadePath = fs.realpathSync(path.resolve("src/lib/firebase.ts"));
 
 for (const consumerPath of [authContextPath, natalPagePath]) {
   const staticSpecifiers = getStaticModuleSpecifiers(consumerPath);
-  assert.equal(
-    staticSpecifiers.includes("@/lib/firebase"),
-    false,
-    `${consumerPath} must not statically import @/lib/firebase`,
-  );
   assert.equal(
     staticSpecifiers.includes("@/lib/loadFirebaseClient"),
     true,
@@ -295,28 +306,37 @@ for (const consumerPath of [authContextPath, natalPagePath]) {
     true,
     `${consumerPath} must call loadFirebaseClient`,
   );
+
+  const clientGraph = walkLocalStaticModuleGraph(consumerPath);
+  assert.equal(
+    clientGraph.has(firebaseFacadePath),
+    false,
+    `${consumerPath} must not statically reach src/lib/firebase.ts`,
+  );
+  for (const reachablePath of clientGraph) {
+    assert.equal(
+      getStaticModuleSpecifiers(reachablePath).includes("firebase/auth"),
+      false,
+      `${reachablePath} must not statically import firebase/auth from ${consumerPath}`,
+    );
+  }
 }
 
 assert.equal(
-  getStaticModuleSpecifiers(natalPagePath).includes("firebase/auth"),
+  getStaticModuleSpecifiers(firebaseLoaderPath).includes("@/lib/firebase"),
   false,
-  "natal page must not statically import firebase/auth",
+  "loadFirebaseClient must not statically import or export @/lib/firebase",
+);
+assert.equal(
+  getDynamicModuleSpecifiers(firebaseLoaderPath).filter(
+    (specifier) => specifier === "@/lib/firebase",
+  ).length,
+  1,
+  "loadFirebaseClient must dynamically import @/lib/firebase exactly once",
 );
 
-for (const boundaryPath of firebaseBoundaryModules) {
-  const firebaseDynamicImports = getDynamicModuleSpecifiers(boundaryPath).filter(
-    (specifier) => specifier === "@/lib/firebase",
-  );
-  assert.equal(
-    firebaseDynamicImports.length,
-    boundaryPath === firebaseLoaderPath ? 1 : 0,
-    "only loadFirebaseClient may dynamically import @/lib/firebase in Firebase boundary modules",
-  );
-}
-
-const firebaseFacadePath = path.resolve("src/lib/firebase.ts");
 for (const productionPath of walkProductionSources(sourceRoot)) {
-  if (path.resolve(productionPath) === firebaseFacadePath) continue;
+  if (fs.realpathSync(productionPath) === firebaseFacadePath) continue;
   assert.equal(
     getNamedImports(productionPath, "firebase/auth").includes("sendPasswordResetEmail"),
     false,
