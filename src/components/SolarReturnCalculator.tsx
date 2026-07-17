@@ -7,6 +7,7 @@ import { Sun, Search, MapPin, X, Calendar, Star } from 'lucide-react';
 import ClassicReturnChart from '@/components/ClassicReturnChart';
 import { useChartStorage } from '@/app/natal/useChartStorage';
 import { loadLatestBirthProfile, profileToBirthData } from '@/lib/latestBirthProfile';
+import { createSolarReturnRequestPayload } from '@/lib/solarReturnRequest';
 
 const ALL_CITIES = [
   {id:"jakarta",name:{zh:"雅加达",en:"Jakarta",id:"Jakarta"},lat:-6.2088,lng:106.8456,tz:7},
@@ -65,12 +66,11 @@ export default function SolarReturnCalculator() {
       const res = await fetch('/api/chart/transit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: 'solar_return',
+        body: JSON.stringify(createSolarReturnRequestPayload(
           birthData,
-          transitDate: { year: returnYearOverride || srYear },
-          houseSystem: houseSystemOverride || houseSystem
-        })
+          returnYearOverride || srYear,
+          houseSystemOverride || houseSystem,
+        ))
       });
       const data = await res.json();
       if (data.error) throw new Error(data.error);
@@ -145,7 +145,7 @@ export default function SolarReturnCalculator() {
         </div>
       )}
 
-      <main id="solar-return-calculator" className="max-w-7xl mx-auto px-6 py-8">
+      <div id="solar-return-calculator" className="max-w-7xl mx-auto px-6 py-8">
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-500/20 rounded-full text-sm text-gray-600 mb-4">
             <Sun size={16} className="fill-gray-300"/>
@@ -286,7 +286,7 @@ export default function SolarReturnCalculator() {
           <ClassicReturnChart chart={chart.solarReturn} className="mt-8" />
         )}
 
-      </main>
+      </div>
     </div>
   );
 }

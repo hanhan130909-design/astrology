@@ -1,13 +1,15 @@
 import assert from "node:assert/strict";
-import { execFileSync, spawnSync } from "node:child_process";
+import { spawn } from "node:child_process";
+import { once } from "node:events";
 import fs from "node:fs";
+import { createServer } from "node:net";
 
-const splitBaselineCommit = "1591ab13dc27c6df92c8e7ecedc1caddebd504bd";
 const pagePath = "src/app/solar-return/page.tsx";
 const layoutPath = "src/app/solar-return/layout.tsx";
 const calculatorPath = "src/components/SolarReturnCalculator.tsx";
 const componentPath = "src/components/SolarReturnSeoContent.tsx";
 const faqDataPath = "src/components/solarReturnFaq.ts";
+const requestHelperPath = "src/lib/solarReturnRequest.ts";
 
 const packageJson = JSON.parse(fs.readFileSync("package.json", "utf8"));
 assert.equal(
@@ -15,7 +17,8 @@ assert.equal(
   "node --experimental-strip-types scripts/test-solar-return-content.mjs",
 );
 
-assert.ok(fs.existsSync(calculatorPath), "interactive calculator must be split into a client child");
+assert.ok(fs.existsSync(requestHelperPath), "pure Solar Return request helper must exist");
+assert.ok(fs.existsSync(calculatorPath), "interactive calculator must remain a client child");
 assert.ok(fs.existsSync(componentPath), "SolarReturnSeoContent.tsx must exist");
 assert.ok(fs.existsSync(faqDataPath), "shared Solar Return FAQ data must exist");
 
@@ -27,9 +30,13 @@ const faqDataSource = fs.readFileSync(faqDataPath, "utf8");
 const combinedVisibleSource = `${pageSource}\n${calculatorSource}\n${componentSource}`;
 
 assert.doesNotMatch(pageSource, /^["']use client["'];/m);
-assert.match(pageSource, /<SolarReturnCalculator\s*\/>[\s\S]*<SolarReturnSeoContent\s*\/>/);
+assert.match(
+  pageSource,
+  /<main\b[^>]*>[\s\S]*<SolarReturnCalculator\s*\/>[\s\S]*<SolarReturnSeoContent\s*\/>[\s\S]*<\/main>/,
+);
+assert.match(pageSource, /className="bg-white px-6 pb-16"/);
 assert.match(calculatorSource, /^["']use client["'];/);
-assert.doesNotMatch(calculatorSource, /SolarReturnSeoContent|solarReturnFaqs/);
+assert.doesNotMatch(calculatorSource, /<main\b|SolarReturnSeoContent|solarReturnFaqs/);
 assert.match(componentSource, /solarReturnFaqs\.map\(/);
 assert.doesNotMatch(componentSource, /export\s+\{[^}]*solarReturnFaqs/);
 
@@ -54,22 +61,32 @@ for (const preservedToken of [
     `${preservedToken} must remain in SolarReturnCalculator.tsx`,
   );
 }
-
-const baselinePageSource = execFileSync(
-  "git",
-  ["show", `${splitBaselineCommit}:src/app/solar-return/page.tsx`],
-  { encoding: "utf8" },
+assert.match(
+  calculatorSource,
+  /createSolarReturnRequestPayload\(\s*birthData,\s*returnYearOverride \|\| srYear,\s*houseSystemOverride \|\| houseSystem,?\s*\)/,
 );
-const extractCalculateSolarReturn = (source) => {
-  const start = source.indexOf("  const calculateSolarReturn =");
-  const end = source.indexOf("\n\n  useEffect(", start);
-  assert.ok(start >= 0 && end > start, "calculateSolarReturn block must be extractable");
-  return source.slice(start, end);
+
+const { createSolarReturnRequestPayload } = await import(
+  "../src/lib/solarReturnRequest.ts"
+);
+const explicitBirthData = {
+  year: 1992,
+  month: 8,
+  day: 11,
+  hour: 6,
+  minute: 45,
+  lat: -6.2088,
+  lng: 106.8456,
+  tz: 7,
 };
-assert.equal(
-  extractCalculateSolarReturn(calculatorSource),
-  extractCalculateSolarReturn(baselinePageSource),
-  "calculateSolarReturn and its API payload must remain byte-equivalent to the split baseline",
+assert.deepEqual(
+  createSolarReturnRequestPayload(explicitBirthData, 2031, "W"),
+  {
+    type: "solar_return",
+    birthData: explicitBirthData,
+    transitDate: { year: 2031 },
+    houseSystem: "W",
+  },
 );
 
 assert.match(faqDataSource, /export type SolarReturnFaq = Readonly<\{/);
@@ -77,7 +94,6 @@ assert.match(
   faqDataSource,
   /export const solarReturnFaqs: readonly SolarReturnFaq\[\]/,
 );
-
 const { solarReturnFaqs, serializeSolarReturnFaqJsonLd } = await import(
   "../src/components/solarReturnFaq.ts"
 );
@@ -112,38 +128,6 @@ assert.equal(
   syntheticFaqs[0].answer,
 );
 
-const build = spawnSync("npm", ["run", "build"], {
-  cwd: process.cwd(),
-  encoding: "utf8",
-  env: { ...process.env, NEXT_TELEMETRY_DISABLED: "1" },
-  maxBuffer: 20 * 1024 * 1024,
-});
-assert.equal(
-  build.status,
-  0,
-  `Next build failed while rendering /solar-return:\n${build.stdout}\n${build.stderr}`,
-);
-
-const renderedHtmlPath = ".next/server/app/solar-return.html";
-assert.ok(fs.existsSync(renderedHtmlPath), "Next build must prerender /solar-return");
-const renderedHtml = fs.readFileSync(renderedHtmlPath, "utf8");
-
-const clientManifest = fs.readFileSync(
-  ".next/server/app/solar-return/page_client-reference-manifest.js",
-  "utf8",
-);
-assert.match(clientManifest, /SolarReturnCalculator\.tsx/);
-assert.doesNotMatch(clientManifest, /SolarReturnSeoContent\.tsx|solarReturnFaq\.ts/);
-const routeChunkDir = ".next/static/chunks/app/solar-return";
-const routeClientBundle = fs.readdirSync(routeChunkDir)
-  .filter((file) => /^page-.*\.js$/.test(file))
-  .map((file) => fs.readFileSync(`${routeChunkDir}/${file}`, "utf8"))
-  .join("\n");
-for (const faq of solarReturnFaqs) {
-  assert.ok(!routeClientBundle.includes(faq.question));
-  assert.ok(!routeClientBundle.includes(faq.answer));
-}
-
 const decodeHtml = (value) => value
   .replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCodePoint(Number.parseInt(code, 16)))
   .replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code)))
@@ -156,53 +140,214 @@ const visibleText = (fragment) => decodeHtml(fragment.replace(/<[^>]*>/g, " "))
   .replace(/\s+/g, " ")
   .trim();
 
-const renderedH1s = [...renderedHtml.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/g)];
-assert.equal(renderedH1s.length, 1);
-assert.equal(visibleText(renderedH1s[0][1]), "Free Solar Return Chart Calculator");
-assert.match(
-  renderedHtml,
-  />\s*Calculate your yearly astrology chart for free\. No signup required\.\s*<\/p>/,
-);
-
-const renderedFaqs = [
-  ...renderedHtml.matchAll(
-    /<article[^>]*data-solar-return-faq-item="true"[^>]*>([\s\S]*?)<\/article>/g,
-  ),
-].map((match) => {
-  const question = match[1].match(/<h3[^>]*>([\s\S]*?)<\/h3>/);
-  const answer = match[1].match(/<p[^>]*>([\s\S]*?)<\/p>/);
-  assert.ok(question && answer, "each rendered FAQ needs a visible question and answer");
-  return { question: visibleText(question[1]), answer: visibleText(answer[1]) };
-});
-assert.deepEqual(renderedFaqs, solarReturnFaqs);
-
-const jsonLdObjects = [
-  ...renderedHtml.matchAll(
-    /<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g,
-  ),
-].map((match) => JSON.parse(match[1]));
-const faqPageScripts = jsonLdObjects.filter((value) => value["@type"] === "FAQPage");
-assert.equal(faqPageScripts.length, 1);
-const structuredFaqs = faqPageScripts[0].mainEntity.map((entity) => ({
-  question: entity.name,
-  answer: entity.acceptedAnswer.text,
-}));
-assert.deepEqual(structuredFaqs, renderedFaqs);
-
-for (const href of [
-  "/natal",
-  "/transits",
-  "/blog/lunar-return-monthly-guide-430",
-]) {
-  assert.match(renderedHtml, new RegExp(`href=["']${href}["']`));
+async function reserveAvailablePort() {
+  const server = createServer();
+  await new Promise((resolve, reject) => {
+    server.once("error", reject);
+    server.listen(0, "127.0.0.1", resolve);
+  });
+  const address = server.address();
+  assert.ok(address && typeof address !== "string");
+  await new Promise((resolve, reject) => {
+    server.close((error) => error ? reject(error) : resolve());
+  });
+  return address.port;
 }
 
-const calculatorStart = renderedHtml.indexOf('id="solar-return-calculator"');
-const calculatorEnd = renderedHtml.indexOf("</main>", calculatorStart);
-const guideStart = renderedHtml.indexOf('id="solar-return-guide"');
-assert.ok(calculatorStart >= 0 && calculatorEnd > calculatorStart);
-assert.ok(guideStart > calculatorEnd, "SEO guide must render after the calculator and results");
+const delay = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
 
-console.log(
-  `Solar Return rendered content tests passed (${renderedFaqs.length} FAQ items)`,
+function captureServerOutput(child) {
+  let output = "";
+  let startupError = null;
+  const append = (chunk) => {
+    output = `${output}${chunk}`.slice(-30_000);
+  };
+  child.stdout.on("data", append);
+  child.stderr.on("data", append);
+  child.on("error", (error) => {
+    startupError = error;
+    append(`\n${error.stack || error.message}\n`);
+  });
+  return {
+    readOutput: () => output,
+    readStartupError: () => startupError,
+  };
+}
+
+async function waitForRenderedRoute(child, url, readOutput, readStartupError) {
+  const deadline = Date.now() + 60_000;
+  let lastFailure = "No response received";
+
+  while (Date.now() < deadline) {
+    const startupError = readStartupError();
+    if (startupError) {
+      throw new Error(`Next dev failed to start: ${startupError.message}\n${readOutput()}`);
+    }
+    if (child.exitCode !== null) {
+      throw new Error(
+        `Next dev exited with code ${child.exitCode} before rendering ${url}.\n${readOutput()}`,
+      );
+    }
+
+    try {
+      const response = await fetch(url, { signal: AbortSignal.timeout(3_000) });
+      const html = await response.text();
+      if (response.ok) return html;
+      lastFailure = `HTTP ${response.status}: ${html.slice(0, 500)}`;
+    } catch (error) {
+      lastFailure = error instanceof Error ? error.message : String(error);
+    }
+
+    await delay(250);
+  }
+
+  throw new Error(
+    `Timed out waiting for ${url}: ${lastFailure}\nNext dev output:\n${readOutput()}`,
+  );
+}
+
+async function stopServer(child) {
+  if (child.exitCode !== null || !child.pid) return;
+
+  const exited = once(child, "exit");
+  try {
+    process.kill(-child.pid, "SIGTERM");
+  } catch {
+    child.kill("SIGTERM");
+  }
+
+  await Promise.race([exited, delay(5_000)]);
+  if (child.exitCode !== null) return;
+
+  try {
+    process.kill(-child.pid, "SIGKILL");
+  } catch {
+    child.kill("SIGKILL");
+  }
+  await once(child, "exit");
+}
+
+function findElementEndById(html, id) {
+  const escapedId = id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const startPattern = new RegExp(
+    `<([a-z][a-z0-9]*)\\b[^>]*\\bid=["']${escapedId}["'][^>]*>`,
+    "i",
+  );
+  const start = startPattern.exec(html);
+  assert.ok(start, `rendered element #${id} must exist`);
+
+  const tagPattern = new RegExp(`<\\/?${start[1]}\\b[^>]*>`, "gi");
+  tagPattern.lastIndex = start.index;
+  let depth = 0;
+  let match;
+  while ((match = tagPattern.exec(html))) {
+    if (match[0].startsWith("</")) {
+      depth -= 1;
+      if (depth === 0) return match.index + match[0].length;
+    } else if (!match[0].endsWith("/>")) {
+      depth += 1;
+    }
+  }
+  throw new Error(`rendered element #${id} must have a closing tag`);
+}
+
+const port = await reserveAvailablePort();
+const routeUrl = `http://127.0.0.1:${port}/solar-return`;
+const nextServer = spawn(
+  process.execPath,
+  [
+    "node_modules/next/dist/bin/next",
+    "dev",
+    "--hostname",
+    "127.0.0.1",
+    "--port",
+    String(port),
+  ],
+  {
+    cwd: process.cwd(),
+    detached: true,
+    env: { ...process.env, NEXT_TELEMETRY_DISABLED: "1" },
+    stdio: ["ignore", "pipe", "pipe"],
+  },
 );
+const { readOutput: readServerOutput, readStartupError } = captureServerOutput(nextServer);
+
+try {
+  const renderedHtml = await waitForRenderedRoute(
+    nextServer,
+    routeUrl,
+    readServerOutput,
+    readStartupError,
+  );
+
+  const renderedMains = [...renderedHtml.matchAll(/<main\b[^>]*>/g)];
+  assert.equal(renderedMains.length, 1);
+  const renderedH1s = [...renderedHtml.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/g)];
+  assert.equal(renderedH1s.length, 1);
+  assert.equal(visibleText(renderedH1s[0][1]), "Free Solar Return Chart Calculator");
+  assert.match(
+    renderedHtml,
+    />\s*Calculate your yearly astrology chart for free\. No signup required\.\s*<\/p>/,
+  );
+
+  const renderedFaqs = [
+    ...renderedHtml.matchAll(
+      /<article[^>]*data-solar-return-faq-item="true"[^>]*>([\s\S]*?)<\/article>/g,
+    ),
+  ].map((match) => {
+    const question = match[1].match(/<h3[^>]*>([\s\S]*?)<\/h3>/);
+    const answer = match[1].match(/<p[^>]*>([\s\S]*?)<\/p>/);
+    assert.ok(question && answer, "each rendered FAQ needs a visible question and answer");
+    return { question: visibleText(question[1]), answer: visibleText(answer[1]) };
+  });
+  assert.deepEqual(renderedFaqs, solarReturnFaqs);
+
+  const jsonLdObjects = [
+    ...renderedHtml.matchAll(
+      /<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g,
+    ),
+  ].map((match) => JSON.parse(match[1]));
+  const faqPageScripts = jsonLdObjects.filter((value) => value["@type"] === "FAQPage");
+  assert.equal(faqPageScripts.length, 1);
+  const structuredFaqs = faqPageScripts[0].mainEntity.map((entity) => ({
+    question: entity.name,
+    answer: entity.acceptedAnswer.text,
+  }));
+  assert.deepEqual(structuredFaqs, renderedFaqs);
+
+  for (const href of [
+    "/natal",
+    "/transits",
+    "/blog/lunar-return-monthly-guide-430",
+  ]) {
+    assert.match(renderedHtml, new RegExp(`href=["']${href}["']`));
+  }
+
+  const calculatorEnd = findElementEndById(renderedHtml, "solar-return-calculator");
+  const guideStart = renderedHtml.indexOf('id="solar-return-guide"');
+  assert.ok(guideStart > calculatorEnd, "SEO guide must render after the calculator and results");
+
+  const routeChunkSources = [
+    ...renderedHtml.matchAll(/<script[^>]*src="([^"]+)"[^>]*><\/script>/g),
+  ]
+    .map((match) => decodeHtml(match[1]))
+    .filter((src) => src.includes("/app/solar-return/page") && src.includes(".js"));
+  assert.ok(routeChunkSources.length > 0, "rendered route must expose its client page chunk");
+  const routeClientBundle = (
+    await Promise.all(
+      routeChunkSources.map(async (src) => {
+        const response = await fetch(new URL(src, routeUrl));
+        assert.ok(response.ok, `client chunk ${src} must load`);
+        return response.text();
+      }),
+    )
+  ).join("\n");
+  for (const faq of solarReturnFaqs) {
+    assert.ok(!routeClientBundle.includes(faq.question));
+    assert.ok(!routeClientBundle.includes(faq.answer));
+  }
+} finally {
+  await stopServer(nextServer);
+}
+
+console.log(`Solar Return rendered content tests passed (${solarReturnFaqs.length} FAQ items)`);
