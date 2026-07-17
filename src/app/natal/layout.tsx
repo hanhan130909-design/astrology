@@ -1,11 +1,6 @@
-import { createPageMetadata } from "@/lib/seoMetadata";
+import { natalMetadata } from "@/lib/seoMetadata";
 
-export const metadata = createPageMetadata({
-  path: "/natal",
-  title: "Free Birth Chart Calculator - Natal Chart Analysis",
-  description: "Generate a free professional natal chart with planets, houses, aspects, and traditional techniques. No signup required.",
-  keywords: ["free birth chart", "natal chart calculator", "astrology chart", "rising sign calculator"],
-});
+export const metadata = natalMetadata;
 
 export default function NatalLayout({
   children,

@@ -1,11 +1,6 @@
-import { createPageMetadata } from "@/lib/seoMetadata";
+import { transitsMetadata } from "@/lib/seoMetadata";
 
-export const metadata = createPageMetadata({
-  path: "/transits",
-  title: "Astrology Calendar - Moon Phases, Retrogrades & Transits",
-  description: "Monthly astrology calendar for planetary ingresses, moon phases, retrogrades, direct stations, and major aspects.",
-  keywords: ["星象日历", "astrology calendar", "moon phases", "planetary ingress", "retrograde"],
-});
+export const metadata = transitsMetadata;
 
 export default function TransitsLayout({
   children,

@@ -1,11 +1,6 @@
-import { createPageMetadata } from "@/lib/seoMetadata";
+import { compatibilityMetadata } from "@/lib/seoMetadata";
 
-export const metadata = createPageMetadata({
-  path: "/compatibility",
-  title: "Free Astrology Compatibility Calculator - Synastry & Zodiac",
-  description: "Compare two birth charts and analyze relationship dynamics, love compatibility, friendship, and astrological synastry for free.",
-  keywords: ["compatibility", "synastry", "zodiac compatibility", "relationship astrology", "couple chart", "love match", "astrology compatibility", "free compatibility"],
-});
+export const metadata = compatibilityMetadata;
 
 export default function CompatibilityLayout({
   children,
