@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test:seo-metadata": "node --experimental-strip-types scripts/test-seo-metadata.mjs"
+    "test:seo-metadata": "node --experimental-strip-types scripts/test-seo-metadata.mjs",
+    "test:blog-index": "node --experimental-strip-types scripts/test-blog-index-policy.mjs"
   },
   "dependencies": {
     "astronomy-engine": "^2.1.19",

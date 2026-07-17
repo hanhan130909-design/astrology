@@ -9,6 +9,7 @@ import { destinyArticles, BlogArticle } from '@/content/destiny-blog-articles';
 import { seoArticles } from '../seo-articles'; import { moreSeoArticles } from '../more-seo-articles';
 import { ArrowLeft, Clock, Tag } from 'lucide-react';
 import ShareButtons from '@/components/ShareButtons';
+import { isIndexableArticle } from '@/lib/blogIndexPolicy';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -36,27 +37,23 @@ export async function generateMetadata(
   const metaDesc = article.excerpt?.en || article.description?.en
     || (typeof article.excerpt === 'string' ? article.excerpt : '')
     || (typeof article.description === 'string' ? article.description : '');
+  const canonical = `https://lunaxstar.com/blog/${slug}`;
 
   return {
     title: `${metaTitle} | 星缘 Blog`,
     description: metaDesc,
+    robots: {
+      index: isIndexableArticle(article),
+      follow: true,
+    },
     openGraph: {
       title: metaTitle,
       description: metaDesc,
       type: 'article',
+      url: canonical,
     },
     alternates: {
-      canonical: `https://lunaxstar.com/blog/${slug}`,
-      languages: {
-        "en-US": `https://lunaxstar.com/blog/${slug}`,
-        "zh-CN": `https://lunaxstar.com/blog/${slug}`,
-        "id-ID": `https://lunaxstar.com/blog/${slug}`,
-        "th-TH": `https://lunaxstar.com/blog/${slug}`,
-        "vi-VN": `https://lunaxstar.com/blog/${slug}`,
-        "ms-MY": `https://lunaxstar.com/blog/${slug}`,
-        "ja-JP": `https://lunaxstar.com/blog/${slug}`,
-        "ko-KR": `https://lunaxstar.com/blog/${slug}`,
-      },
+      canonical,
     },
   };
 }
@@ -199,6 +196,22 @@ export default async function BlogArticlePage({ params }: Props) {
     || (typeof article.excerpt === 'string' ? article.excerpt : '')
     || (typeof article.description === 'string' ? article.description : '');
 
+  const relatedCornerstones = /bazi|chinese|day master/i.test(`${articleTitle} ${categoryLabel}`)
+    ? [
+        { slug: 'what-is-chinese-astrology-bazi', label: 'What Is Chinese Astrology (BaZi)?' },
+        { slug: 'bazi-calculator-what-is-day-master', label: 'BaZi Day Master Guide' },
+      ]
+    : /compatibility|relationship|love/i.test(`${articleTitle} ${categoryLabel}`)
+      ? [
+          { slug: 'chinese-zodiac-compatibility-love', label: 'Chinese Zodiac Love Compatibility' },
+          { slug: 'what-does-my-birth-chart-mean', label: 'What Does My Birth Chart Mean?' },
+        ]
+      : [
+          { slug: 'free-natal-chart-interpretation-guide', label: 'Free Natal Chart Interpretation Guide' },
+          { slug: 'rising-sign-meaning-how-to-find', label: 'Rising Sign Meaning and How to Find It' },
+        ];
+  const relatedCornerstone = relatedCornerstones.find((candidate) => candidate.slug !== slug)!;
+
   // JSON-LD structured data for rich results
   const articleJsonLd = {
     '@context': 'https://schema.org',
@@ -279,6 +292,9 @@ export default async function BlogArticlePage({ params }: Props) {
           <a href="/natal" className="text-blue-600 hover:underline">Free Natal Chart</a>
           <a href="/compatibility/bazi" className="text-blue-600 hover:underline">BaZi Compatibility</a>
           <a href="/blog/best-free-bazi-calculators-2026" className="text-blue-600 hover:underline">Best Free BaZi Calculators 2026</a>
+          <Link href={`/blog/${relatedCornerstone.slug}`} className="text-blue-600 hover:underline">
+            {relatedCornerstone.label}
+          </Link>
         </div>
 
         {/* Share buttons — viral loop */}
