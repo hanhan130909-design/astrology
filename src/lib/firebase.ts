@@ -186,7 +186,12 @@ export async function loginWithGoogle(language: 'zh' | 'en' | 'id' | 'th' | 'vi'
 }
 
 export async function logout(): Promise<void> {
-  if (!auth) return;
+  if (!auth) {
+    if (isFirebaseConfigured) {
+      throw new Error("Firebase is configured, but authentication is unavailable for logout");
+    }
+    return;
+  }
   await signOut(auth);
 }
 

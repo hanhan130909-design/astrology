@@ -314,13 +314,27 @@ for (const consumerPath of [authContextPath, natalPagePath]) {
     `${consumerPath} must not statically reach src/lib/firebase.ts`,
   );
   for (const reachablePath of clientGraph) {
-    assert.equal(
-      getStaticModuleSpecifiers(reachablePath).includes("firebase/auth"),
-      false,
-      `${reachablePath} must not statically import firebase/auth from ${consumerPath}`,
+    const firebasePackageImports = getStaticModuleSpecifiers(reachablePath).filter(
+      (specifier) => specifier === "firebase" || specifier.startsWith("firebase/"),
+    );
+    assert.deepEqual(
+      firebasePackageImports,
+      [],
+      `${reachablePath} must not statically import Firebase packages from ${consumerPath}`,
     );
   }
 }
+
+assert.equal(
+  getNamedImports(authContextPath, "@/lib/loadFirebaseClient").includes("subscribeFirebaseClientLoads"),
+  true,
+  "AuthContext must import the Firebase load subscription",
+);
+assert.equal(
+  hasIdentifierCall(authContextPath, "subscribeFirebaseClientLoads"),
+  true,
+  "AuthContext must subscribe to newly resolved Firebase clients",
+);
 
 assert.equal(
   getStaticModuleSpecifiers(firebaseLoaderPath).includes("@/lib/firebase"),
@@ -333,6 +347,11 @@ assert.equal(
   ).length,
   1,
   "loadFirebaseClient must dynamically import @/lib/firebase exactly once",
+);
+assert.equal(
+  hasIdentifierCall(firebaseLoaderPath, "notifyFirebaseClientLoad"),
+  true,
+  "loadFirebaseClient must notify subscribers after a new import resolves",
 );
 
 for (const productionPath of walkProductionSources(sourceRoot)) {

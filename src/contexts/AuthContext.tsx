@@ -1,7 +1,7 @@
 "use client";
 
-import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
-import { loadFirebaseClient } from "@/lib/loadFirebaseClient";
+import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
+import { loadFirebaseClient, subscribeFirebaseClientLoads } from "@/lib/loadFirebaseClient";
 
 export interface UserProfile {
   uid: string;
@@ -35,6 +35,11 @@ interface FirebaseProfileShape {
   language?: string;
 }
 
+interface FirebaseReadinessShape {
+  isFirebaseConfigured: boolean;
+  auth: unknown | null;
+}
+
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 const STORAGE_KEY = "astrology_user";
 
@@ -65,15 +70,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [subscriptionVersion, setSubscriptionVersion] = useState(0);
   const firebaseReadyRef = useRef(false);
 
+  const updateFirebaseReadiness = useCallback((firebase: FirebaseReadinessShape) => {
+    const ready = Boolean(firebase.isFirebaseConfigured && firebase.auth);
+    if (ready && !firebaseReadyRef.current) {
+      setIsLoading(true);
+      firebaseReadyRef.current = true;
+      setIsFirebaseReady(true);
+      setSubscriptionVersion((version) => version + 1);
+    } else {
+      firebaseReadyRef.current = ready;
+      setIsFirebaseReady(ready);
+    }
+    return ready;
+  }, []);
+
   const loadAuthFirebaseClient = async () => {
     try {
       const firebase = await loadFirebaseClient();
-      const ready = Boolean(firebase.isFirebaseConfigured && firebase.auth);
-      if (ready && !firebaseReadyRef.current) {
-        setSubscriptionVersion((version) => version + 1);
-      }
-      firebaseReadyRef.current = ready;
-      setIsFirebaseReady(ready);
+      updateFirebaseReadiness(firebase);
       return firebase;
     } catch (error: unknown) {
       firebaseReadyRef.current = false;
@@ -81,6 +95,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       throw error;
     }
   };
+
+  useEffect(() => subscribeFirebaseClientLoads((firebase) => {
+    updateFirebaseReadiness(firebase);
+  }), [updateFirebaseReadiness]);
 
   useEffect(() => {
     let active = true;
@@ -104,9 +122,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     void loadFirebaseClient().then((firebase) => {
       if (!active) return;
-      const ready = Boolean(firebase.isFirebaseConfigured && firebase.auth);
-      firebaseReadyRef.current = ready;
-      setIsFirebaseReady(ready);
+      const ready = updateFirebaseReadiness(firebase);
 
       if (!ready) {
         restoreLocalProfile();
@@ -124,24 +140,25 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           return;
         }
 
+        const authUserProfile = toLocalProfile({
+          uid: firebaseUser.uid,
+          email: firebaseUser.email || "",
+          displayName: firebaseUser.displayName || firebaseUser.email?.split("@")[0] || "User",
+          photoURL: firebaseUser.photoURL,
+          language: "zh",
+        });
         try {
           const firebaseProfile = await firebase.getUserProfile(firebaseUser.uid);
           if (!active || callbackToken !== authEventGeneration) return;
-          const local = firebaseProfile
-            ? toLocalProfile(firebaseProfile)
-            : toLocalProfile({
-              uid: firebaseUser.uid,
-              email: firebaseUser.email || "",
-              displayName: firebaseUser.displayName || firebaseUser.email?.split("@")[0] || "User",
-              photoURL: firebaseUser.photoURL,
-              language: "zh",
-            });
+          const local = firebaseProfile ? toLocalProfile(firebaseProfile) : authUserProfile;
           setUser(local);
           setProfile(local);
           setIsLoading(false);
         } catch (error: unknown) {
           if (!active || callbackToken !== authEventGeneration) return;
           console.error("Get profile error:", error);
+          setUser(authUserProfile);
+          setProfile(authUserProfile);
           setIsLoading(false);
         }
       });
@@ -159,7 +176,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       authEventGeneration += 1;
       unsubscribe?.();
     };
-  }, [subscriptionVersion]);
+  }, [subscriptionVersion, updateFirebaseReadiness]);
 
   const login = async (email: string, password: string, name?: string) => {
     if (!email || !password) return { success: false, error: "Email and password required" };
@@ -250,17 +267,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const logout = async () => {
+  const logout = () => {
     setUser(null);
     setProfile(null);
     localStorage.removeItem(STORAGE_KEY);
-    try {
-      const firebase = await loadAuthFirebaseClient();
-      await firebase.logout();
-    } catch (error: unknown) {
-      console.error("Logout error:", error);
-      throw error;
-    }
+    const operation = loadAuthFirebaseClient().then((firebase) => firebase.logout());
+    void operation.catch((error: unknown) => console.error("Logout error:", error));
+    return operation;
   };
 
   const updateUser = async (data: Partial<UserProfile>) => {
