@@ -1,149 +1,70 @@
 #!/usr/bin/env python3
-"""Animated TikTok video — 24fps, text animations, dynamic backgrounds"""
+"""Bold zodiac card TikTok generator — large symbols, minimal design, popular format"""
+import subprocess, os, json, tempfile, math, shutil
 
-import subprocess, os, json, tempfile, shutil, math
+FPS, W, H = 24, 1080, 1920
+OUT = os.path.expanduser("~/Downloads/tiktok_videos")
+os.makedirs(OUT, exist_ok=True)
 
-FPS = 24
-W, H = 1080, 1920
-OUT_DIR = os.path.expanduser("~/Downloads/tiktok_videos")
-os.makedirs(OUT_DIR, exist_ok=True)
+SYMBOLS = {"aries":"♈","taurus":"♉","gemini":"♊","cancer":"♋","leo":"♌","virgo":"♍","libra":"♎","scorpio":"♏","sagittarius":"♐","capricorn":"♑","aquarius":"♒","pisces":"♓"}
+ELEM = {"fire":["aries","leo","sagittarius"],"earth":["taurus","virgo","capricorn"],"air":["gemini","libra","aquarius"],"water":["cancer","scorpio","pisces"]}
+COLORS = {"fire":("#1a0505","#FF4500","#FF8C00"),"earth":("#0a1a0a","#228B22","#90EE90"),"air":("#0a0a2a","#9370DB","#E6E6FA"),"water":("#051525","#1E90FF","#00CED1")}
 
-def tts(text, out_mp3, voice="en-US-JennyNeural"):
-    subprocess.run(["edge-tts","--voice",voice,"--text",text,"--write-media",out_mp3],
-                   capture_output=True, timeout=60)
-    return out_mp3
+def element(sign):
+    for e, signs in ELEM.items():
+        if sign in signs: return e
+    return "air"
 
-def render_frame(card_text, subtitle_text, out_png, frame, total_frames, card_idx, total_cards,
-                 bg_color="#1a1a2e", accent="#7B68EE"):
-    """Render one frame at 24fps with animations"""
-    progress = frame / max(1, total_frames - 1)  # 0 to 1
+def tts(text, out_mp3):
+    subprocess.run(["edge-tts","--voice","en-US-JennyNeural","--text",text,"--write-media",out_mp3], capture_output=True, timeout=60)
 
-    # Animate background gradient
-    bg_shift = math.sin(progress * math.pi * 3) * 0.1
-    bg_top = f"#{int(26*(1+bg_shift)):02x}{int(26*(1+bg_shift*0.8)):02x}{int(46*(1+bg_shift*0.5)):02x}"
-    bg_bot = "#0d0d1a"
-
-    # Card animation: scale + fade
-    card_start = card_idx / max(1, total_cards)
-    card_progress = max(0, min(1, (progress - card_start) * 4))  # fast animation over 0.25s
-    scale = 0.7 + 0.3 * card_progress  # scale from 0.7 to 1.0
-    fade = card_progress
-    # Slight wobble/bounce at the end
-    bounce = 1 + (1 - card_progress) * 0.05 * max(0, 1 - abs(card_progress - 0.8) * 5)
-    scale *= bounce
-
-    # Subtitle animation: reveals word by word in sync
-    words = subtitle_text.split()
-    word_count = len(words)
-    sub_fade = 0.85
-
-    # Particle-like star dots background
-    stars = ""
-    for i in range(15):
-        sx = int((hash(f"{frame}_{i}") % 10000) / 10000 * W)
-        sy = int((hash(f"{i}_{frame*2}") % 10000) / 10000 * H)
-        sr = 1 + (hash(f"{frame}_{i}_{frame}") % 10) / 10
-        so = 0.15 + (hash(f"{frame}") % 50) / 100 * 0.2
-        stars += f'<circle cx="{sx}" cy="{sy}" r="{sr}" fill="white" opacity="{so}"/>'
-
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">
-    <defs>
-      <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="{bg_top}"/>
-        <stop offset="1" stop-color="{bg_bot}"/>
-      </linearGradient>
-      <radialGradient id="glow" cx="50%" cy="50%" r="60%">
-        <stop offset="0" stop-color="{accent}" stop-opacity="{0.08 + fade * 0.12}"/>
-        <stop offset="1" stop-color="{accent}" stop-opacity="0"/>
-      </radialGradient>
-    </defs>
-    <rect width="{W}" height="{H}" fill="url(#bg)"/>
-    <rect width="{W}" height="{H}" fill="url(#glow)"/>
-    {stars}
-    <g transform="translate({W/2},{H/2}) scale({scale})" opacity="{fade:.2f}">
-      <text x="0" y="-40" font-family="PingFang SC, sans-serif" font-size="68" font-weight="900"
-            fill="{accent}" text-anchor="middle">{card_text}</text>
-      <text x="0" y="30" font-family="PingFang SC, sans-serif" font-size="42" font-weight="600"
-            fill="white" text-anchor="middle" opacity="{sub_fade:.2f}">{subtitle_text}</text>
-    </g>
-    <text x="{W/2}" y="{H-90}" font-family="PingFang SC, sans-serif" font-size="30" fill="white"
-          text-anchor="middle" opacity="0.5">lunaxstar.com</text>
-    </svg>'''
-
-    js = f"""const sharp=require('sharp');sharp(Buffer.from({json.dumps(svg)})).png().toFile({json.dumps(out_png)}).then(()=>console.log('ok')).catch(e=>console.error(e));"""
-    subprocess.run(["node","-e",js], capture_output=True, timeout=10)
-
-def generate_video(cards, output_name):
-    """cards: list of (main_text, subtitle_text) tuples — each is one visual card"""
-    frames_dir = tempfile.mkdtemp()
+def make_video(cards, sign, name):
+    tmp = tempfile.mkdtemp()
+    e = element(sign)
+    bg, sym_c, glow = COLORS[e]
+    symbol = SYMBOLS.get(sign, "✨")
     
-    # Full script for TTS
-    full_script = ". ".join([m for m, _ in cards]) + "."
-    audio_path = os.path.join(frames_dir, "audio.mp3")
-    tts(full_script, audio_path)
+    script = ". ".join([f"{c[0]} {c[1]}" for c in cards]) + "."
+    audio = os.path.join(tmp, "audio.mp3")
+    tts(script, audio)
     
-    result = subprocess.run(["ffprobe","-v","quiet","-print_format","json","-show_format",audio_path],
-                          capture_output=True, text=True, timeout=10)
-    duration = float(json.loads(result.stdout)["format"]["duration"])
-    total_frames = int(duration * FPS)
+    r = subprocess.run(["ffprobe","-v","quiet","-print_format","json","-show_format",audio], capture_output=True, text=True, timeout=10)
+    dur = float(json.loads(r.stdout)["format"]["duration"])
+    tf = max(len(cards) * FPS, int(dur * FPS))
     
-    frames = []
-    for f in range(total_frames):
-        progress = f / max(1, total_frames - 1)
-        card_idx = min(int(progress * len(cards)), len(cards) - 1)
-        fn = os.path.join(frames_dir, f"frame_{f:06d}.png")
-        render_frame(cards[card_idx][0], cards[card_idx][1], fn, f, total_frames, card_idx, len(cards))
-        frames.append(fn)
+    cx, cy = W/2, H/2
+    for f in range(tf):
+        p = f / max(1, tf-1)
+        ci = min(int(p * len(cards)), len(cards)-1)
+        card = cards[ci]
+        fade = min(1.0, p * 3)
+        
+        svg = f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}"><defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{bg}"/><stop offset="1" stop-color="#000000"/></linearGradient><radialGradient id="glow" cx="50%" cy="40%" r="55%"><stop offset="0" stop-color="{glow}" stop-opacity="0.3"/><stop offset="1" stop-color="{glow}" stop-opacity="0"/></radialGradient></defs><rect width="{W}" height="{H}" fill="url(#bg)"/><rect width="{W}" height="{H}" fill="url(#glow)"/><text x="{cx}" y="{cy-180}" font-family="sans-serif" font-size="500" font-weight="900" fill="{sym_c}" text-anchor="middle" opacity="0.10">{symbol}</text><g transform="translate({cx},{cy+100})" opacity="{fade:.2f}"><text x="0" y="0" font-family="PingFang SC, sans-serif" font-size="86" font-weight="900" fill="white" text-anchor="middle">{card[0]}</text><text x="0" y="90" font-family="PingFang SC, sans-serif" font-size="50" font-weight="700" fill="{glow}" text-anchor="middle">{card[1]}</text></g><text x="{cx}" y="280" font-family="sans-serif" font-size="22" fill="{sym_c}" text-anchor="middle" opacity="0.6" letter-spacing="10">{e.upper()} SIGNS</text><text x="{cx}" y="{H-70}" font-family="PingFang SC, sans-serif" font-size="30" fill="white" text-anchor="middle" opacity="0.4">lunaxstar.com</text></svg>'
+        
+        fn = os.path.join(tmp, f"f{f:06d}.png")
+        js = f'const sharp=require("sharp");sharp(Buffer.from({json.dumps(svg)})).png().toFile({json.dumps(fn)}).then(()=>console.log("ok")).catch(e=>console.error(e));'
+        subprocess.run(["node","-e",js], capture_output=True, timeout=10)
     
-    out_mp4 = os.path.join(OUT_DIR, f"{output_name}.mp4")
-    
-    # Use concat to build video from frames at 24fps
-    img_list = os.path.join(frames_dir, "img_list.txt")
-    with open(img_list, "w") as fh:
-        for fn in frames:
-            fh.write(f"file '{fn}'\n")
+    il = os.path.join(tmp, "list.txt")
+    with open(il, "w") as fh:
+        for i in range(tf):
+            fh.write(f"file '{os.path.join(tmp, f'f{i:06d}.png')}'\n")
             fh.write(f"duration {1/FPS}\n")
     
-    subprocess.run([
-        "ffmpeg","-y",
-        "-f","concat","-safe","0","-i",img_list,
-        "-i",audio_path,
-        "-c:v","libx264","-pix_fmt","yuv420p",
-        "-c:a","aac","-shortest",
-        "-movflags","+faststart",
-        out_mp4
-    ], capture_output=True, timeout=120)
-    
-    shutil.rmtree(frames_dir, ignore_errors=True)
-    
-    if os.path.exists(out_mp4):
-        size_mb = os.path.getsize(out_mp4) / 1024 / 1024
-        print(f"✅ {output_name}.mp4 ({size_mb:.1f}MB, {duration:.0f}s)")
-        return out_mp4
-    else:
-        print(f"❌ Failed: {output_name}")
-        return None
+    out = os.path.join(OUT, f"{name}.mp4")
+    subprocess.run(["ffmpeg","-y","-f","concat","-safe","0","-i",il,"-i",audio,"-c:v","libx264","-pix_fmt","yuv420p","-c:a","aac","-shortest","-movflags","+faststart",out], capture_output=True, timeout=180)
+    shutil.rmtree(tmp, ignore_errors=True)
+    if os.path.exists(out):
+        print(f"✅ {name}.mp4 ({os.path.getsize(out)//1024}KB, {dur:.0f}s)")
 
-# ─── TikTok script with animated cards ───
-cards_wealth = [
-    ("These 4 signs", "are secretly wealthy 💰"),
-    ("Taurus", "builds wealth in silence 🐂"),
-    ("Capricorn", "treats money like a long game 📈"),
-    ("Virgo", "budgets in their sleep 😴"),
-    ("Scorpio", "knows secrets you don't 🦂"),
-    ("Which one are you?", "Comment your sign below 👇"),
-]
+# Quick test
+make_video([
+    ("4 Zodiac Signs","Secretly WEALTHY 💰"),
+    ("Taurus ♉","Silent wealth builder"),
+    ("Virgo ♍","Budgets in their sleep"),
+    ("Capricorn ♑","Long-game money player"),
+    ("Scorpio ♏","Knows what others don't"),
+    ("You?","Comment your sign 👇"),
+], "taurus", "taurus_bold")
 
-generate_video(cards_wealth, "wealth_signs_animated")
-
-cards_free = [
-    ("Stop paying", "for birth chart readings 💸"),
-    ("Go to", "lunaxstar.com ✨"),
-    ("Free natal chart", "plus BaZi reading 🎴"),
-    ("No signup", "8 languages 🌏"),
-    ("Link in bio", "Get yours now 🔮"),
-]
-
-generate_video(cards_free, "free_chart_animated")
-
-print(f"\nDone! Videos in {OUT_DIR}")
+print(f"\n{OUT}")
