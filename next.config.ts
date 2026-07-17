@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   serverExternalPackages: ["sweph", "node-gyp-build"],
   
   // Image optimization
@@ -22,7 +23,10 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   generateEtags: true,
   eslint: { ignoreDuringBuilds: true },
-  typescript: { ignoreBuildErrors: true },
+  typescript: {
+    ignoreBuildErrors: true,
+    tsconfigPath: process.env.NEXT_TSCONFIG_PATH || "tsconfig.json",
+  },
   
   // Experimental features
   experimental: {
