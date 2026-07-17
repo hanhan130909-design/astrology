@@ -1,21 +1,11 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seoMetadata";
 
-export const metadata: Metadata = {
-  title: "星象日历 - 行星换座、月相、逆行与相位",
-  description: "按月份查看太阳换座、月相、行星换座、逆行顺行与重要相位，不需要填写出生资料。",
+export const metadata = createPageMetadata({
+  path: "/transits",
+  title: "Astrology Calendar - Moon Phases, Retrogrades & Transits",
+  description: "Monthly astrology calendar for planetary ingresses, moon phases, retrogrades, direct stations, and major aspects.",
   keywords: ["星象日历", "astrology calendar", "moon phases", "planetary ingress", "retrograde"],
-  openGraph: {
-    title: "星象日历 - 行星换座、月相、逆行与相位",
-    description: "Monthly astrology calendar for planetary ingresses, moon phases, retrogrades, direct stations, and major aspects.",
-    type: "website",
-    siteName: "Starry Fate",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "星象日历 - 行星换座、月相、逆行与相位",
-    description: "Monthly astrology calendar for planetary ingresses, moon phases, retrogrades, direct stations, and major aspects.",
-  },
-};
+});
 
 export default function TransitsLayout({
   children,
@@ -30,8 +20,9 @@ export default function TransitsLayout({
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebPage",
-            name: "Astrology Calendar",
+            name: "Astrology Calendar - Moon Phases, Retrogrades & Transits",
             description: "Monthly astrology calendar for planetary ingresses, moon phases, retrogrades, direct stations, and major aspects.",
+            url: "https://lunaxstar.com/transits",
             provider: { "@type": "Organization", name: "星缘", url: "https://lunaxstar.com" }
           })
         }}

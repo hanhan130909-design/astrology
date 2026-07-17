@@ -12,46 +12,32 @@ const CookieConsent = dynamic(() => import("@/components/CookieConsent").then((m
 
 export const metadata: Metadata = {
   title: {
-    default: "星缘 - 免费AI占星解读 | 专业在线排盘·本命盘·推运盘·合盘·塔罗·运势 | Starry Fate",
-    template: "%s | 星缘",
+    default: "Free Birth Chart & BaZi Calculator | LunaXStar",
+    template: "%s | LunaXStar",
   },
-  description: "探索星座的命运奥秘，星缘提供基于真实天文计算与先进AI技术的免费在线占星服务。全面支持本命盘、推运盘、合盘比对、AI智能解读、塔罗占卜、每日/每月/每年运势解读。输入出生信息，即刻生成专业星盘报告，精准排盘，专业分析，助你读懂星盘密码，掌握命运轨迹，开启专属占星之旅。免费体验，无需注册，让星辰指引你的人生方向。",
+  description: "Free Western astrology and BaZi calculators with real astronomical calculations. No signup required.",
   keywords: ["星座", "horoscope", "占星", "zodiak", "AI占星", "natal chart", "本命盘", "tarot", "塔罗", "运势", "星盘"],
   authors: [{ name: "星缘" }],
   creator: "星缘团队",
   publisher: "星缘",
   metadataBase: new URL("https://lunaxstar.com"),
-  alternates: {
-    canonical: "/",
-    languages: {
-      "zh-CN": "/",
-      "en-US": "/",
-      "id-ID": "/",
-      "th-TH": "/",
-      "vi-VN": "/",
-      "ms-MY": "/",
-      "ja-JP": "/",
-      "ko-KR": "/",
-    },
-  },
   openGraph: {
-    title: "星缘 - 专业星座分析平台",
-    description: "探索星座的命运奥秘，星缘提供基于真实天文计算与先进AI技术的免费在线占星服务。全面支持本命盘、推运盘、合盘比对、AI智能解读、塔罗占卜、每日/每月/每年运势解读。输入出生信息，即刻生成专业星盘报告，精准排盘，专业分析，助你读懂星盘密码，掌握命运轨迹，开启专属占星之旅。免费体验，无需注册，让星辰指引你的人生方向。",
+    title: "Free Birth Chart & BaZi Calculator | LunaXStar",
+    description: "Free Western astrology and BaZi calculators with real astronomical calculations. No signup required.",
     type: "website",
     url: "https://lunaxstar.com",
-    locale: "zh_CN",
-    siteName: "星缘",
+    siteName: "LunaXStar",
     images: [{
       url: "/opengraph-image.png",
       width: 1200,
       height: 630,
-      alt: "星缘 - 专业星座分析平台",
+      alt: "LunaXStar - Free Astrology Calculators",
     }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "星缘 - 专业星座分析平台",
-    description: "探索星座的命运奥秘，星缘提供基于真实天文计算与先进AI技术的免费在线占星服务。全面支持本命盘、推运盘、合盘比对、AI智能解读、塔罗占卜、每日/每月/每年运势解读。输入出生信息，即刻生成专业星盘报告，精准排盘，专业分析，助你读懂星盘密码，掌握命运轨迹，开启专属占星之旅。免费体验，无需注册，让星辰指引你的人生方向。",
+    title: "Free Birth Chart & BaZi Calculator | LunaXStar",
+    description: "Free Western astrology and BaZi calculators with real astronomical calculations. No signup required.",
     images: ["/opengraph-image.png"],
   },
   robots: {
@@ -111,7 +97,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="zh" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -154,4 +140,3 @@ export default function RootLayout({
     </html>
   );
 }
-

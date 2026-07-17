@@ -1,21 +1,11 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seoMetadata";
 
-export const metadata: Metadata = {
-  title: "Free Natal Chart Analysis - Birth Chart Calculator",
-  description: "Generate your free professional natal chart based on real astronomical calculations. AI-powered interpretation reveals your core self, emotions, relationships and life purpose.",
-  keywords: ["natal chart", "birth chart", "astrology chart", "free natal", "AI natal"],
-  openGraph: {
-    title: "Free Natal Chart Analysis - Birth Chart Calculator",
-    description: "Generate your free professional natal chart based on real astronomical calculations. AI-powered interpretation reveals your core self, emotions, relationships and life purpose.",
-    type: "website",
-    siteName: "Starry Fate",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Free Natal Chart Analysis - Birth Chart Calculator",
-    description: "Generate your free professional natal chart based on real astronomical calculations. AI-powered interpretation reveals your core self, emotions, relationships and life purpose.",
-  },
-};
+export const metadata = createPageMetadata({
+  path: "/natal",
+  title: "Free Birth Chart Calculator - Natal Chart Analysis",
+  description: "Generate a free professional natal chart with planets, houses, aspects, and traditional techniques. No signup required.",
+  keywords: ["free birth chart", "natal chart calculator", "astrology chart", "rising sign calculator"],
+});
 
 export default function NatalLayout({
   children,
@@ -26,7 +16,7 @@ export default function NatalLayout({
     <>
             <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Free Natal Chart Analysis - Birth Chart Calculator\", \"description\": \"Generate your free professional natal chart based on real astronomical calculations. AI-powered interpretation reveals your core self, emotions, relationships and life purpose.\", \"url\": \"https://lunaxstar.com/natal\", \"isPartOf\": {\"@type\": \"WebSite\", \"name\": \"LunaxStar\", \"url\": \"https://lunaxstar.com\"}}" }}
+        dangerouslySetInnerHTML={{ __html: "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Free Birth Chart Calculator - Natal Chart Analysis\", \"description\": \"Generate your free professional natal chart based on real astronomical calculations. AI-powered interpretation reveals your core self, emotions, relationships and life purpose.\", \"url\": \"https://lunaxstar.com/natal\", \"isPartOf\": {\"@type\": \"WebSite\", \"name\": \"LunaxStar\", \"url\": \"https://lunaxstar.com\"}}" }}
       />
       <script
         type="application/ld+json"
