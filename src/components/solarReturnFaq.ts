@@ -1,4 +1,9 @@
-export const solarReturnFaqs = [
+export type SolarReturnFaq = Readonly<{
+  question: string;
+  answer: string;
+}>;
+
+export const solarReturnFaqs: readonly SolarReturnFaq[] = [
   {
     question: "What is a Solar Return?",
     answer:
@@ -12,6 +17,23 @@ export const solarReturnFaqs = [
   {
     question: "Why does the return location matter?",
     answer:
-      "The Solar Return happens at one instant worldwide, but the selected location changes the Ascendant and house cusps. Use the place where you expect to be around your birthday for a location-based chart.",
+      "Location affects the Solar Return Ascendant and house cusps. This calculator currently uses the entered birth-location coordinates as its calculation location for both natal data and Solar Return houses; a separate relocated-return location input is not available yet.",
   },
 ];
+
+export function serializeSolarReturnFaqJsonLd(
+  faqs: readonly SolarReturnFaq[],
+): string {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  }).replace(/</g, "\\u003c");
+}

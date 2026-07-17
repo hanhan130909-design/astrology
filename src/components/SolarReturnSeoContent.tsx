@@ -1,11 +1,10 @@
 import Link from "next/link";
 import { solarReturnFaqs } from "@/components/solarReturnFaq";
 
-export { solarReturnFaqs } from "@/components/solarReturnFaq";
-
 export default function SolarReturnSeoContent() {
   return (
     <section
+      id="solar-return-guide"
       aria-labelledby="solar-return-guide-title"
       className="mt-14 border-t border-gray-200 pt-10"
     >
@@ -22,9 +21,11 @@ export default function SolarReturnSeoContent() {
           </p>
           <p>
             This calculator uses your birth date and time to identify your natal Sun position,
-            then finds its next annual return. The coordinates selected in the form are used as
-            the return location for the chart angles and houses, so location can change the
-            Ascendant and where planets fall by house without changing the return moment itself.
+            then finds its next annual return. It currently uses the entered Birth Location
+            coordinates as the calculation location for both natal data and the Solar Return
+            angles and houses. Location affects the Ascendant and house placements, but a separate
+            relocated-return location input is not available yet; enter your birthplace rather
+            than substituting a birthday travel destination.
           </p>
         </div>
 
@@ -55,7 +56,11 @@ export default function SolarReturnSeoContent() {
           </h2>
           <div className="mt-4 divide-y divide-gray-200 border-y border-gray-200">
             {solarReturnFaqs.map((faq) => (
-              <article key={faq.question} className="py-5">
+              <article
+                key={faq.question}
+                data-solar-return-faq-item="true"
+                className="py-5"
+              >
                 <h3 className="text-base font-semibold text-gray-900">{faq.question}</h3>
                 <p className="mt-2 text-sm leading-6 text-gray-600 sm:text-base">{faq.answer}</p>
               </article>
