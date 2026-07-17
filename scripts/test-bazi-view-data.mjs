@@ -8,6 +8,8 @@ const chart = buildBaziViewData({
   hour: 18,
   minute: 45,
   gender: 1,
+  currentYear: 2026,
+  currentMonth: 6,
 });
 
 assert.equal(chart.solarText, "1986年11月14日 18:45:00");
