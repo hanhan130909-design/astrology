@@ -43,5 +43,9 @@ next-env.d.ts
 
 # Cache
 .cache/
+.superpowers/
+
+# Isolated development worktrees
+.worktrees/
 
 .vercel
