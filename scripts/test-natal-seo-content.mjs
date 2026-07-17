@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import ts from "typescript";
 import {
   natalFaqs,
   serializeNatalFaqJsonLd,
@@ -51,41 +52,204 @@ assert.deepEqual(
 
 assert.ok(fs.existsSync(componentPath), "NatalSeoContent.tsx must exist");
 const componentSource = fs.readFileSync(componentPath, "utf8");
-assert.doesNotMatch(componentSource, /^["']use client["'];/m);
-assert.match(componentSource, /How to read your natal chart/);
-assert.match(componentSource, /A practical reading order/);
-assert.match(componentSource, /Birth time accuracy/);
-assert.match(componentSource, /Natal chart FAQ/);
-assert.match(componentSource, /<details\b/);
-assert.match(componentSource, /<summary\b/);
-assert.match(componentSource, /natalFaqs\.map\s*\(/);
+const componentAst = ts.createSourceFile(
+  componentPath,
+  componentSource,
+  ts.ScriptTarget.Latest,
+  true,
+  ts.ScriptKind.TSX,
+);
 
-const relatedHrefValues = [
-  "/solar-return",
-  "/transits",
-  "/compatibility",
-  "/bazi",
-  "/blog/what-does-my-birth-chart-mean",
+const hasUseClientDirective = componentAst.statements.some((statement) => (
+  ts.isExpressionStatement(statement)
+  && ts.isStringLiteral(statement.expression)
+  && statement.expression.text === "use client"
+));
+assert.equal(hasUseClientDirective, false, "NatalSeoContent must remain a server component");
+
+function getJsxTagName(element) {
+  return element.openingElement.tagName.getText(componentAst);
+}
+
+function getJsxText(element) {
+  const parts = [];
+  const visit = (node) => {
+    if (ts.isJsxText(node)) {
+      parts.push(node.text);
+      return;
+    }
+    if (
+      ts.isJsxExpression(node)
+      && node.expression
+      && ts.isStringLiteralLike(node.expression)
+    ) {
+      parts.push(node.expression.text);
+      return;
+    }
+    ts.forEachChild(node, visit);
+  };
+  element.children.forEach(visit);
+  return parts.join(" ").replace(/\s+/g, " ").trim();
+}
+
+function findJsxElements(root, tagName) {
+  const elements = [];
+  const visit = (node) => {
+    if (ts.isJsxElement(node) && getJsxTagName(node) === tagName) {
+      elements.push(node);
+    }
+    ts.forEachChild(node, visit);
+  };
+  visit(root);
+  return elements;
+}
+
+const headings = [];
+const collectHeadings = (node) => {
+  if (ts.isJsxElement(node)) {
+    const tagName = getJsxTagName(node);
+    if (/^h[1-6]$/.test(tagName)) {
+      headings.push({ level: tagName, text: getJsxText(node) });
+    }
+  }
+  ts.forEachChild(node, collectHeadings);
+};
+collectHeadings(componentAst);
+
+assert.deepEqual(
+  headings,
+  [
+    { level: "h1", text: "How to read your natal chart" },
+    { level: "h2", text: "The four chart layers" },
+    { level: "h2", text: "A practical reading order" },
+    { level: "h2", text: "Birth time accuracy" },
+    { level: "h2", text: "Related tools and guides" },
+    { level: "h2", text: "Natal chart FAQ" },
+  ],
+  "Natal guide must have one h1 followed by coherent h2 sections",
+);
+assert.equal(headings.filter(({ level }) => level === "h1").length, 1);
+
+function unwrapExpression(expression) {
+  let current = expression;
+  while (
+    ts.isAsExpression(current)
+    || ts.isParenthesizedExpression(current)
+    || ts.isSatisfiesExpression(current)
+    || ts.isTypeAssertionExpression(current)
+  ) {
+    current = current.expression;
+  }
+  return current;
+}
+
+function findVariableInitializer(name) {
+  for (const statement of componentAst.statements) {
+    if (!ts.isVariableStatement(statement)) continue;
+    for (const declaration of statement.declarationList.declarations) {
+      if (ts.isIdentifier(declaration.name) && declaration.name.text === name) {
+        return declaration.initializer;
+      }
+    }
+  }
+  return undefined;
+}
+
+function readStringObject(objectLiteral) {
+  return Object.fromEntries(objectLiteral.properties.map((property) => {
+    assert.ok(ts.isPropertyAssignment(property), "relatedTools entries must use properties");
+    const propertyName = property.name;
+    assert.ok(
+      ts.isIdentifier(propertyName) || ts.isStringLiteralLike(propertyName),
+      "relatedTools property names must be static",
+    );
+    assert.ok(ts.isStringLiteralLike(property.initializer), "relatedTools values must be strings");
+    return [propertyName.text, property.initializer.text];
+  }));
+}
+
+const expectedRelatedTools = [
+  { href: "/solar-return", label: "Solar Return chart" },
+  { href: "/transits", label: "Astrology calendar" },
+  { href: "/compatibility", label: "Compatibility chart" },
+  { href: "/bazi", label: "BaZi calculator" },
+  { href: "/blog/what-does-my-birth-chart-mean", label: "Birth chart reading guide" },
 ];
-const relatedToolsMatch = componentSource.match(
-  /const\s+relatedTools\s*=\s*\[([\s\S]*?)\]\s*(?:as const)?\s*;/,
-);
-assert.ok(relatedToolsMatch, "NatalSeoContent must define relatedTools");
-const relatedToolsSource = relatedToolsMatch[1];
-const sourceHrefValues = [...relatedToolsSource.matchAll(/href:\s*["']([^"']+)["']/g)]
-  .map((match) => match[1]);
-assert.deepEqual(sourceHrefValues, relatedHrefValues);
-
-const transitTool = relatedToolsSource.match(
-  /\{\s*href:\s*["']\/transits["']\s*,\s*label:\s*["']([^"']+)["']\s*\}/,
-);
+const relatedToolsInitializer = findVariableInitializer("relatedTools");
+assert.ok(relatedToolsInitializer, "NatalSeoContent must define relatedTools");
+const relatedToolsArray = unwrapExpression(relatedToolsInitializer);
+assert.ok(ts.isArrayLiteralExpression(relatedToolsArray));
+const relatedTools = relatedToolsArray.elements.map((element) => {
+  const objectLiteral = unwrapExpression(element);
+  assert.ok(ts.isObjectLiteralExpression(objectLiteral));
+  return readStringObject(objectLiteral);
+});
+assert.deepEqual(relatedTools, expectedRelatedTools);
+const transitTool = relatedTools.find(({ href }) => href === "/transits");
 assert.ok(transitTool, "relatedTools must include the astrology calendar link");
-assert.match(transitTool[1], /astrology calendar/i);
-assert.doesNotMatch(transitTool[1], /predictor/i);
+assert.match(transitTool.label, /astrology calendar/i);
+assert.doesNotMatch(transitTool.label, /predictor/i);
 
-const definitionTerms = [...componentSource.matchAll(/<dt\b[^>]*>([^<]+)<\/dt>/g)]
-  .map((match) => match[1].trim());
+const definitionTerms = findJsxElements(componentAst, "dt").map(getJsxText);
 assert.deepEqual(definitionTerms, ["Planets", "Signs", "Houses", "Aspects"]);
+
+const faqMapCalls = [];
+const collectFaqMapCalls = (node) => {
+  if (
+    ts.isCallExpression(node)
+    && ts.isPropertyAccessExpression(node.expression)
+    && node.expression.name.text === "map"
+    && ts.isIdentifier(node.expression.expression)
+    && node.expression.expression.text === "natalFaqs"
+  ) {
+    faqMapCalls.push(node);
+  }
+  ts.forEachChild(node, collectFaqMapCalls);
+};
+collectFaqMapCalls(componentAst);
+assert.equal(faqMapCalls.length, 1, "natalFaqs must be rendered by one map call");
+
+const faqMapCallback = faqMapCalls[0].arguments[0];
+assert.ok(
+  ts.isArrowFunction(faqMapCallback) || ts.isFunctionExpression(faqMapCallback),
+  "natalFaqs.map must use a function callback",
+);
+assert.equal(faqMapCallback.parameters.length, 1);
+assert.ok(ts.isIdentifier(faqMapCallback.parameters[0].name));
+assert.equal(faqMapCallback.parameters[0].name.text, "faq");
+
+const detailsElements = findJsxElements(faqMapCallback.body, "details");
+assert.equal(detailsElements.length, 1, "FAQ map callback must render one details branch");
+const summaryElements = findJsxElements(detailsElements[0], "summary");
+const answerParagraphs = findJsxElements(detailsElements[0], "p");
+assert.equal(summaryElements.length, 1, "FAQ details must contain one summary");
+assert.equal(answerParagraphs.length, 1, "FAQ details must contain one answer paragraph");
+
+function hasFaqPropertyAccess(root, propertyName) {
+  let found = false;
+  const visit = (node) => {
+    if (
+      ts.isPropertyAccessExpression(node)
+      && ts.isIdentifier(node.expression)
+      && node.expression.text === "faq"
+      && node.name.text === propertyName
+    ) {
+      found = true;
+    }
+    ts.forEachChild(node, visit);
+  };
+  visit(root);
+  return found;
+}
+
+assert.ok(
+  hasFaqPropertyAccess(summaryElements[0], "question"),
+  "FAQ summary must render faq.question",
+);
+assert.ok(
+  hasFaqPropertyAccess(answerParagraphs[0], "answer"),
+  "FAQ answer paragraph must render faq.answer",
+);
 
 const layoutSource = fs.readFileSync(layoutPath, "utf8");
 assert.match(layoutSource, /export\s+const\s+metadata\s*=\s*natalMetadata\s*;/);

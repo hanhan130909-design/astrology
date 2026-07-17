@@ -17,12 +17,12 @@ export default function NatalSeoContent() {
       className="border-t border-gray-200 bg-white px-4 py-12 text-gray-700 sm:px-6 sm:py-16"
     >
       <div className="mx-auto min-w-0 max-w-3xl">
-        <h2
+        <h1
           id="natal-chart-guide-title"
           className="text-2xl font-bold text-gray-950 sm:text-3xl"
         >
           How to read your natal chart
-        </h2>
+        </h1>
         <p className="mt-4 break-words text-sm leading-7 text-gray-600 sm:text-base">
           A natal chart combines four layers: planets describe the functions at work,
           signs describe how they are expressed, houses locate them in areas of life, and
@@ -31,9 +31,9 @@ export default function NatalSeoContent() {
         </p>
 
         <section aria-labelledby="natal-layers-title" className="mt-10">
-          <h3 id="natal-layers-title" className="text-xl font-semibold text-gray-950">
+          <h2 id="natal-layers-title" className="text-xl font-semibold text-gray-950">
             The four chart layers
-          </h3>
+          </h2>
           <dl className="mt-5 divide-y divide-gray-200 border-y border-gray-200">
             <div className="py-4 sm:grid sm:grid-cols-[7rem_minmax(0,1fr)] sm:gap-6">
               <dt className="font-semibold text-gray-900">Planets</dt>
@@ -67,9 +67,9 @@ export default function NatalSeoContent() {
         </section>
 
         <section aria-labelledby="natal-reading-order-title" className="mt-10">
-          <h3 id="natal-reading-order-title" className="text-xl font-semibold text-gray-950">
+          <h2 id="natal-reading-order-title" className="text-xl font-semibold text-gray-950">
             A practical reading order
-          </h3>
+          </h2>
           <ol className="mt-4 list-decimal space-y-3 pl-5 text-sm leading-7 text-gray-600 marker:font-semibold marker:text-gray-900 sm:text-base">
             <li>Begin with the Sun, Moon, and Rising sign to establish the chart&apos;s broad frame.</li>
             <li>Read each planet by combining its function, sign, and house placement.</li>
@@ -79,9 +79,9 @@ export default function NatalSeoContent() {
         </section>
 
         <section aria-labelledby="birth-time-accuracy-title" className="mt-10">
-          <h3 id="birth-time-accuracy-title" className="text-xl font-semibold text-gray-950">
+          <h2 id="birth-time-accuracy-title" className="text-xl font-semibold text-gray-950">
             Birth time accuracy
-          </h3>
+          </h2>
           <p className="mt-4 break-words text-sm leading-7 text-gray-600 sm:text-base">
             Birth time has the strongest effect on the Ascendant, house cusps, and which
             houses contain the planets. Even a modest time difference can change those
@@ -92,7 +92,7 @@ export default function NatalSeoContent() {
         </section>
 
         <nav aria-label="Related astrology tools and guides" className="mt-10 border-y border-gray-200 py-6">
-          <h3 className="text-xl font-semibold text-gray-950">Related tools and guides</h3>
+          <h2 className="text-xl font-semibold text-gray-950">Related tools and guides</h2>
           <ul className="mt-4 grid min-w-0 gap-3 text-sm sm:grid-cols-2 sm:text-base">
             {relatedTools.map((tool) => (
               <li key={tool.href} className="min-w-0">
