@@ -11,6 +11,7 @@ const articleBySlug = (slug) => articles.find((article) => article.slug === slug
 assert.equal(isIndexableArticle(articleBySlug("moon-in-sagittarius-73")), false);
 assert.equal(isIndexableArticle(articleBySlug("how-to-read-bazi-chart-beginner-265")), true);
 assert.equal(isIndexableArticle(articleBySlug("best-free-bazi-calculators-2026")), true);
+assert.equal(isIndexableArticle(articleBySlug("baZi-vs-western-astrology")), true);
 
 const cornerstoneWithRejectedPhrase = {
   slug: "what-does-my-birth-chart-mean",
@@ -24,6 +25,11 @@ assert.equal(isIndexableArticle({ slug: "empty-heading-article", sections: bodyW
 const validStructuredBody = `${"x".repeat(600)}\n## First heading\n${"y".repeat(600)}\n## Second heading`;
 assert.equal(isIndexableArticle({ slug: " bad-slug ", sections: validStructuredBody }), false);
 assert.equal(isIndexableArticle({ slug: "bad/slug", sections: validStructuredBody }), false);
+assert.equal(isIndexableArticle({ slug: "bad?slug", sections: validStructuredBody }), false);
+assert.equal(isIndexableArticle({ slug: "bad#slug", sections: validStructuredBody }), false);
+assert.equal(isIndexableArticle({ slug: "bad--slug", sections: validStructuredBody }), false);
+assert.equal(isIndexableArticle({ slug: "-bad-slug", sections: validStructuredBody }), false);
+assert.equal(isIndexableArticle({ slug: "bad-slug-", sections: validStructuredBody }), false);
 assert.equal(isIndexableArticle({ slug: "valid-article-2026", sections: validStructuredBody }), true);
 
 const indexableArticles = articles.filter(isIndexableArticle);

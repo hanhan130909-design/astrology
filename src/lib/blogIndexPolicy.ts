@@ -19,7 +19,7 @@ export const CORNERSTONE_SLUGS = [
 ] as const;
 
 const cornerstoneSlugs = new Set<string>(CORNERSTONE_SLUGS);
-const routeSafeSlugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const routeSafeSlugPattern = /^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/;
 const rejectedBodyPatterns = [
   /[木火土金水]\s+(?:element|sign)/i,
   /every ending b\b/i,
