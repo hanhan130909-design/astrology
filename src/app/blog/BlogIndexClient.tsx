@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { ArrowLeft, Clock, Tag, ChevronRight } from 'lucide-react';
+import { Clock, ChevronRight } from 'lucide-react';
 import type { BlogSummary } from './blogSummary';
 
 // Translation data
@@ -67,6 +67,7 @@ export default function BlogIndexClient({ articles }: { articles: BlogSummary[] 
   const pagedArticles = articles.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   const formatDate = (dateString: string) => {
+    if (!dateString) return '';
     const date = new Date(dateString);
     return date.toLocaleDateString(
       language === 'zh' ? 'zh-CN' : language === 'id' ? 'id-ID' : 'en-US',
@@ -138,8 +139,12 @@ export default function BlogIndexClient({ articles }: { articles: BlogSummary[] 
                       <Clock className="w-3 h-3" />
                       {article.readTime} {currentT.minRead}
                     </span>
-                    <span>•</span>
-                    <span>{formatDate(article.date)}</span>
+                    {article.date && (
+                      <>
+                        <span>•</span>
+                        <span>{formatDate(article.date)}</span>
+                      </>
+                    )}
                   </div>
 
                   {/* Title */}

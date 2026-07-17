@@ -9,6 +9,44 @@ import {
   type BlogSummary,
 } from './blogSummary';
 
+type DefaultedSummaryField = 'author' | 'authorEn' | 'authorId' | 'date' | 'readTime';
+type BlogArticleSource = Omit<BlogArticleForSummary, DefaultedSummaryField> &
+  Partial<Pick<BlogArticleForSummary, DefaultedSummaryField>> & {
+    wordCount?: number;
+  };
+
+const DEFAULT_READ_TIME = 5;
+
+function normalizeReadTime(article: Pick<BlogArticleSource, 'readTime' | 'wordCount'>): number {
+  if (typeof article.readTime === 'number' && Number.isFinite(article.readTime) && article.readTime > 0) {
+    return article.readTime;
+  }
+  if (typeof article.wordCount === 'number' && Number.isFinite(article.wordCount) && article.wordCount > 0) {
+    return Math.max(1, Math.ceil(article.wordCount / 200));
+  }
+  return DEFAULT_READ_TIME;
+}
+
+function normalizeSourceArticle(article: BlogArticleSource): BlogArticleForSummary {
+  return {
+    id: article.id,
+    slug: article.slug,
+    category: article.category,
+    categoryZh: article.categoryZh,
+    categoryEn: article.categoryEn,
+    categoryId: article.categoryId,
+    title: article.title,
+    excerpt: article.excerpt,
+    content: article.content,
+    author: article.author ?? '星缘团队',
+    authorEn: article.authorEn ?? 'Lunaxstar Team',
+    authorId: article.authorId ?? 'Tim Lunaxstar',
+    date: article.date ?? '',
+    readTime: normalizeReadTime(article),
+    tags: article.tags,
+  };
+}
+
 const normalizedDestinyArticles: BlogArticleForSummary[] = destinyArticles.map((a, i) => ({
   id: `destiny-${i}`,
   slug: a.slug,
@@ -18,7 +56,7 @@ const normalizedDestinyArticles: BlogArticleForSummary[] = destinyArticles.map((
   categoryId: a.categoryLabel.id,
   title: a.title,
   excerpt: a.description,
-  content: { en: a.sections, zh: a.sections, id: a.sections } as Record<string, string>,
+  content: { en: a.sections, zh: a.sections, id: a.sections },
   author: '星缘团队',
   authorEn: 'Lunaxstar Team',
   authorId: 'Tim Lunaxstar',
@@ -158,8 +196,8 @@ const legacyArticles: BlogArticleForSummary[] = [
 
 export function getBlogSummaries(): BlogSummary[] {
   const sourceArticles = [
-    ...(seoArticles as unknown as BlogArticleForSummary[]),
-    ...(moreSeoArticles as unknown as BlogArticleForSummary[]),
+    ...seoArticles.map(normalizeSourceArticle),
+    ...moreSeoArticles.map(normalizeSourceArticle),
     ...normalizedDestinyArticles,
     ...legacyArticles,
   ];
