@@ -174,17 +174,13 @@ export default function BlogIndexClient({ articles }: { articles: BlogSummary[] 
                     <div className="text-sm text-gray-500">
                       {currentT.by} {language === 'zh' ? article.author : language === 'id' ? article.authorId : article.authorEn}
                     </div>
-                    {article.id.startsWith('destiny-') ? (
-                      <Link
-                        href={`/blog/${article.slug}`}
-                        className="flex items-center gap-1 text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300 text-sm font-medium transition-colors"
-                      >
-                        {currentT.readMore}
-                        <ChevronRight className="w-4 h-4" />
-                      </Link>
-                    ) : (
-                      <span className="text-xs text-gray-400 italic">Snippet</span>
-                    )}
+                    <Link
+                      href={`/blog/${article.slug}`}
+                      className="flex items-center gap-1 text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300 text-sm font-medium transition-colors"
+                    >
+                      {currentT.readMore}
+                      <ChevronRight className="w-4 h-4" />
+                    </Link>
                   </div>
                 </div>
               </article>

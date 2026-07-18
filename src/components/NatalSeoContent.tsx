@@ -2,11 +2,11 @@ import Link from "next/link";
 import { natalFaqs } from "@/components/natalFaq";
 
 const relatedTools = [
-  { href: "/solar-return", label: "Solar Return chart" },
-  { href: "/transits", label: "Astrology calendar" },
-  { href: "/compatibility", label: "Compatibility chart" },
-  { href: "/bazi", label: "BaZi calculator" },
-  { href: "/blog/what-does-my-birth-chart-mean", label: "Birth chart reading guide" },
+  { href: "/solar-return", label: "太阳返照盘" },
+  { href: "/transits", label: "星象日历" },
+  { href: "/compatibility", label: "星座配对" },
+  { href: "/bazi", label: "八字排盘" },
+  { href: "/blog/what-does-my-birth-chart-mean", label: "本命盘阅读指南" },
 ] as const;
 
 export default function NatalSeoContent() {
@@ -21,7 +21,7 @@ export default function NatalSeoContent() {
           id="natal-chart-guide-title"
           className="text-2xl font-bold text-gray-950 sm:text-3xl"
         >
-          How to read your natal chart
+          How to read your natal chart → 如何阅读你的本命盘
         </h1>
         <p className="mt-4 break-words text-sm leading-7 text-gray-600 sm:text-base">
           A natal chart combines four layers: planets describe the functions at work,

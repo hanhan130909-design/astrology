@@ -5,39 +5,32 @@ export type NatalFaq = Readonly<{
 
 export const natalFaqs: readonly NatalFaq[] = [
   {
-    question: "What is a natal chart?",
-    answer:
-      "A natal chart is a map of the sky calculated for a birth date, exact time, and location. It places the planets in zodiac signs and houses and shows the angular relationships, or aspects, between them.",
+    question: "什么是本命盘？",
+    answer: "本命盘是根据出生日期、精确时间和地点计算出的天空地图。它将行星置于星座和宫位中，并显示它们之间的角度关系——即相位。本命盘是占星学最基础的工具，记录了出生那一刻的天体位置。",
   },
   {
-    question: "How accurate is this birth chart calculator?",
-    answer:
-      "The calculator derives planetary positions from astronomical data using the birth date, time, and location you enter. Planet and sign positions are generally less sensitive to small time differences than the Ascendant and house cusps, so accurate inputs matter most for those fast-changing features.",
+    question: "本命盘计算器有多准确？",
+    answer: "计算器使用 Swiss Ephemeris 天文数据，根据你输入的出生日期、时间和地点推演行星位置。行星和星座位置对小幅时间差不太敏感，但上升星座和宫头变化很快，因此出生时间和地点的精确性对这两者影响最大。",
   },
   {
-    question: "What is the difference between a Sun sign and a Rising sign?",
-    answer:
-      "The Sun sign describes the zodiac sign occupied by the Sun at birth. The Rising sign, or Ascendant, is the sign rising on the eastern horizon and changes much faster, so it depends closely on the recorded birth time and location.",
+    question: "太阳星座和上升星座有什么区别？",
+    answer: "太阳星座描述出生时太阳所在的星座，代表你的核心性格。上升星座（命度）是出生时东方地平线上升起的星座，变化速度远快于太阳，因此极度依赖于记录的出生时间和地点。上升星座影响你的第一印象和外在表现。",
   },
   {
-    question: "What do the twelve houses mean?",
-    answer:
-      "The twelve houses divide the chart into areas of life, such as identity, resources, communication, home, relationships, and public roles. A planet describes what is active, its sign describes how it operates, and its house suggests where that pattern may be experienced.",
+    question: "十二宫位分别代表什么？",
+    answer: "十二宫位将星盘划分为不同的生活领域：第一宫代表自我形象，第二宫代表财富和价值观，第三宫代表沟通和学习，第四宫代表家庭和根基，第五宫代表创意和恋爱，第六宫代表健康和工作，第七宫代表伴侣关系，第八宫代表深度转化，第九宫代表远行和哲学，第十宫代表事业和公众形象，第十一宫代表友谊和社群，第十二宫代表潜意识和灵性。行星落在哪个宫位，说明该生活领域会被激活。",
   },
   {
-    question: "How do I read aspects in a natal chart?",
-    answer:
-      "Aspects are measured angles between planets, including conjunctions, sextiles, squares, trines, and oppositions. Read the planets first, then consider whether the aspect suggests ease, emphasis, contrast, or tension that can be expressed in more than one way.",
+    question: "如何阅读星盘中的相位？",
+    answer: "相位是行星之间测量的角度关系，主要包括合相（0°）、六合（60°）、刑克（90°）、三合（120°）和冲相（180°）。先理解每颗行星代表什么，再判断相位意味着支持、强调、对比还是张力。相位诠释应当灵活——同一个相位可以表达为不同的行为模式。",
   },
   {
-    question: "What should I do without an exact birth time?",
-    answer:
-      "Use a documented birth time whenever possible. Without one, you can still examine many planetary sign placements and aspects, but the Moon may shift and the Rising sign, house cusps, and planet-to-house placements may be unreliable; avoid treating an estimated time as exact.",
+    question: "不知道准确出生时间怎么办？",
+    answer: "尽可能使用有记录的出生时间。如果没有，你仍然可以查看很多行星的星座落位和相位，但月亮可能已经变动，上升星座、宫头和行星落宫的位置可能不可靠。不要将一个估算的时间当作精确的数据来解读。",
   },
   {
-    question: "Can a natal chart predict the future?",
-    answer:
-      "A natal chart does not guarantee future events. Astrologers use planets, signs, houses, and aspects to explore tendencies, themes, and possible responses, while choices, circumstances, and uncertainty remain part of how a life develops.",
+    question: "本命盘可以预测未来吗？",
+    answer: "本命盘不保证未来事件。占星师使用行星、星座、宫位和相位来探索趋势、主题和可能的回应，但个人的选择、环境和不确定性仍然是人生发展的一部分。占星是指南针——不是预定的剧本。",
   },
 ];
 
