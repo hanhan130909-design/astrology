@@ -13660,4 +13660,268 @@ Get your IC at lunaxstar.com/natal. It is the cusp of your 4th House. Look there
 在 lunaxstar.com/natal 找到你的天底。它是你第四宫的宫头。先看那里——然后看你从那里以来建造的一切。` },
     readTime: 8, tags: ['IC', 'childhood', 'psychology', 'roots'],
   },
+  {
+    id: "437", slug: "solar-return-chart-guide-437",
+    category: "astrology", categoryZh: "占星进阶", categoryEn: "Guides", categoryId: "Panduan",
+    date: "2026-07-18",
+    title: { zh: "太阳回归盘完全解读指南——你的生日年运密码", en: "How to Read Your Solar Return Chart: A Step-by-Step Guide" },
+    excerpt: { zh: "每年生日太阳回到你出生时的位置——那一刻的星盘就是你的年运密码。学读太阳回归盘，预知未来一年。", en: "Every birthday the Sun returns to its birth position. That moment creates your Solar Return chart — your personal year-ahead forecast. Learn to read it." },
+    content: { en: `# How to Read Your Solar Return Chart
+
+Every year on your birthday, the Sun returns to the exact degree it occupied at your birth. Astrologers cast a chart for that moment — the Solar Return. This chart is your personal weather forecast for the next twelve months.
+
+## What a Solar Return Tells You
+
+Your natal chart is your permanent blueprint. Your Solar Return chart is your annual operating manual. It highlights which houses are activated this year, which planets dominate, and where your focus will be pulled.
+
+## How to Read It
+
+**Step 1: Find the Sun.** The Sun is always at your natal Sun degree. But the HOUSE it falls in changes every year. Sun in the 1st House: a year of personal identity and new beginnings. Sun in the 10th House: a career-defining year.
+
+**Step 2: Look at the Rising Sign.** The Solar Return Ascendant sets the theme. Aries Rising year: bold, fast, initiatory. Capricorn Rising year: slow, disciplined, foundational.
+
+**Step 3: Find the Moon.** The Moon's house shows where your emotional focus will be. Moon in the 7th House: a relationship-focused year. Moon in the 6th House: health and daily routines take priority.
+
+**Step 4: Count planets in each hemisphere.** Many planets above the horizon: a public, outward year. Many below: an internal, private year of groundwork.
+
+## Why It Matters
+
+Your Solar Return chart explains why some years feel like a sprint and others feel like a slow burn. It is not fate — it is timing. Knowing which areas are activated helps you lean into the current rather than fight it.
+
+Generate your free birth chart at lunaxstar.com/natal (you will need your exact birth time). Then calculate your Solar Return at lunaxstar.com/solar-return. The year ahead is already mapped.`, zh: `# 太阳回归盘完全解读指南
+
+每年你生日那天，太阳精确回到你出生时的位置。占星师为那一刻绘制一张星盘——太阳回归盘。这张盘是你接下来十二个月的个人天气预报。
+
+## 太阳回归盘告诉你什么
+
+本命盘是你的永久蓝图。太阳回归盘是你当年的操作手册。它突出哪些宫位今年被激活、哪些行星主导、你的注意力将被拉向哪里。
+
+## 怎么读
+
+**第一步：找到太阳。** 太阳永远在你本命太阳的度数上。但它落在哪个宫位每年都变。太阳在第一宫：个人身份和全新开始之年。太阳在第十宫：定义事业之年。
+
+**第二步：看上升星座。** 太阳回归盘的命度给全年定调。白羊命度年：大胆、快节奏、开创。摩羯命度年：缓慢、自律、打地基。
+
+**第三步：找到月亮。** 月亮的宫位显示你的情感焦点在哪。月亮七宫：关系聚焦之年。月亮六宫：健康和日常优先。
+
+**第四步：数半球行星。** 大量行星在地平线以上：公开、向外的年份。大量在以下：内部、私密的打基础年份。
+
+在 lunaxstar.com/natal 生成本命盘，然后用 lunaxstar.com/solar-return 算回归盘。你的这一年已经画好了。` },
+    readTime: 8, tags: ['solar-return', 'birthday', 'forecast', 'guide'],
+  },
+  {
+    id: "438", slug: "progressed-moon-phases-emotions-438",
+    category: "astrology", categoryZh: "心理", categoryEn: "Guides", categoryId: "Panduan",
+    date: "2026-07-18",
+    title: { zh: "推进月亮相位——每两年半一次的情绪进化", en: "Progressed Moon Phases: Your Emotional Evolution Every 2.5 Years" },
+    excerpt: { zh: "推进月亮每 2.5 年变一个星座。你的情绪模式、安全感需求、内在驱动力也在跟着变。不是善变——是进化。", en: "Your progressed Moon changes signs every 2.5 years. Your emotional needs, security patterns, and inner drives shift with it. Not mood swings — evolution." },
+    content: { en: `# Progressed Moon Phases: Your Emotional Evolution
+
+In secondary progressions, the Moon moves about one degree per month — one full sign every 2.5 years. This is the most personally felt of all progressed cycles. When your progressed Moon changes signs, your emotional landscape shifts.
+
+## The Cycle
+
+Each progressed Moon phase lasts roughly 2.5 years. Over a lifetime, you experience approximately 12 internal seasons — each with a different emotional operating system.
+
+## What Each Phase Means
+
+**Progressed Moon in Fire Signs (Aries, Leo, Sagittarius):** A period of emotional boldness. You take risks. You speak your feelings. Action feels like relief. This is not a time for subtlety.
+
+**Progressed Moon in Earth Signs (Taurus, Virgo, Capricorn):** A period of emotional grounding. You need stability. You process feelings through routine and tangible results. Emotional decisions are practical, not impulsive.
+
+**Progressed Moon in Air Signs (Gemini, Libra, Aquarius):** A period of emotional intellectualization. You need to talk through your feelings. You process through conversation, writing, and social connection.
+
+**Progressed Moon in Water Signs (Cancer, Scorpio, Pisces):** A period of emotional depth. Feelings are intense, personal, and private. You need sanctuary. You need to feel without explaining.
+
+## Why This Matters
+
+If your life feels different every few years — that is not instability. That is your progressed Moon. Understanding the cycle helps you stop blaming yourself for changing and start cooperating with your own evolution.
+
+Find your natal Moon at lunaxstar.com/natal. From there, calculate your progressed Moon to see which sign and house it currently occupies. The answer to why you feel the way you feel right now may be one degree away.`, zh: `# 推进月亮相位——每两年半一次的情绪进化
+
+在次级推进中，月亮每月走一度——每两年半走完一个完整星座。这是所有推进周期中个人感受最强烈的。当你的推进月亮换座，你的情绪地图就换了。
+
+## 每个阶段
+
+每个推进月亮阶段持续约两年半。一生中你经历大约十二个内在季节——每个季节有一个不同的情绪操作系统。
+
+**在火象（白羊、狮子、射手）：** 情绪勇气的阶段。你冒险。你说出你的感受。行动感觉像释放。这不是精致的时期。
+
+**在土象（金牛、处女、摩羯）：** 情绪落地的阶段。你需要稳定。你通过日常和可触的结果处理感受。情绪决策是务实的，不是冲动的。
+
+**在风象（双子、天秤、水瓶）：** 情绪智性化的阶段。你需要把感受聊出来。你通过对话、写作和社交连接来处理。
+
+**在水象（巨蟹、天蝎、双鱼）：** 情绪深度的阶段。感受强烈、个人且私密。你需要庇护所。你需要感受而不解释。
+
+如果每隔几年生活感觉不同——那不是不稳定。那是你的推进月亮。理解这个循环让你停止因改变而责备自己，开始与自己的进化合作。
+
+在 lunaxstar.com/natal 找到你的本命月亮。从那里计算你的推进月亮。` },
+    readTime: 8, tags: ['progressed-moon', 'phases', 'emotions', 'evolution'],
+  },
+  {
+    id: "439", slug: "astrology-friendship-synastry-439",
+    category: "astrology", categoryZh: "心理", categoryEn: "Guides", categoryId: "Panduan",
+    date: "2026-07-18",
+    title: { zh: "占星中的友谊——合盘不只管爱情", en: "The Astrology of Friendship: Using Synastry Beyond Romance" },
+    excerpt: { zh: "合盘不只是用来测情侣的。你的月亮眼朋友的太阳形成了什么相位，决定了为什么有些友谊一见面就是知己。", en: "Synastry is not just for lovers. The aspects between your Moon and their Sun explain why some friendships feel like home from the first conversation." },
+    content: { en: `# The Astrology of Friendship: Synastry Beyond Romance
+
+Synastry is famous for love. But its most practical daily use is understanding why certain friendships work effortlessly while others drain you.
+
+## The Key Friendship Aspects
+
+**Moon conjunct Moon:** You feel each other's emotions without words. When one of you is upset, the other knows. This is the aspect of the ride-or-die friend.
+
+**Sun trine Sun:** Your fundamental identities harmonize. You enjoy the same things, share similar values, and rarely clash on big decisions. Easy, warm, natural.
+
+**Mercury conjunct Mercury:** You speak the same language — literally or figuratively. Conversations flow. Humor matches. You could talk for hours and lose track of time.
+
+**Venus trine Jupiter:** You bring each other joy, abundance, and good times. This is the friend who always says yes to adventure. The energy is uplifting and generous.
+
+**Moon square Saturn:** This is the friendship that teaches you about boundaries. One person may feel emotionally restricted by the other. Not a dealbreaker — but requires conscious communication.
+
+**Mars opposite Mars:** You push each other. Sometimes into growth, sometimes into argument. The competitive tension can be productive or exhausting depending on maturity.
+
+## Read Your Friendship Charts
+
+Your natal chart already contains your 11th House — the house of friends. But pair your chart with a friend's and the story gets specific. Check both charts at lunaxstar.com/compatibility. Understanding why a friendship works is not just fascinating — it helps you appreciate the people in your life for exactly who they are.`, zh: `# 占星中的友谊——合盘不只管爱情
+
+合盘以爱情著名。但它最实用的日常用途是理解为什么有些友谊毫不费力，有些耗干你。
+
+## 关键友谊相位
+
+**月亮合月亮：** 你们不需要语言就能感受彼此的情绪。一个人难受，另一个立刻知道。这是生死之交的相位。
+
+**太阳三合太阳：** 你们的基本身份和谐共振。喜欢一样的东西，共享相似价值观，重大决策上很少冲突。轻松、温暖、自然。
+
+**水星合水星：** 你们说着同一种语言。对话流畅、幽默匹配。可以聊上几小时不知时间。
+
+**金星三合木星：** 你们带给彼此喜悦、丰盛和好时光。这是永远对冒险说好的朋友。能量是令人振奋和慷慨的。
+
+**月亮刑土星：** 这是教你边界的友谊。一方可能在情感上感到被另一方限制。不算判死刑——但需要自觉的沟通。
+
+**火星冲火星：** 你们互相推动。有时推进成长，有时推进争吵。竞争张力可以是生产力也可能是消耗——看成熟度。
+
+在 lunaxstar.com/compatibility 查看你和朋友的合盘。理解一段友谊为什么成立不只帮你——也帮你珍惜生活中每个具体的人。` },
+    readTime: 8, tags: ['friendship', 'synastry', 'relationships', 'social'],
+  },
+  {
+    id: "440", slug: "bazi-hidden-stems-guide-440",
+    category: "bazi", categoryZh: "八字进阶", categoryEn: "Guides", categoryId: "Panduan",
+    date: "2026-07-18",
+    title: { zh: "八字藏干——你命盘底下还有什么", en: "BaZi Hidden Stems: What's Really Going On Under Your Surface Chart" },
+    excerpt: { zh: "地支不是空的——每个地支藏着 1-3 个天干。那些藏干才是你性格里被忽视的第二层、第三层。", en: "Each Earthly Branch hides 1-3 Heavenly Stems. Those hidden stems are the second and third layers of your personality that your surface chart never shows." },
+    content: { en: `# BaZi Hidden Stems: What Is Really Going On Under Your Chart
+
+Your BaZi chart has eight visible characters: four Stems above, four Branches below. But each Branch contains 1-3 hidden Heavenly Stems — like roots beneath a tree. These hidden stems are the parts of your personality that do not show up in your Day Master or Ten Gods. They are the subtext.
+
+## Why Hidden Stems Matter
+
+Your Day Master tells you WHO you are. Your hidden stems tell you HOW ELSE you operate when no one is watching. A Yang Wood Day Master with strong Yin Metal hidden stems: you present as the bold visionary, but your private self is sharp, critical, and precise.
+
+## The Hidden Stems in Each Branch
+
+**子 (Rat):** Hides 癸 (Yin Water). Pure, single element. Simple on the surface — deep underneath.
+**丑 (Ox):** Hides 己 (Yin Earth), 癸 (Yin Water), 辛 (Yin Metal). The complexity of the Ox is legendary. Earth on the surface, Water and Metal underneath.
+**寅 (Tiger):** Hides 甲 (Yang Wood), 丙 (Yang Fire), 戊 (Yang Earth). Triple Yang. Ambitious, fiery, grounded all at once.
+**卯 (Rabbit):** Hides 乙 (Yin Wood). Pure Yin Wood. Flexible, diplomatic, strategic — with no other element diluting the Wood.
+**辰 (Dragon):** Hides 戊 (Yang Earth), 乙 (Yin Wood), 癸 (Yin Water). The Dragon's mystique comes from Earth containing Wood and Water — a leader who feels deeply and adapts constantly.
+**巳 (Snake):** Hides 丙 (Yang Fire), 庚 (Yang Metal), 戊 (Yang Earth). Triple Yang again. The Snake is not just intuitive — it is fierce, sharp, and stubborn underneath.
+**午 (Horse):** Hides 丁 (Yin Fire), 己 (Yin Earth). The Horse's surface energy masks a focused, grounded interior.
+**未 (Goat):** Hides 己 (Yin Earth), 丁 (Yin Fire), 乙 (Yin Wood). The artist. Earth nurtures Fire, which feeds Wood.
+**申 (Monkey):** Hides 庚 (Yang Metal), 壬 (Yang Water), 戊 (Yang Earth). Triple Yang. The Monkey is not just clever — it is sharp, deep, and unshakeable.
+**酉 (Rooster):** Hides 辛 (Yin Metal). Pure Yin Metal. Precision without dilution.
+**戌 (Dog):** Hides 戊 (Yang Earth), 辛 (Yin Metal), 丁 (Yin Fire). The Dog's loyalty is Earth, its discernment is Metal, its passion is Fire.
+**亥 (Pig):** Hides 壬 (Yang Water), 甲 (Yang Wood). The Pig's surface indulgence hides depth and ambitious growth.
+
+## How to Use This
+
+Your hidden stems only activate in specific luck cycles. A hidden Wealth star will not make you rich until its decade arrives. But knowing it is there changes how you read your chart — and yourself.
+
+Generate your full BaZi chart at lunaxstar.com/bazi. The hidden stems are listed under each Branch. Read them. They might be the most honest thing your chart has to say about you.`, zh: `# 八字藏干——你命盘底下还有什么
+
+你的八字盘有八个可见的字：四个天干在上，四个地支在下。但每个地支藏着 1-3 个天干——像树下的根。这些藏干是你性格中不展示在日主或十神里的部分。它们是潜台词。
+
+## 为什么藏干重要
+
+日主告诉你你是什么。藏干告诉你在没人看见的时候你还怎么运作。甲木日主带强辛金藏干：你对外是果敢的领路人，但私下里锋利、精准、爱挑剔。
+
+## 十二地支各自藏什么
+
+**子：** 藏癸。纯阴水。表层简单——深处暗涌。
+**丑：** 藏己、癸、辛。丑的复杂性是传奇——土面下藏着水与金的锋利。
+**寅：** 藏甲、丙、戊。三阳。野心、火爆、踏实——同时并存。
+**卯：** 藏乙。纯阴木。柔韧、外交、深谋远虑——无他混杂。
+**辰：** 藏戊、乙、癸。龙的神秘来自土含水与木——一个深刻感受、不断调适的领袖。
+**巳：** 藏丙、庚、戊。三阳。蛇不只是直觉——底下凶悍、锋利、顽固。
+**午：** 藏丁、己。马的表层能量掩藏着一个聚焦、踏实的内心。
+**未：** 藏己、丁、乙。艺术家。土养火，火生木。
+**申：** 藏庚、壬、戊。三阳。猴不只是聪明——锋利、深邃、不可撼动。
+**酉：** 藏辛。纯阴金。不掺杂质的精准。
+**戌：** 藏戊、辛、丁。狗的忠诚是土，辨识力是金，激情是火。
+**亥：** 藏壬、甲。猪的表层放纵藏着深度和野心。
+
+你的藏干只在特定大运中激活。一颗隐藏的财星在它的大运到来之前不会让你发财。但知道它在那里——改变你怎么看懂自己的盘。
+
+在 lunaxstar.com/bazi 生成八字。藏干在每个地支下面。读它们。它们可能就是你的盘对自己最诚实的描述。` },
+    readTime: 8, tags: ['bazi', 'hidden-stems', 'advanced', 'personality'],
+  },
+  {
+    id: "441", slug: "birth-time-accuracy-astrology-441",
+    category: "astrology", categoryZh: "占星入门", categoryEn: "Guides", categoryId: "Panduan",
+    date: "2026-07-18",
+    title: { zh: "出生时间为什么改变一切——四分钟法则", en: "Why Your Birth Time Changes Everything: The 4-Minute Rule" },
+    excerpt: { zh: "每四分钟，上升星座在黄道上移动一度。差四分钟，就可能差一个上升星座。差两小时，十二宫全部不同。", en: "Every four minutes, the Ascendant moves one degree. Four minutes wrong can mean the wrong Rising sign. Two hours wrong and all twelve houses shift." },
+    content: { en: `# Why Your Birth Time Changes Everything
+
+The Ascendant changes by roughly one degree every four minutes. That means in about two hours, the entire Rising sign can shift from one zodiac sign to another. Your birth time is not a minor detail — it is the foundation of your chart.
+
+## The 4-Minute Rule
+
+Earth rotates 360 degrees in 24 hours. That is 15 degrees per hour, or one degree every four minutes. The Ascendant — the sign rising on the eastern horizon at your birth — is exquisitely sensitive to time.
+
+A birth time recorded as "around noon" could be off by an hour. An hour's error shifts the Ascendant by roughly 15 degrees — potentially changing both the Rising sign and every house cusp in your chart.
+
+## What Changes With Birth Time
+
+**The Rising Sign:** Most dramatically affected. A four-minute error can shift the Ascendant from the last degree of one sign to the first degree of the next.
+
+**House Cusps:** All twelve house cusps recalculate when birth time changes. A planet that was in your 7th House of relationships at one birth time could be in your 6th House of health at another.
+
+**The Moon:** The Moon moves about 0.5 degrees per hour. Over a few hours, this usually stays in the same sign. Over a full day, it can shift — but Moon sign is more forgiving than the Ascendant.
+
+**Planets:** Mercury, Venus, Mars, and the Sun move slowly enough that a few hours rarely changes their sign. Outer planets barely move at all over days.
+
+## What to Do Without an Exact Time
+
+If you do not know your exact birth time, use noon as a starting point — but treat the Rising sign, house cusps, and Moon sign as uncertain. Focus on reliable placements: Sun sign, Mercury, Venus, Mars, and all major aspects.
+
+If you have a birth certificate with a recorded time — use it exactly. Even if your mother swears it was 3 AM and the certificate says 3:15 AM — trust the certificate. Memory is astrology's worst enemy.
+
+Generate your chart at lunaxstar.com/natal. If you know your time within an hour, you are close. If you know it within five minutes, your chart is accurate enough to trust. If you do not know it at all, read your chart knowing the Ascendant and houses are provisional.`, zh: `# 出生时间为什么改变一切——四分钟法则
+
+上升星座大约每四分钟移动一度。也就是说大约两个小时内，整个上升星座可以从一个星座变到另一个。你的出生时间不是细节——是你星盘的地基。
+
+## 四分钟法则
+
+地球 24 小时自转 360 度，每小时 15 度，每四分钟一度。上升星座——出生时东方地平线上升起的星座——对时间极度敏感。
+
+一个记录为"大概中午"的出生时间可能偏差一小时。一小时的误差会移动上升星座约十五度——可能同时改变上升星座和星盘里每一个宫头。
+
+## 出生时间改变什么
+
+**上升星座：** 最戏剧化。四分钟的误差可以把命度从上一个星座的最后一度移到下一个星座的第一度。
+**宫头：** 全部十二个宫头随出生时间重算。一颗行星可能在一个出生时间里在你第七宫关系宫，在另一个时间跳到了第六宫健康宫。
+**月亮：** 月亮每小时约移动 0.5 度。几小时内通常待在同一星座。一整天可能变——但月亮比上升宽容。
+**行星：** 水星、金星、火星和太阳移动足够慢，几小时很少改变星座。外行星几乎不动。
+
+## 没有准确时间怎么办
+
+不知道准确出生时间的话，用正午做起点——但把上升、宫头和月亮视为不确定。集中看可靠位置：太阳、水星、金星、火星和所有主要相位。
+
+如果你有出生证明上记录的时间，精确使用它。就算你妈妈说一定是凌晨三点而证明上写三点十五——信证明。记忆是占星的头号敌人。
+
+在 lunaxstar.com/natal 生成你的星盘。如果你知道时间误差在一小时内——接近了。五分钟内——足够准确了。如果全然不知——读盘时记住命度和宫位是临时的。` },
+    readTime: 8, tags: ['birth-time', 'accuracy', 'ascendant', 'houses'],
+  },
 ];
