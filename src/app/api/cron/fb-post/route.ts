@@ -276,9 +276,9 @@ https://lunaxstar.com/blog/the-world-tarot-meaning-254`.split("\n").filter(Boole
 
 // Start index = 0 at June 30, 2026 00:00 UTC
 const START = new Date("2026-06-30T00:00:00Z").getTime();
-const INTERVAL_MS = 6 * 60 * 60 * 1000; // 6 hours
+const INTERVAL_MS = 24 * 60 * 60 * 1000; // 24 hours (daily cron)
 
-// POST /api/cron/fb-post — Vercel Cron every 6 hours
+// POST /api/cron/fb-post — Vercel Cron daily
 export async function POST(request: Request) {
   const auth = request.headers.get("authorization");
   if (auth !== `Bearer ${process.env.CRON_SECRET || "weekly-horoscope-2026"}`) {
@@ -290,6 +290,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "FACEBOOK_PAGE_TOKEN not set" }, { status: 500 });
   }
 
+  const now = Date.now();
   // Post 2 URLs per cron tick (twice daily output from single daily cron)
   const idx1 = Math.floor((now - START) / INTERVAL_MS) % QUEUE_URLS.length;
   const idx2 = (idx1 + 1) % QUEUE_URLS.length;
