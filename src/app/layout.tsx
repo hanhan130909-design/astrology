@@ -124,6 +124,9 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{__html:`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-CSE41GD9JL');gtag('config','AW-18261460159');`}} />
         {/* AdSense */}
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8610947417148845" crossOrigin="anonymous" />
+        {/* Adsterra — Popunder + SocialBar */}
+        <script async src="https://theoreticalassertshame.com/2f/e7/16/2fe716040585c7a5df6b961c91d53e7a.js"></script>
+        <script async src="https://theoreticalassertshame.com/9e/75/3a/9e753a63fa9c7e979e9b36a970a51938.js"></script>
       </head>
       <body className="bg-white text-gray-900 antialiased min-h-screen overflow-x-hidden">
         <ServiceWorkerRegister />
