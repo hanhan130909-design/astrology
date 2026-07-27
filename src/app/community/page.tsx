@@ -136,6 +136,7 @@ interface Post {
   authorName: string;
   authorPhoto?: string;
   content: string;
+  contentEn?: string;
   category: Category;
   zodiacTag?: string;
   likesCount: number;
@@ -176,22 +177,22 @@ export default function CommunityPage() {
     try {
       const fetchedPosts = await getPosts(20);
       // Merge with seed posts so community always has content
-      const seed: Post[] = [
-        { id:"seed-1",authorId:"sys",authorName:"星辰大海 ✨",content:"用了星缘三个月了，八字日主是甲木——终于理解为什么我总是在工作上冲在最前面。有没有同是甲木的朋友？你们也这样吗？",category:"experience",zodiacTag:"Aries",likesCount:24,commentsCount:8,createdAt:new Date("2026-07-15")},
-        { id:"seed-2",authorId:"sys",authorName:"Luna星语 🌙",content:"今天用奇门遁甲选了个签合同的日期，生门刚好对着我的方向。下午签约顺利得不像话。以前不信这些，现在服了。",category:"experience",likesCount:18,commentsCount:5,createdAt:new Date("2026-07-16")},
-        { id:"seed-3",authorId:"sys",authorName:"命运的节奏 🎭",content:"有没有人2026年也感觉节奏特别快？查了八字发现今年是丙午火马年，双火叠加。每天跟打了鸡血一样，但也特别容易burnout。大家怎么调节的？",category:"question",likesCount:31,commentsCount:12,createdAt:new Date("2026-07-17")},
-        { id:"seed-4",authorId:"sys",authorName:"风之占星师 🍃",content:"分享一个小技巧：在新月设意向比在满月做释放更有效。我连续做了三个新月仪式，每个月都能感受到微小的变化在积累。推荐大家都试试。",category:"learning",likesCount:15,commentsCount:4,createdAt:new Date("2026-07-14")},
-        { id:"seed-5",authorId:"sys",authorName:"Leo♌️的火",content:"作为狮子座+丙火日主，我一直在学怎么不burn周围的人。最近发现的秘诀：运动。每天把火撒在跑步机上，回家就是一只温顺的猫。🔥🏃‍♂️",category:"daily",zodiacTag:"Leo",likesCount:22,commentsCount:7,createdAt:new Date("2026-07-16")},
-        { id:"seed-6",authorId:"sys",authorName:"星空下的思考者",content:"西方占星说我是双鱼，八字说我是癸水。奇怪的是两边说的性格竟然高度重合——敏感、直觉强、容易吸收别人的情绪。有人也两边都查过吗？",category:"question",likesCount:12,commentsCount:6,createdAt:new Date("2026-07-15")},
-        { id:"seed-7",authorId:"sys",authorName:"风水行者 🧘",content:"我用 lunaxstar 的生日本命盘给全家人排了一遍。老婆的上升星座竟然是天蝎——终于理解为什么她第一印象总是让人感觉神秘了。占星真的是家庭关系的解码器。",category:"experience",likesCount:27,commentsCount:9,createdAt:new Date("2026-07-18")},
-        { id:"seed-8",authorId:"sys",authorName:"易学小学生",content:"提问：大运切换到下一个十年的时候，大家能感觉到明显的变化吗？我还有两年就要换了，想知道过来人的体验。",category:"question",likesCount:9,commentsCount:11,createdAt:new Date("2026-07-17")},
-        { id:"seed-9",authorId:"sys",authorName:"茶与星盘 ☕",content:"每日运势说我今天不适合做重大决定。我偏不信——结果在淘宝上冲动下单了三件根本不需要的东西。行吧，宇宙，你赢了。🫠",category:"daily",likesCount:34,commentsCount:6,createdAt:new Date("2026-07-18")},
-        { id:"seed-10",authorId:"sys",authorName:"八字自习室",content:"最近在学十神。有个问题想请教各位：正财和偏财在实际生活中怎么区分？我的盘里两个都有，但感觉不明显。",category:"learning",likesCount:8,commentsCount:14,createdAt:new Date("2026-07-14")},
-        { id:"seed-11",authorId:"sys",authorName:"NorthStar✨",content:"I just discovered my Day Master is Yang Water (壬). It explains why I need so much alone time — water people need depth, not crowds. Anyone else feel this?",category:"experience",likesCount:19,commentsCount:7,createdAt:new Date("2026-07-16")},
-        { id:"seed-12",authorId:"sys",authorName:"月相追踪者 🌙",content:"今天的月亮进天蝎了——情绪深得像海。但这也是最适合做内在清理的时候。关掉手机，点支蜡烛，写下你心里积压的东西。天蝎月亮给你力量去释放。",category:"daily",likesCount:16,commentsCount:3,createdAt:new Date("2026-07-19")},
-        { id:"seed-13",authorId:"sys",authorName:"命运解码师",content:"分享一个真实客户案例（已授权）：客户一直以为自己是'事业不顺'——直到查了大运发现她在印运里。本来这十年就该学习充电，不是冲刺。知道之后心态完全变了。这就是命盘的力量。",category:"experience",likesCount:41,commentsCount:15,createdAt:new Date("2026-07-13")},
-        { id:"seed-14",authorId:"sys",authorName:"星缘的忠实用户",content:"用了半个月 lunaxstar，最惊喜的是奇门遁甲排盘功能。太准了——选了一天去谈加薪，生门正好对着我的方向。结果老板主动提了薪资调整。不骗你们。",category:"experience",likesCount:25,commentsCount:8,createdAt:new Date("2026-07-17")},
-        { id:"seed-15",authorId:"sys",authorName:"禅与占星",content:"有没有人觉得满月的晚上特别难入睡？我已经连续三个满月失眠了。查了星盘才发现我月亮在巨蟹——满月的时候月亮能量最强，巨蟹月亮当然受不了。",category:"question",likesCount:13,commentsCount:5,createdAt:new Date("2026-07-16")},
+      const seed: (Post & {contentEn: string})[] = [
+        { id:"seed-1",authorId:"sys",authorName:"星辰大海 ✨ / StarSea",content:"用了星缘三个月了，八字日主是甲木——终于理解为什么我总是在工作上冲在最前面。有没有同是甲木的朋友？你们也这样吗？",contentEn:"Three months on lunaxstar and my Day Master is Yang Wood (甲). Finally understand why I'm always charging ahead at work. Any other Yang Wood folks out there? Same energy?",category:"experience",zodiacTag:"Aries",likesCount:24,commentsCount:8,createdAt:new Date("2026-07-15")},
+        { id:"seed-2",authorId:"sys",authorName:"Luna星语 🌙",content:"今天用奇门遁甲选了个签合同的日期，生门刚好对着我的方向。下午签约顺利得不像话。以前不信这些，现在服了。",contentEn:"Used Qi Men Dun Jia to pick a contract signing date today. Life Gate aligned with my direction. The signing went impossibly smooth. I used to be skeptical. Not anymore.",category:"experience",likesCount:18,commentsCount:5,createdAt:new Date("2026-07-16")},
+        { id:"seed-3",authorId:"sys",authorName:"命运的节奏 🎭",content:"有没有人2026年也感觉节奏特别快？查了八字发现今年是丙午火马年，双火叠加。每天跟打了鸡血一样，但也特别容易burnout。大家怎么调节的？",contentEn:"Anyone else feel like 2026 is on fast-forward? Checked my BaZi — it's Bing Wu (Fire Horse), double Fire year. Every day feels turbocharged but burnout comes fast. How are you all managing?",category:"question",likesCount:31,commentsCount:12,createdAt:new Date("2026-07-17")},
+        { id:"seed-4",authorId:"sys",authorName:"风之占星师 🍃",content:"分享一个小技巧：在新月设意向比在满月做释放更有效。我连续做了三个新月仪式，每个月都能感受到微小的变化在积累。推荐大家都试试。",contentEn:"Pro tip: setting intentions at the New Moon works better than releasing at the Full Moon. I've done 3 New Moon rituals in a row and feel the subtle shifts compounding each month. Highly recommend.",category:"learning",likesCount:15,commentsCount:4,createdAt:new Date("2026-07-14")},
+        { id:"seed-5",authorId:"sys",authorName:"Leo♌️的火",content:"作为狮子座+丙火日主，我一直在学怎么不burn周围的人。最近发现的秘诀：运动。每天把火撒在跑步机上，回家就是一只温顺的猫。🔥🏃‍♂️",contentEn:"Leo Sun + Yang Fire Day Master here. My lifelong struggle: not burning everyone around me. Recent discovery: exercise. Pour the fire onto the treadmill and come home a gentle cat. 🔥🏃‍♂️",category:"daily",zodiacTag:"Leo",likesCount:22,commentsCount:7,createdAt:new Date("2026-07-16")},
+        { id:"seed-6",authorId:"sys",authorName:"星空下的思考者",content:"西方占星说我是双鱼，八字说我是癸水。奇怪的是两边说的性格竟然高度重合——敏感、直觉强、容易吸收别人的情绪。有人也两边都查过吗？",contentEn:"Western astrology says I'm Pisces. BaZi says I'm Yin Water (癸). Weirdly both describe me the same way — sensitive, intuitive, absorbing everyone's emotions. Anyone else checked both systems?",category:"question",likesCount:12,commentsCount:6,createdAt:new Date("2026-07-15")},
+        { id:"seed-7",authorId:"sys",authorName:"风水行者 🧘",content:"我用 lunaxstar 的生日本命盘给全家人排了一遍。老婆的上升星座竟然是天蝎——终于理解为什么她第一印象总是让人感觉神秘了。占星真的是家庭关系的解码器。",contentEn:"Ran birth charts for my whole family on lunaxstar. My wife's Rising sign is Scorpio — suddenly I understand why her first impression always feels mysterious. Astrology is the decoder ring for family dynamics.",category:"experience",likesCount:27,commentsCount:9,createdAt:new Date("2026-07-18")},
+        { id:"seed-8",authorId:"sys",authorName:"易学小学生",content:"提问：大运切换到下一个十年的时候，大家能感觉到明显的变化吗？我还有两年就要换了，想知道过来人的体验。",contentEn:"Question: when your Luck Cycle switches to the next decade, can you actually feel it? I've got 2 years left in mine and want to hear from people who've been through it.",category:"question",likesCount:9,commentsCount:11,createdAt:new Date("2026-07-17")},
+        { id:"seed-9",authorId:"sys",authorName:"茶与星盘 ☕",content:"每日运势说我今天不适合做重大决定。我偏不信——结果在淘宝上冲动下单了三件根本不需要的东西。行吧，宇宙，你赢了。🫠",contentEn:"Daily horoscope said no major decisions today. I defied it — impulse-bought 3 things on Taobao I absolutely don't need. Fine, universe. You win. 🫠",category:"daily",likesCount:34,commentsCount:6,createdAt:new Date("2026-07-18")},
+        { id:"seed-10",authorId:"sys",authorName:"八字自习室",content:"最近在学十神。有个问题想请教各位：正财和偏财在实际生活中怎么区分？我的盘里两个都有，但感觉不明显。",contentEn:"Learning the Ten Gods lately. Question: how do you distinguish Direct Wealth from Indirect Wealth in real life? My chart has both but I can't see the difference clearly.",category:"learning",likesCount:8,commentsCount:14,createdAt:new Date("2026-07-14")},
+        { id:"seed-11",authorId:"sys",authorName:"NorthStar✨",content:"I just discovered my Day Master is Yang Water (壬). It explains why I need so much alone time — water people need depth, not crowds. Anyone else feel this?",contentEn:"I just discovered my Day Master is Yang Water (壬). It explains why I need so much alone time — water people need depth, not crowds. Anyone else feel this?",category:"experience",likesCount:19,commentsCount:7,createdAt:new Date("2026-07-16")},
+        { id:"seed-12",authorId:"sys",authorName:"月相追踪者 🌙",content:"今天的月亮进天蝎了——情绪深得像海。但这也是最适合做内在清理的时候。关掉手机，点支蜡烛，写下你心里积压的东西。天蝎月亮给你力量去释放。",contentEn:"Moon just entered Scorpio — emotions deep as the ocean. But it's also the perfect time for inner cleansing. Turn off your phone, light a candle, write down what you've been holding. Scorpio Moon gives you the power to release.",category:"daily",likesCount:16,commentsCount:3,createdAt:new Date("2026-07-19")},
+        { id:"seed-13",authorId:"sys",authorName:"命运解码师",content:"分享一个真实客户案例（已授权）：客户一直以为自己是'事业不顺'——直到查了大运发现她在印运里。本来这十年就该学习充电，不是冲刺。知道之后心态完全变了。这就是命盘的力量。",contentEn:"Real client story (shared with permission): She thought her career was failing — until we found she's in a Resource Luck Cycle. This decade was meant for learning, not earning. Her entire mindset shifted. That's the power of a birth chart.",category:"experience",likesCount:41,commentsCount:15,createdAt:new Date("2026-07-13")},
+        { id:"seed-14",authorId:"sys",authorName:"星缘的忠实用户",content:"用了半个月 lunaxstar，最惊喜的是奇门遁甲排盘功能。太准了——选了一天去谈加薪，生门正好对着我的方向。结果老板主动提了薪资调整。不骗你们。",contentEn:"Been using lunaxstar for 2 weeks. Most surprising find: the Qi Men Dun Jia calculator. Picked a day to negotiate a raise — Life Gate aligned with my direction. Boss brought up the salary adjustment first. Not kidding.",category:"experience",likesCount:25,commentsCount:8,createdAt:new Date("2026-07-17")},
+        { id:"seed-15",authorId:"sys",authorName:"禅与占星",content:"有没有人觉得满月的晚上特别难入睡？我已经连续三个满月失眠了。查了星盘才发现我月亮在巨蟹——满月的时候月亮能量最强，巨蟹月亮当然受不了。",contentEn:"Does anyone else struggle to sleep on Full Moon nights? Three Full Moons in a row I've been wide awake. Checked my chart — Moon in Cancer. The Moon's energy peaks at Full Moon and Cancer Moon just can't take it.",category:"question",likesCount:13,commentsCount:5,createdAt:new Date("2026-07-16")},
       ];
       const allPosts = [...seed, ...(fetchedPosts as Post[])];
       setPosts(allPosts);
@@ -576,7 +577,7 @@ export default function CommunityPage() {
                 </div>
 
                 {/* Content */}
-                <p className="text-gray-700 mb-4 leading-relaxed whitespace-pre-wrap">{post.content}</p>
+                <p className="text-gray-700 mb-4 leading-relaxed whitespace-pre-wrap">{language === 'en' && (post as any).contentEn ? (post as any).contentEn : post.content}</p>
 
                 {/* Actions */}
                 <div className="flex items-center gap-6 pt-4 border-t border-gray-200">
