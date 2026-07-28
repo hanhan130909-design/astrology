@@ -68,7 +68,77 @@ function buildFirdariaPeriods(chart:any,year:number,month:number,day:number){
 }
 
 export default function NatalPage(){
-  const { setLanguage } = useLanguage();
+  const { setLanguage, language } = useLanguage();
+  const lang = language || "zh";
+
+  // Simple translation helper
+  const t = (key: string): string => {
+    const map: Record<string, Record<string, string>> = {
+      // Top menu
+      backHome: { zh: "返回首页", en: "Home" },
+      quickChart: { zh: "快速制图", en: "Quick Chart" },
+      siteName: { zh: "星缘", en: "LunaX" },
+      // Menu groups
+      fileMenu: { zh: "文件", en: "File" },
+      chartsMenu: { zh: "星盘", en: "Charts" },
+      toolsMenu: { zh: "工具", en: "Tools" },
+      settingsMenu: { zh: "设定", en: "Settings" },
+      // File submenu
+      chartList: { zh: "列表", en: "List" },
+      newChart: { zh: "新增", en: "New" },
+      // Charts submenu
+      natalChart: { zh: "本命盘", en: "Natal Chart" },
+      horaryChart: { zh: "卜卦盘", en: "Horary" },
+      vedicChart: { zh: "印度占星盘", en: "Vedic" },
+      baziChart: { zh: "八字盘", en: "BaZi" },
+      compareChart: { zh: "比较盘", en: "Synastry" },
+      compositeChart: { zh: "组合盘", en: "Composite" },
+      transitsChart: { zh: "流年星", en: "Transits" },
+      solarArcChart: { zh: "太阳弧", en: "Solar Arc" },
+      progressionChart: { zh: "次限法", en: "Progressions" },
+      secNatalChart: { zh: "次限对本命盘", en: "Sec→Natal" },
+      tertiaryChart: { zh: "三限法", en: "Tertiary" },
+      tertNatalChart: { zh: "三限对本命盘", en: "Tert→Natal" },
+      solarReturnChart: { zh: "太阳返照", en: "Solar Return" },
+      lunarReturnChart: { zh: "月亮返照", en: "Lunar Return" },
+      // Tools submenu
+      astroCalendar: { zh: "星象日历", en: "Ephemeris" },
+      birthRectify: { zh: "出生时间反推", en: "Rectify" },
+      // Settings submenu
+      changePassword: { zh: "修改密码", en: "Password" },
+      profile: { zh: "个人资料", en: "Profile" },
+      chooseLanguage: { zh: "选择语系", en: "Language" },
+      // Saved dialog
+      savedCharts: { zh: "已保存的星图", en: "Saved Charts" },
+      closeDialog: { zh: "关闭", en: "Close" },
+      noSavedCharts: { zh: "暂无保存记录", en: "No saved charts" },
+      unnamedChart: { zh: "未命名星图", en: "Unnamed Chart" },
+      loadBtn: { zh: "载入", en: "Load" },
+      deleteBtn: { zh: "删除", en: "Delete" },
+      savedNotify: { zh: "已储存", en: "Saved" },
+      linkCopied: { zh: "链接已复制", en: "Link copied" },
+      // Chart tabs
+      zodiacState: { zh: "黄道状态", en: "Essential Dignities" },
+      zodiacState2: { zh: "黄道状态-2", en: "Dignities II" },
+      firdaria: { zh: "法达星限", en: "Firdaria" },
+      profection: { zh: "小限法", en: "Profection" },
+      fortuneAphesis: { zh: "福点 Aphesis", en: "Fortune Aphesis" },
+      spiritAphesis: { zh: "精神点 Aphesis", en: "Spirit Aphesis" },
+      // Actions
+      saveChart: { zh: "储存星图", en: "Save Chart" },
+      copyLink: { zh: "复制链接", en: "Copy Link" },
+      exportImage: { zh: "导出图片", en: "Export Image" },
+      aiReading: { zh: "AI解读", en: "AI Reading" },
+      // Chat
+      askAi: { zh: "问问AI关于你星盘的问题…", en: "Ask AI about your chart…" },
+      askPlaceholder: { zh: "问星盘问题…", en: "Ask about your chart…" },
+      sendBtn: { zh: "发送", en: "Send" },
+      thinking: { zh: "思考中…", en: "Thinking…" },
+      // Meta
+      metaDesc: { zh: "专业西洋占星本命盘分析工具，完整行星落位、宫位、相位深度解读，支持多种宫位制与阿拉伯点计算。", en: "Professional Western astrology natal chart analysis. Complete planet positions, houses, aspects, multiple house systems, and Arabic parts." },
+    };
+    return map[key]?.[lang] || map[key]?.en || key;
+  };
   const { user, logout } = useAuth();
   const now = new Date();
   const [name,setName] = useState("Quick Chart");
@@ -165,8 +235,8 @@ export default function NatalPage(){
   const codeAddress = async()=>{
     try{const r=await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(city)}&limit=1`);const d=await r.json();if(d?.[0]){const la=parseFloat(d[0].lat),lo=parseFloat(d[0].lon);setGlatDeg(Math.trunc(Math.abs(la)));setGlatMin(Math.round((Math.abs(la)%1)*60));setGlatDir(la>=0?"N":"S");setGlonDeg(Math.trunc(Math.abs(lo)));setGlonMin(Math.round((Math.abs(lo)%1)*60));setGlonDir(lo>=0?"E":"W");setTz(Math.round(lo/15)*60);}}catch{}
   };
-  const handleSave = ()=>{if(!chart)return;saveLatestBirthProfile(currentBirthProfile());const s=JSON.parse(localStorage.getItem("natal_charts")||"[]");s.unshift({name,ts:Date.now(),birthData:{name,year,month,day,hour,minute,lat,lng,tz,hsys}});localStorage.setItem("natal_charts",JSON.stringify(s.slice(0,20)));alert("已储存");};
-  const handleCopyLink = ()=>{navigator.clipboard.writeText(window.location.href).then(()=>{trackAnalyticsEvent("chart_shared",{chart_type:"natal",share_method:"copy_link"});alert("链接已复制");});};
+  const handleSave = ()=>{if(!chart)return;saveLatestBirthProfile(currentBirthProfile());const s=JSON.parse(localStorage.getItem("natal_charts")||"[]");s.unshift({name,ts:Date.now(),birthData:{name,year,month,day,hour,minute,lat,lng,tz,hsys}});localStorage.setItem("natal_charts",JSON.stringify(s.slice(0,20)));alert(t('savedNotify'));};
+  const handleCopyLink = ()=>{navigator.clipboard.writeText(window.location.href).then(()=>{trackAnalyticsEvent("chart_shared",{chart_type:"natal",share_method:"copy_link"});alert(t('linkCopied'));});};
   const handleExportImage = async()=>{const el=document.getElementById("chart");if(!el)return;try{const{default:h}=await import("html2canvas");const c=await h(el,{backgroundColor:"#0f0f1a",scale:2});const a=document.createElement("a");a.download=`chart-${year}-${month}-${day}.png`;a.href=c.toDataURL();a.click();trackAnalyticsEvent("chart_shared",{chart_type:"natal",share_method:"download_image"});}catch{}};
   const openSavedCharts = ()=>{setSavedCharts(JSON.parse(localStorage.getItem("natal_charts")||"[]"));setSavedDialogOpen(true);setOpenMenu(null);};
   const focusQuickChart = ()=>{setSidebarOpen(true);setOpenMenu(null);window.setTimeout(()=>document.getElementById("rightsidebar")?.scrollIntoView({behavior:"smooth",block:"start"}),0);};
@@ -423,27 +493,27 @@ export default function NatalPage(){
       <style>{`.house_sym{font-size:16px;font-weight:bold}.house_deg{font-size:9px;fill:#666}.house_min{font-size:7px;fill:#999}.tiny{font-size:9px;fill:#666}.asp_grid_sym{font-family:'Apple Symbols','DejaVu Sans',serif}.asp_grid_digit{font-family:sans-serif}.obj_sym{font-size:14px;font-weight:bold}.obj_deg{font-size:10px}.middle_sym{font-size:14px;font-weight:bold}.obj_min{font-size:8px;fill:#666}.asp_sym{font-size:10px;font-weight:bold}#natalmain{padding:10px 260px 10px 20px}#chartwrap{display:flex;align-items:flex-start;gap:28px;flex-wrap:nowrap;margin-bottom:10px;overflow-x:auto}#chart svg{max-width:none}.alm-tabs{width:100%;margin-top:8px;border:1px solid #aaa;border-radius:4px 4px 0 0;background:linear-gradient(#eeeeee,#cfcfcf);padding:3px 3px 0;overflow-x:auto}.alm-tab-btn{height:32px;padding:0 16px;border:1px solid #bbb;border-bottom:0;border-radius:4px 4px 0 0;background:linear-gradient(#f7f7f7,#dfdfdf);font-size:14px;color:#333;white-space:nowrap}.alm-tab-btn.active{background:white;font-weight:600;position:relative;top:1px}.alm-panel{padding:18px 28px 22px;background:white;overflow-x:auto}.alm-table{width:100%;border-collapse:collapse;background:white;color:#222;font-size:13px;line-height:1.15;box-shadow:0 4px 14px rgba(0,0,0,.14)}.alm-table th,.alm-table td{border:1px solid #aaa;padding:3px 6px;text-align:center;vertical-align:middle;height:22px}.alm-table th{background:#eee;font-weight:700}.alm-table td.left{text-align:left}.alm-table .dash-left{border-left:1px dashed #777}.alm-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;align-items:start}.alm-stack{display:grid;gap:20px}.astro-glyph{font-family:'Apple Symbols','DejaVu Sans',serif;font-style:normal;line-height:1}.zodiac-cell,.zodiac-mark{font-family:'Times New Roman','Noto Sans Symbols 2','Apple Symbols',serif;font-variant-emoji:text;color:#222;background:transparent}.zodiac-cell{font-size:17px;padding:0 12px}.zodiac-mark{font-size:17px;line-height:1}.natal-actions{margin-top:10px;display:flex;gap:8px}@media(max-width:1100px){.alm-grid-3{grid-template-columns:1fr}.alm-panel{padding:14px 10px}}@media(max-width:900px){body{overflow-x:hidden}#cssmenu{display:flex!important;align-items:center!important;overflow-x:auto!important;overflow-y:visible!important;white-space:nowrap!important;padding:6px 8px!important;-webkit-overflow-scrolling:touch;position:sticky;top:0;z-index:80}#cssmenu>span{flex:0 0 auto}#cssmenu>span>span,#cssmenu>span[style]{padding:8px 10px!important}#cssmenu div[style*="absolute"]{position:fixed!important;top:42px!important;left:8px!important;right:8px!important;max-height:70vh;overflow:auto;min-width:0!important;width:auto!important;box-shadow:0 6px 16px rgba(0,0,0,.3)}.natal-page-shell{display:flex;flex-direction:column;overflow-x:hidden}#natalmain{order:2;padding:12px 10px 18px;box-sizing:border-box;max-width:100vw;overflow:hidden}#rightsidebar{order:1;position:static!important;width:auto!important;margin:10px 10px 0!important;box-sizing:border-box;border-radius:4px;opacity:1!important}#sidebar_form label{display:block;margin:8px 0 4px}#sidebar_form input,#sidebar_form select{width:100%!important;min-height:36px;box-sizing:border-box;font-size:16px;padding:5px 7px!important;margin:0 0 6px!important}#sidebar_form input[type="button"],#sidebar_form input[type="submit"]{min-height:38px;font-size:15px;cursor:pointer}#chartwrap{flex-direction:column;align-items:center;gap:12px;overflow-x:visible;margin-top:8px}#chart{order:1;width:100%;display:flex;justify-content:center;overflow:hidden}#aspgrid{order:2;width:100%;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}#chart svg{width:min(520px,calc(100vw - 20px));height:auto}.alm-tabs{margin-top:12px;display:flex;overflow-x:auto;scrollbar-width:thin}.alm-tab-btn{height:38px;padding:0 14px;font-size:13px}.alm-panel{padding:12px 0 16px;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}.alm-table{font-size:12px;min-width:760px}.alm-table th,.alm-table td{padding:5px 6px;height:28px}.alm-grid-3{display:block;overflow-x:auto}.alm-grid-3>.alm-table,.alm-grid-3 .alm-table{margin-bottom:14px}.natal-actions{flex-wrap:wrap;margin:10px 0 0}.natal-actions button{flex:1 1 110px;min-height:36px}}@media(max-width:420px){#natalmain{padding-left:8px;padding-right:8px}#rightsidebar{margin-left:8px!important;margin-right:8px!important}#chart svg{width:calc(100vw - 16px)}.alm-table{min-width:700px}}`}</style>
 
       <div id="cssmenu" style={{background:"#333",fontSize:"14px",display:"flex",alignItems:"center",padding:"0 16px"}}>
-        <span onClick={()=>window.location.href="/"} style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>返回首页</span>
+        <span onClick={()=>window.location.href="/"} style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>{t('backHome')}</span>
         {[
-          {id:"file",l:"文件",items:[{l:"列表",a:"list"},{l:"新增",a:"new"}]},
-          {id:"charts",l:"星盘",items:[
-            {l:"本命盘",a:"natal"},
-            {l:"卜卦盘",a:"horary"},
-            {l:"印度占星盘",a:"vedic"},
-            {l:"八字盘",a:"bazi"},
-            {l:"比较盘",a:"compare"},
-            {l:"组合盘",a:"composite"},
-            {l:"流年星",a:"transits"},
-            {l:"太阳弧",a:"solarArc"},
-            {l:"次限法",a:"progression"},
-            {l:"次限对本命盘",a:"secondaryNatal"},
-            {l:"三限法",a:"tertiary"},
-            {l:"三限对本命盘",a:"tertiaryNatal"},
-            {l:"太阳返照",a:"solarReturn"},
-            {l:"月亮返照",a:"lunarReturn"}
+          {id:"file",l:t('fileMenu'),items:[{l:t('chartList'),a:"list"},{l:t('newChart'),a:"new"}]},
+          {id:"charts",l:t('chartsMenu'),items:[
+            {l:t('natalChart'),a:"natal"},
+            {l:t('horaryChart'),a:"horary"},
+            {l:t('vedicChart'),a:"vedic"},
+            {l:t('baziChart'),a:"bazi"},
+            {l:t('compareChart'),a:"compare"},
+            {l:t('compositeChart'),a:"composite"},
+            {l:t('transitsChart'),a:"transits"},
+            {l:t('solarArcChart'),a:"solarArc"},
+            {l:t('progressionChart'),a:"progression"},
+            {l:t('secNatalChart'),a:"secondaryNatal"},
+            {l:t('tertiaryChart'),a:"tertiary"},
+            {l:t('tertNatalChart'),a:"tertiaryNatal"},
+            {l:t('solarReturnChart'),a:"solarReturn"},
+            {l:t('lunarReturnChart'),a:"lunarReturn"}
           ]},
-          {id:"tools",l:"工具",items:[{l:"星象日历",a:"calendar"},{l:"出生时间反推",a:"rectify"}]},
-          {id:"settings",l:"设定",items:[{l:"修改密码",a:"password"},{l:"个人资料",a:"profile"},{l:"选择语系",a:"language"}]}
+          {id:"tools",l:t('toolsMenu'),items:[{l:t('astroCalendar'),a:"calendar"},{l:t('birthRectify'),a:"rectify"}]},
+          {id:"settings",l:t('settingsMenu'),items:[{l:t('changePassword'),a:"password"},{l:t('profile'),a:"profile"},{l:t('chooseLanguage'),a:"language"}]}
         ].map(m=>(
           <span key={m.id} style={{position:"relative"}}>
             <span onClick={()=>setOpenMenu(openMenu===m.id?null:m.id)} style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>{m.l} ▾</span>
@@ -452,19 +522,19 @@ export default function NatalPage(){
             </div>}
           </span>
         ))}
-        <span onClick={focusQuickChart} style={{color:"#ccc",padding:"4px 12px",textDecoration:"none",cursor:"pointer"}}>快速制图</span>
+        <span onClick={focusQuickChart} style={{color:"#ccc",padding:"4px 12px",textDecoration:"none",cursor:"pointer"}}>{t('quickChart')}</span>
         <span style={{flex:1}}/>
-        <span style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>星缘</span>
+        <span style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>{t('siteName')}</span>
       </div>
 
       {savedDialogOpen&&<div style={{position:"fixed",inset:0,background:"rgba(0,0,0,.35)",zIndex:1000,display:"flex",alignItems:"center",justifyContent:"center"}}>
         <div style={{width:520,maxWidth:"calc(100vw - 32px)",maxHeight:"80vh",overflow:"auto",background:"#fff",border:"1px solid #999",boxShadow:"0 8px 28px rgba(0,0,0,.3)",color:"#222"}}>
-          <div style={{padding:"8px 12px",background:"linear-gradient(#eee,#ccc)",borderBottom:"1px solid #aaa",display:"flex",alignItems:"center"}}><strong>已保存的星图</strong><span style={{flex:1}}/><button onClick={()=>setSavedDialogOpen(false)} style={{border:"1px solid #999",background:"#eee",cursor:"pointer"}}>关闭</button></div>
+          <div style={{padding:"8px 12px",background:"linear-gradient(#eee,#ccc)",borderBottom:"1px solid #aaa",display:"flex",alignItems:"center"}}><strong>{t('savedCharts')}</strong><span style={{flex:1}}/><button onClick={()=>setSavedDialogOpen(false)} style={{border:"1px solid #999",background:"#eee",cursor:"pointer"}}>{t('closeDialog')}</button></div>
           <div style={{padding:12}}>
-            {savedCharts.length===0?<div style={{padding:20,textAlign:"center",color:"#666"}}>暂无保存记录</div>:savedCharts.map((item,i)=><div key={`${item.ts||i}`} style={{display:"flex",alignItems:"center",gap:8,borderBottom:"1px solid #ddd",padding:"8px 0"}}>
-              <div style={{flex:1}}><strong>{item.name||item.birthData?.name||"未命名星图"}</strong><br/><span style={{fontSize:12,color:"#666"}}>{item.birthData?.year}-{item.birthData?.month}-{item.birthData?.day} {fmt2(item.birthData?.hour||0)}:{fmt2(item.birthData?.minute||0)}</span></div>
-              <button onClick={()=>loadSavedChart(item)} style={{border:"1px solid #999",background:"#eee",padding:"3px 10px",cursor:"pointer"}}>载入</button>
-              <button onClick={()=>deleteSavedChart(i)} style={{border:"1px solid #999",background:"#eee",padding:"3px 10px",cursor:"pointer"}}>删除</button>
+            {savedCharts.length===0?<div style={{padding:20,textAlign:"center",color:"#666"}}>{t('noSavedCharts')}</div>:savedCharts.map((item,i)=><div key={`${item.ts||i}`} style={{display:"flex",alignItems:"center",gap:8,borderBottom:"1px solid #ddd",padding:"8px 0"}}>
+              <div style={{flex:1}}><strong>{item.name||item.birthData?.name||t('unnamedChart')}</strong><br/><span style={{fontSize:12,color:"#666"}}>{item.birthData?.year}-{item.birthData?.month}-{item.birthData?.day} {fmt2(item.birthData?.hour||0)}:{fmt2(item.birthData?.minute||0)}</span></div>
+              <button onClick={()=>loadSavedChart(item)} style={{border:"1px solid #999",background:"#eee",padding:"3px 10px",cursor:"pointer"}}>{t('loadBtn')}</button>
+              <button onClick={()=>deleteSavedChart(i)} style={{border:"1px solid #999",background:"#eee",padding:"3px 10px",cursor:"pointer"}}>{t('deleteBtn')}</button>
             </div>)}
           </div>
         </div>
@@ -511,7 +581,7 @@ export default function NatalPage(){
 
           {chart&&<div id="main_tabs">
             <div className="alm-tabs">
-              {[{id:"chart-tab",l:"黄道状态"},{id:"dignity2-tab",l:"黄道状态-2"},{id:"firdaria-tab",l:"法达星限"},{id:"profection-tab",l:"小限法"},{id:"fortune-tab",l:"福点 Aphesis"},{id:"spirit-tab",l:"精神点 Aphesis"}].map(t=>(
+              {[{id:"chart-tab",l:t('zodiacState')},{id:"dignity2-tab",l:t('zodiacState2')},{id:"firdaria-tab",l:t('firdaria')},{id:"profection-tab",l:t('profection')},{id:"fortune-tab",l:t('fortuneAphesis')},{id:"spirit-tab",l:t('spiritAphesis')}].map(t=>(
                 <button key={t.id} onClick={()=>setActiveTab(t.id)} className={`alm-tab-btn ${activeTab===t.id?"active":""}`}>{t.l}</button>
               ))}
             </div>
@@ -577,20 +647,20 @@ export default function NatalPage(){
           </div>}
 
           {chart&&<div className="natal-actions">
-            <button onClick={handleSave} style={{border:"1px solid #aaa",padding:"4px 12px",fontSize:"12px",background:"#eee",cursor:"pointer"}}>储存星图</button>
-            <button onClick={handleCopyLink} style={{border:"1px solid #aaa",padding:"4px 12px",fontSize:"12px",background:"#eee",cursor:"pointer"}}>复制链接</button>
-            <button onClick={handleExportImage} style={{border:"1px solid #aaa",padding:"4px 12px",fontSize:"12px",background:"#eee",cursor:"pointer"}}>导出图片</button>
-            <button onClick={()=>setChatOpen(!chatOpen)} style={{border:"1px solid #aaa",padding:"4px 12px",fontSize:"12px",background:chatOpen?"#333":"#eee",color:chatOpen?"white":"#333",cursor:"pointer"}}>💬 AI解读 {chatOpen?"▲":"▼"}</button>
+            <button onClick={handleSave} style={{border:"1px solid #aaa",padding:"4px 12px",fontSize:"12px",background:"#eee",cursor:"pointer"}}>{t('saveChart')}</button>
+            <button onClick={handleCopyLink} style={{border:"1px solid #aaa",padding:"4px 12px",fontSize:"12px",background:"#eee",cursor:"pointer"}}>{t('copyLink')}</button>
+            <button onClick={handleExportImage} style={{border:"1px solid #aaa",padding:"4px 12px",fontSize:"12px",background:"#eee",cursor:"pointer"}}>{t('exportImage')}</button>
+            <button onClick={()=>setChatOpen(!chatOpen)} style={{border:"1px solid #aaa",padding:"4px 12px",fontSize:"12px",background:chatOpen?"#333":"#eee",color:chatOpen?"white":"#333",cursor:"pointer"}}>💬 {t('aiReading')} {chatOpen?"▲":"▼"}</button>
           </div>}
           {chart&&chatOpen&&<div style={{marginTop:8,padding:12,background:"#f5f5f5",border:"1px solid #ddd",borderRadius:4,maxWidth:600}}>
             <div style={{maxHeight:240,overflow:"auto",marginBottom:8,fontSize:13}}>
-              {chatMsgs.length===0&&<p style={{color:"#999",textAlign:"center",padding:"20px 0"}}>问问AI关于你星盘的问题…</p>}
+              {chatMsgs.length===0&&<p style={{color:"#999",textAlign:"center",padding:"20px 0"}}>{t('askAi')}</p>}
               {chatMsgs.map((msg,i)=><div key={i} style={{marginBottom:6,textAlign:msg.role==="user"?"right":"left"}}><span style={{display:"inline-block",padding:"4px 10px",borderRadius:8,fontSize:12,background:msg.role==="user"?"#333":"white",color:msg.role==="user"?"white":"#333",border:msg.role==="user"?"none":"1px solid #ddd",maxWidth:"85%"}}>{msg.content}</span></div>)}
-              {chatLoading&&<div style={{textAlign:"left"}}><span style={{display:"inline-block",padding:"4px 10px",background:"white",border:"1px solid #ddd",borderRadius:8,fontSize:12}}>思考中…</span></div>}
+              {chatLoading&&<div style={{textAlign:"left"}}><span style={{display:"inline-block",padding:"4px 10px",background:"white",border:"1px solid #ddd",borderRadius:8,fontSize:12}}>{t('thinking')}</span></div>}
             </div>
             <div style={{display:"flex",gap:6}}>
-              <input value={chatInput} onChange={e=>setChatInput(e.target.value)} onKeyDown={e=>e.key==="Enter"&&sendNatalChat()} placeholder="问星盘问题…" style={{flex:1,padding:"4px 8px",border:"1px solid #ccc",borderRadius:4,fontSize:12}}/>
-              <button onClick={sendNatalChat} disabled={chatLoading} style={{padding:"4px 12px",background:"#333",color:"white",border:"none",borderRadius:4,fontSize:12,cursor:"pointer"}}>发送</button>
+              <input value={chatInput} onChange={e=>setChatInput(e.target.value)} onKeyDown={e=>e.key==="Enter"&&sendNatalChat()} placeholder={t('askPlaceholder')} style={{flex:1,padding:"4px 8px",border:"1px solid #ccc",borderRadius:4,fontSize:12}}/>
+              <button onClick={sendNatalChat} disabled={chatLoading} style={{padding:"4px 12px",background:"#333",color:"white",border:"none",borderRadius:4,fontSize:12,cursor:"pointer"}}>{t('sendBtn')}</button>
             </div>
           </div>}
         </div>
@@ -649,7 +719,7 @@ export default function NatalPage(){
               "@context": "https://schema.org",
               "@type": "SoftwareApplication",
               name: "星缘本命星盘 — Natal Chart",
-              description: "专业西洋占星本命盘分析工具，完整行星落位、宫位、相位深度解读，支持多种宫位制与阿拉伯点计算。",
+              description: t('metaDesc'),
               applicationCategory: "LifestyleApplication",
               operatingSystem: "Web",
               offers: {
