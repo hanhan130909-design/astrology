@@ -71,10 +71,12 @@ export default function LessonPage() {
     );
   }
 
-  // Resolve title and text
+  // Resolve title and text — non-zh/en languages default to English for accurate terminology
+  const showLang = (lang === "zh" || lang === "en") ? lang : "en";
   const title = lesson[lang] || lesson.en;
-  const rawText = lang === "en" ? content.en : content.zh;
-  const displayText = (lang === "zh" || lang === "en") ? rawText : (translatedHtml || rawText);
+  const rawText = showLang === "en" ? content.en : content.zh;
+  const displayText = (showLang === lang) ? rawText : (translatedHtml || rawText);
+  const needsTranslation = lang !== "zh" && lang !== "en";
 
   // Navigation
   const prevLesson = index > 1 ? `/${courseKey}-${index - 1}` : null;
@@ -110,9 +112,14 @@ export default function LessonPage() {
           </p>
         </div>
 
-        {/* Translate button for non-zh/en languages */}
-        {lang !== "zh" && lang !== "en" && !translatedHtml && (
+        {/* Translate UI for non-zh/en languages */}
+        {needsTranslation && !translatedHtml && (
           <div className="mb-6 p-4 bg-gray-50 rounded-xl border border-gray-200">
+            <p className="text-xs text-gray-500 mb-2">
+              Showing English version for accurate terminology. 
+              Key terms like 天干 (Heavenly Stems), 十神 (Ten Gods), 四化 (Four Transformations) 
+              are preserved in their standard international form.
+            </p>
             <button
               onClick={translateContent}
               disabled={translating}
@@ -124,9 +131,12 @@ export default function LessonPage() {
           </div>
         )}
 
-        {translatedHtml && lang !== "zh" && lang !== "en" && (
+        {translatedHtml && needsTranslation && (
           <div className="mb-4 text-xs text-gray-400 italic">
-            Auto-translated to {LANG_NAMES[lang] || lang}
+            Auto-translated to {LANG_NAMES[lang] || lang} · 
+            <button onClick={() => setTranslatedHtml("")} className="underline ml-1 hover:text-gray-600">
+              Show English original
+            </button>
           </div>
         )}
 
