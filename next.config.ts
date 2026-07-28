@@ -61,6 +61,16 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+
+  // 301 redirect old language-prefix URLs (replaced by client-side i18n)
+  async redirects() {
+    return [
+      { source: "/en", destination: "/", permanent: true },
+      { source: "/id", destination: "/", permanent: true },
+      { source: "/en/:path*", destination: "/:path*", permanent: true },
+      { source: "/id/:path*", destination: "/:path*", permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;
