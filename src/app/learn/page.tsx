@@ -56,14 +56,14 @@ const LABELS: Record<string, Record<string, string>> = {
   ko: { title: "📚 점성술 배우기", subtitle: "10행성의 비밀 발견", selectPlanet: "행성 선택", meaning: "핵심 의미", traits: "특성", ruling: "지배 별자리", day: "요일", stone: "행운의 돌", color: "행운의 색", element: "원소", back: "홈으로" }};
 
 const UI: Record<string, Record<string, string>> = {
-  zh: { knowledge:"知识库", houses:"十二宫位", aspects:"主要相位", course:"占星初阶课程", courseSub:"14节课 · 从零基础到独立解盘", viewHoroscope:"查看星座运势", back:"返回首页" },
-  en: { knowledge:"Knowledge Base", houses:"12 Houses", aspects:"Major Aspects", course:"Beginner Astrology Course", courseSub:"14 lessons · From zero to independent chart reading", viewHoroscope:"View Horoscopes", back:"Back to Home" },
-  id: { knowledge:"Pustaka", houses:"12 Rumah", aspects:"Aspek Utama", course:"Kursus Astrologi Dasar", courseSub:"14 pelajaran · Dari nol hingga bisa membaca bagan", viewHoroscope:"Lihat Horoskop", back:"Kembali" },
-  th: { knowledge:"คลังความรู้", houses:"12 เรือน", aspects:"มุมหลัก", course:"คอร์สโหราศาสตร์", courseSub:"14 บทเรียน · จากศูนย์สู่อ่านดวง", viewHoroscope:"ดูดวง", back:"กลับ" },
-  vi: { knowledge:"Thư Viện", houses:"12 Nhà", aspects:"Góc Chính", course:"Khóa Chiêm Tinh", courseSub:"14 bài · Từ cơ bản đến đọc bản đồ", viewHoroscope:"Xem Tử Vi", back:"Về" },
-  ms: { knowledge:"Pustaka", houses:"12 Rumah", aspects:"Aspek Utama", course:"Kursus Astrologi", courseSub:"14 pelajaran · Dari asas ke mahir", viewHoroscope:"Lihat Horoskop", back:"Kembali" },
-  ja: { knowledge:"知識ベース", houses:"12ハウス", aspects:"主要アスペクト", course:"占星初級講座", courseSub:"14回 · 基礎から読解まで", viewHoroscope:"運勢を見る", back:"戻る" },
-  ko: { knowledge:"지식 베이스", houses:"12하우스", aspects:"주요 각도", course:"점성술 입문", courseSub:"14강 · 기초부터 차트 읽기까지", viewHoroscope:"운세 보기", back:"홈으로" },
+  zh: { knowledge:"知识库", houses:"十二宫位", aspects:"主要相位", course:"占星初阶课程", courseSub:"14节课 · 从零基础到独立解盘", baziCourse:"八字入门课程", baziCourseSub:"7节课 · 天干地支到流年大运", ziweiCourse:"紫微斗数入门", ziweiCourseSub:"5节课 · 十二宫到四化飞星", viewHoroscope:"查看星座运势", back:"返回首页" },
+  en: { knowledge:"Knowledge Base", houses:"12 Houses", aspects:"Major Aspects", course:"Beginner Astrology Course", courseSub:"14 lessons · From zero to independent chart reading", baziCourse:"BaZi Fundamentals", baziCourseSub:"7 lessons · Stems & Branches to Luck Cycles", ziweiCourse:"Zi Wei Dou Shu Intro", ziweiCourseSub:"5 lessons · 12 Palaces to Four Transformations", viewHoroscope:"View Horoscopes", back:"Back to Home" },
+  id: { knowledge:"Pustaka", houses:"12 Rumah", aspects:"Aspek Utama", course:"Kursus Astrologi Dasar", courseSub:"14 pelajaran · Dari nol hingga bisa membaca bagan", baziCourse:"Dasar BaZi", baziCourseSub:"7 pelajaran · Batang Langit hingga Siklus Nasib", ziweiCourse:"Pengantar Zi Wei Dou Shu", ziweiCourseSub:"5 pelajaran · 12 Istana hingga Transformasi", viewHoroscope:"Lihat Horoskop", back:"Kembali" },
+  th: { knowledge:"คลังความรู้", houses:"12 เรือน", aspects:"มุมหลัก", course:"คอร์สโหราศาสตร์", courseSub:"14 บทเรียน · จากศูนย์สู่อ่านดวง", baziCourse:"พื้นฐาน BaZi", baziCourseSub:"7 บทเรียน · จากก้านฟ้าถึงวัฏจักรโชค", ziweiCourse:"แนะนำจื่อเวยโต้วซู่", ziweiCourseSub:"5 บทเรียน · 12 วังถึงการเปลี่ยนแปลง", viewHoroscope:"ดูดวง", back:"กลับ" },
+  vi: { knowledge:"Thư Viện", houses:"12 Nhà", aspects:"Góc Chính", course:"Khóa Chiêm Tinh", courseSub:"14 bài · Từ cơ bản đến đọc bản đồ", baziCourse:"Cơ Bản BaZi", baziCourseSub:"7 bài · Thiên Can Địa Chi đến Đại Vận", ziweiCourse:"Nhập Môn Tử Vi", ziweiCourseSub:"5 bài · 12 Cung đến Tứ Hóa", viewHoroscope:"Xem Tử Vi", back:"Về" },
+  ms: { knowledge:"Pustaka", houses:"12 Rumah", aspects:"Aspek Utama", course:"Kursus Astrologi", courseSub:"14 pelajaran · Dari asas ke mahir", baziCourse:"Asas BaZi", baziCourseSub:"7 pelajaran · Batang Langit ke Kitaran Nasib", ziweiCourse:"Pengenalan Zi Wei", ziweiCourseSub:"5 pelajaran · 12 Istana ke Transformasi", viewHoroscope:"Lihat Horoskop", back:"Kembali" },
+  ja: { knowledge:"知識ベース", houses:"12ハウス", aspects:"主要アスペクト", course:"占星初級講座", courseSub:"14回 · 基礎から読解まで", baziCourse:"八字入門", baziCourseSub:"7回 · 天干地支から大運まで", ziweiCourse:"紫微斗数入門", ziweiCourseSub:"5回 · 十二宮から四化まで", viewHoroscope:"運勢を見る", back:"戻る" },
+  ko: { knowledge:"지식 베이스", houses:"12하우스", aspects:"주요 각도", course:"점성술 입문", courseSub:"14강 · 기초부터 차트 읽기까지", baziCourse:"사주 입문", baziCourseSub:"7강 · 천간지지부터 대운까지", ziweiCourse:"자미두수 입문", ziweiCourseSub:"5강 · 12궁부터 사화까지", viewHoroscope:"운세 보기", back:"홈으로" },
 };
 export default function LearnPage() {
   const { language } = useLanguage();
@@ -267,6 +267,74 @@ export default function LearnPage() {
                     <div className="flex flex-wrap gap-1">
                       {lesson.topics[lang] || lesson.topics.en.map((t, j) => (
                         <span key={j} className="text-[10px] px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">{t}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* BaZi Course */}
+        <div className="mt-12 mb-12">
+          <h2 className="text-2xl font-semibold tracking-[-0.8px] mb-2 text-center">
+            {u('baziCourse')}
+          </h2>
+          <p className="text-gray-500 text-center mb-8 text-sm">
+            {u('baziCourseSub')}
+          </p>
+          <div className="grid md:grid-cols-2 gap-4">
+            {baziLessons.map((lesson) => (
+              <div key={lesson.id} className="p-5 rounded-xl border border-gray-200 bg-white hover:shadow-md transition-shadow">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-[#7C3AED] text-white flex items-center justify-center text-sm font-bold shrink-0">
+                    {lesson.id}
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="font-semibold text-gray-900 mb-1">
+                      {lesson[lang] || lesson.en}
+                    </h3>
+                    <p className="text-xs text-gray-500 mb-3 leading-relaxed">
+                      {(lesson.desc[lang] || lesson.desc.en)}
+                    </p>
+                    <div className="flex flex-wrap gap-1">
+                      {lesson.topics[lang] || lesson.topics.en.map((t, j) => (
+                        <span key={j} className="text-[10px] px-2 py-0.5 rounded-full bg-purple-50 text-purple-700">{t}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Zi Wei Course */}
+        <div className="mt-12 mb-12">
+          <h2 className="text-2xl font-semibold tracking-[-0.8px] mb-2 text-center">
+            {u('ziweiCourse')}
+          </h2>
+          <p className="text-gray-500 text-center mb-8 text-sm">
+            {u('ziweiCourseSub')}
+          </p>
+          <div className="grid md:grid-cols-2 gap-4">
+            {ziweiLessons.map((lesson) => (
+              <div key={lesson.id} className="p-5 rounded-xl border border-gray-200 bg-white hover:shadow-md transition-shadow">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-[#059669] text-white flex items-center justify-center text-sm font-bold shrink-0">
+                    {lesson.id}
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="font-semibold text-gray-900 mb-1">
+                      {lesson[lang] || lesson.en}
+                    </h3>
+                    <p className="text-xs text-gray-500 mb-3 leading-relaxed">
+                      {(lesson.desc[lang] || lesson.desc.en)}
+                    </p>
+                    <div className="flex flex-wrap gap-1">
+                      {lesson.topics[lang] || lesson.topics.en.map((t, j) => (
+                        <span key={j} className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700">{t}</span>
                       ))}
                     </div>
                   </div>
