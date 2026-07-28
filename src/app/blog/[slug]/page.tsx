@@ -179,14 +179,16 @@ export default async function BlogArticlePage({ params }: Props) {
   });
 
   // JSON-LD structured data for rich results
+  const articleDate = article.date || '2026-01-01';
+  const isoDate = articleDate.includes('T') ? articleDate : `${articleDate}T00:00:00+00:00`;
   const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     'headline': articleTitle,
     'description': articleExcerpt,
     'url': `https://lunaxstar.com/blog/${slug}`,
-    'datePublished': article.date || '2026-01-01',
-    'dateModified': article.date || '2026-01-01',
+    'datePublished': isoDate,
+    'dateModified': isoDate,
     'author': { '@type': 'Organization', 'name': '星缘', 'url': 'https://lunaxstar.com' },
     'publisher': { '@type': 'Organization', 'name': '星缘', 'url': 'https://lunaxstar.com' },
     'mainEntityOfPage': { '@type': 'WebPage', '@id': `https://lunaxstar.com/blog/${slug}` },
