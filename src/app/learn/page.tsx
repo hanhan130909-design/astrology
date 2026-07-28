@@ -6,6 +6,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { BookOpen, Star, ChevronDown, Circle } from "lucide-react";
 import { beginnerLessons } from "./course-data";
 import { baziLessons, ziweiLessons } from "./course-bazi-ziwei";
+import { baziGlossary, ziweiGlossary } from "./glossary-data";
 
 const PLANET_ICONS: Record<string, any> = {
   Sun: Circle, Moon: Circle, Mercury: Circle, Venus: Circle, Mars: Circle, 
@@ -57,8 +58,8 @@ const LABELS: Record<string, Record<string, string>> = {
   ko: { title: "📚 점성술 배우기", subtitle: "10행성의 비밀 발견", selectPlanet: "행성 선택", meaning: "핵심 의미", traits: "특성", ruling: "지배 별자리", day: "요일", stone: "행운의 돌", color: "행운의 색", element: "원소", back: "홈으로" }};
 
 const UI: Record<string, Record<string, string>> = {
-  zh: { knowledge:"知识库", houses:"十二宫位", aspects:"主要相位", course:"占星初阶课程", courseSub:"14节课 · 从零基础到独立解盘", baziCourse:"八字入门课程", baziCourseSub:"7节课 · 天干地支到流年大运", ziweiCourse:"紫微斗数入门", ziweiCourseSub:"5节课 · 十二宫到四化飞星", viewHoroscope:"查看星座运势", back:"返回首页" },
-  en: { knowledge:"Knowledge Base", houses:"12 Houses", aspects:"Major Aspects", course:"Beginner Astrology Course", courseSub:"14 lessons · From zero to independent chart reading", baziCourse:"BaZi Fundamentals", baziCourseSub:"7 lessons · Stems & Branches to Luck Cycles", ziweiCourse:"Zi Wei Dou Shu Intro", ziweiCourseSub:"5 lessons · 12 Palaces to Four Transformations", viewHoroscope:"View Horoscopes", back:"Back to Home" },
+  zh: { knowledge:"知识库", houses:"十二宫位", aspects:"主要相位", course:"占星初阶课程", courseSub:"14节课 · 从零基础到独立解盘", baziCourse:"八字入门课程", baziCourseSub:"7节课 · 天干地支到流年大运", ziweiCourse:"紫微斗数入门", ziweiCourseSub:"5节课 · 十二宫到四化飞星", glossary:"术语表", glossaryDesc:"关键术语中英对照，避免翻译歧义", learningPath:"学习建议", learningPathDesc:"零基础推荐顺序：占星初阶 → 八字入门 → 紫微斗数。每个课程按编号顺序学。术语不熟时先看下方术语表。", viewHoroscope:"查看星座运势", back:"返回首页" },
+  en: { knowledge:"Knowledge Base", houses:"12 Houses", aspects:"Major Aspects", course:"Beginner Astrology Course", courseSub:"14 lessons · From zero to independent chart reading", baziCourse:"BaZi Fundamentals", baziCourseSub:"7 lessons · Stems & Branches to Luck Cycles", ziweiCourse:"Zi Wei Dou Shu Intro", ziweiCourseSub:"5 lessons · 12 Palaces to Four Transformations", glossary:"Glossary", glossaryDesc:"Key terms in Chinese, Pinyin & English — no translation ambiguity", learningPath:"Learning Path", learningPathDesc:"Recommended order: Astrology Basics → BaZi → Zi Wei Dou Shu. Study each course in numbered order. Check the glossary when unfamiliar terms appear.", viewHoroscope:"View Horoscopes", back:"Back to Home" },
   id: { knowledge:"Pustaka", houses:"12 Rumah", aspects:"Aspek Utama", course:"Kursus Astrologi Dasar", courseSub:"14 pelajaran · Dari nol hingga bisa membaca bagan", baziCourse:"Dasar BaZi", baziCourseSub:"7 pelajaran · Batang Langit hingga Siklus Nasib", ziweiCourse:"Pengantar Zi Wei Dou Shu", ziweiCourseSub:"5 pelajaran · 12 Istana hingga Transformasi", viewHoroscope:"Lihat Horoskop", back:"Kembali" },
   th: { knowledge:"คลังความรู้", houses:"12 เรือน", aspects:"มุมหลัก", course:"คอร์สโหราศาสตร์", courseSub:"14 บทเรียน · จากศูนย์สู่อ่านดวง", baziCourse:"พื้นฐาน BaZi", baziCourseSub:"7 บทเรียน · จากก้านฟ้าถึงวัฏจักรโชค", ziweiCourse:"แนะนำจื่อเวยโต้วซู่", ziweiCourseSub:"5 บทเรียน · 12 วังถึงการเปลี่ยนแปลง", viewHoroscope:"ดูดวง", back:"กลับ" },
   vi: { knowledge:"Thư Viện", houses:"12 Nhà", aspects:"Góc Chính", course:"Khóa Chiêm Tinh", courseSub:"14 bài · Từ cơ bản đến đọc bản đồ", baziCourse:"Cơ Bản BaZi", baziCourseSub:"7 bài · Thiên Can Địa Chi đến Đại Vận", ziweiCourse:"Nhập Môn Tử Vi", ziweiCourseSub:"5 bài · 12 Cung đến Tứ Hóa", viewHoroscope:"Xem Tử Vi", back:"Về" },
@@ -74,7 +75,8 @@ export default function LearnPage() {
 
   const [selectedPlanet, setSelectedPlanet] = useState<string>("Sun");
   const [showList, setShowList] = useState(false);
-
+  const [showBaziGlossary, setShowBaziGlossary] = useState(false);
+  const [showZiweiGlossary, setShowZiweiGlossary] = useState(false);
   const lookup = PLANET_DATA[lang as keyof typeof PLANET_DATA] || PLANET_DATA.en || PLANET_DATA.zh;
   const planetInfo = lookup[selectedPlanet as keyof typeof lookup] || PLANET_DATA.zh[selectedPlanet as keyof typeof PLANET_DATA.zh];
   const PlanetIcon = PLANET_ICONS[selectedPlanet] || Star;
@@ -245,6 +247,16 @@ export default function LearnPage() {
 
         {/* Course Curriculum */}
         <div className="mt-16 mb-12">
+
+          {/* Learning Path */}
+          <div className="mb-10 p-6 rounded-2xl bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-200">
+            <div className="flex items-center gap-2 mb-3">
+              <BookOpen size={18} className="text-gray-700" />
+              <h3 className="font-semibold text-gray-900">{u('learningPath')}</h3>
+            </div>
+            <p className="text-sm text-gray-600 leading-relaxed">{u('learningPathDesc')}</p>
+          </div>
+
           <h2 className="text-2xl font-semibold tracking-[-0.8px] mb-2 text-center">
             {u('course')}
           </h2>
@@ -311,6 +323,35 @@ export default function LearnPage() {
           </div>
         </div>
 
+        {/* BaZi Glossary */}
+        <div className="mb-12">
+          <button
+            onClick={() => setShowBaziGlossary(!showBaziGlossary)}
+            className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 transition-colors mb-3"
+          >
+            <ChevronDown className={`w-4 h-4 transition-transform ${showBaziGlossary ? 'rotate-180' : ''}`} />
+            {u('glossary')}: BaZi
+          </button>
+          {showBaziGlossary && (
+            <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+              <p className="text-xs text-gray-400 mb-3">{u('glossaryDesc')}</p>
+              <div className="space-y-3">
+                {baziGlossary.map((term, i) => (
+                  <div key={i} className="flex gap-3 text-sm">
+                    <span className="text-gray-900 font-semibold shrink-0 w-16">{term.zh}</span>
+                    <div className="min-w-0">
+                      <div className="text-gray-500 text-xs">{term.pinyin} · {term.en}</div>
+                      <div className="text-gray-600 text-xs mt-0.5 leading-relaxed">
+                        {lang === 'zh' ? term.description.zh : term.description.en}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
         {/* Zi Wei Course */}
         <div className="mt-12 mb-12">
           <h2 className="text-2xl font-semibold tracking-[-0.8px] mb-2 text-center">
@@ -343,6 +384,35 @@ export default function LearnPage() {
               </Link>
             ))}
           </div>
+        </div>
+
+        {/* Zi Wei Glossary */}
+        <div className="mb-12">
+          <button
+            onClick={() => setShowZiweiGlossary(!showZiweiGlossary)}
+            className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 transition-colors mb-3"
+          >
+            <ChevronDown className={`w-4 h-4 transition-transform ${showZiweiGlossary ? 'rotate-180' : ''}`} />
+            {u('glossary')}: Zi Wei Dou Shu
+          </button>
+          {showZiweiGlossary && (
+            <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+              <p className="text-xs text-gray-400 mb-3">{u('glossaryDesc')}</p>
+              <div className="space-y-3">
+                {ziweiGlossary.map((term, i) => (
+                  <div key={i} className="flex gap-3 text-sm">
+                    <span className="text-gray-900 font-semibold shrink-0 w-16">{term.zh}</span>
+                    <div className="min-w-0">
+                      <div className="text-gray-500 text-xs">{term.pinyin} · {term.en}</div>
+                      <div className="text-gray-600 text-xs mt-0.5 leading-relaxed">
+                        {lang === 'zh' ? term.description.zh : term.description.en}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* CTA */}
