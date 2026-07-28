@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { BookOpen, Star, ChevronDown, Circle } from "lucide-react";
-import { beginnerLessons, baziLessons, ziweiLessons } from "./course-data";
+import { beginnerLessons } from "./course-data";
+import { baziLessons, ziweiLessons } from "./course-bazi-ziwei";
 
 const PLANET_ICONS: Record<string, any> = {
   Sun: Circle, Moon: Circle, Mercury: Circle, Venus: Circle, Mars: Circle, 
