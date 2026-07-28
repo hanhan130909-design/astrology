@@ -42,9 +42,13 @@ export function isIndexableArticle(article: unknown): article is IndexableArticl
   const body = getEnglishBody(candidate)?.trim();
   if (!body) return false;
 
+  // Cornerstone articles: require substantial content
   if (cornerstoneSlugs.has(candidate.slug)) return body.length >= 1000;
+  
+  // Reject known low-quality patterns
   if (rejectedBodyPatterns.some((pattern) => pattern.test(body))) return false;
 
-  const headingCount = body.match(/^##[ \t]+\S[^\r\n]*$/gm)?.length ?? 0;
-  return body.length >= 1200 && headingCount >= 2;
+  // Lower threshold — include all articles with meaningful content (>300 chars)
+  // Previously: 1200 chars + 2 headings. This excluded 900+ articles.
+  return body.length >= 300;
 }
