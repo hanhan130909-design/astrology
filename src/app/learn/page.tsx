@@ -287,7 +287,7 @@ export default function LearnPage() {
           </p>
           <div className="grid md:grid-cols-2 gap-4">
             {baziLessons.map((lesson) => (
-              <div key={lesson.id} className="p-5 rounded-xl border border-gray-200 bg-white hover:shadow-md transition-shadow">
+              <Link href={`/learn/bazi-${lesson.id}`} key={lesson.id} className="block p-5 rounded-xl border border-gray-200 bg-white hover:shadow-md transition-shadow">
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 rounded-lg bg-[#7C3AED] text-white flex items-center justify-center text-sm font-bold shrink-0">
                     {lesson.id}
@@ -306,7 +306,7 @@ export default function LearnPage() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -321,7 +321,7 @@ export default function LearnPage() {
           </p>
           <div className="grid md:grid-cols-2 gap-4">
             {ziweiLessons.map((lesson) => (
-              <div key={lesson.id} className="p-5 rounded-xl border border-gray-200 bg-white hover:shadow-md transition-shadow">
+              <Link href={`/learn/ziwei-${lesson.id}`} key={lesson.id} className="block p-5 rounded-xl border border-gray-200 bg-white hover:shadow-md transition-shadow">
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 rounded-lg bg-[#059669] text-white flex items-center justify-center text-sm font-bold shrink-0">
                     {lesson.id}
@@ -340,7 +340,7 @@ export default function LearnPage() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

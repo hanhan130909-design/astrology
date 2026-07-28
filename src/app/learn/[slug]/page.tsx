@@ -1,0 +1,196 @@
+"use client";
+
+import { useParams } from "next/navigation";
+import Link from "next/link";
+import { useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { baziLessons, ziweiLessons } from "../course-bazi-ziwei";
+import { lessonContent, type LessonContent } from "../lesson-content";
+import type { CourseLesson } from "../course-data";
+import { ArrowLeft, ChevronLeft, ChevronRight, Globe } from "lucide-react";
+
+const LANG_NAMES: Record<string, string> = {
+  zh: "Chinese", en: "English", id: "Indonesian", th: "Thai",
+  vi: "Vietnamese", ms: "Malay", ja: "Japanese", ko: "Korean",
+};
+
+export default function LessonPage() {
+  const params = useParams();
+  const { language } = useLanguage();
+  const slug = params.slug as string;
+  const lang = language || "zh";
+
+  // Determine course type and lesson index
+  const isBaZi = slug.startsWith("bazi-");
+  const index = parseInt(slug.split("-")[1] || "1", 10);
+  const lessons = isBaZi ? baziLessons : ziweiLessons;
+  const courseKey = isBaZi ? "bazi" : "ziwei";
+  const lesson = lessons[index - 1] as CourseLesson | undefined;
+  const content = lessonContent[slug] as LessonContent | undefined;
+
+  const [translatedHtml, setTranslatedHtml] = useState("");
+  const [translating, setTranslating] = useState(false);
+
+  const translateContent = async () => {
+    if (translating || !content) return;
+    setTranslating(true);
+    const text = lang === "en" ? content.en : content.zh;
+
+    // For zh/en, we already have content — no translate needed
+    if (lang === "zh" || lang === "en") {
+      setTranslating(false);
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/translate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text, targetLang: lang }),
+      });
+      const data = await res.json();
+      if (data.translated) {
+        setTranslatedHtml(data.translated.replace(/\n/g, "<br>"));
+      }
+    } catch (e) {
+      // silently fail
+    }
+    setTranslating(false);
+  };
+
+  if (!lesson || !content) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold mb-4">Lesson not found</h1>
+          <Link href="/learn" className="text-gray-500 underline hover:text-gray-700">
+            Back to Learn
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  // Resolve title and text
+  const title = lesson[lang] || lesson.en;
+  const rawText = lang === "en" ? content.en : content.zh;
+  const displayText = (lang === "zh" || lang === "en") ? rawText : (translatedHtml || rawText);
+
+  // Navigation
+  const prevLesson = index > 1 ? `/${courseKey}-${index - 1}` : null;
+  const nextLesson = index < lessons.length ? `/${courseKey}-${index + 1}` : null;
+
+  // Course color
+  const courseColor = isBaZi ? "purple" : "emerald";
+  const colorClasses: Record<string, { bg: string; badge: string; text: string }> = {
+    purple: { bg: "bg-purple-50", badge: "bg-purple-100 text-purple-700", text: "text-purple-600" },
+    emerald: { bg: "bg-emerald-50", badge: "bg-emerald-100 text-emerald-700", text: "text-emerald-600" },
+  };
+  const c = colorClasses[courseColor];
+
+  return (
+    <div className="min-h-screen bg-white">
+      <div className="max-w-3xl mx-auto px-4 py-8">
+        {/* Breadcrumb */}
+        <div className="mb-6">
+          <Link href="/learn" className="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 transition-colors">
+            <ArrowLeft size={14} />
+            Back to Courses
+          </Link>
+        </div>
+
+        {/* Header */}
+        <div className="mb-8">
+          <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium mb-3 ${c.badge}`}>
+            {isBaZi ? "BaZi" : "Zi Wei Dou Shu"} · Lesson {index}
+          </span>
+          <h1 className="text-3xl font-bold text-gray-900 mb-3">{title}</h1>
+          <p className="text-gray-500 text-sm">
+            {(lesson.desc[lang] || lesson.desc.en)}
+          </p>
+        </div>
+
+        {/* Translate button for non-zh/en languages */}
+        {lang !== "zh" && lang !== "en" && !translatedHtml && (
+          <div className="mb-6 p-4 bg-gray-50 rounded-xl border border-gray-200">
+            <button
+              onClick={translateContent}
+              disabled={translating}
+              className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              <Globe size={14} />
+              {translating ? "Translating..." : `Translate to ${LANG_NAMES[lang] || lang}`}
+            </button>
+          </div>
+        )}
+
+        {translatedHtml && lang !== "zh" && lang !== "en" && (
+          <div className="mb-4 text-xs text-gray-400 italic">
+            Auto-translated to {LANG_NAMES[lang] || lang}
+          </div>
+        )}
+
+        {/* Content */}
+        <article className="prose prose-gray max-w-none">
+          {displayText.split("\n").map((line, i) => {
+            // Render headings
+            if (line.startsWith("## ")) {
+              return <h2 key={i} className="text-xl font-bold text-gray-900 mt-8 mb-4">{line.replace("## ", "")}</h2>;
+            }
+            if (line.startsWith("### ")) {
+              return <h3 key={i} className="text-lg font-semibold text-gray-800 mt-6 mb-3">{line.replace("### ", "")}</h3>;
+            }
+            // Render table rows (simple pipe-based)
+            if (line.startsWith("|")) {
+              return <p key={i} className="text-sm text-gray-700 font-mono bg-gray-50 px-3 py-1 rounded">{line}</p>;
+            }
+            // Render bold items
+            if (line.startsWith("- **")) {
+              const match = line.match(/^- \*\*(.+?)\*\*[：:]?\s*(.*)/);
+              if (match) {
+                return (
+                  <div key={i} className="flex gap-2 text-sm mb-1 ml-4">
+                    <span className="font-semibold text-gray-800 shrink-0">{match[1]}：</span>
+                    <span className="text-gray-600">{match[2]}</span>
+                  </div>
+                );
+              }
+            }
+            // Empty line
+            if (!line.trim()) {
+              return <div key={i} className="h-3" />;
+            }
+            // Regular paragraph
+            return <p key={i} className="text-gray-700 leading-relaxed mb-3">{line}</p>;
+          })}
+        </article>
+
+        {/* Lesson Navigation */}
+        <div className="mt-12 pt-8 border-t border-gray-200 flex items-center justify-between">
+          {prevLesson ? (
+            <Link
+              href={`/learn${prevLesson}`}
+              className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-900 transition-colors"
+            >
+              <ChevronLeft size={16} />
+              Previous Lesson
+            </Link>
+          ) : (
+            <div />
+          )}
+          {nextLesson ? (
+            <Link
+              href={`/learn${nextLesson}`}
+              className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-900 transition-colors"
+            >
+              Next Lesson
+              <ChevronRight size={16} />
+            </Link>
+          ) : (
+            <div />
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
