@@ -22,6 +22,8 @@ interface AuthContextType {
   signIn: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
   signUp: (email: string, password: string, name: string) => Promise<{ success: boolean; error?: string }>;
   loginWithGoogle: (language?: string) => Promise<{ success: boolean; error?: string }>;
+  sendEmailCode: (email: string) => Promise<{ success: boolean; error?: string }>;
+  verifyEmailCode: (email: string, code: string) => Promise<{ success: boolean; error?: string; token?: string }>;
   logout: () => void;
   signOut: () => void;
   updateUser: (data: Partial<UserProfile>) => void;
@@ -267,6 +269,48 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  // Email verification code — no Firebase, no VPN needed
+  const sendEmailCode = async (email: string) => {
+    try {
+      const res = await fetch("/api/auth/send-code", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (!res.ok) return { success: false, error: data.error || "Failed to send code" };
+      return { success: true };
+    } catch {
+      return { success: false, error: "Network error" };
+    }
+  };
+
+  const verifyEmailCode = async (email: string, code: string) => {
+    try {
+      const res = await fetch("/api/auth/send-code", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, code }),
+      });
+      const data = await res.json();
+      if (!res.ok) return { success: false, error: data.error || "Invalid code" };
+
+      // Store session
+      const newUser: UserProfile = {
+        uid: `email_${email}`,
+        email,
+        displayName: email.split("@")[0],
+        language: "zh",
+      };
+      setUser(newUser);
+      setProfile(newUser);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(newUser));
+      return { success: true, token: data.token };
+    } catch {
+      return { success: false, error: "Network error" };
+    }
+  };
+
   const logout = () => {
     setUser(null);
     setProfile(null);
@@ -300,7 +344,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, profile, isLoading, isConfigured: true, isFirebaseReady, login, register, signIn, signUp, loginWithGoogle: loginWithGoogleFn, logout, signOut: logout, updateUser }}>
+    <AuthContext.Provider value={{ user, profile, isLoading, isConfigured: true, isFirebaseReady, login, register, signIn, signUp, loginWithGoogle: loginWithGoogleFn, sendEmailCode, verifyEmailCode, logout, signOut: logout, updateUser }}>
       {children}
     </AuthContext.Provider>
   );

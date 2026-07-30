@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-type AuthMode = "login" | "register";
+type AuthMode = "login" | "register" | "emailCode";
 
 export function AuthModal({ 
   isOpen, 
@@ -15,12 +15,14 @@ export function AuthModal({
   onClose: () => void;
   onSuccess?: () => void;
 }) {
-  const { signIn, signUp, isConfigured } = useAuth();
+  const { signIn, signUp, sendEmailCode, verifyEmailCode, isConfigured } = useAuth();
   const { language } = useLanguage();
-  const [mode, setMode] = useState<AuthMode>("login");
+  const [mode, setMode] = useState<AuthMode>("emailCode");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
+  const [code, setCode] = useState("");
+  const [codeSent, setCodeSent] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -39,33 +41,21 @@ export function AuthModal({
     title: { zh: "欢迎来到星缘占星", id: "Selamat Datang di Bintang Jodoh", en: "Welcome to Aztrology" },
     subtitle: { zh: "登录以保存您的星盘和设置", id: "Masuk untuk menyimpan bagan Anda", en: "Login to save your charts and settings" },
     passwordHint: { zh: "至少6位密码", id: "Minimal 6 karakter", en: "At least 6 characters" },
-    firebaseNotConfigured: { zh: "用户系统未配置", id: "Sistem pengguna tidak dikonfigurasi", en: "User system not configured" }
+    firebaseNotConfigured: { zh: "用户系统未配置", id: "Sistem pengguna tidak dikonfigurasi", en: "User system not configured" },
+    emailCode: { zh: "邮箱验证码登录", en: "Email Code Login", id: "Login Kode Email" },
+    sendCode: { zh: "发送验证码", en: "Send Code", id: "Kirim Kode" },
+    verifyCode: { zh: "验证并登录", en: "Verify & Login", id: "Verifikasi & Masuk" },
+    enterCode: { zh: "输入6位验证码", en: "Enter 6-digit code", id: "Masukkan 6 digit kode" },
+    codeSent: { zh: "验证码已发送", en: "Code sent!", id: "Kode terkirim!" },
+    resendCode: { zh: "重新发送", en: "Resend", id: "Kirim ulang" },
+    emailCodeSubtitle: { zh: "无需密码，输入邮箱即可", en: "No password needed — just your email", id: "Tanpa kata sandi — cukup email Anda" },
+    needPassword: { zh: "使用密码登录", en: "Login with password", id: "Login dengan kata sandi" },
+    needEmailCode: { zh: "使用邮箱验证码", en: "Use email code", id: "Gunakan kode email" },
   };
 
   const g = (obj: Record<string, string>) => obj[language] || obj.zh;
 
   if (!isOpen) return null;
-
-  if (!isConfigured) {
-    return (
-      <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
-        <div className="bg-white dark:bg-gray-100 rounded-2xl p-6 max-w-sm w-full">
-          <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4 text-center">
-            ⚠️ {g(t.firebaseNotConfigured)}
-          </h2>
-          <p className="text-gray-600 dark:text-gray-400 text-sm text-center mb-4">
-            Firebase 配置缺失，用户系统暂不可用。请联系管理员。
-          </p>
-          <button
-            onClick={onClose}
-            className="w-full py-2 bg-gray-200 dark:bg-gray-100 rounded-lg text-gray-700 dark:text-gray-700"
-          >
-            {g(t.continueAsGuest)}
-          </button>
-        </div>
-      </div>
-    );
-  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -73,7 +63,25 @@ export function AuthModal({
     setError(null);
 
     try {
-      if (mode === "login") {
+      if (mode === "emailCode") {
+        // Email verification code flow
+        if (!codeSent) {
+          const result = await sendEmailCode(email);
+          if (result.success) {
+            setCodeSent(true);
+          } else {
+            setError(result.error || "Failed to send code");
+          }
+        } else {
+          const result = await verifyEmailCode(email, code);
+          if (result.success) {
+            onSuccess?.();
+            onClose();
+          } else {
+            setError(result.error || "Invalid code");
+          }
+        }
+      } else if (mode === "login") {
         const result = await signIn(email, password);
         if (result.success) {
           onSuccess?.();
@@ -107,9 +115,13 @@ export function AuthModal({
       <div className="bg-white dark:bg-gray-100 rounded-2xl shadow-2xl max-w-sm w-full overflow-hidden">
         {/* Header */}
         <div className="bg-gradient-to-r from-gray-600 to-gray-600 px-6 py-8 text-center">
-          <div className="text-4xl mb-2">✨</div>
-          <h2 className="text-xl font-bold text-white">{g(t.title)}</h2>
-          <p className="text-gray-200 text-sm mt-1">{g(t.subtitle)}</p>
+          <div className="text-4xl mb-2">{mode === "emailCode" ? "📧" : "✨"}</div>
+          <h2 className="text-xl font-bold text-white">
+            {mode === "emailCode" ? g(t.emailCode) : g(t.title)}
+          </h2>
+          <p className="text-gray-200 text-sm mt-1">
+            {mode === "emailCode" ? g(t.emailCodeSubtitle) : g(t.subtitle)}
+          </p>
         </div>
 
         {/* Form */}
@@ -120,22 +132,6 @@ export function AuthModal({
             </div>
           )}
 
-          {mode === "register" && (
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-700 mb-1">
-                {g(t.displayName)}
-              </label>
-              <input
-                type="text"
-                value={displayName}
-                onChange={(e) => setDisplayName(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent dark:bg-gray-100 dark:text-white text-gray-900 bg-white"
-                placeholder={language === "zh" ? "您的昵称" : "Your name"}
-                required
-              />
-            </div>
-          )}
-
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-700 mb-1">
               {g(t.email)}
@@ -143,55 +139,124 @@ export function AuthModal({
             <input
               type="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => { setEmail(e.target.value); setCodeSent(false); }}
               className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent dark:bg-gray-100 dark:text-white text-gray-900 bg-white"
               placeholder="email@example.com"
               required
             />
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-700 mb-1">
-              {g(t.password)}
-            </label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent dark:bg-gray-100 dark:text-white text-gray-900 bg-white"
-              placeholder="••••••••"
-              minLength={6}
-              required
-            />
-            {mode === "register" && (
-              <p className="text-xs text-gray-500 mt-1">{g(t.passwordHint)}</p>
-            )}
-          </div>
+          {mode === "emailCode" ? (
+            <>
+              {codeSent && (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-700 mb-1">
+                    {g(t.enterCode)}
+                  </label>
+                  <input
+                    type="text"
+                    value={code}
+                    onChange={(e) => setCode(e.target.value)}
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent dark:bg-gray-100 dark:text-white text-gray-900 bg-white tracking-[8px] text-center text-lg"
+                    placeholder="000000"
+                    maxLength={6}
+                    required
+                  />
+                </div>
+              )}
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="w-full py-3 bg-gradient-to-r from-gray-600 to-gray-600 text-white font-medium rounded-lg hover:from-gray-700 hover:to-gray-700 transition disabled:opacity-50"
+              >
+                {isLoading ? "..." : codeSent ? g(t.verifyCode) : g(t.sendCode)}
+              </button>
+              {codeSent && (
+                <button
+                  type="button"
+                  onClick={async () => {
+                    setCodeSent(false);
+                    setCode("");
+                    setError(null);
+                    const result = await sendEmailCode(email);
+                    if (result.success) setCodeSent(true);
+                    else setError(result.error || "Failed");
+                  }}
+                  className="w-full text-xs text-gray-400 hover:text-gray-600 underline"
+                >
+                  {g(t.resendCode)}
+                </button>
+              )}
+            </>
+          ) : (
+            <>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-700 mb-1">
+                  {g(t.password)}
+                </label>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent dark:bg-gray-100 dark:text-white text-gray-900 bg-white"
+                  placeholder="••••••••"
+                  minLength={6}
+                  required
+                />
+                {mode === "register" && (
+                  <p className="text-xs text-gray-500 mt-1">{g(t.passwordHint)}</p>
+                )}
+              </div>
 
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="w-full py-3 bg-gradient-to-r from-gray-600 to-gray-600 text-white font-medium rounded-lg hover:from-gray-700 hover:to-gray-700 transition disabled:opacity-50"
-          >
-            {isLoading ? "..." : mode === "login" ? g(t.login) : g(t.register)}
-          </button>
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="w-full py-3 bg-gradient-to-r from-gray-600 to-gray-600 text-white font-medium rounded-lg hover:from-gray-700 hover:to-gray-700 transition disabled:opacity-50"
+              >
+                {isLoading ? "..." : mode === "login" ? g(t.login) : g(t.register)}
+              </button>
+            </>
+          )}
         </form>
 
         {/* Footer */}
         <div className="px-6 pb-6 text-center">
-          <p className="text-sm text-gray-600 dark:text-gray-400">
-            {mode === "login" ? g(t.noAccount) : g(t.hasAccount)}{" "}
-            <button
-              type="button"
-              onClick={() => {
-                setMode(mode === "login" ? "register" : "login");
-                setError(null);
-              }}
-              className="text-gray-600 dark:text-gray-400 font-medium hover:underline"
-            >
-              {mode === "login" ? g(t.toRegister) : g(t.toLogin)}
-            </button>
-          </p>
+          {mode === "emailCode" ? (
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              <button
+                type="button"
+                onClick={() => { setMode("login"); setCodeSent(false); setCode(""); setError(null); }}
+                className="text-gray-600 dark:text-gray-400 font-medium hover:underline"
+              >
+                {g(t.needPassword)}
+              </button>
+            </p>
+          ) : (
+            <>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                {mode === "login" ? g(t.noAccount) : g(t.hasAccount)}{" "}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMode(mode === "login" ? "register" : "login");
+                    setError(null);
+                  }}
+                  className="text-gray-600 dark:text-gray-400 font-medium hover:underline"
+                >
+                  {mode === "login" ? g(t.toRegister) : g(t.toLogin)}
+                </button>
+              </p>
+              <p className="text-sm text-gray-500 mt-2">
+                <button
+                  type="button"
+                  onClick={() => { setMode("emailCode"); setError(null); }}
+                  className="text-gray-400 hover:text-gray-600 underline"
+                >
+                  {g(t.needEmailCode)}
+                </button>
+              </p>
+            </>
+          )}
 
           <div className="mt-4">
             <button
