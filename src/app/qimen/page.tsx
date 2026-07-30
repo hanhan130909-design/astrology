@@ -232,41 +232,42 @@ export default function QiMenPage() {
 
   return (
     <div className="min-h-screen bg-white text-[#171717]">
-      <main className="max-w-[600px] mx-auto px-2 py-3">
+      <main className="max-w-[420px] mx-auto px-2 py-3">
         {/* Title */}
-        <div className="text-center mb-3">
-          <div className="text-xs text-gray-400">盘式</div>
-          <div className="text-sm font-semibold">转盘奇门-寄坤宫-拆补-值使门起</div>
+        <div className="text-center mb-2">
+          <div className="text-[10px] text-gray-400">盘式</div>
+          <div className="text-[13px] font-semibold">转盘奇门-寄坤宫-拆补-值使门起</div>
         </div>
 
         {/* Date */}
-        <div className="text-center mb-3">
-          <div className="text-xs text-gray-400">日期</div>
-          <div className="text-sm font-medium">{Y}年{M}月{D}日{H}:00</div>
+        <div className="text-center mb-2">
+          <div className="text-[10px] text-gray-400">日期</div>
+          <div className="text-[14px] font-medium">{Y}年{M}月{D}日{H}:00</div>
         </div>
 
         {/* 四柱 */}
-        <div className="grid grid-cols-5 gap-1 mb-3 text-center text-xs">
-          {[
-            {l:"",v:""},{l:"年柱",v:c.yz},{l:"月柱",v:c.mz},{l:"日柱",v:c.dz},{l:"时柱",v:c.hz}
-          ].map((x,i)=>(
-            <div key={i} className={i===0?"text-gray-400":""}>{x.l||"四柱"}</div>
-          ))}
-          {[
-            {l:"空亡",v:""},{l:"",v:c.kw[0]+c.kw[1]},{l:"",v:c.kw[0]+c.kw[1]},{
-              l:"",v:c.kw[0]+c.kw[1]
-            },{l:"",v:c.kw[0]+c.kw[1]}
-          ].map((x,i)=>(
-            <div key={i} className="text-gray-500">{x.v||"空亡"}</div>
-          ))}
+        <div className="mb-3">
+          <div className="grid grid-cols-5 text-center text-[11px] border-b pb-0.5">
+            <span className="text-gray-400">四柱</span>
+            {[{l:"年柱",v:c.yz},{l:"月柱",v:c.mz},{l:"日柱",v:c.dz},{l:"时柱",v:c.hz}].map((x,i)=>(
+              <div key={i}>
+                <div className="text-gray-500 text-[10px]">{x.l}</div>
+                <div className="font-semibold">{x.v}</div>
+              </div>
+            ))}
+          </div>
+          <div className="grid grid-cols-5 text-center text-[10px] text-gray-400 mt-0.5">
+            <span>空亡</span>
+            {[...Array(4)].map((_,i)=>(
+              <div key={i}>{c.kw[0]}{c.kw[1]}</div>
+            ))}
+          </div>
         </div>
 
         {/* Info bar */}
-        <div className="space-y-1 text-xs mb-4">
-          <div className="flex justify-center gap-4 text-gray-500">
-            <span>节气 {c.termRange}</span>
-          </div>
-          <div className="flex justify-center gap-3 flex-wrap">
+        <div className="space-y-1 text-[10px] mb-3 text-center">
+          <div className="text-gray-500">节气 {c.termRange}</div>
+          <div className="flex justify-center gap-3 flex-wrap text-gray-600">
             <span>局数 <b>{c.termName}中元{c.isYang?"阳":"阴"}{c.ju}</b></span>
             <span>值符 <b className="text-red-600">{c.zfStar}</b></span>
             <span>旬首 <b>{c.xunShou}</b></span>
@@ -276,7 +277,7 @@ export default function QiMenPage() {
         </div>
 
         {/* Nine Palaces Grid */}
-        <div className="grid grid-cols-3 gap-[2px] mb-4 bg-gray-300 rounded-lg overflow-hidden border-[3px] border-gray-300">
+        <div className="grid grid-cols-3 gap-[2px] mb-3 bg-gray-300 rounded-lg overflow-hidden border-[3px] border-gray-300">
           {PALACE_ORDER.map(palace=>{
             const pl = PL[palace];
             const isCenter = palace===5;
@@ -289,7 +290,6 @@ export default function QiMenPage() {
             const isValue = palace===c.zfPalace;
             const isSelected = selectedPalace===palace;
 
-            // Deity color
             const deityColors: Record<string,string> = {
               "值符":"text-red-600","螣蛇":"text-orange-500","太阴":"text-indigo-500",
               "六合":"text-emerald-600","白虎":"text-gray-700","玄武":"text-blue-600",
@@ -299,46 +299,35 @@ export default function QiMenPage() {
             return (
               <div key={palace}
                 onClick={()=>setSelectedPalace(isSelected?null:palace)}
-                className={`relative aspect-square cursor-pointer bg-white p-1 flex flex-col
-                  ${isCenter?"bg-amber-50":""} ${isValue?"shadow-[inset_0_0_0_2px_#ef4444]":""}
-                  ${isSelected?"ring-2 ring-gray-900":""}`}>
+                className={`relative aspect-square cursor-pointer p-1.5 flex flex-col justify-between
+                  ${isSelected?"ring-[3px] ring-gray-800":""}`}
+                style={{background:isCenter?"#fffbeb":isValue?"#fef2f2":"#fff"}}>
                 
-                {/* Top row: trigram + direction */}
-                <div className="flex justify-between text-[9px]">
+                <div className="flex justify-between text-[10px]">
                   <span className="text-gray-300">{pl.t}</span>
                   <span className="text-gray-400">{pl.d}</span>
                 </div>
-
-                {/* Spirit/Deity */}
-                {spirit&&(
-                  <div className={`text-[10px] font-bold text-center leading-tight ${deityColors[spirit]||"text-purple-600"}`}>
-                    {spirit}
-                  </div>
-                )}
-
-                {/* Heaven Star + Earth Stem in one row */}
-                <div className="flex justify-between items-center mt-0.5 px-0.5">
-                  <span className="text-[11px] font-semibold text-blue-700">{heaven}</span>
-                  <span className="text-[12px] font-bold text-gray-800">{earth}</span>
+                <div className={`text-[11px] font-bold text-center ${deityColors[spirit]||"text-purple-600"}`}>
+                  {spirit||"—"}
                 </div>
-
-                {/* Human Gate */}
-                <div className={`text-center text-[13px] font-black leading-tight ${
+                <div className="flex justify-between items-center px-0.5">
+                  <span className="text-[12px] font-semibold text-blue-600">{heaven}</span>
+                  <span className="text-[14px] font-bold text-gray-800">{earth}</span>
+                </div>
+                <div className={`text-center text-[15px] font-black ${
                   human==="生"?"text-emerald-600":human==="死"?"text-gray-500":
                   human==="开"?"text-amber-600":human==="休"?"text-blue-600":
                   human==="景"?"text-red-500":human==="惊"?"text-orange-600":
                   "text-red-600"}`}>
                   {human}
                 </div>
-
-                {/* 长生 + Conditions */}
-                <div className="flex justify-between items-end mt-auto text-[8px]">
-                  <span className="text-gray-400">{cs}</span>
-                  {conds.length>0&&(
-                    <span className={`px-0.5 rounded ${conditionColor(conds)}`}>
-                      {conds.join("+")}
+                <div className="flex justify-between items-end text-[9px]">
+                  <span className="text-gray-300">{cs}</span>
+                  {conds.length>0?(
+                    <span className={`px-0.5 rounded-sm font-medium ${conditionColor(conds)}`}>
+                      {conds.join("/")}
                     </span>
-                  )}
+                  ):<span className="text-gray-300">·</span>}
                 </div>
               </div>
             );
