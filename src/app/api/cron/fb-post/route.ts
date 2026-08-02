@@ -326,7 +326,7 @@ export async function POST(request: Request) {
 
       if (mResp.ok && (mData as any).id) {
         // Step 2: Wait briefly for IG to process, then publish with retry
-        await new Promise(r => setTimeout(r, 2000));
+        await new Promise(r => setTimeout(r, 1000));
 
         for (let attempt = 0; attempt < 3; attempt++) {
           const pResp = await fetch(`https://graph.facebook.com/v25.0/${igUserId}/media_publish`, {
@@ -339,8 +339,7 @@ export async function POST(request: Request) {
             igId = (pData as any).id;
             break;
           }
-          // If IG returns "media not ready", wait longer
-          if (attempt < 2) await new Promise(r => setTimeout(r, 3000));
+          if (attempt < 2) await new Promise(r => setTimeout(r, 1500));
         }
       }
     } catch { /* IG optional */ }
@@ -348,11 +347,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    // Post sequentially to avoid IG rate limits
-    const r1 = await postOne(QUEUE_URLS[idx1], idx1);
-    // Small delay between posts for IG processing
-    await new Promise(r => setTimeout(r, 1000));
-    const r2 = await postOne(QUEUE_URLS[idx2], idx2);
+    const [r1, r2] = await Promise.all([postOne(QUEUE_URLS[idx1], idx1), postOne(QUEUE_URLS[idx2], idx2)]);
     return NextResponse.json({ results: [r1, r2], remaining: QUEUE_URLS.length - ((idx2 + 1) % QUEUE_URLS.length) });
   } catch (error) {
     console.error("FB cron error:", error);
