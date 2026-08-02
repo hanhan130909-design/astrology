@@ -1,5 +1,6 @@
 ﻿import type { Metadata, Viewport } from "next";
 import dynamic from "next/dynamic";
+import Script from "next/script";
 import "./globals.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { AuthProvider } from "@/contexts/AuthContext";
@@ -118,18 +119,14 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        {/* Google Analytics — GA4 */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CSE41GD9JL" />
-        <script dangerouslySetInnerHTML={{__html:`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-CSE41GD9JL');gtag('config','AW-18261460159');`}} />
-        {/* AdSense */}
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8610947417148845" crossOrigin="anonymous" />
-        {/* Adsterra — Popunder + SocialBar */}
-        <script async src="https://theoreticalassertshame.com/2f/e7/16/2fe716040585c7a5df6b961c91d53e7a.js"></script>
-        <script async src="https://theoreticalassertshame.com/9e/75/3a/9e753a63fa9c7e979e9b36a970a51938.js"></script>
+        {/* JSON-LD structured data — tiny, needed for SEO */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        {/* GA4 — deferred to not block LCP */}
+        <Script strategy="lazyOnload" src="https://www.googletagmanager.com/gtag/js?id=G-CSE41GD9JL" />
+        <Script strategy="lazyOnload" id="ga-init">{`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-CSE41GD9JL');gtag('config','AW-18261460159');`}</Script>
+        {/* Adsterra — deferred to post-load */}
+        <Script strategy="lazyOnload" src="https://theoreticalassertshame.com/2f/e7/16/2fe716040585c7a5df6b961c91d53e7a.js" />
+        <Script strategy="lazyOnload" src="https://theoreticalassertshame.com/9e/75/3a/9e753a63fa9c7e979e9b36a970a51938.js" />
       </head>
       <body className="bg-white text-gray-900 antialiased min-h-screen overflow-x-hidden">
         <ServiceWorkerRegister />
