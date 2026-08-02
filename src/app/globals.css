@@ -50,6 +50,13 @@ body {
 }
 .animate-fade-in { animation: fade-in 0.5s ease-out forwards; }
 
+/* ─── PWA Install Prompt ─── */
+@keyframes slide-up {
+  from { transform: translateY(100px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.animate-slide-up { animation: slide-up 0.4s ease-out forwards; }
+
 /* ─── Focus ─── */
 :focus-visible {
   outline: 2px solid rgba(0,0,0,0.5);

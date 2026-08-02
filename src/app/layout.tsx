@@ -9,6 +9,7 @@ import Navbar from "@/components/Navbar";
 // Lazy-loaded below-the-fold components (reduce initial JS bundle)
 const ServiceWorkerRegister = dynamic(() => import("@/components/ServiceWorkerRegister").then((m) => m.ServiceWorkerRegister));
 const CookieConsent = dynamic(() => import("@/components/CookieConsent").then((m) => m.CookieConsent));
+const InstallPrompt = dynamic(() => import("@/components/InstallPrompt").then((m) => m.default));
 
 export const metadata: Metadata = {
   title: {
@@ -104,6 +105,8 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="星缘" />
         <meta name="theme-color" content="#171717" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="apple-touch-startup-image" href="/apple-touch-icon.png" />
+        <meta name="mobile-web-app-capable" content="yes" />
         {/* Non-blocking CSS loader — prevents render-blocking chain */}
         <script dangerouslySetInnerHTML={{__html:`(function(){var l=document.querySelectorAll('link[rel="stylesheet"]');for(var i=0;i<l.length;i++){var s=l[i];s.media='print';s.onload=function(){this.media='all';this.onload=null}}})()`}} />
         {/* System fonts — no Google Fonts CDN (blocked in China) */}
@@ -136,6 +139,7 @@ export default function RootLayout({
               <Navbar />
               {children}
               <CookieConsent />
+              <InstallPrompt />
             </AuthProvider>
           </LanguageProvider>
         </ThemeProvider>

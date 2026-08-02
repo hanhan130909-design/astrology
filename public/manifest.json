@@ -1,7 +1,7 @@
 {
-  "name": "星缘 - 免费AI占星解读",
+  "name": "星缘 - 免费占星八字解读",
   "short_name": "星缘",
-  "description": "专业星座分析平台 - 本命盘、推运盘、合盘、塔罗、AI解读",
+  "description": "Free Western + Chinese astrology. Natal chart, BaZi, Qi Men Dun Jia, Tarot, AI readings. 8 languages, no signup.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -9,8 +9,45 @@
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "zh-CN",
-  "categories": ["lifestyle", "entertainment"],
+  "categories": ["lifestyle", "entertainment", "education"],
+  "screenshots": [
+    {
+      "src": "/screenshot-natal.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "本命盘排盘"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "本命盘",
+      "short_name": "星盘",
+      "description": "生成你的本命盘",
+      "url": "/natal",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "八字排盘",
+      "short_name": "八字",
+      "description": "免费八字命理分析",
+      "url": "/bazi",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "奇门遁甲",
+      "short_name": "奇门",
+      "description": "Qi Men Dun Jia chart",
+      "url": "/qimen",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ],
   "icons": [
+    {
+      "src": "/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
     {
       "src": "/icon-192.png",
       "sizes": "192x192",
