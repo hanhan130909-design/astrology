@@ -309,32 +309,50 @@ export async function POST(request: Request) {
     const fbData = await fbResp.json();
     if (!fbResp.ok) return { error: "FB fail", fb: fbData, idx: index, url };
 
-    // IG post
+    // IG post — with retry
     let igId: string | null = null;
     try {
       const igUserId = "17841458411478506";
       const igCardUrl = "https://lunaxstar.com/ig-card.png";
       const igCaption = `✨ ${topic}\n\nFree Birth Chart + BaZi at lunaxstar.com\nLink in bio →`;
+
+      // Step 1: Create media container
       const mResp = await fetch(`https://graph.facebook.com/v25.0/${igUserId}/media`, {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({ image_url: igCardUrl, caption: igCaption, access_token: pageToken }),
       });
       const mData = await mResp.json();
+
       if (mResp.ok && (mData as any).id) {
-        const pResp = await fetch(`https://graph.facebook.com/v25.0/${igUserId}/media_publish`, {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: new URLSearchParams({ creation_id: (mData as any).id, access_token: pageToken }),
-        });
-        igId = ((await pResp.json()) as any).id || null;
+        // Step 2: Wait briefly for IG to process, then publish with retry
+        await new Promise(r => setTimeout(r, 2000));
+
+        for (let attempt = 0; attempt < 3; attempt++) {
+          const pResp = await fetch(`https://graph.facebook.com/v25.0/${igUserId}/media_publish`, {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams({ creation_id: (mData as any).id, access_token: pageToken }),
+          });
+          const pData = await pResp.json();
+          if (pResp.ok && (pData as any).id) {
+            igId = (pData as any).id;
+            break;
+          }
+          // If IG returns "media not ready", wait longer
+          if (attempt < 2) await new Promise(r => setTimeout(r, 3000));
+        }
       }
     } catch { /* IG optional */ }
     return { success: true, idx: index, url, fbPostId: (fbData as any).id, igPostId: igId };
   }
 
   try {
-    const [r1, r2] = await Promise.all([postOne(QUEUE_URLS[idx1], idx1), postOne(QUEUE_URLS[idx2], idx2)]);
+    // Post sequentially to avoid IG rate limits
+    const r1 = await postOne(QUEUE_URLS[idx1], idx1);
+    // Small delay between posts for IG processing
+    await new Promise(r => setTimeout(r, 1000));
+    const r2 = await postOne(QUEUE_URLS[idx2], idx2);
     return NextResponse.json({ results: [r1, r2], remaining: QUEUE_URLS.length - ((idx2 + 1) % QUEUE_URLS.length) });
   } catch (error) {
     console.error("FB cron error:", error);
