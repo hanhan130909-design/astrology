@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Clock, ChevronRight } from 'lucide-react';
+import BlogSearch from '@/components/BlogSearch';
 import type { BlogSummary } from './blogSummary';
 
 // Translation data
@@ -102,6 +103,11 @@ export default function BlogIndexClient({ articles }: { articles: BlogSummary[] 
             {currentT.subtitle}
           </p>
         </div>
+      </section>
+
+      {/* Search */}
+      <section className="px-4 mb-4">
+        <BlogSearch />
       </section>
 
       {/* Featured Section */}
