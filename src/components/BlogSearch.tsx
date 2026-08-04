@@ -36,6 +36,9 @@ export default function BlogSearch() {
       const res = await fetch(`/api/blog/search?q=${encodeURIComponent(q)}&lang=${language}`);
       const data = await res.json();
       setResults(data.results || []);
+      if (data.results?.length > 0) {
+        try { (await import("@/lib/analytics")).Analytics.searchQuery(q, data.results.length); } catch {}
+      }
     } catch {
       setResults([]);
     }

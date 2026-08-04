@@ -30,6 +30,12 @@ function getEnglishBody(article: IndexableArticle): string | null {
   if (typeof article.sections === "string") return article.sections;
   if (typeof article.content === "string") return article.content;
   if (article.content && typeof article.content.en === "string") return article.content.en;
+  // Fallback: check Chinese content too
+  if (article.content && typeof article.content.zh === "string") return article.content.zh;
+  if (article.content && typeof article.content === "object") {
+    const vals = Object.values(article.content as Record<string, unknown>);
+    for (const v of vals) if (typeof v === "string" && v.length > 100) return v;
+  }
   return null;
 }
 
@@ -48,7 +54,6 @@ export function isIndexableArticle(article: unknown): article is IndexableArticl
   // Reject known low-quality patterns
   if (rejectedBodyPatterns.some((pattern) => pattern.test(body))) return false;
 
-  // Lower threshold — include all articles with meaningful content (>300 chars)
-  // Previously: 1200 chars + 2 headings. This excluded 900+ articles.
-  return body.length >= 300;
+  // Include all articles with body > 200 chars (expanded from 300 for more coverage)
+  return body.length >= 200;
 }

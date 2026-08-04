@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Analytics } from "@/lib/analytics";
 
 const T: Record<string, Record<string, string>> = {
   zh: {
@@ -108,13 +109,13 @@ export default function HomePage() {
 
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
-          <Link href="/natal" className="inline-flex items-center justify-center px-6 py-3 bg-gray-900 text-white rounded-xl font-semibold text-sm hover:bg-gray-800 transition-colors shadow-lg shadow-gray-900/10">
+          <Link href="/natal" onClick={() => Analytics.ctaClick("free_chart", "homepage")} className="inline-flex items-center justify-center px-6 py-3 bg-gray-900 text-white rounded-xl font-semibold text-sm hover:bg-gray-800 transition-colors shadow-lg shadow-gray-900/10">
             {t.cta}
           </Link>
-          <Link href="/bazi" className="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-700 rounded-xl font-semibold text-sm border border-gray-200 hover:bg-gray-50 transition-colors">
+          <Link href="/bazi" onClick={() => Analytics.ctaClick("bazi", "homepage")} className="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-700 rounded-xl font-semibold text-sm border border-gray-200 hover:bg-gray-50 transition-colors">
             {t.ctaBazi}
           </Link>
-          <Link href="/qimen" className="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-700 rounded-xl font-semibold text-sm border border-gray-200 hover:bg-gray-50 transition-colors">
+          <Link href="/qimen" onClick={() => Analytics.ctaClick("qimen", "homepage")} className="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-700 rounded-xl font-semibold text-sm border border-gray-200 hover:bg-gray-50 transition-colors">
             {t.ctaQimen}
           </Link>
         </div>
@@ -130,6 +131,7 @@ export default function HomePage() {
             <Link
               key={f.href}
               href={f.href}
+              onClick={() => Analytics.featureClick(f.href)}
               className="group p-4 rounded-2xl border border-gray-100 hover:border-gray-200 hover:shadow-sm transition-all bg-white"
             >
               <div className="text-2xl mb-2">{f.icon}</div>
