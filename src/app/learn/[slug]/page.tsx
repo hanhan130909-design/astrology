@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { baziLessons, ziweiLessons } from "../course-bazi-ziwei";
 import { lessonContent, type LessonContent } from "../lesson-content";
@@ -35,6 +35,15 @@ export default function LessonPage() {
 
   const [translatedHtml, setTranslatedHtml] = useState("");
   const [translating, setTranslating] = useState(false);
+
+  // Track recently viewed lessons
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem("learn_recent") || "[]");
+      const updated = [slug, ...saved.filter((s: string) => s !== slug)].slice(0, 10);
+      localStorage.setItem("learn_recent", JSON.stringify(updated));
+    } catch {}
+  }, [slug]);
 
   const translateContent = async () => {
     if (translating || !content) return;
