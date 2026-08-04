@@ -129,7 +129,7 @@ export default function RootLayout({
         <Script strategy="lazyOnload" src="https://theoreticalassertshame.com/9e/75/3a/9e753a63fa9c7e979e9b36a970a51938.js" />
         <Script strategy="lazyOnload" src="https://theoreticalassertshame.com/tkh3mt5q7u?key=f22887b096f64819447502cd662a6155" />
       </head>
-      <body className="bg-white text-gray-900 antialiased min-h-screen overflow-x-hidden">
+      <body className="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 antialiased min-h-screen overflow-x-hidden">
         <ServiceWorkerRegister />
         <ThemeProvider>
           <LanguageProvider>
