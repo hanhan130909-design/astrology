@@ -1,11 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useAuth } from "@/contexts/AuthContext";
-import { useTheme } from "@/contexts/ThemeContext";
 
 const T: Record<string, Record<string, string>> = {
   zh: { brand:"星缘", horoscope:"运势", natal:"星盘", bazi:"八字", qimen:"奇门", compatibility:"配对", ai:"AI解读", learn:"学习", transits:"星象日历", community:"社区", tarot:"塔罗", strategy:"方法论" },
@@ -33,8 +32,22 @@ export default function Navbar() {
   const pathname = usePathname();
   const { language, setLanguage } = useLanguage();
   const { user, logout } = useAuth();
-  const { theme, setTheme } = useTheme();
   const t = T[language] || T.zh;
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("theme");
+    const dark = saved === "dark" || (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    setIsDark(dark);
+    if (dark) document.documentElement.classList.add("dark");
+  }, []);
+
+  const toggleTheme = () => {
+    const next = !isDark;
+    setIsDark(next);
+    document.documentElement.classList.toggle("dark", next);
+    localStorage.setItem("theme", next ? "dark" : "light");
+  };
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
 
@@ -119,11 +132,11 @@ export default function Navbar() {
 
           {/* Theme toggle */}
           <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            onClick={toggleTheme}
             className="p-1.5 rounded-md hover:bg-gray-100 text-gray-400 hover:text-[#171717] shrink-0"
             aria-label="Toggle theme"
           >
-            {theme === "dark" ? "☀" : "☾"}
+            {isDark ? "☀" : "☾"}
           </button>
 
           {user ? (
