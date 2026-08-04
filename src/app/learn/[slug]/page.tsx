@@ -6,6 +6,8 @@ import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { baziLessons, ziweiLessons } from "../course-bazi-ziwei";
 import { lessonContent, type LessonContent } from "../lesson-content";
+import { astroContents } from "../astro-content";
+import { beginnerLessons as astroLessons } from "../course-data";
 import type { CourseLesson } from "../course-data";
 import { ArrowLeft, ChevronLeft, ChevronRight, Globe } from "lucide-react";
 
@@ -21,12 +23,15 @@ export default function LessonPage() {
   const lang = language || "zh";
 
   // Determine course type and lesson index
+  const isAstro = slug.startsWith("astro-");
   const isBaZi = slug.startsWith("bazi-");
+  const courseType = isAstro ? "astro" : isBaZi ? "bazi" : "ziwei";
   const index = parseInt(slug.split("-")[1] || "1", 10);
-  const lessons = isBaZi ? baziLessons : ziweiLessons;
-  const courseKey = isBaZi ? "bazi" : "ziwei";
+
+  const lessons = isAstro ? astroLessons : isBaZi ? baziLessons : ziweiLessons;
+  const courseKey = courseType;
   const lesson = lessons[index - 1] as CourseLesson | undefined;
-  const content = lessonContent[slug] as LessonContent | undefined;
+  const content = (isAstro ? astroContents[slug] : lessonContent[slug]) as LessonContent | undefined;
 
   const [translatedHtml, setTranslatedHtml] = useState("");
   const [translating, setTranslating] = useState(false);
@@ -83,8 +88,9 @@ export default function LessonPage() {
   const nextLesson = index < lessons.length ? `/${courseKey}-${index + 1}` : null;
 
   // Course color
-  const courseColor = isBaZi ? "purple" : "emerald";
+  const courseColor = isAstro ? "gray" : isBaZi ? "purple" : "emerald";
   const colorClasses: Record<string, { bg: string; badge: string; text: string }> = {
+    gray: { bg: "bg-gray-50", badge: "bg-gray-100 text-gray-700", text: "text-gray-600" },
     purple: { bg: "bg-purple-50", badge: "bg-purple-100 text-purple-700", text: "text-purple-600" },
     emerald: { bg: "bg-emerald-50", badge: "bg-emerald-100 text-emerald-700", text: "text-emerald-600" },
   };
