@@ -10,15 +10,6 @@
   "scope": "/",
   "lang": "zh-CN",
   "categories": ["lifestyle", "entertainment", "education"],
-  "screenshots": [
-    {
-      "src": "/screenshot-natal.png",
-      "sizes": "390x844",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "本命盘排盘"
-    }
-  ],
   "shortcuts": [
     {
       "name": "本命盘",
