@@ -69,8 +69,13 @@ export default function QiMenPage() {
             <span className="h-px w-6 bg-gray-300" />
           </div>
           <h1 className="text-lg font-semibold tracking-wide mb-1">{c.yinYang}遁{c.ju}局</h1>
-          <p className="text-[13px] text-gray-700">{Y}年{M}月{D}日 {String(H).padStart(2, "0")}:00</p>
+          <p className="text-[13px] text-gray-700">{Y}年{String(M).padStart(2, "0")}月{String(D).padStart(2, "0")}日 {String(H).padStart(2, "0")}时00分</p>
           <p className="text-[11px] text-gray-400 mt-0.5">{c.lunarText} · {c.yearPillar}年</p>
+          <p className="text-[10px] text-gray-400 mt-0.5">
+            <span className="text-gray-500">{c.prevJqText.split(" ")[0]} <b className="text-gray-600">{c.prevJqText.split(" ")[1]}</b></span>
+            <span className="mx-1 text-gray-300">|</span>
+            <span className="text-gray-500">{c.nextJqText.split(" ")[0]} <b className="text-gray-600">{c.nextJqText.split(" ")[1]}</b></span>
+          </p>
         </header>
 
         {/* ── 四柱 ── */}
@@ -104,7 +109,7 @@ export default function QiMenPage() {
         {/* ── 局数信息徽章 ── */}
         <div className="flex flex-wrap justify-center gap-1.5 mb-3">
           <Badge label={`${c.jieQi} · ${c.yuan}`} tone="gray" />
-          <Badge label={`旬首 ${c.xunShou}`} tone="gray" />
+          <Badge label={`旬首 ${c.xunShou}${c.fuShou}`} tone="gray" />
           <Badge label={`值符 ${c.zhiFuStar}`} tone="red" />
           <Badge label={`值使 ${c.zhiShiDoor}`} tone="red" />
           <Badge label={`马星 ${c.maStar}`} tone="blue" />

@@ -180,6 +180,7 @@ export interface QiMenResult {
   lunarText: string; // 农历
   yearPillar: string; monthPillar: string; dayPillar: string; timePillar: string;
   jieQi: string; yuan: string; yinYang: "阳" | "阴"; ju: number;
+  prevJqText: string; nextJqText: string;
   xunShou: string; fuShou: string;
   zhiFuStar: string; zhiShiDoor: string; zhiFuPalace: number;
   maStar: string;
@@ -210,6 +211,16 @@ export function calcQiMen(year: number, month: number, day: number, hour: number
   const jieQiObj = lunar.getPrevJieQi();
   const jieQi = jieQiObj.getName();
   const jieQiSolar = jieQiObj.getSolar();
+  // 前后节气精确时刻（用于头部显示，如「小满 2026.05.21 08:36」）
+  const nextJq = lunar.getNextJieQi();
+  const fmtJq = (jq: any) => {
+    if (!jq) return "";
+    const s = jq.getSolar();
+    const pad = (n: number) => String(n).padStart(2, "0");
+    return `${jq.getName()} ${s.getYear()}.${pad(s.getMonth())}.${pad(s.getDay())} ${pad(s.getHour())}:${pad(s.getMinute())}`;
+  };
+  const prevJqText = fmtJq(jieQiObj);
+  const nextJqText = fmtJq(nextJq);
   const daysDiff = Math.floor(solar.getJulianDay() - jieQiSolar.getJulianDay());
   const yuanIdx = daysDiff < 5 ? 0 : daysDiff < 10 ? 1 : 2;
   const yuan = ["上元", "中元", "下元"][yuanIdx];
@@ -247,8 +258,8 @@ export function calcQiMen(year: number, month: number, day: number, hour: number
     doors[doorPlaceSeq[i]] = doorOrder[i];
   }
 
-  // 八神：时干位置起，阳顺阴逆
-  const godsArr = isYang ? EIGHT_GODS_YANG : EIGHT_GODS_YIN;
+  // 八神：时干位置起，阳顺阴逆（热卜/主流转盘奇门 阳阴皆用白虎玄武）
+  const godsArr = EIGHT_GODS_YIN;
   const godFly = isYang ? CLOCKWISE : COUNTER_CLOCKWISE;
   const headIdx = normalizeZhong(diPan.indexOf(effTimeGan));
   const godPutSeq = generatePutSequence(godFly, headIdx);
@@ -282,11 +293,11 @@ export function calcQiMen(year: number, month: number, day: number, hour: number
     }
   }
 
-  // 驿马（以日支定）
-  const dayBranch = dayPillar[1];
+  // 驿马（奇门以时支定）
+  const timeBranch = timePillar[1];
   let maStar = "";
   for (const [k, v] of Object.entries(MA_STAR)) {
-    if (k.includes(dayBranch)) { maStar = v; break; }
+    if (k.includes(timeBranch)) { maStar = v; break; }
   }
 
   // 四柱空亡（各柱独立空亡）
@@ -319,6 +330,7 @@ export function calcQiMen(year: number, month: number, day: number, hour: number
     lunarText: lunar.toString(),
     yearPillar, monthPillar, dayPillar, timePillar,
     jieQi, yuan, yinYang: isYang ? "阳" : "阴", ju,
+    prevJqText, nextJqText,
     xunShou, fuShou, zhiFuStar, zhiShiDoor, zhiFuPalace,
     maStar, kongWang,
     diPan, tianPan, stars, doors, gods,
