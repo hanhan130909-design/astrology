@@ -337,6 +337,11 @@ export const PALACE_META = GUA.map((gua, i) => ({
   branch: PRIMARY_BRANCH[i],
 }));
 
+// 本位（原始位置）供「地盘/天盘/人盘/神盘」分盘视图使用
+export const STAR_ORIGINAL = QIMEN_STARS; // 九星本位
+export const DOOR_ORIGINAL = EIGHT_DOORS_ORIGINAL; // 八门本位
+export const DOOR_SEQUENCE = EIGHT_DOORS_SEQUENCE;
+
 // ============================================================
 // 后天八卦卦象（点击宫位详情用）
 // ============================================================
