@@ -33,6 +33,7 @@ yarn-error.log*
 
 # Vercel
 .vercel/
+.vercel-token
 
 # Firebase
 firebase-debug.log
