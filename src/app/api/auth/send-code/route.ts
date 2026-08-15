@@ -1,16 +1,32 @@
 import { NextRequest, NextResponse } from "next/server";
-
-// In-memory store for verification codes (Vercel serverless — resets on cold start, fine for dev)
-// Production: use Vercel KV or Redis
-const codeStore = new Map<string, { code: string; expires: number }>();
+import { createHmac } from "crypto";
 
 // Email regex that accepts QQ, 163, 126, Gmail, Outlook, etc.
 const EMAIL_RE = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-const CODE_EXPIRE_MS = 10 * 60 * 1000; // 10 minutes
+const WINDOW_MS = 10 * 60 * 1000; // 10 分钟一个验证码窗口
 
-function generateCode(): string {
-  return Math.floor(100000 + Math.random() * 900000).toString(); // 6-digit
+// 服务端 HMAC 密钥：用于确定性生成验证码，无需跨实例存储。
+// Vercel serverless 无状态，内存 Map 会在冷启动/多实例时丢失，
+// 导致「发码」和「验码」落到不同实例时验证失败。HMAC 方案彻底规避。
+function getSecret(): string {
+  return process.env.CRON_SECRET || process.env.RESEND_API_KEY || "lunaxstar-dev-secret";
 }
+
+// 每个邮箱在同一个 10 分钟窗口内验证码固定，可无状态校验
+function codeFor(email: string, windowStart: number): string {
+  const hmac = createHmac("sha256", getSecret())
+    .update(`${email}:${windowStart}`)
+    .digest("hex");
+  const num = parseInt(hmac.slice(0, 8), 16) % 1000000;
+  return String(num).padStart(6, "0");
+}
+
+function currentCode(email: string): string {
+  return codeFor(email, Math.floor(Date.now() / WINDOW_MS));
+}
+
+// Best-effort 内存限流：仅在同一热实例内生效，防重复刷码。
+const lastSent = new Map<string, number>();
 
 export async function POST(request: NextRequest) {
   const { email } = await request.json();
@@ -19,14 +35,14 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Invalid email" }, { status: 400 });
   }
 
-  // Rate limit: max 1 code per 60 seconds per email
-  const existing = codeStore.get(email);
-  if (existing && Date.now() - (existing.expires - CODE_EXPIRE_MS) < 60000) {
+  // Rate limit: best-effort 60s（跨实例不保证，但不会造成错误拒绝）
+  const prev = lastSent.get(email);
+  if (prev && Date.now() - prev < 60000) {
     return NextResponse.json({ error: "Please wait 60 seconds before requesting a new code" }, { status: 429 });
   }
 
-  const code = generateCode();
-  codeStore.set(email, { code, expires: Date.now() + CODE_EXPIRE_MS });
+  const code = currentCode(email);
+  lastSent.set(email, Date.now());
 
   // Send via Resend
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
@@ -73,7 +89,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// Also export verify endpoint
+// Verify endpoint — 无状态校验，接受当前窗口和上一个窗口（处理边界）
 export async function PUT(request: NextRequest) {
   const { email, code } = await request.json();
 
@@ -81,26 +97,20 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({ error: "Email and code required" }, { status: 400 });
   }
 
-  const stored = codeStore.get(email);
-  if (!stored) {
-    return NextResponse.json({ error: "No code requested or code expired" }, { status: 400 });
+  const now = Date.now();
+  const currentWindow = Math.floor(now / WINDOW_MS);
+  const input = String(code).trim();
+
+  const valid =
+    input === codeFor(email, currentWindow) ||
+    input === codeFor(email, currentWindow - 1);
+
+  if (!valid) {
+    return NextResponse.json({ error: "Invalid code or code expired" }, { status: 400 });
   }
 
-  if (Date.now() > stored.expires) {
-    codeStore.delete(email);
-    return NextResponse.json({ error: "Code expired" }, { status: 400 });
-  }
-
-  if (stored.code !== String(code).trim()) {
-    return NextResponse.json({ error: "Invalid code" }, { status: 400 });
-  }
-
-  // Valid — consume the code
-  codeStore.delete(email);
-
-  // Return a signed token (simple JWT-like approach)
-  // In production, use proper JWT with jsonwebtoken
-  const sessionToken = Buffer.from(JSON.stringify({ email, iat: Date.now() })).toString("base64");
+  // Return a session token (simple JWT-like approach)
+  const sessionToken = Buffer.from(JSON.stringify({ email, iat: now })).toString("base64");
 
   return NextResponse.json({ success: true, token: sessionToken, email });
 }
