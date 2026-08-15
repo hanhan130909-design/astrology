@@ -15,6 +15,9 @@ export function trackEvent(eventName: string, params?: EventParams) {
   }
 }
 
+// 别名：旧调用方使用 trackAnalyticsEvent（此前缺失导致 GA4 事件静默失败）
+export const trackAnalyticsEvent = trackEvent;
+
 // Pre-built event trackers
 export const Analytics = {
   // CTA clicks
