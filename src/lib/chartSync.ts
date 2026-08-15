@@ -56,7 +56,8 @@ export async function syncLocalChartsToCloud(userId: string): Promise<void> {
   const localCharts = localStorage.getItem('natal_charts');
   if (!localCharts) return;
   
-  const charts: SavedChart[] = JSON.parse(localCharts);
+  let charts: SavedChart[] = [];
+  try { charts = JSON.parse(localCharts); } catch { return; }
   for (const chart of charts) {
     await saveChartToCloud(chart, userId);
   }

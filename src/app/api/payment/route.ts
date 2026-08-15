@@ -72,7 +72,7 @@ export async function POST(request: NextRequest) {
         'mandiri_bill',
       ],
       callbacks: {
-        finish: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://astrology-main-ten.vercel.app'}/payment/success?order_id=${orderId}`,
+        finish: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://lunaxstar.com'}/payment/success?order_id=${orderId}`,
       },
     };
     
