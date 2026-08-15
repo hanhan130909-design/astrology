@@ -117,6 +117,25 @@ const GRAVE: Record<string, string> = {
 const MA_STAR: Record<string, string> = { 申子辰: "寅", 寅午戌: "申", 巳酉丑: "亥", 亥卯未: "巳" };
 const GATE_ELEMENT: Record<string, string> = { 休: "水", 生: "土", 伤: "木", 杜: "木", 景: "火", 死: "土", 惊: "金", 开: "金" };
 
+// 对宫映射（冲）
+const OPPOSITE = [8, 7, 6, 5, 4, 3, 2, 1, 0];
+// 地支 → 宫位 index（用于空亡/马星定位）
+const BRANCH_TO_PALACE: Record<string, number> = {
+  子: 7, 丑: 6, 寅: 6, 卯: 3, 辰: 0, 巳: 0, 午: 1, 未: 2, 申: 2, 酉: 5, 戌: 8, 亥: 8,
+};
+// 六仪击刑（地盘干落刑宫）
+const JI_XING: Record<string, number[]> = {
+  戊: [3], 己: [2], 庚: [6], 辛: [1], 壬: [0], 癸: [0],
+};
+// 九星吉凶 / 八门吉凶
+const STAR_JIXIONG: Record<string, string> = {
+  天辅: "吉", 天英: "凶", 天芮: "凶", 天冲: "小吉", 天禽: "大吉",
+  天柱: "小凶", 天任: "吉", 天蓬: "凶", 天心: "吉",
+};
+const DOOR_JIXIONG: Record<string, string> = {
+  休门: "吉", 生门: "吉", 伤门: "凶", 杜门: "平", 景门: "平", 死门: "凶", 惊门: "凶", 开门: "吉",
+};
+
 // ============================================================
 // 工具函数
 // ============================================================
@@ -169,6 +188,12 @@ export interface QiMenResult {
   changSheng: string[]; conds: Record<number, string[]>;
   // 天禽寄宫方向
   tianQinDir: string;
+  // 全局格局
+  fuYin: boolean; fanYin: boolean;
+  // 空亡/马星宫位
+  kongWangPalaces: number[]; maStarPalace: number;
+  // 吉凶
+  starJixiong: string[]; doorJixiong: string[];
 }
 
 export function calcQiMen(year: number, month: number, day: number, hour: number): QiMenResult {
@@ -246,6 +271,8 @@ export function calcQiMen(year: number, month: number, day: number, hour: number
     }
     // 入墓
     if (stem && GRAVE[stem] && GRAVE[stem] === pb) conds[p].push("入墓");
+    // 击刑（六仪落刑宫）
+    if (stem && JI_XING[stem] && JI_XING[stem].includes(p)) conds[p].push("击刑");
     // 门迫
     const gate = doors[p];
     const ge = GATE_ELEMENT[gate];
@@ -273,6 +300,20 @@ export function calcQiMen(year: number, month: number, day: number, hour: number
   const tianQinIdx = stars.indexOf("天禽");
   const tianQinDir = DIRECTION[tianQinIdx] || "中";
 
+  // 反吟/伏吟
+  const fuShouPos = diPan.indexOf(fuShou);
+  const effTimePos = diPan.indexOf(effTimeGan);
+  const fuYin = effTimePos === fuShouPos; // 值符星落本位
+  const fanYin = OPPOSITE[effTimePos] === fuShouPos; // 值符星落对宫
+
+  // 空亡宫位（日柱空亡） + 马星宫位
+  const kongWangPalaces = (kongWang[2] || "").split("").map((b) => BRANCH_TO_PALACE[b]).filter((p) => p !== undefined);
+  const maStarPalace = BRANCH_TO_PALACE[maStar] ?? -1;
+
+  // 吉凶
+  const starJixiong = stars.map((s) => STAR_JIXIONG[s] || "");
+  const doorJixiong = doors.map((d) => DOOR_JIXIONG[d] || "");
+
   return {
     year, month, day, hour,
     lunarText: lunar.toString(),
@@ -282,6 +323,7 @@ export function calcQiMen(year: number, month: number, day: number, hour: number
     maStar, kongWang,
     diPan, tianPan, stars, doors, gods,
     changSheng, conds, tianQinDir,
+    fuYin, fanYin, kongWangPalaces, maStarPalace, starJixiong, doorJixiong,
   };
 }
 

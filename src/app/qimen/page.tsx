@@ -93,6 +93,8 @@ export default function QiMenPage() {
             <span>值使 <b className="text-red-600">{c.zhiShiDoor}</b></span>
             <span>马星 <b className="text-blue-600">{c.maStar}</b></span>
             <span>天禽寄 <b className="text-gray-700">{c.tianQinDir}</b></span>
+            {c.fuYin && <span className="text-red-600 font-semibold">伏吟</span>}
+            {c.fanYin && <span className="text-red-600 font-semibold">反吟</span>}
           </div>
         </div>
 
@@ -101,6 +103,8 @@ export default function QiMenPage() {
           {PALACE_META.map((pl, palace) => {
             const isCenter = palace === 4;
             const isValue = palace === c.zhiFuPalace;
+            const isKongWang = c.kongWangPalaces.includes(palace);
+            const isMaStar = palace === c.maStarPalace;
             const isSelected = sel === palace;
             const god = c.gods[palace] || "";
             const star = c.stars[palace] || "";
@@ -115,13 +119,14 @@ export default function QiMenPage() {
                 onClick={() => setSel(isSelected ? null : palace)}
                 className={`relative aspect-square cursor-pointer flex flex-col
                   ${isSelected ? "ring-[3px] ring-gray-800 z-10" : ""}`}
-                style={{ background: isCenter ? "#fffbeb" : isValue ? "#fef2f2" : "#fff" }}>
+                style={{ background: isValue ? "#fef2f2" : isCenter ? "#fffbeb" : isMaStar ? "#eff6ff" : isKongWang ? "#f9fafb" : "#fff" }}>
 
                 {/* 状态角标 */}
                 {conds.length > 0 && (
                   <div className="absolute top-1 right-1 flex gap-0.5">
                     {conds.includes("入墓") && <span className="w-2 h-2 rounded-full bg-purple-500" title="入墓" />}
                     {conds.includes("门迫") && <span className="w-2 h-2 rounded-full bg-orange-500" title="门迫" />}
+                    {conds.includes("击刑") && <span className="w-2 h-2 rounded-full bg-red-500" title="击刑" />}
                   </div>
                 )}
 
@@ -166,8 +171,8 @@ export default function QiMenPage() {
               <div className="font-semibold mb-2">{pl.trigram} {pl.gua}宫（洛书{pl.luoshu}）· {pl.element} · {pl.direction}方</div>
               <div className="grid grid-cols-3 gap-2">
                 <div>神: <b className="text-purple-600">{c.gods[sel] || "—"}</b></div>
-                <div>星: <b className="text-blue-600">{c.stars[sel] || "—"}</b></div>
-                <div>门: <b className="text-red-600">{c.doors[sel] || "—"}</b></div>
+                <div>星: <b className="text-blue-600">{c.stars[sel] || "—"}</b><span className="text-gray-400 ml-0.5">{c.starJixiong[sel] && `(${c.starJixiong[sel]})`}</span></div>
+                <div>门: <b className="text-red-600">{c.doors[sel] || "—"}</b><span className="text-gray-400 ml-0.5">{c.doorJixiong[sel] && `(${c.doorJixiong[sel]})`}</span></div>
                 <div>天盘干: <b>{c.tianPan[sel] || "—"}</b></div>
                 <div>地盘干: <b>{c.diPan[sel] || "—"}</b></div>
                 <div>长生: {c.changSheng[sel] || "—"}</div>
@@ -180,11 +185,11 @@ export default function QiMenPage() {
         {/* 图例 */}
         <div className="text-center text-[10px] text-gray-400 mb-3 space-y-1">
           <div>
-            <span className="inline-block w-2 h-2 rounded-full bg-red-500 align-middle mr-1" /><span className="mr-3">值符宫</span>
+            <span className="inline-block w-2 h-2 rounded-full bg-red-500 align-middle mr-1" /><span className="mr-3">值符宫/击刑</span>
             <span className="inline-block w-2 h-2 rounded-full bg-purple-500 align-middle mr-1" /><span className="mr-3">入墓</span>
             <span className="inline-block w-2 h-2 rounded-full bg-orange-500 align-middle mr-1" /><span>门迫</span>
           </div>
-          <div className="text-gray-400">三奇（乙丙丁）绿色标示 · 天盘干/地盘干 = 十干格局</div>
+          <div className="text-gray-400">三奇（乙丙丁）绿色 · 淡灰=空亡宫 · 淡蓝=马星宫 · 天盘干/地盘干=十干格局</div>
         </div>
 
         {/* 导航 */}
