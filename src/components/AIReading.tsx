@@ -230,7 +230,7 @@ const SIGN_SYMBOLS: Record<string, string> = {
 export default function AIReading({ preloadedChart }: { preloadedChart?: any }) {
   const { language } = useLanguage();
   const lang = language || "zh";
-  const L = LABELS[lang] || LABELS.zh;
+  const L = LABELS[lang] || LABELS.en;
 
   const [form, setForm] = useState({ year: 1990, month: 6, day: 15, hour: 12, minute: 0, cityId: "jakarta" });
   const [loading, setLoading] = useState(false);
@@ -473,7 +473,7 @@ export default function AIReading({ preloadedChart }: { preloadedChart?: any }) 
             <div>
               <label className="block text-xs text-gray-500 mb-1">{L.birthPlace}</label>
               <select value={form.cityId} onChange={e => setForm({ ...form, cityId: e.target.value })} className="w-full p-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm">
-                {CITIES.map(c => <option key={c.id} value={c.id}>{c.name[lang as keyof typeof c.name] || c.name.zh}</option>)}
+                {CITIES.map(c => <option key={c.id} value={c.id}>{c.name[lang as keyof typeof c.name] || c.name.en}</option>)}
               </select>
             </div>
           </div>

@@ -104,11 +104,11 @@ const COPY = {
 };
 
 function t(language: Lang) {
-  return COPY[language as keyof typeof COPY] || COPY.zh;
+  return COPY[language as keyof typeof COPY] || COPY.en;
 }
 
 function localName(item: any, language: Lang) {
-  return language === "en" ? item.en : language === "id" ? item.id || item.idn : item.zh;
+  return language === "en" ? item.en : language === "id" ? item.id || item.idn : item.en;
 }
 
 function iso(date: Date) {

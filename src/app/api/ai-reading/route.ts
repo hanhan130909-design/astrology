@@ -106,7 +106,7 @@ const ASPECT_NAMES: Record<string, Record<string, string>> = {
 // ════════════════════════════════════════════════════════════════════════════
 
 function getSystemPrompt(lang: string): string {
-  const config = LANGUAGE_CONFIG[lang] || LANGUAGE_CONFIG.zh;
+  const config = LANGUAGE_CONFIG[lang] || LANGUAGE_CONFIG.en;
   
   return `你是一位专业的西方占星师，精通古典占星与现代心理占星。
 
@@ -137,9 +137,9 @@ ${config.astrologerStyle}
 }
 
 function getNatalUserPrompt(data: any, lang: string): string {
-  const planets = PLANET_NAMES[lang] || PLANET_NAMES.zh;
-  const signs = SIGN_NAMES[lang] || SIGN_NAMES.zh;
-  const aspects = ASPECT_NAMES[lang] || ASPECT_NAMES.zh;
+  const planets = PLANET_NAMES[lang] || PLANET_NAMES.en;
+  const signs = SIGN_NAMES[lang] || SIGN_NAMES.en;
+  const aspects = ASPECT_NAMES[lang] || ASPECT_NAMES.en;
   
   // Build planet list
   const planetList = Object.entries(data.planetPositions || {})
@@ -200,9 +200,9 @@ ${planets.Ascendant || '上升'}：${data.ascendant ? signs[data.ascendant.sign]
 }
 
 function getSynastryUserPrompt(data: any, lang: string): string {
-  const planets = PLANET_NAMES[lang] || PLANET_NAMES.zh;
-  const signs = SIGN_NAMES[lang] || SIGN_NAMES.zh;
-  const aspects = ASPECT_NAMES[lang] || ASPECT_NAMES.zh;
+  const planets = PLANET_NAMES[lang] || PLANET_NAMES.en;
+  const signs = SIGN_NAMES[lang] || SIGN_NAMES.en;
+  const aspects = ASPECT_NAMES[lang] || ASPECT_NAMES.en;
 
   const aspectList = (data.aspects || [])
     .slice(0, 10)
@@ -234,8 +234,8 @@ ${aspectList || '无明显相位'}
 }
 
 function getYearlyUserPrompt(data: any, lang: string): string {
-  const planets = PLANET_NAMES[lang] || PLANET_NAMES.zh;
-  const signs = SIGN_NAMES[lang] || SIGN_NAMES.zh;
+  const planets = PLANET_NAMES[lang] || PLANET_NAMES.en;
+  const signs = SIGN_NAMES[lang] || SIGN_NAMES.en;
 
   const transitList = (data.transits || [])
     .slice(0, 6)
@@ -281,7 +281,7 @@ export async function POST(request: NextRequest) {
     } = body;
 
     const lang = language || 'zh';
-    const config = LANGUAGE_CONFIG[lang] || LANGUAGE_CONFIG.zh;
+    const config = LANGUAGE_CONFIG[lang] || LANGUAGE_CONFIG.en;
 
     // ═════════════════════════════════════════════════════════════════════════
     // Fallback Mode (No API Key)
@@ -375,8 +375,8 @@ function generateFallbackReading(
   birthData: any,
   config: any
 ): string {
-  const planets = PLANET_NAMES[lang] || PLANET_NAMES.zh;
-  const signs = SIGN_NAMES[lang] || SIGN_NAMES.zh;
+  const planets = PLANET_NAMES[lang] || PLANET_NAMES.en;
+  const signs = SIGN_NAMES[lang] || SIGN_NAMES.en;
 
   // Extract sun and moon
   const sun = planetPositions?.Sun;

@@ -33,7 +33,7 @@ function guessCat(slug: string, category?: string): string {
 
 export default function BlogCategoryClient({ articles }: { articles: BlogSummary[] }) {
   const { language } = useLanguage();
-  const t = T[language] || T.zh;
+  const t = T[language] || T.en;
   const lang = language || "zh";
   const [selected, setSelected] = useState("all");
 

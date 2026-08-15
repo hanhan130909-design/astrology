@@ -59,8 +59,8 @@ const labels: Record<string, { back: string }> = {
 
 export default function AIPage() {
   const { language } = useLanguage();
-  const t = T[language] || T.zh;
-  const l = labels[language] || labels.zh;
+  const t = T[language] || T.en;
+  const l = labels[language] || labels.en;
 
   return (
     <div className="min-h-screen bg-white text-[#171717]">

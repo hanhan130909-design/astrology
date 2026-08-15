@@ -110,7 +110,7 @@ const LESSONS: LessonData[] = [
 
 // Localization helpers
 function getLocalizedText(obj: Record<string, string>, lang: string, fallback: string = ""): string {
-  return obj?.[lang] || obj?.zh || Object.values(obj)?.[0] || fallback;
+  return obj?.[lang] || obj?.en || Object.values(obj)?.[0] || fallback;
 }
 
 function getLocalizedCourse(course: CourseData, lang: string) {
@@ -136,8 +136,8 @@ function getLevelColor(level: string) {
 
 export default function AcademyPage() {
   const { language } = useLanguage();
-  const t = LABELS[language] || LABELS.zh;
-  const levelLabels = LEVEL_LABELS[language] || LEVEL_LABELS.zh;
+  const t = LABELS[language] || LABELS.en;
+  const levelLabels = LEVEL_LABELS[language] || LEVEL_LABELS.en;
   const [activeTab, setActiveTab] = useState<"my" | "all">("my");
   const [selectedCourse, setSelectedCourse] = useState<CourseData | null>(null);
   const [filterLevel, setFilterLevel] = useState<"all" | "beginner" | "intermediate" | "advanced">("all");

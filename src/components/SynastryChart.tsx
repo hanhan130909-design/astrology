@@ -202,8 +202,8 @@ function getAspectMeaning(type: string, lang: string): { love: string; career: s
 }
 
 export default function SynastryChart({ language = "zh" }: SynastryProps) {
-  const t = translations[language as keyof typeof translations] || translations.zh;
-  const g = (obj: Record<string, string>) => obj[language] || obj.zh || obj.id || obj.en;
+  const t = translations[language as keyof typeof translations] || translations.en;
+  const g = (obj: Record<string, string>) => obj[language] || obj.en || obj.id || obj.zh;
 
   const [p1, setP1] = useState({name:"", year:"1990",month:"6",day:"15",hour:"12",minute:"0",city:"beijing"});
   const [p2, setP2] = useState({name:"", year:"1992",month:"3",day:"20",hour:"10",minute:"0",city:"jakarta"});
@@ -484,7 +484,7 @@ export default function SynastryChart({ language = "zh" }: SynastryProps) {
               </h3>
               {(() => {
                 const readingLevel = score >= 70 ? 'high' : score >= 50 ? 'medium' : 'low';
-                const reading = SYNASTRY_AI_READINGS[language]?.[readingLevel] || SYNASTRY_AI_READINGS.zh[readingLevel];
+                const reading = SYNASTRY_AI_READINGS[language]?.[readingLevel] || SYNASTRY_AI_READINGS.en[readingLevel];
                 return (
                   <div className="p-4 rounded-xl bg-white border border-gray-100">
                     <p className="text-gray-700 text-sm mb-2">{reading.summary}</p>

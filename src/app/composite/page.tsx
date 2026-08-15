@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
@@ -31,7 +31,7 @@ const HOUSE_SYSTEMS = [
 
 function tx(obj: any, lang: string): string {
   if (typeof obj === 'string') return obj;
-  return obj?.[lang] || obj?.zh || obj?.en || obj?.id || '';
+  return obj?.[lang] || obj?.en || obj?.zh || obj?.id || '';
 }
 
 const LABELS: Record<string, Record<string, string>> = {

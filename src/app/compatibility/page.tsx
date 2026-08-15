@@ -41,9 +41,9 @@ const FEATURES: Record<string, string[]> = {
 export default function CompatibilityPage() {
   const { language } = useLanguage();
   const lang = language || "zh";
-  const t = T[lang] || T.zh;
-  const feats = FEATURES[lang] || FEATURES.zh;
-  const zodiacs = ZODIAC[lang] || ZODIAC.zh;
+  const t = T[lang] || T.en;
+  const feats = FEATURES[lang] || FEATURES.en;
+  const zodiacs = ZODIAC[lang] || ZODIAC.en;
   const slugs = ["aries","taurus","gemini","cancer","leo","virgo","libra","scorpio","sagittarius","capricorn","aquarius","pisces"];
 
   return (

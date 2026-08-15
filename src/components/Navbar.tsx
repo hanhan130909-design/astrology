@@ -32,7 +32,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const { language, setLanguage, t: tx } = useLanguage();
   const { user, logout } = useAuth();
-  const t = T[language] || T.zh;
+  const t = T[language] || T.en;
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {

@@ -17,7 +17,7 @@ export default function SwissEphemerisPage() {
     ja: { title: "スイス・エフェメリス", subtitle: "プロフェッショナル天文学計算エンジン" },
     ko: { title: "스위스 천문학력", subtitle: "전문 천문학 계산 엔진" }};
 
-  const t = titles[language] || titles.zh;
+  const t = titles[language] || titles.en;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#f8fafc] via-[#1a1a3a] to-[#f8fafc] text-white">

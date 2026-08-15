@@ -89,7 +89,7 @@ export default function ChartOptions({
   const { language } = useLanguage();
   const lang = language || "zh";
 
-  const g = (obj: Record<string, string>) => obj[lang] || obj.zh || obj.en;
+  const g = (obj: Record<string, string>) => obj[lang] || obj.en || obj.zh;
 
   return (
     <div className="space-y-4">

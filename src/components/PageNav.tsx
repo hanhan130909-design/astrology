@@ -16,7 +16,7 @@ const translations: Record<string, Record<string, string>> = {
 
 export default function PageNav({ title, subtitle }: PageNavProps) {
   const { language, setLanguage } = useLanguage();
-  const t = translations[language] || translations.zh;
+  const t = translations[language] || translations.en;
 
   return (
     <nav className="sticky top-0 z-50 backdrop-blur-md bg-[#0a0a1a]/90 border-b border-gray-900/30">

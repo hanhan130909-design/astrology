@@ -53,7 +53,7 @@ export function AuthModal({
     needEmailCode: { zh: "使用邮箱验证码", en: "Use email code", id: "Gunakan kode email" },
   };
 
-  const g = (obj: Record<string, string>) => obj[language] || obj.zh;
+  const g = (obj: Record<string, string>) => obj[language] || obj.en;
 
   if (!isOpen) return null;
 
@@ -286,7 +286,7 @@ export function UserMenu() {
     logout: { zh: "退出", id: "Keluar", en: "Logout" }
   };
 
-  const g = (obj: Record<string, string>) => obj[language] || obj.zh;
+  const g = (obj: Record<string, string>) => obj[language] || obj.en;
 
   if (!isConfigured) {
     return null;

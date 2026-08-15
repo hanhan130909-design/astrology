@@ -19,7 +19,7 @@ const text: Record<string, { title: string; desc: string; btn: string }> = {
 
 export default function InstallPrompt() {
   const { language } = useLanguage();
-  const t = text[language] || text.zh;
+  const t = text[language] || text.en;
   const [show, setShow] = useState(false);
   const [deferred, setDeferred] = useState<any>(null);
 

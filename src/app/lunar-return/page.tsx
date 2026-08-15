@@ -134,7 +134,7 @@ const ASPECT_COLORS: Record<string, string> = {
 export default function LunarReturnPage() {
   const { language } = useLanguage();
   const lang = language || 'zh';
-  const labels = LABELS[lang] || LABELS.zh;
+  const labels = LABELS[lang] || LABELS.en;
 
   const [form, setForm] = useState({ cityId: 'jakarta', year: 1990, month: 6, day: 15, hour: 12, minute: 0 });
   const [birthLocation, setBirthLocation] = useState({ lat: CITIES[0].lat, lng: CITIES[0].lng, tz: CITIES[0].tz, name: '' });
@@ -210,7 +210,7 @@ export default function LunarReturnPage() {
     setForm({ ...form, cityId });
     const next = CITIES.find(c => c.id === cityId);
     if (!next) return;
-    setBirthLocation({ lat: next.lat, lng: next.lng, tz: next.tz, name: next.name[lang] || next.name.zh });
+    setBirthLocation({ lat: next.lat, lng: next.lng, tz: next.tz, name: next.name[lang] || next.name.en });
   };
 
   // 获取月返时月亮所在的星座主题
@@ -219,7 +219,7 @@ export default function LunarReturnPage() {
     const moonSign = result.lunarReturn.planets.Moon.sign as keyof typeof MOON_THEMES;
     const themes = MOON_THEMES[moonSign];
     if (!themes) return null;
-    return (themes as any)[lang] || themes.zh;
+    return (themes as any)[lang] || themes.en;
   };
 
   const moonTheme = getMoonTheme();
@@ -260,7 +260,7 @@ export default function LunarReturnPage() {
               >
                 {form.cityId === 'latest-profile' && <option value="latest-profile">{birthLocation.name || '已保存地点'}</option>}
                 {CITIES.map(c => (
-                  <option key={c.id} value={c.id}>{c.name[lang as keyof typeof c.name] || c.name.zh}</option>
+                  <option key={c.id} value={c.id}>{c.name[lang as keyof typeof c.name] || c.name.en}</option>
                 ))}
               </select>
             </div>

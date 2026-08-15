@@ -92,7 +92,7 @@ const courses = [
 export default function LearnPage() {
   const { language } = useLanguage();
   const lang = language || "zh";
-  const t = T[lang] || T.zh;
+  const t = T[lang] || T.en;
   const pdata = PLANET_DATA[lang as keyof typeof PLANET_DATA] || PLANET_DATA.en;
   const [selectedPlanet, setSelectedPlanet] = useState("Sun");
   const [showBaziGlossary, setShowBaziGlossary] = useState(false);

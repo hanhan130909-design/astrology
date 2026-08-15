@@ -50,7 +50,7 @@ function getText(obj: unknown, lang: string, fallback = ""): string {
   if (typeof obj === "string") return obj;
   if (obj && typeof obj === "object") {
     const r = obj as Record<string, string>;
-    return r[lang] || r.zh || r.en || fallback;
+    return r[lang] || r.en || r.zh || fallback;
   }
   return fallback;
 }
@@ -93,7 +93,7 @@ export async function GET(request: NextRequest) {
       author: getText(p.author, lang),
       tags: getText(p.tags, lang).split(","),
     })),
-    categories: CATEGORIES[lang] || CATEGORIES.zh,
+    categories: CATEGORIES[lang] || CATEGORIES.en,
     pagination: { page, limit, total: filtered.length, totalPages: Math.ceil(filtered.length / limit) },
   });
 }
