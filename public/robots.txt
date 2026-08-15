@@ -1,4 +1,4 @@
-﻿# robots.txt for 星缘# https://lunaxstar.com
+# robots.txt for 星缘 (lunaxstar.com)
 
 User-agent: *
 Allow: /
@@ -26,4 +26,3 @@ Crawl-delay: 1
 User-agent: Baiduspider
 Allow: /
 Crawl-delay: 1
-

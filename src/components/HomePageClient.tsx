@@ -79,7 +79,7 @@ const features = [
 
 export default function HomePage() {
   const { language } = useLanguage();
-  const t = T[language] || T.zh;
+  const t = T[language] || T.en;
   const lang = language || "zh";
 
   return (

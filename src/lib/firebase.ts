@@ -7,6 +7,9 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  signInWithRedirect,
+  setPersistence,
+  browserLocalPersistence,
   signOut,
   sendPasswordResetEmail,
   onAuthStateChanged,
@@ -161,8 +164,16 @@ export async function loginWithEmail(email: string, password: string): Promise<F
   return userCredential.user;
 }
 
-export async function loginWithGoogle(language: 'zh' | 'en' | 'id' | 'th' | 'vi' | 'ms' | 'ja' | 'ko' = 'zh'): Promise<UserProfile> {
+export async function loginWithGoogle(language: 'zh' | 'en' | 'id' | 'th' | 'vi' | 'ms' | 'ja' | 'ko' = 'zh'): Promise<UserProfile | null> {
   if (!auth || !db) throw new Error("Firebase not configured");
+
+  // 移动端：弹窗会被拦截，改用 redirect（页面刷新后由 onAuthStateChanged 恢复登录态）
+  const isMobile = typeof navigator !== 'undefined' && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if (isMobile) {
+    await setPersistence(auth, browserLocalPersistence);
+    await signInWithRedirect(auth, googleProvider);
+    return null; // redirect 会刷新页面，user 由 onAuthStateChanged 返回
+  }
 
   const userCredential = await signInWithPopup(auth, googleProvider);
   const user = userCredential.user;
@@ -321,7 +332,7 @@ export async function addComment(
   await addDoc(collection(db, 'comments'), {
     postId, authorId, authorName, authorPhoto, content, createdAt: Timestamp.now()
   });
-  await updateDoc(doc(db, 'posts', postId), { commentsCount: 1 });
+  await updateDoc(doc(db, 'posts', postId), { commentsCount: increment(1) });
 }
 
 export async function getComments(postId: string): Promise<any[]> {

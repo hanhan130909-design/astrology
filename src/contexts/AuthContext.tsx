@@ -248,6 +248,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const firebase = await loadAuthFirebaseClient();
       if (firebase.isFirebaseConfigured) {
         const firebaseProfile = await firebase.loginWithGoogle(language as UserProfile["language"]);
+        if (!firebaseProfile) {
+          // 移动端 redirect：页面即将刷新，登录态由 onAuthStateChanged 恢复
+          return { success: true };
+        }
         const local = toLocalProfile(firebaseProfile);
         setUser(local);
         setProfile(local);

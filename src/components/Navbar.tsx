@@ -30,7 +30,7 @@ const LANGUAGES = [
 
 export default function Navbar() {
   const pathname = usePathname();
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage, t: tx } = useLanguage();
   const { user, logout } = useAuth();
   const t = T[language] || T.zh;
   const [isDark, setIsDark] = useState(false);
@@ -57,7 +57,7 @@ export default function Navbar() {
     { name: t.horoscope, href: "/horoscope" },
     { name: t.natal, href: "/natal" },
     { name: t.bazi, href: "/bazi" },
-    { name: t.qimen || "奇门", href: "/qimen" },
+    { name: t.qimen || "QiMen", href: "/qimen" },
     { name: t.strategy, href: "/methodology" },
     { name: t.compatibility, href: "/compatibility" },
     { name: t.ai, href: "/ai-reading" },
@@ -142,10 +142,10 @@ export default function Navbar() {
           {user ? (
             <div className="flex items-center gap-2 shrink-0">
               <Link href="/profile" className="text-xs font-medium text-gray-600 hover:text-[#171717] no-underline">{user.displayName || user.email}</Link>
-              <button onClick={logout} className="text-xs text-gray-400 hover:text-[#171717]">退出</button>
+              <button onClick={logout} className="text-xs text-gray-400 hover:text-[#171717]">{tx("auth.logout")}</button>
             </div>
           ) : (
-            <Link href="/login" className="text-xs font-medium text-gray-400 hover:text-[#171717] no-underline shrink-0">登录</Link>
+            <Link href="/login" className="text-xs font-medium text-gray-400 hover:text-[#171717] no-underline shrink-0">{tx("auth.login")}</Link>
           )}
 
           {/* Mobile hamburger */}

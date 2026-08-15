@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
@@ -350,9 +350,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const saved = localStorage.getItem('language') as Language;
-    if (saved && ['zh', 'en', 'id', 'th', 'vi', 'ms', 'ja', 'ko'].includes(saved)) {
-      setLanguageState(saved);
-    }
+    const next = (saved && ['zh', 'en', 'id', 'th', 'vi', 'ms', 'ja', 'ko'].includes(saved)) ? saved : 'zh';
+    setLanguageState(next);
+    document.documentElement.lang = next;
   }, []);
 
   const setLanguage = (lang: Language) => {
