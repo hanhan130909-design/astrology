@@ -1,5 +1,12 @@
 # FOR_NEXT_AGENT.md — Lunaxstar 占星网站 · 接手指南
 
+> ⚠️ **当前状态（2026-08-15 更新）**：以下「已知 Bug」多数已修复：
+> - Google 登录 → 已修（移动端 redirect）；默认登录已改为邮箱验证码
+> - 「两组 Firebase 配置」→ 已解决：以 `astrology-f32f2` 为准，密钥迁入 Vercel Dashboard 加密环境变量
+> - compare/consultation → 已补齐 8 语言（文档中「只有三语」已过时）
+> - 全站 i18n 回退 → 统一 en 优先于 zh
+> 下方为历史记录，仅供参考。
+
 **仓库**: https://github.com/hanhan130909-design/astrology.git
 **生产域名**: https://lunaxstar.com
 **技术栈**: Next.js 15 + Firebase + astronomy-engine
