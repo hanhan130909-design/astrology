@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef, useCallback } from "react";
-import html2canvas from "html2canvas";
 import { X, Download, Copy, Share2, Sparkles } from "lucide-react";
 
 interface BirthInfo {
@@ -111,6 +110,7 @@ export default function ShareCard({
   const handleSaveImage = useCallback(async () => {
     if (!cardRef.current) return;
     try {
+      const { default: html2canvas } = await import("html2canvas");
       const canvas = await html2canvas(cardRef.current, {
         backgroundColor: null,
         scale: 2,

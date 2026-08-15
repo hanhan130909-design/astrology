@@ -2,8 +2,6 @@
 
 import { useState, useRef } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
 import { Download, FileText, Loader2, Share2 } from "lucide-react";
 
 interface PDFExportProps {
@@ -125,6 +123,7 @@ export function PDFExport({ chartData, birthInfo, element }: PDFExportProps) {
     setIsGenerating(true);
     
     try {
+      const { default: jsPDF } = await import("jspdf");
       const pdf = new jsPDF("p", "mm", "a4");
       const pageWidth = pdf.internal.pageSize.getWidth();
       const pageHeight = pdf.internal.pageSize.getHeight();
@@ -245,6 +244,8 @@ export function PDFExport({ chartData, birthInfo, element }: PDFExportProps) {
     setIsGenerating(true);
     
     try {
+      const { default: html2canvas } = await import("html2canvas");
+      const { default: jsPDF } = await import("jspdf");
       const canvas = await html2canvas(element, {
         scale: 2,
         useCORS: true,

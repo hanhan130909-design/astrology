@@ -6,7 +6,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { useAuth } from '@/contexts/AuthContext';
 import { Users, Heart, Star, ChevronDown, Save, Share2, Download, Sparkles, Loader2 } from 'lucide-react';
 import { saveCompositeChart } from '@/lib/firebase';
-import html2canvas from 'html2canvas';
+
 import ProfessionalNatalChart from '@/components/ProfessionalNatalChart';
 import DualChart from '@/components/DualChart';
 
@@ -208,6 +208,7 @@ export default function CompositePage() {
 
   const handleDownload = async () => {
     if (!chartRef.current) return;
+    const { default: html2canvas } = await import('html2canvas');
     const canvas = await html2canvas(chartRef.current, { backgroundColor: '#f9fafb' });
     const link = document.createElement('a');
     link.download = 'composite-chart.png';
