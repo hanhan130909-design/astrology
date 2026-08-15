@@ -336,3 +336,50 @@ export const PALACE_META = GUA.map((gua, i) => ({
   direction: DIRECTION[i],
   branch: PRIMARY_BRANCH[i],
 }));
+
+// ============================================================
+// 后天八卦卦象（点击宫位详情用）
+// ============================================================
+const GUA_INFO: Record<string, Record<string, string>> = {
+  巽: { xiang: "风", family: "长女", body: "股", animal: "鸡", season: "春夏之交", meaning: "入、柔、顺" },
+  离: { xiang: "火", family: "中女", body: "目", animal: "雉", season: "夏", meaning: "丽、明、光" },
+  坤: { xiang: "地", family: "母", body: "腹", animal: "牛", season: "夏秋之交", meaning: "顺、柔、承载" },
+  震: { xiang: "雷", family: "长男", body: "足", animal: "龙", season: "春", meaning: "动、奋、起" },
+  兑: { xiang: "泽", family: "少女", body: "口", animal: "羊", season: "秋", meaning: "悦、说、缺" },
+  艮: { xiang: "山", family: "少男", body: "手", animal: "狗", season: "冬春之交", meaning: "止、静、阻" },
+  坎: { xiang: "水", family: "中男", body: "耳", animal: "豕", season: "冬", meaning: "陷、险、隐" },
+  乾: { xiang: "天", family: "父", body: "首", animal: "马", season: "秋冬之交", meaning: "健、刚、君" },
+};
+
+export function getGuaInfo(gua: string): Record<string, string> {
+  return GUA_INFO[gua] || {};
+}
+
+// ============================================================
+// 十干克应格局（天盘干 + 地盘干 → 格局名/吉凶/断语）
+// ============================================================
+const SHIGAN_KEYING: Record<string, { name: string; ji: string; desc: string }> = {
+  戊丙: { name: "青龙返首", ji: "大吉", desc: "谋为皆吉，百事顺遂" },
+  丙戊: { name: "飞鸟跌穴", ji: "大吉", desc: "百事可为，谋事易成" },
+  戊乙: { name: "青龙合灵", ji: "吉", desc: "阴阳和合，谋事可成" },
+  乙戊: { name: "阴害阳门", ji: "凶", desc: "阴害阳，宜守不宜攻" },
+  庚丙: { name: "太白入荧", ji: "凶", desc: "防盗贼，不宜远行" },
+  丙庚: { name: "荧入太白", ji: "凶", desc: "防盗，谋事不利" },
+  丁癸: { name: "朱雀投江", ji: "凶", desc: "文书口舌，防是非" },
+  癸丁: { name: "螣蛇夭矫", ji: "凶", desc: "虚惊怪异，防口舌" },
+  辛乙: { name: "白虎猖狂", ji: "凶", desc: "出行不利，防意外" },
+  乙辛: { name: "青龙逃走", ji: "凶", desc: "防走失，奴仆拐带" },
+  庚癸: { name: "大格", ji: "凶", desc: "谋事不成，宜静不宜动" },
+  庚壬: { name: "小格", ji: "凶", desc: "谋事不利，有阻隔" },
+  乙庚: { name: "日奇被刑", ji: "凶", desc: "争讼财产，防刑伤" },
+  丙辛: { name: "月奇相合", ji: "吉", desc: "谋事可成，合作有利" },
+  戊辛: { name: "青龙折足", ji: "凶", desc: "防破财损失" },
+  戊壬: { name: "青龙入狱", ji: "凶", desc: "凡谋不利，有阻" },
+  丁戊: { name: "青龙转光", ji: "吉", desc: "贵人相助，谋事可成" },
+  戊丁: { name: "青龙耀明", ji: "吉", desc: "谒贵求名，谋事可成" },
+};
+
+export function getGeJu(tianGan: string, diGan: string): { name: string; ji: string; desc: string } | null {
+  if (!tianGan || !diGan) return null;
+  return SHIGAN_KEYING[tianGan + diGan] || null;
+}

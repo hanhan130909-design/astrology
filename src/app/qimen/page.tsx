@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo, useCallback } from "react";
-import { calcQiMen, PALACE_META } from "@/lib/qimenCalc";
+import { calcQiMen, PALACE_META, getGuaInfo, getGeJu } from "@/lib/qimenCalc";
 
 // 八神颜色
 const GOD_COLOR: Record<string, string> = {
@@ -166,17 +166,53 @@ export default function QiMenPage() {
         {/* 宫位详情 */}
         {sel !== null && (() => {
           const pl = PALACE_META[sel];
+          const gua = getGuaInfo(pl.gua);
+          const geJu = getGeJu(c.tianPan[sel], c.diPan[sel]);
+          const condList = c.conds[sel] || [];
           return (
-            <div className="mb-3 p-3 bg-gray-50 rounded-xl border border-gray-200 text-xs">
-              <div className="font-semibold mb-2">{pl.trigram} {pl.gua}宫（洛书{pl.luoshu}）· {pl.element} · {pl.direction}方</div>
-              <div className="grid grid-cols-3 gap-2">
+            <div className="mb-3 p-3 bg-gray-50 rounded-xl border border-gray-200 text-xs space-y-2.5">
+              {/* 卦象 */}
+              <div>
+                <div className="font-semibold mb-1">
+                  {pl.trigram} {pl.gua}宫（洛书{pl.luoshu}）· {gua.xiang || "中"} · {pl.element} · {pl.direction}方
+                </div>
+                {pl.gua !== "中" ? (
+                  <div className="text-gray-500 leading-relaxed">
+                    卦象 <b className="text-gray-700">{gua.xiang}</b>
+                    <span className="mx-1.5">·</span>象征「{gua.meaning}」
+                    <span className="mx-1.5">·</span>家庭 {gua.family}
+                    <span className="mx-1.5">·</span>身体 {gua.body}
+                    <span className="mx-1.5">·</span>动物 {gua.animal}
+                    <span className="mx-1.5">·</span>季节 {gua.season}
+                  </div>
+                ) : (
+                  <div className="text-gray-400">中宫无卦，寄坤宫（天禽寄二宫）</div>
+                )}
+              </div>
+
+              {/* 格局（十干克应） */}
+              <div className="border-t border-gray-200 pt-2">
+                {geJu ? (
+                  <div>
+                    <span className="text-gray-400">格局（{c.tianPan[sel]}+{c.diPan[sel]}）：</span>
+                    <b className={geJu.ji.includes("凶") ? "text-red-600" : "text-emerald-600"}>{geJu.name}</b>
+                    <span className={`ml-1 ${geJu.ji.includes("凶") ? "text-red-400" : "text-emerald-500"}`}>（{geJu.ji}）</span>
+                    <div className="text-gray-500 mt-0.5">{geJu.desc}</div>
+                  </div>
+                ) : (
+                  <div className="text-gray-400">格局（{c.tianPan[sel] || "—"}+{c.diPan[sel] || "—"}）：—</div>
+                )}
+              </div>
+
+              {/* 神星门 */}
+              <div className="grid grid-cols-3 gap-2 border-t border-gray-200 pt-2">
                 <div>神: <b className="text-purple-600">{c.gods[sel] || "—"}</b></div>
                 <div>星: <b className="text-blue-600">{c.stars[sel] || "—"}</b><span className="text-gray-400 ml-0.5">{c.starJixiong[sel] && `(${c.starJixiong[sel]})`}</span></div>
                 <div>门: <b className="text-red-600">{c.doors[sel] || "—"}</b><span className="text-gray-400 ml-0.5">{c.doorJixiong[sel] && `(${c.doorJixiong[sel]})`}</span></div>
                 <div>天盘干: <b>{c.tianPan[sel] || "—"}</b></div>
                 <div>地盘干: <b>{c.diPan[sel] || "—"}</b></div>
                 <div>长生: {c.changSheng[sel] || "—"}</div>
-                <div className="col-span-3">状态: {(c.conds[sel] || []).join(" + ") || "正常"}</div>
+                <div className="col-span-3">状态: {condList.join(" + ") || "正常"}</div>
               </div>
             </div>
           );
