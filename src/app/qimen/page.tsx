@@ -5,6 +5,22 @@ import { calcQiMen, PALACE_META, STAR_ORIGINAL, DOOR_ORIGINAL, getGuaInfo, getGe
 
 type View = "合" | "地" | "天" | "人" | "神";
 
+// 十二时辰（每时辰 2 小时，取该时辰起始小时）
+const SHICHEN: { label: string; start: number; range: string }[] = [
+  { label: "子时", start: 23, range: "23-01" },
+  { label: "丑时", start: 1, range: "01-03" },
+  { label: "寅时", start: 3, range: "03-05" },
+  { label: "卯时", start: 5, range: "05-07" },
+  { label: "辰时", start: 7, range: "07-09" },
+  { label: "巳时", start: 9, range: "09-11" },
+  { label: "午时", start: 11, range: "11-13" },
+  { label: "未时", start: 13, range: "13-15" },
+  { label: "申时", start: 15, range: "15-17" },
+  { label: "酉时", start: 17, range: "17-19" },
+  { label: "戌时", start: 19, range: "19-21" },
+  { label: "亥时", start: 21, range: "21-23" },
+];
+
 // 热卜配色：白底，深灰文字，青色星(#0dc2b3)，红色门
 const STAR_TEAL = "#0dc2b3";
 const GATE_COLOR: Record<string, string> = {
@@ -46,9 +62,34 @@ export default function QiMenPage() {
     { l: "时柱", v: c.timePillar, k: c.kongWang[3] },
   ];
 
+  const maxDay = new Date(Y, M, 0).getDate();
+  const shiIdx = Math.floor(((H + 1) % 24) / 2);
+
   return (
     <div className="min-h-screen text-[#333]" style={{ background: "#f6f6f6" }}>
       <main className="max-w-[520px] mx-auto px-4 py-4" style={{ background: "#ffffff" }}>
+
+        {/* 起盘（选时间） */}
+        <div className="flex items-center gap-1.5 mb-3 p-2 rounded-lg" style={{ background: "#f6f6f6" }}>
+          <input type="number" value={Y} min={1900} max={2100}
+            onChange={(e) => setY(Number(e.target.value) || 2026)}
+            className="w-[66px] px-1.5 py-1 rounded border border-[#ddd] text-[13px] text-center" />
+          <span className="text-[11px] text-[#999] shrink-0">年</span>
+          <select value={M} onChange={(e) => { const m = Number(e.target.value); setM(m); const mx = new Date(Y, m, 0).getDate(); if (D > mx) setD(mx); }}
+            className="px-1 py-1 rounded border border-[#ddd] text-[13px]">
+            {Array.from({ length: 12 }, (_, i) => i + 1).map((m) => <option key={m} value={m}>{m}月</option>)}
+          </select>
+          <select value={Math.min(D, maxDay)} onChange={(e) => setD(Number(e.target.value))}
+            className="px-1 py-1 rounded border border-[#ddd] text-[13px]">
+            {Array.from({ length: maxDay }, (_, i) => i + 1).map((d) => <option key={d} value={d}>{d}日</option>)}
+          </select>
+          <select value={SHICHEN[shiIdx].start} onChange={(e) => setH(Number(e.target.value))}
+            className="px-1 py-1 rounded border border-[#ddd] text-[13px]">
+            {SHICHEN.map((s) => <option key={s.label} value={s.start}>{s.label}时 {s.range}</option>)}
+          </select>
+          <button onClick={() => { const n = new Date(); setY(n.getFullYear()); setM(n.getMonth() + 1); setD(n.getDate()); setH(n.getHours()); }}
+            className="ml-auto px-2.5 py-1 rounded text-[12px] text-white shrink-0" style={{ background: "#0dc2b3" }}>现在</button>
+        </div>
 
         {/* 盘式 */}
         <Section label="盘式">
