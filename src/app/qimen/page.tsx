@@ -5,32 +5,21 @@ import { calcQiMen, PALACE_META, STAR_ORIGINAL, DOOR_ORIGINAL, getGuaInfo, getGe
 
 type View = "合" | "地" | "天" | "人" | "神";
 
-// 八神颜色
-const GOD_COLOR: Record<string, string> = {
-  值符: "text-rose-600", 螣蛇: "text-orange-500", 太阴: "text-indigo-500",
-  六合: "text-emerald-600", 勾陈: "text-gray-600", 白虎: "text-gray-600",
-  朱雀: "text-red-500", 玄武: "text-blue-600", 九地: "text-amber-600", 九天: "text-sky-600",
-};
-// 八门颜色
+// 热卜配色：白底，深灰文字，青色星(#0dc2b3)，红色门
+const STAR_TEAL = "#0dc2b3";
 const GATE_COLOR: Record<string, string> = {
-  生门: "text-emerald-600", 死门: "text-gray-400", 开门: "text-amber-600",
-  休门: "text-blue-600", 景门: "text-red-500", 惊门: "text-orange-600",
-  伤门: "text-rose-600", 杜门: "text-teal-600",
+  生门: "#e0392f", 死门: "#666666", 开门: "#e0392f",
+  休门: "#e0392f", 景门: "#e0392f", 惊门: "#e0392f",
+  伤门: "#e0392f", 杜门: "#e0392f",
 };
-// 五行颜色
-const ELEMENT_COLOR: Record<string, string> = {
-  木: "text-emerald-600", 火: "text-red-600", 土: "text-amber-600",
-  金: "text-gray-500", 水: "text-blue-600",
-};
+const THREE_QI = new Set(["乙", "丙", "丁"]);
 
-const THREE_QI = new Set(["乙", "丙", "丁"]); // 三奇
-
-const TABS: { id: View; label: string; desc: string }[] = [
-  { id: "合", label: "综合", desc: "神·星·门·干 叠加" },
-  { id: "地", label: "地盘", desc: "三奇六仪 · 星门本位" },
-  { id: "天", label: "天盘", desc: "九星 · 天盘干" },
-  { id: "人", label: "人盘", desc: "八门落宫" },
-  { id: "神", label: "神盘", desc: "八神落宫" },
+const TABS: { id: View; label: string }[] = [
+  { id: "合", label: "综合" },
+  { id: "地", label: "地盘" },
+  { id: "天", label: "天盘" },
+  { id: "人", label: "人盘" },
+  { id: "神", label: "神盘" },
 ];
 
 export default function QiMenPage() {
@@ -58,91 +47,91 @@ export default function QiMenPage() {
   ];
 
   return (
-    <div className="min-h-screen text-[#1f2937]" style={{ background: "#faf8f4" }}>
-      <main className="max-w-[460px] mx-auto px-4 py-5">
+    <div className="min-h-screen text-[#333]" style={{ background: "#f6f6f6" }}>
+      <main className="max-w-[520px] mx-auto px-4 py-4" style={{ background: "#ffffff" }}>
 
-        {/* ── 头部 ── */}
-        <header className="text-center mb-3">
-          <div className="inline-flex items-center gap-2 text-[11px] text-gray-400 mb-2">
-            <span className="h-px w-6 bg-gray-300" />
-            奇门遁甲 · 转盘排盘
-            <span className="h-px w-6 bg-gray-300" />
-          </div>
-          <h1 className="text-lg font-semibold tracking-wide mb-1">{c.yinYang}遁{c.ju}局</h1>
-          <p className="text-[13px] text-gray-700">{Y}年{String(M).padStart(2, "0")}月{String(D).padStart(2, "0")}日 {String(H).padStart(2, "0")}时00分</p>
-          <p className="text-[11px] text-gray-400 mt-0.5">{c.lunarText} · {c.yearPillar}年</p>
-          <p className="text-[10px] text-gray-400 mt-0.5">
-            <span className="text-gray-500">{c.prevJqText.split(" ")[0]} <b className="text-gray-600">{c.prevJqText.split(" ")[1]}</b></span>
-            <span className="mx-1 text-gray-300">|</span>
-            <span className="text-gray-500">{c.nextJqText.split(" ")[0]} <b className="text-gray-600">{c.nextJqText.split(" ")[1]}</b></span>
-          </p>
-        </header>
+        {/* 盘式 */}
+        <Section label="盘式">
+          <span className="text-[13px] font-medium text-[#333]">转盘奇门-寄坤宫-拆补-值使门起</span>
+        </Section>
 
-        {/* ── 四柱 ── */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden mb-3">
-          <table className="w-full text-center text-xs">
+        {/* 日期 */}
+        <Section label="日期">
+          <span className="text-[13px] text-[#333]">
+            {Y}年{String(M).padStart(2, "0")}月{String(D).padStart(2, "0")}日 {String(H).padStart(2, "0")}时00分
+            <span className="text-gray-400">（{c.lunarText}）</span>
+          </span>
+        </Section>
+
+        {/* 四柱 */}
+        <div className="mt-3 border border-[#eee] rounded-lg overflow-hidden">
+          <table className="w-full text-center text-[12px]">
             <thead>
-              <tr className="bg-gray-50/80 border-b border-gray-100">
-                <th className="py-2 text-gray-400 font-normal w-[18%]">四柱</th>
-                {pillars.map((x) => (
-                  <th key={x.l} className="py-2 text-gray-500 font-normal">{x.l}</th>
-                ))}
+              <tr className="bg-[#f5f5f5] border-b border-[#eee]">
+                <th className="py-1.5 text-[#999] font-normal w-[15%]">四柱</th>
+                {pillars.map((x) => <th key={x.l} className="py-1.5 text-[#666] font-normal">{x.l}</th>)}
               </tr>
             </thead>
             <tbody>
-              <tr className="border-b border-gray-50">
-                <td className="py-2 text-gray-400">干支</td>
-                {pillars.map((x) => (
-                  <td key={x.l} className="py-2 font-semibold text-[14px] tracking-wide">{x.v}</td>
-                ))}
+              <tr className="border-b border-[#f0f0f0]">
+                <td className="py-1.5 text-[#999]">干支</td>
+                {pillars.map((x) => <td key={x.l} className="py-1.5 font-semibold text-[#333]">{x.v}</td>)}
               </tr>
               <tr>
-                <td className="py-2 text-gray-400">空亡</td>
-                {pillars.map((x) => (
-                  <td key={x.l} className="py-2 text-gray-400 text-[11px]">{x.k || "—"}</td>
-                ))}
+                <td className="py-1.5 text-[#999]">空亡</td>
+                {pillars.map((x) => <td key={x.l} className="py-1.5 text-[#999]">{x.k || "—"}</td>)}
               </tr>
             </tbody>
           </table>
         </div>
 
-        {/* ── 局数信息徽章 ── */}
-        <div className="flex flex-wrap justify-center gap-1.5 mb-3">
-          <Badge label={`${c.jieQi} · ${c.yuan}`} tone="gray" />
-          <Badge label={`旬首 ${c.xunShou}${c.fuShou}`} tone="gray" />
-          <Badge label={`值符 ${c.zhiFuStar}`} tone="red" />
-          <Badge label={`值使 ${c.zhiShiDoor}`} tone="red" />
-          <Badge label={`马星 ${c.maStar}`} tone="blue" />
-          <Badge label={`天禽寄${c.tianQinDir}`} tone="gray" />
-          {c.fuYin && <Badge label="伏吟" tone="red" />}
-          {c.fanYin && <Badge label="反吟" tone="red" />}
-        </div>
+        {/* 节气 */}
+        <Section label="节气">
+          <span className="text-[13px] text-[#333]">
+            <span className="text-[#666]">{c.prevJqText.split(" ")[0]}</span> <b>{c.prevJqText.split(" ")[1]}</b>
+            <span className="mx-2 text-[#ccc]">|</span>
+            <span className="text-[#666]">{c.nextJqText.split(" ")[0]}</span> <b>{c.nextJqText.split(" ")[1]}</b>
+          </span>
+        </Section>
 
-        {/* ── 盘式切换 ── */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-1.5 mb-3">
-          <div className="grid grid-cols-5 gap-1">
-            {TABS.map((t) => (
-              <button key={t.id}
-                onClick={() => setView(t.id)}
-                className={`py-1.5 rounded-lg text-[12px] font-medium transition-colors ${
-                  view === t.id ? "bg-gray-900 text-white" : "text-gray-500 hover:bg-gray-100"
-                }`}>
-                {t.label}
-              </button>
+        {/* 旬首/局数/值符/值使/马星 */}
+        <div className="mt-3">
+          <div className="grid grid-cols-5 gap-1 text-center">
+            {["旬首", "局数", "值符", "值使", "马星"].map((l) => (
+              <div key={l} className="text-[11px] text-[#999]">{l}</div>
             ))}
           </div>
-          <p className="text-center text-[10px] text-gray-400 mt-1.5">{TABS.find((t) => t.id === view)?.desc}</p>
+          <div className="grid grid-cols-5 gap-1 text-center mt-0.5">
+            <div className="text-[13px] font-medium text-[#333]">{c.xunShou}{c.fuShou}</div>
+            <div className="text-[13px] font-medium text-[#333]">{c.yuan}{c.yinYang}{c.ju}</div>
+            <div className="text-[13px] font-medium" style={{ color: STAR_TEAL }}>{c.zhiFuStar}</div>
+            <div className="text-[13px] font-medium text-[#e0392f]">{c.zhiShiDoor}</div>
+            <div className="text-[13px] font-medium text-[#333]">{c.maStar}</div>
+          </div>
+          {(c.fuYin || c.fanYin) && (
+            <div className="text-center text-[11px] text-[#e0392f] mt-1">{c.fuYin ? "伏吟" : ""}{c.fanYin ? "反吟" : ""}</div>
+          )}
         </div>
 
-        {/* ── 九宫格 ── */}
-        <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm grid grid-cols-3 gap-px bg-gray-200 mb-3">
+        {/* 盘式切换 */}
+        <div className="flex gap-1 mt-4 mb-2 border-b border-[#eee]">
+          {TABS.map((t) => (
+            <button key={t.id}
+              onClick={() => setView(t.id)}
+              className={`px-3 py-1.5 text-[12px] font-medium border-b-2 transition-colors ${
+                view === t.id ? "border-[#0dc2b3] text-[#0dc2b3]" : "border-transparent text-[#999]"
+              }`}>
+              {t.label}
+            </button>
+          ))}
+        </div>
+
+        {/* 九宫格 */}
+        <div className="grid grid-cols-3 gap-px bg-[#e5e5e5] border border-[#e5e5e5] rounded-lg overflow-hidden">
           {PALACE_META.map((pl, palace) => {
             const isCenter = palace === 4;
             const isValue = palace === c.zhiFuPalace;
             const isZhiShi = palace === c.zhiShiPalace;
-            const isKongWang = c.kongWangPalaces.includes(palace);
-            const isMaStar = palace === c.maStarPalace;
-            const isSelected = sel === palace;
             const god = c.gods[palace] || "";
             const star = c.stars[palace] || "";
             const door = c.doors[palace] || "";
@@ -152,47 +141,40 @@ export default function QiMenPage() {
             const starOrig = STAR_ORIGINAL[palace] || "";
             const doorOrig = DOOR_ORIGINAL[palace] || "";
             const conds = c.conds[palace] || [];
+            const isSelected = sel === palace;
 
             return (
               <div key={palace}
                 onClick={() => setSel(isSelected ? null : palace)}
-                className={`relative aspect-square cursor-pointer flex flex-col p-1 transition-colors
-                  ${isSelected ? "z-10 ring-2 ring-inset ring-gray-700" : ""}`}
-                style={{ background: isValue || isZhiShi ? "#fef2f2" : isCenter ? "#fffbeb" : isMaStar ? "#f0f7ff" : isKongWang ? "#fafafa" : "#ffffff" }}>
+                className={`relative aspect-square cursor-pointer flex flex-col p-1.5 bg-white
+                  ${isSelected ? "z-10 outline outline-2 outline-[#0dc2b3]" : ""}`}
+                style={{ background: isValue || isZhiShi ? "#fdf2f2" : isCenter ? "#fffbeb" : "#ffffff" }}>
 
-                {/* 状态角标 */}
+                {/* 条件角标 */}
                 {view === "合" && conds.length > 0 && (
-                  <div className="absolute top-0.5 right-0.5 flex gap-0.5">
+                  <div className="absolute top-0.5 right-1 flex gap-0.5">
                     {conds.includes("入墓") && conds.includes("击刑")
-                      ? <span className="w-1.5 h-1.5 rounded-full bg-fuchsia-600" title="刑+墓" />
-                      : (
-                        <>
-                          {conds.includes("入墓") && <Dot color="bg-purple-500" title="入墓" />}
-                          {conds.includes("门迫") && <Dot color="bg-orange-500" title="门迫" />}
-                          {conds.includes("击刑") && <Dot color="bg-red-500" title="击刑" />}
-                        </>
-                      )}
+                      ? <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#a21caf" }} title="刑+墓" />
+                      : <>
+                          {conds.includes("入墓") && <span className="w-1.5 h-1.5 rounded-full bg-purple-500" title="入墓" />}
+                          {conds.includes("门迫") && <span className="w-1.5 h-1.5 rounded-full bg-orange-500" title="门迫" />}
+                          {conds.includes("击刑") && <span className="w-1.5 h-1.5 rounded-full bg-red-500" title="击刑" />}
+                        </>}
                   </div>
                 )}
 
-                {/* 卦 + 方位洛书 */}
-                <div className="flex justify-between items-center leading-none">
-                  <span className="text-[11px] text-gray-300">{pl.trigram}</span>
-                  <span className="text-[8px] text-gray-300">{pl.direction}{pl.luoshu}</span>
-                </div>
-
-                {/* 综合盘：复刻热卜布局（神左上·星左中·天盘干右中·门左下红·地盘干右下） */}
+                {/* 综合盘：神·星·门·干（热卜布局） */}
                 {view === "合" && (
                   <>
-                    <div className="text-[12px] font-semibold leading-tight text-gray-800">{god || "·"}</div>
+                    <div className="text-[12px] font-semibold text-[#333] leading-tight">{god || "·"}</div>
                     <div className="flex-1" />
                     <div className="flex justify-between items-end leading-none">
-                      <span className="text-[13px] font-medium" style={{ color: "#1bc5b7" }}>{star}</span>
-                      <span className="text-[13px] text-gray-800">{tian}</span>
+                      <span className="text-[13px] font-medium" style={{ color: STAR_TEAL }}>{star}</span>
+                      <span className="text-[13px] text-[#333]">{tian}</span>
                     </div>
                     <div className="flex justify-between items-end leading-none mt-1">
-                      <span className={`text-[17px] font-bold ${GATE_COLOR[door] || "text-gray-300"}`}>{door}</span>
-                      <span className="text-[14px] font-semibold text-gray-800">{di}</span>
+                      <span className="text-[17px] font-bold" style={{ color: GATE_COLOR[door] || "#ccc" }}>{door}</span>
+                      <span className={`text-[14px] font-semibold ${THREE_QI.has(di) ? "text-[#0aa88f]" : "text-[#333]"}`}>{di}</span>
                     </div>
                   </>
                 )}
@@ -201,11 +183,11 @@ export default function QiMenPage() {
                 {view === "地" && (
                   <>
                     <div className="flex-1 flex items-center justify-center">
-                      <span className={`text-[26px] font-bold ${THREE_QI.has(di) ? "text-emerald-600" : "text-gray-800"}`}>{di || "·"}</span>
+                      <span className={`text-[24px] font-bold ${THREE_QI.has(di) ? "text-[#0aa88f]" : "text-[#333]"}`}>{di || "·"}</span>
                     </div>
-                    <div className="pb-0.5 space-y-0.5">
-                      <div className="text-center text-[9px] text-gray-400">{starOrig}</div>
-                      <div className={`text-center text-[10px] ${GATE_COLOR[doorOrig] || "text-gray-400"}`}>{doorOrig || ""}</div>
+                    <div className="pb-0.5 space-y-0.5 text-center">
+                      <div className="text-[9px] text-[#999]">{starOrig}</div>
+                      <div className="text-[10px]" style={{ color: GATE_COLOR[doorOrig] || "#999" }}>{doorOrig || ""}</div>
                     </div>
                   </>
                 )}
@@ -214,12 +196,11 @@ export default function QiMenPage() {
                 {view === "天" && (
                   <>
                     <div className="flex-1 flex items-center justify-center">
-                      <span className="text-[18px] font-semibold text-gray-700">{star || "·"}</span>
+                      <span className="text-[17px] font-semibold" style={{ color: STAR_TEAL }}>{star || "·"}</span>
                     </div>
                     <div className="flex items-end justify-between px-1 pb-0.5 leading-none">
-                      <span className="text-[8px] text-gray-300">天</span>
-                      <span className="text-[16px] font-bold text-gray-700">{tian || "·"}</span>
-                      <span className="text-[10px] text-gray-300">{di || ""}</span>
+                      <span className="text-[16px] font-bold text-[#333]">{tian || "·"}</span>
+                      <span className="text-[10px] text-[#999]">{di || ""}</span>
                     </div>
                   </>
                 )}
@@ -228,9 +209,8 @@ export default function QiMenPage() {
                 {view === "人" && (
                   <>
                     <div className="flex-1 flex items-center justify-center">
-                      <span className={`text-[26px] font-bold ${GATE_COLOR[door] || "text-gray-300"}`}>{door || "·"}</span>
+                      <span className="text-[24px] font-bold" style={{ color: GATE_COLOR[door] || "#ccc" }}>{door || "·"}</span>
                     </div>
-                    <div className="text-center text-[8px] text-gray-300 pb-0.5">{isValue ? "值使" : ""}</div>
                   </>
                 )}
 
@@ -238,9 +218,8 @@ export default function QiMenPage() {
                 {view === "神" && (
                   <>
                     <div className="flex-1 flex items-center justify-center">
-                      <span className={`text-[20px] font-bold ${GOD_COLOR[god] || "text-gray-200"}`}>{god || "·"}</span>
+                      <span className="text-[19px] font-bold text-[#333]">{god || "·"}</span>
                     </div>
-                    <div className="text-center text-[8px] text-gray-300 pb-0.5">{god === "值符" ? "值符神" : ""}</div>
                   </>
                 )}
               </div>
@@ -248,59 +227,41 @@ export default function QiMenPage() {
           })}
         </div>
 
-        {/* ── 宫位详情 ── */}
+        {/* 宫位详情 */}
         {sel !== null && (() => {
           const pl = PALACE_META[sel];
           const gua = getGuaInfo(pl.gua);
           const geJu = getGeJu(c.tianPan[sel], c.diPan[sel]);
           const condList = c.conds[sel] || [];
           return (
-            <div className="mb-3 p-4 bg-white rounded-xl shadow-sm border border-gray-100 text-xs space-y-3">
-              <div>
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-xl leading-none">{pl.trigram}</span>
-                  <span className="font-semibold text-sm">{pl.gua}宫</span>
-                  <span className="text-gray-400">洛书{pl.luoshu} · {pl.element} · {pl.direction}方</span>
-                </div>
-                {pl.gua !== "中" ? (
-                  <div className="text-gray-500 leading-relaxed">
-                    <Row k="卦象" v={`${gua.xiang}（${gua.meaning}）`} />
-                    <Row k="家庭" v={gua.family} />
-                    <Row k="身体" v={gua.body} />
-                    <Row k="动物" v={gua.animal} />
-                    <Row k="季节" v={gua.season} />
-                  </div>
-                ) : (
-                  <div className="text-gray-400">中宫无卦，寄坤宫（天禽寄二宫）</div>
-                )}
+            <div className="mt-3 p-3 bg-[#fafafa] rounded-lg text-[12px] space-y-2">
+              <div className="flex items-center gap-2">
+                <span className="text-[15px]">{pl.trigram}</span>
+                <b>{pl.gua}宫</b>
+                <span className="text-[#999]">{gua.xiang} · {pl.element} · {pl.direction}方</span>
               </div>
-
-              {geJu ? (
-                <div className="border-t border-gray-100 pt-2.5">
-                  <div className="mb-0.5">
-                    <span className="text-gray-400">格局（{c.tianPan[sel]}+{c.diPan[sel]}）</span>
-                    <b className={`ml-1.5 text-sm ${geJu.ji.includes("凶") ? "text-red-600" : "text-emerald-600"}`}>{geJu.name}</b>
-                    <span className={`ml-1 ${geJu.ji.includes("凶") ? "text-red-400" : "text-emerald-500"}`}>（{geJu.ji}）</span>
-                  </div>
-                  <div className="text-gray-500">{geJu.desc}</div>
+              {geJu && (
+                <div>
+                  <span className="text-[#999]">格局（{c.tianPan[sel]}+{c.diPan[sel]}）</span>
+                  <b className={`ml-1 ${geJu.ji.includes("凶") ? "text-[#e0392f]" : "text-[#0aa88f]"}`}>{geJu.name}（{geJu.ji}）</b>
+                  <div className="text-[#666]">{geJu.desc}</div>
                 </div>
-              ) : null}
-
-              <div className="grid grid-cols-3 gap-x-2 gap-y-1.5 border-t border-gray-100 pt-2.5">
-                <div>神 <b className="text-purple-600">{c.gods[sel] || "—"}</b></div>
-                <div>星 <b className="text-gray-700">{c.stars[sel] || "—"}</b><span className="text-gray-400 ml-0.5">{c.starJixiong[sel] && `·${c.starJixiong[sel]}`}</span></div>
-                <div>门 <b className="text-red-600">{c.doors[sel] || "—"}</b><span className="text-gray-400 ml-0.5">{c.doorJixiong[sel] && `·${c.doorJixiong[sel]}`}</span></div>
+              )}
+              <div className="grid grid-cols-3 gap-x-2 gap-y-1 border-t border-[#eee] pt-2">
+                <div>神 <b>{c.gods[sel] || "—"}</b></div>
+                <div>星 <b style={{ color: STAR_TEAL }}>{c.stars[sel] || "—"}</b></div>
+                <div>门 <b className="text-[#e0392f]">{c.doors[sel] || "—"}</b></div>
                 <div>天盘干 <b>{c.tianPan[sel] || "—"}</b></div>
                 <div>地盘干 <b>{c.diPan[sel] || "—"}</b></div>
                 <div>长生 <span>{c.changSheng[sel] || "—"}</span></div>
-                <div className="col-span-3">状态 <span className={condList.length ? "text-red-500" : "text-gray-400"}>{condList.join(" + ") || "正常"}</span></div>
+                <div className="col-span-3">状态 <span className={condList.length ? "text-[#e0392f]" : "text-[#999]"}>{condList.join(" + ") || "正常"}</span></div>
               </div>
             </div>
           );
         })()}
 
-        {/* ── 图例 ── */}
-        <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-1 text-[10px] text-gray-400 mb-3">
+        {/* 颜色说明 */}
+        <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-1 text-[11px] text-[#999] mt-3">
           <span className="inline-flex items-center"><span className="w-2 h-2 rounded-full bg-rose-400 mr-1" />符使</span>
           <span className="inline-flex items-center"><span className="w-2 h-2 rounded-full bg-purple-500 mr-1" />入墓</span>
           <span className="inline-flex items-center"><span className="w-2 h-2 rounded-full bg-red-500 mr-1" />击刑</span>
@@ -308,39 +269,21 @@ export default function QiMenPage() {
           <span className="inline-flex items-center"><span className="w-2 h-2 rounded-full bg-fuchsia-600 mr-1" />刑+墓</span>
         </div>
 
-        {/* ── 导航 ── */}
-        <div className="flex justify-center gap-3 mb-2">
-          <button onClick={() => stepHour(-2)} className="px-5 py-2 rounded-full bg-white border border-gray-200 text-xs text-gray-600 hover:bg-gray-50 shadow-sm transition-colors">← 上一时辰</button>
-          <button onClick={() => stepHour(2)} className="px-5 py-2 rounded-full bg-gray-900 text-white text-xs hover:bg-gray-800 shadow-sm transition-colors">下一时辰 →</button>
+        {/* 导航 */}
+        <div className="flex justify-center gap-3 mt-3">
+          <button onClick={() => stepHour(-2)} className="px-4 py-1.5 rounded-md bg-white border border-[#ddd] text-[12px] text-[#666] hover:bg-[#f5f5f5]">上一时辰</button>
+          <button onClick={() => stepHour(2)} className="px-4 py-1.5 rounded-md border text-[12px] text-white hover:opacity-90" style={{ background: STAR_TEAL, borderColor: STAR_TEAL }}>下一时辰</button>
         </div>
-
-        <p className="text-center text-[10px] text-gray-300">点击宫位查看卦象与格局 · 每时辰 2 小时</p>
       </main>
     </div>
   );
 }
 
-// ── 小组件 ──
-function Badge({ label, tone }: { label: string; tone: "gray" | "red" | "blue" }) {
-  const cls = tone === "red"
-    ? "bg-rose-50 text-rose-600 border-rose-100"
-    : tone === "blue"
-      ? "bg-blue-50 text-blue-600 border-blue-100"
-      : "bg-white text-gray-600 border-gray-200";
+function Section({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[11px] border ${cls}`}>{label}</span>
-  );
-}
-
-function Dot({ color, title }: { color: string; title: string }) {
-  return <span className={`w-1.5 h-1.5 rounded-full ${color}`} title={title} />;
-}
-
-function Row({ k, v }: { k: string; v: string }) {
-  return (
-    <div className="flex gap-2">
-      <span className="text-gray-400 shrink-0">{k}</span>
-      <span className="text-gray-600">{v}</span>
+    <div className="mt-3 flex items-baseline gap-2">
+      <span className="text-[11px] text-[#999] shrink-0">{label}</span>
+      <div>{children}</div>
     </div>
   );
 }
