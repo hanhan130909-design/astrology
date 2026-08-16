@@ -139,6 +139,7 @@ export default function QiMenPage() {
           {PALACE_META.map((pl, palace) => {
             const isCenter = palace === 4;
             const isValue = palace === c.zhiFuPalace;
+            const isZhiShi = palace === c.zhiShiPalace;
             const isKongWang = c.kongWangPalaces.includes(palace);
             const isMaStar = palace === c.maStarPalace;
             const isSelected = sel === palace;
@@ -157,14 +158,20 @@ export default function QiMenPage() {
                 onClick={() => setSel(isSelected ? null : palace)}
                 className={`relative aspect-square cursor-pointer flex flex-col p-1 transition-colors
                   ${isSelected ? "z-10 ring-2 ring-inset ring-gray-700" : ""}`}
-                style={{ background: isValue ? "#fef2f2" : isCenter ? "#fffbeb" : isMaStar ? "#f0f7ff" : isKongWang ? "#fafafa" : "#ffffff" }}>
+                style={{ background: isValue || isZhiShi ? "#fef2f2" : isCenter ? "#fffbeb" : isMaStar ? "#f0f7ff" : isKongWang ? "#fafafa" : "#ffffff" }}>
 
                 {/* 状态角标 */}
                 {view === "合" && conds.length > 0 && (
-                  <div className="absolute top-1 right-1 flex gap-0.5">
-                    {conds.includes("入墓") && <Dot color="bg-purple-500" title="入墓" />}
-                    {conds.includes("门迫") && <Dot color="bg-orange-500" title="门迫" />}
-                    {conds.includes("击刑") && <Dot color="bg-red-500" title="击刑" />}
+                  <div className="absolute top-0.5 right-0.5 flex gap-0.5">
+                    {conds.includes("入墓") && conds.includes("击刑")
+                      ? <span className="w-1.5 h-1.5 rounded-full bg-fuchsia-600" title="刑+墓" />
+                      : (
+                        <>
+                          {conds.includes("入墓") && <Dot color="bg-purple-500" title="入墓" />}
+                          {conds.includes("门迫") && <Dot color="bg-orange-500" title="门迫" />}
+                          {conds.includes("击刑") && <Dot color="bg-red-500" title="击刑" />}
+                        </>
+                      )}
                   </div>
                 )}
 
@@ -174,19 +181,18 @@ export default function QiMenPage() {
                   <span className="text-[8px] text-gray-300">{pl.direction}{pl.luoshu}</span>
                 </div>
 
-                {/* 综合盘：神·星·门·干 叠加 */}
+                {/* 综合盘：复刻热卜布局（神左上·星左中·天盘干右中·门左下红·地盘干右下） */}
                 {view === "合" && (
                   <>
-                    <div className={`text-center text-[11px] font-semibold leading-tight mt-0.5 ${GOD_COLOR[god] || "text-gray-200"}`}>{god || "—"}</div>
-                    <div className="flex justify-between items-center px-1 mt-1">
-                      <span className="text-[11px] font-semibold text-gray-700">{star}</span>
-                      <span className={`text-[9px] font-medium ${ELEMENT_COLOR[pl.element] || ""}`}>{pl.element}</span>
+                    <div className="text-[12px] font-semibold leading-tight text-gray-800">{god || "·"}</div>
+                    <div className="flex-1" />
+                    <div className="flex justify-between items-end leading-none">
+                      <span className="text-[13px] font-medium" style={{ color: "#1bc5b7" }}>{star}</span>
+                      <span className="text-[13px] text-gray-800">{tian}</span>
                     </div>
-                    <div className={`flex-1 flex items-center justify-center text-[23px] font-bold tracking-wide ${GATE_COLOR[door] || "text-gray-300"}`}>{door || "·"}</div>
-                    <div className="flex items-end justify-between px-1 pb-0.5 leading-none">
-                      <span className="text-[8px] text-gray-300">{cs || ""}</span>
-                      <span className="text-[10px] text-gray-400">{tian || ""}</span>
-                      <span className={`text-[16px] font-bold ${THREE_QI.has(di) ? "text-emerald-600" : "text-gray-800"}`}>{di}</span>
+                    <div className="flex justify-between items-end leading-none mt-1">
+                      <span className={`text-[17px] font-bold ${GATE_COLOR[door] || "text-gray-300"}`}>{door}</span>
+                      <span className="text-[14px] font-semibold text-gray-800">{di}</span>
                     </div>
                   </>
                 )}
@@ -295,11 +301,11 @@ export default function QiMenPage() {
 
         {/* ── 图例 ── */}
         <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-1 text-[10px] text-gray-400 mb-3">
-          <span className="inline-flex items-center"><span className="w-2 h-2 rounded-full bg-rose-400 mr-1" />值符宫</span>
+          <span className="inline-flex items-center"><span className="w-2 h-2 rounded-full bg-rose-400 mr-1" />符使</span>
           <span className="inline-flex items-center"><span className="w-2 h-2 rounded-full bg-purple-500 mr-1" />入墓</span>
-          <span className="inline-flex items-center"><span className="w-2 h-2 rounded-full bg-orange-500 mr-1" />门迫</span>
           <span className="inline-flex items-center"><span className="w-2 h-2 rounded-full bg-red-500 mr-1" />击刑</span>
-          <span className="inline-flex items-center"><span className="w-2 h-2 rounded-full bg-emerald-500 mr-1" />三奇</span>
+          <span className="inline-flex items-center"><span className="w-2 h-2 rounded-full bg-orange-500 mr-1" />门迫</span>
+          <span className="inline-flex items-center"><span className="w-2 h-2 rounded-full bg-fuchsia-600 mr-1" />刑+墓</span>
         </div>
 
         {/* ── 导航 ── */}

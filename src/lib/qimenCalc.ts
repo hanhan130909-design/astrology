@@ -182,7 +182,7 @@ export interface QiMenResult {
   jieQi: string; yuan: string; yinYang: "阳" | "阴"; ju: number;
   prevJqText: string; nextJqText: string;
   xunShou: string; fuShou: string;
-  zhiFuStar: string; zhiShiDoor: string; zhiFuPalace: number;
+  zhiFuStar: string; zhiShiDoor: string; zhiFuPalace: number; zhiShiPalace: number;
   maStar: string;
   kongWang: string[]; // 四柱空亡
   diPan: string[]; tianPan: string[]; stars: string[]; doors: string[]; gods: string[];
@@ -257,6 +257,7 @@ export function calcQiMen(year: number, month: number, day: number, hour: number
   for (let i = 0; i < doorPlaceSeq.length; i++) {
     doors[doorPlaceSeq[i]] = doorOrder[i];
   }
+  const zhiShiPalace = doors.indexOf(zhiShiDoor);
 
   // 八神：时干位置起，阳顺阴逆（热卜/主流转盘奇门 阳阴皆用白虎玄武）
   const godsArr = EIGHT_GODS_YIN;
@@ -331,7 +332,7 @@ export function calcQiMen(year: number, month: number, day: number, hour: number
     yearPillar, monthPillar, dayPillar, timePillar,
     jieQi, yuan, yinYang: isYang ? "阳" : "阴", ju,
     prevJqText, nextJqText,
-    xunShou, fuShou, zhiFuStar, zhiShiDoor, zhiFuPalace,
+    xunShou, fuShou, zhiFuStar, zhiShiDoor, zhiFuPalace, zhiShiPalace,
     maStar, kongWang,
     diPan, tianPan, stars, doors, gods,
     changSheng, conds, tianQinDir,
