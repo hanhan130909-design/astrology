@@ -3,6 +3,7 @@ import 'server-only';
 import { destinyArticles } from '@/content/destiny-blog-articles';
 import { moreSeoArticles } from './more-seo-articles';
 import { seoArticles } from './seo-articles';
+import { longtailSeoArticles } from './longtail-seo-articles';
 import {
   toBlogSummary,
   type BlogArticleForSummary,
@@ -198,6 +199,7 @@ export function getBlogSummaries(): BlogSummary[] {
   const sourceArticles = [
     ...seoArticles.map(normalizeSourceArticle),
     ...moreSeoArticles.map(normalizeSourceArticle),
+    ...longtailSeoArticles.map(normalizeSourceArticle),
     ...normalizedDestinyArticles,
     ...legacyArticles,
   ];
