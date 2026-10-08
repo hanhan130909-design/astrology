@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { buildBaziViewData } from "@/lib/baziViewData";
 import { ArrowLeft, Users, Heart, Sparkles } from "lucide-react";
+import CompatibilityPurchaseCTA from "@/components/CompatibilityPurchaseCTA";
 
 const T: Record<string, Record<string, string>> = {
   title: { zh:"八字合盘", en:"BaZi Compatibility", id:"Kompatibilitas BaZi", th:"ความเข้ากันปาจื่อ", vi:"Tương Hợp Bát Tự", ms:"Keserasian BaZi", ja:"八字相性", ko:"사주 궁합" },
@@ -255,6 +256,9 @@ export default function BaziCompatibilityPage() {
                 </div>
               )}
             </div>
+
+            {/* 付费转化钩子 — 基于合盘评分动态生成 */}
+            <CompatibilityPurchaseCTA score={analysis.total} />
           </div>
         )}
       </main>

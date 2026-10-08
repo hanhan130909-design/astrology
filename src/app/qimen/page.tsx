@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useCallback } from "react";
 import { calcQiMen, PALACE_META, STAR_ORIGINAL, DOOR_ORIGINAL, getGuaInfo, getGeJu } from "@/lib/qimenCalc";
+import BlogArticleCTA from "@/components/BlogArticleCTA";
 
 type View = "合" | "地" | "天" | "人" | "神";
 
@@ -314,6 +315,11 @@ export default function QiMenPage() {
         <div className="flex justify-center gap-3 mt-3">
           <button onClick={() => stepHour(-2)} className="px-4 py-1.5 rounded-md bg-white border border-[#ddd] text-[12px] text-[#666] hover:bg-[#f5f5f5]">上一时辰</button>
           <button onClick={() => stepHour(2)} className="px-4 py-1.5 rounded-md border text-[12px] text-white hover:opacity-90" style={{ background: STAR_TEAL, borderColor: STAR_TEAL }}>下一时辰</button>
+        </div>
+
+        {/* 付费转化钩子 */}
+        <div className="mt-6 max-w-2xl mx-auto px-4">
+          <BlogArticleCTA categoryLabel="bazi" />
         </div>
       </main>
     </div>

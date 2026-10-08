@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Star, GitCompare, Sun, Moon, Rocket, TrendingUp, Calendar, Heart, Zap } from 'lucide-react';
+import BlogArticleCTA from '@/components/BlogArticleCTA';
 
 const T: Record<string, Record<string, any>> = {
   zh: {
@@ -252,6 +253,11 @@ export default function ChartHubPage() {
             <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">📚</div>
             <div className="text-sm font-medium text-gray-600">{language === 'zh' ? '占星学习' : language === 'id' ? 'Belajar' : 'Learn Astrology'}</div>
           </Link>
+        </div>
+
+        {/* 付费转化钩子 */}
+        <div className="mt-8 max-w-2xl mx-auto">
+          <BlogArticleCTA categoryLabel="natal" />
         </div>
       </main>
     </div>

@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Star, Sun, ChevronDown, Heart, Briefcase, Wallet, Activity, Sparkles, TrendingUp, Users, Calendar, Lock, Share2, CheckCircle, MessageCircle, RefreshCw, Shuffle } from "lucide-react";
+import BlogArticleCTA from "@/components/BlogArticleCTA";
 
 // Complete zodiac data with full details
 const ZODIAC_DATA: Record<string, { symbol: string; names: Record<string, string>; element: string; rulingPlanet: string; dates: string }> = {
@@ -987,6 +988,11 @@ export default function HoroscopePage() {
               ));
             })()}
           </div>
+        </section>
+
+        {/* 付费转化钩子 */}
+        <section className="mb-8">
+          <BlogArticleCTA categoryLabel="horoscope" />
         </section>
       </main>
     </div>
