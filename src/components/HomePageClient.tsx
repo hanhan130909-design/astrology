@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Analytics } from "@/lib/analytics";
+import BlogArticleCTA from "@/components/BlogArticleCTA";
+import { appendReferral } from "@/components/ReferralTracker";
+import { Sparkles } from "lucide-react";
 
 const T: Record<string, Record<string, string>> = {
   zh: {
@@ -108,7 +111,7 @@ export default function HomePage() {
         </p>
 
         {/* CTA buttons */}
-        <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
+        <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6 flex-wrap">
           <Link href="/natal" onClick={() => Analytics.ctaClick("free_chart", "homepage")} className="inline-flex items-center justify-center px-6 py-3 bg-gray-900 text-white rounded-xl font-semibold text-sm hover:bg-gray-800 transition-colors shadow-lg shadow-gray-900/10">
             {t.cta}
           </Link>
@@ -118,6 +121,15 @@ export default function HomePage() {
           <Link href="/qimen" onClick={() => Analytics.ctaClick("qimen", "homepage")} className="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-700 rounded-xl font-semibold text-sm border border-gray-200 hover:bg-gray-50 transition-colors">
             {t.ctaQimen}
           </Link>
+          <a
+            href={appendReferral("https://hanhan55.gumroad.com/l/zgbent")}
+            target="_blank"
+            rel="noopener"
+            className="inline-flex items-center justify-center gap-1.5 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl font-semibold text-sm hover:from-amber-600 hover:to-orange-600 transition-all shadow-lg shadow-amber-500/25"
+          >
+            <Sparkles size={14} />
+            {lang === "zh" ? "AI深度解读 $3.99" : "AI Deep Reading $3.99"}
+          </a>
         </div>
 
         <p className="text-xs text-gray-400">{t.stats}</p>
@@ -146,12 +158,28 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── 付费转化区 ── */}
+      <section className="px-4 pb-12 max-w-[600px] mx-auto">
+        <BlogArticleCTA categoryLabel="natal" />
+      </section>
+
       {/* ── Bottom CTA ── */}
       <section className="text-center px-6 py-12 border-t border-gray-100">
         <h2 className="text-xl font-bold mb-3">{t.bottom}</h2>
-        <Link href="/natal" className="inline-flex items-center px-8 py-3.5 bg-gray-900 text-white rounded-xl font-semibold hover:bg-gray-800 transition-colors shadow-lg shadow-gray-900/10">
-          {t.bottomCta}
-        </Link>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <Link href="/natal" className="inline-flex items-center px-8 py-3.5 bg-gray-900 text-white rounded-xl font-semibold hover:bg-gray-800 transition-colors shadow-lg shadow-gray-900/10">
+            {t.bottomCta}
+          </Link>
+          <a
+            href={appendReferral("https://hanhan55.gumroad.com/l/zxccdv")}
+            target="_blank"
+            rel="noopener"
+            className="inline-flex items-center gap-1.5 px-8 py-3.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl font-semibold hover:from-amber-600 hover:to-orange-600 transition-all shadow-lg shadow-amber-500/25"
+          >
+            <Sparkles size={16} />
+            {lang === "zh" ? "2026年运报告 $19.99" : "2026 Yearly Report $19.99"}
+          </a>
+        </div>
       </section>
 
       {/* ── Footer ── */}
