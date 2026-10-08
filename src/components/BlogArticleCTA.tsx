@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/contexts/LanguageContext";
+import { appendReferral } from "@/components/ReferralTracker";
 import { Sparkles, Lock, ShieldCheck, ArrowRight } from "lucide-react";
 
 const GUMLINKS = {
@@ -215,6 +216,7 @@ export default function BlogArticleCTA({ categoryLabel }: { categoryLabel?: stri
   const content = CTA_CONTENT[cat]?.[lang] || CTA_CONTENT[cat]?.en || CTA_CONTENT.general.en;
 
   const isExternal = (href: string) => href.startsWith("http");
+  const secondaryHref = isExternal(content.secondaryHref) ? appendReferral(content.secondaryHref) : content.secondaryHref;
 
   return (
     <div className="mt-16 p-6 sm:p-8 rounded-2xl border overflow-hidden"
@@ -251,7 +253,7 @@ export default function BlogArticleCTA({ categoryLabel }: { categoryLabel?: stri
           </a>
         )}
         <a
-          href={content.secondaryHref}
+          href={secondaryHref}
           target="_blank"
           rel="noopener"
           className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-gray-800 border border-amber-300 rounded-xl font-semibold text-sm hover:bg-amber-50 transition-colors"

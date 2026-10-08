@@ -2,6 +2,7 @@
 
 import { useLanguage } from "@/contexts/LanguageContext";
 import { generateBaziHook } from "@/lib/baziHookGenerator";
+import { appendReferral } from "@/components/ReferralTracker";
 import { Lock, Sparkles, ShieldCheck, TrendingUp } from "lucide-react";
 
 // Gumroad 产品链接
@@ -120,7 +121,8 @@ export default function BaziPurchaseCTA({ bazi }: { bazi?: any }) {
 
   // 根据钩子紧急程度推荐产品
   const recommendFortune = hook.urgency >= 3;
-  const mainLink = recommendFortune ? GUMLINKS.fortune : GUMLINKS.single;
+  const mainLink = appendReferral(recommendFortune ? GUMLINKS.fortune : GUMLINKS.single);
+  const secondaryLink = appendReferral(recommendFortune ? GUMLINKS.single : GUMLINKS.fortune);
   const mainBtnText = recommendFortune ? ui.fortuneBtn : ui.singleBtn;
 
   return (
@@ -211,7 +213,7 @@ export default function BaziPurchaseCTA({ bazi }: { bazi?: any }) {
 
           {/* 次按钮 */}
           <a
-            href={recommendFortune ? GUMLINKS.single : GUMLINKS.fortune}
+            href={secondaryLink}
             target="_blank"
             rel="noopener"
             className="flex items-center justify-center gap-1 w-full py-2 rounded-xl text-xs font-medium text-gray-500 hover:text-gray-700 hover:bg-white/50 transition-colors"
