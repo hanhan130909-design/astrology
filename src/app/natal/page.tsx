@@ -11,6 +11,7 @@ import { trackAnalyticsEvent } from "@/lib/analytics";
 import { Send, Loader2, Sparkles, MessageCircle, X } from "lucide-react";
 import "./natal-mobile.css";
 import { natalFaqs, serializeNatalFaqJsonLd } from "@/components/natalFaq";
+import NatalPurchaseCTA from "@/components/NatalPurchaseCTA";
 
 const MONTHS = ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];
 const SIGN_SYMBOLS = ["♈","♉","♊","♋","♌","♍","♎","♏","♐","♑","♒","♓"];
@@ -664,6 +665,9 @@ export default function NatalPage(){
               <button onClick={sendNatalChat} disabled={chatLoading} style={{padding:"4px 12px",background:"#333",color:"white",border:"none",borderRadius:4,fontSize:12,cursor:"pointer"}}>{t('sendBtn')}</button>
             </div>
           </div>}
+
+          {/* 付费转化钩子 — 基于星盘数据动态生成 */}
+          {chart && <NatalPurchaseCTA chart={chart} />}
         </div>
 
         <div id="rightsidebar" style={{position:"absolute",right:10,top:10,padding:5,width:240,textAlign:"left",border:"1px solid #D0D0D0",background:"#4a4a4a",color:"white",boxShadow:"0 0 8px #D0D0D0",fontSize:"13px",opacity:0.9}}>
