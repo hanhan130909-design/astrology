@@ -1,62 +1,235 @@
 "use client";
 
 import { useLanguage } from "@/contexts/LanguageContext";
+import { generateBaziHook } from "@/lib/baziHookGenerator";
+import { Lock, Sparkles, ShieldCheck, TrendingUp } from "lucide-react";
 
-const T: Record<string, any> = {
-  zh: {
-    title: "🔮 解锁深度解读",
-    line1: "免费排盘只是第一层——",
-    line2: "AI 深度解读揭示你命盘的全部密码：日主性格、十年大运、财运事业感情专项。",
-    btn1: "AI 单次解读 · $3.99",
-    btn2: "完整年运报告 · $29.99",
-  },
-  en: {
-    title: "🔮 Go Deeper With AI",
-    line1: "Your free chart only scratches the surface —",
-    line2: "Unlock your Day Master personality profile, 10-year luck cycles, and detailed career, wealth & relationship insights.",
-    btn1: "AI Deep Reading · $3.99",
-    btn2: "Annual Fortune Report · $29.99",
-  },
-  id: {
-    title: "🔮 Buka Bacaan Mendalam",
-    line1: "Bagan gratis Anda baru permukaan —",
-    line2: "Bacaan AI mengungkap kepribadian Day Master, siklus 10 tahun, karier, rezeki & cinta.",
-    btn1: "Bacaan AI · $3.99",
-    btn2: "Buku Keberuntungan · $29.99",
-  },
-};
-
-const GUMLINKS: Record<string, string> = {
+// Gumroad 产品链接
+const GUMLINKS = {
   single: "https://hanhan55.gumroad.com/l/zgbent",
   fortune: "https://hanhan55.gumroad.com/l/zxccdv",
 };
 
-export default function BaziPurchaseCTA() {
+// 8语言 UI 文案
+const UI = {
+  zh: {
+    previewTitle: "你的专属命运报告",
+    previewItems: ["财运深度解读", "感情避坑指南", "事业方向建议", "12个月逐月运势", "大师一句话点评"],
+    locked: "🔒 付费解锁",
+    singleBtn: "AI 单次解读 · $3.99",
+    fortuneBtn: "完整年运报告 · $19.99",
+    originalPrice: "$29.99",
+    badge: "限时优惠",
+    guarantee: "7天无理由退款",
+    social: "已有 1,200+ 人解锁",
+    whatYouGet: "你将获得",
+  },
+  en: {
+    previewTitle: "Your Personal Destiny Report",
+    previewItems: ["Wealth Deep Reading", "Relationship Guide", "Career Direction", "12-Month Monthly Forecast", "Master's One-Line Insight"],
+    locked: "🔒 Paid Unlock",
+    singleBtn: "AI Single Reading · $3.99",
+    fortuneBtn: "Full Annual Report · $19.99",
+    originalPrice: "$29.99",
+    badge: "Limited Offer",
+    guarantee: "7-Day Money Back",
+    social: "1,200+ unlocked",
+    whatYouGet: "What You Get",
+  },
+  id: {
+    previewTitle: "Laporan Nasib Pribadi Anda",
+    previewItems: ["Analisis Keuangan", "Panduan Cinta", "Arah Karier", "Ramalan 12 Bulan", "Kata Bijak Master"],
+    locked: "🔒 Terkunci",
+    singleBtn: "Bacaan AI · $3.99",
+    fortuneBtn: "Laporan Tahunan · $19.99",
+    originalPrice: "$29.99",
+    badge: "Promo Terbatas",
+    guarantee: "Garansi 7 Hari",
+    social: "1,200+ telah buka",
+    whatYouGet: "Yang Anda Dapat",
+  },
+  th: {
+    previewTitle: "รายงานดวงชะตาส่วนตัว",
+    previewItems: ["การเงินลึก", "คู่มือความรัก", "ทิศทางอาชีพ", "ทำนาย 12 เดือน", "คำพูดอาจารย์"],
+    locked: "🔒 ล็อก",
+    singleBtn: "AI อ่านดวง · $3.99",
+    fortuneBtn: "รายงานประจำปี · $19.99",
+    originalPrice: "$29.99",
+    badge: "โปรโมชั่น",
+    guarantee: "คืนเงิน 7 วัน",
+    social: "1,200+ เปิดแล้ว",
+    whatYouGet: "คุณจะได้รับ",
+  },
+  vi: {
+    previewTitle: "Báo cáo số mệnh cá nhân",
+    previewItems: ["Tài lộc sâu", "Hướng dẫn tình duyên", "Phương hướng sự nghiệp", "Dự báo 12 tháng", "Lời nói thầy"],
+    locked: "🔒 Đã khóa",
+    singleBtn: "AI Đọc · $3.99",
+    fortuneBtn: "Báo cáo năm · $19.99",
+    originalPrice: "$29.99",
+    badge: "Khuyến mãi",
+    guarantee: "Hoàn tiền 7 ngày",
+    social: "1,200+ đã mở",
+    whatYouGet: "Bạn nhận được",
+  },
+  ms: {
+    previewTitle: "Laporan Nasib Peribadi",
+    previewItems: ["Kewangan Mendalam", "Panduan Cinta", "Arah Kerjaya", "Ramalan 12 Bulan", "Kata Mutiara"],
+    locked: "🔒 Berkunci",
+    singleBtn: "Bacaan AI · $3.99",
+    fortuneBtn: "Laporan Tahunan · $19.99",
+    originalPrice: "$29.99",
+    badge: "Promosi",
+    guarantee: "Jaminan 7 Hari",
+    social: "1,200+ telah buka",
+    whatYouGet: "Apa Anda Dapat",
+  },
+  ja: {
+    previewTitle: "あなただけの運命レポート",
+    previewItems: ["金運深読み", "恋愛ガイド", "仕事の方向性", "12ヶ月月運", "達人の一言"],
+    locked: "🔒 ロック中",
+    singleBtn: "AI単回リーディング · $3.99",
+    fortuneBtn: "年間レポート · $19.99",
+    originalPrice: "$29.99",
+    badge: "期間限定",
+    guarantee: "7日間返金保証",
+    social: "1,200人以上が解除",
+    whatYouGet: "得られるもの",
+  },
+  ko: {
+    previewTitle: "당신만의 운명 리포트",
+    previewItems: ["재물운 심층", "연애 가이드", "진로 방향", "12개월 월운", "고수의 한마디"],
+    locked: "🔒 잠김",
+    singleBtn: "AI 단독 리딩 · $3.99",
+    fortuneBtn: "연간 리포트 · $19.99",
+    originalPrice: "$29.99",
+    badge: "한정 할인",
+    guarantee: "7일 환불 보장",
+    social: "1,200명 이상 해제",
+    whatYouGet: "받게 될 내용",
+  },
+};
+
+export default function BaziPurchaseCTA({ bazi }: { bazi?: any }) {
   const { language } = useLanguage();
-  const t = T[language] || T.en;
+  const lang = language || "zh";
+  const ui = UI[lang] || UI.en;
+
+  // 基于排盘数据生成动态钩子
+  const hook = bazi ? generateBaziHook(bazi, lang) : generateBaziHook(null, lang);
+
+  // 根据钩子紧急程度推荐产品
+  const recommendFortune = hook.urgency >= 3;
+  const mainLink = recommendFortune ? GUMLINKS.fortune : GUMLINKS.single;
+  const mainBtnText = recommendFortune ? ui.fortuneBtn : ui.singleBtn;
 
   return (
-    <div className="mt-6 p-5 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-xl border border-amber-200">
-      <h4 className="text-sm font-bold text-gray-900 mb-2">{t.title}</h4>
-      <p className="text-xs text-gray-600 mb-1">{t.line1}</p>
-      <p className="text-xs text-gray-600 mb-4">{t.line2}</p>
-      <div className="flex flex-wrap gap-2">
-        <a
-          href={GUMLINKS.single}
-          target="_blank"
-          rel="noopener"
-          className="inline-flex items-center px-4 py-2 bg-[#171717] text-white rounded-lg text-xs font-semibold hover:bg-black transition-colors"
-        >
-          {t.btn1}
-        </a>
-        <a
-          href={GUMLINKS.fortune}
-          target="_blank"
-          rel="noopener"
-          className="inline-flex items-center px-4 py-2 bg-white border border-gray-300 text-gray-800 rounded-lg text-xs font-semibold hover:bg-gray-50 transition-colors"
-        >
-          {t.btn2}
-        </a>
+    <div className="mt-8 mb-4">
+      {/* ─── 钩子卡片区 ─── */}
+      <div className="relative p-5 rounded-2xl border overflow-hidden"
+        style={{
+          background: hook.urgency >= 4
+            ? "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fef3c7 100%)"
+            : hook.urgency >= 2
+            ? "linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #eff6ff 100%)"
+            : "linear-gradient(135deg, #f9fafb 0%, #f3f4f6 50%, #f9fafb 100%)",
+          borderColor: hook.urgency >= 4 ? "#f59e0b" : hook.urgency >= 2 ? "#3b82f6" : "#e5e7eb",
+        }}
+      >
+        {/* 紧急度图标 */}
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-lg">{hook.urgency >= 4 ? "⚠️" : hook.urgency >= 2 ? "📡" : "🔮"}</span>
+          <h3 className="text-base font-bold text-gray-900">{hook.title}</h3>
+          {hook.urgency >= 4 && (
+            <span className="ml-auto text-[10px] font-bold px-2 py-0.5 bg-red-500 text-white rounded-full animate-pulse">
+              {lang === "zh" ? "紧急" : lang === "ja" ? "緊急" : "URGENT"}
+            </span>
+          )}
+        </div>
+
+        {/* 钩子话术 */}
+        <p className="text-sm text-gray-700 leading-relaxed mb-4">
+          {hook.hookText}
+        </p>
+
+        {/* ─── 模糊报告预览 ─── */}
+        <div className="relative bg-white/70 backdrop-blur-sm rounded-xl p-4 mb-4 border border-white/50">
+          <div className="flex items-center justify-between mb-3">
+            <h4 className="text-xs font-bold text-gray-800 flex items-center gap-1">
+              <Sparkles size={12} className="text-amber-500" />
+              {ui.previewTitle}
+            </h4>
+            <span className="text-[10px] text-gray-400">{ui.locked}</span>
+          </div>
+
+          {/* 模糊内容 */}
+          <div className="space-y-2" style={{ filter: "blur(3px)", userSelect: "none", pointerEvents: "none" }}>
+            {ui.previewItems.map((item, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-gray-400" />
+                <span className="text-xs text-gray-600">{item}</span>
+                <span className="ml-auto text-[10px] text-gray-400">••••••</span>
+              </div>
+            ))}
+            <div className="mt-2 p-2 bg-amber-50 rounded-lg border border-amber-100">
+              <p className="text-[11px] text-amber-700 font-medium">
+                {lang === "zh" ? "「大师点评」：你今年的关键在于……" : "Master's insight: Your key this year is..."}
+              </p>
+            </div>
+          </div>
+
+          {/* 渐变遮罩 */}
+          <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent rounded-xl pointer-events-none" />
+        </div>
+
+        {/* ─── 购买按钮区 ─── */}
+        <div className="space-y-2">
+          {/* 主按钮 */}
+          <a
+            href={mainLink}
+            target="_blank"
+            rel="noopener"
+            className="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-bold text-sm text-white transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg"
+            style={{
+              background: recommendFortune
+                ? "linear-gradient(135deg, #171717 0%, #374151 100%)"
+                : "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
+              boxShadow: recommendFortune
+                ? "0 4px 14px rgba(0,0,0,0.25)"
+                : "0 4px 14px rgba(245,158,11,0.4)",
+            }}
+          >
+            <Lock size={14} />
+            {mainBtnText}
+            {recommendFortune && (
+              <span className="flex items-center gap-1 ml-1">
+                <span className="text-[10px] line-through opacity-60">{ui.originalPrice}</span>
+                <span className="text-[10px] bg-red-500 px-1.5 py-0.5 rounded-full">{ui.badge}</span>
+              </span>
+            )}
+          </a>
+
+          {/* 次按钮 */}
+          <a
+            href={recommendFortune ? GUMLINKS.single : GUMLINKS.fortune}
+            target="_blank"
+            rel="noopener"
+            className="flex items-center justify-center gap-1 w-full py-2 rounded-xl text-xs font-medium text-gray-500 hover:text-gray-700 hover:bg-white/50 transition-colors"
+          >
+            {recommendFortune ? ui.singleBtn : ui.fortuneBtn}
+            <TrendingUp size={11} />
+          </a>
+        </div>
+
+        {/* ─── 信任标识 ─── */}
+        <div className="flex items-center justify-center gap-4 mt-3 text-[10px] text-gray-400">
+          <span className="flex items-center gap-1">
+            <ShieldCheck size={11} />
+            {ui.guarantee}
+          </span>
+          <span className="w-px h-3 bg-gray-300" />
+          <span>{ui.social}</span>
+        </div>
       </div>
     </div>
   );

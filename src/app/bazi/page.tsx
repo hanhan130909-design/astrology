@@ -448,8 +448,8 @@ export default function BaziPage() {
               </button>
             </div>
 
-            {/* AI读取 */} {/*付费入口 */}
-            <BaziPurchaseCTA />
+            {/* AI读取 */} {/*付费入口 — 动态钩子基于排盘数据*/}
+            <BaziPurchaseCTA bazi={bazi} />
 
             <div className="text-xs font-semibold bg-gray-900 text-white px-3 py-1 rounded inline-block mb-3 mt-4">AI解读</div>
             
