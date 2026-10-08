@@ -8,6 +8,7 @@ import { notFound } from 'next/navigation';
 import { destinyArticles, BlogArticle } from '@/content/destiny-blog-articles';
 import { seoArticles } from '../seo-articles'; import { moreSeoArticles } from '../more-seo-articles';
 import { longtailSeoArticles } from '../longtail-seo-articles';
+import { longtailSeoArticlesBatch2 } from '../longtail-seo-articles-batch2';
 import { ArrowLeft, Clock, Tag } from 'lucide-react';
 import ShareButtons from '@/components/ShareButtons';
 import BlogArticleCTA from '@/components/BlogArticleCTA';
@@ -20,7 +21,7 @@ interface Props {
 // Generate static params for all articles
 export function generateStaticParams() {
   const destiny = destinyArticles.map((a: BlogArticle) => ({ slug: a.slug }));
-  const seo = [...seoArticles, ...moreSeoArticles, ...longtailSeoArticles].map((a: any) => ({ slug: a.slug }));
+  const seo = [...seoArticles, ...moreSeoArticles, ...longtailSeoArticles, ...longtailSeoArticlesBatch2].map((a: any) => ({ slug: a.slug }));
   return [...destiny, ...seo];
 }
 
@@ -31,7 +32,8 @@ export async function generateMetadata(
   const { slug } = await params;
   const article: any = destinyArticles.find((a: BlogArticle) => a.slug === slug) 
     || seoArticles.find((a: any) => a.slug === slug) || moreSeoArticles.find((a: any) => a.slug === slug)
-    || longtailSeoArticles.find((a: any) => a.slug === slug);
+    || longtailSeoArticles.find((a: any) => a.slug === slug)
+    || longtailSeoArticlesBatch2.find((a: any) => a.slug === slug);
   if (!article) { notFound(); }
 
   return createBlogArticleMetadata(article, slug);

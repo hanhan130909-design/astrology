@@ -4,6 +4,7 @@ import { destinyArticles } from '@/content/destiny-blog-articles';
 import { moreSeoArticles } from './more-seo-articles';
 import { seoArticles } from './seo-articles';
 import { longtailSeoArticles } from './longtail-seo-articles';
+import { longtailSeoArticlesBatch2 } from './longtail-seo-articles-batch2';
 import {
   toBlogSummary,
   type BlogArticleForSummary,
@@ -200,6 +201,7 @@ export function getBlogSummaries(): BlogSummary[] {
     ...seoArticles.map(normalizeSourceArticle),
     ...moreSeoArticles.map(normalizeSourceArticle),
     ...longtailSeoArticles.map(normalizeSourceArticle),
+    ...longtailSeoArticlesBatch2.map(normalizeSourceArticle),
     ...normalizedDestinyArticles,
     ...legacyArticles,
   ];
