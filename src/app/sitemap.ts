@@ -2,6 +2,9 @@ import type { MetadataRoute } from "next";
 import { destinyArticles } from "@/content/destiny-blog-articles";
 import { moreSeoArticles } from "@/app/blog/more-seo-articles";
 import { seoArticles } from "@/app/blog/seo-articles";
+import { longtailSeoArticles } from "@/app/blog/longtail-seo-articles";
+import { longtailSeoArticlesBatch2 } from "@/app/blog/longtail-seo-articles-batch2";
+import { longtailSeoArticlesBatch3 } from "@/app/blog/longtail-seo-articles-batch3";
 import { type IndexableArticle, isIndexableArticle } from "@/lib/blogIndexPolicy";
 import { createArticleSitemapEntry, deduplicateArticlesBySlug } from "@/lib/blogSitemap";
 import { siteUrl } from "@/lib/seoMetadata";
@@ -14,12 +17,18 @@ const coreRoutes = [
   "/transits",
   "/tarot",
   "/compatibility",
+  "/compatibility/bazi",
+  "/horoscope",
+  "/chart",
+  "/qimen",
   "/blog",
   "/learn",
   "/community",
-  "/qimen",
   "/shop",
   "/pricing",
+  "/referral",
+  "/about",
+  "/yearly-horoscope",
 ] as const;
 
 // Blog pagination pages (22 pages)
@@ -34,6 +43,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...destinyArticles,
     ...seoArticles,
     ...moreSeoArticles,
+    ...longtailSeoArticles,
+    ...longtailSeoArticlesBatch2,
+    ...longtailSeoArticlesBatch3,
   ];
 
   const coreEntries: MetadataRoute.Sitemap = coreRoutes.map((route) => ({
