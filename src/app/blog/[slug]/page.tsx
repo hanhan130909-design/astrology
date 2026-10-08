@@ -9,6 +9,7 @@ import { destinyArticles, BlogArticle } from '@/content/destiny-blog-articles';
 import { seoArticles } from '../seo-articles'; import { moreSeoArticles } from '../more-seo-articles';
 import { ArrowLeft, Clock, Tag } from 'lucide-react';
 import ShareButtons from '@/components/ShareButtons';
+import BlogArticleCTA from '@/components/BlogArticleCTA';
 import { createBlogArticleMetadata, selectContextualCornerstone } from '@/lib/blogArticleSeo';
 
 interface Props {
@@ -268,29 +269,8 @@ export default async function BlogArticlePage({ params }: Props) {
         {/* Share buttons — viral loop */}
         <ShareButtons url={`https://lunaxstar.com/blog/${slug}`} title={articleTitle} />
 
-        {/* CTA Footer */}
-        <div className="mt-16 p-8 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20 rounded-2xl border border-purple-100 dark:border-purple-800/30 text-center">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-            Discover Your Cosmic Blueprint
-          </h3>
-          <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-md mx-auto">
-            Generate your free chart on lunaxstar.com — Western astrology + Chinese BaZi, in 8 languages. No signup required.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
-            <Link
-              href="/bazi"
-              className="inline-flex items-center px-6 py-3 bg-purple-600 text-white rounded-xl font-semibold hover:bg-purple-700 transition-colors shadow-lg shadow-purple-500/25"
-            >
-              Free Chart →
-            </Link>
-            <Link
-              href="/pricing"
-              className="inline-flex items-center px-6 py-3 bg-white dark:bg-gray-800 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-700 rounded-xl font-semibold hover:bg-purple-50 dark:hover:bg-gray-700 transition-colors"
-            >
-              Deep AI Reading · $3.99
-            </Link>
-          </div>
-        </div>
+        {/* 强转化CTA — 根据文章分类匹配话术，8语言 */}
+        <BlogArticleCTA categoryLabel={categoryLabel} />
       </article>
     </div>
   );
