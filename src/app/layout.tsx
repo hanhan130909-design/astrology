@@ -6,6 +6,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import Navbar from "@/components/Navbar";
+import ReferralTracker from "@/components/ReferralTracker";
 
 // Lazy-loaded below-the-fold components (reduce initial JS bundle)
 const ServiceWorkerRegister = dynamic(() => import("@/components/ServiceWorkerRegister").then((m) => m.ServiceWorkerRegister));
@@ -135,6 +136,7 @@ export default function RootLayout({
           <LanguageProvider>
             <AuthProvider>
               <Navbar />
+              <ReferralTracker />
               {children}
               <CookieConsent />
               <InstallPrompt />
