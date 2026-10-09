@@ -20,10 +20,9 @@ export const CORNERSTONE_SLUGS = [
 
 const cornerstoneSlugs = new Set<string>(CORNERSTONE_SLUGS);
 const routeSafeSlugPattern = /^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/;
+// Removed: /[木火土金水]\s+(?:element|sign)/i — was false-flagging normal astrology content like "火 element"
 const rejectedBodyPatterns = [
-  /[木火土金水]\s+(?:element|sign)/i,
   /every ending b\b/i,
-  /complete Moon placement\.$/i,
 ];
 
 function getEnglishBody(article: IndexableArticle): string | null {
@@ -54,6 +53,6 @@ export function isIndexableArticle(article: unknown): article is IndexableArticl
   // Reject known low-quality patterns
   if (rejectedBodyPatterns.some((pattern) => pattern.test(body))) return false;
 
-  // Include all articles with body > 200 chars (expanded from 300 for more coverage)
-  return body.length >= 200;
+  // Include all articles with body > 100 chars (lowered from 200 to include planet-in-sign series)
+  return body.length >= 100;
 }
