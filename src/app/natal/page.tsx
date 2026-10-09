@@ -12,6 +12,7 @@ import { Send, Loader2, Sparkles, MessageCircle, X } from "lucide-react";
 import "./natal-mobile.css";
 import { natalFaqs, serializeNatalFaqJsonLd } from "@/components/natalFaq";
 import NatalPurchaseCTA from "@/components/NatalPurchaseCTA";
+import EmailUnlock from "@/components/EmailUnlock";
 
 const MONTHS = ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];
 const SIGN_SYMBOLS = ["♈","♉","♊","♋","♌","♍","♎","♏","♐","♑","♒","♓"];
@@ -665,6 +666,9 @@ export default function NatalPage(){
               <button onClick={sendNatalChat} disabled={chatLoading} style={{padding:"4px 12px",background:"#333",color:"white",border:"none",borderRadius:4,fontSize:12,cursor:"pointer"}}>{t('sendBtn')}</button>
             </div>
           </div>}
+
+          {/* 邮箱收集 — 免费解锁完整报告，为邮件养鱼机收集线索 */}
+          {chart && <div className="my-4"><EmailUnlock sign="natal" /></div>}
 
           {/* 付费转化钩子 — 基于星盘数据动态生成 */}
           {chart && <NatalPurchaseCTA chart={chart} />}

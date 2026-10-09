@@ -6,6 +6,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { buildBaziViewData } from "@/lib/baziViewData";
 import { ArrowLeft, Save, X, Trash2, Send, Loader2, Sparkles, Compass, ChevronDown } from "lucide-react";
 import BaziPurchaseCTA from "@/components/BaziPurchaseCTA";
+import EmailUnlock from "@/components/EmailUnlock";
 
 // ──────────────────────── 翻译 ────────────────────────
 const T: Record<string, Record<string, string>> = {
@@ -447,6 +448,9 @@ export default function BaziPage() {
                 📤 分享日主
               </button>
             </div>
+
+            {/* 邮箱收集 — 免费解锁完整八字报告 */}
+            <div className="my-4"><EmailUnlock sign="bazi" /></div>
 
             {/* AI读取 */} {/*付费入口 — 动态钩子基于排盘数据*/}
             <BaziPurchaseCTA bazi={bazi} />
