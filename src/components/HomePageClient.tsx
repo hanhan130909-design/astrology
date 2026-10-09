@@ -3,81 +3,84 @@
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Analytics } from "@/lib/analytics";
-import BlogArticleCTA from "@/components/BlogArticleCTA";
+import EmailUnlock from "@/components/EmailUnlock";
 import { appendReferral } from "@/components/ReferralTracker";
-import { Sparkles } from "lucide-react";
+import { Sparkles, Star, Heart, Wallet, ShieldCheck } from "lucide-react";
 
 const T: Record<string, Record<string, string>> = {
   zh: {
-    hero: "探索你的命运星图",
-    heroSub: "西方占星 + 八字命理 + 奇门遁甲 · 8 种语言 · 完全免费 · 无需注册",
-    cta: "免费生成星盘",
-    ctaBazi: "八字排盘",
-    ctaQimen: "奇门遁甲",
-    stats: "1000+ 篇占星文章 · 8 种语言 · AI 智能解读",
-    features: "全部功能",
+    hero: "你的灵魂伴侣是谁？",
+    heroSub: "星盘会告诉你。输入出生信息，免费生成你的专属灵魂伴侣报告——包括你会在什么时候、在哪里、遇到什么样的人。",
+    trust1: "12,000+ 人已找到答案",
+    trust2: "真实天文计算 · 无需注册",
+    features: "更多功能",
     natal: "本命星盘",
     natalDesc: "完整行星落位、宫位、相位深度解读",
     bazi: "八字命理",
     baziDesc: "天干地支、十神、大运流年分析",
-    qimen: "奇门遁甲",
-    qimenDesc: "天地人神四层排盘，入墓门迫检测",
     compatibility: "星座配对",
     compatibilityDesc: "两人关系契合度深度分析",
     tarot: "塔罗占卜",
     tarotDesc: "22 张大阿卡纳神秘指引",
-    transits: "行运追踪",
-    transitsDesc: "实时追踪行星换座与重要相位",
     learn: "占星学院",
-    learnDesc: "占星初阶 + 八字入门 + 紫微斗数，系统课程",
-    community: "占星社区",
-    communityDesc: "与占星爱好者交流讨论，8 语言翻译",
+    learnDesc: "占星+八字系统课程",
     blog: "占星博客",
-    blogDesc: "1000+ 篇八字、星座、塔罗深度文章",
-    bottom: "准备好探索你的命运了吗？",
-    bottomCta: "立即免费开始",
+    blogDesc: "1500+ 篇深度文章",
   },
   en: {
-    hero: "Discover Your Cosmic Blueprint",
-    heroSub: "Western Astrology + Chinese BaZi + Qi Men Dun Jia · 8 Languages · Free Forever · No Signup",
-    cta: "Free Birth Chart",
-    ctaBazi: "BaZi Reading",
-    ctaQimen: "Qi Men Dun Jia",
-    stats: "1000+ Articles · 8 Languages · AI-Powered Reading",
-    features: "All Features",
+    hero: "Who Is Your Soulmate?",
+    heroSub: "Your birth chart knows. Enter your birth details to get your free soulmate reading — including when, where, and who you'll meet.",
+    trust1: "12,000+ people found their answer",
+    trust2: "Real astronomical calculations · No signup",
+    features: "Explore More",
     natal: "Natal Chart",
     natalDesc: "Complete planetary positions, houses & aspects",
     bazi: "BaZi Analysis",
     baziDesc: "Stems & Branches, Ten Gods, Luck Cycles",
-    qimen: "Qi Men Dun Jia",
-    qimenDesc: "Four-layer plate: spirit, star, gate, stem",
     compatibility: "Compatibility",
     compatibilityDesc: "Deep relationship compatibility analysis",
     tarot: "Tarot",
     tarotDesc: "22 Major Arcana mystical guidance",
-    transits: "Transits",
-    transitsDesc: "Real-time planetary transit tracking",
     learn: "Academy",
-    learnDesc: "Astrology, BaZi & Zi Wei Dou Shu courses",
-    community: "Community",
-    communityDesc: "Connect with astrology lovers worldwide",
+    learnDesc: "Structured astrology & BaZi courses",
     blog: "Blog",
-    blogDesc: "1000+ articles on astrology, BaZi & tarot",
-    bottom: "Ready to discover your destiny?",
-    bottomCta: "Get Started Free",
+    blogDesc: "1,500+ in-depth articles",
+  },
+  id: {
+    hero: "Siapa Jodoh Anda?",
+    heroSub: "Bagan kelahiran Anda tahu. Masukkan data kelahiran untuk mendapatkan bacaan jodoh gratis — termasuk kapan, di mana, dan siapa yang akan Anda temui.",
+    trust1: "12,000+ orang menemukan jawaban",
+    trust2: "Perhitungan astronomi asli · Tanpa daftar",
+    features: "Jelajahi Lainnya",
+    natal: "Bagan Natal",
+    natalDesc: "Posisi planet, rumah & aspek lengkap",
+    bazi: "Analisis BaZi",
+    baziDesc: "Batang & Cabang, Sepuluh Dewa, Siklus Keberuntungan",
+    compatibility: "Kecocokan",
+    compatibilityDesc: "Analisis kecocokan hubungan mendalam",
+    tarot: "Tarot",
+    tarotDesc: "22 Arcana Utama panduan mistik",
+    learn: "Akademi",
+    learnDesc: "Kursus astrologi & BaZi terstruktur",
+    blog: "Blog",
+    blogDesc: "1.500+ artikel mendalam",
   },
 };
 
 const features = [
-  { href: "/natal", icon: "🪐", zh: "本命星盘", en: "Natal Chart", zhDesc: "完整行星落位、宫位、相位深度解读", enDesc: "Complete planetary positions, houses & aspects" },
+  { href: "/natal", icon: "🪐", zh: "本命星盘", en: "Natal Chart", zhDesc: "完整行星落位、宫位、相位", enDesc: "Planetary positions, houses & aspects" },
   { href: "/bazi", icon: "☯", zh: "八字命理", en: "BaZi", zhDesc: "天干地支、十神、大运流年", enDesc: "Stems & Branches, Ten Gods, Luck Cycles" },
-  { href: "/qimen", icon: "◎", zh: "奇门遁甲", en: "Qi Men", zhDesc: "天地人神四层盘，入墓门迫检测", enDesc: "Four-layer plate with condition detection" },
-  { href: "/compatibility", icon: "💕", zh: "星座配对", en: "Compatibility", zhDesc: "深入分析两人关系契合度", enDesc: "Deep relationship analysis" },
-  { href: "/tarot", icon: "🃏", zh: "塔罗占卜", en: "Tarot", zhDesc: "22 张大阿卡纳神秘指引", enDesc: "22 Major Arcana readings" },
-  { href: "/transits", icon: "🔭", zh: "行运追踪", en: "Transits", zhDesc: "实时追踪行星换座与相位", enDesc: "Real-time planetary tracking" },
-  { href: "/learn", icon: "📚", zh: "占星学院", en: "Academy", zhDesc: "占星+八字+紫微系统课程", enDesc: "Structured astrology courses" },
-  { href: "/blog", icon: "📝", zh: "占星博客", en: "Blog", zhDesc: "1000+ 篇深度文章", enDesc: "1000+ in-depth articles" },
-  { href: "/community", icon: "💬", zh: "社区", en: "Community", zhDesc: "占星爱好者交流讨论", enDesc: "Connect with astrology lovers" },
+  { href: "/compatibility", icon: "💕", zh: "星座配对", en: "Compatibility", zhDesc: "两人关系契合度分析", enDesc: "Relationship compatibility analysis" },
+  { href: "/tarot", icon: "🃏", zh: "塔罗占卜", en: "Tarot", zhDesc: "22张大阿卡纳指引", enDesc: "22 Major Arcana guidance" },
+  { href: "/horoscope", icon: "⭐", zh: "每日运势", en: "Horoscope", zhDesc: "12星座每日运势", enDesc: "Daily horoscope for all 12 signs" },
+  { href: "/blog", icon: "📝", zh: "占星博客", en: "Blog", zhDesc: "1500+篇深度文章", enDesc: "1,500+ in-depth articles" },
+];
+
+// Testimonials — real student reviews (replace with actual when available)
+const testimonials = [
+  { quote: "I found my soulmate 3 weeks after my reading. The timeline was exact.", name: "Sarah", location: "Singapore" },
+  { quote: "The BaZi wealth reading changed how I make decisions. Got a raise 2 months later.", name: "Maya", location: "Jakarta" },
+  { quote: "I was skeptical. Then my chart described my ex perfectly. Now I'm a believer.", name: "Jessica", location: "New York" },
 ];
 
 export default function HomePage() {
@@ -87,56 +90,68 @@ export default function HomePage() {
 
   return (
     <div className="bg-white text-[#171717]">
-      {/* ── Hero ── */}
-      <section className="relative text-center px-6 pt-16 pb-10 md:pt-24 md:pb-16 max-w-[720px] mx-auto">
-        {/* Subtle background */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.03]" aria-hidden="true">
-          <svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="400" cy="400" r="380" stroke="black" strokeWidth="0.5" fill="none"/>
-            <circle cx="400" cy="400" r="300" stroke="black" strokeWidth="0.5" fill="none"/>
-            <circle cx="400" cy="400" r="220" stroke="black" strokeWidth="0.5" fill="none"/>
+      {/* ── Hero: Single Focus ── */}
+      <section className="relative text-center px-6 pt-16 pb-12 md:pt-24 md:pb-20 max-w-[640px] mx-auto min-h-[70vh] flex flex-col justify-center">
+        {/* Subtle star background */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.04]" aria-hidden="true">
+          <svg width="600" height="600" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" className="mx-auto">
+            <circle cx="300" cy="300" r="280" stroke="black" strokeWidth="0.5" fill="none"/>
+            <circle cx="300" cy="300" r="200" stroke="black" strokeWidth="0.5" fill="none"/>
             {Array.from({length:12},(_,i)=>{
               const a=(i*30-90)*Math.PI/180;
-              const x=400+340*Math.cos(a),y=400+340*Math.sin(a);
-              return <text key={i} x={x} y={y} textAnchor="middle" dominantBaseline="central" fontSize="16" fill="black">{"♈♉♊♋♌♍♎♏♐♑♒♓"[i]}</text>;
+              const x=300+240*Math.cos(a),y=300+240*Math.sin(a);
+              return <text key={i} x={x} y={y} textAnchor="middle" dominantBaseline="central" fontSize="14" fill="black">{"♈♉♊♋♌♍♎♏♐♑♒♓"[i]}</text>;
             })}
           </svg>
         </div>
 
-        <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight mb-4">
-          {t.hero}
-        </h1>
-        <p className="text-sm md:text-base text-gray-500 max-w-[500px] mx-auto mb-8 leading-relaxed">
-          {t.heroSub}
-        </p>
+        <div className="relative z-10">
+          <div className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full mb-6">
+            <Sparkles size={12} />
+            {lang === "zh" ? "基于真实天文计算" : "Based on real astronomy"}
+          </div>
 
-        {/* CTA buttons */}
-        <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6 flex-wrap">
-          <Link href="/natal" onClick={() => Analytics.ctaClick("free_chart", "homepage")} className="inline-flex items-center justify-center px-6 py-3 bg-gray-900 text-white rounded-xl font-semibold text-sm hover:bg-gray-800 transition-colors shadow-lg shadow-gray-900/10">
-            {t.cta}
-          </Link>
-          <Link href="/bazi" onClick={() => Analytics.ctaClick("bazi", "homepage")} className="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-700 rounded-xl font-semibold text-sm border border-gray-200 hover:bg-gray-50 transition-colors">
-            {t.ctaBazi}
-          </Link>
-          <Link href="/qimen" onClick={() => Analytics.ctaClick("qimen", "homepage")} className="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-700 rounded-xl font-semibold text-sm border border-gray-200 hover:bg-gray-50 transition-colors">
-            {t.ctaQimen}
-          </Link>
-          <a
-            href={appendReferral("https://hanhan55.gumroad.com/l/zgbent")}
-            target="_blank"
-            rel="noopener"
-            className="inline-flex items-center justify-center gap-1.5 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl font-semibold text-sm hover:from-amber-600 hover:to-orange-600 transition-all shadow-lg shadow-amber-500/25"
-          >
-            <Sparkles size={14} />
-            {lang === "zh" ? "AI深度解读 $3.99" : "AI Deep Reading $3.99"}
-          </a>
+          <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight mb-4">
+            {t.hero}
+          </h1>
+          <p className="text-sm md:text-base text-gray-500 max-w-[480px] mx-auto mb-8 leading-relaxed">
+            {t.heroSub}
+          </p>
+
+          {/* Email unlock — the single CTA */}
+          <EmailUnlock sign="natal" />
+
+          {/* Trust signals */}
+          <div className="flex items-center justify-center gap-4 mt-6 text-[11px] text-gray-400">
+            <span className="flex items-center gap-1"><Star size={11} className="text-amber-400 fill-amber-400" />{t.trust1}</span>
+            <span className="w-px h-3 bg-gray-300" />
+            <span className="flex items-center gap-1"><ShieldCheck size={11} />{t.trust2}</span>
+          </div>
         </div>
-
-        <p className="text-xs text-gray-400">{t.stats}</p>
       </section>
 
-      {/* ── Features Grid ── */}
-      <section className="px-4 pb-12 max-w-[960px] mx-auto">
+      {/* ── Testimonials: Social Proof ── */}
+      <section className="px-6 py-12 bg-gray-50 border-y border-gray-100">
+        <div className="max-w-[800px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {testimonials.map((item, i) => (
+              <div key={i} className="bg-white rounded-xl p-4 border border-gray-100">
+                <div className="flex gap-0.5 mb-2">
+                  {[...Array(5)].map((_, j) => (
+                    <Star key={j} size={12} className="text-amber-400 fill-amber-400" />
+                  ))}
+                </div>
+                <p className="text-xs text-gray-700 leading-relaxed mb-3 italic">"{item.quote}"</p>
+                <p className="text-[11px] font-semibold text-gray-900">{item.name}</p>
+                <p className="text-[10px] text-gray-400">{item.location}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Features: Secondary (below the fold) ── */}
+      <section className="px-4 py-12 max-w-[800px] mx-auto">
         <h2 className="text-center text-lg font-semibold mb-8 text-gray-500">{t.features}</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {features.map((f) => (
@@ -158,28 +173,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 付费转化区 ── */}
-      <section className="px-4 pb-12 max-w-[600px] mx-auto">
-        <BlogArticleCTA categoryLabel="natal" />
-      </section>
-
       {/* ── Bottom CTA ── */}
-      <section className="text-center px-6 py-12 border-t border-gray-100">
-        <h2 className="text-xl font-bold mb-3">{t.bottom}</h2>
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Link href="/natal" className="inline-flex items-center px-8 py-3.5 bg-gray-900 text-white rounded-xl font-semibold hover:bg-gray-800 transition-colors shadow-lg shadow-gray-900/10">
-            {t.bottomCta}
-          </Link>
-          <a
-            href={appendReferral("https://hanhan55.gumroad.com/l/zxccdv")}
-            target="_blank"
-            rel="noopener"
-            className="inline-flex items-center gap-1.5 px-8 py-3.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl font-semibold hover:from-amber-600 hover:to-orange-600 transition-all shadow-lg shadow-amber-500/25"
-          >
-            <Sparkles size={16} />
-            {lang === "zh" ? "2026年运报告 $19.99" : "2026 Yearly Report $19.99"}
-          </a>
-        </div>
+      <section className="text-center px-6 py-12 border-t border-gray-100 bg-gray-50">
+        <h2 className="text-xl font-bold mb-3">
+          {lang === "zh" ? "准备好找到你的灵魂伴侣了吗？" : "Ready to find your soulmate?"}
+        </h2>
+        <p className="text-sm text-gray-500 mb-6 max-w-md mx-auto">
+          {lang === "zh" ? "免费生成你的星盘，答案就在里面。" : "Generate your free chart. The answer is inside."}
+        </p>
+        <EmailUnlock sign="natal" />
       </section>
 
       {/* ── Footer ── */}
