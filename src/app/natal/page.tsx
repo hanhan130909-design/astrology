@@ -138,7 +138,7 @@ export default function NatalPage(){
       sendBtn: { zh: "发送", en: "Send" },
       thinking: { zh: "思考中…", en: "Thinking…" },
       // Meta
-      metaDesc: { zh: "专业西洋占星本命盘分析工具，完整行星落位、宫位、相位深度解读，支持多种宫位制与阿拉伯点计算。", en: "Professional Western astrology natal chart analysis. Complete planet positions, houses, aspects, multiple house systems, and Arabic parts." },
+      metaDesc: { zh: "为什么你总吸引同一类人？你的本命星盘揭示了你的爱情模式、自我破坏触发点，以及遇到对的人的时间窗口。免费生成，2分钟出结果。", en: "Why do you keep attracting the same type of person? Your natal chart reveals your relationship pattern, self-sabotage triggers, and the timing window for meeting the right one. Free in 2 minutes." },
     };
     return map[key]?.[lang] || map[key]?.en || key;
   };

@@ -10,8 +10,8 @@ import EmailUnlock from "@/components/EmailUnlock";
 
 // ──────────────────────── 翻译 ────────────────────────
 const T: Record<string, Record<string, string>> = {
-  title: { zh: "八字排盘", en: "BaZi Chart", id: "Bagan BaZi", th: "ปาจื่อ", vi: "Bát Tự", ms: "Carta BaZi", ja: "八字", ko: "팔자" },
-  subtitle: { zh: "输入出生信息，查看四柱八字、大运流年", en: "Enter your birth details to reveal your Four Pillars & Luck Cycles", id: "Lihat BaZi", th: "ดูดวงปาจื่อ", vi: "Xem Bát Tự", ms: "Lihat BaZi", ja: "四柱八字を表示", ko: "사주팔자 확인" },
+  title: { zh: "你的日主揭示了你天生适合的职业", en: "Your Day Master Shows The Career You Were Born For", id: "Elemen Utama Anda Menunjukkan Karier yang Cocok", th: "ธาตุหลักของคุณบอกอาชีพที่คุณเกิดมาสำหรับ", vi: "Ngày Chủ của bạn cho thấy sự nghiệp bạn sinh ra để làm", ms: "Day Master anda menunjukkan kerjaya yang anda lahirkan", ja: "あなたの日主が生まれながらの職業を示す", ko: "당신의 일주가 타고난 직업을 보여줍니다" },
+  subtitle: { zh: "不是你现在做的那份。输入出生信息，查看你的日主、五行旺衰和大运流年——找到你真正擅长的赚钱方式。", en: "Not the one you're in. Enter your birth details to reveal your Day Master, Five Element balance, and Luck Cycles — find the way you're naturally meant to earn.", id: "Bukan yang anda lakukan sekarang. Masukkan data kelahiran untuk melihat Day Master, keseimbangan Lima Unsur, dan Siklus Keberuntungan.", th: "ไม่ใช่อันที่คุณทำอยู่ ตรงนี้กรอกข้อมูลการเกิดเพื่อดูธาตุหลัก ความสมดุลห้าธาตุ และวัฏจักรโชคชะตา", vi: "Không phải cái bạn đang làm. Nhập thông tin sinh để xem Ngày Chủ, cân bằng Ngũ Hành, và Chu kỳ Vận hạn.", ms: "Bukan yang anda lakukan sekarang. Masukkan maklumat kelahiran untuk melihat Day Master, keseimbangan Lima Unsur, dan Kitaran Tuah.", ja: "今の仕事ではありません。出生情報を入力して、日主、五行バランス、運勢周期を確認しましょう。", ko: "지금 하고 있는 일이 아닙니다. 생년월일을 입력하여 일주, 오행 균형, 대운을 확인하세요." },
   year: { zh: "年", en: "Yr", id: "Thn", th: "ปี", vi: "Năm", ms: "Thn", ja: "年", ko: "년" },
   month: { zh: "月", en: "Mo", id: "Bln", th: "เดือน", vi: "Tháng", ms: "Bln", ja: "月", ko: "월" },
   day: { zh: "日", en: "Day", id: "Hari", th: "วัน", vi: "Ngày", ms: "Hari", ja: "日", ko: "일" },
@@ -479,7 +479,7 @@ export default function BaziPage() {
               "@context": "https://schema.org",
               "@type": "SoftwareApplication",
               name: "星缘八字排盘 — BaZi Chart",
-              description: "专业八字命理排盘工具，支持四柱八字、大运流年、神煞、五行旺衰分析，提供AI智能解读。",
+              description: "你的日主揭示了你天生适合的职业和赚钱方式。输入出生信息查看四柱八字、五行旺衰、大运流年，找到你真正擅长的方向。免费生成，2分钟出结果。",
               applicationCategory: "LifestyleApplication",
               operatingSystem: "Web",
               offers: {
