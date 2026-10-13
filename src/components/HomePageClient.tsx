@@ -9,10 +9,10 @@ import { Sparkles, Star, Heart, Wallet, ShieldCheck } from "lucide-react";
 
 const T: Record<string, Record<string, string>> = {
   zh: {
-    hero: "你的灵魂伴侣是谁？",
-    heroSub: "星盘会告诉你。输入出生信息，免费生成你的专属灵魂伴侣报告——包括你会在什么时候、在哪里、遇到什么样的人。",
+    hero: "别再猜他是不是对的人了。",
+    heroSub: "你的星盘里写着你的灵魂伴侣模式——包括你会在什么时候遇到他，以及你为什么总吸引错的人。不再猜测，2分钟生成你的专属爱情蓝图。免费。",
     trust1: "12,000+ 人已找到答案",
-    trust2: "真实天文计算 · 无需注册",
+    trust2: "隐私保护 · 无需信用卡 · 2分钟完成",
     features: "更多功能",
     natal: "本命星盘",
     natalDesc: "完整行星落位、宫位、相位深度解读",
@@ -28,10 +28,10 @@ const T: Record<string, Record<string, string>> = {
     blogDesc: "1500+ 篇深度文章",
   },
   en: {
-    hero: "Who Is Your Soulmate?",
-    heroSub: "Your birth chart knows. Enter your birth details to get your free soulmate reading — including when, where, and who you'll meet.",
+    hero: "Stop Wondering If He's The One.",
+    heroSub: "Your birth chart shows your exact soulmate pattern — including when you'll meet them and why you keep attracting the wrong person. No more guessing. Get your personalized love blueprint in 2 minutes. Free.",
     trust1: "12,000+ people found their answer",
-    trust2: "Real astronomical calculations · No signup",
+    trust2: "Private · No credit card · Takes 2 minutes",
     features: "Explore More",
     natal: "Natal Chart",
     natalDesc: "Complete planetary positions, houses & aspects",
@@ -47,10 +47,10 @@ const T: Record<string, Record<string, string>> = {
     blogDesc: "1,500+ in-depth articles",
   },
   id: {
-    hero: "Siapa Jodoh Anda?",
-    heroSub: "Bagan kelahiran Anda tahu. Masukkan data kelahiran untuk mendapatkan bacaan jodoh gratis — termasuk kapan, di mana, dan siapa yang akan Anda temui.",
+    hero: "Berhenti Menebak Apakah Dia Yang Benar.",
+    heroSub: "Bagan kelahiran Anda menunjukkan pola jodoh yang tepat — termasuk kapan Anda akan bertemu dia dan mengapa Anda terus menarik orang yang salah. Dapatkan cetak biru cinta pribadi Anda dalam 2 menit. Gratis.",
     trust1: "12,000+ orang menemukan jawaban",
-    trust2: "Perhitungan astronomi asli · Tanpa daftar",
+    trust2: "Privasi · Tanpa kartu kredit · 2 menit",
     features: "Jelajahi Lainnya",
     natal: "Bagan Natal",
     natalDesc: "Posisi planet, rumah & aspek lengkap",
