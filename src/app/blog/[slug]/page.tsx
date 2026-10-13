@@ -189,6 +189,7 @@ export default async function BlogArticlePage({ params }: Props) {
   // JSON-LD structured data for rich results
   const articleDate = article.date || '2026-01-01';
   const isoDate = articleDate.includes('T') ? articleDate : `${articleDate}T00:00:00+00:00`;
+  const articleKeywords = `${articleTitle}, ${categoryLabel}, astrology, bazi, birth chart, ${slug.replace(/-/g, ' ')}`;
   const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -197,12 +198,15 @@ export default async function BlogArticlePage({ params }: Props) {
     'url': `https://lunaxstar.com/blog/${slug}`,
     'datePublished': isoDate,
     'dateModified': isoDate,
-    'author': { '@type': 'Organization', 'name': '星缘', 'url': 'https://lunaxstar.com' },
-    'publisher': { '@type': 'Organization', 'name': '星缘', 'url': 'https://lunaxstar.com' },
+    'author': { '@type': 'Organization', 'name': 'LunaXStar', 'url': 'https://lunaxstar.com' },
+    'publisher': { '@type': 'Organization', 'name': 'LunaXStar', 'url': 'https://lunaxstar.com', 'logo': { '@type': 'ImageObject', 'url': 'https://lunaxstar.com/opengraph-image.png' } },
     'mainEntityOfPage': { '@type': 'WebPage', '@id': `https://lunaxstar.com/blog/${slug}` },
     'image': 'https://lunaxstar.com/opengraph-image.png',
     'inLanguage': 'en',
     'isAccessibleForFree': true,
+    'articleSection': categoryLabel,
+    'keywords': articleKeywords,
+    'wordCount': article.wordCount || 500,
   };
 
   const breadcrumbJsonLd = {

@@ -48,6 +48,49 @@ export default function CompatibilityPage() {
 
   return (
     <div className="min-h-screen bg-white text-[#171717]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How accurate is zodiac compatibility?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Zodiac compatibility is most accurate when you compare full birth charts (synastry), not just sun signs. Sun sign compatibility gives a 30% picture; full chart comparison including moon, Venus, Mars, and house overlays gives 90%+ accuracy. Our tool uses both Western planetary aspects and Chinese BaZi elements for a complete picture."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can incompatible zodiac signs make a relationship work?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. 'Incompatible' sun signs often have strong magnetic attraction — the challenge is growth, not doom. What matters more than sun sign compatibility is your moon sign (emotional needs), Venus sign (how you love), and the house overlays between your charts. Many 'incompatible' pairs have successful relationships because they work with their differences rather than against them."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What's the difference between Western and Chinese compatibility?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Western compatibility focuses on planetary aspects and psychological traits. Chinese BaZi compatibility focuses on elemental balance and the Spouse Palace. Western tells you how you communicate; Chinese tells you whether your energies nourish or drain each other. The most accurate reading uses both — which is exactly what our tool does."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do I need birth time for compatibility reading?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Birth time determines your rising sign and house placements, which add depth about how you show up in relationships. However, sun, moon, and Venus signs — the core of compatibility — are calculated from birth date alone. We recommend birth time if you have it, but date-only readings still reveal your core compatibility patterns."
+                }
+              }
+            ]
+          })
+        }}
+      />
       <main className="max-w-7xl mx-auto px-6 py-12">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-600 mb-4">

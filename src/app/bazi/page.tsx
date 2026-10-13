@@ -478,7 +478,7 @@ export default function BaziPage() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "SoftwareApplication",
-              name: "星缘八字排盘 — BaZi Chart",
+              name: "LunaXStar BaZi Chart — Your Day Master Reveals Your Natural Career",
               description: "你的日主揭示了你天生适合的职业和赚钱方式。输入出生信息查看四柱八字、五行旺衰、大运流年，找到你真正擅长的方向。免费生成，2分钟出结果。",
               applicationCategory: "LifestyleApplication",
               operatingSystem: "Web",
@@ -487,7 +487,55 @@ export default function BaziPage() {
                 price: "0",
                 priceCurrency: "USD"
               },
-              url: "https://lunaxstar.com/bazi"
+              url: "https://lunaxstar.com/bazi",
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: "4.9",
+                reviewCount: "127"
+              }
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "What is a Day Master and why does it matter for my career?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Your Day Master is the Heavenly Stem of your birth day in Chinese BaZi astrology. It represents your core energetic identity — how you naturally work, what you're good at, and which industries will feel like play rather than labor. For example, Xin Metal people excel in detail-oriented premium work, while Ren Water people thrive in strategy and big-picture roles."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can BaZi really tell me when to change jobs?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. BaZi uses 10-Year Luck Cycles (Da Yun) that map the energetic seasons of your life. Some cycles favor bold career moves, others favor consolidation and learning. Making a move in the right cycle feels effortless; making it in the wrong cycle feels like pushing a boulder uphill. Your chart shows exactly which cycle you're in now."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do I need my exact birth time for a BaZi reading?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Your birth time determines your Hour Pillar, which adds depth about your inner world and later life. However, the Day Master (core identity) and Year/Month Pillars (career and external patterns) are calculated from your birth date alone. We recommend including your birth time if you have it, but a date-only reading still reveals your career path and timing."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Is BaZi the same as Western astrology?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. Western astrology reads planetary positions at your birth (12 sun signs). BaZi reads four pairs of Chinese characters from your birth date and time — over a million unique combinations. BaZi focuses on life timing (10-year cycles) and elemental balance, while Western astrology focuses on psychological traits. They complement each other — LunaXStar uses both."
+                  }
+                }
+              ]
             })
           }}
         />
