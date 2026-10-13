@@ -41,7 +41,7 @@ export const destinyArticles: BlogArticle[] = [
   },
   {
     slug: "bazi-career-path",
-    title: { en: "What Your BaZi Chart Says About Your Career Path", zh: "What Your BaZi Chart Says About Your Career Path", id: "What Your BaZi Chart Says About Your Career Path" },
+    title: { en: "Why You Feel Stuck At Work (Your BaZi Chart Shows The Career You Were Born For)", zh: "What Your BaZi Chart Says About Your Career Path", id: "What Your BaZi Chart Says About Your Career Path" },
     description: { en: "Your BaZi chart holds a detailed map of your professional strengths, ideal work environment, and career timing. Learn how the Day Master, Month Pillar, and Output stars reveal your true career path.", zh: "Your BaZi chart holds a detailed map of your professional strengths, ideal work environment, and career timing. Learn how the Day Master, Month Pillar, and Output stars reveal your true career path.", id: "Your BaZi chart holds a detailed map of your professional strengths, ideal work environment, and career timing. Learn how the Day Master, Month Pillar, and Output stars reveal your true career path." },
     category: "career",
     categoryLabel: { zh: "\u4e8b\u4e1a", en: "Career", id: "Karir" },
@@ -68,7 +68,7 @@ export const destinyArticles: BlogArticle[] = [
   },
   {
     slug: "bazi-love-compatibility",
-    title: { en: "BaZi Love Compatibility: How Elements Shape Your Relationships", zh: "BaZi Love Compatibility: How Elements Shape Your Relationships", id: "BaZi Love Compatibility: How Elements Shape Your Relationships" },
+    title: { en: "Why You Keep Attracting The Wrong Person (Your BaZi Elements Reveal The Pattern)", zh: "BaZi Love Compatibility: How Elements Shape Your Relationships", id: "BaZi Love Compatibility: How Elements Shape Your Relationships" },
     description: { en: "BaZi love compatibility goes deeper than zodiac animals. Discover how the Five Elements, Day Master interactions, and the Spouse Palace reveal your relationship patterns and ideal partner.", zh: "BaZi love compatibility goes deeper than zodiac animals. Discover how the Five Elements, Day Master interactions, and the Spouse Palace reveal your relationship patterns and ideal partner.", id: "BaZi love compatibility goes deeper than zodiac animals. Discover how the Five Elements, Day Master interactions, and the Spouse Palace reveal your relationship patterns and ideal partner." },
     category: "love",
     categoryLabel: { zh: "\u611f\u60c5", en: "Love", id: "Cinta" },
@@ -77,7 +77,7 @@ export const destinyArticles: BlogArticle[] = [
   },
   {
     slug: "bazi-wealth-luck",
-    title: { en: "Understanding Wealth Luck in Your BaZi Chart", zh: "Understanding Wealth Luck in Your BaZi Chart", id: "Understanding Wealth Luck in Your BaZi Chart" },
+    title: { en: "Why You Work Hard But Never Have Enough Money (Your BaZi Wealth Star Explains It)", zh: "Understanding Wealth Luck in Your BaZi Chart", id: "Understanding Wealth Luck in Your BaZi Chart" },
     description: { en: "BaZi wealth luck isn't about fate \u2014 it's about understanding the Wealth Stars in your chart, how elements interact with money energy, and when your financial timing peaks. Discover your wealth bluepri", zh: "BaZi wealth luck isn't about fate \u2014 it's about understanding the Wealth Stars in your chart, how elements interact with money energy, and when your financial timing peaks. Discover your wealth bluepri", id: "BaZi wealth luck isn't about fate \u2014 it's about understanding the Wealth Stars in your chart, how elements interact with money energy, and when your financial timing peaks. Discover your wealth bluepri" },
     category: "wealth",
     categoryLabel: { zh: "\u8d22\u8fd0", en: "Wealth", id: "Kekayaan" },
@@ -122,7 +122,7 @@ export const destinyArticles: BlogArticle[] = [
   },
   {
     slug: "five-elements-personality",
-    title: { en: "The Five Elements Personality Framework \u2014 More Accurate Than MBTI?", zh: "The Five Elements Personality Framework \u2014 More Accurate Than MBTI?", id: "The Five Elements Personality Framework \u2014 More Accurate Than MBTI?" },
+    title: { en: "Which Element Are You? It Explains Why You Do The Things You Do", zh: "Which Element Are You? It Explains Why You Do The Things You Do", id: "Which Element Are You? It Explains Why You Do The Things You Do" },
     description: { en: "Most personality tests rely on self-reported answers. The Five Elements system calculates your type from your birth data \u2014 no questionnaire needed. Discover Wood, Fire, Earth, Metal, Water.", zh: "Most personality tests rely on self-reported answers. The Five Elements system calculates your type from your birth data \u2014 no questionnaire needed. Discover Wood, Fire, Earth, Metal, Water.", id: "Most personality tests rely on self-reported answers. The Five Elements system calculates your type from your birth data \u2014 no questionnaire needed. Discover Wood, Fire, Earth, Metal, Water." },
     category: "career",
     categoryLabel: { zh: "\u4e8b\u4e1a", en: "Career", id: "Karir" },
@@ -140,7 +140,7 @@ export const destinyArticles: BlogArticle[] = [
   },
   {
     slug: "how-to-find-your-day-master",
-    title: { en: "How to Find Your Day Master in BaZi", zh: "How to Find Your Day Master in BaZi", id: "How to Find Your Day Master in BaZi" },
+    title: { en: "Find Your Day Master In 2 Minutes (It Reveals Your Natural Earning Style)", zh: "How to Find Your Day Master in BaZi", id: "How to Find Your Day Master in BaZi" },
     description: { en: "Your Day Master is the core of your BaZi chart. Learn what it is, the 10 Day Master types, and how to discover yours from your birth date.", zh: "Your Day Master is the core of your BaZi chart. Learn what it is, the 10 Day Master types, and how to discover yours from your birth date.", id: "Your Day Master is the core of your BaZi chart. Learn what it is, the 10 Day Master types, and how to discover yours from your birth date." },
     category: "bazi",
     categoryLabel: { zh: "\u516b\u5b57", en: "BaZi", id: "BaZi" },
@@ -158,7 +158,7 @@ export const destinyArticles: BlogArticle[] = [
   },
   {
     slug: "money-blocks-bazi-chart",
-    title: { en: "3 Money Blocks Hidden in Your BaZi Chart (And How to Fix Them)", zh: "3 Money Blocks Hidden in Your BaZi Chart (And How to Fix Them)", id: "3 Money Blocks Hidden in Your BaZi Chart (And How to Fix Them)" },
+    title: { en: "The Hidden Money Block In Your Birth Chart (And How To Remove It In 90 Days)", zh: "3 Money Blocks Hidden in Your BaZi Chart (And How to Fix Them)", id: "3 Money Blocks Hidden in Your BaZi Chart (And How to Fix Them)" },
     description: { en: "Your BaZi chart reveals specific wealth blockers: missing elements, clash patterns, and timing gaps. Learn to identify the 3 most common money blocks and how to work with them.", zh: "Your BaZi chart reveals specific wealth blockers: missing elements, clash patterns, and timing gaps. Learn to identify the 3 most common money blocks and how to work with them.", id: "Your BaZi chart reveals specific wealth blockers: missing elements, clash patterns, and timing gaps. Learn to identify the 3 most common money blocks and how to work with them." },
     category: "wealth",
     categoryLabel: { zh: "\u8d22\u8fd0", en: "Wealth", id: "Kekayaan" },

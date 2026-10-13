@@ -83,6 +83,16 @@ const testimonials = [
   { quote: "I was skeptical. Then my chart described my ex perfectly. Now I'm a believer.", name: "Jessica", location: "New York" },
 ];
 
+// Popular questions — internal links to high-potential blog articles
+const popularQuestions = [
+  { href: "/blog/scorpio-gemini-compatibility-why-intense-but-never-lasts", zh: "为什么天蝎和双子总是互相吸引却走不到最后？", en: "Why Scorpio & Gemini Are Intense But Never Last" },
+  { href: "/blog/why-you-attract-emotionally-unavailable-partners", zh: "为什么你总吸引情感疏离的人？星盘里有答案", en: "Why You Keep Attracting Emotionally Unavailable People" },
+  { href: "/blog/xin-metal-day-master-career-wealth", zh: "辛金日主：你天生适合的职业和赚钱方式", en: "Xin Metal Day Master: Your Natural Career & Earning Style" },
+  { href: "/blog/when-will-i-meet-my-soulmate-astrology", zh: "我什么时候会遇到灵魂伴侣？占星告诉你时间窗口", en: "When Will I Meet My Soulmate? The Astrology Timing Guide" },
+  { href: "/blog/3-zodiac-signs-meet-soulmate-2026-q4", zh: "2026年第四季度会遇到灵魂伴侣的3个星座", en: "3 Zodiac Signs Will Meet Their Soulmate in Q4 2026" },
+  { href: "/blog/moon-in-taurus-why-you-stay-too-long", zh: "月亮金牛座：为什么你在关系里总是忍太久", en: "Moon in Taurus: Why You Stay In Relationships Too Long" },
+];
+
 export default function HomePage() {
   const { language } = useLanguage();
   const t = T[language] || T.en;
@@ -170,6 +180,30 @@ export default function HomePage() {
               </div>
             </Link>
           ))}
+        </div>
+      </section>
+
+      {/* ── Popular Questions: Internal Links for SEO ── */}
+      <section className="px-6 py-12 bg-gray-50 border-t border-gray-100">
+        <div className="max-w-[700px] mx-auto">
+          <h2 className="text-center text-lg font-semibold mb-6 text-gray-700">
+            {lang === "zh" ? "大家都在问" : "Popular Questions"}
+          </h2>
+          <div className="space-y-2">
+            {popularQuestions.map((q, i) => (
+              <Link
+                key={i}
+                href={q.href}
+                className="flex items-center gap-3 p-3 rounded-xl bg-white border border-gray-100 hover:border-amber-200 hover:shadow-sm transition-all group"
+              >
+                <span className="text-amber-500 font-bold text-sm flex-shrink-0 w-6 text-center">{String(i + 1).padStart(2, "0")}</span>
+                <span className="text-sm text-gray-700 group-hover:text-gray-900 leading-snug">
+                  {lang === "zh" ? q.zh : q.en}
+                </span>
+                <span className="ml-auto text-gray-300 group-hover:text-amber-400 transition-colors flex-shrink-0">→</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
