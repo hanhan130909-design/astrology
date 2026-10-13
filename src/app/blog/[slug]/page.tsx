@@ -13,6 +13,7 @@ import { longtailSeoArticlesBatch3 } from '../longtail-seo-articles-batch3';
 import { ArrowLeft, Clock, Tag } from 'lucide-react';
 import ShareButtons from '@/components/ShareButtons';
 import BlogArticleCTA from '@/components/BlogArticleCTA';
+import { extractFaqsFromMarkdown, serializeFaqJsonLd } from '@/lib/faqExtractor';
 import { createBlogArticleMetadata, selectContextualCornerstone } from '@/lib/blogArticleSeo';
 
 interface Props {
@@ -219,10 +220,15 @@ export default async function BlogArticlePage({ params }: Props) {
     ],
   };
 
+  // Extract FAQ from article sections for FAQPage schema
+  const articleFaqs = extractFaqsFromMarkdown(article.sections || '', 4);
+  const faqJsonLd = articleFaqs.length > 0 ? serializeFaqJsonLd(articleFaqs) : null;
+
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      {faqJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
       <article className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
         {/* Back navigation */}
         <Link 
