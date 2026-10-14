@@ -1,5 +1,7 @@
 import { ImageResponse } from "next/og";
 
+export const runtime = 'edge';
+export const alt = 'LunaXStar — Find Your Soulmate Pattern';
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -14,59 +16,80 @@ export default function OpenGraphImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #171717 0%, #2d2d2d 100%)",
-          fontFamily: "system-ui, sans-serif",
+          background: "linear-gradient(135deg, #0a0a1a 0%, #1a1a3e 50%, #2a2a5e 100%)",
+          padding: "60px 80px",
         }}
       >
-        {/* Title */}
-        <div
-          style={{
-            fontSize: 64,
-            fontWeight: 800,
-            color: "white",
-            letterSpacing: "-0.02em",
-            marginBottom: 12,
-          }}
-        >
-          星缘 · LunaX
-        </div>
-
-        {/* Subtitle */}
-        <div
-          style={{
-            fontSize: 28,
-            color: "#a3a3a3",
-            marginBottom: 40,
-          }}
-        >
-          Free Western + Chinese Astrology · 8 Languages
-        </div>
-
-        {/* Zodiac symbols as text */}
         <div
           style={{
             display: "flex",
-            gap: 12,
-            color: "#525252",
-            fontSize: 24,
+            alignItems: "center",
+            gap: "16px",
+            marginBottom: "40px",
           }}
         >
-          {"Aries Taurus Gemini Cancer Leo Virgo Libra Scorpio Sagittarius Capricorn Aquarius Pisces"
-            .split(" ")
-            .map((s) => s[0])
-            .join("  ")}
+          <div
+            style={{
+              width: "56px",
+              height: "56px",
+              borderRadius: "50%",
+              background: "linear-gradient(135deg, #fbbf24, #f59e0b)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "28px",
+              color: "#1a1a2e",
+            }}
+          >
+            ✦
+          </div>
+          <span style={{ fontSize: "28px", color: "#fbbf24", letterSpacing: "6px", fontWeight: "bold" }}>
+            LUNAXSTAR
+          </span>
         </div>
 
-        {/* URL */}
-        <div
+        <h1
           style={{
-            position: "absolute",
-            bottom: 32,
-            fontSize: 18,
-            color: "#525252",
+            fontSize: "72px",
+            fontWeight: "bold",
+            color: "#f8fafc",
+            textAlign: "center",
+            lineHeight: 1.1,
+            marginBottom: "28px",
+            maxWidth: "1000px",
           }}
         >
-          lunaxstar.com
+          Who Is Your
+          <br />
+          <span style={{ color: "#fbbf24" }}>Soulmate?</span>
+        </h1>
+
+        <p
+          style={{
+            fontSize: "30px",
+            color: "#94a3b8",
+            textAlign: "center",
+            maxWidth: "800px",
+            lineHeight: 1.5,
+            marginBottom: "48px",
+          }}
+        >
+          Your Birth Chart Reveals The Pattern — Free Reading in 2 Minutes
+        </p>
+
+        <div
+          style={{
+            display: "flex",
+            gap: "20px",
+            padding: "16px 40px",
+            background: "linear-gradient(135deg, #fbbf24, #f59e0b)",
+            borderRadius: "50px",
+            fontSize: "24px",
+            fontWeight: "bold",
+            color: "#1a1a2e",
+          }}
+        >
+          Get Your Free Chart →
         </div>
       </div>
     ),
