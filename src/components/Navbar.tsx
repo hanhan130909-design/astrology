@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useAuth } from "@/contexts/AuthContext";
+import LazyAuthButton from "@/components/LazyAuthButton";
 
 const T: Record<string, Record<string, string>> = {
   zh: { brand:"星缘", horoscope:"运势", natal:"星盘", bazi:"八字", qimen:"奇门", compatibility:"配对", ai:"AI解读", learn:"学习", transits:"星象日历", community:"社区", tarot:"塔罗", strategy:"方法论" },
@@ -31,7 +31,6 @@ const LANGUAGES = [
 export default function Navbar() {
   const pathname = usePathname();
   const { language, setLanguage, t: tx } = useLanguage();
-  const { user, logout } = useAuth();
   const t = T[language] || T.en;
   const [isDark, setIsDark] = useState(false);
 
@@ -139,14 +138,7 @@ export default function Navbar() {
             {isDark ? "☀" : "☾"}
           </button>
 
-          {user ? (
-            <div className="flex items-center gap-2 shrink-0">
-              <Link href="/profile" className="text-xs font-medium text-gray-600 hover:text-[#171717] no-underline">{user.displayName || user.email}</Link>
-              <button onClick={logout} className="text-xs text-gray-400 hover:text-[#171717]">{tx("auth.logout")}</button>
-            </div>
-          ) : (
-            <Link href="/login" className="text-xs font-medium text-gray-400 hover:text-[#171717] no-underline shrink-0">{tx("auth.login")}</Link>
-          )}
+          <LazyAuthButton />
 
           {/* Mobile hamburger */}
           <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden p-1.5 rounded-md hover:bg-gray-100 ml-1" aria-label={menuOpen ? "关闭菜单" : "打开菜单"}>
