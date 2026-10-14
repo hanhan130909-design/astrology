@@ -13,6 +13,7 @@ import { longtailSeoArticlesBatch3 } from '../longtail-seo-articles-batch3';
 import { ArrowLeft, Clock, Tag } from 'lucide-react';
 import ShareButtons from '@/components/ShareButtons';
 import BlogArticleCTA from '@/components/BlogArticleCTA';
+import RelatedArticles from '@/components/RelatedArticles';
 import { extractFaqsFromMarkdown, serializeFaqJsonLd } from '@/lib/faqExtractor';
 import { createBlogArticleMetadata, selectContextualCornerstone } from '@/lib/blogArticleSeo';
 
@@ -285,6 +286,9 @@ export default async function BlogArticlePage({ params }: Props) {
 
         {/* Share buttons — viral loop */}
         <ShareButtons url={`https://lunaxstar.com/blog/${slug}`} title={articleTitle} />
+
+        {/* Related articles — increase time on page & internal links */}
+        <RelatedArticles currentSlug={slug} categoryLabel={categoryLabel} maxItems={3} />
 
         {/* 强转化CTA — 根据文章分类匹配话术，8语言 */}
         <BlogArticleCTA categoryLabel={categoryLabel} />
