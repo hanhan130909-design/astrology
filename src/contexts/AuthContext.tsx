@@ -122,14 +122,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setIsLoading(false);
     };
 
-    // Defer Firebase loading by 2 seconds to avoid blocking LCP
-    // Only load immediately if user has saved profile (returning user)
-    const hasSavedProfile = typeof localStorage !== 'undefined' && localStorage.getItem(STORAGE_KEY);
-    const loadDelay = hasSavedProfile ? 500 : 2000;
-
-    const timer = setTimeout(() => {
-      if (!active) return;
-      void loadFirebaseClient().then((firebase) => {
+    void loadFirebaseClient().then((firebase) => {
       if (!active) return;
       const ready = updateFirebaseReadiness(firebase);
 
@@ -179,11 +172,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         restoreLocalProfile();
       }
     });
-    }, loadDelay);
 
     return () => {
       active = false;
-      clearTimeout(timer);
       authEventGeneration += 1;
       unsubscribe?.();
     };
