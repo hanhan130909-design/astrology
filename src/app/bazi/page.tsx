@@ -69,8 +69,21 @@ const ZODIAC: Record<string, string> = { 子:"鼠",丑:"牛",寅:"虎",卯:"兔"
 
 // ──────────────────────── 主组件 ────────────────────────
 export default function BaziPage() {
-  const { language } = useLanguage();
+  const { language, setLanguage } = useLanguage();
   const lang = language || "zh";
+  const [langOpen, setLangOpen] = useState(false);
+
+  const LANGUAGES = [
+    { code:"zh", flag:"🇨🇳", label:"中文" },
+    { code:"en", flag:"🇺🇸", label:"EN" },
+    { code:"id", flag:"🇮🇩", label:"ID" },
+    { code:"th", flag:"🇹🇭", label:"TH" },
+    { code:"vi", flag:"🇻🇳", label:"VN" },
+    { code:"ms", flag:"🇲🇾", label:"MS" },
+    { code:"ja", flag:"🇯🇵", label:"JA" },
+    { code:"ko", flag:"🇰🇷", label:"KO" },
+  ];
+  const currentLang = LANGUAGES.find(l => l.code === lang) || LANGUAGES[0];
 
   const [year, setYear] = useState(1990);
   const [month, setMonth] = useState(6);
@@ -191,7 +204,26 @@ export default function BaziPage() {
         {/* Top bar */}
         <div className="flex items-center justify-between mb-4">
           <a href="/" className="inline-flex items-center gap-1.5 text-xs text-gray-500 hover:text-gray-900"><ArrowLeft size={14}/>{t("backHome",lang)}</a>
-          <button onClick={()=>setShowSaved(!showSaved)} className="text-xs text-gray-500 bg-gray-50 border px-2 py-1 rounded-lg"><Save size={12} className="inline mr-1"/>{savedCharts.length||""}</button>
+          <div className="flex items-center gap-2">
+            {/* Language switcher */}
+            <div className="relative">
+              <button onClick={()=>setLangOpen(!langOpen)} className="text-xs text-gray-500 bg-gray-50 border px-2 py-1 rounded-lg flex items-center gap-1">
+                <span>{currentLang.flag}</span>
+                <span>{currentLang.label}</span>
+              </button>
+              {langOpen && (
+                <div className="absolute right-0 top-full mt-1 bg-white border rounded-lg shadow-lg z-50 py-1 min-w-[80px]">
+                  {LANGUAGES.map(l => (
+                    <button key={l.code} onClick={()=>{setLanguage(l.code); setLangOpen(false);}} className={`w-full text-left px-3 py-1.5 text-xs hover:bg-gray-50 flex items-center gap-2 ${lang===l.code?"bg-gray-50 font-semibold":""}`}>
+                      <span>{l.flag}</span>
+                      <span>{l.label}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+            <button onClick={()=>setShowSaved(!showSaved)} className="text-xs text-gray-500 bg-gray-50 border px-2 py-1 rounded-lg"><Save size={12} className="inline mr-1"/>{savedCharts.length||""}</button>
+          </div>
         </div>
         {showSaved&&(
           <div className="mb-4 p-3 bg-gray-50 rounded-xl border">
