@@ -22,12 +22,20 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
-// Generate static params for all articles
+// Generate static params only for high-priority articles to avoid Vercel build timeout
+// Other articles are generated on-demand via ISR (revalidate below)
 export function generateStaticParams() {
   const destiny = destinyArticles.map((a: BlogArticle) => ({ slug: a.slug }));
-  const seo = [...seoArticles, ...moreSeoArticles, ...longtailSeoArticles, ...longtailSeoArticlesBatch2, ...longtailSeoArticlesBatch3, ...longtailSeoArticlesBatch4].map((a: any) => ({ slug: a.slug }));
-  return [...destiny, ...seo];
+  // Only pre-render the first 100 SEO articles + all batch4 (high priority)
+  const allSeo = [...seoArticles, ...moreSeoArticles, ...longtailSeoArticles, ...longtailSeoArticlesBatch2, ...longtailSeoArticlesBatch3, ...longtailSeoArticlesBatch4];
+  const batch4Slugs = new Set(longtailSeoArticlesBatch4.map((a: any) => a.slug));
+  const prioritySeo = allSeo.filter((a: any) => batch4Slugs.has(a.slug)).map((a: any) => ({ slug: a.slug }));
+  const otherSeo = allSeo.filter((a: any) => !batch4Slugs.has(a.slug)).slice(0, 100).map((a: any) => ({ slug: a.slug }));
+  return [...destiny, ...prioritySeo, ...otherSeo];
 }
+
+// ISR: generate missing pages on-demand, revalidate weekly
+export const revalidate = 604800; // 1 week
 
 // Dynamic metadata
 export async function generateMetadata(
