@@ -2,10 +2,8 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Analytics } from "@/lib/analytics";
 import EmailUnlock from "@/components/EmailUnlock";
 import { appendReferral } from "@/components/ReferralTracker";
-import { Sparkles, Star, Heart, Wallet, ShieldCheck } from "lucide-react";
 
 const T: Record<string, Record<string, string>> = {
   zh: {
@@ -117,7 +115,7 @@ export default function HomePage() {
 
         <div className="relative z-10">
           <div className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full mb-6">
-            <Sparkles size={12} />
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3L12 3z"/></svg>
             {lang === "zh" ? "基于真实天文计算" : "Based on real astronomy"}
           </div>
 
@@ -133,9 +131,15 @@ export default function HomePage() {
 
           {/* Trust signals */}
           <div className="flex items-center justify-center gap-4 mt-6 text-[11px] text-gray-400">
-            <span className="flex items-center gap-1"><Star size={11} className="text-amber-400 fill-amber-400" />{t.trust1}</span>
+            <span className="flex items-center gap-1">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="1" className="text-amber-400"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              {t.trust1}
+            </span>
             <span className="w-px h-3 bg-gray-300" />
-            <span className="flex items-center gap-1"><ShieldCheck size={11} />{t.trust2}</span>
+            <span className="flex items-center gap-1">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+              {t.trust2}
+            </span>
           </div>
         </div>
       </section>
@@ -148,7 +152,7 @@ export default function HomePage() {
               <div key={i} className="bg-white rounded-xl p-4 border border-gray-100">
                 <div className="flex gap-0.5 mb-2">
                   {[...Array(5)].map((_, j) => (
-                    <Star key={j} size={12} className="text-amber-400 fill-amber-400" />
+                    <svg key={j} width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="1" className="text-amber-400"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                   ))}
                 </div>
                 <p className="text-xs text-gray-700 leading-relaxed mb-3 italic">"{item.quote}"</p>
@@ -168,7 +172,7 @@ export default function HomePage() {
             <Link
               key={f.href}
               href={f.href}
-              onClick={() => Analytics.featureClick(f.href)}
+              onClick={() => import("@/lib/analytics").then(m => m.Analytics.featureClick(f.href))}
               className="group p-4 rounded-2xl border border-gray-100 hover:border-gray-200 hover:shadow-sm transition-all bg-white"
             >
               <div className="text-2xl mb-2">{f.icon}</div>
