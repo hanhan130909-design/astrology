@@ -482,7 +482,11 @@ export default function BaziPage() {
             </div>
 
             {/* 邮箱收集 — 免费解锁完整八字报告 */}
-            <div className="my-4"><EmailUnlock sign="bazi" /></div>
+            <div className="my-4"><EmailUnlock sign="bazi" chartData={{
+              sunSign: bazi?.dayMaster?.stem ? `${bazi.dayMaster.stem} Day Master` : undefined,
+              moonSign: bazi?.dayMaster?.element || undefined,
+              risingSign: bazi?.lunarText || undefined,
+            }} /></div>
 
             {/* AI读取 */} {/*付费入口 — 动态钩子基于排盘数据*/}
             <BaziPurchaseCTA bazi={bazi} />

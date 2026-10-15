@@ -8,6 +8,10 @@
     {
       "path": "/api/cron/fb-post",
       "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/cron/send-sequence",
+      "schedule": "0 6 * * *"
     }
   ]
 }

@@ -11,7 +11,7 @@ const UI: Record<string, Record<string, string>> = {
     desc: "We calculated your complete birth chart. Enter your email to unlock the full interpretation — including your rising sign, moon sign, houses, and what they mean for your love life.",
     placeholder: "Enter your email",
     button: "Unlock My Full Chart — Free",
-    privacy: "We'll send your chart + daily horoscope. Unsubscribe anytime.",
+    privacy: "We'll send your chart + 7-day love guidance. Unsubscribe anytime.",
     success: "Check your inbox!",
     successDesc: "Your full chart is on its way. Also check your spam folder.",
     error: "Please enter a valid email",
@@ -22,7 +22,7 @@ const UI: Record<string, Record<string, string>> = {
     desc: "我们已经算出了你的完整星盘。输入邮箱解锁完整解读——包括上升星座、月亮星座、宫位，以及它们对你感情的影响。",
     placeholder: "输入你的邮箱",
     button: "免费解锁完整星盘",
-    privacy: "我们会发送你的星盘和每日运势，随时可退订。",
+    privacy: "我们会发送你的星盘和7天感情指导，随时可退订。",
     success: "请查收邮件！",
     successDesc: "你的完整星盘已发送，也请检查垃圾邮件文件夹。",
     error: "请输入有效的邮箱地址",
@@ -33,14 +33,30 @@ const UI: Record<string, Record<string, string>> = {
     desc: "Kami sudah menghitung bagan kelahiran lengkap Anda. Masukkan email untuk membuka interpretasi lengkap — termasuk rising sign, moon sign, houses, dan artinya untuk cinta Anda.",
     placeholder: "Masukkan email Anda",
     button: "Buka Bagan Lengkap — Gratis",
-    privacy: "Kami kirim bagan + horoskop harian. Berhenti kapan saja.",
+    privacy: "Kami kirim bagan + panduan cinta 7 hari. Berhenti kapan saja.",
     success: "Cek email Anda!",
     successDesc: "Bagan lengkap sedang dikirim. Cek folder spam juga.",
     error: "Masukkan email yang valid",
   },
 };
 
-export default function EmailUnlock({ sign = "natal" }: { sign?: string }) {
+export interface ChartData {
+  moonSign?: string;
+  risingSign?: string;
+  sunSign?: string;
+  venusSign?: string;
+  marsSign?: string;
+  jupiterSign?: string;
+  saturnSign?: string;
+}
+
+export default function EmailUnlock({
+  sign = "natal",
+  chartData,
+}: {
+  sign?: string;
+  chartData?: ChartData;
+}) {
   const { language } = useLanguage();
   const lang = language || "en";
   const ui = UI[lang] || UI.en;
@@ -59,7 +75,11 @@ export default function EmailUnlock({ sign = "natal" }: { sign?: string }) {
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, zodiac: sign }),
+        body: JSON.stringify({
+          email,
+          source: sign,
+          ...(chartData || {}),
+        }),
       });
       const data = await res.json();
       if (data.success) {

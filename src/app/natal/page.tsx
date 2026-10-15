@@ -16,6 +16,7 @@ import EmailUnlock from "@/components/EmailUnlock";
 
 const MONTHS = ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];
 const SIGN_SYMBOLS = ["♈","♉","♊","♋","♌","♍","♎","♏","♐","♑","♒","♓"];
+const SIGN_EN = ["Aries","Taurus","Gemini","Cancer","Leo","Virgo","Libra","Scorpio","Sagittarius","Capricorn","Aquarius","Pisces"];
 const DEFAULT_LAT = 25 + 3 / 60;
 const DEFAULT_LNG = 121 + 30 / 60;
 const DEFAULT_HOUSE_SYSTEM = "B";
@@ -668,7 +669,15 @@ export default function NatalPage(){
           </div>}
 
           {/* 邮箱收集 — 免费解锁完整报告，为邮件养鱼机收集线索 */}
-          {chart && <div className="my-4"><EmailUnlock sign="natal" /></div>}
+          {chart && <div className="my-4"><EmailUnlock sign="natal" chartData={{
+            sunSign: chart.planets?.Sun ? SIGN_EN[Math.floor((typeof chart.planets.Sun.longitude === 'number' ? chart.planets.Sun.longitude : chart.planets.Sun.longitude?.longitude ?? 0) / 30)] : undefined,
+            moonSign: chart.planets?.Moon ? SIGN_EN[Math.floor((typeof chart.planets.Moon.longitude === 'number' ? chart.planets.Moon.longitude : chart.planets.Moon.longitude?.longitude ?? 0) / 30)] : undefined,
+            risingSign: chart.ascendant ? SIGN_EN[Math.floor((typeof chart.ascendant === 'number' ? chart.ascendant : chart.ascendant?.longitude ?? 0) / 30)] : undefined,
+            venusSign: chart.planets?.Venus ? SIGN_EN[Math.floor((typeof chart.planets.Venus.longitude === 'number' ? chart.planets.Venus.longitude : chart.planets.Venus.longitude?.longitude ?? 0) / 30)] : undefined,
+            marsSign: chart.planets?.Mars ? SIGN_EN[Math.floor((typeof chart.planets.Mars.longitude === 'number' ? chart.planets.Mars.longitude : chart.planets.Mars.longitude?.longitude ?? 0) / 30)] : undefined,
+            jupiterSign: chart.planets?.Jupiter ? SIGN_EN[Math.floor((typeof chart.planets.Jupiter.longitude === 'number' ? chart.planets.Jupiter.longitude : chart.planets.Jupiter.longitude?.longitude ?? 0) / 30)] : undefined,
+            saturnSign: chart.planets?.Saturn ? SIGN_EN[Math.floor((typeof chart.planets.Saturn.longitude === 'number' ? chart.planets.Saturn.longitude : chart.planets.Saturn.longitude?.longitude ?? 0) / 30)] : undefined,
+          }} /></div>}
 
           {/* 付费转化钩子 — 基于星盘数据动态生成 */}
           {chart && <NatalPurchaseCTA chart={chart} />}
