@@ -12,6 +12,7 @@ import { longtailSeoArticlesBatch2 } from '../longtail-seo-articles-batch2';
 import { longtailSeoArticlesBatch3 } from '../longtail-seo-articles-batch3';
 import { longtailSeoArticlesBatch4 } from '../longtail-seo-articles-batch4';
 import { longtailSeoArticlesBatch5 } from '../longtail-seo-articles-batch5';
+import { longtailSeoArticlesBatch6 } from '../longtail-seo-articles-batch6';
 import { ArrowLeft, Clock, Tag } from 'lucide-react';
 import ShareButtons from '@/components/ShareButtons';
 import BlogArticleCTA from '@/components/BlogArticleCTA';
@@ -28,8 +29,8 @@ interface Props {
 export function generateStaticParams() {
   const destiny = destinyArticles.map((a: BlogArticle) => ({ slug: a.slug }));
   // Only pre-render the first 100 SEO articles + all batch4 (high priority)
-  const allSeo = [...seoArticles, ...moreSeoArticles, ...longtailSeoArticles, ...longtailSeoArticlesBatch2, ...longtailSeoArticlesBatch3, ...longtailSeoArticlesBatch4, ...longtailSeoArticlesBatch5];
-  const batch4Slugs = new Set([...longtailSeoArticlesBatch4, ...longtailSeoArticlesBatch5].map((a: any) => a.slug));
+  const allSeo = [...seoArticles, ...moreSeoArticles, ...longtailSeoArticles, ...longtailSeoArticlesBatch2, ...longtailSeoArticlesBatch3, ...longtailSeoArticlesBatch4, ...longtailSeoArticlesBatch5, ...longtailSeoArticlesBatch6];
+  const batch4Slugs = new Set([...longtailSeoArticlesBatch4, ...longtailSeoArticlesBatch5, ...longtailSeoArticlesBatch6].map((a: any) => a.slug));
   const prioritySeo = allSeo.filter((a: any) => batch4Slugs.has(a.slug)).map((a: any) => ({ slug: a.slug }));
   const otherSeo = allSeo.filter((a: any) => !batch4Slugs.has(a.slug)).slice(0, 100).map((a: any) => ({ slug: a.slug }));
   return [...destiny, ...prioritySeo, ...otherSeo];
@@ -49,7 +50,8 @@ export async function generateMetadata(
     || longtailSeoArticlesBatch2.find((a: any) => a.slug === slug)
     || longtailSeoArticlesBatch3.find((a: any) => a.slug === slug)
     || longtailSeoArticlesBatch4.find((a: any) => a.slug === slug)
-    || longtailSeoArticlesBatch5.find((a: any) => a.slug === slug);
+    || longtailSeoArticlesBatch5.find((a: any) => a.slug === slug)
+    || longtailSeoArticlesBatch6.find((a: any) => a.slug === slug);
   if (!article) { notFound(); }
 
   return createBlogArticleMetadata(article, slug);
@@ -170,7 +172,8 @@ export default async function BlogArticlePage({ params }: Props) {
     || longtailSeoArticlesBatch2.find((a: any) => a.slug === slug)
     || longtailSeoArticlesBatch3.find((a: any) => a.slug === slug)
     || longtailSeoArticlesBatch4.find((a: any) => a.slug === slug)
-    || longtailSeoArticlesBatch5.find((a: any) => a.slug === slug);
+    || longtailSeoArticlesBatch5.find((a: any) => a.slug === slug)
+    || longtailSeoArticlesBatch6.find((a: any) => a.slug === slug);
   
   if (!article) notFound();
 
