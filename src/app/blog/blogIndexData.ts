@@ -7,6 +7,7 @@ import { longtailSeoArticles } from './longtail-seo-articles';
 import { longtailSeoArticlesBatch2 } from './longtail-seo-articles-batch2';
 import { longtailSeoArticlesBatch3 } from './longtail-seo-articles-batch3';
 import { longtailSeoArticlesBatch4 } from './longtail-seo-articles-batch4';
+import { longtailSeoArticlesBatch5 } from './longtail-seo-articles-batch5';
 import {
   toBlogSummary,
   type BlogArticleForSummary,
@@ -206,6 +207,7 @@ export function getBlogSummaries(): BlogSummary[] {
     ...longtailSeoArticlesBatch2.map(normalizeSourceArticle),
     ...longtailSeoArticlesBatch3.map(normalizeSourceArticle),
     ...longtailSeoArticlesBatch4.map(normalizeSourceArticle),
+    ...longtailSeoArticlesBatch5.map(normalizeSourceArticle),
     ...normalizedDestinyArticles,
     ...legacyArticles,
   ];
