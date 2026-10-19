@@ -83,12 +83,14 @@ const testimonials = [
 
 // Popular questions — internal links to high-potential blog articles
 const popularQuestions = [
-  { href: "/blog/scorpio-gemini-compatibility-why-intense-but-never-lasts", zh: "为什么天蝎和双子总是互相吸引却走不到最后？", en: "Why Scorpio & Gemini Are Intense But Never Last" },
+  { href: "/blog/how-to-know-if-he-is-your-soulmate-astrology", zh: "怎么知道他是不是你的正缘？星盘里有5个信号", en: "How to Know If He Is Your Soulmate: 5 Astrology Signs" },
   { href: "/blog/why-you-attract-emotionally-unavailable-partners", zh: "为什么你总吸引情感疏离的人？星盘里有答案", en: "Why You Keep Attracting Emotionally Unavailable People" },
-  { href: "/blog/xin-metal-day-master-career-wealth", zh: "辛金日主：你天生适合的职业和赚钱方式", en: "Xin Metal Day Master: Your Natural Career & Earning Style" },
+  { href: "/blog/twin-flame-vs-soulmate-difference", zh: "双生火焰和灵魂伴侣有什么区别？哪个才是对的人？", en: "Twin Flame vs Soulmate: What's the Difference?" },
   { href: "/blog/when-will-i-meet-my-soulmate-astrology", zh: "我什么时候会遇到灵魂伴侣？占星告诉你时间窗口", en: "When Will I Meet My Soulmate? The Astrology Timing Guide" },
-  { href: "/blog/3-zodiac-signs-meet-soulmate-2026-q4", zh: "2026年第四季度会遇到灵魂伴侣的3个星座", en: "3 Zodiac Signs Will Meet Their Soulmate in Q4 2026" },
-  { href: "/blog/moon-in-taurus-why-you-stay-too-long", zh: "月亮金牛座：为什么你在关系里总是忍太久", en: "Moon in Taurus: Why You Stay In Relationships Too Long" },
+  { href: "/blog/why-he-ghosted-me-astrology-reasons", zh: "他为什么突然消失？占星学解释了5种ghosting模式", en: "Why He Ghosted You: 5 Astrology Patterns Explained" },
+  { href: "/blog/what-career-is-right-for-me-astrology", zh: "什么工作适合我？占星学从你的星盘找到答案", en: "What Career Is Right For Me? Your Chart Reveals It" },
+  { href: "/blog/xin-metal-day-master-career-wealth", zh: "辛金日主：你天生适合的职业和赚钱方式", en: "Xin Metal Day Master: Your Natural Career & Earning Style" },
+  { href: "/blog/soulmate-initial-reading-free", zh: "灵魂伴侣首字母测试：免费算出你的正缘名字首字母", en: "Soulmate Initial Reading: Free Astrology Guide" },
 ];
 
 export default function HomePage() {
