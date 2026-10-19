@@ -38,30 +38,35 @@ export async function POST(request: NextRequest) {
     }
 
     const resend = new Resend(apiKey);
-    const now = Timestamp.now();
+    const nowMs = Date.now();
 
     // 1. Save to Firestore (for email sequence tracking)
     let isNewSubscriber = true;
     if (isFirebaseConfigured && db) {
-      const subDoc = doc(db, "email_subscribers", email);
-      const existing = await getDoc(subDoc);
-      if (existing.exists()) {
-        isNewSubscriber = false;
-        // Update chart data if provided
-        if (Object.values(chartData).some(v => v)) {
-          await setDoc(subDoc, { ...chartData, updatedAt: now }, { merge: true });
+      try {
+        const now = Timestamp.now();
+        const subDoc = doc(db, "email_subscribers", email);
+        const existing = await getDoc(subDoc);
+        if (existing.exists()) {
+          isNewSubscriber = false;
+          // Update chart data if provided
+          if (Object.values(chartData).some(v => v)) {
+            await setDoc(subDoc, { ...chartData, updatedAt: now }, { merge: true });
+          }
+        } else {
+          await setDoc(subDoc, {
+            email,
+            name: name || null,
+            source,
+            ...chartData,
+            subscribedAt: now,
+            sequenceStep: 0,
+            lastEmailAt: now,
+            unsubscribed: false,
+          });
         }
-      } else {
-        await setDoc(subDoc, {
-          email,
-          name: name || null,
-          source,
-          ...chartData,
-          subscribedAt: now,
-          sequenceStep: 0, // 0 = Day 0 email sent, 1-6 = subsequent, 7 = complete
-          lastEmailAt: now,
-          unsubscribed: false,
-        });
+      } catch (fbErr) {
+        console.error("Firebase save error (non-fatal):", fbErr);
       }
     }
 
@@ -89,7 +94,7 @@ export async function POST(request: NextRequest) {
         email,
         name: name || undefined,
         ...chartData,
-        subscribedAt: now.toMillis(),
+        subscribedAt: nowMs,
         sequenceStep: 0,
         source,
       };
@@ -113,6 +118,10 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.error("Subscribe error:", error);
-    return NextResponse.json({ success: false, message: "error" }, { status: 500 });
+    return NextResponse.json({
+      success: false,
+      message: "error",
+      detail: error instanceof Error ? error.message : String(error),
+    }, { status: 500 });
   }
 }
