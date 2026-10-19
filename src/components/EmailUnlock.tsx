@@ -2,7 +2,23 @@
 
 import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Mail, Lock, Sparkles, CheckCircle, Loader2 } from "lucide-react";
+
+// Inline SVG icons (replaces lucide-react to reduce bundle size)
+const MailIcon = ({ size = 16 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+);
+const LockIcon = ({ size = 16 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+);
+const SparklesIcon = ({ size = 18 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+);
+const CheckCircleIcon = ({ size = 40 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+);
+const LoaderIcon = ({ size = 16 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="animate-spin"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+);
 
 const UI: Record<string, Record<string, string>> = {
   en: {
@@ -95,7 +111,7 @@ export default function EmailUnlock({
   if (status === "success") {
     return (
       <div className="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-6 text-center max-w-md mx-auto">
-        <CheckCircle size={40} className="text-green-500 mx-auto mb-3" />
+        <CheckCircleIcon size={40} className="text-green-500 mx-auto mb-3" />
         <h3 className="text-lg font-bold text-gray-900 mb-1">{ui.success}</h3>
         <p className="text-sm text-gray-600">{ui.successDesc}</p>
       </div>
@@ -108,14 +124,14 @@ export default function EmailUnlock({
         <span className="text-[10px] font-bold tracking-wider text-amber-600 bg-amber-100 px-2 py-0.5 rounded-full">{ui.badge}</span>
       </div>
       <h3 className="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
-        <Sparkles size={18} className="text-amber-500" />
+        <SparklesIcon size={18} className="text-amber-500" />
         {ui.title}
       </h3>
       <p className="text-sm text-gray-600 mb-4 leading-relaxed">{ui.desc}</p>
 
       <form onSubmit={handleSubmit} className="space-y-3">
         <div className="relative">
-          <Mail size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+          <MailIcon size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
           <input
             type="email"
             value={email}
@@ -132,7 +148,7 @@ export default function EmailUnlock({
           aria-label={ui.button}
           className="w-full py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl font-bold text-sm hover:from-amber-600 hover:to-orange-600 transition-all flex items-center justify-center gap-2 disabled:opacity-60"
         >
-          {status === "loading" ? <Loader2 size={16} className="animate-spin" /> : <Lock size={16} />}
+          {status === "loading" ? <LoaderIcon size={16} /> : <LockIcon size={16} />}
           {ui.button}
         </button>
       </form>
