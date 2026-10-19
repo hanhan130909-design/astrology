@@ -36,7 +36,7 @@ function AuthContent({ useAuth }: { useAuth: () => any }) {
         <Link href="/profile" className="text-xs font-medium text-gray-600 hover:text-[#171717] no-underline">
           {user.displayName || user.email}
         </Link>
-        <button onClick={logout} className="text-xs text-gray-400 hover:text-[#171717]">
+        <button onClick={logout} className="text-xs text-gray-400 hover:text-[#171717]" aria-label="Logout">
           Logout
         </button>
       </div>

@@ -133,7 +133,7 @@ export default function RootLayout({
             <AuthProvider>
               <Navbar />
               <ReferralTracker />
-              {children}
+              <main>{children}</main>
               <CookieConsent />
               <InstallPrompt />
             </AuthProvider>
