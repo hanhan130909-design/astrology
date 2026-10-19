@@ -121,6 +121,7 @@ export default function EmailUnlock({
             value={email}
             onChange={(e) => { setEmail(e.target.value); setStatus("idle"); }}
             placeholder={ui.placeholder}
+            aria-label={ui.placeholder}
             className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent"
           />
         </div>
@@ -128,6 +129,7 @@ export default function EmailUnlock({
         <button
           type="submit"
           disabled={status === "loading"}
+          aria-label={ui.button}
           className="w-full py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl font-bold text-sm hover:from-amber-600 hover:to-orange-600 transition-all flex items-center justify-center gap-2 disabled:opacity-60"
         >
           {status === "loading" ? <Loader2 size={16} className="animate-spin" /> : <Lock size={16} />}

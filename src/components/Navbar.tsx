@@ -97,7 +97,7 @@ export default function Navbar() {
           {/* Desktop: full language bar */}
           <div className="hidden md:flex gap-0.5 bg-gray-100 rounded-lg p-0.5">
             {LANGUAGES.map((l) => (
-              <button key={l.code} onClick={() => setLanguage(l.code)} title={l.label}
+              <button key={l.code} onClick={() => setLanguage(l.code)} title={l.label} aria-label={`Switch to ${l.label}`}
                 className={`px-2 py-1.5 rounded-md text-xs font-medium transition-all ${
                   language === l.code ? "bg-white text-[#171717] shadow-sm" : "text-gray-400 hover:text-gray-600"
                 }`}>
@@ -109,7 +109,9 @@ export default function Navbar() {
           {/* Mobile: dropdown language picker */}
           <div className="md:hidden relative">
             <button onClick={() => setLangOpen(!langOpen)}
-              className="px-2 py-1.5 rounded-md text-xs font-medium bg-gray-100 text-gray-700 flex items-center gap-1">
+              className="px-2 py-1.5 rounded-md text-xs font-medium bg-gray-100 text-gray-700 flex items-center gap-1"
+              aria-label={langOpen ? "Close language menu" : "Open language menu"}
+              aria-expanded={langOpen}>
               {currentLang.flag} {currentLang.short} ▾
             </button>
             {langOpen && (
@@ -118,7 +120,8 @@ export default function Navbar() {
                   <button key={l.code} onClick={() => { setLanguage(l.code); setLangOpen(false); }}
                     className={`px-2 py-1.5 rounded text-xs font-medium text-center ${
                       language === l.code ? "bg-gray-100 text-[#171717]" : "text-gray-500 hover:bg-gray-50"
-                    }`}>
+                    }`}
+                    aria-label={`Switch to ${l.label}`}>
                     {l.flag} {l.label}
                   </button>
                 ))}
