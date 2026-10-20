@@ -8,6 +8,7 @@ import { longtailSeoArticlesBatch3 } from "@/app/blog/longtail-seo-articles-batc
 import { longtailSeoArticlesBatch4 } from "@/app/blog/longtail-seo-articles-batch4";
 import { longtailSeoArticlesBatch5 } from "@/app/blog/longtail-seo-articles-batch5";
 import { longtailSeoArticlesBatch6 } from "@/app/blog/longtail-seo-articles-batch6";
+import { longtailSeoArticlesBatch7 } from "@/app/blog/longtail-seo-articles-batch7";
 import { type IndexableArticle, isIndexableArticle } from "@/lib/blogIndexPolicy";
 import { createArticleSitemapEntry, deduplicateArticlesBySlug } from "@/lib/blogSitemap";
 import { siteUrl } from "@/lib/seoMetadata";
@@ -52,6 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...longtailSeoArticlesBatch4,
     ...longtailSeoArticlesBatch5,
     ...longtailSeoArticlesBatch6,
+    ...longtailSeoArticlesBatch7,
   ];
 
   const coreEntries: MetadataRoute.Sitemap = coreRoutes.map((route) => ({
