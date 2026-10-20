@@ -55,6 +55,9 @@ export const metadata: Metadata = {
     },
   },
   manifest: "/manifest.json",
+  other: {
+    'p:domain_verify': 'f914a7ef1120a3e97f5d6bf22f74c0d0',
+  },
   icons: {
     icon: [
       { url: "/icon.svg", type: "image/svg+xml" },
