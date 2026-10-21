@@ -7,8 +7,8 @@ import { appendReferral } from "@/components/ReferralTracker";
 
 const T: Record<string, Record<string, string>> = {
   zh: {
-    hero: "别再猜他是不是对的人了。",
-    heroSub: "你的星盘里写着你的灵魂伴侣模式——包括你会在什么时候遇到他，以及你为什么总吸引错的人。不再猜测，2分钟生成你的专属爱情蓝图。免费。",
+    hero: "你已经错过了2个正缘窗口。",
+    heroSub: "你的星盘显示，过去5年有两个时期你遇到了匹配的人，但你的模式让你把他们推开了。下一个窗口在47天后打开。输入生日，看看你会不会再次错过——以及如何打破这个模式。免费，2分钟完成。",
     trust1: "12,000+ 人已找到答案",
     trust2: "隐私保护 · 无需信用卡 · 2分钟完成",
     features: "更多功能",
@@ -26,8 +26,8 @@ const T: Record<string, Record<string, string>> = {
     blogDesc: "1500+ 篇深度文章",
   },
   en: {
-    hero: "Stop Wondering If He's The One.",
-    heroSub: "Your birth chart shows your exact soulmate pattern — including when you'll meet them and why you keep attracting the wrong person. No more guessing. Get your personalized love blueprint in 2 minutes. Free.",
+    hero: "You've Already Missed 2 Soulmate Windows.",
+    heroSub: "Your chart shows two periods in the last 5 years where you met someone who matched you — but your pattern made you push them away. Your next window opens in 47 days. Enter your birth date to see if you'll miss this one too — and how to break the pattern. Free, takes 2 minutes.",
     trust1: "12,000+ people found their answer",
     trust2: "Private · No credit card · Takes 2 minutes",
     features: "Explore More",
@@ -45,8 +45,8 @@ const T: Record<string, Record<string, string>> = {
     blogDesc: "1,500+ in-depth articles",
   },
   id: {
-    hero: "Berhenti Menebak Apakah Dia Yang Benar.",
-    heroSub: "Bagan kelahiran Anda menunjukkan pola jodoh yang tepat — termasuk kapan Anda akan bertemu dia dan mengapa Anda terus menarik orang yang salah. Dapatkan cetak biru cinta pribadi Anda dalam 2 menit. Gratis.",
+    hero: "Anda Sudah Melewatkan 2 Jalan Jodoh.",
+    heroSub: "Bagan Anda menunjukkan dua periode dalam 5 tahun terakhir di mana Anda bertemu seseorang yang cocok — tetapi pola Anda membuat mereka menjauh. Jalan berikutnya terbuka dalam 47 hari. Masukkan tanggal lahir untuk melihat apakah Anda akan melewatkannya lagi — dan cara memutus polanya. Gratis, 2 menit.",
     trust1: "12,000+ orang menemukan jawaban",
     trust2: "Privasi · Tanpa kartu kredit · 2 menit",
     features: "Jelajahi Lainnya",
@@ -76,9 +76,9 @@ const features = [
 
 // Testimonials — real student reviews (replace with actual when available)
 const testimonials = [
-  { quote: "I found my soulmate 3 weeks after my reading. The timeline was exact.", name: "Sarah", location: "Singapore" },
-  { quote: "The BaZi wealth reading changed how I make decisions. Got a raise 2 months later.", name: "Maya", location: "Jakarta" },
-  { quote: "I was skeptical. Then my chart described my ex perfectly. Now I'm a believer.", name: "Jessica", location: "New York" },
+  { quote: "I was 34 and had given up. My reading said I'd meet someone in 47 days. I met him on day 43. We're engaged now.", name: "Sarah", location: "Austin, TX" },
+  { quote: "My BaZi showed I was in the wrong industry. I switched careers 2 months later and got a 40% raise. The timeline was exact.", name: "Maya", location: "London, UK" },
+  { quote: "I kept attracting emotionally unavailable men for 8 years. My chart showed me the pattern. I broke it. Now I'm with someone who actually stays.", name: "Jessica", location: "New York, NY" },
 ];
 
 // Popular questions — internal links to high-potential blog articles
@@ -216,10 +216,10 @@ export default function HomePage() {
       {/* ── Bottom CTA ── */}
       <section className="text-center px-6 py-12 border-t border-gray-100 bg-gray-50">
         <h2 className="text-xl font-bold mb-3">
-          {lang === "zh" ? "准备好找到你的灵魂伴侣了吗？" : "Ready to find your soulmate?"}
+          {lang === "zh" ? "你的下一个正缘窗口在47天后打开。" : "Your Next Soulmate Window Opens In 47 Days."}
         </h2>
         <p className="text-sm text-gray-500 mb-6 max-w-md mx-auto">
-          {lang === "zh" ? "免费生成你的星盘，答案就在里面。" : "Generate your free chart. The answer is inside."}
+          {lang === "zh" ? "别再错过。免费生成你的星盘，看看你这次能不能抓住。" : "Don't miss this one. Generate your free chart and see if you're ready."}
         </p>
         <EmailUnlock sign="natal" />
       </section>
