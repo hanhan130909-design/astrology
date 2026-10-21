@@ -64,16 +64,16 @@ export function createPageMetadata({
 
 export const homeMetadata = createPageMetadata({
   path: "/",
-  title: "Free Birth Chart & BaZi Calculator | LunaXStar",
-  description: "Create a free Western birth chart or BaZi chart with real astronomical calculations. No signup required.",
-  keywords: ["free birth chart", "natal chart calculator", "BaZi calculator", "astrology chart"],
+  title: "Find Your Soulmate Window & Money Pattern | Free Birth Chart",
+  description: "Discover your soulmate timing, natural earning style, and hidden life patterns with a free birth chart and BaZi reading. Based on real astronomical calculations. No signup required.",
+  keywords: ["free birth chart", "soulmate astrology", "money pattern", "BaZi calculator", "natal chart", "career astrology"],
 });
 
 export const natalMetadata = createPageMetadata({
   path: "/natal",
-  title: "Free Birth Chart Calculator - Natal Chart Analysis",
-  description: "Generate a free professional natal chart with planets, houses, aspects, and traditional techniques. No signup required.",
-  keywords: ["free birth chart", "natal chart calculator", "astrology chart", "rising sign calculator"],
+  title: "Free Birth Chart: Discover Your Soulmate Pattern & Life Path",
+  description: "Generate a free professional natal chart to discover your soulmate pattern, career direction, and hidden life themes. Includes planets, houses, aspects, and AI-powered interpretation. No signup required.",
+  keywords: ["free birth chart", "natal chart calculator", "soulmate astrology", "rising sign", "astrology chart", "life path"],
 });
 
 export const solarReturnMetadata = createPageMetadata({
@@ -85,9 +85,9 @@ export const solarReturnMetadata = createPageMetadata({
 
 export const baziMetadata = createPageMetadata({
   path: "/bazi",
-  title: "Free BaZi Calculator - Four Pillars Chart & Luck Cycles",
-  description: "Generate a free BaZi Four Pillars chart with Ten Gods, Five Elements, and 10-year luck cycles. No signup required.",
-  keywords: ["BaZi calculator", "Four Pillars chart", "Chinese astrology", "luck cycles"],
+  title: "Free BaZi Calculator: Find Your Money Style & Career Path",
+  description: "Generate a free BaZi Four Pillars chart to discover your Day Master, natural earning style, best career direction, and 10-year luck cycles. Chinese astrology made simple. No signup required.",
+  keywords: ["BaZi calculator", "Four Pillars", "Day Master", "money style", "career astrology", "Chinese astrology", "luck cycles"],
 });
 
 export const transitsMetadata = createPageMetadata({
@@ -99,16 +99,16 @@ export const transitsMetadata = createPageMetadata({
 
 export const tarotMetadata = createPageMetadata({
   path: "/tarot",
-  title: "Free Online Tarot Reading - No Sign Up",
-  description: "Free online AI-powered tarot card reading. Draw tarot cards with various layouts and get guidance for love, career, and growth.",
-  keywords: ["tarot reading", "free tarot", "AI tarot", "tarot cards", "online tarot"],
+  title: "Free Tarot Reading: What's Coming Next In Your Love & Career",
+  description: "Free online AI-powered tarot card reading. Draw cards for love, career, and personal growth. Get clear guidance on what's coming next and what to do about it. No signup required.",
+  keywords: ["tarot reading", "free tarot", "love tarot", "career tarot", "AI tarot", "tarot cards", "online tarot"],
 });
 
 export const compatibilityMetadata = createPageMetadata({
   path: "/compatibility",
-  title: "Free Astrology Compatibility Calculator - Synastry & Zodiac",
-  description: "Compare two birth charts and analyze relationship dynamics, love compatibility, friendship, and astrological synastry for free.",
-  keywords: ["compatibility", "synastry", "zodiac compatibility", "relationship astrology", "couple chart", "love match", "astrology compatibility", "free compatibility"],
+  title: "Free Compatibility Test: Are You With The Right Person?",
+  description: "Compare two birth charts and discover your true compatibility. Find out if you're with the right person, what your core conflicts are, and whether this relationship can last. Free synastry analysis. No signup required.",
+  keywords: ["compatibility test", "synastry", "zodiac compatibility", "relationship astrology", "couple chart", "love match", "are we compatible", "free compatibility"],
 });
 
 export const blogMetadata = createPageMetadata({
