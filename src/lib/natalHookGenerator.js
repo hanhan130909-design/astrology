@@ -444,8 +444,8 @@ function getDefaultHook(lang) {
       ctaProduct: "single",
     },
     en: {
-      title: "🔮 What Secrets Does Your Chart Hold?",
-      hookText: "Your free chart shows planet positions and aspect lines — but the meaning behind these symbols is what truly determines your personality, relationship patterns, and career direction. AI Deep Reading explains in plain language: What's your core pattern? Your biggest strengths and blocks? What to watch for this year?",
+      title: "🔮 Your Chart Reveals A Pattern You Can't Unsee",
+      hookText: "Your free chart shows planet positions and lines — but the meaning behind them is what's been running your life without you knowing. Why you keep attracting the same type of person. Why you feel stuck at work. Why your relationships always end the same way. The AI Deep Reading explains it all in plain language — and tells you exactly what to do about it.",
       ctaProduct: "single",
     },
     id: {

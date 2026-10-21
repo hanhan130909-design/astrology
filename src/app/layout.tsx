@@ -12,6 +12,7 @@ import ReferralTracker from "@/components/ReferralTracker";
 const ServiceWorkerRegister = dynamic(() => import("@/components/ServiceWorkerRegister").then((m) => m.ServiceWorkerRegister));
 const CookieConsent = dynamic(() => import("@/components/CookieConsent").then((m) => m.CookieConsent));
 const InstallPrompt = dynamic(() => import("@/components/InstallPrompt").then((m) => m.default));
+const ExitIntentPopup = dynamic(() => import("@/components/ExitIntentPopup").then((m) => m.default));
 
 export const metadata: Metadata = {
   title: {
@@ -137,6 +138,7 @@ export default function RootLayout({
               <Navbar />
               <ReferralTracker />
               <main>{children}</main>
+              <ExitIntentPopup />
               <CookieConsent />
               <InstallPrompt />
             </AuthProvider>
