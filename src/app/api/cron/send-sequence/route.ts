@@ -63,14 +63,14 @@ function initAdmin() {
     let app: any;
     if (admin.default && admin.default.initializeApp) {
       app = admin.default.initializeApp({
-        credential: admin.default.credential.cert(sa),
+        credential: admin.default.cert(sa),
       });
     } else if (admin.initializeApp) {
       app = admin.initializeApp({
-        credential: admin.credential.cert(sa),
+        credential: admin.cert(sa),
       });
     } else {
-      initError = `No initializeApp found. keys: ${adminKeys}, hasDefault: ${hasDefault}, defaultKeys: ${defaultKeys}`;
+      initError = `No initializeApp found. keys: ${adminKeys}`;
       return null;
     }
     
