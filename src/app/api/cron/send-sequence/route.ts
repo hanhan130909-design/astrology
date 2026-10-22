@@ -16,7 +16,7 @@
  */
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import admin from "firebase-admin";
+import * as admin from "firebase-admin";
 import { getEmail, TOTAL_EMAILS, type SubscriberData } from "@/lib/emailSequence";
 
 // Initialize Firebase Admin inline for debugging
