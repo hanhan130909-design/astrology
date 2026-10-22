@@ -43,7 +43,14 @@ export async function GET(request: Request) {
 
   const adminDb = await getAdminFirestore();
   if (!adminDb) {
-    return NextResponse.json({ error: "Firebase Admin init failed" }, { status: 500 });
+    // Return detailed error for debugging
+    const saJson = process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT;
+    return NextResponse.json({ 
+      error: "Firebase Admin init failed",
+      envVarPresent: !!saJson,
+      envVarLength: saJson?.length || 0,
+      envVarFirst50: saJson?.substring(0, 50) || "empty"
+    }, { status: 500 });
   }
 
   const apiKey = process.env.RESEND_API_KEY;
