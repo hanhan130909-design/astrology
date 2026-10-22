@@ -59,18 +59,22 @@ function initAdmin() {
       sa.private_key = sa.private_key.replace(/\\n/g, '\n');
     }
     
-    // Try different access patterns
+    // Use admin directly if it has cert (newer firebase-admin versions)
     let app: any;
-    if (admin.default && admin.default.initializeApp) {
-      app = admin.default.initializeApp({
-        credential: admin.default.cert(sa),
-      });
-    } else if (admin.initializeApp) {
+    if (admin.cert) {
       app = admin.initializeApp({
         credential: admin.cert(sa),
       });
+    } else if (admin.default?.cert) {
+      app = admin.default.initializeApp({
+        credential: admin.default.cert(sa),
+      });
+    } else if (admin.credential?.cert) {
+      app = admin.initializeApp({
+        credential: admin.credential.cert(sa),
+      });
     } else {
-      initError = `No initializeApp found. keys: ${adminKeys}`;
+      initError = `No cert method found. keys: ${adminKeys}, hasCert: ${!!admin.cert}, hasDefaultCert: ${!!admin.default?.cert}, hasCredential: ${!!admin.credential}`;
       return null;
     }
     
