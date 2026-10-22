@@ -18,16 +18,8 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { getEmail, TOTAL_EMAILS, type SubscriberData } from "@/lib/emailSequence";
 
-// Dynamic require for firebase-admin (more reliable in serverless)
-let adminModule: any = null;
-function getAdmin() {
-  if (!adminModule) {
-    adminModule = require("firebase-admin");
-  }
-  return adminModule;
-}
-
-// Initialize Firebase Admin inline for debugging
+// Firebase Admin modular imports (v14+)
+let adminApp: any = null;
 let adminDb: any = null;
 let initError: string | null = null;
 
@@ -36,10 +28,9 @@ function initAdmin() {
   if (initError) return null;
   
   try {
-    const admin = getAdmin();
-    const adminKeys = Object.keys(admin).join(",");
-    const hasDefault = !!admin.default;
-    const defaultKeys = admin.default ? Object.keys(admin.default).join(",") : "no default";
+    // Dynamic require for modular API
+    const { initializeApp, cert } = require("firebase-admin/app");
+    const { getFirestore } = require("firebase-admin/firestore");
     
     const saJson = process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT;
     if (!saJson) {
@@ -59,36 +50,10 @@ function initAdmin() {
       sa.private_key = sa.private_key.replace(/\\n/g, '\n');
     }
     
-    // Use admin directly if it has cert (newer firebase-admin versions)
-    let app: any;
-    if (admin.cert) {
-      app = admin.initializeApp({
-        credential: admin.cert(sa),
-      });
-    } else if (admin.default?.cert) {
-      app = admin.default.initializeApp({
-        credential: admin.default.cert(sa),
-      });
-    } else if (admin.credential?.cert) {
-      app = admin.initializeApp({
-        credential: admin.credential.cert(sa),
-      });
-    } else {
-      initError = `No cert method found. keys: ${adminKeys}, hasCert: ${!!admin.cert}, hasDefaultCert: ${!!admin.default?.cert}, hasCredential: ${!!admin.credential}`;
-      return null;
-    }
-    
-    // Get firestore instance - try different patterns
-    if (app.firestore) {
-      adminDb = app.firestore();
-    } else if (admin.firestore) {
-      adminDb = admin.firestore(app);
-    } else if (admin.getFirestore) {
-      adminDb = admin.getFirestore(app);
-    } else {
-      initError = `No firestore method. app keys: ${Object.keys(app).join(",")}, admin firestore: ${!!admin.firestore}, admin getFirestore: ${!!admin.getFirestore}`;
-      return null;
-    }
+    adminApp = initializeApp({
+      credential: cert(sa),
+    });
+    adminDb = getFirestore(adminApp);
     return adminDb;
   } catch (e) {
     initError = "init error: " + (e as Error).message;
@@ -203,7 +168,7 @@ export async function GET(request: Request) {
           // Update sequence step using Admin SDK
           await db.collection("email_subscribers").doc(email).update({
             sequenceStep: nextStep,
-            lastEmailAt: admin.firestore.Timestamp.now(),
+            lastEmailAt: new Date(),
           });
           sent++;
           results.push(`SENT step${nextStep} ${email}: ${subject}`);
