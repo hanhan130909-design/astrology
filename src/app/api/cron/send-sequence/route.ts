@@ -16,9 +16,7 @@
  */
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { db, isFirebaseConfigured } from "@/lib/firebase";
-import { Timestamp } from "firebase/firestore";
-import { collection, getDocs, query, where, updateDoc, doc } from "firebase/firestore";
+import { getAdminFirestore, isAdminConfigured } from "@/lib/firebaseAdmin";
 import { getEmail, TOTAL_EMAILS, type SubscriberData } from "@/lib/emailSequence";
 
 // Cron secret for auth
@@ -39,8 +37,13 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
 
-  if (!isFirebaseConfigured || !db) {
-    return NextResponse.json({ error: "Firebase not configured" }, { status: 500 });
+  if (!isAdminConfigured()) {
+    return NextResponse.json({ error: "Firebase Admin not configured" }, { status: 500 });
+  }
+
+  const adminDb = await getAdminFirestore();
+  if (!adminDb) {
+    return NextResponse.json({ error: "Firebase Admin init failed" }, { status: 500 });
   }
 
   const apiKey = process.env.RESEND_API_KEY;
@@ -59,17 +62,17 @@ export async function GET(request: Request) {
 
   try {
     // Get all active subscribers who haven't completed the sequence
-    const q = query(
-      collection(db, "email_subscribers"),
-      where("unsubscribed", "==", false)
-    );
-    const snapshot = await getDocs(q);
+    const snapshot = await adminDb.collection("email_subscribers")
+      .where("unsubscribed", "==", false)
+      .get();
 
     for (const docSnap of snapshot.docs) {
       const data = docSnap.data();
       const email = data.email;
       const currentStep = data.sequenceStep ?? 0;
-      const subscribedAt = data.subscribedAt?.toMillis?.() || data.subscribedAt || now;
+      const subscribedAt = data.subscribedAt?._seconds 
+        ? data.subscribedAt._seconds * 1000 
+        : (data.subscribedAt || now);
 
       // Already completed all 7 emails
       if (currentStep >= TOTAL_EMAILS) {
@@ -120,10 +123,10 @@ export async function GET(request: Request) {
           errors++;
           results.push(`ERROR ${email}: ${error.message}`);
         } else {
-          // Update sequence step
-          await updateDoc(doc(db, "email_subscribers", email), {
+          // Update sequence step using Admin SDK
+          await adminDb.collection("email_subscribers").doc(email).update({
             sequenceStep: nextStep,
-            lastEmailAt: Timestamp.now(),
+            lastEmailAt: admin.firestore.Timestamp.now(),
           });
           sent++;
           results.push(`SENT step${nextStep} ${email}: ${subject}`);
