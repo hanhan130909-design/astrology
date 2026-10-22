@@ -78,7 +78,17 @@ function initAdmin() {
       return null;
     }
     
-    adminDb = app.firestore();
+    // Get firestore instance - try different patterns
+    if (app.firestore) {
+      adminDb = app.firestore();
+    } else if (admin.firestore) {
+      adminDb = admin.firestore(app);
+    } else if (admin.getFirestore) {
+      adminDb = admin.getFirestore(app);
+    } else {
+      initError = `No firestore method. app keys: ${Object.keys(app).join(",")}, admin firestore: ${!!admin.firestore}, admin getFirestore: ${!!admin.getFirestore}`;
+      return null;
+    }
     return adminDb;
   } catch (e) {
     initError = "init error: " + (e as Error).message;
