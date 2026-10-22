@@ -340,17 +340,17 @@ export const translations: Record<string, any> = {
 };
 
 const LanguageContext = createContext<LanguageContextType>({
-  language: 'zh',
+  language: 'en',
   setLanguage: () => {},
   t: (key: string) => key,
 });
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>('zh');
+  const [language, setLanguageState] = useState<Language>('en');
 
   useEffect(() => {
     const saved = localStorage.getItem('language') as Language;
-    const next = (saved && ['zh', 'en', 'id', 'th', 'vi', 'ms', 'ja', 'ko'].includes(saved)) ? saved : 'zh';
+    const next = (saved && ['zh', 'en', 'id', 'th', 'vi', 'ms', 'ja', 'ko'].includes(saved)) ? saved : 'en';
     setLanguageState(next);
     document.documentElement.lang = next;
   }, []);

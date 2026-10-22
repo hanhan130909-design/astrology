@@ -13,6 +13,7 @@ const ServiceWorkerRegister = dynamic(() => import("@/components/ServiceWorkerRe
 const CookieConsent = dynamic(() => import("@/components/CookieConsent").then((m) => m.CookieConsent));
 const InstallPrompt = dynamic(() => import("@/components/InstallPrompt").then((m) => m.default));
 const ExitIntentPopup = dynamic(() => import("@/components/ExitIntentPopup").then((m) => m.default));
+const LanguageNoIndex = dynamic(() => import("@/components/LanguageNoIndex").then((m) => m.default));
 
 export const metadata: Metadata = {
   title: {
@@ -134,6 +135,7 @@ export default function RootLayout({
         <ServiceWorkerRegister />
         <ThemeProvider>
           <LanguageProvider>
+            <LanguageNoIndex />
             <AuthProvider>
               <Navbar />
               <ReferralTracker />
