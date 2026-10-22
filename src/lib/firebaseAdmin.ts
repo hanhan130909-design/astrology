@@ -26,7 +26,22 @@ export function getFirebaseAdmin(): admin.app.App | null {
       return null;
     }
 
-    const serviceAccount = JSON.parse(serviceAccountJson);
+    // Parse JSON, handling potential newline issues in private_key
+    let serviceAccount: any;
+    try {
+      serviceAccount = JSON.parse(serviceAccountJson);
+    } catch (parseErr) {
+      console.error("JSON parse error. First 100 chars:", serviceAccountJson.substring(0, 100));
+      throw parseErr;
+    }
+
+    // Ensure private_key has proper newlines (Vercel may escape them)
+    if (serviceAccount.private_key && typeof serviceAccount.private_key === 'string') {
+      serviceAccount.private_key = serviceAccount.private_key.replace(/\\n/g, '\n');
+    }
+
+    console.log("Firebase Admin: project_id =", serviceAccount.project_id);
+    console.log("Firebase Admin: client_email =", serviceAccount.client_email);
 
     adminApp = admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
