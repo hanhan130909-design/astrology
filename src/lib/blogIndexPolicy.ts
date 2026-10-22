@@ -45,14 +45,15 @@ export function isIndexableArticle(article: unknown): article is IndexableArticl
   if (typeof candidate.slug !== "string" || !routeSafeSlugPattern.test(candidate.slug)) return false;
 
   const body = getEnglishBody(candidate)?.trim();
-  if (!body) return false;
-
-  // Cornerstone articles: require substantial content
-  if (cornerstoneSlugs.has(candidate.slug)) return body.length >= 1000;
   
-  // Reject known low-quality patterns
-  if (rejectedBodyPatterns.some((pattern) => pattern.test(body))) return false;
+  // Reject known low-quality patterns only
+  if (body && rejectedBodyPatterns.some((pattern) => pattern.test(body))) return false;
 
-  // Include all articles with body > 100 chars (lowered from 200 to include planet-in-sign series)
-  return body.length >= 100;
+  // Index all articles with valid slug — even short ones can rank for long-tail keywords
+  // Cornerstone articles still need substantial content
+  if (cornerstoneSlugs.has(candidate.slug)) {
+    return body ? body.length >= 500 : false;
+  }
+  
+  return true;
 }
