@@ -16,11 +16,19 @@
  */
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import * as admin from "firebase-admin";
 import { getEmail, TOTAL_EMAILS, type SubscriberData } from "@/lib/emailSequence";
 
+// Dynamic require for firebase-admin (more reliable in serverless)
+let adminModule: any = null;
+function getAdmin() {
+  if (!adminModule) {
+    adminModule = require("firebase-admin");
+  }
+  return adminModule;
+}
+
 // Initialize Firebase Admin inline for debugging
-let adminDb: admin.firestore.Firestore | null = null;
+let adminDb: any = null;
 let initError: string | null = null;
 
 function initAdmin() {
@@ -28,6 +36,7 @@ function initAdmin() {
   if (initError) return null;
   
   try {
+    const admin = getAdmin();
     const saJson = process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT;
     if (!saJson) {
       initError = "env var not set";
@@ -38,7 +47,7 @@ function initAdmin() {
     try {
       sa = JSON.parse(saJson);
     } catch (e) {
-      initError = "JSON parse error: " + (e as Error).message + " first50: " + saJson.substring(0, 50);
+      initError = "JSON parse error: " + (e as Error).message;
       return null;
     }
     
@@ -52,7 +61,7 @@ function initAdmin() {
     adminDb = app.firestore();
     return adminDb;
   } catch (e) {
-    initError = "init error: " + (e as Error).message;
+    initError = "init error: " + (e as Error).message + " | admin keys: " + Object.keys(getAdmin()).join(",");
     return null;
   }
 }
