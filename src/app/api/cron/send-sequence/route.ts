@@ -16,8 +16,46 @@
  */
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { getAdminFirestore, isAdminConfigured } from "@/lib/firebaseAdmin";
+import admin from "firebase-admin";
 import { getEmail, TOTAL_EMAILS, type SubscriberData } from "@/lib/emailSequence";
+
+// Initialize Firebase Admin inline for debugging
+let adminDb: admin.firestore.Firestore | null = null;
+let initError: string | null = null;
+
+function initAdmin() {
+  if (adminDb) return adminDb;
+  if (initError) return null;
+  
+  try {
+    const saJson = process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT;
+    if (!saJson) {
+      initError = "env var not set";
+      return null;
+    }
+    
+    let sa: any;
+    try {
+      sa = JSON.parse(saJson);
+    } catch (e) {
+      initError = "JSON parse error: " + (e as Error).message + " first50: " + saJson.substring(0, 50);
+      return null;
+    }
+    
+    if (sa.private_key) {
+      sa.private_key = sa.private_key.replace(/\\n/g, '\n');
+    }
+    
+    const app = admin.initializeApp({
+      credential: admin.credential.cert(sa),
+    });
+    adminDb = app.firestore();
+    return adminDb;
+  } catch (e) {
+    initError = "init error: " + (e as Error).message;
+    return null;
+  }
+}
 
 // Cron secret for auth
 const CRON_SECRET = process.env.CRON_SECRET || "";
@@ -37,19 +75,12 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
 
-  if (!isAdminConfigured()) {
-    return NextResponse.json({ error: "Firebase Admin not configured" }, { status: 500 });
-  }
-
-  const adminDb = await getAdminFirestore();
-  if (!adminDb) {
-    // Return detailed error for debugging
-    const saJson = process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT;
+  const db = initAdmin();
+  if (!db) {
     return NextResponse.json({ 
-      error: "Firebase Admin init failed",
-      envVarPresent: !!saJson,
-      envVarLength: saJson?.length || 0,
-      envVarFirst50: saJson?.substring(0, 50) || "empty"
+      error: "Firebase Admin init failed", 
+      detail: initError,
+      envVarLength: process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT?.length || 0
     }, { status: 500 });
   }
 
@@ -69,7 +100,7 @@ export async function GET(request: Request) {
 
   try {
     // Get all active subscribers who haven't completed the sequence
-    const snapshot = await adminDb.collection("email_subscribers")
+    const snapshot = await db.collection("email_subscribers")
       .where("unsubscribed", "==", false)
       .get();
 
@@ -131,7 +162,7 @@ export async function GET(request: Request) {
           results.push(`ERROR ${email}: ${error.message}`);
         } else {
           // Update sequence step using Admin SDK
-          await adminDb.collection("email_subscribers").doc(email).update({
+          await db.collection("email_subscribers").doc(email).update({
             sequenceStep: nextStep,
             lastEmailAt: admin.firestore.Timestamp.now(),
           });
