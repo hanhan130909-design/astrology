@@ -37,6 +37,10 @@ function initAdmin() {
   
   try {
     const admin = getAdmin();
+    const adminKeys = Object.keys(admin).join(",");
+    const hasDefault = !!admin.default;
+    const defaultKeys = admin.default ? Object.keys(admin.default).join(",") : "no default";
+    
     const saJson = process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT;
     if (!saJson) {
       initError = "env var not set";
@@ -55,13 +59,25 @@ function initAdmin() {
       sa.private_key = sa.private_key.replace(/\\n/g, '\n');
     }
     
-    const app = admin.initializeApp({
-      credential: admin.credential.cert(sa),
-    });
+    // Try different access patterns
+    let app: any;
+    if (admin.default && admin.default.initializeApp) {
+      app = admin.default.initializeApp({
+        credential: admin.default.credential.cert(sa),
+      });
+    } else if (admin.initializeApp) {
+      app = admin.initializeApp({
+        credential: admin.credential.cert(sa),
+      });
+    } else {
+      initError = `No initializeApp found. keys: ${adminKeys}, hasDefault: ${hasDefault}, defaultKeys: ${defaultKeys}`;
+      return null;
+    }
+    
     adminDb = app.firestore();
     return adminDb;
   } catch (e) {
-    initError = "init error: " + (e as Error).message + " | admin keys: " + Object.keys(getAdmin()).join(",");
+    initError = "init error: " + (e as Error).message;
     return null;
   }
 }
