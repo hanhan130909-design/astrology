@@ -28,7 +28,7 @@ function initAdmin() {
   if (initError) return null;
   
   try {
-    const { initializeApp, cert, getApps, getApp } = require("firebase-admin/app");
+    const { initializeApp, cert, getApps } = require("firebase-admin/app");
     const { getFirestore } = require("firebase-admin/firestore");
     
     const saJson = process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT;
@@ -49,14 +49,11 @@ function initAdmin() {
       sa.private_key = sa.private_key.replace(/\\n/g, '\n');
     }
     
-    // Try to get existing app first, or create new one
-    let app: any;
-    try {
-      app = getApp();
-    } catch (e) {
-      // No existing app, create one
-      app = initializeApp({ credential: cert(sa) });
-    }
+    // Use unique app name to avoid conflicts with other serverless functions
+    const appName = `cron-${process.env.VERCEL_DEPLOYMENT_ID || 'default'}`;
+    const apps = getApps();
+    const existing = apps.find((a: any) => a.name === appName);
+    const app = existing || initializeApp({ credential: cert(sa) }, appName);
     
     adminDb = getFirestore(app);
     return adminDb;
