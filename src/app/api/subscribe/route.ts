@@ -68,6 +68,8 @@ export async function POST(request: NextRequest) {
 
     // 1. Save to Firestore using Admin SDK
     let isNewSubscriber = true;
+    let firestoreWriteError: string | null = null;
+    let firestoreWriteSuccess = false;
     const firestore = getAdminDb();
     if (firestore) {
       try {
@@ -91,7 +93,9 @@ export async function POST(request: NextRequest) {
             unsubscribed: false,
           });
         }
+        firestoreWriteSuccess = true;
       } catch (fbErr) {
+        firestoreWriteError = (fbErr as Error).message;
         console.error("Firebase save error:", fbErr);
       }
     }
@@ -143,6 +147,8 @@ export async function POST(request: NextRequest) {
       isNew: isNewSubscriber,
       debug: {
         firestoreAvailable: !!firestore,
+        firestoreWriteSuccess,
+        firestoreWriteError,
         adminInitError,
       },
     });
