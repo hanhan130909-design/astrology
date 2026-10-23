@@ -74,19 +74,25 @@ export async function POST(request: NextRequest) {
     if (firestore) {
       try {
         const now = new Date();
+        // Filter out undefined values (Firestore doesn't accept undefined)
+        const cleanChartData: any = {};
+        Object.entries(chartData).forEach(([k, v]) => {
+          if (v !== undefined) cleanChartData[k] = v;
+        });
+        
         const subRef = firestore.collection("email_subscribers").doc(email);
         const existing = await subRef.get();
         if (existing.exists) {
           isNewSubscriber = false;
-          if (Object.values(chartData).some(v => v)) {
-            await subRef.set({ ...chartData, updatedAt: now }, { merge: true });
+          if (Object.keys(cleanChartData).length > 0) {
+            await subRef.set({ ...cleanChartData, updatedAt: now }, { merge: true });
           }
         } else {
           await subRef.set({
             email,
             name: name || null,
             source,
-            ...chartData,
+            ...cleanChartData,
             subscribedAt: now,
             sequenceStep: 0,
             lastEmailAt: now,
