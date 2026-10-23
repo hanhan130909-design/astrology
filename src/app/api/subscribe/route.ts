@@ -1,9 +1,26 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import { db, isFirebaseConfigured } from "@/lib/firebase";
-import { Timestamp } from "firebase/firestore";
-import { collection, doc, setDoc, getDoc } from "firebase/firestore";
 import { email1 } from "@/lib/emailSequence";
+
+// Firebase Admin SDK for server-side writes
+let adminDb: any = null;
+function getAdminDb() {
+  if (adminDb) return adminDb;
+  try {
+    const { initializeApp, cert } = require("firebase-admin/app");
+    const { getFirestore } = require("firebase-admin/firestore");
+    const saJson = process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT;
+    if (!saJson) return null;
+    const sa = JSON.parse(saJson);
+    if (sa.private_key) sa.private_key = sa.private_key.replace(/\\n/g, '\n');
+    const app = initializeApp({ credential: cert(sa) });
+    adminDb = getFirestore(app);
+    return adminDb;
+  } catch (e) {
+    console.error("Admin init error:", e);
+    return null;
+  }
+}
 
 // Resend Audience
 const AUDIENCE_ID =
@@ -40,21 +57,21 @@ export async function POST(request: NextRequest) {
     const resend = new Resend(apiKey);
     const nowMs = Date.now();
 
-    // 1. Save to Firestore (for email sequence tracking)
+    // 1. Save to Firestore using Admin SDK
     let isNewSubscriber = true;
-    if (isFirebaseConfigured && db) {
+    const firestore = getAdminDb();
+    if (firestore) {
       try {
-        const now = Timestamp.now();
-        const subDoc = doc(db, "email_subscribers", email);
-        const existing = await getDoc(subDoc);
-        if (existing.exists()) {
+        const now = new Date();
+        const subRef = firestore.collection("email_subscribers").doc(email);
+        const existing = await subRef.get();
+        if (existing.exists) {
           isNewSubscriber = false;
-          // Update chart data if provided
           if (Object.values(chartData).some(v => v)) {
-            await setDoc(subDoc, { ...chartData, updatedAt: now }, { merge: true });
+            await subRef.set({ ...chartData, updatedAt: now }, { merge: true });
           }
         } else {
-          await setDoc(subDoc, {
+          await subRef.set({
             email,
             name: name || null,
             source,
@@ -66,7 +83,7 @@ export async function POST(request: NextRequest) {
           });
         }
       } catch (fbErr) {
-        console.error("Firebase save error (non-fatal):", fbErr);
+        console.error("Firebase save error:", fbErr);
       }
     }
 
