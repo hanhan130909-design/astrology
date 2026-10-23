@@ -29,7 +29,7 @@ function initAdmin() {
   
   try {
     // Dynamic require for modular API
-    const { initializeApp, cert } = require("firebase-admin/app");
+    const { initializeApp, cert, getApps } = require("firebase-admin/app");
     const { getFirestore } = require("firebase-admin/firestore");
     
     const saJson = process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT;
@@ -50,10 +50,12 @@ function initAdmin() {
       sa.private_key = sa.private_key.replace(/\\n/g, '\n');
     }
     
-    adminApp = initializeApp({
+    // Use existing app if already initialized
+    const apps = getApps();
+    const app = apps.length > 0 ? apps[0] : initializeApp({
       credential: cert(sa),
     });
-    adminDb = getFirestore(adminApp);
+    adminDb = getFirestore(app);
     return adminDb;
   } catch (e) {
     initError = "init error: " + (e as Error).message;
