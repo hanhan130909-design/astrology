@@ -103,6 +103,10 @@ export async function GET(request: Request) {
   const results: string[] = [];
 
   try {
+    // Debug: get all docs first
+    const allSnapshot = await db.collection("email_subscribers").limit(10).get();
+    const allDocs = allSnapshot.docs.map(d => ({ id: d.id, data: d.data() }));
+    
     // Get all active subscribers who haven't completed the sequence
     const snapshot = await db.collection("email_subscribers")
       .where("unsubscribed", "==", false)
@@ -186,10 +190,12 @@ export async function GET(request: Request) {
     return NextResponse.json({
       success: true,
       totalSubscribers: snapshot.size,
+      allDocsCount: allSnapshot.size,
+      allDocs: allDocs.slice(0, 5),
       sent,
       skipped,
       errors,
-      results: results.slice(0, 20), // first 20 for log
+      results: results.slice(0, 20),
     });
   } catch (error) {
     console.error("Cron error:", error);
