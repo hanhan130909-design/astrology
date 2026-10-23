@@ -4,19 +4,28 @@ import { email1 } from "@/lib/emailSequence";
 
 // Firebase Admin SDK for server-side writes
 let adminDb: any = null;
+let adminInitError: string | null = null;
 function getAdminDb() {
   if (adminDb) return adminDb;
+  if (adminInitError) return null;
   try {
-    const { initializeApp, cert } = require("firebase-admin/app");
+    const { initializeApp, cert, getApps } = require("firebase-admin/app");
     const { getFirestore } = require("firebase-admin/firestore");
     const saJson = process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT;
-    if (!saJson) return null;
+    if (!saJson) {
+      adminInitError = "env var not set";
+      return null;
+    }
     const sa = JSON.parse(saJson);
     if (sa.private_key) sa.private_key = sa.private_key.replace(/\\n/g, '\n');
-    const app = initializeApp({ credential: cert(sa) });
+    
+    // Use existing app if already initialized
+    const apps = getApps();
+    const app = apps.length > 0 ? apps[0] : initializeApp({ credential: cert(sa) });
     adminDb = getFirestore(app);
     return adminDb;
   } catch (e) {
+    adminInitError = (e as Error).message;
     console.error("Admin init error:", e);
     return null;
   }
@@ -132,6 +141,10 @@ export async function POST(request: NextRequest) {
       success: true,
       message: isNewSubscriber ? "subscribed" : "already",
       isNew: isNewSubscriber,
+      debug: {
+        firestoreAvailable: !!firestore,
+        adminInitError,
+      },
     });
   } catch (error) {
     console.error("Subscribe error:", error);
