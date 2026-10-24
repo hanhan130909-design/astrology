@@ -16,7 +16,7 @@
  */
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { getEmail, TOTAL_EMAILS, type SubscriberData } from "@/lib/emailSequence";
+import { getEmail, TOTAL_EMAILS, referralRewardEmail, type SubscriberData } from "@/lib/emailSequence";
 
 // Firebase Admin modular imports (v14+)
 let adminApp: any = null;
@@ -114,6 +114,58 @@ export async function GET(request: Request) {
       .where("unsubscribed", "==", false)
       .get();
 
+    // ─── Referral Reward: send "unlocked" email to users who hit 3+ referrals ───
+    let rewardSent = 0;
+    for (const docSnap of snapshot.docs) {
+      const data = docSnap.data();
+      const email = data.email;
+      const referrals = data.referrals ?? 0;
+      // Reward if reached 3+ referrals AND not yet rewarded
+      if (referrals >= 3 && !data.rewardSent) {
+        try {
+          const subscriber: SubscriberData = {
+            email,
+            name: data.name || undefined,
+            moonSign: data.moonSign || undefined,
+            risingSign: data.risingSign || undefined,
+            sunSign: data.sunSign || undefined,
+            venusSign: data.venusSign || undefined,
+            marsSign: data.marsSign || undefined,
+            jupiterSign: data.jupiterSign || undefined,
+            saturnSign: data.saturnSign || undefined,
+            subscribedAt: data.subscribedAt?._seconds ? data.subscribedAt._seconds * 1000 : now,
+            sequenceStep: data.sequenceStep ?? 0,
+            source: data.source || "unknown",
+            referralCode: data.referralCode,
+            referrals,
+          };
+          const { subject, html } = referralRewardEmail(subscriber);
+          const { error } = await resend.emails.send({
+            from: "LunaXStar <newsletter@lunaxstar.com>",
+            to: [email],
+            subject,
+            html,
+          });
+          if (error) {
+            console.error(`Referral reward email error for ${email}:`, error);
+            errors++;
+          } else {
+            // Mark as rewarded to avoid duplicate sends
+            await db.collection("email_subscribers").doc(email).update({
+              rewardSent: true,
+              rewardSentAt: new Date(),
+            });
+            rewardSent++;
+            results.push(`REWARD ${email}: ${subject}`);
+          }
+          await new Promise(resolve => setTimeout(resolve, 500));
+        } catch (rewardErr) {
+          console.error(`Referral reward exception for ${email}:`, rewardErr);
+          errors++;
+        }
+      }
+    }
+
     for (const docSnap of snapshot.docs) {
       const data = docSnap.data();
       const email = data.email;
@@ -197,6 +249,7 @@ export async function GET(request: Request) {
       sent,
       skipped,
       errors,
+      rewardSent,
       results: results.slice(0, 20),
     });
   } catch (error) {

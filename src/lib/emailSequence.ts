@@ -18,6 +18,7 @@ export interface SubscriberData {
   sequenceStep: number;
   source?: string;
   referralCode?: string;
+  referrals?: number;
 }
 
 const GUMROAD_URL = "https://hanhan55.gumroad.com/l/zxccdv";
@@ -353,3 +354,32 @@ export function getEmail(step: number, data: SubscriberData): { subject: string;
 }
 
 export const TOTAL_EMAILS = 7;
+
+// ─── Referral Reward Email — "3 friends joined, your report is unlocked" ───
+// Sent automatically by cron when a subscriber reaches 3+ referrals.
+const REFERRAL_REWARD_URL = "https://hanhan55.gumroad.com/l/zxccdv?discount_code=LUNA3FREE";
+
+export function referralRewardEmail(data: SubscriberData): { subject: string; html: string } {
+  const name = data.name || "there";
+  const referralCount = data.referrals || 0;
+
+  const content = `
+    <p style="color:#e5e5e5;font-size:16px;line-height:1.7;margin:0 0 16px;">Hey ${name},</p>
+    <p style="color:#e5e5e5;font-size:16px;line-height:1.7;margin:0 0 16px;">You did it. ${referralCount} friends got their chart through your link.</p>
+    <p style="color:#e5e5e5;font-size:16px;line-height:1.7;margin:0 0 16px;">I promised I'd unlock your complete pattern breakdown when you hit 3. So here it is — <strong style="color:#d4af37;">100% free, on me.</strong></p>
+    <div style="text-align:center;background:#1e1e2e;border:1px solid #d4af37;border-radius:12px;padding:28px;margin:24px 0;">
+      <p style="color:#d4af37;font-size:18px;font-weight:700;margin:0 0 8px;">🎁 Your Full Reading — Unlocked</p>
+      <p style="color:#9ca3af;font-size:14px;line-height:1.6;margin:0 0 16px;">Your complete 23-page pattern breakdown. Normally $29.99. Free for you.</p>
+      ${ctaButton("Claim Your Free Reading", REFERRAL_REWARD_URL)}
+      <p style="color:#6b7280;font-size:12px;margin:12px 0 0;">Use code <strong style="color:#d4af37;">LUNA3FREE</strong> at checkout. It's already applied.</p>
+    </div>
+    <p style="color:#e5e5e5;font-size:16px;line-height:1.7;margin:0 0 16px;">You helped 3 other people see their own blind spots. That's not nothing. That's how this whole thing is supposed to work.</p>
+    <p style="color:#9ca3af;font-size:14px;line-height:1.6;margin:24px 0 0;">— LunaXStar</p>
+    <p style="color:#6b7280;font-size:13px;margin:12px 0 0;">P.S. Know 3 more people who keep picking the wrong person? Send them your link and we'll keep going.</p>
+  `;
+
+  return {
+    subject: "🎉 Your full reading is unlocked (free). Here it is.",
+    html: emailWrapper(content),
+  };
+}
