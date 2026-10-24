@@ -42,6 +42,7 @@ export async function POST(request: NextRequest) {
     const email = typeof body?.email === "string" ? body.email.toLowerCase().trim() : "";
     const name = typeof body?.name === "string" ? body.name.trim() : undefined;
     const source = typeof body?.source === "string" ? body.source : "unknown";
+    const ref = typeof body?.ref === "string" ? body.ref.trim() : null; // referral code
 
     // Chart data (optional but highly recommended for personalization)
     const chartData = {
@@ -66,6 +67,9 @@ export async function POST(request: NextRequest) {
     const resend = new Resend(apiKey);
     const nowMs = Date.now();
 
+    // Generate unique referral code for this user
+    const referralCode = email.replace(/[^a-z0-9]/g, '').slice(0, 10) + Math.random().toString(36).slice(2, 6);
+
     // 1. Save to Firestore using Admin SDK
     let isNewSubscriber = true;
     let firestoreWriteError: string | null = null;
@@ -84,8 +88,13 @@ export async function POST(request: NextRequest) {
         const existing = await subRef.get();
         if (existing.exists) {
           isNewSubscriber = false;
+          const existingData = existing.data();
           if (Object.keys(cleanChartData).length > 0) {
             await subRef.set({ ...cleanChartData, updatedAt: now }, { merge: true });
+          }
+          // Update referrer's referral count if this user was referred
+          if (ref && existingData?.referredBy !== ref) {
+            await subRef.set({ referredBy: ref }, { merge: true });
           }
         } else {
           await subRef.set({
@@ -93,11 +102,27 @@ export async function POST(request: NextRequest) {
             name: name || null,
             source,
             ...cleanChartData,
+            referralCode,
+            referredBy: ref,
+            referrals: 0,
             subscribedAt: now,
             sequenceStep: 0,
             lastEmailAt: now,
             unsubscribed: false,
           });
+          
+          // Update referrer's referral count
+          if (ref) {
+            const referrerQuery = await firestore.collection("email_subscribers")
+              .where("referralCode", "==", ref)
+              .limit(1)
+              .get();
+            if (!referrerQuery.empty) {
+              const referrerDoc = referrerQuery.docs[0];
+              const currentReferrals = referrerDoc.data().referrals || 0;
+              await referrerDoc.ref.set({ referrals: currentReferrals + 1 }, { merge: true });
+            }
+          }
         }
         firestoreWriteSuccess = true;
       } catch (fbErr) {
@@ -133,6 +158,7 @@ export async function POST(request: NextRequest) {
         subscribedAt: nowMs,
         sequenceStep: 0,
         source,
+        referralCode,
       };
       const { subject, html } = email1(subscriberData);
 
@@ -151,12 +177,8 @@ export async function POST(request: NextRequest) {
       success: true,
       message: isNewSubscriber ? "subscribed" : "already",
       isNew: isNewSubscriber,
-      debug: {
-        firestoreAvailable: !!firestore,
-        firestoreWriteSuccess,
-        firestoreWriteError,
-        adminInitError,
-      },
+      referralCode: isNewSubscriber ? referralCode : undefined,
+      referralLink: isNewSubscriber ? `https://lunaxstar.com/?ref=${referralCode}` : undefined,
     });
   } catch (error) {
     console.error("Subscribe error:", error);

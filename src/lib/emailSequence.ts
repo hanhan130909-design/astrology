@@ -17,6 +17,7 @@ export interface SubscriberData {
   subscribedAt: number;
   sequenceStep: number;
   source?: string;
+  referralCode?: string;
 }
 
 const GUMROAD_URL = "https://hanhan55.gumroad.com/l/zxccdv";
@@ -98,6 +99,7 @@ export function email1(data: SubscriberData): { subject: string; html: string } 
   const rising = data.risingSign || "your";
   const venus = data.venusSign || "your";
   const name = data.name || "there";
+  const referralLink = data.referralCode ? `https://lunaxstar.com/?ref=${data.referralCode}` : "https://lunaxstar.com";
 
   const content = `
     <p style="color:#e5e5e5;font-size:16px;line-height:1.7;margin:0 0 16px;">Hey ${name},</p>
@@ -109,6 +111,13 @@ export function email1(data: SubscriberData): { subject: string; html: string } 
     <p style="color:#e5e5e5;font-size:16px;line-height:1.7;margin:0 0 16px;">You didn't do it on purpose. It's a pattern written in your chart — the same pattern that makes you feel "something's off" right when things start getting real.</p>
     <p style="color:#e5e5e5;font-size:16px;line-height:1.7;margin:0 0 16px;">The good news? Your next window opens soon. The bad news? If you don't break this pattern before then, you'll miss this one too.</p>
     <p style="color:#e5e5e5;font-size:16px;line-height:1.7;margin:0 0 16px;">Tomorrow I'll send you the exact date your window opens. Read it carefully — this is the one that matters.</p>
+    
+    <div style="background:#1e1e2e;border:1px solid #d4af37;border-radius:12px;padding:20px;margin:24px 0;">
+      <p style="color:#d4af37;font-size:16px;font-weight:700;margin:0 0 8px;">💡 Know someone who keeps attracting the wrong person?</p>
+      <p style="color:#9ca3af;font-size:14px;line-height:1.6;margin:0 0 12px;">Send them your personal link. When 3 friends get their chart, I'll unlock your complete pattern breakdown for free.</p>
+      <p style="color:#e5e5e5;font-size:14px;background:#111827;padding:10px;border-radius:6px;margin:0;">${referralLink}</p>
+    </div>
+    
     <p style="color:#9ca3af;font-size:14px;line-height:1.6;margin:24px 0 0;">— LunaXStar</p>
     <p style="color:#6b7280;font-size:13px;margin:12px 0 0;">P.S. If you can't wait until tomorrow, the full breakdown is here:</p>
     ${ctaButton("Get Your Full Soulmate Reading — $19.99", GUMROAD_URL)}
