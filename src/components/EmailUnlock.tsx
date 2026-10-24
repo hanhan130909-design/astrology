@@ -88,6 +88,10 @@ export default function EmailUnlock({
     }
     setStatus("loading");
     try {
+      // Read referral code from URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const ref = urlParams.get("ref");
+      
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -95,6 +99,7 @@ export default function EmailUnlock({
           email,
           source: sign,
           ...(chartData || {}),
+          ...(ref ? { ref } : {}),
         }),
       });
       const data = await res.json();

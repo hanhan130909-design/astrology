@@ -93,10 +93,13 @@ export default function ExitIntentPopup() {
     }
     setStatus("loading");
     try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const ref = urlParams.get("ref");
+      
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, source: "exit-popup" }),
+        body: JSON.stringify({ email, source: "exit-popup", ...(ref ? { ref } : {}) }),
       });
       const data = await res.json();
       if (data.success) {

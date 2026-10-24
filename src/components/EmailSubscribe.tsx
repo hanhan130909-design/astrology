@@ -79,6 +79,9 @@ export function EmailSubscribe() {
     setErrorMessage("");
     
     try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const ref = urlParams.get("ref");
+      
       const response = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -86,6 +89,7 @@ export function EmailSubscribe() {
           email,
           zodiac: selectedZodiac,
           language,
+          ...(ref ? { ref } : {}),
         }),
       });
       

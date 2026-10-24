@@ -114,10 +114,13 @@ export default function NewsletterForm() {
     setMessage("");
 
     try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const ref = urlParams.get("ref");
+      
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.toLowerCase().trim(), language }),
+        body: JSON.stringify({ email: email.toLowerCase().trim(), language, ...(ref ? { ref } : {}) }),
       });
       const data = await res.json();
 
