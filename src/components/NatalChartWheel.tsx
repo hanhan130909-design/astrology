@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { AstroSymbol } from "./AstroSymbol";
 
 type Point = { x: number; y: number };
 type ChartData = {
@@ -69,23 +70,6 @@ function signParts(lon: number) {
     degreeText: `${degree}°`,
     minuteText: `${String(minute).padStart(2, "0")}′`,
   };
-}
-
-function planetGlyphSize(glyph: string) {
-  if (glyph === "☽" || glyph === "☊") return 21;
-  if (glyph === "♆") return 20;
-  return 20;
-}
-
-function zodiacGlyphSize(glyph: string) {
-  if (glyph === "☽" || glyph === "☊") return 16;
-  if (glyph === "♈" || glyph === "♆") return 14;
-  return 15;
-}
-
-function houseCuspGlyphSize(glyph: string) {
-  if (glyph === "♈" || glyph === "♆") return 17;
-  return 18;
 }
 
 function aspectPoint(lon: number, ascLon: number): Point {
@@ -171,11 +155,11 @@ function PlutoGlyphSvg({ x, y, color, size = 18 }: { x: number; y: number; color
 
 function PlanetGlyph({ glyph, x, y, color }: { glyph: string; x: number; y: number; color: string }) {
   if (glyph === "pluto") return <PlutoGlyphSvg x={x} y={y} color={color} />;
-
+  const size = 20;
   return (
-    <text x={x} y={y} fill={color} className="font-bold" textAnchor="middle" dominantBaseline="middle" fontSize={planetGlyphSize(glyph)} fontFamily={symbolFontFamily}>
-      {glyph}
-    </text>
+    <g transform={`translate(${x - size / 2} ${y - size / 2})`}>
+      <AstroSymbol name={glyph} size={size} color={color} />
+    </g>
   );
 }
 
@@ -239,9 +223,9 @@ export default function NatalChartWheel({ chart }: { chart?: ChartData }) {
 
           return (
             <g key={`house-cusp-${house.house}`}>
-              <text x={glyphPoint.x} y={glyphPoint.y} fill={parts.color} className="font-bold" dominantBaseline="middle" fontSize={houseCuspGlyphSize(parts.glyph)} fontFamily={symbolFontFamily} textAnchor="middle">
-                {parts.glyph}
-              </text>
+              <g transform={`translate(${glyphPoint.x - 8} ${glyphPoint.y - 8})`}>
+                <AstroSymbol name={parts.glyph} size={16} color={parts.color} />
+              </g>
               <text x={degreePoint.x} y={degreePoint.y} fill="black" className="text-[10px] font-bold" dominantBaseline="middle" fontFamily={symbolFontFamily} textAnchor="middle">
                 {parts.degreeText}
               </text>
@@ -281,9 +265,9 @@ export default function NatalChartWheel({ chart }: { chart?: ChartData }) {
               <text x={degreePoint.x} y={degreePoint.y} fill="black" className="text-[12px] font-bold" textAnchor="middle" dominantBaseline="middle" fontFamily={symbolFontFamily}>
                 {parts.degreeText}
               </text>
-              <text x={signPoint.x} y={signPoint.y} fill={parts.color} className="font-bold" textAnchor="middle" dominantBaseline="middle" fontSize={zodiacGlyphSize(parts.glyph)} fontFamily={symbolFontFamily}>
-                {parts.glyph}
-              </text>
+              <g transform={`translate(${signPoint.x - 7.5} ${signPoint.y - 7.5})`}>
+                <AstroSymbol name={parts.glyph} size={15} color={parts.color} />
+              </g>
               <text x={minutePoint.x} y={minutePoint.y} fill="black" className="text-[10px]" textAnchor="middle" dominantBaseline="middle" fontFamily={symbolFontFamily}>
                 {parts.minuteText}
               </text>
