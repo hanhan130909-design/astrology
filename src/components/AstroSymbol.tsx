@@ -32,7 +32,7 @@ const STROKE = {
  */
 const SYMBOL_SCALE: Record<string, number> = {
   Sun: 1.44, Moon: 0.95, Mercury: 0.87, Venus: 0.89, Mars: 0.76,
-  Jupiter: 1.53, Saturn: 1.05, Uranus: 0.89, Neptune: 0.84, North_Node: 0.93,
+  Jupiter: 1.53, Saturn: 1.05, Uranus: 0.89, Neptune: 0.84, Pluto: 0.88, North_Node: 0.93,
   Aries: 0.88, Taurus: 0.94, Gemini: 0.91, Cancer: 1.03, Leo: 0.84,
   Virgo: 0.84, Libra: 1.03, Scorpio: 0.86, Sagittarius: 0.76, Capricorn: 0.94,
   Aquarius: 1.15, Pisces: 1.05,
@@ -99,6 +99,13 @@ const PLANET_GLYPHS: Record<string, React.ReactNode> = {
       <path d="M9.4 13.4 L14.6 20" {...STROKE} />
       <path d="M12 13.4 V21" {...STROKE} />
       <path d="M14.6 13.4 L9.4 20" {...STROKE} />
+    </>
+  ),
+  Pluto: (
+    <>
+      <circle cx="12" cy="7.2" r="3.4" {...STROKE} />
+      <path d="M12 10.6 V19.5" {...STROKE} />
+      <path d="M6.6 15.4 L12 20 L17.4 15.4" {...STROKE} />
     </>
   ),
   North_Node: (

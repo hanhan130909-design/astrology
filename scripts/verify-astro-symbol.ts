@@ -3,7 +3,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { AstroSymbol } from "../src/components/AstroSymbol";
 
 const names = [
-  "Sun", "Moon", "Mercury", "Venus", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "North_Node",
+  "Sun", "Moon", "Mercury", "Venus", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto", "North_Node",
   "♈", "♉", "♊", "♋", "♌", "♍", "♎", "♏", "♐", "♑", "♒", "♓",
   "☉", "☽", "☿", "♀", "♂", "♃", "♄", "♅", "♆", "☊",
 ];

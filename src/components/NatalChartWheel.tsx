@@ -35,8 +35,8 @@ const PLANET_SYMBOLS: Record<string, string> = {
   Saturn: "♄",
   Uranus: "♅",
   Neptune: "♆",
-  Pluto: "pluto",
-  North_Node: "☊",
+  Pluto: "Pluto",
+  North_Node: "North_Node",
 };
 const ASPECT_COLORS: Record<string, string> = {
   Conjunction: "#FFD700",
@@ -140,21 +140,7 @@ function getDisplayOffsets(planets: { key: string; longitude: number }[]) {
   return offsets;
 }
 
-function PlutoGlyphSvg({ x, y, color, size = 18 }: { x: number; y: number; color: string; size?: number }) {
-  const scale = size / 24;
-
-  return (
-    <g aria-label="冥王" transform={`translate(${x} ${y}) scale(${scale})`} fill="none" stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.9">
-      <circle cx="0" cy="-8.2" r="3.2" />
-      <path d="M -7 -2.2 Q 0 5 7 -2.2" />
-      <path d="M 0 2.8 V 12" />
-      <path d="M -5 8 H 5" />
-    </g>
-  );
-}
-
 function PlanetGlyph({ glyph, x, y, color }: { glyph: string; x: number; y: number; color: string }) {
-  if (glyph === "pluto") return <PlutoGlyphSvg x={x} y={y} color={color} />;
   const size = 20;
   return (
     <g transform={`translate(${x - size / 2} ${y - size / 2})`}>
