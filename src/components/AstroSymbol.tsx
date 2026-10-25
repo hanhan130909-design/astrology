@@ -20,9 +20,22 @@ type SymbolProps = {
 const STROKE = {
   fill: "none" as const,
   stroke: "currentColor",
-  strokeWidth: 1.7,
   strokeLinecap: "round" as const,
   strokeLinejoin: "round" as const,
+};
+
+/**
+ * 每个符号的视觉缩放权重：把符号最长边统一归一化到一致，
+ * 消除"太阳圆大、处女细长"造成的视觉大小参差。
+ * 取值 = 目标视觉尺寸 / 该符号最长边实测占比（基于 viewBox 24）。
+ * 同时用 strokeWidth 补偿，保证缩放后线条粗细视觉一致。
+ */
+const SYMBOL_SCALE: Record<string, number> = {
+  Sun: 1.44, Moon: 0.95, Mercury: 0.87, Venus: 0.89, Mars: 0.76,
+  Jupiter: 1.53, Saturn: 1.05, Uranus: 0.89, Neptune: 0.84, North_Node: 0.93,
+  Aries: 0.88, Taurus: 0.94, Gemini: 0.91, Cancer: 1.03, Leo: 0.84,
+  Virgo: 0.84, Libra: 1.03, Scorpio: 0.86, Sagittarius: 0.76, Capricorn: 0.94,
+  Aquarius: 1.15, Pisces: 1.05,
 };
 
 // ---- 行星符号（10 个），标准绘制：圆 + 特征 ----
@@ -218,6 +231,8 @@ export function AstroSymbol({ name, size = 18, color, className }: SymbolProps) 
     (ZODIAC_GLYPHS as Record<string, React.ReactNode>)[key];
   if (!glyph) return null;
 
+  const scale = SYMBOL_SCALE[key] || 1;
+  // 统一视觉大小（绕中心缩放）+ strokeWidth 补偿，保证粗细一致
   return (
     <svg
       width={size}
@@ -227,7 +242,13 @@ export function AstroSymbol({ name, size = 18, color, className }: SymbolProps) 
       style={{ color, display: "inline-block", overflow: "visible", verticalAlign: "middle" }}
       aria-hidden
     >
-      <g stroke="currentColor">{glyph}</g>
+      <g
+        stroke="currentColor"
+        strokeWidth={1.7 / scale}
+        transform={`translate(12 12) scale(${scale}) translate(-12 -12)`}
+      >
+        {glyph}
+      </g>
     </svg>
   );
 }
