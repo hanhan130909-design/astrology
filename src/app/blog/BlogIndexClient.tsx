@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Clock, ChevronRight } from 'lucide-react';
 import BlogSearch from '@/components/BlogSearch';
+import { getBlogCoverTheme } from '@/lib/blogCover';
 import type { BlogSummary } from './blogSummary';
 
 // Translation data
@@ -49,13 +50,7 @@ const t: Record<string, Record<string, string>> = {
     horoscope: 'Ramalan',
     technology: 'Teknologi'}};
 
-// Category color mapping
-const categoryColors: Record<string, string> = {
-  tutorial: 'bg-gray-500/20 text-gray-400',
-  guide: 'bg-gray-500/20 text-gray-400',
-  analysis: 'bg-gray-500/20 text-gray-400',
-  horoscope: 'bg-gray-500/20 text-gray-600',
-  technology: 'bg-gray-500/20 text-gray-400'};
+// Category color & cover theming moved to src/lib/blogCover.ts (per-category + slug-hash)
 
 export default function BlogIndexClient({ articles }: { articles: BlogSummary[] }) {
   const { language } = useLanguage();
@@ -81,10 +76,6 @@ export default function BlogIndexClient({ articles }: { articles: BlogSummary[] 
     if (language === 'en') return article.categoryEn;
     if (language === 'id') return article.categoryId;
     return article.categoryEn;
-  };
-
-  const getCategoryColor = (category: string) => {
-    return categoryColors[category] || 'bg-gray-500/20 text-gray-400';
   };
 
   return (
@@ -120,19 +111,20 @@ export default function BlogIndexClient({ articles }: { articles: BlogSummary[] 
 
           {/* Articles Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {pagedArticles.map((article) => (
+            {pagedArticles.map((article) => {
+              const theme = getBlogCoverTheme(article.slug, article.category);
+              return (
               <article
                 key={article.id}
                 className="group bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 hover:border-gray-200 transition-all duration-300 hover:-translate-y-1"
               >
-                {/* Gradient Image Area */}
-                <div className="aspect-video bg-gradient-to-br from-gray-50/30 via-gray-900/20 to-gray-50/30 flex items-center justify-center relative">
-                  <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent opacity-60" />
-                  <span className="text-5xl relative z-10">✨</span>
+                {/* Cover — per-category symbol & gradient */}
+                <div className={`aspect-video ${theme.gradient} flex items-center justify-center relative`}>
+                  <span className="text-5xl relative z-10" aria-hidden>{theme.symbol}</span>
 
                   {/* Category Badge */}
                   <div className="absolute top-4 left-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${getCategoryColor(article.category)}`}>
+                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${theme.badge}`}>
                       {getCategoryName(article)}
                     </span>
                   </div>
@@ -190,7 +182,8 @@ export default function BlogIndexClient({ articles }: { articles: BlogSummary[] 
                   </div>
                 </div>
               </article>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

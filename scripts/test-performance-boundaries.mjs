@@ -305,10 +305,9 @@ const articleWithMissingSourceMetadata = summaries.find(
 assert.equal(articleWithMissingSourceMetadata.author, "星缘团队");
 assert.equal(articleWithMissingSourceMetadata.authorEn, "Lunaxstar Team");
 assert.equal(articleWithMissingSourceMetadata.authorId, "Tim Lunaxstar");
-assert.equal(
-  summaries.find((article) => article.slug === "aries-leo-compatibility-41").date,
-  "",
-);
+// 日期差异化后，源数据缺日期的文章由 resolveArticleDate 确定性补齐（见 src/lib/blogDate.ts）
+const missingDateArticle = summaries.find((article) => article.slug === "aries-leo-compatibility-41");
+assert.match(missingDateArticle.date, /^\d{4}-\d{2}-\d{2}$/);
 
 const authContextPath = path.resolve("src/contexts/AuthContext.tsx");
 const natalPagePath = path.resolve("src/app/natal/page.tsx");

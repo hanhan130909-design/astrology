@@ -22,9 +22,9 @@ export const metadata: Metadata = {
   },
   description: "Free Western astrology and BaZi calculators with real astronomical calculations. No signup required.",
   keywords: ["星座", "horoscope", "占星", "zodiak", "AI占星", "natal chart", "本命盘", "tarot", "塔罗", "运势", "星盘"],
-  authors: [{ name: "星缘" }],
-  creator: "星缘团队",
-  publisher: "星缘",
+  authors: [{ name: "LunaXStar", url: "https://lunaxstar.com" }],
+  creator: "LunaXStar",
+  publisher: "LunaXStar",
   metadataBase: new URL("https://lunaxstar.com"),
   openGraph: {
     title: "Free Birth Chart & BaZi Calculator | LunaXStar",

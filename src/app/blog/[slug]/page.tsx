@@ -20,6 +20,8 @@ import BlogArticleCTA from '@/components/BlogArticleCTA';
 import RelatedArticles from '@/components/RelatedArticles';
 import { extractFaqsFromMarkdown, serializeFaqJsonLd } from '@/lib/faqExtractor';
 import { createBlogArticleMetadata, selectContextualCornerstone } from '@/lib/blogArticleSeo';
+import { resolveArticleDate } from '@/lib/blogDate';
+import { getBlogCoverTheme } from '@/lib/blogCover';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -210,8 +212,13 @@ export default async function BlogArticlePage({ params }: Props) {
     categoryLabel,
   });
 
+  // 差异化封面主题（符号 + 渐变 + 徽章色，确定性）
+  const rawCategory = typeof article.category === 'string' ? article.category : (article.category?.en as string) || '';
+  const coverTheme = getBlogCoverTheme(slug, rawCategory);
+  const displayDate = resolveArticleDate(slug, article.date);
+
   // JSON-LD structured data for rich results
-  const articleDate = article.date || '2026-01-01';
+  const articleDate = resolveArticleDate(slug, article.date);
   const isoDate = articleDate.includes('T') ? articleDate : `${articleDate}T00:00:00+00:00`;
   const articleKeywords = `${articleTitle}, ${categoryLabel}, astrology, bazi, birth chart, ${slug.replace(/-/g, ' ')}`;
   const articleJsonLd = {
@@ -262,16 +269,24 @@ export default async function BlogArticlePage({ params }: Props) {
           Back to Blog
         </Link>
 
+        {/* Cover banner — per-category symbol & gradient */}
+        <div className={`aspect-video max-h-64 w-full rounded-2xl ${coverTheme.gradient} flex items-center justify-center mb-8`}>
+          <span className="text-6xl" aria-hidden>{coverTheme.symbol}</span>
+        </div>
+
         {/* Article header */}
         <header className="mb-10">
           <div className="flex items-center gap-3 mb-4">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300">
+            <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium ${coverTheme.badge}`}>
               <Tag size={12} />
               {categoryLabel}
             </span>
             <span className="inline-flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400">
               <Clock size={12} />
               {readTime} min read
+            </span>
+            <span className="text-xs text-gray-400 dark:text-gray-500">
+              {displayDate}
             </span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight">

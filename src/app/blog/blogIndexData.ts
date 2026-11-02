@@ -15,6 +15,7 @@ import {
   type BlogArticleForSummary,
   type BlogSummary,
 } from './blogSummary';
+import { resolveArticleDate } from '@/lib/blogDate';
 
 type DefaultedSummaryField = 'author' | 'authorEn' | 'authorId' | 'date' | 'readTime';
 type BlogArticleSource = Omit<BlogArticleForSummary, DefaultedSummaryField> &
@@ -216,5 +217,8 @@ export function getBlogSummaries(): BlogSummary[] {
     ...legacyArticles,
   ];
 
-  return sourceArticles.map(toBlogSummary);
+  // 日期差异化：扎堆桶按 slug 哈希确定性错开（详见 src/lib/blogDate.ts）
+  return sourceArticles.map((a) =>
+    toBlogSummary({ ...a, date: resolveArticleDate(a.slug, a.date) })
+  );
 }
