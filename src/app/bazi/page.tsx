@@ -266,6 +266,13 @@ export default function BaziPage() {
               <div className="text-right"><div className="text-3xl">{ZODIAC[dm?.branch||""]}</div><div className="text-[10px]" style={{color:dm?.color}}>{dm?.element}</div></div>
             </div>
 
+            {/* 邮箱收集 — 出盘立刻看到（提前承接） */}
+            <div className="mb-4"><EmailUnlock sign="bazi" chartData={{
+              sunSign: bazi?.dayMaster?.stem ? `${bazi.dayMaster.stem} Day Master` : undefined,
+              moonSign: bazi?.dayMaster?.element || undefined,
+              risingSign: bazi?.lunarText || undefined,
+            }} /></div>
+
             {/* 四柱详情 */}
             <div className="text-xs font-semibold bg-gray-900 text-white px-3 py-1 rounded inline-block mb-3">四柱详情</div>
             <>
@@ -481,14 +488,7 @@ export default function BaziPage() {
               </button>
             </div>
 
-            {/* 邮箱收集 — 免费解锁完整八字报告 */}
-            <div className="my-4"><EmailUnlock sign="bazi" chartData={{
-              sunSign: bazi?.dayMaster?.stem ? `${bazi.dayMaster.stem} Day Master` : undefined,
-              moonSign: bazi?.dayMaster?.element || undefined,
-              risingSign: bazi?.lunarText || undefined,
-            }} /></div>
-
-            {/* AI读取 */} {/*付费入口 — 动态钩子基于排盘数据*/}
+            {/* 付费入口 — 动态钩子基于排盘数据*/}
             <BaziPurchaseCTA bazi={bazi} />
 
             <div className="text-xs font-semibold bg-gray-900 text-white px-3 py-1 rounded inline-block mb-3 mt-4">AI解读</div>

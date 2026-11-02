@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 import SynastryChart from "@/components/SynastryChart";
+import EmailUnlock from "@/components/EmailUnlock";
 import { HeartHandshake, ArrowRight, Star, CheckCircle } from "lucide-react";
 
 const ZODIAC: Record<string, Record<string, string>> = {
@@ -133,6 +134,15 @@ export default function CompatibilityPage() {
             <p className="text-gray-500">{t.fullDesc}</p>
           </div>
           <SynastryChart language={language as "id" | "en" | "zh"} />
+        </div>
+
+        {/* 邮箱收集 — 合盘后承接 */}
+        <div className="max-w-3xl mx-auto mt-12">
+          <EmailUnlock sign="synastry" chartData={{
+            sunSign: undefined,
+            moonSign: undefined,
+            risingSign: undefined,
+          }} />
         </div>
 
         <div className="text-center mt-16 pb-8">

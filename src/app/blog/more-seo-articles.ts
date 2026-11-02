@@ -19154,7 +19154,7 @@ FBI 行为分析师研究微表情。中国面相研究宏结构。两者都从�
     readTime: 3, tags: ["community", "discussion", "experience"],
   },
   {
-    id: "1009", slug: "community-2026-fire-horse-energy-is-real---anyone-else-feeling-it-1009",
+    id: "1009", slug: "community-2026-fire-horse-energy-is-real-anyone-else-feeling-it-1009",
     category: "community", categoryZh: "社区", categoryEn: "Community", categoryId: "Komunitas",
     date: "2026-07-19",
     title: { zh: "2026 火马年能量是真实的——大家感受到了吗？", en: "2026 Fire Horse Energy Is REAL — Anyone Else Feeling It?" },
@@ -19163,7 +19163,7 @@ FBI 行为分析师研究微表情。中国面相研究宏结构。两者都从�
     readTime: 3, tags: ["community", "discussion", "experience"],
   },
   {
-    id: "1010", slug: "community-bazi-vs-western-astrology:-my-honest-comparison-after-2-year-1010",
+    id: "1010", slug: "community-bazi-vs-western-astrology-my-honest-comparison-after-2-years-1010",
     category: "community", categoryZh: "社区", categoryEn: "Community", categoryId: "Komunitas",
     date: "2026-07-19",
     title: { zh: "八字 vs 西方占星——我用了两年后的实话", en: "BaZi vs Western Astrology: My Honest Comparison After 2 Years" },
@@ -19172,7 +19172,7 @@ FBI 行为分析师研究微表情。中国面相研究宏结构。两者都从�
     readTime: 3, tags: ["community", "discussion", "experience"],
   },
   {
-    id: "1011", slug: "community-my-wife-is-a-water-day-master-and-im-fire---here-is-what-i-l-1011",
+    id: "1011", slug: "community-my-wife-is-a-water-day-master-and-im-fire-here-is-what-i-learned-1011",
     category: "community", categoryZh: "社区", categoryEn: "Community", categoryId: "Komunitas",
     date: "2026-07-19",
     title: { zh: "我老婆是水日主我是火——这些年我学到了什么", en: "My Wife Is a Water Day Master and I'm Fire — Here Is What I Learned" },
@@ -19190,7 +19190,7 @@ FBI 行为分析师研究微表情。中国面相研究宏结构。两者都从�
     readTime: 3, tags: ["community", "discussion", "experience"],
   },
   {
-    id: "1013", slug: "community-i-thought-mercury-retrograde-was-bad.-then-i-met-my-七杀-decad-1013",
+    id: "1013", slug: "community-i-thought-mercury-retrograde-was-bad-then-i-met-my-seven-killings-decade-1013",
     category: "community", categoryZh: "社区", categoryEn: "Community", categoryId: "Komunitas",
     date: "2026-07-19",
     title: { zh: "我以为水逆算惨的了——然后遇上了七杀大运", en: "I Thought Mercury Retrograde Was Bad. Then I Met My 七杀 Decade" },
@@ -19217,7 +19217,7 @@ FBI 行为分析师研究微表情。中国面相研究宏结构。两者都从�
     readTime: 3, tags: ["community", "discussion", "experience"],
   },
   {
-    id: "1016", slug: "community-found-my-rising-sign-at-35---it-explained-my-entire-social-l-1016",
+    id: "1016", slug: "community-found-my-rising-sign-at-35-it-explained-my-entire-social-life-1016",
     category: "community", categoryZh: "社区", categoryEn: "Community", categoryId: "Komunitas",
     date: "2026-07-19",
     title: { zh: "35 岁才发现上升星座——解开了我整个社交谜团", en: "Found My Rising Sign at 35 — It Explained My Entire Social Life" },
@@ -19226,7 +19226,7 @@ FBI 行为分析师研究微表情。中国面相研究宏结构。两者都从�
     readTime: 3, tags: ["community", "discussion", "experience"],
   },
   {
-    id: "1017", slug: "community-drop-your-big-three---lets-compare!-1017",
+    id: "1017", slug: "community-drop-your-big-three-lets-compare-1017",
     category: "community", categoryZh: "社区", categoryEn: "Community", categoryId: "Komunitas",
     date: "2026-07-19",
     title: { zh: "报你的太阳月亮上升——我们来对比！", en: "Drop Your Big Three — Let's Compare!" },
@@ -19262,7 +19262,7 @@ FBI 行为分析师研究微表情。中国面相研究宏结构。两者都从�
     readTime: 3, tags: ["community", "discussion", "experience"],
   },
   {
-    id: "1021", slug: "community-chinese-zodiac-compatibility-is-real-and-my-marriage-proves--1021",
+    id: "1021", slug: "community-chinese-zodiac-compatibility-is-real-and-my-marriage-proves-it-1021",
     category: "community", categoryZh: "社区", categoryEn: "Community", categoryId: "Komunitas",
     date: "2026-07-19",
     title: { zh: "生肖配对是真的——我的婚姻证明了", en: "Chinese Zodiac Compatibility Is Real and My Marriage Proves It" },
@@ -19289,7 +19289,7 @@ FBI 行为分析师研究微表情。中国面相研究宏结构。两者都从�
     readTime: 3, tags: ["community", "discussion", "experience"],
   },
   {
-    id: "1024", slug: "community-what-happens-when-you-look-at-your-chart-for-the-first-time--1024",
+    id: "1024", slug: "community-what-happens-when-you-look-at-your-chart-for-the-first-time-at-50-1024",
     category: "community", categoryZh: "社区", categoryEn: "Community", categoryId: "Komunitas",
     date: "2026-07-19",
     title: { zh: "50 岁第一次看命盘是什么体验", en: "What Happens When You Look at Your Chart for the First Time at 50" },
@@ -19298,7 +19298,7 @@ FBI 行为分析师研究微表情。中国面相研究宏结构。两者都从�
     readTime: 3, tags: ["community", "discussion", "experience"],
   },
   {
-    id: "1025", slug: "community-rising-sign-vs-sun-sign:-which-one-rules-your-first-impressi-1025",
+    id: "1025", slug: "community-rising-sign-vs-sun-sign-which-one-rules-your-first-impression-1025",
     category: "community", categoryZh: "社区", categoryEn: "Community", categoryId: "Komunitas",
     date: "2026-07-19",
     title: { zh: "上升 vs 太阳——哪一个决定你的第一印象？", en: "Rising Sign vs Sun Sign: Which One Rules Your First Impression?" },
@@ -19316,7 +19316,7 @@ FBI 行为分析师研究微表情。中国面相研究宏结构。两者都从�
     readTime: 3, tags: ["community", "discussion", "experience"],
   },
   {
-    id: "1027", slug: "community-found-out-my-boss-and-i-have-clashing-day-masters---now-it-m-1027",
+    id: "1027", slug: "community-found-out-my-boss-and-i-have-clashing-day-masters-now-it-makes-sense-1027",
     category: "community", categoryZh: "社区", categoryEn: "Community", categoryId: "Komunitas",
     date: "2026-07-19",
     title: { zh: "发现我和我老板日主相冲——现在全说通了", en: "Found Out My Boss and I Have Clashing Day Masters — Now It Makes Sense" },
