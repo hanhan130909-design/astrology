@@ -56,7 +56,7 @@ export function createBlogArticleMetadata(article: unknown, slug: string): Metad
   const canonical = siteUrl(`/blog/${slug}`);
 
   return {
-    title: `${metaTitle} | 星缘 Blog`,
+    title: `${metaTitle} | LunaXStar Blog`,
     description: metaDescription,
     robots: {
       index: isIndexableArticle(article),

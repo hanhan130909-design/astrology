@@ -9,7 +9,7 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-white text-[#171717]">
-      <main className="max-w-4xl mx-auto px-4 py-16">
+      <div className="max-w-4xl mx-auto px-4 py-16">
         <h1 className="text-3xl font-bold text-center mb-4 text-gray-700">{t.about?.title || "关于星缘"}</h1>
         <p className="text-center text-gray-500 mb-16 max-w-xl mx-auto">
           {t.about?.subtitle || "A professional astrology platform based on real astronomical calculations"}
@@ -106,7 +106,7 @@ export default function AboutPage() {
             {language === "zh" ? "立即生成你的星盘" : language === "id" ? "Hitung Bagan Anda" : "Generate Your Chart"} ✨
           </Link>
         </div>
-      </main>
+      </div>
 
       <footer className="py-8 px-4 text-center border-t border-gray-100 bg-gray-50">
         <p className="text-sm text-gray-400">© 2026 {t.siteName || "Starry Fate"}. All rights reserved.</p>

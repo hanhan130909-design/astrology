@@ -64,7 +64,7 @@ export default function AIPage() {
 
   return (
     <div className="min-h-screen bg-white text-[#171717]">
-      <main className="max-w-7xl mx-auto px-6 py-12">
+      <div className="max-w-7xl mx-auto px-6 py-12">
         {/* Hero */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-600 mb-4">
@@ -104,7 +104,7 @@ export default function AIPage() {
             </Link>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

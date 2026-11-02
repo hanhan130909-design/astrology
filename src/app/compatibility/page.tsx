@@ -92,7 +92,7 @@ export default function CompatibilityPage() {
           })
         }}
       />
-      <main className="max-w-7xl mx-auto px-6 py-12">
+      <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-600 mb-4">
             <HeartHandshake size={16} />
@@ -150,7 +150,7 @@ export default function CompatibilityPage() {
             {t.multiCompare}<ArrowRight size={16} />
           </Link>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

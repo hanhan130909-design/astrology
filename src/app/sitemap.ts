@@ -13,7 +13,7 @@ import { type IndexableArticle, isIndexableArticle } from "@/lib/blogIndexPolicy
 import { createArticleSitemapEntry, deduplicateArticlesBySlug } from "@/lib/blogSitemap";
 import { siteUrl } from "@/lib/seoMetadata";
 
-const coreRoutes = [
+export const coreRoutes = [
   "/",
   "/natal",
   "/solar-return",
@@ -63,8 +63,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // Extra pages with lower priority
+  // 注意：siteUrl() 会剥掉 query，分页页必须手工拼 URL，否则 22 页全部坍缩成 /blog
   const extraEntries: MetadataRoute.Sitemap = [
-    ...blogPages.map((route) => ({ url: siteUrl(route), changeFrequency: "daily" as const, priority: 0.6 })),
+    ...blogPages.map((route) => ({ url: `https://lunaxstar.com${route}`, changeFrequency: "daily" as const, priority: 0.6 })),
     ...baziSlugs.map((route) => ({ url: siteUrl(route), changeFrequency: "weekly" as const, priority: 0.7 })),
     ...ziweiSlugs.map((route) => ({ url: siteUrl(route), changeFrequency: "weekly" as const, priority: 0.7 })),
   ];

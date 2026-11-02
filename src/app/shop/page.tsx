@@ -23,7 +23,7 @@ export default function ShopPage() {
 
   return (
     <div className="min-h-screen bg-white text-[#171717]">
-      <main className="max-w-[1100px] mx-auto px-6 py-16 md:py-24">
+      <div className="max-w-[1100px] mx-auto px-6 py-16 md:py-24">
         <div className="text-center mb-12">
           <h1 className="text-3xl md:text-4xl font-semibold tracking-[-1.5px] mb-3">{t.title}</h1>
           <p className="text-gray-500 text-sm">{t.sub}</p>
@@ -58,7 +58,7 @@ export default function ShopPage() {
             </div>
           ))}
         </div>
-      </main>
+      </div>
     </div>
   );
 }

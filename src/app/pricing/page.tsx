@@ -245,7 +245,7 @@ export default function PricingPage() {
 
   return (
     <div className="min-h-screen bg-white text-[#171717]">
-      <main className="max-w-[1100px] mx-auto px-6 py-16 md:py-24">
+      <div className="max-w-[1100px] mx-auto px-6 py-16 md:py-24">
         {/* Header */}
         <div className="text-center mb-14">
           <span className="inline-block text-[11px] font-medium text-gray-500 bg-gray-100 px-3 py-1 rounded-full mb-6 tracking-wide uppercase">
@@ -366,7 +366,7 @@ export default function PricingPage() {
             ))}
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

@@ -47,13 +47,12 @@ export function isIndexableArticle(article: unknown): article is IndexableArticl
   const body = getEnglishBody(candidate)?.trim();
   
   // Reject known low-quality patterns only
-  if (body && rejectedBodyPatterns.some((pattern) => pattern.test(body))) return false;
-
-  // Index all articles with valid slug — even short ones can rank for long-tail keywords
-  // Cornerstone articles still need substantial content
+  // 注意：cornerstone 文章内容受信（长文、人工审核），跳过 reject 模式检查
   if (cornerstoneSlugs.has(candidate.slug)) {
     return body ? body.length >= 500 : false;
   }
-  
+  if (body && rejectedBodyPatterns.some((pattern) => pattern.test(body))) return false;
+
+  // Index all articles with valid slug — even short ones can rank for long-tail keywords
   return true;
 }

@@ -363,7 +363,7 @@ export default function TransitsPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#f7f4ed] text-[#171717]">
+    <div className="min-h-screen bg-[#f7f4ed] text-[#171717]">
       <section className="border-b border-[#ded6c7] bg-white">
         <div className="mx-auto flex max-w-6xl flex-col gap-5 px-4 py-7 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-between gap-3">
@@ -480,6 +480,6 @@ export default function TransitsPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

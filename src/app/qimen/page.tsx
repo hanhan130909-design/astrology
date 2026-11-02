@@ -68,7 +68,7 @@ export default function QiMenPage() {
 
   return (
     <div className="min-h-screen text-[#333]" style={{ background: "#f6f6f6" }}>
-      <main className="max-w-[520px] mx-auto px-4 py-4" style={{ background: "#ffffff" }}>
+      <div className="max-w-[520px] mx-auto px-4 py-4" style={{ background: "#ffffff" }}>
 
         {/* 起盘（选时间） */}
         <div className="flex items-center gap-1.5 mb-3 p-2 rounded-lg" style={{ background: "#f6f6f6" }}>
@@ -321,7 +321,7 @@ export default function QiMenPage() {
         <div className="mt-6 max-w-2xl mx-auto px-4">
           <BlogArticleCTA categoryLabel="bazi" />
         </div>
-      </main>
+      </div>
     </div>
   );
 }

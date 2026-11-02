@@ -331,7 +331,7 @@ export default function ProfilePage() {
       {/* Navigation Bar */}
       
 
-      <main className="max-w-3xl mx-auto px-4 sm:px-6 py-6 space-y-6">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-6 space-y-6">
         {/* User Info Card */}
         <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200">
           <div className="flex items-center gap-4">
@@ -612,7 +612,7 @@ export default function ProfilePage() {
 
         {/* Bottom spacer */}
         <div className="h-4" />
-      </main>
+      </div>
     </div>
   );
 }

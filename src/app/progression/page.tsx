@@ -88,7 +88,7 @@ export default function ProgressionPage() {
     <div className="min-h-screen bg-white text-[#171717]">
       
 
-      <main className="max-w-7xl mx-auto px-6 py-8">
+      <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-500/20 rounded-full text-sm text-gray-700 mb-4">
             <TrendingUp size={16} />
@@ -267,7 +267,7 @@ export default function ProgressionPage() {
             )}
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

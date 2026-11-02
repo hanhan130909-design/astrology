@@ -8,13 +8,13 @@ import LazyAuthButton from "@/components/LazyAuthButton";
 
 const T: Record<string, Record<string, string>> = {
   zh: { brand:"星缘", horoscope:"运势", natal:"星盘", bazi:"八字", qimen:"奇门", compatibility:"配对", ai:"AI解读", learn:"学习", transits:"星象日历", community:"社区", tarot:"塔罗", strategy:"方法论" },
-  en: { brand:"Starry Fate", horoscope:"Horoscope", natal:"Chart", bazi:"BaZi", qimen:"QiMen", compatibility:"Match", ai:"AI", learn:"Learn", transits:"Transits", community:"Community", tarot:"Tarot", strategy:"Strategy" },
-  id: { brand:"Starry Fate", horoscope:"Horoskop", natal:"Bagan", bazi:"BaZi", qimen:"QiMen", compatibility:"Cocok", ai:"AI", learn:"Belajar", transits:"Transit", community:"Komunitas", tarot:"Tarot", strategy:"Strategi" },
-  th: { brand:"สตาร์รี่เฟท", horoscope:"ดูดวง", natal:"ดวง", bazi:"ปาจื่อ", compatibility:"คู่", ai:"AI", learn:"เรียน", transits:"ดาว", community:"ชุมชน", tarot:"ไพ่", strategy:"กลยุทธ์" },
-  vi: { brand:"Starry Fate", horoscope:"Tử vi", natal:"Bản đồ", bazi:"Bát Tự", compatibility:"Hợp", ai:"AI", learn:"Học", transits:"Quá cảnh", community:"Cộng đồng", tarot:"Tarot", strategy:"Chiến lược" },
-  ms: { brand:"Starry Fate", horoscope:"Horoskop", natal:"Carta", bazi:"BaZi", compatibility:"Serasi", ai:"AI", learn:"Belajar", transits:"Transit", community:"Komuniti", tarot:"Tarot", strategy:"Strategi" },
+  en: { brand:"LunaXStar", horoscope:"Horoscope", natal:"Chart", bazi:"BaZi", qimen:"QiMen", compatibility:"Match", ai:"AI", learn:"Learn", transits:"Transits", community:"Community", tarot:"Tarot", strategy:"Strategy" },
+  id: { brand:"LunaXStar", horoscope:"Horoskop", natal:"Bagan", bazi:"BaZi", qimen:"QiMen", compatibility:"Cocok", ai:"AI", learn:"Belajar", transits:"Transit", community:"Komunitas", tarot:"Tarot", strategy:"Strategi" },
+  th: { brand:"LunaXStar", horoscope:"ดูดวง", natal:"ดวง", bazi:"ปาจื่อ", compatibility:"คู่", ai:"AI", learn:"เรียน", transits:"ดาว", community:"ชุมชน", tarot:"ไพ่", strategy:"กลยุทธ์" },
+  vi: { brand:"LunaXStar", horoscope:"Tử vi", natal:"Bản đồ", bazi:"Bát Tự", compatibility:"Hợp", ai:"AI", learn:"Học", transits:"Quá cảnh", community:"Cộng đồng", tarot:"Tarot", strategy:"Chiến lược" },
+  ms: { brand:"LunaXStar", horoscope:"Horoskop", natal:"Carta", bazi:"BaZi", compatibility:"Serasi", ai:"AI", learn:"Belajar", transits:"Transit", community:"Komuniti", tarot:"Tarot", strategy:"Strategi" },
   ja: { brand:"星縁", horoscope:"運勢", natal:"星図", bazi:"八字", compatibility:"相性", ai:"AI", learn:"学習", transits:"トランジット", community:"掲示板", tarot:"タロット", strategy:"戦略" },
-  ko: { brand:"스타리 페이트", horoscope:"운세", natal:"차트", bazi:"팔자", compatibility:"궁합", ai:"AI", learn:"배우기", transits:"행성", community:"커뮤니티", tarot:"타로", strategy:"전략" },
+  ko: { brand:"LunaXStar", horoscope:"운세", natal:"차트", bazi:"팔자", compatibility:"궁합", ai:"AI", learn:"배우기", transits:"행성", community:"커뮤니티", tarot:"타로", strategy:"전략" },
 };
 
 const LANGUAGES = [

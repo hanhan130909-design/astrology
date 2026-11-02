@@ -50,7 +50,7 @@ function normalizeSourceArticle(article: BlogArticleSource): BlogArticleForSumma
     authorId: article.authorId ?? 'Tim Lunaxstar',
     date: article.date ?? '',
     readTime: normalizeReadTime(article),
-    tags: article.tags,
+    tags: article.tags ?? [],
   };
 }
 
