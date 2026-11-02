@@ -14,10 +14,17 @@ assert.equal(natalFaqs.length, 7, "natalFaqs must contain exactly seven entries"
 const questions = natalFaqs.map(({ question }) => question);
 assert.equal(new Set(questions).size, natalFaqs.length, "FAQ questions must be unique");
 
+function substantiveLength(text) {
+  // 中文按字符计数（60 字 ≈ 英文 18 词的信息量），英文按词计数
+  const cjkChars = (text.match(/[\u4e00-\u9fff\u3040-\u30ff\uac00-\ud7af]/g) || []).length;
+  if (cjkChars >= text.trim().length * 0.3) return cjkChars;
+  return text.trim().split(/\s+/).length;
+}
+
 for (const faq of natalFaqs) {
   assert.ok(faq.question.trim(), "FAQ questions must be nonempty");
   assert.ok(
-    faq.answer.trim().split(/\s+/).length >= 18,
+    substantiveLength(faq.answer) >= 60,
     `FAQ answer must be substantive: ${faq.question}`,
   );
 }
@@ -119,12 +126,12 @@ collectHeadings(componentAst);
 assert.deepEqual(
   headings,
   [
-    { level: "h1", text: "How to read your natal chart" },
-    { level: "h2", text: "The four chart layers" },
-    { level: "h2", text: "A practical reading order" },
-    { level: "h2", text: "Birth time accuracy" },
-    { level: "h2", text: "Related tools and guides" },
-    { level: "h2", text: "Natal chart FAQ" },
+    { level: "h1", text: "如何阅读你的本命盘" },
+    { level: "h2", text: "星盘的四个层次" },
+    { level: "h2", text: "实用的阅读顺序" },
+    { level: "h2", text: "出生时间为什么重要" },
+    { level: "h2", text: "相关工具与指南" },
+    { level: "h2", text: "本命盘常见问题" },
   ],
   "Natal guide must have one h1 followed by coherent h2 sections",
 );
@@ -169,11 +176,11 @@ function readStringObject(objectLiteral) {
 }
 
 const expectedRelatedTools = [
-  { href: "/solar-return", label: "Solar Return chart" },
-  { href: "/transits", label: "Astrology calendar" },
-  { href: "/compatibility", label: "Compatibility chart" },
-  { href: "/bazi", label: "BaZi calculator" },
-  { href: "/blog/what-does-my-birth-chart-mean", label: "Birth chart reading guide" },
+  { href: "/solar-return", label: "太阳返照盘" },
+  { href: "/transits", label: "星象日历" },
+  { href: "/compatibility", label: "星座配对" },
+  { href: "/bazi", label: "八字排盘" },
+  { href: "/blog/what-does-my-birth-chart-mean", label: "本命盘阅读指南" },
 ];
 const relatedToolsInitializer = findVariableInitializer("relatedTools");
 assert.ok(relatedToolsInitializer, "NatalSeoContent must define relatedTools");
@@ -187,11 +194,11 @@ const relatedTools = relatedToolsArray.elements.map((element) => {
 assert.deepEqual(relatedTools, expectedRelatedTools);
 const transitTool = relatedTools.find(({ href }) => href === "/transits");
 assert.ok(transitTool, "relatedTools must include the astrology calendar link");
-assert.match(transitTool.label, /astrology calendar/i);
+assert.ok(transitTool.label.includes("星象日历"));
 assert.doesNotMatch(transitTool.label, /predictor/i);
 
 const definitionTerms = findJsxElements(componentAst, "dt").map(getJsxText);
-assert.deepEqual(definitionTerms, ["Planets", "Signs", "Houses", "Aspects"]);
+assert.deepEqual(definitionTerms, ["行星", "星座", "宫位", "相位"]);
 
 const faqMapCalls = [];
 const collectFaqMapCalls = (node) => {

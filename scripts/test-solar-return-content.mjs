@@ -42,9 +42,10 @@ const faqDataSource = fs.readFileSync(faqDataPath, "utf8");
 const combinedVisibleSource = `${pageSource}\n${calculatorSource}\n${componentSource}`;
 
 assert.doesNotMatch(pageSource, /^["']use client["'];/m);
+// 2026-11：根布局统一提供 <main>，页面内不再自带（修复双 main 嵌套）
 assert.match(
   pageSource,
-  /<main\b[^>]*>[\s\S]*<SolarReturnCalculator\s*\/>[\s\S]*<SolarReturnSeoContent\s*\/>[\s\S]*<\/main>/,
+  /[\s\S]*<SolarReturnCalculator\s*\/>[\s\S]*<SolarReturnSeoContent\s*\/>[\s\S]/,
 );
 assert.match(pageSource, /className="bg-white px-6 pb-16"/);
 assert.match(calculatorSource, /^["']use client["'];/);

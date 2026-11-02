@@ -224,6 +224,18 @@ const { getBlogSummaries } = await import("../src/app/blog/blogIndexData.ts");
 const { seoArticles } = await import("../src/app/blog/seo-articles.ts");
 const { moreSeoArticles } = await import("../src/app/blog/more-seo-articles.ts");
 const { destinyArticles } = await import("../src/content/destiny-blog-articles.ts");
+const longtailModules = [
+  "../src/app/blog/longtail-seo-articles.ts",
+  "../src/app/blog/longtail-seo-articles-batch2.ts",
+  "../src/app/blog/longtail-seo-articles-batch3.ts",
+  "../src/app/blog/longtail-seo-articles-batch4.ts",
+  "../src/app/blog/longtail-seo-articles-batch5.ts",
+  "../src/app/blog/longtail-seo-articles-batch6.ts",
+  "../src/app/blog/longtail-seo-articles-batch7.ts",
+];
+const longtailArticles = (
+  await Promise.all(longtailModules.map((m) => import(m)))
+).flatMap((m) => Object.values(m).find(Array.isArray) || []);
 const summaries = getBlogSummaries();
 const legacySlugs = [
   "birth-chart-tutorial",
@@ -233,14 +245,23 @@ const legacySlugs = [
   "ai-astrology-advantages",
   "2026-horoscope-predictions",
 ];
-const expectedSlugs = [
+// 集合比较（顺序无关）：blogIndexData 新增长尾批次时不再破坏此测试
+const expectedSlugs = new Set([
   ...seoArticles.map((article) => article.slug),
   ...moreSeoArticles.map((article) => article.slug),
   ...destinyArticles.map((article) => article.slug),
+  ...longtailArticles.map((article) => article.slug),
   ...legacySlugs,
-];
-
-assert.deepEqual(summaries.map((article) => article.slug), expectedSlugs);
+]);
+const summarySlugs = summaries.map((article) => article.slug);
+const missing = [...expectedSlugs].filter((slug) => !summarySlugs.includes(slug));
+const extra = summarySlugs.filter((slug) => !expectedSlugs.has(slug));
+assert.deepEqual(
+  { missing, extra },
+  { missing: [], extra: [] },
+  "blog summaries must exactly cover all article sources",
+);
+assert.equal(new Set(summarySlugs).size, summarySlugs.length, "summary slugs must be unique");
 assert.ok(summaries.every((article) => !Object.hasOwn(article, "content")));
 
 const stringFields = [

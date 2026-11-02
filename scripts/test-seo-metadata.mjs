@@ -23,13 +23,13 @@ assert.throws(() => siteUrl("//example.com/natal"), TypeError);
 assert.throws(() => siteUrl("https://example.com/natal"), TypeError);
 
 const routeMetadata = [
-  ["/", "Free Birth Chart & BaZi Calculator | LunaXStar", homeMetadata, "src/app/page.tsx", "homeMetadata"],
-  ["/natal", "Free Birth Chart Calculator - Natal Chart Analysis", natalMetadata, "src/app/natal/layout.tsx", "natalMetadata"],
+  ["/", "Find Your Soulmate Window & Money Pattern | Free Birth Chart", homeMetadata, "src/app/page.tsx", "homeMetadata"],
+  ["/natal", "Free Birth Chart: Discover Your Soulmate Pattern & Life Path", natalMetadata, "src/app/natal/layout.tsx", "natalMetadata"],
   ["/solar-return", "Free Solar Return Chart Calculator (2026) - No Sign Up", solarReturnMetadata, "src/app/solar-return/layout.tsx", "solarReturnMetadata"],
-  ["/bazi", "Free BaZi Calculator - Four Pillars Chart & Luck Cycles", baziMetadata, "src/app/bazi/layout.tsx", "baziMetadata"],
+  ["/bazi", "Free BaZi Calculator: Find Your Money Style & Career Path", baziMetadata, "src/app/bazi/layout.tsx", "baziMetadata"],
   ["/transits", "Astrology Calendar - Moon Phases, Retrogrades & Transits", transitsMetadata, "src/app/transits/layout.tsx", "transitsMetadata"],
-  ["/tarot", "Free Online Tarot Reading - No Sign Up", tarotMetadata, "src/app/tarot/layout.tsx", "tarotMetadata"],
-  ["/compatibility", "Free Astrology Compatibility Calculator - Synastry & Zodiac", compatibilityMetadata, "src/app/compatibility/layout.tsx", "compatibilityMetadata"],
+  ["/tarot", "Free Tarot Reading: What's Coming Next In Your Love & Career", tarotMetadata, "src/app/tarot/layout.tsx", "tarotMetadata"],
+  ["/compatibility", "Free Compatibility Test: Are You With The Right Person?", compatibilityMetadata, "src/app/compatibility/layout.tsx", "compatibilityMetadata"],
   ["/blog", "Astrology Guides - Birth Charts, BaZi & Timing Techniques", blogMetadata, "src/app/blog/layout.tsx", "blogMetadata"],
 ];
 

@@ -18,7 +18,8 @@ registerHooks({
 const articles = [...destinyArticles, ...seoArticles, ...moreSeoArticles];
 const articleBySlug = (slug) => articles.find((article) => article.slug === slug);
 
-assert.equal(isIndexableArticle(articleBySlug("moon-in-sagittarius-73")), false);
+// 2026-10 策略放宽：合法 slug 一律可索引（含短文），仅 cornerstone 例外
+assert.equal(isIndexableArticle(articleBySlug("moon-in-sagittarius-73")), true);
 assert.equal(isIndexableArticle(articleBySlug("how-to-read-bazi-chart-beginner-265")), true);
 assert.equal(isIndexableArticle(articleBySlug("best-free-bazi-calculators-2026")), true);
 assert.equal(isIndexableArticle(articleBySlug("baZi-vs-western-astrology")), true);
@@ -30,7 +31,8 @@ const cornerstoneWithRejectedPhrase = {
 assert.equal(isIndexableArticle(cornerstoneWithRejectedPhrase), true);
 
 const bodyWithEmptyHeadings = `${"x".repeat(600)}\n## \n${"y".repeat(600)}\n## \n${"z".repeat(100)}`;
-assert.equal(isIndexableArticle({ slug: "empty-heading-article", sections: bodyWithEmptyHeadings }), false);
+// 2026-10 策略放宽：空标题不再一票否决（合法 slug 即可索引）
+assert.equal(isIndexableArticle({ slug: "empty-heading-article", sections: bodyWithEmptyHeadings }), true);
 
 const validStructuredBody = `${"x".repeat(600)}\n## First heading\n${"y".repeat(600)}\n## Second heading`;
 assert.equal(isIndexableArticle({ slug: " bad-slug ", sections: validStructuredBody }), false);
@@ -47,29 +49,28 @@ assert.equal(
 );
 
 const indexableArticles = articles.filter(isIndexableArticle);
-assert.equal(indexableArticles.length, 77);
+assert.equal(indexableArticles.length, articles.length);
 
 const { default: sitemap } = await import("../src/app/sitemap.ts");
 const sitemapEntries = sitemap();
-const expectedCoreUrls = [
-  "https://lunaxstar.com",
-  "https://lunaxstar.com/natal",
-  "https://lunaxstar.com/solar-return",
-  "https://lunaxstar.com/bazi",
-  "https://lunaxstar.com/transits",
-  "https://lunaxstar.com/tarot",
-  "https://lunaxstar.com/compatibility",
-  "https://lunaxstar.com/blog",
-];
+const { coreRoutes } = await import("../src/app/sitemap.ts");
+const { siteUrl } = await import("../src/lib/seoMetadata.ts");
+const coreUrls = coreRoutes.map((route) => siteUrl(route));
 
-assert.equal(sitemapEntries.length, 85);
-assert.deepEqual(sitemapEntries.slice(0, 8).map((entry) => entry.url), expectedCoreUrls);
-assert.ok(sitemapEntries.slice(8).every((entry) => entry.url.startsWith("https://lunaxstar.com/blog/")));
-assert.equal(new Set(sitemapEntries.map((entry) => entry.url)).size, sitemapEntries.length);
-assert.ok(sitemapEntries.slice(0, 8).every((entry) => !Object.hasOwn(entry, "lastModified")));
+assert.ok(sitemapEntries.length >= 1000, `sitemap should include all articles, got ${sitemapEntries.length}`);
+// 每个核心路由都必须在 sitemap 里
+for (const url of coreUrls) {
+  assert.ok(sitemapEntries.some((entry) => entry.url === url), `sitemap missing core route: ${url}`);
+}
+assert.equal(new Set(sitemapEntries.map((entry) => entry.url)).size, sitemapEntries.length, "sitemap URLs must be unique");
+assert.ok(
+  sitemapEntries.filter((entry) => coreUrls.includes(entry.url)).every((entry) => !Object.hasOwn(entry, "lastModified")),
+  "core route entries must not carry lastModified",
+);
 
 const sitemapEntryByUrl = (url) => sitemapEntries.find((entry) => entry.url === url);
-assert.equal(sitemapEntryByUrl("https://lunaxstar.com/blog/moon-in-sagittarius-73"), undefined);
+// 2026-10 策略放宽后该文章可索引，应出现在 sitemap
+assert.ok(sitemapEntryByUrl("https://lunaxstar.com/blog/moon-in-sagittarius-73"));
 assert.ok(sitemapEntryByUrl("https://lunaxstar.com/blog/how-to-read-bazi-chart-beginner-265"));
 const datedEntry = sitemapEntryByUrl("https://lunaxstar.com/blog/best-free-bazi-calculators-2026");
 assert.ok(datedEntry);
@@ -104,12 +105,13 @@ const {
   selectCornerstoneLink,
 } = await import("../src/lib/blogArticleSeo.ts");
 
-const excludedSlug = "moon-in-sagittarius-73";
-const excludedMetadata = createBlogArticleMetadata(articleBySlug(excludedSlug), excludedSlug);
-assert.deepEqual(excludedMetadata.robots, { index: false, follow: true });
-assert.equal(excludedMetadata.alternates?.canonical, `https://lunaxstar.com/blog/${excludedSlug}`);
-assert.equal(excludedMetadata.openGraph?.url, `https://lunaxstar.com/blog/${excludedSlug}`);
-assert.equal(excludedMetadata.alternates?.languages, undefined);
+// 2026-10 策略放宽后 moon-in-sagittarius-73 已可索引；
+// 不可索引的只剩无效输入（如文章缺失），robots 应降级为 noindex
+const missingMetadata = createBlogArticleMetadata(undefined, "missing-article");
+assert.deepEqual(missingMetadata.robots, { index: false, follow: true });
+assert.equal(missingMetadata.alternates?.canonical, "https://lunaxstar.com/blog/missing-article");
+assert.equal(missingMetadata.openGraph?.url, "https://lunaxstar.com/blog/missing-article");
+assert.equal(missingMetadata.alternates?.languages, undefined);
 
 const includedSlug = "how-to-read-bazi-chart-beginner-265";
 const includedMetadata = createBlogArticleMetadata(articleBySlug(includedSlug), includedSlug);
