@@ -17,6 +17,44 @@ const text: Record<string, { title: string; desc: string; btn: string }> = {
   id: { title: "Tambah ke Layar Utama", desc: "Buka langsung tanpa browser", btn: "Pasang" },
 };
 
+const COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000; // 关闭后 7 天内不再打扰
+
+function cooldownActive(): boolean {
+  try {
+    const ts = Number(localStorage.getItem("pwa-prompt-shown") || 0);
+    return ts > 0 && Date.now() - ts < COOLDOWN_MS;
+  } catch {
+    return true;
+  }
+}
+
+function cookieConsentResolved(): boolean {
+  try {
+    return localStorage.getItem("cookie-consent") != null;
+  } catch {
+    return true;
+  }
+}
+
+// 等 Cookie 同意条处理完再弹 A2H，避免两条固定底部横幅叠在一起
+function waitForCookieConsent(cb: () => void): () => void {
+  if (cookieConsentResolved()) { cb(); return () => {}; }
+  const onStorage = (e: StorageEvent) => {
+    if (e.key === "cookie-consent") { cleanup(); cb(); }
+  };
+  const timer = setInterval(() => {
+    if (cookieConsentResolved()) { cleanup(); cb(); }
+  }, 800);
+  const max = setTimeout(cleanup, 90_000); // 90s 兜底：一直没处理就放弃本轮
+  function cleanup() {
+    clearInterval(timer);
+    clearTimeout(max);
+    window.removeEventListener("storage", onStorage);
+  }
+  window.addEventListener("storage", onStorage);
+  return cleanup;
+}
+
 export default function InstallPrompt() {
   const { language } = useLanguage();
   const t = text[language] || text.en;
@@ -24,26 +62,27 @@ export default function InstallPrompt() {
   const [deferred, setDeferred] = useState<any>(null);
 
   useEffect(() => {
-    if (isStandalone()) return;
+    if (isStandalone() || cooldownActive()) return;
+
+    const cancels: Array<() => void> = [];
 
     // Android/Chrome: beforeinstallprompt
     const handler = (e: Event) => {
       e.preventDefault();
       setDeferred(e);
-      // Show after 3 seconds
-      setTimeout(() => setShow(true), 3000);
+      cancels.push(waitForCookieConsent(() => setTimeout(() => setShow(true), 3000)));
     };
     window.addEventListener("beforeinstallprompt", handler);
 
     // iOS: show after first visit
-    const shown = localStorage.getItem("pwa-prompt-shown");
-    if (!shown) {
-      setTimeout(() => {
-        if (!isStandalone()) setShow(true);
-      }, 5000);
-    }
+    cancels.push(waitForCookieConsent(() => setTimeout(() => {
+      if (!isStandalone()) setShow(true);
+    }, 5000)));
 
-    return () => window.removeEventListener("beforeinstallprompt", handler);
+    return () => {
+      window.removeEventListener("beforeinstallprompt", handler);
+      cancels.forEach((fn) => fn());
+    };
   }, []);
 
   const install = async () => {
@@ -61,7 +100,7 @@ export default function InstallPrompt() {
       setShow(false);
     }
     setDeferred(null);
-    localStorage.setItem("pwa-prompt-shown", "1");
+    localStorage.setItem("pwa-prompt-shown", String(Date.now()));
   };
 
   if (!show) return null;
@@ -70,7 +109,7 @@ export default function InstallPrompt() {
     <div className="fixed bottom-4 left-4 right-4 z-50 animate-slide-up">
       <div className="bg-gray-900 text-white rounded-2xl px-5 py-4 shadow-2xl flex items-center gap-4">
         <button
-          onClick={() => { setShow(false); localStorage.setItem("pwa-prompt-shown", "1"); }}
+          onClick={() => { setShow(false); localStorage.setItem("pwa-prompt-shown", String(Date.now())); }}
           className="absolute top-2 right-2 text-gray-400 hover:text-white"
         >
           <X size={16} />

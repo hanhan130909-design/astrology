@@ -69,9 +69,12 @@ export interface ChartData {
 export default function EmailUnlock({
   sign = "natal",
   chartData,
+  compact = false,
 }: {
   sign?: string;
   chartData?: ChartData;
+  /** compact: 隐藏徽章/标题/长文案。用于页面 hero 里已有同款标题的位置，避免重复文案。 */
+  compact?: boolean;
 }) {
   const { language } = useLanguage();
   const lang = language || "en";
@@ -125,14 +128,18 @@ export default function EmailUnlock({
 
   return (
     <div className="bg-white border border-gray-200 rounded-2xl p-6 max-w-md mx-auto shadow-sm">
-      <div className="flex items-center gap-2 mb-3">
-        <span className="text-[10px] font-bold tracking-wider text-amber-600 bg-amber-100 px-2 py-0.5 rounded-full">{ui.badge}</span>
-      </div>
-      <h3 className="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
-        <SparklesIcon size={18} className="text-amber-500" />
-        {ui.title}
-      </h3>
-      <p className="text-sm text-gray-600 mb-4 leading-relaxed">{ui.desc}</p>
+      {!compact && (
+        <>
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-[10px] font-bold tracking-wider text-amber-600 bg-amber-100 px-2 py-0.5 rounded-full">{ui.badge}</span>
+          </div>
+          <h3 className="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
+            <SparklesIcon size={18} className="text-amber-500" />
+            {ui.title}
+          </h3>
+          <p className="text-sm text-gray-600 mb-4 leading-relaxed">{ui.desc}</p>
+        </>
+      )}
 
       <form onSubmit={handleSubmit} className="space-y-3">
         <div className="relative">

@@ -32,23 +32,15 @@ export default function Navbar() {
   const pathname = usePathname();
   const { language, setLanguage, t: tx } = useLanguage();
   const t = T[language] || T.en;
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    const saved = localStorage.getItem("theme");
-    const dark = saved === "dark" || (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches);
-    setIsDark(dark);
-    if (dark) document.documentElement.classList.add("dark");
-  }, []);
-
-  const toggleTheme = () => {
-    const next = !isDark;
-    setIsDark(next);
-    document.documentElement.classList.toggle("dark", next);
-    localStorage.setItem("theme", next ? "dark" : "light");
-  };
+  // 暗色模式暂不开放：全站 dark: 样式只做了一半，跟随系统切换会出现半黑半白。
+  // 统一浅色；待补齐 dark: 样式后再恢复（darkMode 已改为 class 模式）。
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+
+  useEffect(() => {
+    // 清理历史遗留的 dark 类，确保浅色渲染
+    document.documentElement.classList.remove("dark");
+  }, []);
 
   if (pathname === "/bazi") return null;
 
@@ -94,31 +86,19 @@ export default function Navbar() {
 
         {/* Right: Language + PRO + Login + Hamburger */}
         <div className="flex items-center gap-2">
-          {/* Desktop: full language bar */}
-          <div className="hidden md:flex gap-0.5 bg-gray-100 rounded-lg p-0.5">
-            {LANGUAGES.map((l) => (
-              <button key={l.code} onClick={() => setLanguage(l.code)} title={l.label} aria-label={`Switch to ${l.label}`}
-                className={`px-2 py-1.5 rounded-md text-xs font-medium transition-all ${
-                  language === l.code ? "bg-white text-[#171717] shadow-sm" : "text-gray-400 hover:text-gray-600"
-                }`}>
-                <span>{l.flag}</span><span className="hidden lg:inline ml-1">{l.label}</span>
-              </button>
-            ))}
-          </div>
-
-          {/* Mobile: dropdown language picker */}
-          <div className="md:hidden relative">
+          {/* Language: compact dropdown on all screen sizes */}
+          <div className="relative">
             <button onClick={() => setLangOpen(!langOpen)}
-              className="px-2 py-1.5 rounded-md text-xs font-medium bg-gray-100 text-gray-700 flex items-center gap-1"
+              className="px-2 py-1.5 rounded-md text-xs font-medium bg-gray-100 text-gray-700 flex items-center gap-1 shrink-0"
               aria-label={langOpen ? "Close language menu" : "Open language menu"}
               aria-expanded={langOpen}>
               {currentLang.flag} {currentLang.short} ▾
             </button>
             {langOpen && (
-              <div className="absolute right-0 top-full mt-1 bg-white rounded-lg shadow-lg border border-gray-200 p-2 grid grid-cols-4 gap-1 z-50 min-w-[200px]">
+              <div className="absolute right-0 top-full mt-1 bg-white rounded-lg shadow-lg border border-gray-200 p-2 grid grid-cols-4 gap-1 z-50 min-w-[220px]">
                 {LANGUAGES.map((l) => (
                   <button key={l.code} onClick={() => { setLanguage(l.code); setLangOpen(false); }}
-                    className={`px-2 py-1.5 rounded text-xs font-medium text-center ${
+                    className={`px-2 py-1.5 rounded text-xs font-medium text-center whitespace-nowrap ${
                       language === l.code ? "bg-gray-100 text-[#171717]" : "text-gray-500 hover:bg-gray-50"
                     }`}
                     aria-label={`Switch to ${l.label}`}>
@@ -131,15 +111,6 @@ export default function Navbar() {
 
           <Link href="/shop" className="text-xs font-medium text-gray-400 hover:text-[#171717] no-underline shrink-0 hidden sm:inline">🎨 Shop</Link>
           <Link href="/pricing" className="text-xs font-medium text-gray-400 hover:text-[#171717] no-underline shrink-0 hidden sm:inline">PRO</Link>
-
-          {/* Theme toggle */}
-          <button
-            onClick={toggleTheme}
-            className="p-1.5 rounded-md hover:bg-gray-100 text-gray-400 hover:text-[#171717] shrink-0"
-            aria-label="Toggle theme"
-          >
-            {isDark ? "☀" : "☾"}
-          </button>
 
           <LazyAuthButton />
 

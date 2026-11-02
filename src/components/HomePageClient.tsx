@@ -128,8 +128,8 @@ export default function HomePage() {
             {t.heroSub}
           </p>
 
-          {/* Email unlock — the single CTA */}
-          <EmailUnlock sign="natal" />
+          {/* Email unlock — the single CTA（hero 已有同款标题，compact 避免重复） */}
+          <EmailUnlock sign="natal" compact />
 
           {/* Trust signals */}
           <div className="flex items-center justify-center gap-4 mt-6 text-[11px] text-gray-400">
