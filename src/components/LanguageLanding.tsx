@@ -66,8 +66,6 @@ const TOOLS: Record<"en" | "id", ToolCard[]> = {
   ],
 };
 
-export const LANGS = { "x-default": "/", en: "/en", id: "/id" } as const;
-
 export default function LanguageLanding({ lang }: { lang: "en" | "id" }) {
   const t = COPY[lang];
   const tools = TOOLS[lang];

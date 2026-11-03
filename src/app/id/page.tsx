@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import LanguageLanding, { LANGS } from "@/components/LanguageLanding";
+import LanguageLanding from "@/components/LanguageLanding";
 
 export const metadata: Metadata = {
   title: "LunaXStar - Bagan Lahir & Kalkulator BaZi Gratis",
@@ -7,7 +7,11 @@ export const metadata: Metadata = {
     "Bagan lahir dan BaZi gratis berbasis perhitungan astronomi nyata. Temukan waktu jodoh, gaya penghasilan, dan pola hidup Anda. Tanpa pendaftaran.",
   alternates: {
     canonical: "https://lunaxstar.com/id",
-    languages: { ...LANGS },
+    languages: {
+      "x-default": "https://lunaxstar.com/",
+      en: "https://lunaxstar.com/en",
+      id: "https://lunaxstar.com/id",
+    },
   },
   openGraph: {
     title: "LunaXStar - Bagan Lahir & Kalkulator BaZi Gratis",
