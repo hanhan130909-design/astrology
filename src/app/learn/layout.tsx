@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: "占星学习 - 免费占星知识库",
     description: "Learn astrology for free from beginner to advanced. Systematic tutorials covering zodiac basics, planetary meanings, house interpretation and aspect analysis.",
     type: "website",
-    siteName: "Starry Fate",
+    siteName: "LunaXStar",
   },
   twitter: {
     card: "summary_large_image",

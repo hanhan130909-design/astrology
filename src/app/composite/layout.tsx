@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: "Composite Chart Analysis - Relationship Astrology",
     description: "Generate a free professional Composite Chart to analyze the shared astrology and dynamic patterns of a relationship. AI deeply interprets relationship qualities.",
     type: "website",
-    siteName: "Starry Fate",
+    siteName: "LunaXStar",
   },
   twitter: {
     card: "summary_large_image",

@@ -109,7 +109,7 @@ export default function AboutPage() {
       </div>
 
       <footer className="py-8 px-4 text-center border-t border-gray-100 bg-gray-50">
-        <p className="text-sm text-gray-400">© 2026 {t.siteName || "Starry Fate"}. All rights reserved.</p>
+        <p className="text-sm text-gray-400">© 2026 {t.siteName || "LunaXStar"}. All rights reserved.</p>
       </footer>
     </div>
   );

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: "Free Vimshamsha Progression Analysis",
     description: "Use Vimshamsha astrology system to analyze life stage planetary cycles and fortune themes. AI interprets action themes and inner motivations of each life stage.",
     type: "website",
-    siteName: "Starry Fate",
+    siteName: "LunaXStar",
   },
   twitter: {
     card: "summary_large_image",

@@ -31,6 +31,8 @@ type PageMetadataInput = {
   description: string;
   keywords?: string[];
   type?: "website" | "article";
+  /** hreflang alternates：语言代码 → 站内相对路径（如 { en: "/en", id: "/id" }） */
+  languages?: Record<string, string>;
 };
 
 export function createPageMetadata({
@@ -39,6 +41,7 @@ export function createPageMetadata({
   description,
   keywords = [],
   type = "website",
+  languages,
 }: PageMetadataInput): Metadata {
   const canonical = siteUrl(path);
 
@@ -46,7 +49,16 @@ export function createPageMetadata({
     title,
     description,
     keywords,
-    alternates: { canonical },
+    alternates: {
+      canonical,
+      ...(languages
+        ? {
+            languages: Object.fromEntries(
+              Object.entries(languages).map(([lang, route]) => [lang, siteUrl(route)]),
+            ),
+          }
+        : {}),
+    },
     openGraph: {
       title,
       description,
@@ -67,6 +79,11 @@ export const homeMetadata = createPageMetadata({
   title: "Find Your Soulmate Window & Money Pattern | Free Birth Chart",
   description: "Discover your soulmate timing, natural earning style, and hidden life patterns with a free birth chart and BaZi reading. Based on real astronomical calculations. No signup required.",
   keywords: ["free birth chart", "soulmate astrology", "money pattern", "BaZi calculator", "natal chart", "career astrology"],
+  languages: {
+    "x-default": "/",
+    en: "/en",
+    id: "/id",
+  },
 });
 
 export const natalMetadata = createPageMetadata({

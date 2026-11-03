@@ -91,7 +91,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "星缘",
-    "alternateName": ["Starry Fate", "Love Astrology", "Cinta Bintang"],
+    "alternateName": ["LunaXStar", "Love Astrology", "Cinta Bintang"],
     "url": "https://lunaxstar.com",
     "description": "探索星座的命运奥秘，星缘提供基于真实天文计算与先进AI技术的免费在线占星服务。全面支持本命盘、推运盘、合盘比对、AI智能解读、塔罗占卜、运势解读。",
     "keywords": "星座,占星,本命盘,推运盘,合盘,塔罗,运势,星盘,在线排盘,AI占星",

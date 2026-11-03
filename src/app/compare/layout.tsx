@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: "星盘对比 - 多人比较",
     description: "Free zodiac sign comparison tool. Compare two zodiac signs to discover personality compatibility, strengths, weaknesses and relationship potential.",
     type: "website",
-    siteName: "Starry Fate",
+    siteName: "LunaXStar",
   },
   twitter: {
     card: "summary_large_image",

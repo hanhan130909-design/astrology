@@ -77,7 +77,7 @@ function welcomeEmailHtml(email: string): string {
           此邮件发送至 ${email}。如果不想再收到周运势邮件，你可以随时在邮件底部取消订阅。
         </p>
         <p style="font-size:12px;color:#9ca3af;margin:0;">
-          © 2026 星缘 Starry Fate. lunaxstar.com
+          © 2026 星缘 LunaXStar. lunaxstar.com
         </p>
       </td>
     </tr>
@@ -141,7 +141,7 @@ function weeklyHoroscopeHtml(
     <tr>
       <td style="padding:20px 30px;background-color:#f9fafb;border-top:1px solid #e5e7eb;text-align:center;">
         <p style="font-size:12px;color:#9ca3af;margin:0;">
-          © 2026 星缘 Starry Fate. lunaxstar.com — 如需退订，请回复此邮件。
+          © 2026 星缘 LunaXStar. lunaxstar.com — 如需退订，请回复此邮件。
         </p>
       </td>
     </tr>

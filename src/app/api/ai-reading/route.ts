@@ -456,5 +456,5 @@ You're like a pearl in the deep ocean—calm on the surface, yet containing rich
 
 *Configure OpenAI API key for detailed personalized AI reading*
 
-Starry Fate Astrology | Based on real astronomical calculations`;
+LunaXStar Astrology | Based on real astronomical calculations`;
 }

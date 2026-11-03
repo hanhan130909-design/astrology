@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "个人中心 - 星缘 | Starry Fate",
+  title: "个人中心 - 星缘 | LunaXStar",
   description:
     "查看和管理您保存的星盘，管理个人信息。View and manage your saved natal charts and profile information.",
   icons: {

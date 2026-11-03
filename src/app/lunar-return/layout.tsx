@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: "Free Lunar Return Chart Analysis",
     description: "Generate a free professional Lunar Return chart to analyze astrological themes and influences for the upcoming year. AI interprets fortune themes and opportunities.",
     type: "website",
-    siteName: "Starry Fate",
+    siteName: "LunaXStar",
   },
   twitter: {
     card: "summary_large_image",

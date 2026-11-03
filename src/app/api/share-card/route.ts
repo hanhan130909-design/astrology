@@ -44,7 +44,7 @@ function buildBaziCard(data: {
   <text x="${cx}" y="700" font-family="PingFang SC, sans-serif" font-size="24" fill="white" text-anchor="middle" opacity="0.8">What's yours?</text>
   <text x="${cx}" y="750" font-family="PingFang SC, sans-serif" font-size="28" font-weight="700" fill="${c.accent}" text-anchor="middle">lunaxstar.com</text>
   <text x="${cx}" y="790" font-family="PingFang SC, sans-serif" font-size="18" fill="white" text-anchor="middle" opacity="0.5">Free BaZi Calculator · 8 Languages</text>
-  <text x="${cx}" y="${H-50}" font-family="PingFang SC, sans-serif" font-size="16" fill="white" text-anchor="middle" opacity="0.3">星缘 · Starry Fate</text>
+  <text x="${cx}" y="${H-50}" font-family="PingFang SC, sans-serif" font-size="16" fill="white" text-anchor="middle" opacity="0.3">星缘 · LunaXStar</text>
   </svg>`;
 }
 
@@ -84,7 +84,7 @@ function buildNatalCard(data: {
   <text x="${cx}" y="840" font-family="PingFang SC, sans-serif" font-size="22" fill="white" text-anchor="middle" opacity="0.8">What's your Big Three?</text>
   <text x="${cx}" y="890" font-family="PingFang SC, sans-serif" font-size="30" font-weight="700" fill="#7B68EE" text-anchor="middle">lunaxstar.com</text>
   <text x="${cx}" y="930" font-family="PingFang SC, sans-serif" font-size="18" fill="white" text-anchor="middle" opacity="0.5">Free Natal Chart · 8 Languages</text>
-  <text x="${cx}" y="${H-50}" font-family="PingFang SC, sans-serif" font-size="16" fill="white" text-anchor="middle" opacity="0.3">星缘 · Starry Fate</text>
+  <text x="${cx}" y="${H-50}" font-family="PingFang SC, sans-serif" font-size="16" fill="white" text-anchor="middle" opacity="0.3">星缘 · LunaXStar</text>
   </svg>`;
 }
 

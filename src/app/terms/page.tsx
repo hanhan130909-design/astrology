@@ -5,7 +5,7 @@ export default function TermsPage() {
      <div className="space-y-6 text-muted-foreground">
        <section>
          <h2 className="text-xl font-semibold text-foreground mb-3">1. Service Description</h2>
-         <p>Starry Fate provides astronomy-based astrological reading services. All astrological content is for entertainment and reference purposes only and does not constitute fortune prediction or decision-making advice.</p>
+         <p>LunaXStar provides astronomy-based astrological reading services. All astrological content is for entertainment and reference purposes only and does not constitute fortune prediction or decision-making advice.</p>
        </section>
        <section>
          <h2 className="text-xl font-semibold text-foreground mb-3">2. User Responsibilities</h2>
@@ -13,7 +13,7 @@ export default function TermsPage() {
        </section>
        <section>
          <h2 className="text-xl font-semibold text-foreground mb-3">3. Disclaimer</h2>
-         <p>Astrological readings are based on traditional astrological theories and astronomical calculations for reference and entertainment only. Starry Fate is not responsible for any direct or indirect losses resulting from reliance on the content of this service.</p>
+         <p>Astrological readings are based on traditional astrological theories and astronomical calculations for reference and entertainment only. LunaXStar is not responsible for any direct or indirect losses resulting from reliance on the content of this service.</p>
        </section>
        <section>
          <h2 className="text-xl font-semibold text-foreground mb-3">4. Paid Services</h2>

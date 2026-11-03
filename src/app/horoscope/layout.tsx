@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: "每日运势 - 12星座运程",
     description: "Free daily, monthly and yearly horoscope forecasts for all 12 zodiac signs. Accurate astrology predictions covering love, career, health and finance.",
     type: "website",
-    siteName: "Starry Fate",
+    siteName: "LunaXStar",
   },
   twitter: {
     card: "summary_large_image",

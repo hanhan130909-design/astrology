@@ -15,6 +15,8 @@ import { siteUrl } from "@/lib/seoMetadata";
 
 export const coreRoutes = [
   "/",
+  "/en",
+  "/id",
   "/natal",
   "/solar-return",
   "/bazi",

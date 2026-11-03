@@ -38,7 +38,17 @@ for (const [path, title, metadata, routeFile, exportName] of routeMetadata) {
   assert.equal(metadata.title, title);
   assert.equal(metadata.alternates?.canonical, canonical);
   assert.equal(metadata.openGraph?.url, canonical);
-  assert.equal(metadata.alternates?.languages, undefined);
+
+  // 2026-11：/en /id 真实落地页已上线，首页互指 hreflang；其余路由保持无 languages
+  if (path === "/") {
+    assert.deepEqual(metadata.alternates?.languages, {
+      "x-default": siteUrl("/"),
+      en: siteUrl("/en"),
+      id: siteUrl("/id"),
+    });
+  } else {
+    assert.equal(metadata.alternates?.languages, undefined);
+  }
 
   const routeSource = fs.readFileSync(routeFile, "utf8");
   assert.match(routeSource, new RegExp(`export const metadata = ${exportName};`));
