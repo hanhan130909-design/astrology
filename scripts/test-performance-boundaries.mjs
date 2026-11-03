@@ -10,6 +10,9 @@ registerHooks({
     if (specifier === "server-only") {
       return { url: "data:text/javascript,export%20{}", shortCircuit: true };
     }
+    if (specifier.startsWith("@/") && specifier.endsWith(".json")) {
+      return nextResolve(new URL(`../src/${specifier.slice(2)}`, import.meta.url).href, context);
+    }
     if (specifier.startsWith("@/")) {
       const sourceUrl = new URL(`../src/${specifier.slice(2)}.ts`, import.meta.url);
       return nextResolve(sourceUrl.href, context);
@@ -53,7 +56,7 @@ function resolveLocalModule(specifier, importerPath) {
   }
 
   let basePath;
-  if (specifier.startsWith("@/")) {
+  if (specifier.startsWith("@/") && !specifier.endsWith(".json")) {
     basePath = path.join(sourceRoot, specifier.slice(2));
   } else if (specifier.startsWith("./") || specifier.startsWith("../")) {
     basePath = path.resolve(path.dirname(importerPath), specifier);
@@ -254,12 +257,28 @@ const expectedSlugs = new Set([
   ...legacySlugs,
 ]);
 const summarySlugs = summaries.map((article) => article.slug);
-const missing = [...expectedSlugs].filter((slug) => !summarySlugs.includes(slug));
+// 已 301 到 /compatibility/[pair] 的旧配对页按设计不再出现在列表里
+const { compatibilityRedirects } = await import(
+  "../src/content/compatibilityRedirects.ts"
+);
+const redirectedSlugs = new Set(
+  Object.keys(compatibilityRedirects).map((redirectPath) =>
+    redirectPath.replace(/^\/blog\//, ""),
+  ),
+);
+const missing = [...expectedSlugs].filter(
+  (slug) => !summarySlugs.includes(slug) && !redirectedSlugs.has(slug),
+);
 const extra = summarySlugs.filter((slug) => !expectedSlugs.has(slug));
 assert.deepEqual(
   { missing, extra },
   { missing: [], extra: [] },
-  "blog summaries must exactly cover all article sources",
+  "blog summaries must exactly cover all article sources (minus 301-redirected pair pages)",
+);
+assert.equal(
+  summarySlugs.filter((slug) => redirectedSlugs.has(slug)).length,
+  0,
+  "redirected pair pages must not appear in the blog list",
 );
 assert.equal(new Set(summarySlugs).size, summarySlugs.length, "summary slugs must be unique");
 assert.ok(summaries.every((article) => !Object.hasOwn(article, "content")));
@@ -306,7 +325,10 @@ assert.equal(articleWithMissingSourceMetadata.author, "星缘团队");
 assert.equal(articleWithMissingSourceMetadata.authorEn, "Lunaxstar Team");
 assert.equal(articleWithMissingSourceMetadata.authorId, "Tim Lunaxstar");
 // 日期差异化后，源数据缺日期的文章由 resolveArticleDate 确定性补齐（见 src/lib/blogDate.ts）
-const missingDateArticle = summaries.find((article) => article.slug === "aries-leo-compatibility-41");
+// （原用例 aries-leo-compatibility-41 已 301 至 /compatibility/aries-leo，不再进列表）
+const missingDateArticle = summaries.find(
+  (article) => article.slug === "best-free-bazi-calculators-2026",
+);
 assert.match(missingDateArticle.date, /^\d{4}-\d{2}-\d{2}$/);
 
 const authContextPath = path.resolve("src/contexts/AuthContext.tsx");

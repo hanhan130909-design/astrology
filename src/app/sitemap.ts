@@ -11,6 +11,7 @@ import { longtailSeoArticlesBatch6 } from "@/app/blog/longtail-seo-articles-batc
 import { longtailSeoArticlesBatch7 } from "@/app/blog/longtail-seo-articles-batch7";
 import { type IndexableArticle, isIndexableArticle } from "@/lib/blogIndexPolicy";
 import { createArticleSitemapEntry, deduplicateArticlesBySlug } from "@/lib/blogSitemap";
+import { allPairSlugs } from "@/lib/compatibilityEngine";
 import { siteUrl } from "@/lib/seoMetadata";
 
 export const coreRoutes = [
@@ -73,9 +74,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...ziweiSlugs.map((route) => ({ url: siteUrl(route), changeFrequency: "weekly" as const, priority: 0.7 })),
   ];
 
+  // 配对页：78 个规范页（66 组无序组合 + 12 组同座自配对）
+  const compatibilityEntries: MetadataRoute.Sitemap = [
+    {
+      url: siteUrl("/compatibility/pairs"),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    ...allPairSlugs().map((slug) => ({
+      url: siteUrl(`/compatibility/${slug}`),
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
+    })),
+  ];
+
   const indexableArticles = deduplicateArticlesBySlug(articles)
     .filter(isIndexableArticle);
   const articleEntries = indexableArticles.map(createArticleSitemapEntry);
 
-  return [...coreEntries, ...extraEntries, ...articleEntries];
+  return [...coreEntries, ...extraEntries, ...compatibilityEntries, ...articleEntries];
 }

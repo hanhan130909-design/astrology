@@ -14,7 +14,8 @@
     "test:natal-mobile": "node scripts/test-natal-mobile-css.mjs",
     "test:performance-boundaries": "node --experimental-strip-types scripts/test-performance-boundaries.mjs",
     "test:natal-seo-content": "node --experimental-strip-types scripts/test-natal-seo-content.mjs",
-    "test:acquisition": "npm run test:seo-metadata && npm run test:blog-index && npm run test:solar-return-content && npm run test:analytics && npm run test:natal-mobile && npm run test:performance-boundaries && npm run test:natal-seo-content"
+    "test:acquisition": "npm run test:seo-metadata && npm run test:blog-index && npm run test:solar-return-content && npm run test:analytics && npm run test:natal-mobile && npm run test:performance-boundaries && npm run test:natal-seo-content && npm run test:compatibility && npm run test:compatibility",
+    "test:compatibility": "node --experimental-strip-types scripts/test-compatibility-pages.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

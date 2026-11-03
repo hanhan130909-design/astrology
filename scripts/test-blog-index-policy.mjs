@@ -8,7 +8,8 @@ import { isIndexableArticle } from "../src/lib/blogIndexPolicy.ts";
 
 registerHooks({
   resolve(specifier, context, nextResolve) {
-    if (!specifier.startsWith("@/")) return nextResolve(specifier, context);
+    if (!specifier.startsWith("@/") || specifier.endsWith(".json"))
+      return nextResolve(specifier, context);
 
     const sourceUrl = new URL(`../src/${specifier.slice(2)}.ts`, import.meta.url);
     return nextResolve(sourceUrl.href, context);

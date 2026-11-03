@@ -1,4 +1,24 @@
 import type { NextConfig } from "next";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+
+// 78 条旧配对博客 URL → 66 个规范配对页（脚本生成，见 scripts/generate-compat-redirects.mjs）
+function compatibilityRedirects() {
+  try {
+    const raw = readFileSync(
+      join(process.cwd(), "src/content/compatibility-redirects.json"),
+      "utf8",
+    );
+    const map = JSON.parse(raw) as Record<string, string>;
+    return Object.entries(map).map(([source, destination]) => ({
+      source,
+      destination,
+      permanent: true,
+    }));
+  } catch {
+    return [];
+  }
+}
 
 const nextConfig: NextConfig = {
   distDir: process.env.NEXT_DIST_DIR || ".next",
@@ -32,6 +52,11 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["lucide-react"],
     reactCompiler: false,
+  },
+
+  // 配对内容收敛：旧薄页永久跳转到新规范页
+  async redirects() {
+    return compatibilityRedirects();
   },
 
   // Security headers + CORS + caching

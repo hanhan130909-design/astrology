@@ -17,6 +17,15 @@ import {
 } from './blogSummary';
 import { resolveArticleDate } from '@/lib/blogDate';
 import { isIndexableArticle } from '@/lib/blogIndexPolicy';
+import { compatibilityRedirects } from '@/content/compatibilityRedirects';
+
+// 已 301 到 /compatibility/[pair] 的旧配对页不再出现在列表里，
+// 避免用户点进一个立刻跳走的链接（详见 next.config.ts 的 redirects）。
+const redirectedSlugs = new Set(
+  Object.keys(compatibilityRedirects as Record<string, string>).map((path) =>
+    path.replace(/^\/blog\//, ''),
+  ),
+);
 
 type DefaultedSummaryField = 'author' | 'authorEn' | 'authorId' | 'date' | 'readTime';
 type BlogArticleSource = Omit<BlogArticleForSummary, DefaultedSummaryField> &
@@ -219,9 +228,9 @@ export function getBlogSummaries(): BlogSummary[] {
   ];
 
   // 日期差异化：扎堆桶按 slug 哈希确定性错开（详见 src/lib/blogDate.ts）
-  const summaries = sourceArticles.map((a) =>
-    toBlogSummary({ ...a, date: resolveArticleDate(a.slug, a.date) })
-  );
+  const summaries = sourceArticles
+    .filter((article) => !redirectedSlugs.has(article.slug))
+    .map((a) => toBlogSummary({ ...a, date: resolveArticleDate(a.slug, a.date) }));
 
   // 2026-11 内容收敛：可索引（≥450 词 / cornerstone）文章排前，
   // 薄内容留在站内可访问但不再占据列表首屏
