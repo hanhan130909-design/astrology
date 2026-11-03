@@ -16,6 +16,7 @@ import {
   type BlogSummary,
 } from './blogSummary';
 import { resolveArticleDate } from '@/lib/blogDate';
+import { isIndexableArticle } from '@/lib/blogIndexPolicy';
 
 type DefaultedSummaryField = 'author' | 'authorEn' | 'authorId' | 'date' | 'readTime';
 type BlogArticleSource = Omit<BlogArticleForSummary, DefaultedSummaryField> &
@@ -218,7 +219,17 @@ export function getBlogSummaries(): BlogSummary[] {
   ];
 
   // 日期差异化：扎堆桶按 slug 哈希确定性错开（详见 src/lib/blogDate.ts）
-  return sourceArticles.map((a) =>
+  const summaries = sourceArticles.map((a) =>
     toBlogSummary({ ...a, date: resolveArticleDate(a.slug, a.date) })
   );
+
+  // 2026-11 内容收敛：可索引（≥450 词 / cornerstone）文章排前，
+  // 薄内容留在站内可访问但不再占据列表首屏
+  const isIndexable = new Map(
+    sourceArticles.map((a) => [a.slug, isIndexableArticle(a)]),
+  );
+  return summaries
+    .map((summary, index) => ({ summary, index, rank: isIndexable.get(summary.slug) ? 0 : 1 }))
+    .sort((x, y) => x.rank - y.rank || x.index - y.index)
+    .map((item) => item.summary);
 }

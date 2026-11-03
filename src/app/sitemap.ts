@@ -37,8 +37,9 @@ export const coreRoutes = [
   "/yearly-horoscope",
 ] as const;
 
-// Blog pagination pages (22 pages)
-const blogPages = Array.from({ length: 22 }, (_, i) => `/blog?page=${i + 1}`);
+// Blog pagination pages — 2026-11 内容收敛后只保留前 3 页
+// （索引池已从 1538 篇收敛到 ~100 篇，深分页只是薄页集合，浪费抓取预算）
+const blogPages = Array.from({ length: 3 }, (_, i) => `/blog?page=${i + 1}`);
 
 // Learn lesson pages
 const baziSlugs = Array.from({ length: 7 }, (_, i) => `/learn/bazi-${i + 1}`);

@@ -17,6 +17,7 @@
     "test:acquisition": "npm run test:seo-metadata && npm run test:blog-index && npm run test:solar-return-content && npm run test:analytics && npm run test:natal-mobile && npm run test:performance-boundaries && npm run test:natal-seo-content"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "astronomy-engine": "^2.1.19",
     "firebase": "^12.11.0",
     "firebase-admin": "^14.5.0",
