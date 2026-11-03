@@ -257,13 +257,17 @@ const expectedSlugs = new Set([
   ...legacySlugs,
 ]);
 const summarySlugs = summaries.map((article) => article.slug);
-// 已 301 到 /compatibility/[pair] 的旧配对页按设计不再出现在列表里
+// 已 301 到 /compatibility/[pair] 或 /compatibility/chinese/[pair] 的旧配对页
+// 按设计不再出现在列表里
 const { compatibilityRedirects } = await import(
   "../src/content/compatibilityRedirects.ts"
 );
+const { chineseCompatibilityRedirects } = await import(
+  "../src/content/chineseCompatibilityRedirects.ts"
+);
 const redirectedSlugs = new Set(
-  Object.keys(compatibilityRedirects).map((redirectPath) =>
-    redirectPath.replace(/^\/blog\//, ""),
+  [...Object.keys(compatibilityRedirects), ...Object.keys(chineseCompatibilityRedirects)].map(
+    (redirectPath) => redirectPath.replace(/^\/blog\//, ""),
   ),
 );
 const missing = [...expectedSlugs].filter(

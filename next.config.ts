@@ -2,22 +2,27 @@ import type { NextConfig } from "next";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
-// 78 条旧配对博客 URL → 66 个规范配对页（脚本生成，见 scripts/generate-compat-redirects.mjs）
+// 旧配对博客 URL → 规范配对页（脚本生成，见 scripts/generate-compat-redirects.mjs）
+// 星座 78 条 → /compatibility/[pair]；生肖 66 条 → /compatibility/chinese/[pair]
 function compatibilityRedirects() {
-  try {
-    const raw = readFileSync(
-      join(process.cwd(), "src/content/compatibility-redirects.json"),
-      "utf8",
-    );
-    const map = JSON.parse(raw) as Record<string, string>;
-    return Object.entries(map).map(([source, destination]) => ({
-      source,
-      destination,
-      permanent: true,
-    }));
-  } catch {
-    return [];
-  }
+  const files = [
+    "src/content/compatibility-redirects.json",
+    "src/content/chinese-compatibility-redirects.json",
+  ];
+
+  return files.flatMap((file) => {
+    try {
+      const raw = readFileSync(join(process.cwd(), file), "utf8");
+      const map = JSON.parse(raw) as Record<string, string>;
+      return Object.entries(map).map(([source, destination]) => ({
+        source,
+        destination,
+        permanent: true,
+      }));
+    } catch {
+      return [];
+    }
+  });
 }
 
 const nextConfig: NextConfig = {

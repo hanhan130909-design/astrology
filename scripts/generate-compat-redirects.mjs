@@ -39,16 +39,32 @@ for (const name of mods) {
   articles.push(...loaded[key]);
 }
 
+const ANIMALS = new Set([
+  'rat', 'ox', 'tiger', 'rabbit', 'dragon', 'snake',
+  'horse', 'goat', 'monkey', 'rooster', 'dog', 'pig',
+]);
+
 const map = {};
-const chineseZodiac = [];
+const chineseMap = {};
+const unmatched = [];
 
 for (const article of articles) {
+  // 生肖：rat-ox-chinese-zodiac-compatibility-143
+  const chinese = /^(rat|ox|tiger|rabbit|dragon|snake|horse|goat|monkey|rooster|dog|pig)-([a-z]+)-chinese-zodiac-compatibility-\d+$/.exec(
+    article.slug,
+  );
+  if (chinese && ANIMALS.has(chinese[2])) {
+    const [x, y] = [chinese[1], chinese[2]].sort();
+    chineseMap[`/blog/${article.slug}`] = `/compatibility/chinese/${x}-${y}`;
+    continue;
+  }
+
   const match = /^(.+?)-compatibility-\d+$/.exec(article.slug);
   if (!match) continue;
 
   const parts = match[1].split('-');
   if (parts.length !== 2 || !SIGNS.has(parts[0]) || !SIGNS.has(parts[1])) {
-    chineseZodiac.push(article.slug);
+    unmatched.push(article.slug);
     continue;
   }
 
@@ -71,9 +87,30 @@ export const compatibilityRedirects: Record<string, string> = ${JSON.stringify(m
 `;
 fs.writeFileSync(tsPath, tsBody, 'utf8');
 
+const cnJsonPath = path.join(process.cwd(), 'src/content/chinese-compatibility-redirects.json');
+fs.writeFileSync(cnJsonPath, `${JSON.stringify(chineseMap, null, 2)}\n`, 'utf8');
+
+const cnTsPath = path.join(process.cwd(), 'src/content/chineseCompatibilityRedirects.ts');
+const cnTsBody = `/**
+ * 由 scripts/generate-compat-redirects.mjs 生成，勿手改。
+ * 66 条旧生肖配对博客 URL → 66 个规范配对页（/compatibility/chinese/[pair]）。
+ */
+export const chineseCompatibilityRedirects: Record<string, string> = ${JSON.stringify(chineseMap, null, 2)};
+`;
+fs.writeFileSync(cnTsPath, cnTsBody, 'utf8');
+
 const targets = new Set(Object.values(map));
+const chineseTargets = new Set(Object.values(chineseMap));
 console.log(`星座配对旧 URL: ${Object.keys(map).length} 条 → ${targets.size} 个规范页`);
 console.log(
-  `生肖配对旧 URL: ${chineseZodiac.length} 条（本轮未迁移，仍由 450 词规则 noindex 兜住）`,
+  `生肖配对旧 URL: ${Object.keys(chineseMap).length} 条 → ${chineseTargets.size} 个规范页`,
 );
-console.log(`已写入 ${path.relative(process.cwd(), outPath)} 与 ${path.relative(process.cwd(), tsPath)}`);
+if (unmatched.length) {
+  console.log(`未能归类（需人工确认）: ${unmatched.length}`);
+  unmatched.slice(0, 10).forEach((slug) => console.log('  ', slug));
+}
+console.log(
+  `已写入 ${[
+    outPath, tsPath, cnJsonPath, cnTsPath,
+  ].map((f) => path.relative(process.cwd(), f)).join(' / ')}`,
+);

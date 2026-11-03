@@ -12,6 +12,7 @@ import { longtailSeoArticlesBatch7 } from "@/app/blog/longtail-seo-articles-batc
 import { type IndexableArticle, isIndexableArticle } from "@/lib/blogIndexPolicy";
 import { createArticleSitemapEntry, deduplicateArticlesBySlug } from "@/lib/blogSitemap";
 import { allPairSlugs } from "@/lib/compatibilityEngine";
+import { allChinesePairSlugs } from "@/lib/chineseZodiacEngine";
 import { siteUrl } from "@/lib/seoMetadata";
 
 export const coreRoutes = [
@@ -88,9 +89,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 
+  // 生肖配对页：78 个规范页（66 组跨生肖 + 12 组自配对）
+  const chineseCompatibilityEntries: MetadataRoute.Sitemap = [
+    {
+      url: siteUrl("/compatibility/chinese"),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    ...allChinesePairSlugs().map((slug) => ({
+      url: siteUrl(`/compatibility/chinese/${slug}`),
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
+    })),
+  ];
+
   const indexableArticles = deduplicateArticlesBySlug(articles)
     .filter(isIndexableArticle);
   const articleEntries = indexableArticles.map(createArticleSitemapEntry);
 
-  return [...coreEntries, ...extraEntries, ...compatibilityEntries, ...articleEntries];
+  return [
+    ...coreEntries,
+    ...extraEntries,
+    ...compatibilityEntries,
+    ...chineseCompatibilityEntries,
+    ...articleEntries,
+  ];
 }

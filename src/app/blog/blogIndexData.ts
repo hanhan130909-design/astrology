@@ -18,12 +18,13 @@ import {
 import { resolveArticleDate } from '@/lib/blogDate';
 import { isIndexableArticle } from '@/lib/blogIndexPolicy';
 import { compatibilityRedirects } from '@/content/compatibilityRedirects';
+import { chineseCompatibilityRedirects } from '@/content/chineseCompatibilityRedirects';
 
-// 已 301 到 /compatibility/[pair] 的旧配对页不再出现在列表里，
-// 避免用户点进一个立刻跳走的链接（详见 next.config.ts 的 redirects）。
+// 已 301 到 /compatibility/[pair] 或 /compatibility/chinese/[pair] 的旧配对页
+// 不再出现在列表里，避免用户点进一个立刻跳走的链接（见 next.config.ts 的 redirects）。
 const redirectedSlugs = new Set(
-  Object.keys(compatibilityRedirects as Record<string, string>).map((path) =>
-    path.replace(/^\/blog\//, ''),
+  [...Object.keys(compatibilityRedirects), ...Object.keys(chineseCompatibilityRedirects)].map(
+    (path) => path.replace(/^\/blog\//, ''),
   ),
 );
 

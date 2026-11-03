@@ -177,6 +177,12 @@ export default function CompatibilityMatrixPage() {
             </Link>
           </section>
         </div>
+
+        <section className="cx-panel">
+          <Link href="/compatibility/chinese" className="cx-btn cx-btn-sm">
+            Chinese zodiac compatibility chart (78 animal pairings) <ArrowRight size={14} />
+          </Link>
+        </section>
       </div>
     </div>
   );
