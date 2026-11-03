@@ -93,3 +93,90 @@ body {
 @media (max-width: 640px) {
   html { font-size: 15px; }
 }
+
+/* ───────────────────────────────────────────────
+   Chart Tools UI (2026 redesign)
+   替换旧 Quick Chart 的深色菜单栏 / 斜角标签 / alm-table
+   ─────────────────────────────────────────────── */
+.cx-page { max-width: 1200px; margin: 0 auto; padding: 0 16px 72px; }
+
+.cx-header { padding: 28px 0 20px; border-bottom: 1px solid var(--gray-200); margin-bottom: 24px; }
+.cx-crumbs { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--gray-500); margin-bottom: 14px; }
+.cx-crumbs:hover { color: var(--black); }
+.cx-title { font-size: 30px; line-height: 1.2; font-weight: 700; letter-spacing: -0.02em; color: var(--black); }
+.cx-sub { margin-top: 8px; font-size: 14px; line-height: 1.6; color: var(--gray-500); max-width: 720px; }
+.cx-chart-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.cx-chart-link { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--gray-200); background: #fff; font-size: 12px; color: var(--gray-600); transition: all .15s ease; }
+.cx-chart-link:hover { border-color: #d4d4d4; background: var(--gray-50); color: var(--black); }
+.cx-chart-link.active { background: var(--black); border-color: var(--black); color: #fff; }
+
+.cx-card { background: #fff; border: 1px solid var(--gray-200); border-radius: 14px; box-shadow: var(--shadow-card); }
+.cx-card-pad { padding: 20px 22px; }
+.cx-card-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 20px; border-bottom: 1px solid var(--gray-100); }
+.cx-card-title { font-size: 14px; font-weight: 600; color: var(--black); }
+
+.cx-form-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px 16px; }
+.cx-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.cx-field.span-2 { grid-column: span 2; }
+.cx-field.span-4 { grid-column: span 4; }
+.cx-label { font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--gray-400); }
+.cx-input, .cx-select {
+  height: 38px; width: 100%; border-radius: 9px; border: 1px solid var(--gray-200);
+  background: #fff; padding: 0 10px; font-size: 14px; color: var(--black);
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.cx-input:focus, .cx-select:focus { outline: none; border-color: #a1a1a1; box-shadow: 0 0 0 3px rgba(0,0,0,.05); }
+.cx-input-row { display: flex; gap: 6px; align-items: center; }
+.cx-input-row .cx-input, .cx-input-row .cx-select { flex: 1; }
+.cx-input-row .cx-input.tight { flex: 0 0 64px; }
+
+.cx-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 38px; padding: 0 16px; border-radius: 9px; border: 1px solid var(--gray-200); background: #fff; font-size: 13px; font-weight: 500; color: var(--gray-900); cursor: pointer; transition: all .15s ease; white-space: nowrap; }
+.cx-btn:hover { background: var(--gray-50); border-color: #d4d4d4; }
+.cx-btn:disabled { opacity: .5; cursor: not-allowed; }
+.cx-btn-primary { background: var(--black); border-color: var(--black); color: #fff; }
+.cx-btn-primary:hover { background: #000; border-color: #000; }
+.cx-btn-sm { height: 32px; padding: 0 12px; font-size: 12px; }
+.cx-btn-accent { background: #7c3aed; border-color: #7c3aed; color: #fff; }
+.cx-btn-accent:hover { background: #6d28d9; border-color: #6d28d9; }
+
+.cx-meta { display: flex; flex-wrap: wrap; gap: 8px 10px; font-size: 12px; color: var(--gray-500); }
+.cx-chip { display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 999px; background: var(--gray-50); border: 1px solid var(--gray-100); }
+.cx-chip b { color: var(--gray-900); font-weight: 600; }
+
+/* 分段控件替换斜角 tab */
+.cx-seg { display: inline-flex; gap: 4px; padding: 4px; background: var(--gray-100); border-radius: 999px; overflow-x: auto; max-width: 100%; }
+.cx-seg-btn { border: 0; background: transparent; padding: 7px 14px; border-radius: 999px; font-size: 13px; color: var(--gray-500); cursor: pointer; white-space: nowrap; transition: all .15s ease; }
+.cx-seg-btn:hover { color: var(--gray-900); }
+.cx-seg-btn.active { background: #fff; color: var(--black); font-weight: 600; box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+
+/* 数据表 */
+.cx-table-wrap { background: #fff; border: 1px solid var(--gray-200); border-radius: 12px; overflow: auto; }
+.cx-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; color: var(--gray-900); }
+.cx-table th, .cx-table td { padding: 8px 10px; text-align: center; vertical-align: middle; border-bottom: 1px solid var(--gray-100); }
+.cx-table th { position: sticky; top: 0; background: var(--gray-50); font-size: 11px; font-weight: 600; letter-spacing: .03em; color: var(--gray-500); border-bottom: 1px solid var(--gray-200); z-index: 1; }
+.cx-table tbody tr:hover td { background: #fcfcfc; }
+.cx-table tbody tr:last-child td { border-bottom: 0; }
+.cx-table td.left { text-align: left; }
+.cx-table .dash-left { border-left: 1px solid var(--gray-200); }
+
+.cx-panel { padding-top: 14px; }
+.cx-grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: start; }
+.cx-stack { display: grid; gap: 14px; }
+
+.cx-modal { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; background: rgba(17,17,17,.35); backdrop-filter: blur(2px); padding: 16px; }
+.cx-modal-box { width: 100%; max-width: 520px; max-height: 82vh; overflow: auto; background: #fff; border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,.18); }
+.cx-modal-head { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-bottom: 1px solid var(--gray-100); position: sticky; top: 0; background: #fff; }
+.cx-modal-title { font-size: 14px; font-weight: 600; }
+
+.cx-glyph { font-family: 'Apple Symbols','DejaVu Sans',serif; font-style: normal; line-height: 1; }
+
+@media (max-width: 900px) {
+  .cx-form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cx-field.span-2 { grid-column: span 2; }
+  .cx-field.span-4 { grid-column: span 2; }
+  .cx-grid3 { grid-template-columns: 1fr; }
+  .cx-title { font-size: 24px; }
+  .cx-page { padding: 0 12px 56px; }
+  .cx-table { font-size: 12px; }
+  .cx-table th, .cx-table td { padding: 6px 7px; }
+}

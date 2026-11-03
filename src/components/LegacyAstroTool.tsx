@@ -476,107 +476,126 @@ export default function LegacyAstroTool({ mode }: { mode: ToolMode }) {
 
   return (
     <main className="min-h-screen bg-white text-[#333]">
-      <style>{`#legacy-main{padding:10px 260px 10px 20px}#legacy-wrap{display:flex;align-items:flex-start;gap:28px;flex-wrap:nowrap;margin-bottom:10px;overflow-x:auto}#legacy-wrap svg{max-width:none}.alm-tabs{width:100%;margin-top:8px;border:1px solid #aaa;border-radius:4px 4px 0 0;background:linear-gradient(#eeeeee,#cfcfcf);padding:3px 3px 0;overflow-x:auto}.alm-tab-btn{height:32px;padding:0 16px;border:1px solid #bbb;border-bottom:0;border-radius:4px 4px 0 0;background:linear-gradient(#f7f7f7,#dfdfdf);font-size:14px;color:#333;white-space:nowrap}.alm-tab-btn.active{background:white;font-weight:600;position:relative;top:1px}.alm-panel{padding:18px 28px 22px;background:white;overflow-x:auto}.alm-table{width:100%;border-collapse:collapse;background:white;color:#222;font-size:13px;line-height:1.15;box-shadow:0 4px 14px rgba(0,0,0,.14)}.alm-table th,.alm-table td{border:1px solid #aaa;padding:3px 6px;text-align:center;vertical-align:middle;height:22px}.alm-table th{background:#eee;font-weight:700}.alm-table td.left{text-align:left}.bazi-pill{font-size:30px;font-family:serif;font-weight:700}.bazi-mobile-grid{display:none}.legacy-form-row{display:inline}.legacy-form-control{border:1px solid #888;background:#555;color:white;padding:1px 2px}@media(max-width:900px){main{overflow-x:hidden}#cssmenu{display:flex!important;align-items:center!important;gap:0;overflow-x:auto!important;overflow-y:visible!important;white-space:nowrap!important;padding:6px 8px!important;-webkit-overflow-scrolling:touch;position:sticky;top:0;z-index:80}#cssmenu>span{flex:0 0 auto}#cssmenu>span>span,#cssmenu>span[style]{padding:8px 10px!important}#cssmenu div[style*="absolute"]{position:fixed!important;top:42px!important;left:8px!important;right:8px!important;max-height:70vh;overflow:auto;min-width:0!important;width:auto!important;box-shadow:0 6px 16px rgba(0,0,0,.3)}#legacy-main{padding:12px 12px 18px;display:flex;flex-direction:column}#legacy-sidebar{position:static!important;width:auto!important;margin:10px 12px 0!important;order:-1;box-sizing:border-box;border-radius:4px}#legacy-wrap{flex-direction:column;overflow-x:visible;gap:14px}#legacy-wrap>div{width:100%;overflow-x:auto}#legacy-wrap svg{width:min(520px,calc(100vw - 24px));height:auto}.alm-tabs{margin-top:12px;display:flex;gap:0;scrollbar-width:thin}.alm-tab-btn{height:38px;padding:0 14px;font-size:13px}.alm-panel{padding:12px 0 16px;overflow-x:auto}.alm-table{font-size:12px;min-width:520px}.alm-table th,.alm-table td{padding:5px 6px;height:28px}.bazi-summary-table{display:none}.bazi-mobile-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.bazi-mobile-card{border:1px solid #aaa;background:linear-gradient(#fff,#f2f2f2);box-shadow:0 2px 8px rgba(0,0,0,.12);padding:10px 8px;text-align:center}.bazi-mobile-label{font-size:12px;color:#555;margin-bottom:4px}.bazi-mobile-value{font-size:28px;font-family:serif;font-weight:700;line-height:1.15}.bazi-pill{font-size:24px}.legacy-form-row{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}.legacy-form-row.time{grid-template-columns:1fr auto 1fr}.legacy-form-control{min-height:34px;font-size:16px;padding:4px 6px;box-sizing:border-box;width:100%!important}#legacy-sidebar button{width:100%;min-height:36px;font-size:15px}.legacy-intro-card{margin:10px 0!important;padding:14px!important;max-width:none!important}}@media(max-width:420px){#legacy-main{padding-left:10px;padding-right:10px}.bazi-mobile-value{font-size:25px}.alm-table{min-width:470px}#legacy-wrap svg{width:calc(100vw - 20px)}}`}</style>
+      <style>{`.bazi-pill{font-size:30px;font-family:serif;font-weight:700}.astro-glyph{font-family:'Apple Symbols','DejaVu Sans',serif;font-style:normal;line-height:1}`}</style>
 
-      <div id="cssmenu" style={{background:"#333",fontSize:"14px",display:"flex",alignItems:"center",padding:"0 16px"}}>
-        <span onClick={()=>window.location.href="/"} style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>返回首页</span>
-        {[
-          {id:"file",l:"文件",items:[{l:"列表",a:"natal"},{l:"新增",a:"new"}]},
-          {id:"charts",l:"星盘",items:[
-            {l:"本命盘",a:"natal"},{l:"卜卦盘",a:"horary"},{l:"印度占星盘",a:"vedic"},{l:"八字盘",a:"bazi"},{l:"比较盘",a:"compare"},{l:"组合盘",a:"composite"},{l:"流年星",a:"transits"},{l:"太阳弧",a:"solarArc"},{l:"次限法",a:"progression"},{l:"次限对本命盘",a:"secondaryNatal"},{l:"三限法",a:"tertiary"},{l:"三限对本命盘",a:"tertiaryNatal"},{l:"太阳返照",a:"solarReturn"},{l:"月亮返照",a:"lunarReturn"}
-          ]},
-          {id:"tools",l:"工具",items:[{l:"星象日历",a:"calendar"},{l:"出生时间反推",a:"rectify"}]},
-          {id:"settings",l:"设定",items:[{l:"个人资料",a:"profile"}]}
-        ].map(m=>(
-          <span key={m.id} style={{position:"relative"}}>
-            <span onClick={()=>setOpenMenu(openMenu===m.id?null:m.id)} style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>{m.l} ▾</span>
-            {openMenu===m.id&&<div style={{position:"absolute",top:"100%",left:0,background:"#444",color:"#ccc",minWidth:m.id==="charts"?170:120,zIndex:50,border:"1px solid #555"}}>
-              {m.items.map(item=><div key={item.a} style={{padding:"6px 18px",cursor:"pointer",fontSize:"13px",whiteSpace:"nowrap"}} onMouseDown={()=>runMenuAction(item.a)}>{item.l}</div>)}
+      <div className="cx-page">
+      <header className="cx-header">
+        <a href="/" className="cx-crumbs">← 返回首页</a>
+        <h1 className="cx-title">{copy.title}</h1>
+        <p className="cx-sub">{copy.desc}</p>
+        <nav className="cx-chart-nav">
+          {[
+            {l:"本命盘",h:"/natal",m:null},
+            {l:"卜卦盘",h:"/horary",m:"horary"},
+            {l:"印度盘",h:"/vedic",m:"vedic"},
+            {l:"八字盘",h:"/bazi",m:"bazi"},
+            {l:"太阳弧",h:"/solar-arc",m:"solar-arc"},
+            {l:"次限对本命",h:"/secondary-to-natal",m:"secondary-natal"},
+            {l:"三限法",h:"/tertiary",m:"tertiary"},
+            {l:"三限对本命",h:"/tertiary-to-natal",m:"tertiary-natal"},
+          ].map(item=>(
+            <a key={item.h} href={item.h} className={`cx-chart-link ${item.m===mode?'active':''}`}>{item.l}</a>
+          ))}
+        </nav>
+      </header>
+
+      <section className="cx-card" style={{marginBottom:20}}>
+        <div className="cx-card-head">
+          <span className="cx-card-title">计算条件</span>
+          <span style={{fontSize:12,color:'#9ca3af'}}>{mode === "vedic" ? "恒星黄道 · 整宫制" : isProgressed ? `回归黄道 · 目标年 ${targetYear}` : "回归黄道 · 阿卡比特制"}</span>
+        </div>
+        <div className="cx-card-pad">
+          <div className="cx-form-grid">
+            <div className="cx-field span-2">
+              <label className="cx-label">出生日期</label>
+              <div className="cx-input-row">
+                <select className="cx-select" value={year} onChange={e=>setYear(Number(e.target.value))}>{Array.from({length:127},(_,i)=>now.getFullYear()-i).map(y=><option key={y} value={y}>{y} 年</option>)}</select>
+                <select className="cx-select" value={month} onChange={e=>setMonth(Number(e.target.value))}>{MONTHS.map((m,i)=><option key={i} value={i+1}>{m}</option>)}</select>
+                <select className="cx-select" value={day} onChange={e=>setDay(Number(e.target.value))}>{Array.from({length:31},(_,i)=>i+1).map(d=><option key={d} value={d}>{d} 日</option>)}</select>
+              </div>
+            </div>
+            <div className="cx-field">
+              <label className="cx-label">出生时间</label>
+              <div className="cx-input-row">
+                <select className="cx-select" value={hour} onChange={e=>setHour(Number(e.target.value))}>{Array.from({length:24},(_,i)=>i).map(h=><option key={h} value={h}>{fmt2(h)}</option>)}</select>
+                <select className="cx-select" value={minute} onChange={e=>setMinute(Number(e.target.value))}>{Array.from({length:60},(_,i)=>i).map(mm=><option key={mm} value={mm}>{fmt2(mm)}</option>)}</select>
+              </div>
+            </div>
+            <div className="cx-field">
+              <label className="cx-label">时区</label>
+              <input className="cx-input" value={tz} onChange={e=>setTz(Number(e.target.value)||0)} />
+            </div>
+            <div className="cx-field">
+              <label className="cx-label">纬度</label>
+              <input className="cx-input" value={lat} onChange={e=>setLat(Number(e.target.value)||0)} />
+            </div>
+            <div className="cx-field">
+              <label className="cx-label">经度</label>
+              <input className="cx-input" value={lng} onChange={e=>setLng(Number(e.target.value)||0)} />
+            </div>
+            {isProgressed&&<div className="cx-field">
+              <label className="cx-label">目标年</label>
+              <input className="cx-input" value={targetYear} onChange={e=>setTargetYear(Number(e.target.value)||targetYear)} />
             </div>}
-          </span>
-        ))}
-        <span onClick={()=>setSidebarOpen(true)} style={{color:"#ccc",padding:"4px 12px",textDecoration:"none",cursor:"pointer"}}>快速制图</span>
-        <span style={{flex:1}}/>
-        <span style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>星缘</span>
-      </div>
+            <div className="cx-field" style={{justifyContent:'flex-end'}}>
+              <button className="cx-btn cx-btn-primary" onClick={calculate} disabled={loading}>{loading?"计算中…":copy.button}</button>
+            </div>
+          </div>
+          {error&&<div style={{marginTop:10,fontSize:13,color:'#b42318'}}>{error}</div>}
+        </div>
+      </section>
 
       <div style={{position:"relative"}}>
         <div id="legacy-main">
-          <div style={{margin:"5px 0"}}>
-            <strong>{copy.title}</strong><br/>
-            {year}-{month}-{day} {hour}:{fmt2(minute)}{isProgressed ? `　目标年: ${targetYear}` : ""}<br/>
-            {`${lng.toFixed(2)} E　${lat.toFixed(2)} N`}<br/>
-            时区: GMT {tz>=0?"+":""}{tz}.00<br/>
-            {mode === "vedic" ? "恒星黄道 整宫制" : "回归黄道 阿卡比特制"}
-          </div>
-
-          {!chart&&<div className="legacy-intro-card" style={{border:"1px solid #d0d0d0",background:"#f7f7f7",padding:16,margin:"12px 0",maxWidth:760}}>
-            <strong>{copy.title}</strong>
-            <div style={{fontSize:13,color:"#555",marginTop:6}}>{copy.desc}</div>
-            <button onClick={calculate} disabled={loading} style={{border:"1px solid #888",background:"#eee",padding:"4px 16px",marginTop:12,cursor:"pointer"}}>{loading ? "计算中..." : copy.button}</button>
-            {error&&<div style={{color:"#b00020",fontSize:13,marginTop:8}}>{error}</div>}
+          {!chart&&<div className="cx-card cx-card-pad" style={{textAlign:'center',padding:'40px 24px'}}>
+            <div style={{fontSize:32,marginBottom:10}}>✧</div>
+            <div style={{fontSize:15,fontWeight:600,color:'#171717',marginBottom:6}}>{copy.title}</div>
+            <div style={{fontSize:13,color:'#6b7280',maxWidth:480,margin:'0 auto 18px',lineHeight:1.7}}>{copy.desc}</div>
+            <button className="cx-btn cx-btn-primary" onClick={calculate} disabled={loading}>{loading ? "计算中…" : copy.button}</button>
+            {error&&<div style={{color:'#b42318',fontSize:13,marginTop:12}}>{error}</div>}
           </div>}
 
-          {chart&&<div id="legacy-wrap">
-            <div><AspectMatrix chart={chart}/></div>
-            <div><NatalChartWheel chart={chart}/></div>
-          </div>}
-
-          {chart&&<div id="main_tabs">
-            <div className="alm-tabs">
-              {[{id:"chart-tab",l:"黄道状态"},{id:"table-tab",l:"数据表"},{id:"note-tab",l:"说明"}].map(t=>(
-                <button key={t.id} onClick={()=>setActiveTab(t.id)} className={`alm-tab-btn ${activeTab===t.id?"active":""}`}>{t.l}</button>
-              ))}
+          {chart&&<>
+            <div className="cx-meta" style={{marginBottom:16}}>
+              <span className="cx-chip">{year}-{fmt2(month)}-{fmt2(day)} {fmt2(hour)}:{fmt2(minute)}</span>
+              <span className="cx-chip">{lng.toFixed(2)}°E / {lat.toFixed(2)}°N</span>
+              <span className="cx-chip">GMT {tz>=0?"+":""}{tz}.00</span>
+              {isProgressed&&<span className="cx-chip">目标年 <b>{targetYear}</b></span>}
+              <span className="cx-chip">{mode === "vedic" ? "恒星黄道 · 整宫制" : "回归黄道 · 阿卡比特制"}</span>
             </div>
-            <div className="alm-panel">
-              {activeTab==="chart-tab"&&<table className="alm-table">
-                <thead><tr><th>星体</th><th>黄经度数</th><th>星座</th></tr></thead>
-                <tbody>{planetRows.map(r=><tr key={r.key}><td>{r.name}</td><td>{lonText(r.lon)}</td><td>{SIGNS_CN[r.sign]}</td></tr>)}</tbody>
-              </table>}
-              {activeTab==="table-tab"&&<table className="alm-table">
-                <tbody>
-                  <tr><th>工具</th><td>{copy.title}</td></tr>
-                  <tr><th>时间</th><td>{year}-{month}-{day} {fmt2(hour)}:{fmt2(minute)}</td></tr>
-                  <tr><th>地点</th><td>{`${lat}, ${lng}`}</td></tr>
-                  <tr><th>说明</th><td className="left">{copy.desc}</td></tr>
-                </tbody>
-              </table>}
-              {activeTab==="note-tab"&&<div style={{fontSize:13,lineHeight:1.7,color:"#333"}}>{`${copy.desc} 当前页面已统一为本命盘同款布局；可通过右侧快速制图表单重新计算。`}</div>}
-            </div>
-          </div>}
-        </div>
 
-        <div id="legacy-sidebar" style={{position:"absolute",right:10,top:10,padding:5,width:240,textAlign:"left",border:"1px solid #D0D0D0",background:"#4a4a4a",color:"white",boxShadow:"0 0 8px #D0D0D0",fontSize:"13px",opacity:0.9}}>
-          <div style={{textAlign:"center",cursor:"pointer"}} onClick={()=>setSidebarOpen(!sidebarOpen)}>
-            <strong>快速制图</strong>
-            <span style={{float:"right",cursor:"pointer"}}>{sidebarOpen?"−":"+"}</span>
-          </div>
-          {sidebarOpen&&<div><hr/>
-            <label style={{fontWeight:"bold",fontSize:"12px"}}>出生时间:</label><br/>
-            <span className="legacy-form-row">
-              <select className="legacy-form-control" value={month} onChange={e=>setMonth(Number(e.target.value))}>{MONTHS.map((m,i)=><option key={i} value={i+1}>{m}</option>)}</select>
-              <select className="legacy-form-control" value={day} onChange={e=>setDay(Number(e.target.value))}>{Array.from({length:31},(_,i)=>i+1).map(d=><option key={d} value={d}>{d}</option>)}</select>
-              <input className="legacy-form-control" value={year} onChange={e=>setYear(parseInt(e.target.value)||now.getFullYear())} style={{width:45}}/>
-            </span>
-            <br/>
-            <span className="legacy-form-row time">
-              <select className="legacy-form-control" value={hour} onChange={e=>setHour(Number(e.target.value))}>{Array.from({length:24},(_,i)=>i).map(h=><option key={h} value={h}>{fmt2(h)}</option>)}</select>
-              <span style={{alignSelf:"center"}}>:</span>
-              <select className="legacy-form-control" value={minute} onChange={e=>setMinute(Number(e.target.value))}>{Array.from({length:60},(_,i)=>i).map(m=><option key={m} value={m}>{fmt2(m)}</option>)}</select>
-            </span>
-            <br/><label style={{fontWeight:"bold",fontSize:"12px"}}>纬度:</label>
-            <input className="legacy-form-control" value={lat} onChange={e=>setLat(Number(e.target.value)||0)} style={{width:70}}/>
-            <br/><label style={{fontWeight:"bold",fontSize:"12px"}}>经度:</label>
-            <input className="legacy-form-control" value={lng} onChange={e=>setLng(Number(e.target.value)||0)} style={{width:70}}/>
-            <br/><label style={{fontWeight:"bold",fontSize:"12px"}}>时区:</label>
-            <input className="legacy-form-control" value={tz} onChange={e=>setTz(Number(e.target.value)||0)} style={{width:45}}/>
-            {isProgressed&&<><br/><label style={{fontWeight:"bold",fontSize:"12px"}}>目标年:</label><input className="legacy-form-control" value={targetYear} onChange={e=>setTargetYear(Number(e.target.value)||targetYear)} style={{width:58}}/></>}
-            <div style={{textAlign:"center",marginTop:8}}>
-              <button onClick={calculate} disabled={loading} style={{border:"1px solid #888",background:"#666",color:"white",padding:"2px 12px",cursor:"pointer"}}>{loading?"计算中...":copy.button}</button>
+            <div className="cx-chart-grid" style={{display:'grid',gridTemplateColumns:'minmax(0,1fr) minmax(0,1fr)',gap:16,marginBottom:16,alignItems:'start'}}>
+              <div className="cx-card cx-card-pad" style={{display:'flex',justifyContent:'center',overflow:'auto'}}><NatalChartWheel chart={chart}/></div>
+              <div className="cx-card cx-card-pad" style={{display:'flex',justifyContent:'center',overflow:'auto'}}><AspectMatrix chart={chart}/></div>
             </div>
-            {error&&<div style={{color:"#ffd0d0",fontSize:12,marginTop:6}}>{error}</div>}
-          </div>}
-        </div>
+
+            <div className="cx-card">
+              <div style={{padding:'14px 20px 0'}}>
+                <div className="cx-seg">
+                  {[{id:"chart-tab",l:"黄道状态"},{id:"table-tab",l:"数据表"},{id:"note-tab",l:"说明"}].map(tab=>(
+                    <button key={tab.id} onClick={()=>setActiveTab(tab.id)} className={`cx-seg-btn ${activeTab===tab.id?"active":""}`}>{tab.l}</button>
+                  ))}
+                </div>
+              </div>
+              <div className="cx-card-pad cx-panel">
+                {activeTab==="chart-tab"&&<table className="cx-table">
+                  <thead><tr><th>星体</th><th>黄经度数</th><th>星座</th></tr></thead>
+                  <tbody>{planetRows.map(r=><tr key={r.key}><td>{r.name}</td><td>{lonText(r.lon)}</td><td>{SIGNS_CN[r.sign]}</td></tr>)}</tbody>
+                </table>}
+                {activeTab==="table-tab"&&<table className="cx-table">
+                  <tbody>
+                    <tr><th>工具</th><td>{copy.title}</td></tr>
+                    <tr><th>时间</th><td>{year}-{month}-{day} {fmt2(hour)}:{fmt2(minute)}</td></tr>
+                    <tr><th>地点</th><td>{`${lat}, ${lng}`}</td></tr>
+                    <tr><th>说明</th><td className="left">{copy.desc}</td></tr>
+                  </tbody>
+                </table>}
+                {activeTab==="note-tab"&&<div style={{fontSize:13,lineHeight:1.8,color:'#4b5563'}}>{`${copy.desc} 可在上方「计算条件」中调整时间、地点与目标年后重新计算。`}</div>}
+              </div>
+            </div>
+          </>}
+      </div>
+      </div>
       </div>
     </main>
   );

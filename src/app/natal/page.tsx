@@ -494,103 +494,176 @@ export default function NatalPage(){
 
   return(
     <div className="min-h-screen bg-white text-[#333]">
-      <style>{`.house_sym{font-size:16px;font-weight:bold}.house_deg{font-size:9px;fill:#666}.house_min{font-size:7px;fill:#999}.tiny{font-size:9px;fill:#666}.asp_grid_sym{font-family:'Apple Symbols','DejaVu Sans',serif}.asp_grid_digit{font-family:sans-serif}.obj_sym{font-size:14px;font-weight:bold}.obj_deg{font-size:10px}.middle_sym{font-size:14px;font-weight:bold}.obj_min{font-size:8px;fill:#666}.asp_sym{font-size:10px;font-weight:bold}#natalmain{padding:10px 260px 10px 20px}#chartwrap{display:flex;align-items:flex-start;gap:28px;flex-wrap:nowrap;margin-bottom:10px;overflow-x:auto}#chart svg{max-width:none}.alm-tabs{width:100%;margin-top:8px;border:1px solid #aaa;border-radius:4px 4px 0 0;background:linear-gradient(#eeeeee,#cfcfcf);padding:3px 3px 0;overflow-x:auto}.alm-tab-btn{height:32px;padding:0 16px;border:1px solid #bbb;border-bottom:0;border-radius:4px 4px 0 0;background:linear-gradient(#f7f7f7,#dfdfdf);font-size:14px;color:#333;white-space:nowrap}.alm-tab-btn.active{background:white;font-weight:600;position:relative;top:1px}.alm-panel{padding:18px 28px 22px;background:white;overflow-x:auto}.alm-table{width:100%;border-collapse:collapse;background:white;color:#222;font-size:13px;line-height:1.15;box-shadow:0 4px 14px rgba(0,0,0,.14)}.alm-table th,.alm-table td{border:1px solid #aaa;padding:3px 6px;text-align:center;vertical-align:middle;height:22px}.alm-table th{background:#eee;font-weight:700}.alm-table td.left{text-align:left}.alm-table .dash-left{border-left:1px dashed #777}.alm-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;align-items:start}.alm-stack{display:grid;gap:20px}.astro-glyph{font-family:'Apple Symbols','DejaVu Sans',serif;font-style:normal;line-height:1}.zodiac-cell,.zodiac-mark{font-family:'Times New Roman','Noto Sans Symbols 2','Apple Symbols',serif;font-variant-emoji:text;color:#222;background:transparent}.zodiac-cell{font-size:17px;padding:0 12px}.zodiac-mark{font-size:17px;line-height:1}.natal-actions{margin-top:10px;display:flex;gap:8px}@media(max-width:1100px){.alm-grid-3{grid-template-columns:1fr}.alm-panel{padding:14px 10px}}@media(max-width:900px){body{overflow-x:hidden}#cssmenu{display:flex!important;align-items:center!important;overflow-x:auto!important;overflow-y:visible!important;white-space:nowrap!important;padding:6px 8px!important;-webkit-overflow-scrolling:touch;position:sticky;top:0;z-index:80}#cssmenu>span{flex:0 0 auto}#cssmenu>span>span,#cssmenu>span[style]{padding:8px 10px!important}#cssmenu div[style*="absolute"]{position:fixed!important;top:42px!important;left:8px!important;right:8px!important;max-height:70vh;overflow:auto;min-width:0!important;width:auto!important;box-shadow:0 6px 16px rgba(0,0,0,.3)}.natal-page-shell{display:flex;flex-direction:column;overflow-x:hidden}#natalmain{order:2;padding:12px 10px 18px;box-sizing:border-box;max-width:100vw;overflow:hidden}#rightsidebar{order:1;position:static!important;width:auto!important;margin:10px 10px 0!important;box-sizing:border-box;border-radius:4px;opacity:1!important}#sidebar_form label{display:block;margin:8px 0 4px}#sidebar_form input,#sidebar_form select{width:100%!important;min-height:36px;box-sizing:border-box;font-size:16px;padding:5px 7px!important;margin:0 0 6px!important}#sidebar_form input[type="button"],#sidebar_form input[type="submit"]{min-height:38px;font-size:15px;cursor:pointer}#chartwrap{flex-direction:column;align-items:center;gap:12px;overflow-x:visible;margin-top:8px}#chart{order:1;width:100%;display:flex;justify-content:center;overflow:hidden}#aspgrid{order:2;width:100%;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}#chart svg{width:min(520px,calc(100vw - 20px));height:auto}.alm-tabs{margin-top:12px;display:flex;overflow-x:auto;scrollbar-width:thin}.alm-tab-btn{height:38px;padding:0 14px;font-size:13px}.alm-panel{padding:12px 0 16px;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}.alm-table{font-size:12px;min-width:760px}.alm-table th,.alm-table td{padding:5px 6px;height:28px}.alm-grid-3{display:block;overflow-x:auto}.alm-grid-3>.alm-table,.alm-grid-3 .alm-table{margin-bottom:14px}.natal-actions{flex-wrap:wrap;margin:10px 0 0}.natal-actions button{flex:1 1 110px;min-height:36px}}@media(max-width:420px){#natalmain{padding-left:8px;padding-right:8px}#rightsidebar{margin-left:8px!important;margin-right:8px!important}#chart svg{width:calc(100vw - 16px)}.alm-table{min-width:700px}}`}</style>
+      <style>{`.house_sym{font-size:16px;font-weight:bold}.house_deg{font-size:9px;fill:#666}.house_min{font-size:7px;fill:#999}.tiny{font-size:9px;fill:#666}.asp_grid_sym{font-family:'Apple Symbols','DejaVu Sans',serif}.asp_grid_digit{font-family:sans-serif}.obj_sym{font-size:14px;font-weight:bold}.obj_deg{font-size:10px}.middle_sym{font-size:14px;font-weight:bold}.obj_min{font-size:8px;fill:#666}.asp_sym{font-size:10px;font-weight:bold}.astro-glyph{font-family:'Apple Symbols','DejaVu Sans',serif;font-style:normal;line-height:1}.zodiac-cell,.zodiac-mark{font-family:'Times New Roman','Noto Sans Symbols 2','Apple Symbols',serif;font-variant-emoji:text;color:#222;background:transparent}.zodiac-cell{font-size:17px;padding:0 12px}.zodiac-mark{font-size:17px;line-height:1}`}</style>
 
-      <div id="cssmenu" style={{background:"#333",fontSize:"14px",display:"flex",alignItems:"center",padding:"0 16px"}}>
-        <span onClick={()=>window.location.href="/"} style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>{t('backHome')}</span>
-        {[
-          {id:"file",l:t('fileMenu'),items:[{l:t('chartList'),a:"list"},{l:t('newChart'),a:"new"}]},
-          {id:"charts",l:t('chartsMenu'),items:[
-            {l:t('natalChart'),a:"natal"},
-            {l:t('horaryChart'),a:"horary"},
-            {l:t('vedicChart'),a:"vedic"},
-            {l:t('baziChart'),a:"bazi"},
-            {l:t('compareChart'),a:"compare"},
-            {l:t('compositeChart'),a:"composite"},
-            {l:t('transitsChart'),a:"transits"},
-            {l:t('solarArcChart'),a:"solarArc"},
-            {l:t('progressionChart'),a:"progression"},
-            {l:t('secNatalChart'),a:"secondaryNatal"},
-            {l:t('tertiaryChart'),a:"tertiary"},
-            {l:t('tertNatalChart'),a:"tertiaryNatal"},
-            {l:t('solarReturnChart'),a:"solarReturn"},
-            {l:t('lunarReturnChart'),a:"lunarReturn"}
-          ]},
-          {id:"tools",l:t('toolsMenu'),items:[{l:t('astroCalendar'),a:"calendar"},{l:t('birthRectify'),a:"rectify"}]},
-          {id:"settings",l:t('settingsMenu'),items:[{l:t('changePassword'),a:"password"},{l:t('profile'),a:"profile"},{l:t('chooseLanguage'),a:"language"}]}
-        ].map(m=>(
-          <span key={m.id} style={{position:"relative"}}>
-            <span onClick={()=>setOpenMenu(openMenu===m.id?null:m.id)} style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>{m.l} ▾</span>
-            {openMenu===m.id&&<div style={{position:"absolute",top:"100%",left:0,background:"#444",color:"#ccc",minWidth:120,zIndex:50,border:"1px solid #555"}}>
-              {m.items.map(item=><div key={item.a} style={{padding:"4px 12px",cursor:"pointer",fontSize:"13px"}} onMouseDown={()=>runMenuAction(item.a)}>{item.l}</div>)}
-            </div>}
-          </span>
-        ))}
-        <span onClick={focusQuickChart} style={{color:"#ccc",padding:"4px 12px",textDecoration:"none",cursor:"pointer"}}>{t('quickChart')}</span>
-        <span style={{flex:1}}/>
-        <span style={{color:"#ccc",padding:"4px 12px",cursor:"pointer"}}>{t('siteName')}</span>
-      </div>
+      <div className="cx-page">
+      <header className="cx-header">
+        <a href="/" className="cx-crumbs">← {t('backHome')}</a>
+        <h1 className="cx-title">{t('natalChart')}</h1>
+        <p className="cx-sub">输入出生时间与地点，生成完整本命盘：行星落位、宫位、相位、先天尊贵状态与古典推运表。</p>
+        <nav className="cx-chart-nav">
+          {[
+            {l:t('natalChart'),h:'/natal',a:true},
+            {l:t('horaryChart'),h:'/horary'},
+            {l:t('vedicChart'),h:'/vedic'},
+            {l:t('baziChart'),h:'/bazi'},
+            {l:t('compareChart'),h:'/compare'},
+            {l:t('compositeChart'),h:'/composite'},
+            {l:t('transitsChart'),h:'/transits'},
+            {l:t('solarArcChart'),h:'/solar-arc'},
+            {l:t('solarReturnChart'),h:'/solar-return'},
+            {l:t('lunarReturnChart'),h:'/lunar-return'},
+          ].map(item=>(
+            <a key={item.h} href={item.h} className={`cx-chart-link ${item.a?'active':''}`}>{item.l}</a>
+          ))}
+        </nav>
+      </header>
 
-      {savedDialogOpen&&<div style={{position:"fixed",inset:0,background:"rgba(0,0,0,.35)",zIndex:1000,display:"flex",alignItems:"center",justifyContent:"center"}}>
-        <div style={{width:520,maxWidth:"calc(100vw - 32px)",maxHeight:"80vh",overflow:"auto",background:"#fff",border:"1px solid #999",boxShadow:"0 8px 28px rgba(0,0,0,.3)",color:"#222"}}>
-          <div style={{padding:"8px 12px",background:"linear-gradient(#eee,#ccc)",borderBottom:"1px solid #aaa",display:"flex",alignItems:"center"}}><strong>{t('savedCharts')}</strong><span style={{flex:1}}/><button onClick={()=>setSavedDialogOpen(false)} style={{border:"1px solid #999",background:"#eee",cursor:"pointer"}}>{t('closeDialog')}</button></div>
-          <div style={{padding:12}}>
-            {savedCharts.length===0?<div style={{padding:20,textAlign:"center",color:"#666"}}>{t('noSavedCharts')}</div>:savedCharts.map((item,i)=><div key={`${item.ts||i}`} style={{display:"flex",alignItems:"center",gap:8,borderBottom:"1px solid #ddd",padding:"8px 0"}}>
-              <div style={{flex:1}}><strong>{item.name||item.birthData?.name||t('unnamedChart')}</strong><br/><span style={{fontSize:12,color:"#666"}}>{item.birthData?.year}-{item.birthData?.month}-{item.birthData?.day} {fmt2(item.birthData?.hour||0)}:{fmt2(item.birthData?.minute||0)}</span></div>
-              <button onClick={()=>loadSavedChart(item)} style={{border:"1px solid #999",background:"#eee",padding:"3px 10px",cursor:"pointer"}}>{t('loadBtn')}</button>
-              <button onClick={()=>deleteSavedChart(i)} style={{border:"1px solid #999",background:"#eee",padding:"3px 10px",cursor:"pointer"}}>{t('deleteBtn')}</button>
+      <section className="cx-card" style={{marginBottom:20}}>
+        <div className="cx-card-head">
+          <span className="cx-card-title">出生信息</span>
+          <div style={{display:'flex',gap:8,flexWrap:'wrap'}}>
+            <button className="cx-btn cx-btn-sm" onClick={()=>setSavedDialogOpen(true)}>{t('savedCharts')}</button>
+            <button className="cx-btn cx-btn-sm" onClick={()=>setRectificationOpen(true)}>时间反推</button>
+            <button className="cx-btn cx-btn-sm" onClick={()=>setLanguageDialogOpen(true)}>语系</button>
+          </div>
+        </div>
+        <div className="cx-card-pad">
+          <div className="cx-form-grid" onFocusCapture={trackBirthFormStart} onChangeCapture={trackBirthFormStart}>
+            <div className="cx-field span-2">
+              <label className="cx-label">姓名</label>
+              <input className="cx-input" value={name} onChange={e=>setName(e.target.value)} placeholder="可选" />
+            </div>
+            <div className="cx-field span-2">
+              <label className="cx-label">出生日期</label>
+              <div className="cx-input-row">
+                <select className="cx-select" value={year} onChange={e=>setYear(Number(e.target.value))}>{Array.from({length:127},(_,i)=>now.getFullYear()-i).map(y=><option key={y} value={y}>{y} 年</option>)}</select>
+                <select className="cx-select" value={month} onChange={e=>setMonth(Number(e.target.value))}>{MONTHS.map((m,i)=><option key={i} value={i+1}>{m}</option>)}</select>
+                <select className="cx-select" value={day} onChange={e=>setDay(Number(e.target.value))}>{Array.from({length:31},(_,i)=>i+1).map(d=><option key={d} value={d}>{d} 日</option>)}</select>
+              </div>
+            </div>
+            <div className="cx-field">
+              <label className="cx-label">出生时间</label>
+              <div className="cx-input-row">
+                <select className="cx-select" value={hour} onChange={e=>setHour(Number(e.target.value))}>{Array.from({length:24},(_,i)=>i).map(h=><option key={h} value={h}>{h===0?"12 AM":h<12?`${h} AM`:h===12?"12 PM":`${h-12} PM`}</option>)}</select>
+                <select className="cx-select" value={minute} onChange={e=>setMinute(Number(e.target.value))}>{Array.from({length:60},(_,i)=>i).map(m=><option key={m} value={m}>{fmt2(m)} 分</option>)}</select>
+              </div>
+            </div>
+            <div className="cx-field span-2">
+              <label className="cx-label">出生地</label>
+              <div className="cx-input-row">
+                <input className="cx-input" value={city} onChange={e=>setCity(e.target.value)} placeholder="城市名，如 上海" />
+                <button className="cx-btn" onClick={codeAddress}>搜寻</button>
+              </div>
+            </div>
+            <div className="cx-field">
+              <label className="cx-label">时区</label>
+              <select className="cx-select" value={tz} onChange={e=>setTz(Number(e.target.value))}>
+                {[-720,-660,-600,-540,-480,-420,-360,-300,-240,-180,-120,-60,0,60,120,180,240,300,360,420,480,540,600,660,720].map(v=><option key={v} value={v}>GMT {(v>=0?"+":"-")+String(Math.abs(v/60)).padStart(2,"0")}</option>)}
+              </select>
+            </div>
+            <div className="cx-field">
+              <label className="cx-label">经度</label>
+              <div className="cx-input-row">
+                <input className="cx-input tight" value={glonDeg} onChange={e=>setGlonDeg(parseInt(e.target.value)||0)} />
+                <select className="cx-select" value={glonDir} onChange={e=>setGlonDir(e.target.value)}><option value="E">E</option><option value="W">W</option></select>
+                <input className="cx-input tight" value={glonMin} onChange={e=>setGlonMin(parseInt(e.target.value)||0)} />
+              </div>
+            </div>
+            <div className="cx-field">
+              <label className="cx-label">纬度</label>
+              <div className="cx-input-row">
+                <input className="cx-input tight" value={glatDeg} onChange={e=>setGlatDeg(parseInt(e.target.value)||0)} />
+                <select className="cx-select" value={glatDir} onChange={e=>setGlatDir(e.target.value)}><option value="N">N</option><option value="S">S</option></select>
+                <input className="cx-input tight" value={glatMin} onChange={e=>setGlatMin(parseInt(e.target.value)||0)} />
+              </div>
+            </div>
+            <div className="cx-field span-2">
+              <label className="cx-label">宫位制</label>
+              <div className="cx-input-row">
+                <select className="cx-select" value={hsys} onChange={e=>setHsys(e.target.value)}>
+                  {[{v:"B",l:"阿卡比特制"},{v:"P",l:"普拉西德制"},{v:"K",l:"Koch制"},{v:"O",l:"Porphyrius制"},{v:"R",l:"苪氏分宫制"},{v:"C",l:"Campanus制"},{v:"E",l:"等宫制"},{v:"W",l:"整宫制"}].map(h=><option key={h.v} value={h.v}>{h.l}</option>)}
+                </select>
+                <button className="cx-btn cx-btn-primary" onClick={drawChart} disabled={loading}>{loading?"计算中…":"更新星图"}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {savedDialogOpen&&<div className="cx-modal" onClick={()=>setSavedDialogOpen(false)}>
+        <div className="cx-modal-box" onClick={e=>e.stopPropagation()}>
+          <div className="cx-modal-head">
+            <strong className="cx-modal-title">{t('savedCharts')}</strong><span style={{flex:1}}/>
+            <button className="cx-btn cx-btn-sm" onClick={()=>setSavedDialogOpen(false)}>{t('closeDialog')}</button>
+          </div>
+          <div style={{padding:'8px 18px 18px'}}>
+            {savedCharts.length===0?<div style={{padding:'28px 0',textAlign:'center',color:'#9ca3af',fontSize:13}}>{t('noSavedCharts')}</div>:savedCharts.map((item,i)=><div key={`${item.ts||i}`} style={{display:'flex',alignItems:'center',gap:10,borderBottom:'1px solid #f3f4f6',padding:'12px 0'}}>
+              <div style={{flex:1,minWidth:0}}><strong style={{fontSize:14}}>{item.name||item.birthData?.name||t('unnamedChart')}</strong><br/><span style={{fontSize:12,color:'#9ca3af'}}>{item.birthData?.year}-{item.birthData?.month}-{item.birthData?.day} {fmt2(item.birthData?.hour||0)}:{fmt2(item.birthData?.minute||0)}</span></div>
+              <button className="cx-btn cx-btn-sm" onClick={()=>loadSavedChart(item)}>{t('loadBtn')}</button>
+              <button className="cx-btn cx-btn-sm" onClick={()=>deleteSavedChart(i)}>{t('deleteBtn')}</button>
             </div>)}
           </div>
         </div>
       </div>}
 
-      {languageDialogOpen&&<div style={{position:"fixed",inset:0,background:"rgba(0,0,0,.35)",zIndex:1000,display:"flex",alignItems:"center",justifyContent:"center"}}>
-        <div style={{width:360,background:"#fff",border:"1px solid #999",boxShadow:"0 8px 28px rgba(0,0,0,.3)",color:"#222"}}>
-          <div style={{padding:"8px 12px",background:"linear-gradient(#eee,#ccc)",borderBottom:"1px solid #aaa",display:"flex",alignItems:"center"}}><strong>选择语系</strong><span style={{flex:1}}/><button onClick={()=>setLanguageDialogOpen(false)} style={{border:"1px solid #999",background:"#eee",cursor:"pointer"}}>关闭</button></div>
-          <div style={{padding:14,display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
-            {[["zh","中文"],["en","English"],["id","Indonesia"],["th","ไทย"],["vi","Tiếng Việt"],["ms","Melayu"],["ja","日本語"],["ko","한국어"]].map(([code,label])=><button key={code} onClick={()=>chooseLanguage(code)} style={{border:"1px solid #999",background:"#eee",padding:"6px 10px",cursor:"pointer"}}>{label}</button>)}
+      {languageDialogOpen&&<div className="cx-modal" onClick={()=>setLanguageDialogOpen(false)}>
+        <div className="cx-modal-box" style={{maxWidth:380}} onClick={e=>e.stopPropagation()}>
+          <div className="cx-modal-head">
+            <strong className="cx-modal-title">选择语系</strong><span style={{flex:1}}/>
+            <button className="cx-btn cx-btn-sm" onClick={()=>setLanguageDialogOpen(false)}>关闭</button>
+          </div>
+          <div style={{padding:18,display:'grid',gridTemplateColumns:'1fr 1fr',gap:8}}>
+            {[["zh","中文"],["en","English"],["id","Indonesia"],["th","ไทย"],["vi","Tiếng Việt"],["ms","Melayu"],["ja","日本語"],["ko","한국어"]].map(([code,label])=><button key={code} className="cx-btn" onClick={()=>chooseLanguage(code)}>{label}</button>)}
           </div>
         </div>
       </div>}
 
-      {rectificationOpen&&<div style={{position:"fixed",inset:0,background:"rgba(0,0,0,.35)",zIndex:1000,display:"flex",alignItems:"center",justifyContent:"center"}}>
-        <div style={{width:420,maxWidth:"calc(100vw - 32px)",background:"#fff",border:"1px solid #999",boxShadow:"0 8px 28px rgba(0,0,0,.3)",color:"#222"}}>
-          <div style={{padding:"8px 12px",background:"linear-gradient(#eee,#ccc)",borderBottom:"1px solid #aaa",display:"flex",alignItems:"center"}}><strong>出生时间反推</strong><span style={{flex:1}}/><button onClick={()=>setRectificationOpen(false)} style={{border:"1px solid #999",background:"#eee",cursor:"pointer"}}>关闭</button></div>
-          <div style={{padding:14,fontSize:13,lineHeight:1.6}}>
-            <div>当前时间：{year}-{month}-{day} {fmt2(Number(hour))}:{fmt2(Number(minute))}</div>
-            <div>当前上升：{chart?.ascendant?.sign_cn||"-"} {chart?.ascendant?.formatted||""}</div>
-            <div style={{marginTop:10,color:"#666"}}>用下方按钮微调出生时间，系统会立即重新计算星盘，方便对照上升、宫头和行星落宫变化。</div>
-            <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:8,marginTop:12}}>
-              {[-30,-10,-1,1,10,30].map(v=><button key={v} onClick={()=>adjustBirthTime(v)} style={{border:"1px solid #999",background:"#eee",padding:"5px 8px",cursor:"pointer"}}>{v>0?"+":""}{v} 分钟</button>)}
+      {rectificationOpen&&<div className="cx-modal" onClick={()=>setRectificationOpen(false)}>
+        <div className="cx-modal-box" style={{maxWidth:440}} onClick={e=>e.stopPropagation()}>
+          <div className="cx-modal-head">
+            <strong className="cx-modal-title">出生时间反推</strong><span style={{flex:1}}/>
+            <button className="cx-btn cx-btn-sm" onClick={()=>setRectificationOpen(false)}>关闭</button>
+          </div>
+          <div style={{padding:18,fontSize:13,lineHeight:1.7,color:'#374151'}}>
+            <div>当前时间：<b>{year}-{month}-{day} {fmt2(Number(hour))}:{fmt2(Number(minute))}</b></div>
+            <div>当前上升：<b>{chart?.ascendant?.sign_cn||"-"} {chart?.ascendant?.formatted||""}</b></div>
+            <div style={{marginTop:10,color:'#9ca3af'}}>用下方按钮微调出生时间，系统会立即重新计算星盘，方便对照上升、宫头和行星落宫变化。</div>
+            <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:8,marginTop:14}}>
+              {[-30,-10,-1,1,10,30].map(v=><button key={v} className="cx-btn cx-btn-sm" onClick={()=>adjustBirthTime(v)}>{v>0?"+":""}{v} 分钟</button>)}
             </div>
           </div>
         </div>
       </div>}
 
-      <div className="natal-page-shell" style={{position:"relative"}}>
-        <div id="natalmain">
-          {chart&&<div id="nataldata" style={{margin:"5px 0"}}>
-            <strong>{name}</strong><br/>
-            {year}-{month}-{day} {hour}:{fmt2(minute)}<br/>{city}<br/>
-            {glonDeg} {glonDir} {fmt2(glonMin)}&nbsp;&nbsp;{glatDeg} {glatDir} {fmt2(glatMin)}<br/>
-            时区: GMT {tz>=0?"+":""}{tz/60}.00<br/>回归黄道 阿卡比特制<br/>时主星: <em>☉</em>
+      <div>
+        <div>
+          {chart&&<div className="cx-meta" style={{marginBottom:16}}>
+            <span className="cx-chip"><b>{name||'未命名'}</b></span>
+            <span className="cx-chip">{year}-{fmt2(month)}-{fmt2(day)} {fmt2(Number(hour))}:{fmt2(Number(minute))}</span>
+            {city&&<span className="cx-chip">{city}</span>}
+            <span className="cx-chip">{glonDeg}°{glonDir} {fmt2(glonMin)}′ / {glatDeg}°{glatDir} {fmt2(glatMin)}′</span>
+            <span className="cx-chip">GMT {tz>=0?"+":"-"}{String(Math.abs(tz/60)).padStart(2,"0")}</span>
+            <span className="cx-chip">{hsys==="W"?"整宫制":hsys==="P"?"普拉西德制":"阿卡比特制"}</span>
           </div>}
 
-          {chart&&<div id="chartwrap">
-            <div id="aspgrid"><AspectMatrix chart={chart}/></div>
-            <div id="chart"><NatalChartWheel chart={chart}/></div>
+          {chart&&<div style={{display:'grid',gridTemplateColumns:'minmax(0,1fr) minmax(0,1fr)',gap:16,marginBottom:16,alignItems:'start'}} className="cx-chart-grid">
+            <div className="cx-card cx-card-pad" style={{display:'flex',justifyContent:'center',overflow:'auto'}}><NatalChartWheel chart={chart}/></div>
+            <div className="cx-card cx-card-pad" style={{display:'flex',justifyContent:'center',overflow:'auto'}}><AspectMatrix chart={chart}/></div>
           </div>}
 
           <div style={{clear:"both"}}/>
 
-          {chart&&<div id="main_tabs">
-            <div className="alm-tabs">
-              {[{id:"chart-tab",l:t('zodiacState')},{id:"dignity2-tab",l:t('zodiacState2')},{id:"firdaria-tab",l:t('firdaria')},{id:"profection-tab",l:t('profection')},{id:"fortune-tab",l:t('fortuneAphesis')},{id:"spirit-tab",l:t('spiritAphesis')}].map(t=>(
-                <button key={t.id} onClick={()=>setActiveTab(t.id)} className={`alm-tab-btn ${activeTab===t.id?"active":""}`}>{t.l}</button>
-              ))}
+          {chart&&<div className="cx-card" style={{marginBottom:16}}>
+            <div style={{padding:'14px 20px 0'}}>
+              <div className="cx-seg">
+                {[{id:"chart-tab",l:t('zodiacState')},{id:"dignity2-tab",l:t('zodiacState2')},{id:"firdaria-tab",l:t('firdaria')},{id:"profection-tab",l:t('profection')},{id:"fortune-tab",l:t('fortuneAphesis')},{id:"spirit-tab",l:t('spiritAphesis')}].map(tab=>(
+                  <button key={tab.id} onClick={()=>setActiveTab(tab.id)} className={`cx-seg-btn ${activeTab===tab.id?"active":""}`}>{tab.l}</button>
+                ))}
+              </div>
             </div>
-            <div className="alm-panel">
-              {activeTab==="chart-tab"&&<table className="alm-table">
+            <div className="cx-card-pad cx-panel">
+              {activeTab==="chart-tab"&&<table className="cx-table">
                 <thead>
                   <tr>
                     <th rowSpan={2}>星体</th><th rowSpan={2} colSpan={3}>黄经度数</th><th rowSpan={2}>落宫</th><th rowSpan={2}>守护宫</th><th rowSpan={2}>曜升宫</th>
@@ -607,64 +680,66 @@ export default function NatalPage(){
                 </tr>)}</tbody>
               </table>}
 
-              {activeTab==="dignity2-tab"&&<div className="alm-grid-3">
-                <table className="alm-table">
+              {activeTab==="dignity2-tab"&&<div className="cx-grid3">
+                <table className="cx-table">
                   <thead><tr><th>宫</th><th colSpan={3}>黄经度数</th><th>本垣</th><th>曜升</th><th>宫神星</th></tr></thead>
                   <tbody>{houseRows.map((r,i)=><tr key={i}><td>{r.house}</td><td colSpan={3}>{lonCells(r.lon)}</td><td>{glyph(r.ruler,17)}</td><td>{glyph(r.exalt,17)}</td><td>{glyph(r.almuten,17)}</td></tr>)}</tbody>
                 </table>
-                <table className="alm-table">
+                <table className="cx-table">
                   <thead><tr><th>特徵</th></tr></thead>
                   <tbody>{featureRows.slice(0,9).map((f,i)=><tr key={i}><td className="left">{f}</td></tr>)}</tbody>
                 </table>
-                <div className="alm-stack">
-                  <table className="alm-table">
+                <div className="cx-stack">
+                  <table className="cx-table">
                     <thead><tr><th>阿拉伯点</th><th colSpan={3}>黄经度数</th></tr></thead>
                     <tbody>{arabicLots.map(p=><tr key={p.name}><td className="left">{p.name}</td><td colSpan={3}>{lonCells(p.lon)}</td></tr>)}</tbody>
                   </table>
-                  <table className="alm-table">
+                  <table className="cx-table">
                     <thead><tr><th>恒星</th><th colSpan={3}>黄经度数</th><th>合相</th></tr></thead>
                     <tbody>{fixedStarRows.map(s=><tr key={s.name}><td className="left">{s.name}</td><td colSpan={3}>{lonCells(s.lon)}</td><td>{s.join}</td></tr>)}</tbody>
                   </table>
                 </div>
               </div>}
 
-              {activeTab==="firdaria-tab"&&<table className="alm-table">
+              {activeTab==="firdaria-tab"&&<table className="cx-table">
                 <thead><tr><th colSpan={18}>法达星限</th></tr><tr>{Array.from({length:6}).map((_,i)=><Fragment key={i}><th className={i?"dash-left":""}>主</th><th>次</th><th>起始日期</th></Fragment>)}</tr></thead>
                 <tbody>{firdariaGrid.map((row,ri)=><tr key={ri}>{row.map((item,gi)=><Fragment key={gi}><td className={gi?"dash-left":""}>{item?.main||""}</td><td>{item?.sub||""}</td><td>{item?.date||""}</td></Fragment>)}</tr>)}</tbody>
               </table>}
 
-              {activeTab==="profection-tab"&&<table className="alm-table">
+              {activeTab==="profection-tab"&&<table className="cx-table">
                 <thead><tr><th colSpan={18}>小限法（该年生日起限）</th></tr><tr>{Array.from({length:6}).map((_,i)=><Fragment key={i}><th className={i?"dash-left":""}>年</th><th>宫</th><th>主星</th></Fragment>)}</tr></thead>
                 <tbody>{profectionGrid.map((row,ri)=><tr key={ri}>{row.map((item,gi)=><Fragment key={gi}><td className={gi?"dash-left":""}>{item?.year||""}</td><td>{item?.house||""}</td><td>{item?.ruler||""}</td></Fragment>)}</tr>)}</tbody>
               </table>}
 
-              {activeTab==="fortune-tab"&&<table className="alm-table">
+              {activeTab==="fortune-tab"&&<table className="cx-table">
                 <thead><tr><th colSpan={18}>福点 Aphesis</th></tr><tr>{Array.from({length:6}).map((_,i)=><Fragment key={i}><th className={i?"dash-left":""}>主</th><th>次</th><th>起始日期</th></Fragment>)}</tr></thead>
                 <tbody>{fortuneGrid.map((row,ri)=><tr key={ri}>{row.map((item,gi)=><Fragment key={gi}><td className={gi?"dash-left":""}>{zodiacMark(item?.main)}</td><td>{item?.sub==="- LB"?"- LB":zodiacMark(item?.sub)}</td><td>{item?.date||""}</td></Fragment>)}</tr>)}</tbody>
               </table>}
 
-              {activeTab==="spirit-tab"&&<table className="alm-table">
+              {activeTab==="spirit-tab"&&<table className="cx-table">
                 <thead><tr><th colSpan={18}>精神点 Aphesis</th></tr><tr>{Array.from({length:6}).map((_,i)=><Fragment key={i}><th className={i?"dash-left":""}>主</th><th>次</th><th>起始日期</th></Fragment>)}</tr></thead>
                 <tbody>{spiritGrid.map((row,ri)=><tr key={ri}>{row.map((item,gi)=><Fragment key={gi}><td className={gi?"dash-left":""}>{zodiacMark(item?.main)}</td><td>{item?.sub==="- LB"?"- LB":zodiacMark(item?.sub)}</td><td>{item?.date||""}</td></Fragment>)}</tr>)}</tbody>
               </table>}
             </div>
           </div>}
 
-          {chart&&<div className="natal-actions">
-            <button onClick={handleSave} style={{border:"1px solid #aaa",padding:"4px 12px",fontSize:"12px",background:"#eee",cursor:"pointer"}}>{t('saveChart')}</button>
-            <button onClick={handleCopyLink} style={{border:"1px solid #aaa",padding:"4px 12px",fontSize:"12px",background:"#eee",cursor:"pointer"}}>{t('copyLink')}</button>
-            <button onClick={handleExportImage} style={{border:"1px solid #aaa",padding:"4px 12px",fontSize:"12px",background:"#eee",cursor:"pointer"}}>{t('exportImage')}</button>
-            <button onClick={()=>setChatOpen(!chatOpen)} style={{border:"1px solid #aaa",padding:"4px 12px",fontSize:"12px",background:chatOpen?"#333":"#eee",color:chatOpen?"white":"#333",cursor:"pointer"}}>💬 {t('aiReading')} {chatOpen?"▲":"▼"}</button>
+          {chart&&<div style={{display:'flex',flexWrap:'wrap',gap:8,marginBottom:16}}>
+            <button className="cx-btn cx-btn-sm" onClick={handleSave}>{t('saveChart')}</button>
+            <button className="cx-btn cx-btn-sm" onClick={handleCopyLink}>{t('copyLink')}</button>
+            <button className="cx-btn cx-btn-sm" onClick={handleExportImage}>{t('exportImage')}</button>
+            <button className={`cx-btn cx-btn-sm ${chatOpen?'cx-btn-accent':''}`} onClick={()=>setChatOpen(!chatOpen)}>💬 {t('aiReading')} {chatOpen?"▲":"▼"}</button>
           </div>}
-          {chart&&chatOpen&&<div style={{marginTop:8,padding:12,background:"#f5f5f5",border:"1px solid #ddd",borderRadius:4,maxWidth:600}}>
-            <div style={{maxHeight:240,overflow:"auto",marginBottom:8,fontSize:13}}>
-              {chatMsgs.length===0&&<p style={{color:"#999",textAlign:"center",padding:"20px 0"}}>{t('askAi')}</p>}
-              {chatMsgs.map((msg,i)=><div key={i} style={{marginBottom:6,textAlign:msg.role==="user"?"right":"left"}}><span style={{display:"inline-block",padding:"4px 10px",borderRadius:8,fontSize:12,background:msg.role==="user"?"#333":"white",color:msg.role==="user"?"white":"#333",border:msg.role==="user"?"none":"1px solid #ddd",maxWidth:"85%"}}>{msg.content}</span></div>)}
-              {chatLoading&&<div style={{textAlign:"left"}}><span style={{display:"inline-block",padding:"4px 10px",background:"white",border:"1px solid #ddd",borderRadius:8,fontSize:12}}>{t('thinking')}</span></div>}
+          {chart&&chatOpen&&<div className="cx-card cx-card-pad" style={{maxWidth:640,marginBottom:16}}>
+            <div style={{maxHeight:260,overflow:'auto',marginBottom:10}}>
+              {chatMsgs.length===0&&<p style={{color:'#9ca3af',textAlign:'center',padding:'24px 0',fontSize:13}}>{t('askAi')}</p>}
+              {chatMsgs.map((msg,i)=><div key={i} style={{marginBottom:8,textAlign:msg.role==="user"?"right":"left"}}>
+                <span style={{display:'inline-block',padding:'7px 12px',borderRadius:12,fontSize:13,lineHeight:1.6,background:msg.role==="user"?"#171717":"#f9fafb",color:msg.role==="user"?"#fff":"#374151",border:msg.role==="user"?"none":"1px solid #f3f4f6",maxWidth:'86%',textAlign:'left'}}>{msg.content}</span>
+              </div>)}
+              {chatLoading&&<div style={{textAlign:'left'}}><span style={{display:'inline-block',padding:'7px 12px',background:'#f9fafb',border:'1px solid #f3f4f6',borderRadius:12,fontSize:13,color:'#6b7280'}}>{t('thinking')}</span></div>}
             </div>
-            <div style={{display:"flex",gap:6}}>
-              <input value={chatInput} onChange={e=>setChatInput(e.target.value)} onKeyDown={e=>e.key==="Enter"&&sendNatalChat()} placeholder={t('askPlaceholder')} style={{flex:1,padding:"4px 8px",border:"1px solid #ccc",borderRadius:4,fontSize:12}}/>
-              <button onClick={sendNatalChat} disabled={chatLoading} style={{padding:"4px 12px",background:"#333",color:"white",border:"none",borderRadius:4,fontSize:12,cursor:"pointer"}}>{t('sendBtn')}</button>
+            <div style={{display:'flex',gap:8}}>
+              <input className="cx-input" value={chatInput} onChange={e=>setChatInput(e.target.value)} onKeyDown={e=>e.key==="Enter"&&sendNatalChat()} placeholder={t('askPlaceholder')} />
+              <button className="cx-btn cx-btn-primary" onClick={sendNatalChat} disabled={chatLoading}>{t('sendBtn')}</button>
             </div>
           </div>}
 
@@ -683,52 +758,6 @@ export default function NatalPage(){
           {chart && <NatalPurchaseCTA chart={chart} />}
         </div>
 
-        <div id="rightsidebar" style={{position:"absolute",right:10,top:10,padding:5,width:240,textAlign:"left",border:"1px solid #D0D0D0",background:"#4a4a4a",color:"white",boxShadow:"0 0 8px #D0D0D0",fontSize:"13px",opacity:0.9}}>
-          <div style={{textAlign:"center",cursor:"pointer"}} onClick={()=>setSidebarOpen(!sidebarOpen)}>
-            <strong>快速制图</strong>
-            <span style={{float:"right",cursor:"pointer"}}>{sidebarOpen?"−":"+"}</span>
-          </div>
-          {sidebarOpen&&<div id="sidebar_form" onFocusCapture={trackBirthFormStart} onChangeCapture={trackBirthFormStart}><hr/>
-            <label style={{fontWeight:"bold",fontSize:"12px"}}>名字:</label>
-            <input type="text" value={name} onChange={e=>setName(e.target.value)} size={25} style={{width:"100%",border:"1px solid #888",background:"#555",color:"white",padding:"2px 4px",marginBottom:6}}/>
-            <label style={{fontWeight:"bold",fontSize:"12px"}}>出生时间:</label><br/>
-            <select value={month} onChange={e=>setMonth(Number(e.target.value))} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px"}}>{MONTHS.map((m,i)=><option key={i} value={i+1}>{m}</option>)}</select>
-            <select value={day} onChange={e=>setDay(Number(e.target.value))} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px"}}>{Array.from({length:31},(_,i)=>i+1).map(d=><option key={d} value={d}>{d}</option>)}</select>
-            <select value={year} onChange={e=>setYear(Number(e.target.value))} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px"}}>{Array.from({length:127},(_,i)=>now.getFullYear()-i).map(y=><option key={y} value={y}>{y}</option>)}</select>
-            &nbsp;
-            <select value={hour} onChange={e=>setHour(Number(e.target.value))} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px"}}>
-              {Array.from({length:24},(_,i)=>i).map(h=><option key={h} value={h}>{h===0?"12 AM":h<12?`${h} AM`:h===12?"12 PM":`${h-12} PM`}</option>)}
-            </select>
-            :<select value={minute} onChange={e=>setMinute(Number(e.target.value))} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px"}}>
-              {Array.from({length:60},(_,i)=>i).map(m=><option key={m} value={m}>{m}</option>)}
-            </select>
-            <br/><label style={{fontWeight:"bold",fontSize:"12px"}}>地点:</label><br/>
-            <input type="text" value={city} onChange={e=>setCity(e.target.value)} id="location" size={25} style={{border:"1px solid #888",background:"#555",color:"white",padding:"2px 4px"}}/>
-            <input type="button" value="搜寻" onClick={codeAddress} style={{border:"1px solid #888",background:"#666",color:"white",padding:"1px 6px",cursor:"pointer"}}/>
-            <p/>
-            <label style={{fontWeight:"bold",fontSize:"12px"}}>经度:</label>
-            <input type="text" value={glonDeg} onChange={e=>setGlonDeg(parseInt(e.target.value)||0)} size={3} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px",width:35}}/>
-            <select value={glonDir} onChange={e=>setGlonDir(e.target.value)} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px"}}><option value="E">E</option><option value="W">W</option></select>
-            <input type="text" value={glonMin} onChange={e=>setGlonMin(parseInt(e.target.value)||0)} size={2} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px",width:30}}/>
-            <br/>
-            <label style={{fontWeight:"bold",fontSize:"12px"}}>纬度:</label>
-            <input type="text" value={glatDeg} onChange={e=>setGlatDeg(parseInt(e.target.value)||0)} size={2} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px",width:30}}/>
-            <select value={glatDir} onChange={e=>setGlatDir(e.target.value)} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px"}}><option value="N">N</option><option value="S">S</option></select>
-            <input type="text" value={glatMin} onChange={e=>setGlatMin(parseInt(e.target.value)||0)} size={2} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px",width:30}}/>
-            <br/>
-            <label style={{fontWeight:"bold",fontSize:"12px"}}>时区:</label>
-            <select value={tz} onChange={e=>setTz(Number(e.target.value))} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px"}}>
-              {[-720,-660,-600,-540,-480,-420,-360,-300,-240,-180,-120,-60,0,60,120,180,240,300,360,420,480,540,600,660,720].map(v=><option key={v} value={v}>GMT {(v>=0?"+":"-")+String(Math.abs(v/60)).padStart(2,"0")}</option>)}
-            </select>
-            <br/><label style={{fontWeight:"bold",fontSize:"12px"}}>宫位制:</label>
-            <select value={hsys} onChange={e=>setHsys(e.target.value)} style={{border:"1px solid #888",background:"#555",color:"white",padding:"1px 2px"}}>
-              {[{v:"B",l:"阿卡比特制"},{v:"P",l:"普拉西德制"},{v:"K",l:"Koch制"},{v:"O",l:"Porphyrius制"},{v:"R",l:"苪氏分宫制"},{v:"C",l:"Campanus制"},{v:"E",l:"等宫制"},{v:"W",l:"整宫制"}].map(h=><option key={h.v} value={h.v}>{h.l}</option>)}
-            </select>
-            <div style={{textAlign:"center",marginTop:8}}>
-              <input type="submit" value={loading?"计算中...":"更新星图"} onClick={drawChart} disabled={loading} style={{border:"1px solid #888",background:"#666",color:"white",padding:"2px 12px",cursor:"pointer"}}/>
-            </div>
-          </div>}
-        </div>
         {/* JSON-LD Structured Data */}
         <script
           type="application/ld+json"
@@ -755,6 +784,7 @@ export default function NatalPage(){
             __html: serializeNatalFaqJsonLd(natalFaqs),
           }}
         />
+      </div>
       </div>
     </div>
   );
