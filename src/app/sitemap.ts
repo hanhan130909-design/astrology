@@ -22,6 +22,7 @@ export const coreRoutes = [
   "/natal",
   "/solar-return",
   "/bazi",
+  "/life-comic",
   "/transits",
   "/tarot",
   "/compatibility",

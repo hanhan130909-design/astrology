@@ -189,6 +189,27 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── 人生小传漫画 · 免费 3 格预览入口 ── */}
+      <section className="px-4 pb-12 max-w-[800px] mx-auto">
+        <Link
+          href="/life-comic"
+          className="block p-5 rounded-2xl border border-gray-200 bg-white hover:border-gray-300 transition-all"
+        >
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <div className="text-xs text-gray-400 mb-1">{lang === "zh" ? "新 · 免费" : "New · Free"}</div>
+              <div className="font-semibold text-base text-gray-900 mb-1">
+                {lang === "zh" ? "把你的人生写成一部漫画" : "Turn your life into a comic"}
+              </div>
+              <div className="text-xs text-gray-500 leading-relaxed">
+                {lang === "zh" ? "输入生日，生成 12 格人生小传，先看免费的前 3 格" : "Enter your birthday, get a 12-panel life story. First 3 panels free."}
+              </div>
+            </div>
+            <span className="text-xl text-gray-400 flex-shrink-0">→</span>
+          </div>
+        </Link>
+      </section>
+
       {/* ── Popular Questions: Internal Links for SEO ── */}
       <section className="px-6 py-12 bg-gray-50 border-t border-gray-100">
         <div className="max-w-[700px] mx-auto">
