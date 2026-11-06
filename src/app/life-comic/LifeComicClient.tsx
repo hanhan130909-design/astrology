@@ -41,14 +41,19 @@ type Result = {
   locked: { total: number; remaining: number };
 };
 
-type Birth = {
-  year: number; month: number; day: number;
-  hour: number; minute: number; gender: number;
-};
-
 const ELEMENT_COLOR: Record<string, string> = {
   木: "#4a9b58", 火: "#b82e2e", 土: "#9a7a43", 金: "#c08b2d", 水: "#2f66c9",
 };
+
+const CARD_W = 540;
+const CARD_H = 590;
+const PANEL_W = 160;
+const PANEL_H = 284;
+const PANEL_GAP = 10;
+const PANEL_LEFT = 20;
+const IMG_TOP = 100;
+const CAPTION_TOP = 384;
+const FOOTER_TOP = 460;
 
 function fire(name: string, params: Record<string, string | number | boolean> = {}) {
   trackEvent(name, params);
@@ -57,6 +62,93 @@ function fire(name: string, params: Record<string, string | number | boolean> = 
   } catch {
     // Vercel Analytics 未就绪时不影响主流程
   }
+}
+
+function wrapCaption(caption: string): string[] {
+  const chars = Array.from(caption);
+  if (chars.length <= 9) return [caption];
+  return [chars.slice(0, 9).join(""), chars.slice(9, 17).join("") + (chars.length > 17 ? "…" : "")];
+}
+
+/** 用浏览器 Canvas 画卡片，中文用访问者设备字体，避开服务端 SVG 缺中文字体的问题 */
+async function drawCard(result: Result, accent: string): Promise<Blob> {
+  const scale = 2;
+  const canvas = document.createElement("canvas");
+  canvas.width = CARD_W * scale;
+  canvas.height = CARD_H * scale;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) throw new Error("canvas_unavailable");
+  ctx.scale(scale, scale);
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, CARD_W, CARD_H);
+
+  ctx.fillStyle = accent;
+  ctx.fillRect(0, 0, CARD_W, 6);
+  ctx.fillStyle = accent;
+  ctx.font = '12px "PingFang SC", "Microsoft YaHei", sans-serif';
+  ctx.fillText("LUNAXSTAR · 人生小传", 20, 34);
+  ctx.fillStyle = "#111111";
+  ctx.font = '600 24px "PingFang SC", "Microsoft YaHei", sans-serif';
+  ctx.fillText("我的人生，前 3 格", 20, 66);
+  ctx.fillStyle = "#888888";
+  ctx.font = '12px "PingFang SC", "Microsoft YaHei", sans-serif';
+  ctx.fillText(
+    [result.meta.solarText.split(" ")[0], `日主 ${result.meta.dayMaster}`, result.meta.animal].join(" · "),
+    20, 90,
+  );
+
+  for (let i = 0; i < result.panels.length; i++) {
+    const p = result.panels[i];
+    const x = PANEL_LEFT + i * (PANEL_W + PANEL_GAP);
+    const img = new Image();
+    img.src = p.sampleImage;
+    await img.decode();
+    ctx.drawImage(img, x, IMG_TOP, PANEL_W, PANEL_H);
+    ctx.strokeStyle = "#eeeeee";
+    ctx.lineWidth = 1;
+    ctx.strokeRect(x + 0.5, IMG_TOP + 0.5, PANEL_W - 1, PANEL_H - 1);
+
+    ctx.fillStyle = "rgba(0,0,0,0.5)";
+    ctx.beginPath();
+    ctx.arc(x + 12, IMG_TOP + 16, 10, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#ffffff";
+    ctx.font = '10px "PingFang SC", sans-serif';
+    ctx.textAlign = "center";
+    ctx.fillText(String(i + 1), x + 12, IMG_TOP + 20);
+    ctx.textAlign = "left";
+
+    ctx.fillStyle = accent;
+    ctx.font = '10px "PingFang SC", "Microsoft YaHei", sans-serif';
+    ctx.fillText(`第 ${i + 1} 格`, x, CAPTION_TOP + 12);
+    ctx.fillStyle = "#111111";
+    ctx.font = '600 14px "PingFang SC", "Microsoft YaHei", sans-serif';
+    wrapCaption(p.caption).forEach((line, j) => {
+      ctx.fillText(line, x, CAPTION_TOP + 32 + j * 22);
+    });
+  }
+
+  ctx.strokeStyle = "#eeeeee";
+  ctx.beginPath();
+  ctx.moveTo(20, FOOTER_TOP + 16);
+  ctx.lineTo(CARD_W - 20, FOOTER_TOP + 16);
+  ctx.stroke();
+  ctx.fillStyle = "#111111";
+  ctx.font = '14px "PingFang SC", "Microsoft YaHei", sans-serif';
+  ctx.fillText("lunaxstar.com/life-comic", 20, FOOTER_TOP + 46);
+  ctx.fillStyle = "#888888";
+  ctx.font = '12px "PingFang SC", "Microsoft YaHei", sans-serif';
+  ctx.fillText("也来生成属于你的那一张", 20, FOOTER_TOP + 72);
+  ctx.fillStyle = "#aaaaaa";
+  ctx.font = '11px "PingFang SC", "Microsoft YaHei", sans-serif';
+  ctx.fillText(
+    `${result.style.watermark} · 内容由 AI 生成 · ${result.compliance.disclaimer}`,
+    20, FOOTER_TOP + 104,
+  );
+
+  return await new Promise<Blob>((resolve, reject) => {
+    canvas.toBlob((blob) => (blob ? resolve(blob) : reject(new Error("toBlob_failed"))), "image/png");
+  });
 }
 
 const fieldStyle: CSSProperties = {
@@ -78,18 +170,9 @@ export default function LifeComicClient() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [result, setResult] = useState<Result | null>(null);
-  const [birth, setBirth] = useState<Birth | null>(null);
   const [copied, setCopied] = useState(false);
   const [interested, setInterested] = useState(false);
   const [downloading, setDownloading] = useState(false);
-
-  function cardUrl(b: Birth): string {
-    const q = new URLSearchParams({
-      year: String(b.year), month: String(b.month), day: String(b.day),
-      hour: String(b.hour), minute: String(b.minute), gender: String(b.gender),
-    });
-    return `/api/life-comic/card?${q.toString()}`;
-  }
 
   async function generate() {
     const [year, month, day] = date.split("-").map(Number);
@@ -98,7 +181,6 @@ export default function LifeComicClient() {
       setError("请填完整的出生日期和时间");
       return;
     }
-    const payload: Birth = { year, month, day, hour, minute, gender: Number(gender) };
     setError("");
     setLoading(true);
     setInterested(false);
@@ -108,12 +190,11 @@ export default function LifeComicClient() {
       const res = await fetch("/api/life-comic", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({ year, month, day, hour, minute, gender: Number(gender) }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error || "generation_failed");
       setResult(data as Result);
-      setBirth(payload);
       fire("life_comic_generate", { element: data.meta.element });
     } catch {
       setError("生成失败，请稍后再试");
@@ -124,34 +205,33 @@ export default function LifeComicClient() {
   }
 
   async function saveCard() {
-    if (!birth || !result) return;
+    if (!result) return;
     setDownloading(true);
     fire("life_comic_share_click", { method: "download" });
     try {
-      const res = await fetch(cardUrl(birth));
-      if (!res.ok) throw new Error("card_failed");
-      const blob = await res.blob();
+      const blob = await drawCard(result, ELEMENT_COLOR[result.meta.element] || "#111111");
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
-      a.download = `人生小传-${result.meta.dayMaster}.png`;
+      a.download = "人生小传-前三格.png";
       a.href = url;
       a.click();
       URL.revokeObjectURL(url);
       fire("life_comic_share_success", { method: "download" });
     } catch {
-      setError("保存失败，可长按下方卡片图片直接保存");
+      setError("保存失败，请换个浏览器再试");
+      fire("life_comic_share_error", { method: "download" });
     } finally {
       setDownloading(false);
     }
   }
 
   async function copyText() {
-    if (!result || !birth) return;
+    if (!result) return;
     const text = [
       "我的人生小传 · 前 3 格",
       ...result.panels.map((p, i) => `${i + 1}. ${p.caption}`),
       `日主 ${result.meta.dayMaster} · ${result.meta.animal}`,
-      `你也来一张：https://lunaxstar.com/life-comic`,
+      "你也来一张：https://lunaxstar.com/life-comic",
       result.compliance.disclaimer,
     ].join("\n");
     try {
@@ -223,7 +303,7 @@ export default function LifeComicClient() {
         {error && <p style={{ color: "#b82e2e", fontSize: 13, margin: "12px 0 0" }}>{error}</p>}
       </section>
 
-      {result && birth && (
+      {result && (
         <>
           <section className="cx-card cx-card-pad" style={{ marginBottom: 18, borderTop: `3px solid ${accent}` }}>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 10, alignItems: "center", marginBottom: 10 }}>
@@ -271,14 +351,44 @@ export default function LifeComicClient() {
           <section className="cx-card cx-card-pad" style={{ marginBottom: 18 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, flexWrap: "wrap", marginBottom: 14 }}>
               <h2 className="cx-card-title" style={{ fontSize: 16, margin: 0 }}>你的一张分享卡片</h2>
-              <span style={{ fontSize: 12, color: "#999" }}>540 × 590 · 按你的命盘实时生成</span>
+              <span style={{ fontSize: 12, color: "#999" }}>540 × 590 · 点保存后在本机生成</span>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20, alignItems: "start" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={cardUrl(birth)} alt="按你的出生信息生成的三格分享卡片"
-                style={{ width: "100%", maxWidth: 360, borderRadius: 12, border: "1px solid #eee", display: "block" }}
-              />
+              <div style={{ width: "100%", maxWidth: 360 }}>
+                <div style={{ borderTop: `6px solid ${accent}`, background: "#fff", paddingBottom: 8 }}>
+                  <div style={{ padding: "12px 14px 8px" }}>
+                    <div style={{ fontSize: 11, letterSpacing: 2, color: accent }}>LUNAXSTAR · 人生小传</div>
+                    <div style={{ fontSize: 18, fontWeight: 500, color: "#111", marginTop: 4 }}>我的人生，前 3 格</div>
+                    <div style={{ fontSize: 11, color: "#888", marginTop: 4 }}>
+                      {result.meta.solarText.split(" ")[0]} · 日主 {result.meta.dayMaster} · {result.meta.animal}
+                    </div>
+                  </div>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 7, padding: "0 14px" }}>
+                    {result.panels.map((p, i) => (
+                      <div key={p.id}>
+                        <div style={{ position: "relative", aspectRatio: "160 / 284", background: "#eee" }}>
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={p.sampleImage} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                          <div style={{
+                            position: "absolute", left: 6, top: 6, width: 18, height: 18,
+                            borderRadius: "50%", background: "rgba(0,0,0,0.5)", color: "#fff",
+                            fontSize: 10, display: "flex", alignItems: "center", justifyContent: "center",
+                          }}>{i + 1}</div>
+                        </div>
+                        <div style={{ fontSize: 10, color: accent, marginTop: 5 }}>第 {i + 1} 格</div>
+                        <div style={{ fontSize: 12, fontWeight: 500, color: "#111", lineHeight: 1.45 }}>
+                          {wrapCaption(p.caption).map((line, j) => <div key={j}>{line}</div>)}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ borderTop: "1px solid #eee", margin: "14px 14px 0", paddingTop: 10, fontSize: 11, color: "#888", lineHeight: 1.7 }}>
+                    <div style={{ color: "#111", fontSize: 12 }}>lunaxstar.com/life-comic</div>
+                    <div>也来生成属于你的那一张</div>
+                    <div>{result.style.watermark} · 内容由 AI 生成 · {result.compliance.disclaimer}</div>
+                  </div>
+                </div>
+              </div>
               <div>
                 <div className="cx-stack" style={{ gap: 10, display: "flex", flexDirection: "column", marginBottom: 16 }}>
                   <button className="cx-btn cx-btn-primary" onClick={saveCard} disabled={downloading} style={{ justifyContent: "center" }}>
