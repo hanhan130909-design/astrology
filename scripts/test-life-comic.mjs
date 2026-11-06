@@ -41,7 +41,7 @@ const a2 = buildLifeComic(SAMPLE);
 assert.equal(a.panels.length, TOTAL_PANEL_COUNT, '必须生成 12 格');
 assert.equal(a.meta.runtimeSeconds, 57, '总时长必须稳定');
 assert.equal(new Set(a.panels.map((p) => p.id)).size, TOTAL_PANEL_COUNT, '格 id 不得重复');
-assert.ok(a.meta.dayMaster.includes('己'), '样例日主应为己土');
+assert.equal(a.meta.dayMaster, '己', '样例日主天干应为己（日柱己未另见 pillars）');
 assert.equal(a.meta.interactions.stems.join('、'), '甲庚相冲、甲己合化土', '冲合必须来自真实排盘');
 
 // 2) 合规

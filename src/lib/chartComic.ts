@@ -286,7 +286,7 @@ export function buildLifeComic(input: LifeComicInput): LifeComic {
       pillars: v.pillarList.map((p: any) => ({
         label: p.label, ganZhi: p.ganZhi, tenGod: p.tenGod, naYin: p.naYin,
       })),
-      dayMaster: `${v.dayMaster.stem}${v.dayMaster.branch}`,
+      dayMaster: v.dayMaster.stem,
       element,
       interactions,
       shenSha: shaRows.filter((row) => row.names.length).map((row) => `${row.label}: ${row.names.join("、")}`),
